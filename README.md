@@ -4,8 +4,8 @@
 
 Dear stock assessment experts,
 
-The brand new ICES Methods Working Group will be meeting 13-17 November 2017 in
-Woods Hole, and you are invited to attend!
+The brand new ICES Methods Working Group will be meeting **13-17 November 2017
+in Woods Hole**, and you are invited to attend!
 
 As the Chair of the new WG, my goal is to bring together the best stock
 assessment modellers from Europe, North America and elsewhere, to do good
