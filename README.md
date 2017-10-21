@@ -27,8 +27,6 @@ for details.
 
 (18 Oct 2017)
 
-Hi all,
-
 Just a quick update on the upcoming ICES Methods working group, meeting in Woods
 Hole 13-17 November.
 
@@ -64,10 +62,6 @@ the discussion started.
 Those of you who are coming to Woods Hole 13-17 November, please confirm with
 Chris Legault <chris.legault@noaa.gov> and me, so we can choose a suitable
 meeting room, get hotel recommendations, etc.
-
-All the best,
-
-Arni
 
 ## Letter of Invitation
 
