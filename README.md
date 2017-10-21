@@ -19,19 +19,9 @@ Logan   Hole
 19:20   21:45
 ```
 
-Boston | Woods
-Logan  | Hole
--------|------
- 09:20 | 11:45
- 11:20 | 13:45
- 13:20 | 15:45
- 15:20 | 17:45
- 17:20 | 19:45
- 19:20 | 21:45
-
 See page 20 in
-https://peterpanbus.com/wp-content/uploads/Peter-Pan-Timetable-9-27-2017.pdf for
-details.
+https://peterpanbus.com/wp-content/uploads/Peter-Pan-Timetable-9-27-2017.pdf#page=20
+for details.
 
 ## The plan
 
