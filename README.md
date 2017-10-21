@@ -65,7 +65,7 @@ meeting room, get hotel recommendations, etc.
 
 ## Letter of Invitation
 
-(30 Sep 2017)
+(19 Sep 2017)
 
 Dear stock assessment experts,
 
