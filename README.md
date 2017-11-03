@@ -1,5 +1,10 @@
 # ICES Methods Working Group
 
+(See [Wiki](https://github.com/ices-eg/MGWG/wiki) for a discussion board listing
+research topics)
+
+***
+
 ## Required information for non-US citizens
 
 (3 Nov 2017)
