@@ -1,5 +1,63 @@
 # ICES Methods Working Group
 
+## Required information for non-US citizens
+
+(3 Nov 2017)
+
+The US government has rules regarding foreign national guests participating in
+workshops that NOAA hosts. Please don't shoot the messenger, but Chris Legault
+will need the following information for all non-US citizens participating in the
+ICES Methods WG meeting November 13-17.
+
+Could you please send the information to Chris either via email or by fax
+(508-495-2393). If you send a fax, please send an email letting him know you
+sent it so he can easily confirm its receipt.
+
+1. Name (First, Middle, Last) as written on passport
+
+2. Your affiliation (name of your company, academic institution, government, or
+   nonprofit org)
+
+3. Gender
+
+4. Date of birth (mo, day, year)
+
+5. Country of birth
+
+6. Country of citizenship
+
+7. Country of current residence
+
+8. Country of permanent residence (home country)
+
+9. Dual Citizenship? (If yes, need info regarding both countries)
+
+10. Passport number
+
+11. Country of passport
+
+12. Phone number
+
+Sorry for the bureaucratic hassle. Please ask if you have any questions.
+
+***
+
+## Places to stay in Woods Hole
+
+(3 Nov 2017)
+
+A few places people usually stay are:
+
+* [Coonamessett Inn](https://www.coonamessettinn.com)
+
+* [Inn on the Square](http://www.innonthesquare.com)
+
+* [Holiday Inn](https://www.ihg.com/holidayinn/hotels/us/en/falmouth/fmhma/hoteldetail)
+
+There are also a number of Bed & Breakfasts.
+
+***
+
 ## Bus to Woods Hole
 
 (21 Oct 2017)
@@ -22,6 +80,8 @@ Logan   Hole
 See page 20 in
 https://peterpanbus.com/wp-content/uploads/Peter-Pan-Timetable-9-27-2017.pdf#page=20
 for details.
+
+***
 
 ## The plan
 
@@ -62,6 +122,8 @@ the discussion started.
 Those of you who are coming to Woods Hole 13-17 November, please confirm with
 Chris Legault <chris.legault@noaa.gov> and me, so we can choose a suitable
 meeting room, get hotel recommendations, etc.
+
+***
 
 ## Letter of Invitation
 
