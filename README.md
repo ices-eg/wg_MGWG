@@ -7,15 +7,26 @@ research topics)
 
 ## Arrival Information
 
-(9 Nov 2017)
+(9 Nov 2017, updated 11 Nov)
 
-Welcome to Woods Hole! The meeting will be held in the Stephen H. Clark conference room located in the Aquarium building (see https://www.nefsc.noaa.gov/nefsc/woodshole/directions.html). The first day to arrive, please check in at the front desk of the Fisheries Main Building. You will only need to check in once for the week. If you drive, you’ll be given a parking pass to put in your car. Parking is quite limited at the lab, so please car pool if at all possible. There are bike racks in front of the Aquarium if you decide to bike. 
+Welcome to Woods Hole! The meeting will be held in the Stephen H. Clark
+conference room located in the Aquarium building (see
+https://www.nefsc.noaa.gov/nefsc/woodshole/directions.html). The meeting hours
+will be 9-5 from Monday to Thursday and 9-4 on Friday.
 
-Door code, wireless, and lunch information will be provided at the meeting. Conference line and webex information for remote participants will be posted separately.
+The first day to arrive, please check in at the front desk of the Fisheries Main
+Building. You will only need to check in once for the week. If you drive, you'll
+be given a parking pass to put in your car. Parking is quite limited at the lab,
+so please car pool if at all possible. There are bike racks in front of the
+Aquarium if you decide to bike.
 
-The meeting will begin on Monday 13 December at XX am [Arni, when would you like to start the meeting?] and finish by XX pm on Friday 17 December [Arni, when would you like to end the meeting?].
+Door code, wireless, and lunch information will be provided at the meeting.
+Conference line and webex information for remote participants will be posted
+separately.
 
-If you have any questions, please contact Chris Legault (chris.legault@noaa.gov). Non-US citizens, please see the post regarding required information – thank you.
+If you have any questions, please contact Chris Legault
+(chris.legault@noaa.gov). Non-US citizens, please see the post regarding
+required information - thank you.
 
 ***
 
