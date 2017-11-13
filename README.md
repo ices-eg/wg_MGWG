@@ -17,7 +17,8 @@ Invited By: NEC.B Connect (nec.b.connect@noaa.gov)
 When:  11/13/2017 9:00 AM - 6:30 PM
 Time Zone:  (GMT-05:00) Eastern Time (US and Canada)
 
-Conference Number(s):  (877) 653-6612
+Conference Number(s):  (877) 653-6612 (toll free)  
++1 517 600 4840 (toll; for international callers) 
 Participant Code: 8116908
 
 To join the meeting:
