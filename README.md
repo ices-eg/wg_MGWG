@@ -5,6 +5,26 @@ research topics)
 
 ***
 
+## Remote Access
+
+(13 Nov 2017)
+
+Please join me in an Adobe Connect Meeting.
+
+Meeting Name:  ICES Methods Group
+Summary: ICES Methods Group meeting Monday - Friday
+Invited By: NEC.B Connect (nec.b.connect@noaa.gov)
+When:  11/13/2017 9:00 AM - 6:30 PM
+Time Zone:  (GMT-05:00) Eastern Time (US and Canada)
+
+Conference Number(s):  (877) 653-6612
+Participant Code: 8116908
+
+To join the meeting:
+https://noaast.adobeconnect.com/icesmethods/
+
+***
+
 ## Arrival Information
 
 (9 Nov 2017, updated 11 Nov)
