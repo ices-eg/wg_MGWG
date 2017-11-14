@@ -5,20 +5,36 @@ research topics)
 
 ***
 
+## Planning the 2018 Meeting
+
+**[Doodle poll](https://doodle.com/poll/q9xk8z9yn4pbmpgn)**
+
+Having met in Woods Hole (USA) in 2017, we may have the 2018 meeting in Southern
+Europe, to keep a balance between east and west, north and south :)
+
+If we aim for the autumn, the NOAA fiscal year means September is good, and the
+ICES ASC (24-27 Sep) means late September may not be a good time for the Methods
+WG meeting.
+
+Can we meet in the first or second week of September, 3-7 Sep or 10-14 Sep?
+Please indicate and comment in the Doodle poll above.
+
+***
+
 ## Remote Access
 
 (13 Nov 2017)
 
 Please join me in an Adobe Connect Meeting.
 
-Meeting Name:  ICES Methods Group
+Meeting Name: ICES Methods Group
 Summary: ICES Methods Group meeting Monday - Friday
 Invited By: NEC.B Connect (nec.b.connect@noaa.gov)
-When:  11/13/2017 9:00 AM - 6:30 PM
-Time Zone:  (GMT-05:00) Eastern Time (US and Canada)
+When: 11/13/2017 9:00 AM - 6:30 PM
+Time Zone: (GMT-05:00) Eastern Time (US and Canada)
 
-Conference Number(s):  (877) 653-6612 (toll free)  
-+1 517 600 4840 (toll; for international callers) 
+Conference Number(s): (877) 653-6612 (toll free)
++1 517 600 4840 (toll; for international callers)
 Participant Code: 8116908
 
 To join the meeting:
