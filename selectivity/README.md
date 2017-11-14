@@ -1,4 +1,6 @@
-### Selectivity as part of management advice
+# Selectivity as part of management advice
+
+## Initial thoughts
 
 Looking across many stocks of Atlantic cod, we see very different selectivities:
 some are fished mainly at ages 1-3, other stocks mainly at ages 4-8. This has
@@ -12,9 +14,6 @@ quite sensible, given the growth and maturity ogives for the respective stocks?
 Quick paper: Gather three matrices for each Atlantic cod stock: selectivity,
 weight, and maturity at age. Sketch and discuss the findings, perhaps analyzing
 what would happen if selectivity A would be applied to stock B.
-
-Scientists have been asked for advice regarding selectivity (e.g. ICES Advisory
-Committee), but so far this has not been addressed.
 
 ***
 
