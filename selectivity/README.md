@@ -32,8 +32,6 @@ What is the problem we are trying to solve? |
 
 * [Jorgensen et al. 2009](http://archimer.ifremer.fr/doc/00000/6867/)
 * [CAPAM workshop](http://capamresearch.org/current-projects/selectivity)
-<<<<<<< HEAD
 * [Vasilakopoulos et al. 2015](http://onlinelibrary.wiley.com/doi/10.1111/faf.12117/abstract)
-=======
+* [Fauconnet et al. 2016](http://www.sciencedirect.com/science/article/pii/S0308597X15003231)
 * [Froese et al. 2008](https://www.researchgate.net/publication/222434389_Size_matters_How_single-species_management_can_contribute_to_ecosystem-based_fisheries_management)
->>>>>>> a7770d4c1de1af775253a70f70a4671b7ab10b96
