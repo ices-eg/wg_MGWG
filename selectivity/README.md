@@ -33,10 +33,10 @@ What is the problem we are trying to solve? | What are the long-term impacts of 
 * [CAPAM workshop report](https://swfsc.noaa.gov/publications/CR/2013/2013Crone.pdf)
 * [Francis 2017](http://www.sciencedirect.com/science/article/pii/S0165783616301953)
 * [Froese et al. 2008](https://www.researchgate.net/publication/222434389_Size_matters_How_single-species_management_can_contribute_to_ecosystem-based_fisheries_management)
-* [Garcia et al. 2012](http://science.sciencemag.org/content/335/6072/1045)
+* [Garcia et al. 2012](http://science.sciencemag.org/content/335/6072/1045) argues balanced harvest
 * [Jorgensen et al. 2009](http://archimer.ifremer.fr/doc/00000/6867/)
 * [Kindsvater et al. 2017](onlinelibrary.wiley.com/doi/10.1111/faf.12208/abstract)
-* [Law et al. 2012](https://academic.oup.com/icesjms/article/69/4/602/634795)
+* [Law et al. 2012](https://academic.oup.com/icesjms/article/69/4/602/634795) argues balanced harvest
 * [Matsumura et al. 2011](https://link.springer.com/article/10.1007/s10682-010-9444-8)
 * [Prellezo et al. 2017](http://scientiamarina.revistas.csic.es/index.php/scientiamarina/article/view/1722)
 * [Stewart 2017](www.sciencedirect.com/science/article/pii/S0165783616302077)
