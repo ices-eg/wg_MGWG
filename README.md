@@ -1,7 +1,5 @@
 # ICES Methods Working Group
 
-Hello world
-
 (See [Wiki](https://github.com/ices-eg/MGWG/wiki) for a discussion board listing
 research topics)
 
