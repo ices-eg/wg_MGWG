@@ -30,3 +30,4 @@ Who would like to lead, what will coauthors do?   |
 
 * [Jorgensen et al. 2009](http://archimer.ifremer.fr/doc/00000/6867/)
 * [CAPAM workshop](http://capamresearch.org/current-projects/selectivity)
+* [Vasilakopoulos et al. 2015](http://onlinelibrary.wiley.com/doi/10.1111/faf.12117/abstract)
