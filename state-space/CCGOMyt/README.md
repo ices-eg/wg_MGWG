@@ -9,6 +9,7 @@ Data:
 
 Notes:
 * 2017 survey values not included to allow better comparison with SAM
+* "Use T+1 Year Value in Retro" box unchecked for all indices to allow better comparison with SAM
 * Maine-New Hampshire surveys not included (time series too short for retrospective analysis)
 
 References:
