@@ -30,3 +30,4 @@ Who would like to lead, what will coauthors do?   |
 
 * [Jorgensen et al. 2009](http://archimer.ifremer.fr/doc/00000/6867/)
 * [CAPAM workshop](http://capamresearch.org/current-projects/selectivity)
+* [Froese et al. 2008](https://www.researchgate.net/publication/222434389_Size_matters_How_single-species_management_can_contribute_to_ecosystem-based_fisheries_management)
