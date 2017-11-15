@@ -25,7 +25,7 @@ How can this be structured into a journal paper?  |
 What kind of work is required, and how much work? |
 Participants that would like to work on this?     | Alejandro Yanez, Arni Magnusson, Jacob Kasper, Knut Korsbrekke, Michael Schirripa, Tim Earl
 Who would like to lead, what will coauthors do?   |
-What is the problem we are trying to solve? | What are the long-term impacts of a given selectivity pattern? What should selectivity be optimized for? (Yield, economics, sustainability, CPUE) Which fisheries are not using an optimal selectivity pattern and what are the impacts of these decisions?
+What is the problem we are trying to solve? | What are the long-term impacts of a given selectivity pattern? What should selectivity be optimized for? (Yield, economics, sustainability, CPUE) Which fisheries are not using an optimal selectivity pattern and what are the impacts of these decisions? Does using too large of an age plus group mask important nuances of selectivity patterns? 
 
 
 ### Standard papers that people cite for this topic?
