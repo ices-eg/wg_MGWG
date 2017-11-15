@@ -20,7 +20,8 @@ what would happen if selectivity A would be applied to stock B.
 Criteria | Comments
 -------- | --------
 Important for many stock assessment scientists?   |
-Standard papers that people cite for this topic?  | Size-selective fishing gear and life history evolution in the Northeast Arctic cod http://archimer.ifremer.fr/doc/00000/6867/ CAPAM selectivity  http://www.capamresearch.org/current-projects/selectivity
+Standard papers that people cite for this topic?  | [Jorgensen et al. 2009](http://archimer.ifremer.fr/doc/00000/6867/),
+                                                    [CAPAM selectivity](http://capamresearch.org/current-projects/selectivity)
 Another working group already working on this?    |
 How can this be structured into a journal paper?  |
 What kind of work is required, and how much work? |
