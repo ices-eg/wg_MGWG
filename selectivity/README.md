@@ -25,6 +25,8 @@ How can this be structured into a journal paper?  |
 What kind of work is required, and how much work? |
 Participants that would like to work on this?     | Alejandro Yanez, Arni Magnusson, Jacob Kasper, Knut Korsbrekke, Michael Schirripa, Tim Earl
 Who would like to lead, what will coauthors do?   |
+What is the problem we are trying to solve? |
+
 
 ### Standard papers that people cite for this topic?
 
