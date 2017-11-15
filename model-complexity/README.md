@@ -43,7 +43,7 @@ iv)  simulation cases:
 * SS (SAM?) - Geir
 * CASA/SAMS -Dvora
 * CASAL - (Craig in group 1)
-* Gadget - (Arni)
+* Gadget - (Arni Magnusson)
 * SS?
 
 3. look at diagnostics (residuals, support for model assumptions);
