@@ -1,0 +1,1 @@
+As in 2015 update, expect get rid of time and age-varying M, fixed an issue with fall survey plus group data, get rid of spring, fall, and shrimp survey because no age data and so can't use in SAM because not able to fix selectivity.
