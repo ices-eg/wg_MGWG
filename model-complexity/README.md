@@ -57,7 +57,7 @@ is information criteria reliable for model selection ? retrospective pattern; pr
  
  what do you lose by using a simpler model;
  
-  is the advice given less informative or limited?  .
+  is the advice given less informative or limited? 
 
 6. Management advice :
 
