@@ -28,6 +28,5 @@ Who would like to lead, what will coauthors do?   |
 
 ### Standard papers that people cite for this topic?
 
-[Jorgensen et al. 2009](http://archimer.ifremer.fr/doc/00000/6867/)
-
-[CAPAM workshop](http://capamresearch.org/current-projects/selectivity)
+* [Jorgensen et al. 2009](http://archimer.ifremer.fr/doc/00000/6867/)
+* [CAPAM workshop](http://capamresearch.org/current-projects/selectivity)
