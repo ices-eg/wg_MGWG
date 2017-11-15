@@ -20,10 +20,14 @@ what would happen if selectivity A would be applied to stock B.
 Criteria | Comments
 -------- | --------
 Important for many stock assessment scientists?   |
-Standard papers that people cite for this topic?  | [Jorgensen et al. 2009](http://archimer.ifremer.fr/doc/00000/6867/),
-                                                    [CAPAM selectivity](http://capamresearch.org/current-projects/selectivity)
 Another working group already working on this?    |
 How can this be structured into a journal paper?  |
 What kind of work is required, and how much work? |
 Participants that would like to work on this?     | Alejandro Yanez, Arni Magnusson, Jacob Kasper, Knut Korsbrekke, Michael Schirripa, Tim Earl
 Who would like to lead, what will coauthors do?   |
+
+### Standard papers that people cite for this topic?
+
+[Jorgensen et al. 2009](http://archimer.ifremer.fr/doc/00000/6867/)
+
+[CAPAM workshop](http://capamresearch.org/current-projects/selectivity)
