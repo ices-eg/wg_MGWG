@@ -9,6 +9,8 @@ Data:
 
 Notes:
 * M is 0.1, except during a 2009-2011 Ichthyophonus infection
+* Run model: `vpa2 run1nwwg.dat`
+* Run retrospective: `vparetro run1nwwg.dat`
 
 References:
 * http://data.hafro.is/assmt/2017/herring/

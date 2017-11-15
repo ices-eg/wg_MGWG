@@ -1,0 +1,13 @@
+Log File Opened: 15 NOV 2017     21:42
+
+OPEN INPUT FILE: 
+RUN1NWWG_R_14.DAT                                                                                                               
+INPUT FILE READ COMPLETED
+PLUSG_SOLVE CATCH INFEASABLE F & N RESET
+Levenberg-Marquardt Algorithm Completed    13 Iterations
+RSS Calculated =    0.214182E+02
+ *** Warning - Estimated Coefficient of Variation is Below Anticipated Level - Solution May Be Invalid ***
+
+--- VPA/ADAPT Model Execution Completed OK ---
+
+Log File Closed at: 21:42
