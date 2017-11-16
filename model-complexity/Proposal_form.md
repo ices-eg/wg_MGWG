@@ -8,19 +8,20 @@
 
 ### Participants
 
--alejandro.yanez@ifop.cl,
-deborah.hart@noaa.gov,
-geirs@math.uio.no,
-htakade-heumacher@edf.org,
-knutk@imr.no,
-liz.brooks@noaa.gov
-daniel.hennen@noaa.gov
-patrick.lynch@noaa.gov
-Brandon Chasco
-Jose.deoliveira@cefas.co.uk?
+- alejandro.yanez@ifop.cl,
+- deborah.hart@noaa.gov,
+- geirs@math.uio.no,
+- htakade-heumacher@edf.org,
+- knutk@imr.no,
+- liz.brooks@noaa.gov
+- daniel.hennen@noaa.gov
+- patrick.lynch@noaa.gov
+- Brandon Chasco
+- Jose.deoliveira@cefas.co.uk?
 
 ### Leader(s)
-liz.brooks@noaa.gov ?
+
+...
 
 ### Background
 
@@ -37,7 +38,7 @@ information criteria (such as AIC and predictive cross validation) are reliable 
 ### Area of research
 
 This group proposes to perform a simulation and evaluate diagnostics to address the question. 
-Diagnostics to consider include residuals, whether there is support for model assumptions, parameter identifiability, 
+Diagnostics to consider include residuals, whether there is support for model assumptions, parameter identifiability, ...
 
 ### Brief literature review
 
@@ -67,7 +68,7 @@ We propose two/three case studies:
 - Growth: protracted
 - Maturity: protracted
 2. Typical pelagic: herring-like (other options: anchovy?) 
-- Life span <15? (M ~ 0.55) [anchovy: <5 years, with M~0.8-0.9]
+- Life span <15? (M ~ 0.55) [anchovy: <5 years, with M ~ 0.8-0.9]
 - Growth: more rapid   [anchovy: growth curve is shows ~ sine curve VonBert]
 - Maturation: more rapid [fully mature at age 0.5-1.0]
 3. An Invertebrate: Surfclam 
