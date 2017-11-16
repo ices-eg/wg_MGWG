@@ -8,7 +8,7 @@
 
 ### Participants
 
-alejandro.yanez@ifop.cl,
+-alejandro.yanez@ifop.cl,
 deborah.hart@noaa.gov,
 geirs@math.uio.no,
 htakade-heumacher@edf.org,
@@ -63,11 +63,11 @@ Develop general advice
 We propose two/three case studies:
 
 1. Typical groundfish: possibly cod-like
-- ~25 year life span (M~0.2)
+- \~25 year life span (M\~0.2)
 - Growth: protracted
 - Maturity: protracted
 2. Typical pelagic: herring-like (other options: anchovy?) 
-- Life span <15? (M~0.55) [anchovy: <5 years, with M~0.8-0.9]
+- Life span <15? (M ~ 0.55) [anchovy: <5 years, with M~0.8-0.9]
 - Growth: more rapid   [anchovy: growth curve is shows ~ sine curve VonBert]
 - Maturation: more rapid [fully mature at age 0.5-1.0]
 3. An Invertebrate: Surfclam 
