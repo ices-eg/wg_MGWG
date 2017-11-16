@@ -7,7 +7,7 @@
 Criteria | Comments
 -------- | --------
 Important for many stock assessment scientists?   |
-Standard papers that people cite for this topic?  | 
+Standard papers that people cite for this topic?  | See list of references at bottom of page
 Another working group already working on this?    |
 How can this be structured into a journal paper?  |
 What kind of work is required, and how much work? |
@@ -39,7 +39,7 @@ iv)  simulation cases:
 * casal can do length but isn't state space
 * look at droppinig age info and see what you can get with just length data
 * VPA   -Liz, Helen?
-* SCAA (ASAP?) -Liz, Helen?
+* SCAA (ASAP? a4a) -Liz, Helen? Ernesto
 * SS (SAM?) - Geir
 * CASA/SAMS -Dvora
 * CASAL - (Craig in group 1)
