@@ -476,10 +476,10 @@ write.sw(ices.dir, ices.base, start.yr, end.yr, nages, asap$WAA.mats$WAA.ssb[yr1
 ####################################################################################
 # Pollock (ignoring recreational catch for now)
 
-ices.dir <- "C:\\Users\\chris.legault\\Documents\\Working\\ICES-WGMG\\2017Mtg\\groundfish_sam\\Pollock\\"
+ices.dir <- "C:\\Users\\jonathan.deroba\\Documents\\GitHub\\MGWG\\state-space\\Pollock\\"
 ices.base <- "POLLOCK"
 
-asap.dir <- "C:\\Users\\chris.legault\\Documents\\Working\\ICES-WGMG\\2017Mtg\\groundfish_sam\\new_VPA_ASAP_runs\\"
+asap.dir <- "C:\\Users\\jonathan.deroba\\Documents\\GitHub\\MGWG\\state-space\\Pollock\\"
 asap.file <- "POLLOCK_ASAP.rdat"
 
 asap <- dget(paste0(asap.dir,asap.file))
@@ -492,7 +492,11 @@ nages <- asap$parms$nages
 res.CAA <- get.CAA.nfleets(asap)
 CAA <- res.CAA$CAA
 WAA <- res.CAA$WAA
-WAA[1:11,1] <- mean(WAA[,1], na.rm=T) # hard wire to deal with no catch at age 0 in first 11 years
+#WAA[1:11,1] <- mean(WAA[,1], na.rm=T) # hard wire to deal with no catch at age 0 in first 11 years
+# general fix 
+for(i in 1:ncol(WAA)) {WAA[is.na(WAA[,i]),i]=colMeans(WAA,na.rm=T)[i]} #x is a vector (column) we will be filling in
+
+
 
 ind.mats.all <- convert_survey_to_at_age(asap)
 use.index <- c(1,2)  ### have to figure this out for each stock
