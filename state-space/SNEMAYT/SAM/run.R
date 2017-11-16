@@ -51,5 +51,11 @@ pdf(onefile=FALSE, width = 8, height = 8)
   legend("topright", legend=substitute(rho==RHO, list(RHO=rho[1])), bty="n")
 dev.off()
 
+tab1 <- cbind(Year=fit$data$years, summary(fit), round(catchtable(fit)))
+colnames(tab1) <- sub("Estimate", "Catch", colnames(tab1))
+write.table(tab1, file="tab1.csv", sep=",\t", quote=FALSE, row.names=FALSE)
 
+sink("Mohn.txt")
+rho
+sink()
 
