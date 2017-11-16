@@ -476,11 +476,11 @@ write.sw(ices.dir, ices.base, start.yr, end.yr, nages, asap$WAA.mats$WAA.ssb[yr1
 ####################################################################################
 # Pollock (ignoring recreational catch for now)
 
-ices.dir <- "C:\\Users\\jonathan.deroba\\Documents\\GitHub\\MGWG\\state-space\\Pollock\\"
+ices.dir <- "/home/dhennen/SAM/MGWG-master/state-space/Pollock/"
 ices.base <- "POLLOCK"
 
-asap.dir <- "C:\\Users\\jonathan.deroba\\Documents\\GitHub\\MGWG\\state-space\\Pollock\\"
-asap.file <- "POLLOCK_ASAP.rdat"
+asap.dir <- "/home/dhennen/SAM/MGWG-master/state-space/Pollock/"
+asap.file <- "POLLOCK_ASAP.RDAT"
 
 asap <- dget(paste0(asap.dir,asap.file))
 names(asap)
@@ -494,8 +494,8 @@ CAA <- res.CAA$CAA
 WAA <- res.CAA$WAA
 #WAA[1:11,1] <- mean(WAA[,1], na.rm=T) # hard wire to deal with no catch at age 0 in first 11 years
 # general fix 
-for(i in 1:ncol(WAA)) {WAA[is.na(WAA[,i]),i]=colMeans(WAA,na.rm=T)[i]} #x is a vector (column) we will be filling in
-
+fillcol=function(x){ifelse(is.na(x),mean(x,na.rm=T),x)} #x is a vector (column) we will be filling in
+WAA=apply(WAA,2,fillcol)
 
 
 ind.mats.all <- convert_survey_to_at_age(asap)
