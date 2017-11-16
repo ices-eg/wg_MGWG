@@ -20,7 +20,7 @@ Who would like to lead, what will coauthors do?   |
 
 ...  simulation work with perhaps 2 different patterns of complexity {to be decided}:
 
-i)   groundfish and invertebrate
+i)   groundfish and invertebrate.  
 
 ii)  differences in mortality, plastic growth, rate of maturation
 
