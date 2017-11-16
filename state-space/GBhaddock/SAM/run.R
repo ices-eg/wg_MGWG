@@ -36,7 +36,7 @@ fit <- sam.fit(dat,conf,par)
 RES <- residuals(fit)
 RESP <- procres(fit)
 RETRO <- retro(fit, year=7)
-rho <- mohn(RETRO, lag=1)
+rho <- mohn(RETRO, lag=0)
 
 pdf(onefile=TRUE, width = 8, height = 8)
   ssbplot(fit)
