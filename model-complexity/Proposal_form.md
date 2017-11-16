@@ -92,41 +92,38 @@ SS-(Dan)
 ### References
 
 * Cotter et al (2004)
-* Are stock assessment methods too complicated?
-[URL_to_wiki](http://onlinelibrary.wiley.com/doi/10.1111/j.1467-2679.2004.00157.x/full)
+[Are stock assessment methods too complicated?]
+(http://onlinelibrary.wiley.com/doi/10.1111/j.1467-2679.2004.00157.x/full)
 
 * Wilberg and Bence (2008)
-* Performance of deviance information criterion model selection in statistical catch-at-age analysis
-[link:URL_to_wiki](http://www.sciencedirect.com/science/article/pii/S0165783608001343)
-* Discuss DIC as an alternative to AIC/BIC claiming it is better in taking into account random effects.
+[Performance of deviance information criterion model selection in statistical catch-at-age analysis]
+(http://www.sciencedirect.com/science/article/pii/S0165783608001343)
+
+Discuss DIC as an alternative to AIC/BIC claiming it is better in taking into account random effects.
+
 
 * Butterworth and Rademeyer (2008)
-* Statistical catch-at-age analysis vs. ADAPT-VPA: the case of Gulf of Maine cod: Compare SCAA and VPA on ground fish (cod).
-[](https://academic.oup.com/icesjms/article/65/9/1717/632337)
-* Do compare SCAA and VPA but mot state space models
+[Statistical catch-at-age analysis vs. ADAPT-VPA: the case of Gulf of Maine cod: Compare SCAA and VPA on ground fish (cod)](https://academic.oup.com/icesjms/article/65/9/1717/632337)
+
+Do compare SCAA and VPA but mot state space models
 
 * Butterworth and Rademeyer (2012)
-* A comparison of initial statistical catch-at-age and catch-at- length assessments of eastern atlantic bluefin tuna.
-[](http://www.iccat.es/Documents/CVSP/CV069_2013/n_2/CV069020710.pdf)
+[A comparison of initial statistical catch-at-age and catch-at- length assessments of eastern atlantic bluefin tuna](http://www.iccat.es/Documents/CVSP/CV069_2013/n_2/CV069020710.pdf)
 
 * Anderson et al (2014)
-* ss3sim: an R package for fisheries stock assessment simulation with Stock Synthesis
-[](http://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0092725&type=printable)
+[ss3sim: an R package for fisheries stock assessment simulation with Stock Synthesis](http://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0092725&type=printable)
 
 * Kokkalis etal (2017)
-* Estimating uncertainty of data limited stock assessments
-[](https://academic.oup.com/icesjms/article/74/1/69/2669561)
+[Estimating uncertainty of data limited stock assessments](https://academic.oup.com/icesjms/article/74/1/69/2669561)
 
 * Deroba and Schueller (2013)
-* Performance of stock assessments with misspecified age- and time varying natural mortality
-[](http://www.sciencedirect.com/science/article/pii/S0165783613000830)
+[Performance of stock assessments with misspecified age- and time varying natural mortality](http://www.sciencedirect.com/science/article/pii/S0165783613000830)
 
 * Kuparinen et al (2012)
-* Increasing biological realism of fisheries stock assessment: towards hierarchical Bayesian methods
-[](http://www.nrcresearchpress.com/doi/abs/10.1139/a2012-006#.Wg1pF7aZNZ0)
+[Increasing biological realism of fisheries stock assessment: towards hierarchical Bayesian methods](http://www.nrcresearchpress.com/doi/abs/10.1139/a2012-006#.Wg1pF7aZNZ0)
 
 * Book
-* Newman et al (2014): Modelling Population Dynamics 
+Newman et al (2014): Modelling Population Dynamics 
 
 ### Appendix
 
