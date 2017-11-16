@@ -22,3 +22,60 @@ Who would like to lead, what will coauthors do?   |
 
 
 Proposal: WGMG provide some analyses of this issue, and recommendations on potential problems with external vs internal estimation of SR functions.
+
+***
+
+## Proposal Format
+
+* Working title
+* Participants
+  * Leader(s)
+  * Casper Berg DTU Aqua
+  * Chris Legault NEFSC
+  * Craig Marsh NIWA
+  * Dvora Hart  NEFSC
+  * Ernesto Jardim
+  * Jon Deroba NEFSC
+  * Liz Brooks NEFSC
+  * Noel Cadigan  Memorial University
+  * Tim Miller NEFSC
+  * Vanessa Trijoulet NEFSC
+* Background
+  * Area of research
+  * Brief literature review
+  * Remaining questions
+  * Why is this important
+* Objectives
+* Plan
+  * Methods, data
+    * Assessment model types
+      * VPA (SR external)
+      * SCAA (SR internal, sigma_R known)
+      * State-space (SR internal, process error in recruitment only)
+      * State-space (SR internal, process error in survival)
+      * Other state-space
+    * Use state-space model to simulate population with process errors
+      * Stock-recruit types
+        * Beverton-Holt
+        * Ricker
+        * None
+        * Hockey (not differentiable)
+      * Number of years
+        * 20
+        * 40
+      * variance of log-recruitment
+        * 0.3
+        * 0.6 
+        * 0.9
+      * Contrast in population/SSB
+        * Low F
+        * High F
+        * variation in F
+  * Tasks, who's doing what
+  * Milestones, timeline
+* References
+  * [Brooks and Deroba 2015](https://doi.org/10.1139/cjfas-2014-0231)
+* Appendix
+  * Preliminary diagram, table, plots
+
+***
