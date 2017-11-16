@@ -39,7 +39,7 @@ iv)  simulation cases:
 * casal can do length but isn't state space
 * look at droppinig age info and see what you can get with just length data
 * VPA   -Liz, Helen?
-* SCAA (ASAP?) -Liz, Helen?
+* SCAA (ASAP? a4a) -Liz, Helen? Ernesto
 * SS (SAM?) - Geir
 * CASA/SAMS -Dvora
 * CASAL - (Craig in group 1)
