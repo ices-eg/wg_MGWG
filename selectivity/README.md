@@ -29,11 +29,13 @@ What is the problem we are trying to solve? | What are the long-term impacts of 
 
 
 ### Standard papers that people cite for this topic?
+* [Caddy and Seijo 2002](https://ac.els-cdn.com/S0165783602000115/1-s2.0-S0165783602000115-main.pdf?_tid=a4c1f17c-cae0-11e7-bb2b-00000aacb35f&acdnat=1510845365_53ad53d0c714479caf1258a58ab230ec) argues to protect the largest (especially female) fish
 * [CAPAM](http://capamresearch.org/current-projects/selectivity)
 * [CAPAM workshop report](https://swfsc.noaa.gov/publications/CR/2013/2013Crone.pdf)
 * [Francis 2017](http://www.sciencedirect.com/science/article/pii/S0165783616301953)
-* [Froese et al. 2008](https://www.researchgate.net/publication/222434389_Size_matters_How_single-species_management_can_contribute_to_ecosystem-based_fisheries_management)
+* [Froese et al. 2008](http://www.sciencedirect.com/science/article/pii/S016578360800043X)
 * [Garcia et al. 2012](http://science.sciencemag.org/content/335/6072/1045) argues balanced harvest
+* [Hixon et al. 2014](https://academic.oup.com/icesjms/article/71/8/2171/748104) argues to protect the largest (especially female) fish
 * [Jorgensen et al. 2009](http://archimer.ifremer.fr/doc/00000/6867/)
 * [Kindsvater et al. 2017](onlinelibrary.wiley.com/doi/10.1111/faf.12208/abstract)
 * [Law et al. 2012](https://academic.oup.com/icesjms/article/69/4/602/634795) argues balanced harvest
