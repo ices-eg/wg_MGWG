@@ -67,6 +67,7 @@ you give advice at all?  if the data quality is not high, what advice can (shoul
 ### Other thoughts:
 - how to explain the complex models to the public (words and pictures)
 - if you have length and age, use one or both? pros/cons?
+- ...
 
 
 
