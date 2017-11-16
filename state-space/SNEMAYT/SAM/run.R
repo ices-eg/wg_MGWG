@@ -1,4 +1,5 @@
 library(stockassessment)
+source("pred.R") # function to predict 
 
 prefix <- "../SNEMAYT_"
 
@@ -33,7 +34,12 @@ fit <- sam.fit(dat,conf,par)
 RES <- residuals(fit)
 RESP <- procres(fit)
 RETRO <- retro(fit, year=7)
+PRED <- predictYears(fit,years=max(fit$data$years)-2:0)
+colnames(PRED)<-sub("obs", "logObs", colnames(PRED))
+
 rho <- mohn(RETRO, lag=0)
+
+
 
 pdf(onefile=FALSE, width = 8, height = 8)
   ssbplot(fit)
@@ -55,7 +61,8 @@ tab1 <- cbind(Year=fit$data$years, summary(fit), round(catchtable(fit)))
 colnames(tab1) <- sub("Estimate", "Catch", colnames(tab1))
 write.table(tab1, file="tab1.csv", sep=",\t", quote=FALSE, row.names=FALSE)
 
-sink("Mohn.txt")
-rho
-sink()
+write.table(PRED, file="tab2.csv", sep=",\t", quote=FALSE, row.names=FALSE)
 
+sink("Mohn.txt")
+print(rho)
+sink()
