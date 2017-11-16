@@ -240,8 +240,8 @@ write.sw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$spstockwt)
 ices.dir <- "C:\\Users\\chris.legault\\Documents\\Working\\ICES-WGMG\\2017Mtg\\groundfish_sam\\Plaice\\"
 ices.base <- "PLAICE"
 
-vpa.dir <- "C:\\Users\\chris.legault\\Documents\\Working\\Assessments\\GARMupdate2017\\rdat files\\"
-vpa.file <- "2017_PLA_UNIT_MOD_VPA.rdat"
+vpa.dir <- "/home/dhennen/SAM/MGWG-master/state-space/Plaice/"
+vpa.file <- "PLAICE_VPA.RDAT"
 
 vpa <- dget(paste0(vpa.dir,vpa.file))
 names(vpa)
@@ -263,7 +263,9 @@ ind.mats$timing <- c(0.0, 0.0, 0.0, 0.0)
 use.cols.start <- c(1, 11, 20, 26)
 use.cols.end   <- c(8, 17, 24, 30)
 for (i in 1:ind.mats$n){
-  ind.mats$ob[[i]] <- ind.mats.all[rownames(ind.mats.all) %in% seq(ind.mats$start.year[i],ind.mats$end.year[i]), colnames(ind.mats.all) %in% seq(use.cols.start[i], use.cols.end[i])]
+  ind.mats$ob[[i]] <- ind.mats.all[rownames(ind.mats.all) %in% seq(ind.mats$start.year[i]
+        ,ind.mats$end.year[i]), colnames(ind.mats.all) %in% seq(use.cols.start[i], use.cols.end[i])]
+  ind.mats$ob[[i]]=ifelse(is.na(ind.mats$ob[[i]]),0,ind.mats$ob[[i]]) #replace NA with 0
   colnames(ind.mats$ob[[i]]) <- seq(ind.mats$start.age[i], ind.mats$end.age[i])
 }
 
