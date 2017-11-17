@@ -109,4 +109,4 @@ Time     | Milestone
 
 *Preliminary plot, for context*
 
-![Cohort biomass](earlier-studies/icelandic-cod/cohort-biomass.png)
+![Cohort biomass](earlier-studies/icelandic-cod/cohort-biomass.png | width=400)
