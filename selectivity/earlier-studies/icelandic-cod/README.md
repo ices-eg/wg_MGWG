@@ -7,9 +7,9 @@ Arni Magnusson (2012), by request from Ministry of Fisheries
 Report (English abstract, tables, figures):
 * [codsel.pdf](http://www.hafro.is/~arnima/pdf/2012-codsel.pdf)
 
-Analysis:
-* [prop.xls](prop.xls) (basics)
-* [codsel.xls](codsel.xls) (full analysis)
+Analysis, see files above:
+* prop.xls (basics)
+* codsel.xls (full analysis)
 
 Notes:
 * Figure 2 shows biomass of average cohort, if no fishing occurs
