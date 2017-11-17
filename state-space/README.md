@@ -4,6 +4,16 @@ There is now an excel file ("Stock_runs_status.xlsx") to keep track of the stock
 Please tick the box after running and uploading the outputs file.
 John and Vanessa currently working on creating a script which standardizes and plots the outputs of the three models at once.
 
+                                        |ASAP  | SAM  | WHAM  |  Comments
+-----------------------------------------------------------------------------
+SNEMA yellowtail (SNEMAYT)              |      |      |       |
+-----------------------------------------------------------------------------
+North Sea cod (Nscod)                   |      |      |       |
+-----------------------------------------------------------------------------
+US West Coast lingcod (USWCLingcod)     |      |      |       |
+-----------------------------------------------------------------------------
+Icelandic herring (ICEherring)          |      |      |       |
+-----------------------------------------------------------------------------
 
 (T Miller)
 
