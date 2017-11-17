@@ -22,8 +22,8 @@ What kind of work is required, and how much work? | Part II: Simulate data for e
 Participants that would like to work on this?     | Tim Miller, Anders Nielsen, Andres Stoerksen Stordal, Arni  Magnusson, Casper Berg, Chris Legault, Cole Monahan, Craig Marsh, Jacob Kasper, Vanessa Trijoulet, Kelli Johnson, Jon Deroba, Niels Hintzen, Noel Cadigan, Ernesto Jardim
 Who would like to lead, what will coauthors do?   | Tim Miller
 
-  
-How will we want to correspond  
+
+How will we want to correspond
 
 Do we want to tackle items on this outline that Arni provided?
 
@@ -45,7 +45,7 @@ Do we want to tackle items on this outline that Arni provided?
   * Jacob Kasper UConn
   * Niels Hintzen  ?
   * Noel Cadigan Memorial University
-  * Ernesto Jardim ?  
+  * Ernesto Jardim ?
 * Background
   * Area of research
   * Brief literature review
@@ -54,19 +54,19 @@ Do we want to tackle items on this outline that Arni provided?
 * Objectives
 * Plan
   * Part I: Real Data
-    * Start with these stocks: 
+    * Start with these stocks:
       * SNEMA yellowtail
       * North Sea cod
-      * West Coast US lingcod (Southern stock)
+      * US West Coast lingcod (California stock; USWCLingcod)
       * Icelandic herring
     * In the end, we may focus on a few stocks that have a good story to tell.
     * Uploader of data can specify setting of original model for the specific stock.
     * No special cases for models such as catch scaling in SAM.
     * Table with stock by model and check marks or Mohn's rho to keep track of which have been.  F and SSB Mohn's rho.
-    * Define the level of fiddling for each stock. 
-      * We should try to minimize the number of knobs to improve the retro for a given model 
+    * Define the level of fiddling for each stock.
+      * We should try to minimize the number of knobs to improve the retro for a given model
       * This would save time and make comparisons easier.
-    * Define the diagnostics for each stock. 
+    * Define the diagnostics for each stock.
       * Survey and Catch Residuals (predicted-observed)
       * Get plot functions used in SAM
       * OneStepAhead function for residuals
@@ -76,11 +76,11 @@ Do we want to tackle items on this outline that Arni provided?
       * SSB (CIs)
       * Recruitment (CIs)
       * F-bar stock-specific (CIs)
-      * Predicted Catch (CIs) 
+      * Predicted Catch (CIs)
     * Self-test for each stock/model.
   * Part II: Simulations
     * Based on conclusions of Part I, evaluate hypotheses for differences generated in Part I.
-    * Exotic features examples? 
+    * Exotic features examples?
     * Estimate reference points? Decide later.
     * Define the sources of mis-specfication.
       * Multiplier of catch/missing catch
@@ -90,7 +90,7 @@ Do we want to tackle items on this outline that Arni provided?
     * Again, no fiddling would be wanted here.
 * Methods, data
 * Tasks, who's doing what
-  * Data converters: 
+  * Data converters:
     * Tim writing converter from his state-space models to ASAP3
     * Liz writing converter from SAM to ASAP3 and VPA to ASAP3
     * Chris provided ASAP to ICES and VPA to ICES converters, Jon and Dan modified
@@ -98,7 +98,7 @@ Do we want to tackle items on this outline that Arni provided?
     * Tim fitting his state-space models
     * Chris, Jon, Anders, Casper fitting ASAP3 and SAM models
     * Kelli fitting SS3 models
-  * Others fitting 
+  * Others fitting
 * Milestones, timeline
 * References
   * [Miller and Hyun In press](https://doi.org/10.1139/cjfas-2017-0035)
