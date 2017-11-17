@@ -46,6 +46,7 @@ Do we want to tackle items on this outline that Arni provided?
   * Niels Hintzen  ?
   * Noel Cadigan Memorial University
   * Ernesto Jardim ?
+  * Dan Hennen NEFSC
 * Background
   * Area of research
   * Brief literature review
