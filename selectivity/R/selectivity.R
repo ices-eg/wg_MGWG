@@ -26,19 +26,3 @@ foo <- function(N, w)
 }
 
 foo(N, w)
-
-
-#first create an array for the Ns, with dimensions [ages, years]
-Ns  <- array(NA, dim=c(length(startN)+1,length(rec)))
-Ns[1,]   <- rec           # the recruitments are put in the first row                                
-Ns[-1,1] <- startN         # remaining starting values are put in first col
-for (t in 2:length(rec)){
-  for (a in 2:(length(startN) +1))
-    Ns[a,t] <- Ns[a-1,t-1] *S[a-1,t-1] # calculate all remaining Ns given a S value
-}
-(Ns)
-}
-
-Ns <- Ncalc(rec = rep(100,21), startN= rep(10,8), S= exp(-(Fm + 0.1)) )
-
-
