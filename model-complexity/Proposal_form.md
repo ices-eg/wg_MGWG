@@ -80,7 +80,8 @@ We propose two/three case studies:
 - Maturation - fully mature by 1 year 
 
 Considerations for the simulated data
-- do we want to include something with CPUE
+-------------------------------------
+- do we want to include something with CPUE (change in q? missing catch?)
 - selectivity changes
 - M changes (pattern at age, or time, or both?)
 
