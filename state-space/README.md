@@ -1,8 +1,10 @@
 ### State-space vs. traditional models
 
-There is now an excel file ("Stock_runs_status.xlsx") to keep track of the stocks that have been run for each model.
+(T Miller)
+
+There is now a table to keep track of the stocks that have been run for each model.
 Please tick the box after running and uploading the outputs file.
-John and Vanessa currently working on creating a script which standardizes and plots the outputs of the three models at once.
+John and Vanessa currently working on creating a script which standardizes and plots the outputs of the three models at once. When a stock has the three ticks (one for each model), then the output script can be run.
 
 Stock | ASAP | SAM | WHAM | Comments
 ------| ---- | --- | ---  | --------
@@ -11,8 +13,6 @@ North Sea cod (Nscod) | | | |
 US West Coast lingcod (USWCLingcod) | | | | 
 Icelandic herring (ICEherring) | | | | 
 
-
-(T Miller)
 
 Comparison of merits and issues for traditional SCAA and state-space
 age-structured models. This could include different varieties of each class of
