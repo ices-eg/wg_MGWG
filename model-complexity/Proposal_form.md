@@ -82,10 +82,12 @@ We propose two/three case studies:
 Considerations for the simulated data
 -------------------------------------
 - do we want to include something with CPUE (change in q? missing catch?)
+
 - selectivity changes
 - M changes (pattern at age, or time, or both?)
 
 
+-------------------------------------
 ### Tasks, who's doing what
 
 The suite of data rich models to be applied, and working group members able to run them:
