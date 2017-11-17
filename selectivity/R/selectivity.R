@@ -7,6 +7,7 @@ Ftime <- 0
 Fcalc <- function(Fsel,Ftime){
   c(  Fsel %o% Ftime )
 }
+
 Fm <- Fcalc(Fsel, Ftime)
 Fm
 
