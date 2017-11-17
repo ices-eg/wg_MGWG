@@ -107,4 +107,6 @@ Time     | Milestone
 
 ## Appendix
 
-*Preliminary plot, for context*
+*Preliminary plot, from Icelandic cod analysis*
+
+<img src="earlier-studies/icelandic-cod/cohort-biomass.png" width="400">
