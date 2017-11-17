@@ -106,6 +106,7 @@ Do we want to tackle items on this outline that Arni provided?
   * [Miller and Legault 2017](https://doi.org/10.1016/j.fishres.2016.08.002)
   * [Cadigan 2015](https://doi.org/10.1139/cjfas-2015-0047)
   * [Nielsen and Berg 2014](https://doi.org/10.1016/j.fishres.2014.01.014)
+  * [Legault 2009](https://www.nefsc.noaa.gov/publications/crd/crd0901/)
 * Appendix
   * Preliminary diagram, table, plots
 
