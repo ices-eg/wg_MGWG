@@ -1,5 +1,10 @@
 ### State-space vs. traditional models
 
+There is now an excel file ("Stock_runs_status.xlsx") to keep track of the stocks that have been run for each model.
+Please tick the box after running and uploading the outputs file.
+John and Vanessa currently working on creating a script which standardizes and plots the outputs of the three models at once.
+
+
 (T Miller)
 
 Comparison of merits and issues for traditional SCAA and state-space
