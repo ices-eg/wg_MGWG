@@ -1,4 +1,4 @@
-# Configuration saved: Thu Nov 16 13:11:51 2017
+# Configuration saved: Fri Nov 17 15:24:24 2017
 #
 # Where a matrix is specified rows corresponds to fleets and columns to ages.
 # Same number indicates same parameter used
@@ -83,7 +83,7 @@ $keyParScaledYA
 
 $fbarRange
 # lowest and higest age included in Fbar
- 4 5 
+ 3 5 
 
 $keyBiomassTreat
 # To be defined only if a biomass survey is used (0 SSB index, 1 catch index, and 2 FSB index).
