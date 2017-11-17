@@ -93,7 +93,7 @@ Do we want to tackle items on this outline that Arni provided?
   * Data converters: 
     * Tim writing converter from his state-space models to ASAP3
     * Liz writing converter from SAM to ASAP3 and VPA to ASAP3
-    * Chris
+    * Chris provided ASAP to ICES and VPA to ICES converters, Jon and Dan modified
   * Model fitting
     * Tim fitting his state-space models
     * Chris, Jon, Anders, Casper fitting ASAP3 and SAM models
