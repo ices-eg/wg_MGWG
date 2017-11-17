@@ -19,9 +19,12 @@
 - Brandon Chasco
 - Jose.deoliveira@cefas.co.uk?
 
-### Leader(s)
+### Coordinators
 
-...
+Task-master: Helen
+Simulation (age-based): Liz? ...?
+Simulation (length-based): Dan?  
+
 
 ### Background
 
@@ -87,6 +90,17 @@ CASA/SAMS -Dvora
 CASAL - (Craig in group 1)
 Gadget - (Arni Magnusson)
 SS-(Dan)
+
+---------
+Alejandro - literature review, plots for fittings...
+Helen - literature review, task-matering, milestone monitoring, model fitting (?)
+Liz - simulating and model fitting, co-coordinate
+Geir - fitting SAM; literature review
+Knut - literature review, XSAM (deterministic survival, reading in variance from something) ?
+Dvora - fit length based models; also fit simple length based models; literature review;
+Dan - simulating and model fitting
+Ernesto - model fitting
+
 
 ### Milestones, timeline
 ### References
