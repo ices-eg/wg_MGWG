@@ -57,7 +57,7 @@ Do we want to tackle items on this outline that Arni provided?
     * Start with these stocks: 
       * SNEMA yellowtail
       * North Sea cod
-      * A West Coast US stock TBD
+      * West Coast US lingcod (Southern stock)
       * Icelandic herring
     * In the end, we may focus on a few stocks that have a good story to tell.
     * Uploader of data can specify setting of original model for the specific stock.
