@@ -112,6 +112,9 @@ Do we want to tackle items on this outline that Arni provided?
   * [Legault 2009](https://www.nefsc.noaa.gov/publications/crd/crd0901/)
 * Appendix
   * Preliminary diagram, table, plots
+  * [Mohn's rho for SSB](/plots_for_README/rho_comparison_ssb.png)
+  * [Mohn's rho for Average F](/plots_for_README/rho_comparison_ssb.png)
+  * [Mohn's rho for Recruitment](/plots_for_README/rho_comparison_rec.png)
 
 ***
 
