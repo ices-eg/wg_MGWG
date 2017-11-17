@@ -105,6 +105,7 @@ Do we want to tackle items on this outline that Arni provided?
   * [Szuwalski et al. 2017: Reducing retrospective patterns](https://doi.org/10.1093/icesjms/fsx159)
   * [Miller and Legault 2017](https://doi.org/10.1016/j.fishres.2016.08.002)
   * [Cadigan 2015](https://doi.org/10.1139/cjfas-2015-0047)
+  * [Hurtado-Ferro et al. 2015](https://doi.org/10.1093/icesjms/fsu198)
   * [Nielsen and Berg 2014](https://doi.org/10.1016/j.fishres.2014.01.014)
   * [Legault 2009](https://www.nefsc.noaa.gov/publications/crd/crd0901/)
 * Appendix
