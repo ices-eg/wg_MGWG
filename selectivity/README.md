@@ -108,3 +108,5 @@ Time     | Milestone
 ## Appendix
 
 *Preliminary plot, for context*
+
+![Cohort biomass](earlier-studies/icelandic-cod/cohort-biomass.png)
