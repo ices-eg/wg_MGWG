@@ -8,8 +8,8 @@ Report (English abstract, tables, figures):
 * [codsel.pdf](http://www.hafro.is/~arnima/pdf/2012-codsel.pdf)
 
 Analysis:
-* prop.xls (basics)
-* codsel.xls (full analysis)
+* [prop.xls](prop.xls) (basics)
+* [codsel.xls](codsel.xls) (full analysis)
 
 Notes:
 * Figure 2 shows biomass of average cohort, if no fishing occurs
