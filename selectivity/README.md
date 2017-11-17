@@ -1,6 +1,13 @@
 # Selectivity as part of management advice
 
-## Initial thoughts
+Coordinators: Arni Magnusson, Jacob Kasper, Knut Korsbrekke
+
+## Participants
+
+Alejandro Yanez, Arni Magnusson, Jacob Kasper, Knut Korsbrekke, Michael
+Schirripa, Tim Earl
+
+## Background
 
 Looking across many stocks of Atlantic cod, we see very different selectivities:
 some are fished mainly at ages 1-3, other stocks mainly at ages 4-8. This has
@@ -11,24 +18,73 @@ Can this be considered mismanagement of some of these cod stocks, in the form of
 underutilizing or risking stock collapse? Or are the different selectivities
 quite sensible, given the growth and maturity ogives for the respective stocks?
 
-Quick paper: Gather three matrices for each Atlantic cod stock: selectivity,
-weight, and maturity at age. Sketch and discuss the findings, perhaps analyzing
-what would happen if selectivity A would be applied to stock B.
+## Objective
 
-***
+To evaluate whether some Atlantic cod fisheries could be improved (in terms of
+long-term yield, sustainability, precautionary approach, etc.) by changing the
+selectivity. In other words, provide an analytical foundation that could lead to
+scientific advice to change gear regulations.
 
-Criteria | Comments
--------- | --------
-Important for many stock assessment scientists?   |
-Another working group already working on this?    |
-How can this be structured into a journal paper?  |
-What kind of work is required, and how much work? |
-Participants that would like to work on this?     | Alejandro Yanez, Arni Magnusson, Jacob Kasper, Knut Korsbrekke, Michael Schirripa, Tim Earl
-Who would like to lead, what will coauthors do?   |
-What is the problem we are trying to solve? | What are the long-term impacts of a given selectivity pattern? What should selectivity be optimized for? (Yield, economics, sustainability, CPUE) Which fisheries are not using an optimal selectivity pattern and what are the impacts of these decisions? Does using too large of an age plus group mask important nuances of selectivity patterns?
+With relatively little amount of work, we can give an important and useful
+summary/comparison of many Atlantic cod fisheries. A follow-up study could
+repeat the analysis for different species found in mixed fisheries on a regional
+basis.
 
+Research questions:
 
-### Standard papers that people cite for this topic?
+* What are the long-term impacts of a given selectivity pattern?
+
+* What should selectivity be optimized for? (Yield, economics, sustainability,
+  CPUE)
+
+* Which fisheries are not using an optimal selectivity pattern and what are the
+  impacts of these decisions?
+
+* Does using too large of an age plus group mask important nuances of
+  selectivity patterns?
+
+## Plan
+
+1. Gather data for as many Atlantic cod stocks as possible (by year and age):
+   * Weight
+   * Maturity
+   * Natural mortality
+   * Fishing mortality
+   * Population numbers
+
+2. Within-stock analysis:
+   * Calculate averages - weight, maturity, selectivity, recruitment
+   * Biomass of average cohort, in the absence of fishing (barplot)
+   * Identify optimal age of harvest (highest column in barplot)
+   * Compare with selectivity
+   * Calculate optimal Fbar for this stock, given constant recruitment
+   * Evaluate how selectivity could be changed to improve this cod fishery
+
+3. Across-stocks analysis:
+   * Compare stocks A and B, be evaluate how things would change if selectivity
+     A would be applied to stock B
+
+## Tasks
+
+*Who's doing what*
+
+Within stock:
+
+Stock         | Data | Analysis
+------------- | ---- | --------
+Icelandic cod | Arni | Arni, Alejandro
+...           | ...  | ...
+
+Across stocks: All coauthors
+
+*Milestones*
+
+Time     | Milestone
+-------- | ---------
+2016 Dec | Identify stocks, decide who will handle each stock
+
+## Literature
+
 * [Caddy and Seijo 2002](https://ac.els-cdn.com/S0165783602000115/1-s2.0-S0165783602000115-main.pdf?_tid=a4c1f17c-cae0-11e7-bb2b-00000aacb35f&acdnat=1510845365_53ad53d0c714479caf1258a58ab230ec) argues to protect the largest (especially female) fish
 * [CAPAM](http://capamresearch.org/current-projects/selectivity)
 * [CAPAM workshop report](https://swfsc.noaa.gov/publications/CR/2013/2013Crone.pdf)
@@ -44,6 +100,11 @@ What is the problem we are trying to solve? | What are the long-term impacts of 
 * [Stewart 2017](www.sciencedirect.com/science/article/pii/S0165783616302077)
 * [Vasilakopoulos et al. 2015](http://onlinelibrary.wiley.com/doi/10.1111/faf.12117/abstract)
 "Currently, MSY and FMSY are usually calculated keeping selectivity constant (ICES 2011). Our meta-analysis, in line with previous stock-specific studies (e.g. Froese et al. 2008; Scott and Sampson 2011; Colloca et al. 2013), suggests that this traditional calcula- tion of MSY is very restrictive in that it ignores the higher MSYs that can be extracted by shifting selectivity towards older/larger fish."
-### less than helpful citations
+
+*Less than helpful citations...*
+
 * [Fauconnet et al. 2016](http://www.sciencedirect.com/science/article/pii/S0308597X15003231)
-### More citations?
+
+## Appendix
+
+*Preliminary plot, for context*
