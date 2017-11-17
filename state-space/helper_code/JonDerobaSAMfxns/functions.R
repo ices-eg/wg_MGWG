@@ -1,7 +1,7 @@
 
 plotfxn<-function(afit=NULL,datdirect=NULL,run=NULL,confa=NULL,qplotnamesa=NULL,varplotnamesa=NULL,fstanamesa=NULL,catchmultnamesa=NULL){
   forpdf<-paste(run,".pdf",sep="")
-  pdf(paste(paste(datdirect,run,sep="\\"),forpdf,sep="\\")) #create pdf for graph storage
+  pdf(paste(paste(datdirect,run,sep="/"),forpdf,sep="/")) #create pdf for graph storage
   
   #a bunch of pre-fab SAM plots that come with the fitting package
   par(mfrow=c(1,1))
@@ -71,7 +71,7 @@ plotfxn<-function(afit=NULL,datdirect=NULL,run=NULL,confa=NULL,qplotnamesa=NULL,
     Fmsy<-MSY.find(M=natMor,Wt=StWt,Mat=Mature,steep=steep,selectivity.F=select.b[nrow(select.b),],B0=B0,type=afit$conf$stockRecruitmentModelCode,med.recr=0,SSBR0=SSBR0,B.MSYflag=F)$F.MSY
     MSY<-MSY.find(M=natMor,Wt=StWt,Mat=Mature,steep=steep,selectivity.F=select.b[nrow(select.b),],B0=B0,type=afit$conf$stockRecruitmentModelCode,med.recr=0,SSBR0=SSBR0,B.MSYflag=F)$MSY
     Bmsy<-max.ypr(F=Fmsy,M=natMor,Wt=StWt,Mat=Mature,selectivity.F=select.b[nrow(select.b),],B0=B0,type=afit$conf$stockRecruitmentModelCode,med.recr=0,steep=steep,SSBR0=SSBR0,B.MSYflag=T)
-    write.csv(data.frame(R0,B0,steep,Fmsy,MSY,Bmsy),paste(datdirect,paste(run,"MSYrefs_SRparms.csv",sep="\\"),sep="\\"))
+    write.csv(data.frame(R0,B0,steep,Fmsy,MSY,Bmsy),paste(datdirect,paste(run,"MSYrefs_SRparms.csv",sep="/"),sep="/"))
   }    
   ########
   
@@ -181,13 +181,13 @@ calc_catch_resids <- function(fit){
 
 #compare ssb,r, and f time series of different runs
 compruns<-function(runs=NULL,datdirect=NULL){
-  pdf(paste(paste(datdirect,"CompRuns",sep="\\"),"Comp.pdf",sep="\\")) #create pdf for graph storage
+  pdf(paste(paste(datdirect,"CompRuns",sep="/"),"Comp.pdf",sep="/")) #create pdf for graph storage
   numruns<-length(runs)
   want<-c("ssb","fbar","R","Catch")
   wants<-paste0("log",want)
   for(w in 1:4){
   for(r in 1:numruns){
-    temprun<-readRDS(file=paste(datdirect,paste(runs[r],"SAMfit.RData",sep="\\"),sep="\\" ))
+    temprun<-readRDS(file=paste(datdirect,paste(runs[r],"SAMfit.RData",sep="/"),sep="/" ))
     idx <- names(temprun$sdrep$value) == wants[w]
     y <- exp(temprun$sdrep$value[idx])
     if(w==1 & r==1) {
@@ -208,7 +208,7 @@ compruns<-function(runs=NULL,datdirect=NULL){
   }
   dev.off()
   colnames(restable)<-resnames
-  write.csv(restable,paste(paste(datdirect,"CompRuns",sep="\\"),"CompTable.csv",sep="\\"),row.names=FALSE)
+  write.csv(restable,paste(paste(datdirect,"CompRuns",sep="/"),"CompTable.csv",sep="/"),row.names=FALSE)
 }
 
 #Given SAM estimates of BH alpha and beta, use recent year LH params and calc steepness, unfished...
@@ -284,14 +284,19 @@ likeliprofile<-function(fit=NULL,datdirect=NULL,run=NULL){
       modelTable<-rbind(modelTable,data.frame(modeltable(fit.temp),"M"=fit.temp$data$natMor[1,1]))
       } #close if step != 1
     } #close i
-  write.csv(modelTable,file=paste(datdirect,paste(run,"ModelTableLikeProf.csv",sep="\\"),sep="\\" ),row.names=F)
-  modelTable<-modelTable[order(modelTable$log.L.),]
-  windows() #plot negativel log likelihood; the modeltable contains loglike and so mult by -1 here
+  write.csv(modelTable,file=paste(datdirect,paste(run,"ModelTableLikeProf.csv",sep="/"),sep="/" )
+            ,sep=",",row.names=F)
+  #modelTable<-read.csv(file=paste(datdirect,paste(run,"ModelTableLikeProf.csv",sep="/"),sep="/" )
+  #                     ,header = T,stringsAsFactors = F)[1:10,] #time saver if working in function
+  #modelTable<-modelTable[order(modelTable$log.L.),] #don't want to do this
+  modelTable=data.frame(apply(modelTable,2,as.numeric)) #check case
+  #change from windows to make this platform independent
+  png(filename=paste(datdirect,paste(run,"NegLogLike.png",sep="/"),sep="/" ),height = 800,width=800) #plot negativel log likelihood; the modeltable contains loglike and so mult by -1 here
   plot(modelTable$M,(-1*modelTable$log.L.),type='l',xlab="Natural Mortality",ylab="Negative Log Likelihood")
-  savePlot(filename=paste(datdirect,paste(run,"NegLogLike.png",sep="\\"),sep="\\" ),type="png")
-  windows() #plot AIC
+  #savePlot(filename=paste(datdirect,paste(run,"NegLogLike.png",sep="/"),sep="/" ),type="png")
+  png(filename=paste(datdirect,paste(run,"AIC.png",sep="/"),sep="/" ),height = 800,width=800) #plot AIC
   plot(modelTable$M,modelTable$AIC,type='l',xlab="Natural Mortality",ylab="AIC")
-  savePlot(filename=paste(datdirect,paste(run,"AIC.png",sep="\\"),sep="\\" ),type="png")
+  #savePlot(filename=paste(datdirect,paste(run,"AIC.png",sep="/"),sep="/" ),type="png")
   graphics.off()
 } #close likeliprofile function
 
