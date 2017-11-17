@@ -79,6 +79,11 @@ We propose two/three case studies:
 - Growth - K/M faster than for fish
 - Maturation - fully mature by 1 year 
 
+Considerations for the simulated data
+- do we want to include something with CPUE
+- selectivity changes
+- M changes (pattern at age, or time, or both?)
+
 
 ### Tasks, who's doing what
 
@@ -100,12 +105,19 @@ SS-(Dan)
 
 ---------
 Alejandro - literature review, plots for fittings...
-Helen - literature review, task-matering, milestone monitoring, model fitting (?)
+
+Helen - literature review, task-matering, milestone monitoring, model fitting (?); consider what to explore on data-poor end
+
 Liz - simulating and model fitting, co-coordinate
+
 Geir - fitting SAM; literature review
+
 Knut - literature review, XSAM (deterministic survival, reading in variance from something) ?
-Dvora - fit length based models; also fit simple length based models; literature review;
+
+Dvora - fit length based models; also fit simple length based models; literature review; consider what to explore on data poor
+
 Dan - simulating and model fitting
+
 Ernesto - model fitting
 
 
