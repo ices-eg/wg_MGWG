@@ -83,12 +83,19 @@ We propose two/three case studies:
 ### Tasks, who's doing what
 
 The suite of data rich models to be applied, and working group members able to run them:
+
 VPA -Liz, Helen?
+
 SCAA (ASAP? a4a) -Liz, Helen? Ernesto
+
 SS (SAM?) - Geir
+
 CASA/SAMS -Dvora
+
 CASAL - (Craig in group 1)
+
 Gadget - (Arni Magnusson)
+
 SS-(Dan)
 
 ---------
