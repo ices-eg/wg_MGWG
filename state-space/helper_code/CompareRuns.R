@@ -75,14 +75,39 @@ get_asap_retros <- function(asap.name, npeels=7){
   return(retro.lst)
 }
 
+####calc approx 95% CI fxn 
+asm.ci2<-function(x,cv.x){
+  #generate approximate 95% confidence intervals based on log normal variable x
+  #and it's cv. cv.x
+  s<-sqrt(log(1+cv.x^2))
+  s<-ifelse(is.finite(s),s,0)
+  lci<-x*exp(-1.96*(s))
+  uci<-x*exp(1.96*(s))
+  return(data.frame("Low"=lci,"High"=uci))
+}
+
 
 ASAPname<-paste0(species,"_ASAP")
 asap<-dget(paste(topdirect,species,"ASAP",paste0(ASAPname,"_000.rdat"),sep="\\"))
+asapstd <- read.table(paste(topdirect,species,"ASAP",paste0(ASAPname,"_000.std"),sep="\\"), header = F, skip=1,sep = "") # Read in std file from admb
+names(asapstd) <- c("index", "name", "value", "stdev" )
+asapstd$CV<-asapstd$stdev/asapstd$value
+CIs<-asm.ci2(x=asapstd$value,cv.x=asapstd$CV)
+asapstd<-cbind(asapstd,CIs)
+years <- seq(asap$parms$styr, asap$parms$endyr)
+
 ASAPret<-get_asap_retros(asap.name=ASAPname)
 
 rhos<-data.frame(ASAPret$rec.rho,ASAPret$ssb.rho,ASAPret$avgf.rho)
 names(rhos)<-c("R(age 1)","SSB",paste0("Fbar(",paste(asap$options$Freport.agemin,asap$options$Freport.agemax,sep="-"),")"))
 write.table(rhos,file=paste(topdirect,species,"ASAP","Mohn.txt",sep="\\"), sep="\t", quote=FALSE, row.names=FALSE)
+
+tab1asap<-cbind(Year=years,asapstd[asapstd$name=="recruits",c(3,6:7)],
+                asapstd[asapstd$name=="SSB",c(3,6:7)],
+                asapstd[asapstd$name=="Freport",c(3,6:7)])
+names(tab1asap)[c(2,5,8)]<-c("R(age 1)","SSB",paste0("Fbar(",paste(asap$options$Freport.agemin,asap$options$Freport.agemax,sep="-"),")"))
+write.table(tab1asap, file=paste(topdirect,species,"ASAP","tab1.csv",sep="\\"), sep=",\t", quote=FALSE, row.names=FALSE)
+
 
 
 
