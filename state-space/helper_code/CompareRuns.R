@@ -1,5 +1,5 @@
 rm(list=ls(all=T))
-
+#devtools::install_github("fishfollower/SAM/stockassessment")
 topdirect<-"C:\\Users\\jonathan.deroba\\Documents\\GitHub\\MGWG\\state-space"
 species<-"SNEMAYT"
 
@@ -77,7 +77,12 @@ get_asap_retros <- function(asap.name, npeels=7){
 
 
 ASAPname<-paste0(species,"_ASAP")
+asap<-dget(paste(topdirect,species,"ASAP",paste0(ASAPname,"_000.rdat"),sep="\\"))
 ASAPret<-get_asap_retros(asap.name=ASAPname)
+
+rhos<-data.frame(ASAPret$rec.rho,ASAPret$ssb.rho,ASAPret$avgf.rho)
+names(rhos)<-c("R(age 1)","SSB",paste0("Fbar(",paste(asap$options$Freport.agemin,asap$options$Freport.agemax,sep="-"),")"))
+write.table(rhos,file=paste(topdirect,species,"ASAP","Mohn.txt",sep="\\"), sep="\t", quote=FALSE, row.names=FALSE)
 
 
 
