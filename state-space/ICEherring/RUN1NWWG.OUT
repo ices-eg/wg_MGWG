@@ -3,8 +3,8 @@
  Model ID: k=0.3, 2009-2011 Ichtio.                                                        
 
 
- Input File: C:\USERS\JACOB\GITHUB_PROJETS\MGWG\STATE-SPACE\ICEHERRING\RUN1NWWG.DAT          
- Date of Run: 16-NOV-2017                         Time of Run: 13:17
+ Input File: D:\NFT\VPA\2017\RUN1NWWG\RUN1NWWG.DAT                                           
+ Date of Run: 07-APR-2017                         Time of Run: 17:03
 
 
  Levenburg-Marquardt Algorithm Completed     5 Iterations
@@ -942,11 +942,11 @@ RETRO FLAG           1
 
      Additional Output Files 
 
-Population File C:\USERS\JACOB\GITHUB_PROJETS\MGWG\STATE-SPACE\ICEHERRING\RUN1NW
-Auxilliary File C:\USERS\JACOB\GITHUB_PROJETS\MGWG\STATE-SPACE\ICEHERRING\RUN1NW
-Covariance File C:\USERS\JACOB\GITHUB_PROJETS\MGWG\STATE-SPACE\ICEHERRING\RUN1NW
-Residuals File  C:\USERS\JACOB\GITHUB_PROJETS\MGWG\STATE-SPACE\ICEHERRING\RUN1NW
-Log File        C:\USERS\JACOB\GITHUB_PROJETS\MGWG\STATE-SPACE\ICEHERRING\RUN1NW
+Population File D:\NFT\VPA\2017\RUN1NWWG\RUN1NWWG.PP2                           
+Auxilliary File D:\NFT\VPA\2017\RUN1NWWG\RUN1NWWG.AUX                           
+Covariance File D:\NFT\VPA\2017\RUN1NWWG\RUN1NWWG.CV                            
+Residuals File  D:\NFT\VPA\2017\RUN1NWWG\RUN1NWWG.RSD                           
+Log File        D:\NFT\VPA\2017\RUN1NWWG\RUN1NWWG.LOG                           
 
 
                              Estimation Results

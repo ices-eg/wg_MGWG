@@ -8,7 +8,7 @@ There has been a proliferation of published analyses on stock productivity based
 
 External estimation is affected by covariate measurement error bias, which could include overestimation of the slope-at-the-origin and underestimation of Rmax. This could be bad for sustainable management.
 
-Additional perspective on modelling assessment model outputs is given by Brooks and Deroba (2014)
+Additional perspective on modelling assessment model outputs is given by Brooks and Deroba (2015)
 
 Criteria | Comments
 -------- | --------
