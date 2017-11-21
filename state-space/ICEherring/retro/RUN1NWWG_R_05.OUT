@@ -3,8 +3,8 @@
  Model ID: k=0.3, 2009-2011 Ichtio.                                                        
 
 
- Input File: C:\USERS\JACOB\GITHUB_PROJETS\MGWG\STATE-SPACE\ICEHERRING\RETRO\RUN1NWWG_R_05.DA
- Date of Run: 16-NOV-2017                         Time of Run: 13:20
+ Input File: RUN1NWWG_R_05.DAT                                                               
+ Date of Run: 15-NOV-2017                         Time of Run: 21:42
 
 
  Levenburg-Marquardt Algorithm Completed     6 Iterations
@@ -824,11 +824,11 @@ RETRO FLAG           1
 
      Additional Output Files 
 
-Population File C:\USERS\JACOB\GITHUB_PROJETS\MGWG\STATE-SPACE\ICEHERRING\RETRO\
-Auxilliary File C:\USERS\JACOB\GITHUB_PROJETS\MGWG\STATE-SPACE\ICEHERRING\RETRO\
-Covariance File C:\USERS\JACOB\GITHUB_PROJETS\MGWG\STATE-SPACE\ICEHERRING\RETRO\
-Residuals File  C:\USERS\JACOB\GITHUB_PROJETS\MGWG\STATE-SPACE\ICEHERRING\RETRO\
-Log File        C:\USERS\JACOB\GITHUB_PROJETS\MGWG\STATE-SPACE\ICEHERRING\RETRO\
+Population File RUN1NWWG_R_05.PP2                                               
+Auxilliary File RUN1NWWG_R_05.AUX                                               
+Covariance File RUN1NWWG_R_05.CV                                                
+Residuals File  RUN1NWWG_R_05.RSD                                               
+Log File        RUN1NWWG_R_05.LOG                                               
 
 
                              Estimation Results
