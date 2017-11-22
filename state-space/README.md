@@ -57,7 +57,7 @@ Do we want to tackle items on this outline that Arni provided?
   * Jacob Kasper UConn
   * Niels Hintzen  ?
   * Noel Cadigan Memorial University
-  * Ernesto Jardim ?
+  * Ernesto Jardim JRC
   * Dan Hennen NEFSC
 * Background
   * Area of research
