@@ -3,7 +3,7 @@ library(stockassessment)
 source("functions/cohortBiomass.R")
 source("functions/read.sao.R")
 
-url <- "https://stockassessment.org/datadisk/stockassessment/userdirs/user3/nscod16-ass02/"
+url <- "https://stockassessment.org/datadisk/stockassessment/userdirs/user3/nscod_ass06_fc17/"
 
 w <- read.ices(paste0(url, "data/sw.dat"))
 w[w==0] <- NA
