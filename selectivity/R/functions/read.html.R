@@ -1,6 +1,6 @@
-read.sao <- function(url)
+read.html <- function(file)
 {
-  txt <- readLines(url)
+  txt <- readLines(file)
 
   ## 1  Select lines
   txt <- grep("<tr>", txt, value=TRUE)
