@@ -1,22 +1,28 @@
 #Icelandic Cod
 
-#Read Last Ten Year
+## devtools::install_github("fishfollower/sam/stockassessment")
+library(stockassessment)
+source("functions/cohortBiomass.R")
+source("functions/read.sao.R")
+
+
+
+#Read weight data and average the last ten years
 w <- read.csv('http://data.hafro.is/assmt/2017/cod/catch_weights.csv', check.names = F)
 head(w)
+w[w==0] <- NA
+w <- tail(w, 10)
+w <- colMeans(w[-1]/1000)
 
-#Average of weight
-last <- w[which(w$Year>'2007'),]
-ave <- colMeans(last)
-w <- ave[-1]/1000
+M <- 0.2
 
-#Call the function
-source('functions/cohortBiomass.R')
+N <- read.csv('http://data.hafro.is/assmt/2017/cod/nmat.csv', check.names = F)
+Ninit <- (tail(N[["1"]], 12))
+Ninit <- mean(Ninit)
 
-#Using iinitial values
-#M = 0.2 and Ninit = 136
 
-cohortBiomass(136, w, 0.2 )
 B <- cohortBiomass(Ninit, w, M)
-barplot(B)
-
-
+pdf("Icelandic.pdf", 7, 6)
+barplot(B, names=names(B), xlab="Age", ylab="Biomass (kt)",
+        main="Biomass of average cohort, in the absence of fishing\n(Icelandic cod)")
+dev.off()
