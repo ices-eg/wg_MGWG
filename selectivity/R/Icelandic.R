@@ -1,11 +1,6 @@
 #Icelandic Cod
 
-## devtools::install_github("fishfollower/sam/stockassessment")
-library(stockassessment)
 source("functions/cohortBiomass.R")
-source("functions/read.sao.R")
-
-
 
 #Read weight data and average the last ten years
 w <- read.csv('http://data.hafro.is/assmt/2017/cod/catch_weights.csv', check.names = F)
