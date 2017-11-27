@@ -37,8 +37,8 @@ barplot(C, names=names(C), xlab="Age", ylab="Catch (millions)",
 dev.off()
 
 Fmort <- read.html(paste0(url, "res/xxx-00-00.00.00_tab3.html"))
-Fmort <- tail(Fmort[names(Fmort)!="Year"], 10)
-Fmort <- colMeans(Fmort)
+Fmort <- tail(Fmort, 10)
+Fmort <- colMeans(Fmort[-1])
 S <- Fmort / max(Fmort)
 pdf("north-sea-selectivity.pdf", 7, 6)
 plot(S, type="l", ylim=c(0,1.05), xlab="Age", ylab="Selectivity",
