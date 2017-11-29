@@ -19,6 +19,7 @@ Ninit <- N$"3"[N$Year %in% yrs]
 Ninit <- mean(Ninit)
 
 B <- cohortBiomass(Ninit, w, M)
+BPR <- cohortBiomass(1, w, M)
 
 ## 2  Catch and selectivity
 
