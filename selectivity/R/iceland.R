@@ -1,45 +1,47 @@
-## Icelandic Cod
+## Icelandic cod: cohort biomass, catch, selectivity
 
 source("functions/cohortBiomass.R")
 
+url <- "http://data.hafro.is/assmt/2017/cod/"
+
+yrs <- 2007:2016
+
 ## 1  Cohort biomass
 
-w <- read.csv("http://data.hafro.is/assmt/2017/cod/catch_weights.csv", check.names = FALSE)
-w <- tail(w, 10)
+w <- read.csv(paste0(url, "catch_weights.csv"), check.names = FALSE)
+w <- w[w$Year %in% yrs,]
 w <- colMeans(w[-1]/1000)
 
 M <- 0.2
 
-N <- read.csv("http://data.hafro.is/assmt/2017/cod/nmat.csv", check.names = FALSE)
-N <- tail(N$"3", 10)
-N <- mean(N)
+N <- read.csv(paste0(url, "nmat.csv"), check.names = FALSE)
+Ninit <- N$"3"[N$Year %in% yrs]
+Ninit <- mean(Ninit)
 
-B <- cohortBiomass(N, w, M)
-pdf("icelandic-cohort.pdf", 7, 6)
-barplot(B, names=names(B), xlab="Age", ylab="Biomass (kt)",
-        main="Biomass of average cohort, in the absence of fishing\n(Icelandic cod)")
-dev.off()
-
+B <- cohortBiomass(Ninit, w, M)
 
 ## 2  Catch and selectivity
 
-C <- read.csv("http://data.hafro.is/assmt/2017/cod/catage.csv", check.names = FALSE)
-C <- tail(C, 10)
+C <- read.csv(paste0(url, "catage.csv"), check.names = FALSE)
+C <- C[C$Year %in% yrs,]
 C <- colMeans(C[-1])
-pdf("Icelandic-catch.pdf", 7, 6)
-barplot(C, names=names(C), xlab="Age", ylab="Catch (millions)",
-        main="Average catch in numbers\n(Icelandic)")
-dev.off()
+Cw <- C * w
 
-
-Fmort <- read.csv("http://data.hafro.is/assmt/2017/cod/fmat.csv", check.names = FALSE)
-Fmort <- tail(Fmort, 10)
+Fmort <- read.csv(paste0(url, "fmat.csv"), check.names = FALSE)
+Fmort <- Fmort[Fmort$Year %in% yrs,]
 Fmort <- colMeans(Fmort[-1])
 S <- Fmort / max(Fmort)
-pdf("Icelandic-selectivity.pdf", 7, 6)
-plot(S, type="l", ylim=c(0,1.05), xlab="Age", ylab="Selectivity",
-     main="Average selectivity\n(Icelandic)", xaxt="n", yaxs="i")
-axis(1, at=seq_along(S), labels=names(S))
+
+## 3  Plot
+
+pdf("iceland.pdf", 4, 12)
+par(mfrow=c(4,1))
+barplot(C, names=names(C), xlab="Age", ylab="Catch (millions)",
+        main="Average catch in numbers")
+barplot(Cw, names=names(Cw), xlab="Age", ylab="Catch (1000 t)",
+        main="Average catch in tonnes")
+barplot(B, names=names(B), xlab="Age", ylab="Biomass (kt)",
+        main="Biomass of average cohort, in the absence of fishing")
+plot(as.integer(names(S)), S, type="l", ylim=c(0,1.05), xlab="Age",
+     ylab="Selectivity", main="Average selectivity", yaxs="i")
 dev.off()
-
-
