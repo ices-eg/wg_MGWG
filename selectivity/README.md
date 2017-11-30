@@ -70,18 +70,19 @@ Research questions:
 
 Within stock:
 
-Cod stock     | Data | Analysis
-------------- | ---- | --------
-Iceland       | Arni | Arni, Alejandro
-North Sea     | Arni | Arni
-...           | ...  | ...
+Cod stock     | Data        | Analysis
+------------- | ----------- | ---------------
+Iceland       | Arni        | Arni, Alejandro
+North Sea     | Arni        | Arni
+Gulf of Maine | Jacob, Arni | Arni
+...           | ...         | ...
 
 Across stocks: All coauthors
 
 *Milestones*
 
 Time     | Milestone
--------- | ---------
+-------- | --------------------------------------------------
 2016 Dec | Identify stocks, decide who will handle each stock
 
 ## Literature
