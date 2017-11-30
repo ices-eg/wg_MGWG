@@ -1,4 +1,4 @@
-## All: weight, selectivity, biomass per recruit
+## All stocks: weight, selectivity, biomass per recruit
 
 ## 1  Import
 
