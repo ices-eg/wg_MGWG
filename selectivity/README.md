@@ -70,9 +70,10 @@ Research questions:
 
 Within stock:
 
-Stock         | Data | Analysis
+Cod stock     | Data | Analysis
 ------------- | ---- | --------
-Icelandic cod | Arni | Arni, Alejandro
+Iceland       | Arni | Arni, Alejandro
+North Sea     | Arni | Arni
 ...           | ...  | ...
 
 Across stocks: All coauthors
