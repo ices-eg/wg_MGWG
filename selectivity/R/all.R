@@ -12,26 +12,36 @@ w.NorthSea <- w
 S.NorthSea <- S
 BPR.NorthSea <- BPR
 
+source("gulf_of_maine.R")
+w.GulfMaine <- w
+S.GulfMaine <- S
+BPR.GulfMaine <- BPR
+
 ## 2  Plot
+
+stocks <- c("North Sea", "Gulf of Maine", "Iceland")
 
 pdf("all.pdf", 4, 9)
 par(mfrow=c(3,1))
 plot(NA, xlim=c(1,14), ylim=c(0,15), yaxs="i",
      xlab="Age", ylab="Weight (kg)", main="Average weight")
-lines(as.integer(names(w.NorthSea)), w.NorthSea, lty=1)
-lines(as.integer(names(w.Iceland)), w.Iceland, lty=2)
-legend("topleft", legend=c("North Sea","Iceland"), bty="n", lty=1:2, inset=0.02)
+lines(as.integer(names(w.NorthSea)), w.NorthSea, col=1)
+lines(as.integer(names(w.GulfMaine)), w.GulfMaine, col=2)
+lines(as.integer(names(w.Iceland)), w.Iceland, col=3)
+legend("topleft", legend=stocks, bty="n", lty=1, col=1:3, inset=0.02)
 
 plot(NA, xlim=c(1,14), ylim=c(0,4.5), yaxs="i",
      xlab="Age", ylab="Biomass per recruit (kg)",
      main="Biomass per recruit, in the absence of fishing")
-lines(as.integer(names(BPR.NorthSea)), BPR.NorthSea, lty=1)
-lines(as.integer(names(BPR.Iceland)), BPR.Iceland, lty=2)
-legend("bottomright", legend=c("North Sea","Iceland"), bty="n", lty=1:2, inset=0.02)
+lines(as.integer(names(BPR.NorthSea)), BPR.NorthSea, col=1)
+lines(as.integer(names(BPR.GulfMaine)), BPR.GulfMaine, col=2)
+lines(as.integer(names(BPR.Iceland)), BPR.Iceland, col=3)
+legend("bottomright", legend=stocks, bty="n", lty=1, col=1:3, inset=0.02)
 
 plot(NA, xlim=c(1,14), ylim=c(0,1.05), yaxs="i",
      xlab="Age", ylab="Selectivity", main="Average selectivity")
-lines(as.integer(names(S.NorthSea)), S.NorthSea, lty=1)
-lines(as.integer(names(S.Iceland)), S.Iceland, lty=2)
-legend("bottomright", legend=c("North Sea","Iceland"), bty="n", lty=1:2, inset=0.02)
+lines(as.integer(names(S.NorthSea)), S.NorthSea, col=1)
+lines(as.integer(names(S.GulfMaine)), S.GulfMaine, col=2)
+lines(as.integer(names(S.Iceland)), S.Iceland, col=3)
+legend("bottomright", legend=stocks, bty="n", lty=1, col=1:3, inset=0.02)
 dev.off()
