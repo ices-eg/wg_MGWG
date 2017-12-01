@@ -30,8 +30,8 @@ Fmort <- Fmort[Fmort$Year %in% yrs,]
 Fmort <- colMeans(Fmort[ages])
 S <- Fmort / max(Fmort)
 
-pdf("gulf_of_maine.pdf", 4, 12)
-par(mfrow=c(4,1))
+pdf("gulf_of_maine.pdf", 10, 10)  # 4, 12
+par(mfrow=c(2,2))           # 4, 1
 barplot(C, xlab="Age", ylab="Catch (millions)", main="Average catch in numbers")
 barplot(Cw, xlab="Age", ylab="Catch (kt)", main="Average catch in weight")
 barplot(B, xlab="Age", ylab="Biomass (kt)",
