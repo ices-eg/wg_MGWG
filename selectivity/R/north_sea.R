@@ -48,8 +48,8 @@ pdf("north_sea.pdf", 10, 10)  # 4, 12
 par(mfrow=c(2,2))             # 4, 1
 barplot(C, xlab="Age", ylab="Catch (millions)", main="Average catch in numbers")
 barplot(Cw, xlab="Age", ylab="Catch (kt)", main="Average catch in weight")
-barplot(B, xlab="Age", ylab="Biomass (kt)",
-        main="Biomass of average cohort, in the absence of fishing")
 plot(as.integer(names(S)), S, type="l", ylim=c(0,1.05), xlab="Age",
      ylab="Selectivity", main="Average selectivity", yaxs="i")
+barplot(B, xlab="Age", ylab="Biomass (kt)",
+        main="Biomass of average cohort, in the absence of fishing")
 dev.off()
