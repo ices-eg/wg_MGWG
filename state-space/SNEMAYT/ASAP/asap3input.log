@@ -288,9 +288,9 @@
 #sel_end_age
   6
 #Freport_agemin
- 4
+ 1
 #Freport_agemax
- 5
+ 6
 #Freport_wtopt
  1
 #use_likelihood_constants

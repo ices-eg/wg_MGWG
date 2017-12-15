@@ -16,10 +16,12 @@ par <- defpar(dat,conf)
 RES <- residuals(fit)
 RESP <- procres(fit)
 RETRO <- retro(fit, year=7)
+saveRDS(RETRO,file=paste(topdirect,species,"SAM","SAMfitRETRO.RData",sep="\\")) #save retro
 PRED <- predictYears(fit,years=max(fit$data$years)-2:0)
 colnames(PRED)<-sub("obs", "logObs", colnames(PRED))
 
 rho <- mohn(RETRO, lag=0)
+names(rho)<-gsub(" ","_",names(rho))
 
 tab1 <- cbind(Year=fit$data$years, summary(fit), round(catchtable(fit)))
 colnames(tab1) <- sub("Estimate", "Catch", colnames(tab1))
@@ -99,7 +101,7 @@ years <- seq(asap$parms$styr, asap$parms$endyr)
 ASAPret<-get_asap_retros(asap.name=ASAPname)
 
 rhos<-data.frame(ASAPret$rec.rho,ASAPret$ssb.rho,ASAPret$avgf.rho)
-names(rhos)<-c("R(age 1)","SSB",paste0("Fbar(",paste(asap$options$Freport.agemin,asap$options$Freport.agemax,sep="-"),")"))
+names(rhos)<-c("R(age_1)","SSB",paste0("Fbar(",paste(asap$options$Freport.agemin,asap$options$Freport.agemax,sep="-"),")"))
 write.table(rhos,file=paste(topdirect,species,"ASAP","Mohn.txt",sep="\\"), sep="\t", quote=FALSE, row.names=FALSE)
 
 tab1asap<-cbind(Year=years,asapstd[asapstd$name=="recruits",c(3,6:7)],
@@ -107,6 +109,16 @@ tab1asap<-cbind(Year=years,asapstd[asapstd$name=="recruits",c(3,6:7)],
                 asapstd[asapstd$name=="Freport",c(3,6:7)])
 names(tab1asap)[c(2,5,8)]<-c("R(age 1)","SSB",paste0("Fbar(",paste(asap$options$Freport.agemin,asap$options$Freport.agemax,sep="-"),")"))
 write.table(tab1asap, file=paste(topdirect,species,"ASAP","tab1.csv",sep="\\"), sep=",\t", quote=FALSE, row.names=FALSE)
+
+#ASAP.packages <- c("Hmisc", "tseries", "plotrix", "reshape2", "plotMCMC", "devtools")
+#sort(rownames(installed.packages()))
+#devtools::install_github("cmlegault/ASAPplots")
+
+wd<-paste(topdirect,species,"ASAP",sep="\\")
+asap.nameb<-paste0(ASAPname,"_000")
+  
+library(ASAPplots)
+PlotASAP(wd,asap.nameb)
 
 
 

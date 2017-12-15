@@ -384,7 +384,7 @@
 # Fleet End Age
 6  
 # Age Range for Average F
-4  5
+1  6
 # Average F report option (1=unweighted, 2=Nweighted, 3=Bweighted)
 1
 # Use Likelihood constants? (1=yes)
