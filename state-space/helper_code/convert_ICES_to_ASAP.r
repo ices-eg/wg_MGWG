@@ -15,9 +15,9 @@ graphics.off()
 ## User specify below
 
 #-------------------
-user.wd <- "C:/liz/SAM/CCGOMyt/"   #user: specify path to working directory where ICES files are
-user.od <- "C:/liz/SAM/CCGOMyt/"   #user: specify path to output directory
-model.id <- "CCGOMyt_"   # user: specify prefix found on ICES files (will create same name for ASAP case)
+user.wd <- ""   #user: specify path to working directory where ICES files are
+user.od <- ""   #user: specify path to output directory
+#model.id <- "CCGOMyt_"   # user: specify prefix found on ICES files (will create same name for ASAP case)
 #-------------------
 #user.wd <- "C:/liz/SAM/GBhaddock/"  # user: specify path to working directory where ICES files are
 #user.od <- "C:/liz/SAM/GBhaddock/"  # user: specify path to output directory
@@ -33,7 +33,7 @@ model.id <- "CCGOMyt_"   # user: specify prefix found on ICES files (will create
 #-------------------
 #user.wd <- "C:/liz/SAM/NScod/"  # user: specify path to working directory where ICES files are
 #user.od <- "C:/liz/SAM/NScod/"  # user: specify path to output directory
-#model.id <- "NScod_"  # user: specify prefix found on ICES files (will create same name for ASAP case)
+model.id <- "GBWINTER_"  # user: specify prefix found on ICES files (will create same name for ASAP case)
    ## *** Notes: had to append "NScod_" to all ICES filenames
 #-------------------
 #user.wd <- "C:/liz/SAM/ICEherring/"  # user: specify path to working directory where ICES files are
@@ -219,11 +219,23 @@ if (n.waa.mats>1)  {
 write( '# WEIGHT AT AGE POINTERS' , file=out.file,append=T)   #, ncol=(nyears))
 write(waa.pointer.vec, file=out.file,append=T, ncol=1)
 write( '# Selectivity blocks (blocks within years)' , file=out.file,append=T)   #, ncol=(nyears))
-write(sel.blks, file=out.file,append=T, ncol=1)
+for(i in 1:nfleets) 
+{
+  write(paste0('# Fleet ', i, ' Selectivity Block Assignment') , file=out.file,append=T)   #, ncol=(nyears))
+  write(sel.blks[(i-1)*nyears + 1:nyears], file=out.file,append=T, ncol=1)
+}
 write( '# Selectivity options for each block' , file=out.file,append=T)   #, ncol=(nyears))
 write(t(sel.types), file=out.file,append=T, ncol=nselblks)
-write( '# Selectivity Block Matrices' , file=out.file,append=T)   #, ncol=(nyears))
-write(t(sel.mats), file=out.file,append=T, ncol=4 )
+temp = t(sel.mats)
+temp = sel.mats
+print(temp)
+x = asap.nages+6
+print(x)
+for(i in 1:nselblks)
+{
+  write(paste0('# Selectivity Block #', i, " Data") , file=out.file,append=T)   #, ncol=(nyears))
+  write(t(temp[(i-1)*x + 1:x,]), file=out.file,append=T, ncol=4)
+}
 write( '# Selectivity start age by fleet' , file=out.file,append=T)   #, ncol=(nyears))
 write(fleet.age1, file=out.file,append=T, ncol=nfleets )
 write( '# Selectivity end age by fleet' , file=out.file,append=T)   #, ncol=(nyears))
@@ -236,20 +248,32 @@ write( '# Use likelihood constants?' , file=out.file,append=T)   #, ncol=(nyears
 write(like.const, file=out.file, append=T )
 write( '# Release Mortality by fleet' , file=out.file,append=T)   #, ncol=(nyears))
 write( rel.mort.fleet, file=out.file,append=T, ncol=nfleets)
-write( '# Catch at age matrices (nyears*nfleets rows)' , file=out.file,append=T)   #, ncol=(nyears))
-write(t(caa.mats), file=out.file,append=T, ncol= (asap.nages+1) )
-write( '# Discard at age matrices' , file=out.file,append=T)   #, ncol=(nyears))
-write(t(daa.mats), file=out.file,append=T, ncol=(asap.nages+1) )
-write( '# Release proportion at age (nyears*nfleets rows)' , file=out.file,append=T)   #, ncol=(nyears))
-write(t(rel.prop), file=out.file,append=T, ncol=asap.nages )
+#write( '# Catch at age matrices (nyears*nfleets rows)' , file=out.file,append=T)   #, ncol=(nyears))
+write( '# Catch Data', file=out.file,append=T)   #, ncol=(nyears))
+for(i in 1:nfleets)
+{
+  write(paste0("# Fleet-", i, " Catch Data"), file=out.file,append=T)
+  write(t(caa.mats[(i-1)*nyears + 1:nyears,]), file=out.file,append=T, ncol= (asap.nages+1) )
+}
+write( '# Discards at age by fleet' , file=out.file,append=T)   #, ncol=(nyears))
+for(i in 1:nfleets)
+{
+  write(paste0("# Fleet-", i, " Discards Data"), file=out.file,append=T)
+  write(t(daa.mats[(i-1)*nyears + 1:nyears,]), file=out.file,append=T, ncol= (asap.nages+1) )
+}
+write( '# Release proportion at age by fleet' , file=out.file,append=T)   #, ncol=(nyears))
+for(i in 1:nfleets)
+{
+  write(paste0("# Fleet-", i, " Release Data"), file=out.file,append=T)
+  write(t(rel.prop[(i-1)*nyears + 1:nyears,]), file=out.file,append=T, ncol= asap.nages )
+}
+write( '# Survey Index Data' , file=out.file,append=T)   #, ncol=(nyears))
 write( '# Index units' , file=out.file,append=T)   #, ncol=(nyears))
 write(units.ind, file=out.file,append=T, ncol=n.ind.avail )
 write( '# Index Age comp. units' , file=out.file,append=T)   #, ncol=(nyears))
 write(units.ind, file=out.file,append=T, ncol=n.ind.avail )
 write( '# Index WAA matrix' , file=out.file,append=T)   #, ncol=(nyears))
-write(t(rep(1,n.ind.avail)), file=out.file,append=T, ncol=n.ind.avail )
-
-
+write((rep(1,n.ind.avail)), file=out.file,append=T, ncol=n.ind.avail )
 
 write( '# Index month' , file=out.file, append=T)   #, ncol=(nyears))
 write(time.ind, file=out.file,append=T, ncol=n.ind.avail )
@@ -264,13 +288,18 @@ write(ind.age2, file=out.file, append=T, ncol=n.ind.avail )
 
 write( '# Index Estimate Proportion (YES=1)' , file=out.file,append=T)   #, ncol=(nyears))
 write(t(rep(1,n.ind.avail)), file=out.file, append=T, ncol=n.ind.avail )
-
-
 write( '# Use Index' , file=out.file,append=T)   #, ncol=(nyears))
 write(ind.use, file=out.file, append=T, ncol=n.ind.avail )
-write( '# Index selectivity block matrices' , file=out.file,append=T)   #, ncol=(nyears))
-write(t(ind.sel.mats), file=out.file,append=T, ncol=4 )
+x = asap.nages+6
+print(x)
+print(dim(ind.sel.mats))
+for(i in 1:n.ind.avail)
+{
+  write(paste0('# Index-', i, ' Selectivity Data') , file=out.file,append=T)   #, ncol=(nyears))
+  write(t(ind.sel.mats[(i-1)*x + 1:x,]), file=out.file,append=T, ncol=4)
+}
 write( '# Index data matrices (n.ind.avail.*nyears)' , file=out.file,append=T)   #, ncol=(nyears))
+
 # ----------one-off for ICES to ASAP
   for ( kk in 1:length(ind.use))  {
      if (ind.use[kk]==1) {
@@ -746,6 +775,8 @@ get.index.mat<- function(x, cv, neff, first.year, nyears, asap.nages)  {
 #---- Begin translating ICES file format to "vanilla" ASAP input file
 #---------------------------------------------------------------------
 
+#omid = model.id
+#model.id = ''
 
 cn <- read.ices(paste(user.wd,model.id,"cn.dat",sep=""))
 cw <- read.ices(paste(user.wd,model.id,"cw.dat",sep=""))
@@ -758,6 +789,8 @@ propf <- read.ices(paste(user.wd,model.id,"pf.dat",sep=""))
 pm <- read.ices(paste(user.wd,model.id,"pm.dat",sep=""))
 sw <- read.ices(paste(user.wd,model.id,"sw.dat",sep=""))
 surveys <- read.ices(paste(user.wd,model.id,"survey.dat",sep=""))
+
+#model.id = omid
 
 t.spawn <- pm[1,1] #assuming time/age invariant spawning time
 
