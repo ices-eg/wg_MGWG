@@ -38,9 +38,9 @@ the background and interests of new participants. We are especially interested
 in topics that bring together and compare a wide range of approaches, methods,
 and datasets.
 
-To register, please email Maria Lifentseva <maria.lifentseva@ices.dk> and me to
-let us know you are attending the 2018 meeting. I will be following up with an
-email about logistics in Ispra.
+To register, please email [Maria Lifentseva](mailto:maria.lifentseva@ices.dk)
+and me to let us know you are attending the 2018 meeting. I will be following up
+with an email about logistics in Ispra.
 
 Feel free to forward the invitation to those you think might be interested.
 
