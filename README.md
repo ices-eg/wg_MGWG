@@ -44,7 +44,7 @@ email about logistics in Ispra.
 
 Feel free to forward the invitation to those you think might be interested.
 
-All the best,
+All the best,<br>
 Arni
 
 ***
