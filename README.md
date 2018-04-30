@@ -7,6 +7,48 @@ for overall objectives, latest report, etc.
 
 ***
 
+## Letter of invitation, Ispra 10-14 Sep 2018
+
+(sent 30 Apr 2018)
+
+Dear stock assessment experts,
+
+The ICES Methods Working Group will be meeting 10-14 September 2018 in Ispra,
+Italy, and you are invited to attend!
+
+As the Chair of the WG, my goal is to bring together the best stock assessment
+modellers from all continents, to do good science and have fun together. The
+overall objectives of the working group are:
+
+* Develop and improve stock assessment models and techniques
+* Leverage the international scope of the WG to analyze many models and datasets
+* Publish multi-author papers related to stock assessment
+
+Specific projects launched during the 2017 meeting in Woods Hole are:
+
+1. State-space vs. traditional models
+2. Internal vs. external stock recruitment
+3. Appropriate level of model complexity
+4. Selectivity as part of management advice
+
+The ongoing research is organized on the GitHub site of the ICES Methods Working
+Group (https://github.com/ices-eg/MGWG). If we get many participants this year,
+we could perhaps add one more project during the meeting in Ispra, depending on
+the background and interests of new participants. We are especially interested
+in topics that bring together and compare a wide range of approaches, methods,
+and datasets.
+
+To register, please email Maria Lifentseva <maria.lifentseva@ices.dk> and me to
+let us know you are attending the 2018 meeting. I will be following up with an
+email about logistics in Ispra.
+
+Feel free to forward the invitation to those you think might be interested.
+
+All the best,
+Arni
+
+***
+
 ## Planning the 2018 Meeting
 
 **[Doodle poll](https://doodle.com/poll/q9xk8z9yn4pbmpgn)**
