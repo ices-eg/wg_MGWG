@@ -1,7 +1,9 @@
 # ICES Methods Working Group
 
-(See [Wiki](https://github.com/ices-eg/MGWG/wiki) for a discussion board listing
-research topics)
+\- See [Wiki](https://github.com/ices-eg/MGWG/wiki) for a discussion board
+listing research topics<br>
+\- See [Sharepoint](http://www.ices.dk/community/groups/Pages/MGWG.aspx) site
+for overall objectives, latest report, etc.
 
 ***
 
