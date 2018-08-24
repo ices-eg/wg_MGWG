@@ -10,7 +10,11 @@ for overall objectives, latest report, etc.
 ## Meeting agenda (10-14 Sep 2018, Ispra)
 
 **Mon, 9am-5pm**
-* Review of ongoing projects
+* Review of ongoing projects:
+[state-space],
+[stock-recruitment](stock-recruitment),
+[model-complexity](https://github.com/ices-eg/MGWG/tree/master/model-complexity),
+[selectivity](../tree/master/selectivity)
 * Status update
 * Describe main obstacles in each project
 * Consider whether to add/remove projects
