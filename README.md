@@ -11,10 +11,10 @@ for overall objectives, latest report, etc.
 
 **Mon, 9am-5pm**
 * Review of ongoing projects:
-[state-space],
-[stock-recruitment](stock-recruitment),
-[model-complexity](https://github.com/ices-eg/MGWG/tree/master/model-complexity),
-[selectivity](../tree/master/selectivity)
+  [state-space](state-space),
+  [stock-recruitment](stock-recruitment),
+  [model-complexity](model-complexity),
+  [selectivity](selectivity)
 * Status update
 * Describe main obstacles in each project
 * Consider whether to add/remove projects
