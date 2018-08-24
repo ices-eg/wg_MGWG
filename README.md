@@ -9,7 +9,7 @@ for overall objectives, latest report, etc.
 
 ## Meeting agenda (10-14 Sep 2018, Ispra)
 
-### Mon, 9am-5pm
+**Mon, 9am-5pm**
 * Review of ongoing projects
 * Status update
 * Describe main obstacles in each project
@@ -20,18 +20,15 @@ for overall objectives, latest report, etc.
 * Introduce new members to tasks and workflow
 
 **Wed, 9am-5pm**
-
 * Work on projects
 * Status update
 * Afternoon walk
 
 **Thu, 9am-5pm**
-
 * Work on projects
 * Social evening
 
 **Fri, 9am-5pm**
-
 * Work on projects
 * Plan next months
 * Wrap up
