@@ -32,7 +32,7 @@ for overall objectives, latest report, etc.
 * Work on projects
 * Social evening
 
-**Fri, 9am-5pm**
+**Fri, 9am-4pm**
 * Work on projects
 * Plan next months
 * Wrap up
