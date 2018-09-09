@@ -10,6 +10,7 @@ for overall objectives, latest report, etc.
 ## Meeting agenda (10-14 Sep 2018, Ispra)
 
 **Mon, 9am-5pm**
+* Welcome
 * Review of ongoing projects:
   [state-space](state-space),
   [stock-recruitment](stock-recruitment),
@@ -22,6 +23,7 @@ for overall objectives, latest report, etc.
 **Tue, 9am-5pm**
 * Work on projects
 * Introduce new members to tasks and workflow
+* Discussion about project management
 
 **Wed, 9am-5pm**
 * Work on projects
