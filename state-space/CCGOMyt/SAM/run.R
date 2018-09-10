@@ -1,7 +1,7 @@
 library(stockassessment)
 source("pred.R") # function to predict 
 
-prefix <- "../GBHADDOCK_"
+prefix <- "../CCGOMYT_"
 
 cn <- read.ices(paste0(prefix,"cn.dat"))
 cw <- read.ices(paste0(prefix,"cw.dat"))
@@ -14,6 +14,8 @@ pm <- read.ices(paste0(prefix,"pm.dat"))
 sw <- read.ices(paste0(prefix,"sw.dat"))
 lf <- read.ices(paste0(prefix,"lf.dat"))
 surveys <- read.ices(paste0(prefix,"survey.dat"))
+
+#cn[,8:9][cn[,8:9]==0]<-1
 
 dat <- setup.sam.data(surveys=surveys,
                       residual.fleet=cn, 

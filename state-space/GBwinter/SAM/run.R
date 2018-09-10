@@ -1,7 +1,7 @@
 library(stockassessment)
 source("pred.R") # function to predict 
 
-prefix <- "../GBHADDOCK_"
+prefix <- "../GBWINTER_"
 
 cn <- read.ices(paste0(prefix,"cn.dat"))
 cw <- read.ices(paste0(prefix,"cw.dat"))
