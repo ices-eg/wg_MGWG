@@ -135,5 +135,22 @@ Do we want to tackle items on this outline that Arni provided?
   * [Mohn's rho for Average F](./plots_for_README/rho_comparison_avgf.png)
   * [Mohn's rho for Recruitment](./plots_for_README/rho_comparison_rec.png)
 
+Ages to average for F results
+
+Stock | Ages
+------| ----  
+North Sea cod | 2-4
+Gulf of Maine Cod | 5+ 
+US West Coast lingcod | ? 
+Icelandic herring | 5-10 
+Southern New England-Mid-Atlantic yellowtail | 4-5
+Cape Cod-Gulf of Maine yellowtail | 4-5
+Georges Bank winter flounder | 4-6
+Plaice | 6-9
+Georges Bank Haddock | 5-7 
+Gulf of Maine Haddock | 5-7
+White Hake | 5-8
+Pollock | 5-7
+
 ***
 
