@@ -1,6 +1,6 @@
 ### State-space vs. traditional models
 
-(T Miller)
+(Tim Miller and Anders Nielsen)
 
 There is now a table to keep track of the stocks that have been run for each model.
 Please tick the box after running and uploading the outputs file.
@@ -8,16 +8,16 @@ John and Vanessa currently working on creating a script which standardizes and p
 
 Stock | ASAP | SAM | WHAM | Comments
 ------| ---- | --- | ---  | --------
-North Sea cod (Nscod) | | |X| Priority
-Gulf of Maine Cod (GOMcod) | | |X| Priority
+North Sea cod (Nscod) | |X|X| Priority
+Gulf of Maine Cod (GOMcod) |X|X|X| Priority
 US West Coast lingcod (USWCLingcod) | | | | 
 Icelandic herring (ICEherring) | | | | 
 Southern New England-Mid-Atlantic yellowtail (SNEMAYT) | |X|X| 
-Cape Cod-Gulf of Maine yellowtail (CCGOMYT) | | |X| 
-Georges Bank winter flounder | | |X|
+Cape Cod-Gulf of Maine yellowtail (CCGOMYT) | |X|X| 
+Georges Bank winter flounder | |X|X|
 Plaice | | |X|
-Georges Bank Haddock (GBhaddock) | | |X| 
-Gulf of Maine Haddock (GOMhaddock)  | | |X| 
+Georges Bank Haddock (GBhaddock) | |X|X| 
+Gulf of Maine Haddock (GOMhaddock)  | |X|X| 
 White Hake | | |X|
 Pollock | | |X|
 

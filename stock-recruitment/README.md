@@ -40,12 +40,24 @@ Proposal: WGMG provide some analyses of this issue, and recommendations on poten
   * Noel Cadigan  Memorial University
   * Tim Miller NEFSC
   * Vanessa Trijoulet NEFSC
+  * Colin Miller
 * Background
   * Area of research
   * Brief literature review
   * Remaining questions
   * Why is this important
-* Objectives
+* Objectives - Set of Questions to Answer
+  * For Internal Estimation
+    * Can correct S-R be identified? (AIC for model selection?)
+    * How precise are S-R parameters?
+    * Should we also try a 3-parameter S-R?
+    * How precisely are reference points estimated?
+ * For External Estimation 
+    * Can correct S-R be identified? (AIC for model selection?)
+    * How precise are S-R parameters?
+    * Should we also try a 3-parameter S-R?
+    * How precisely are reference points estimated?
+    * Is this approach improved if you also use the Hessian (from the fitted model)?
 * Plan
   * Methods, data
     * Assessment model types
@@ -55,6 +67,7 @@ Proposal: WGMG provide some analyses of this issue, and recommendations on poten
       * State-space (SR internal, process error in survival)
       * Other state-space
     * Use state-space model to simulate population with process errors
+    * SUGGESTION: CONSIDER USING A COMMON OPERATING MODEL WITH OTHER PROJECTS
       * Stock-recruit types
         * Beverton-Holt
         * Ricker
