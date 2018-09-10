@@ -10,6 +10,6 @@
 |   4pm |     |     |     |     |     |
 
 1. State space (Tim, Anders)
-2. Recruitment Liz, Colin
-3. Complexity  Dvora, Liz
-4. Selectivity Arni, Jacob
+2. Recruitment (Liz, Colin)
+3. Complexity (Dvora, Liz)
+4. Selectivity (Arni, Jacob)
