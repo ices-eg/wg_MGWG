@@ -101,7 +101,7 @@ Time     | Milestone
 * [Prellezo et al. 2017](http://scientiamarina.revistas.csic.es/index.php/scientiamarina/article/view/1722)
 * [Stewart 2017](www.sciencedirect.com/science/article/pii/S0165783616302077)
 * [Vasilakopoulos et al. 2015](http://onlinelibrary.wiley.com/doi/10.1111/faf.12117/abstract)
-"Currently, MSY and FMSY are usually calculated keeping selectivity constant (ICES 2011). Our meta-analysis, in line with previous stock-specific studies (e.g. Froese et al. 2008; Scott and Sampson 2011; Colloca et al. 2013), suggests that this traditional calcula- tion of MSY is very restrictive in that it ignores the higher MSYs that can be extracted by shifting selectivity towards older/larger fish."
+"Currently, MSY and FMSY are usually calculated keeping selectivity constant (ICES 2011). Our meta-analysis, in line with previous stock-specific studies (e.g. Froese et al. 2008; Scott and Sampson 2011; Colloca et al. 2013), suggests that this traditional calculation of MSY is very restrictive in that it ignores the higher MSYs that can be extracted by shifting selectivity towards older/larger fish."
 
 *Less than helpful citations...*
 
