@@ -12,10 +12,10 @@ There are currently only two output graphics. The first shows the Mohn's rho plo
 
 ## SNEMAYT example
 The rho-adjusted SSB and Freport were both outside the 90% CI, as seen in the following plot where the rho-adjusted point is shown in red, so the rho-adjustment was applied to the starting population.
-<img src="..\\output\\Mohns.rho.plot.png" width="800">
+<img src=".\\output\\Mohns.rho.plot.png" width="800">
 
 The distribution of predicted aggregate indices (black circles) are well above the observed index values (red circles) for all three years in both indices (the two panels).
-<img scr="..\\output\\aggregate_index_plot.png" width="800">
+<img scr=".\\output\\aggregate_index_plot.png" width="800">
 
 ## To do
 There are still a number of items on the to do list. 
