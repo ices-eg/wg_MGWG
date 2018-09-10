@@ -7,6 +7,21 @@ for overall objectives, latest report, etc.
 
 ***
 
+## Dining in Ispra
+
+- [La Baita](https://www.google.com/maps/place/La+Baita/@45.8123151,8.6115044,16z/data=!4m8!1m2!2m1!1sristorante!3m4!1s0x0:0xc3ccb16370a6a47c!8m2!3d45.8163533!4d8.6118543)
+- [Ristorante San Gottardo](https://www.google.com/maps/place/Ristorante+San+Gottardo/@45.8123151,8.6115044,16z/data=!4m8!1m2!2m1!1sristorante!3m4!1s0x0:0xdc7ea21c7ddc9e43!8m2!3d45.8144792!4d8.6100988)
+- [Caffè Vespucci](https://www.google.com/maps/place/Caff%C3%A8+Vespucci/@45.8120721,8.6096698,17z/data=!4m8!1m2!2m1!1sristorante!3m4!1s0x0:0xdced185cf1319f82!8m2!3d45.8139632!4d8.6074602)
+- [Setteduequattro](https://www.google.com/maps/place/SETTEDUEQUATTRO+%7C+Pizza%26Cucina/@45.8123637,8.6145621,17z/data=!4m8!1m2!2m1!1sristorante!3m4!1s0x0:0x786095823c6376b7!8m2!3d45.8116768!4d8.6207237)
+- [Pizzeria Il Capriccio](https://www.google.com/maps/place/Pizzeria+Il+Capriccio/@45.8145797,8.6209942,19z/data=!4m8!1m2!2m1!1sristorante!3m4!1s0x0:0x3aa3182130f04533!8m2!3d45.815165!4d8.6224021)
+- [Roby´s bistrot](https://www.google.com/maps/place/Roby%C2%B4s+bistrot/@45.8141217,8.6118747,18z/data=!4m8!1m2!2m1!1sristorante!3m4!1s0x478677314f9c06db:0x22a6738bd1f63aca!8m2!3d45.8135622!4d8.6116277)
+
+
+### Gelateria
+
+- [Il Capriccio](https://www.google.com/maps/place/Il+Capriccio/@45.8156063,8.6099541,19z/data=!4m8!1m2!2m1!1sristorante!3m4!1s0x4786773055897ebf:0xf6a74d89e78badc0!8m2!3d45.8156238!4d8.6100592)
+
+
 ## Meeting agenda (10-14 Sep 2018, Ispra)
 
 **Mon, 9am-5pm**

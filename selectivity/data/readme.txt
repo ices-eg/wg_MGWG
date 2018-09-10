@@ -1,0 +1,20 @@
+NEArtic Cod
+Data Source: http://www.ices.dk/sites/pub/Publication%20Reports/Expert%20Group%20Report/acom/2018/AFWG/00-AFWG%202018%20Report.pdf
+"ICES AFWG REPORT 2018 ICES ADVISORY COMMITTEE ICES CM2018/ACOM:06"
+wcatch.csv Table 3.8. Northeast Arctic COD. Catch weights at age (kg)
+fatage.csv Table 3.15. Northeast Arctic cod. Fishing mortality
+natage.csv Table 3.16. Northeast Arctic COD Stock number-at-age (Thous)
+wmature.csv Table 3.9. Northeast Arctic COD. Stock weights at age (kg)
+
+Gulf of Maine "A.  GULF OF MAINE ATLANTIC COD (GADUS MORHUA) STOCK ASSESSMENT FOR 2012, UPDATED THROUGH 2011 SAW 55"
+wcatch	Table A.49 Mean	weights-at-age	(kg)	of	the	total	catch
+fatage	Table A.87 fishing	mortality-at-age
+natage	Table A.88 January	1	numbers-at-age
+wmature	Table A.50 Mean	January	1/spawning	stock	weights-at-age
+
+George Bank
+"B. Stock Assessment of Georges Bank Atlantic Cod (Gadus morhua) for 2012 SAW 55"
+wcatch	Table B12 -  Catch mean weight (kg)  at age,
+fatage	Table B23b. ASAP BASE model results for fishing mortality (F,unweighted,  average ages 5+) at age, 1978-2011.
+natage	Table B23b. ASAP BASE model results for stock numbers (000s) (F,unweighted,  average ages 5+) at age, 1978-2011.
+wmature	Table B17a.  Georges Bank Atlantic cod January 1 stock weights at age, 1978-2011.
