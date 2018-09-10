@@ -51,7 +51,7 @@ Proposal: WGMG provide some analyses of this issue, and recommendations on poten
     * How precise are S-R parameters?
     * Should we also try a 3-parameter S-R?
     * How precisely are reference points estimated?
- * For External Estimation
+ * For External Estimation 
     * Can correct S-R be identified? (AIC for model selection?)
     * How precise are S-R parameters?
     * Should we also try a 3-parameter S-R?
