@@ -3,8 +3,8 @@
 # created 14 December 2016  Chris Legault
 # last modified 30 December 2016
 
-rm(list=ls())
-graphics.off()
+## rm(list=ls())
+## graphics.off()
 
 write.cn <- function(ices.dir, ices.base, start.yr, end.yr, nages, CAA){
   file_name <- paste0(ices.dir, ices.base, "_cn.dat")
@@ -143,190 +143,188 @@ write.survey <- function(ices.dir, ices.base, start.yr, end.yr, nages, ind.mats)
 ####################################################################################
 # Georges Bank Winter Flounder
 
-ices.dir <- "C:\\Users\\chris.legault\\Documents\\Working\\ICES-WGMG\\2017Mtg\\groundfish_sam\\GBwinter\\"
-ices.base <- "GBWINTER"
+## ices.dir <- "C:\\Users\\chris.legault\\Documents\\Working\\ICES-WGMG\\2017Mtg\\groundfish_sam\\GBwinter\\"
+## ices.base <- "GBWINTER"
 
-vpa.dir <- "C:\\Users\\chris.legault\\Documents\\Working\\ICES-WGMG\\2017Mtg\\groundfish_sam\\new_VPA_ASAP_runs\\"
-vpa.file <- "GBWINTER_VPA.rdat"
+## vpa.dir <- "C:\\Users\\chris.legault\\Documents\\Working\\ICES-WGMG\\2017Mtg\\groundfish_sam\\new_VPA_ASAP_runs\\"
+## vpa.file <- "GBWINTER_VPA.rdat"
 
-vpa <- dget(paste0(vpa.dir,vpa.file))
-names(vpa)
+## vpa <- dget(paste0(vpa.dir,vpa.file))
+## names(vpa)
 
-start.yr <- vpa$genparms$minyear
-end.yr <- vpa$genparms$maxyear
-nages <- vpa$genparms$nages
+## start.yr <- vpa$genparms$minyear
+## end.yr <- vpa$genparms$maxyear
+## nages <- vpa$genparms$nages
 
-### have to figure this out for each stock
-ind.mats.all <- vpa$surveyobs
-ind.mats <- list()
-ind.mats$n <- 3
-ind.mats$names <- c("NEFSC_Spring","DFO","NEFSC_Fall")
-ind.mats$start.year <- c(1982, 1987, 1982)
-ind.mats$end.year <- c(2016, 2016, 2016)
-ind.mats$start.age <- c(1, 1, 1)
-ind.mats$end.age <- c(7, 7, 7)
-ind.mats$timing <- c(0.0, 0.0, 0.0)
-use.cols.start <- c(1, 8,  15)
-use.cols.end   <- c(7, 14, 21)
-for (i in 1:ind.mats$n){
-  ind.mats$ob[[i]] <- ind.mats.all[rownames(ind.mats.all) %in% seq(ind.mats$start.year[i],ind.mats$end.year[i]), colnames(ind.mats.all) %in% seq(use.cols.start[i], use.cols.end[i])]
-  colnames(ind.mats$ob[[i]]) <- seq(ind.mats$start.age[i], ind.mats$end.age[i])
-}
+## ### have to figure this out for each stock
+## ind.mats.all <- vpa$surveyobs
+## ind.mats <- list()
+## ind.mats$n <- 3
+## ind.mats$names <- c("NEFSC_Spring","DFO","NEFSC_Fall")
+## ind.mats$start.year <- c(1982, 1987, 1982)
+## ind.mats$end.year <- c(2016, 2016, 2016)
+## ind.mats$start.age <- c(1, 1, 1)
+## ind.mats$end.age <- c(7, 7, 7)
+## ind.mats$timing <- c(0.0, 0.0, 0.0)
+## use.cols.start <- c(1, 8,  15)
+## use.cols.end   <- c(7, 14, 21)
+## for (i in 1:ind.mats$n){
+##   ind.mats$ob[[i]] <- ind.mats.all[rownames(ind.mats.all) %in% seq(ind.mats$start.year[i],ind.mats$end.year[i]), colnames(ind.mats.all) %in% seq(use.cols.start[i], use.cols.end[i])]
+##   colnames(ind.mats$ob[[i]]) <- seq(ind.mats$start.age[i], ind.mats$end.age[i])
+## }
 
 
-write.cn(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchnumbers)
-write.cw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchwt)
-write.dw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchwt)
-write.lf(ices.dir, ices.base, start.yr, end.yr, nages)
-write.lw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchwt)
-write.mo(ices.dir, ices.base, start.yr, end.yr, nages, vpa$maturity)
-write.nm(ices.dir, ices.base, start.yr, end.yr, nages, vpa$natmort)
-write.pf(ices.dir, ices.base, start.yr, end.yr, nages, vpa$fspawn)
-write.pm(ices.dir, ices.base, start.yr, end.yr, nages, vpa$mspawn)
-write.survey(ices.dir, ices.base, start.yr, end.yr, nages, ind.mats)
-write.sw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$spstockwt)
+## write.cn(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchnumbers)
+## write.cw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchwt)
+## write.dw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchwt)
+## write.lf(ices.dir, ices.base, start.yr, end.yr, nages)
+## write.lw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchwt)
+## write.mo(ices.dir, ices.base, start.yr, end.yr, nages, vpa$maturity)
+## write.nm(ices.dir, ices.base, start.yr, end.yr, nages, vpa$natmort)
+## write.pf(ices.dir, ices.base, start.yr, end.yr, nages, vpa$fspawn)
+## write.pm(ices.dir, ices.base, start.yr, end.yr, nages, vpa$mspawn)
+## write.survey(ices.dir, ices.base, start.yr, end.yr, nages, ind.mats)
+## write.sw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$spstockwt)
 
 
 ####################################################################################
 # Georges Bank Haddock
 
-ices.dir <- "C:\\Users\\chris.legault\\Documents\\Working\\ICES-WGMG\\2017Mtg\\groundfish_sam\\GBhaddock\\"
-ices.base <- "GBHADDOCK"
+## ices.dir <- "C:\\Users\\chris.legault\\Documents\\Working\\ICES-WGMG\\2017Mtg\\groundfish_sam\\GBhaddock\\"
+## ices.base <- "GBHADDOCK"
 
-vpa.dir <- "C:\\Users\\chris.legault\\Documents\\Working\\ICES-WGMG\\2017Mtg\\groundfish_sam\\new_VPA_ASAP_runs\\"
-vpa.file <- "GBHADDOCK_VPA.rdat"
+## vpa.dir <- "C:\\Users\\chris.legault\\Documents\\Working\\ICES-WGMG\\2017Mtg\\groundfish_sam\\new_VPA_ASAP_runs\\"
+## vpa.file <- "GBHADDOCK_VPA.rdat"
 
-vpa <- dget(paste0(vpa.dir,vpa.file))
-names(vpa)
+## vpa <- dget(paste0(vpa.dir,vpa.file))
+## names(vpa)
 
-start.yr <- vpa$genparms$minyear
-end.yr <- vpa$genparms$maxyear
-nages <- vpa$genparms$nages
+## start.yr <- vpa$genparms$minyear
+## end.yr <- vpa$genparms$maxyear
+## nages <- vpa$genparms$nages
 
-### have to figure this out for each stock
-ind.mats.all <- vpa$surveyobs
-ind.mats <- list()
-ind.mats$n <- 3
-ind.mats$names <- c("NEFSC_Spring","NEFSC_Fall","DFO")
-ind.mats$start.year <- c(1982, 1964, 1986)
-ind.mats$end.year <- c(2016, 2016, 2016)
-ind.mats$start.age <- c(1, 1, 1)
-ind.mats$end.age <- c(8, 6, 8)
-ind.mats$timing <- c(0.0, 0.0, 0.0)
-use.cols.start <- c(1, 17, 23)
-use.cols.end   <- c(8, 22, 30)
-for (i in 1:ind.mats$n){
-  ind.mats$ob[[i]] <- ind.mats.all[rownames(ind.mats.all) %in% seq(ind.mats$start.year[i],ind.mats$end.year[i]), colnames(ind.mats.all) %in% seq(use.cols.start[i], use.cols.end[i])]
-  colnames(ind.mats$ob[[i]]) <- seq(ind.mats$start.age[i], ind.mats$end.age[i])
-}
+## ### have to figure this out for each stock
+## ind.mats.all <- vpa$surveyobs
+## ind.mats <- list()
+## ind.mats$n <- 3
+## ind.mats$names <- c("NEFSC_Spring","NEFSC_Fall","DFO")
+## ind.mats$start.year <- c(1982, 1964, 1986)
+## ind.mats$end.year <- c(2016, 2016, 2016)
+## ind.mats$start.age <- c(1, 1, 1)
+## ind.mats$end.age <- c(8, 6, 8)
+## ind.mats$timing <- c(0.0, 0.0, 0.0)
+## use.cols.start <- c(1, 17, 23)
+## use.cols.end   <- c(8, 22, 30)
+## for (i in 1:ind.mats$n){
+##   ind.mats$ob[[i]] <- ind.mats.all[rownames(ind.mats.all) %in% seq(ind.mats$start.year[i],ind.mats$end.year[i]), colnames(ind.mats.all) %in% seq(use.cols.start[i], use.cols.end[i])]
+##   colnames(ind.mats$ob[[i]]) <- seq(ind.mats$start.age[i], ind.mats$end.age[i])
+## }
 
 
-write.cn(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchnumbers)
-write.cw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchwt)
-write.dw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchwt)
-write.lf(ices.dir, ices.base, start.yr, end.yr, nages)
-write.lw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchwt)
-write.mo(ices.dir, ices.base, start.yr, end.yr, nages, vpa$maturity)
-write.nm(ices.dir, ices.base, start.yr, end.yr, nages, vpa$natmort)
-write.pf(ices.dir, ices.base, start.yr, end.yr, nages, vpa$fspawn)
-write.pm(ices.dir, ices.base, start.yr, end.yr, nages, vpa$mspawn)
-write.survey(ices.dir, ices.base, start.yr, end.yr, nages, ind.mats)
-write.sw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$spstockwt)
+## write.cn(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchnumbers)
+## write.cw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchwt)
+## write.dw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchwt)
+## write.lf(ices.dir, ices.base, start.yr, end.yr, nages)
+## write.lw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchwt)
+## write.mo(ices.dir, ices.base, start.yr, end.yr, nages, vpa$maturity)
+## write.nm(ices.dir, ices.base, start.yr, end.yr, nages, vpa$natmort)
+## write.pf(ices.dir, ices.base, start.yr, end.yr, nages, vpa$fspawn)
+## write.pm(ices.dir, ices.base, start.yr, end.yr, nages, vpa$mspawn)
+## write.survey(ices.dir, ices.base, start.yr, end.yr, nages, ind.mats)
+## write.sw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$spstockwt)
 
 
 ####################################################################################
 # American Plaice
 
-ices.dir <- "C:\\Users\\chris.legault\\Documents\\Working\\ICES-WGMG\\2017Mtg\\groundfish_sam\\Plaice\\"
-ices.base <- "PLAICE"
+## ices.dir <- "C:\\Users\\chris.legault\\Documents\\Working\\ICES-WGMG\\2017Mtg\\groundfish_sam\\Plaice\\"
+## ices.base <- "PLAICE"
 
-vpa.dir <- "/home/dhennen/SAM/MGWG-master/state-space/Plaice/"
-vpa.file <- "PLAICE_VPA.RDAT"
+## vpa.dir <- "/home/dhennen/SAM/MGWG-master/state-space/Plaice/"
+## vpa.file <- "PLAICE_VPA.RDAT"
 
-vpa <- dget(paste0(vpa.dir,vpa.file))
-names(vpa)
+## vpa <- dget(paste0(vpa.dir,vpa.file))
+## names(vpa)
 
-start.yr <- vpa$genparms$minyear
-end.yr <- vpa$genparms$maxyear
-nages <- vpa$genparms$nages
+## start.yr <- vpa$genparms$minyear
+## end.yr <- vpa$genparms$maxyear
+## nages <- vpa$genparms$nages
 
-### have to figure this out for each stock
-ind.mats.all <- vpa$surveyobs
-ind.mats <- list()
-ind.mats$n <- 4
-ind.mats$names <- c("NEFSC_Spring","NEFSC_Fall","MADMF_Spring","MADMF_Fall")
-ind.mats$start.year <- c(1980, 1981, 1982, 1983)
-ind.mats$end.year <- c(2016, 2016, 2016, 2016)
-ind.mats$start.age <- c(1, 2, 1, 2)
-ind.mats$end.age <- c(8, 8, 5, 6)
-ind.mats$timing <- c(0.0, 0.0, 0.0, 0.0)
-use.cols.start <- c(1, 11, 20, 26)
-use.cols.end   <- c(8, 17, 24, 30)
-for (i in 1:ind.mats$n){
-  ind.mats$ob[[i]] <- ind.mats.all[rownames(ind.mats.all) %in% seq(ind.mats$start.year[i]
-        ,ind.mats$end.year[i]), colnames(ind.mats.all) %in% seq(use.cols.start[i], use.cols.end[i])]
-  ind.mats$ob[[i]]=ifelse(is.na(ind.mats$ob[[i]]),0,ind.mats$ob[[i]]) #replace NA with 0
-  colnames(ind.mats$ob[[i]]) <- seq(ind.mats$start.age[i], ind.mats$end.age[i])
-}
+## ### have to figure this out for each stock
+## ind.mats.all <- vpa$surveyobs
+## ind.mats <- list()
+## ind.mats$n <- 4
+## ind.mats$names <- c("NEFSC_Spring","NEFSC_Fall","MADMF_Spring","MADMF_Fall")
+## ind.mats$start.year <- c(1980, 1981, 1982, 1983)
+## ind.mats$end.year <- c(2016, 2016, 2016, 2016)
+## ind.mats$start.age <- c(1, 2, 1, 2)
+## ind.mats$end.age <- c(8, 8, 5, 6)
+## ind.mats$timing <- c(0.0, 0.0, 0.0, 0.0)
+## use.cols.start <- c(1, 11, 20, 26)
+## use.cols.end   <- c(8, 17, 24, 30)
+## for (i in 1:ind.mats$n){
+##   ind.mats$ob[[i]] <- ind.mats.all[rownames(ind.mats.all) %in% seq(ind.mats$start.year[i]
+##         ,ind.mats$end.year[i]), colnames(ind.mats.all) %in% seq(use.cols.start[i], use.cols.end[i])]
+##   ind.mats$ob[[i]]=ifelse(is.na(ind.mats$ob[[i]]),0,ind.mats$ob[[i]]) #replace NA with 0
+##   colnames(ind.mats$ob[[i]]) <- seq(ind.mats$start.age[i], ind.mats$end.age[i])
+## }
 
 
-write.cn(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchnumbers)
-write.cw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchwt)
-write.dw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchwt)
-write.lf(ices.dir, ices.base, start.yr, end.yr, nages)
-write.lw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchwt)
-write.mo(ices.dir, ices.base, start.yr, end.yr, nages, vpa$maturity)
-write.nm(ices.dir, ices.base, start.yr, end.yr, nages, vpa$natmort)
-write.pf(ices.dir, ices.base, start.yr, end.yr, nages, vpa$fspawn)
-write.pm(ices.dir, ices.base, start.yr, end.yr, nages, vpa$mspawn)
-write.survey(ices.dir, ices.base, start.yr, end.yr, nages, ind.mats)
-write.sw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$spstockwt)
+## write.cn(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchnumbers)
+## write.cw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchwt)
+## write.dw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchwt)
+## write.lf(ices.dir, ices.base, start.yr, end.yr, nages)
+## write.lw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchwt)
+## write.mo(ices.dir, ices.base, start.yr, end.yr, nages, vpa$maturity)
+## write.nm(ices.dir, ices.base, start.yr, end.yr, nages, vpa$natmort)
+## write.pf(ices.dir, ices.base, start.yr, end.yr, nages, vpa$fspawn)
+## write.pm(ices.dir, ices.base, start.yr, end.yr, nages, vpa$mspawn)
+## write.survey(ices.dir, ices.base, start.yr, end.yr, nages, ind.mats)
+## write.sw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$spstockwt)
 
 
 ####################################################################################
 # Cape Cod-Gulf of Maine Yellowtail Flounder
 
-ices.dir <- "C:\\Users\\chris.legault\\Documents\\Working\\ICES-WGMG\\2017Mtg\\groundfish_sam\\CCGOMyt\\"
-ices.base <- "CCGOMYT"
+## ices.dir <- "C:\\Users\\chris.legault\\Documents\\Working\\ICES-WGMG\\2017Mtg\\groundfish_sam\\CCGOMyt\\"
+## ices.base <- "CCGOMYT"
 
-vpa.dir <- "C:\\Users\\chris.legault\\Documents\\Working\\ICES-WGMG\\2017Mtg\\groundfish_sam\\new_VPA_ASAP_runs\\"
-vpa.file <- "CCGOMYT_VPA.rdat"
+## vpa.dir <- "C:\\Users\\chris.legault\\Documents\\Working\\ICES-WGMG\\2017Mtg\\groundfish_sam\\new_VPA_ASAP_runs\\"
+## vpa.file <- "CCGOMYT_VPA.rdat"
 
-vpa <- dget(paste0(vpa.dir,vpa.file))
-names(vpa)
+## vpa <- dget(paste0(vpa.dir,vpa.file))
+## names(vpa)
 
-start.yr <- vpa$genparms$minyear
-end.yr <- vpa$genparms$maxyear
-nages <- vpa$genparms$nages
+## start.yr <- vpa$genparms$minyear
+## end.yr <- vpa$genparms$maxyear
+## nages <- vpa$genparms$nages
 
-### have to figure this out for each stock
-ind.mats.all <- vpa$surveyobs
-ind.mats <- list()
-ind.mats$n <- 4
-ind.mats$names <- c("NEFSC_Spring","NEFSC_Fall","MADMF_Spring","MADMF_Fall")
-ind.mats$start.year <- c(1985, 1985, 1985, 1985)
-ind.mats$end.year <- c(2016, 2016, 2016, 2016)
-ind.mats$start.age <- c(1, 1, 1, 1)
-ind.mats$end.age <- c(6, 5, 6, 5)
-ind.mats$timing <- c(0.0, 0.50, 0.0, 0.50)
-use.cols.start <- c(1,  7, 13, 19)
-use.cols.end   <- c(6, 11, 18, 23)
-for (i in 1:ind.mats$n){
-  ind.mats$ob[[i]] <- ind.mats.all[rownames(ind.mats.all) %in% seq(ind.mats$start.year[i],ind.mats$end.year[i]), colnames(ind.mats.all) %in% seq(use.cols.start[i], use.cols.end[i])]
-  colnames(ind.mats$ob[[i]]) <- seq(ind.mats$start.age[i], ind.mats$end.age[i])
-}
-
-
-write.cn(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchnumbers)
-write.cw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchwt)
-write.dw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchwt)
-write.lf(ices.dir, ices.base, start.yr, end.yr, nages)
-write.lw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchwt)
-write.mo(ices.dir, ices.base, start.yr, end.yr, nages, vpa$maturity)
-write.nm(ices.dir, ices.base, start.yr, end.yr, nages, vpa$natmort)
-write.pf(ices.dir, ices.base, start.yr, end.yr, nages, vpa$fspawn)
-write.pm(ices.dir, ices.base, start.yr, end.yr, nages, vpa$mspawn)
-write.survey(ices.dir, ices.base, start.yr, end.yr, nages, ind.mats)
-write.sw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$spstockwt)
+## ### have to figure this out for each stock
+## ind.mats.all <- vpa$surveyobs
+## ind.mats <- list()
+## ind.mats$n <- 4
+## ind.mats$names <- c("NEFSC_Spring","NEFSC_Fall","MADMF_Spring","MADMF_Fall")
+## ind.mats$start.year <- c(1985, 1985, 1985, 1985)
+## ind.mats$end.year <- c(2016, 2016, 2016, 2016)
+## ind.mats$start.age <- c(1, 1, 1, 1)
+## ind.mats$end.age <- c(6, 5, 6, 5)
+## ind.mats$timing <- c(0.0, 0.50, 0.0, 0.50)
+## use.cols.start <- c(1,  7, 13, 19)
+## use.cols.end   <- c(6, 11, 18, 23)
+## for (i in 1:ind.mats$n){
+##   ind.mats$ob[[i]] <- ind.mats.all[rownames(ind.mats.all) %in% seq(ind.mats$start.year[i],ind.mats$end.year[i]), colnames(ind.mats.all) %in% seq(use.cols.start[i], use.cols.end[i])]
+##   colnames(ind.mats$ob[[i]]) <- seq(ind.mats$start.age[i], ind.mats$end.age[i])
+## }
 
 
+## write.cn(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchnumbers)
+## write.cw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchwt)
+## write.dw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchwt)
+## write.lf(ices.dir, ices.base, start.yr, end.yr, nages)
+## write.lw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchwt)
+## write.mo(ices.dir, ices.base, start.yr, end.yr, nages, vpa$maturity)
+## write.nm(ices.dir, ices.base, start.yr, end.yr, nages, vpa$natmort)
+## write.pf(ices.dir, ices.base, start.yr, end.yr, nages, vpa$fspawn)
+## write.pm(ices.dir, ices.base, start.yr, end.yr, nages, vpa$mspawn)
+## write.survey(ices.dir, ices.base, start.yr, end.yr, nages, ind.mats)
+## write.sw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$spstockwt)
