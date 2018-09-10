@@ -18,7 +18,6 @@ stk <- readFLStock('index.low', no.discards = TRUE)
 stk <- window(stk, end=2016, start=1983)
 stk <- setPlusGroup(stk, 6)
 range(stk)[c('minfbar','maxfbar')] <- c(2,4)
-
 setwd('a4asca')
 
 #====================================================================
@@ -26,31 +25,18 @@ setwd('a4asca')
 #====================================================================
 
 fit <- sca(stk, idxs)
-res <- residuals(fit, stk, idxs)
-plot(res)
-plot(fit, stk)
-plot(fit, idxs[1])
-plot(fit, idxs[2])
-plot(stk+simulate(fit, 250))
-wireframe(data~year+age, data=harvest(fit))
-
-fitmc <- sca(stk, idxs, fit='MCMC', mcmc=SCAMCMC(mcmc=25000))
+stk.retro <- retro(stk, idxs, retro=7)
+fit.rm <- mohn(stk.retro)
+fit.pi <- predIdxs(stk, idxs)
 
 #====================================================================
 # separable model
 #====================================================================
 
-fitsep <- sca(stk, idxs, fmod=~s(age, k=5) + s(year, k=17))
-ressep <- residuals(fitsep, stk, idxs)
-plot(ressep)
-plot(fitsep, stk)
-plot(fitsep, idxs[1])
-plot(fitsep, idxs[2])
-plot(stk+simulate(fitsep, 250))
-wireframe(data~year+age, data=harvest(fitsep))
-
-fitsepmc <- sca(stk, idxs, fit='MCMC', mcmc=SCAMCMC(mcmc=25000))
-
-plot(stk+fitsepmc)
+fmod <- ~s(age, k=5) + s(year, k=17)
+fitsep <- sca(stk, idxs, fmodel=fmod)
+stksep.retro <- retro(stk, idxs, retro=7, fmodel=fmod)
+fitsep.rm <- mohn(stksep.retro)
+fitsep.pi <- predIdxs(stk, idxs, fmodel=fmod)
 
 
