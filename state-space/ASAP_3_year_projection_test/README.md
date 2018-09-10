@@ -15,7 +15,7 @@ The rho-adjusted SSB and Freport were both outside the 90% CI, as seen in the fo
 <img src=".\\output\\Mohns.rho.plot.png" width="800">
 
 The distribution of predicted aggregate indices (black circles) are well above the observed index values (red circles) for all three years in both indices (the two panels).
-<img scr=".\\output\\aggregate_index_plot.png" width="800">
+<img src=".\\output\\aggregate_index_plot.png" width="800">
 
 ## To do
 There are still a number of items on the to do list. 
