@@ -8,11 +8,18 @@ John and Vanessa currently working on creating a script which standardizes and p
 
 Stock | ASAP | SAM | WHAM | Comments
 ------| ---- | --- | ---  | --------
-SNEMA yellowtail (SNEMAYT) | |X| | 
 North Sea cod (Nscod) | | | | 
+Gulf of Maine Cod (GOMcod) | | | | 
 US West Coast lingcod (USWCLingcod) | | | | 
 Icelandic herring (ICEherring) | | | | 
-
+Southern New England-Mid-Atlantic yellowtail (SNEMAYT) | |X| | 
+Cape Cod-Gulf of Maine yellowtail (CCGOMYT) | | | | 
+Georges Bank winter flounder | | | |
+Plaice | | | |
+Georges Bank Haddock (GBhaddock) | | | | 
+Gulf of Maine Haddock (GOMhaddock)  | | | | 
+White Hake | | | |
+Pollock | | | |
 
 Comparison of merits and issues for traditional SCAA and state-space
 age-structured models. This could include different varieties of each class of
