@@ -66,6 +66,7 @@ Proposal: WGMG provide some analyses of this issue, and recommendations on poten
       * State-space (SR internal, process error in survival)
       * Other state-space
     * Use state-space model to simulate population with process errors
+    * SUGGESTION: CONSIDER USING A COMMON OPERATING MODEL WITH OTHER PROJECTS
       * Stock-recruit types
         * Beverton-Holt
         * Ricker
