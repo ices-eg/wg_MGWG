@@ -6,20 +6,20 @@ There is now a table to keep track of the stocks that have been run for each mod
 Please tick the box after running and uploading the outputs file.
 John and Vanessa currently working on creating a script which standardizes and plots the outputs of the three models at once. When a stock has the three ticks (one for each model), then the output script can be run.
 
-Stock | ASAP | SAM | WHAM | Comments
-------| ---- | --- | ---  | --------
-North Sea cod (Nscod) | |X|X| Priority
-Gulf of Maine Cod (GOMcod) |X|X|X| Priority
-US West Coast lingcod (USWCLingcod) | | | | 
-Icelandic herring (ICEherring) | | | | 
-Southern New England-Mid-Atlantic yellowtail (SNEMAYT) | |X|X| 
-Cape Cod-Gulf of Maine yellowtail (CCGOMYT) | |X|X| 
-Georges Bank winter flounder | |X|X|
-Plaice | | |X|
-Georges Bank Haddock (GBhaddock) | |X|X| 
-Gulf of Maine Haddock (GOMhaddock)  | |X|X| 
-White Hake | | |X|
-Pollock | | |X|
+Stock | ASAP | SAM | WHAM | a4a sca | Comments
+------| ---- | --- | ---  | ------- | --------
+North Sea cod (Nscod) | |X|X|X| Priority
+Gulf of Maine Cod (GOMcod) |X|X|X|X| Priority
+US West Coast lingcod (USWCLingcod) | | | X| | 
+Icelandic herring (ICEherring) | | | X| | 
+Southern New England-Mid-Atlantic yellowtail (SNEMAYT) | |X|X|X| 
+Cape Cod-Gulf of Maine yellowtail (CCGOMYT) | |X|X|X| 
+Georges Bank winter flounder | |X|X|X|
+Plaice | | |X| |
+Georges Bank Haddock (GBhaddock) | |X|X|X| 
+Gulf of Maine Haddock (GOMhaddock)  | |X|X|X| 
+White Hake | | |X|X|
+Pollock | | |X| |
 
 Comparison of merits and issues for traditional SCAA and state-space
 age-structured models. This could include different varieties of each class of
@@ -134,6 +134,23 @@ Do we want to tackle items on this outline that Arni provided?
   * [Mohn's rho for SSB](./plots_for_README/rho_comparison_ssb.png)
   * [Mohn's rho for Average F](./plots_for_README/rho_comparison_avgf.png)
   * [Mohn's rho for Recruitment](./plots_for_README/rho_comparison_rec.png)
+
+Ages to average for F results
+
+Stock | Ages
+------| ----  
+North Sea cod | 2-4
+Gulf of Maine Cod | 5+ 
+US West Coast lingcod | ? 
+Icelandic herring | 5-10 
+Southern New England-Mid-Atlantic yellowtail | 4-5
+Cape Cod-Gulf of Maine yellowtail | 4-5
+Georges Bank winter flounder | 4-6
+Plaice | 6-9
+Georges Bank Haddock | 5-7 
+Gulf of Maine Haddock | 5-7
+White Hake | 5-8
+Pollock | 5-7
 
 ***
 

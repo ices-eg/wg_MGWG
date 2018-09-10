@@ -1,7 +1,7 @@
 library(stockassessment)
 source("pred.R") # function to predict 
 
-prefix <- "../"
+prefix <- "../CCGOMYT_"
 
 cn <- read.ices(paste0(prefix,"cn.dat"))
 cw <- read.ices(paste0(prefix,"cw.dat"))
@@ -63,10 +63,7 @@ pdf(onefile=FALSE, width = 8, height = 8)
   legend("topright", legend=substitute(rho==RHO, list(RHO=rho[1])), bty="n")
 dev.off()
 
-summ<-summary(fit)
-cattab<-round(catchtable(fit))
-if((nrow(cattab)+1)==nrow(summ))cattab<-rbind(cattab,NA)
-tab1 <- cbind(Year=fit$data$years, summ, cattab)
+tab1 <- cbind(Year=fit$data$years, summary(fit), round(catchtable(fit)))
 colnames(tab1) <- sub("Estimate", "Catch", colnames(tab1))
 write.table(tab1, file="tab1.csv", sep=",\t", quote=FALSE, row.names=FALSE)
 

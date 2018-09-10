@@ -1,7 +1,7 @@
 library(stockassessment)
 source("pred.R") # function to predict 
 
-prefix <- "../"
+prefix <- "../GOMHADDOCK_"
 
 cn <- read.ices(paste0(prefix,"cn.dat"))
 cw <- read.ices(paste0(prefix,"cw.dat"))
@@ -15,7 +15,7 @@ sw <- read.ices(paste0(prefix,"sw.dat"))
 lf <- read.ices(paste0(prefix,"lf.dat"))
 surveys <- read.ices(paste0(prefix,"survey.dat"))
 
-#cn[,8:9][cn[,8:9]==0]<-1
+cn[,8:9][cn[,8:9]==0]<-1
 
 dat <- setup.sam.data(surveys=surveys,
                       residual.fleet=cn, 
@@ -29,11 +29,7 @@ dat <- setup.sam.data(surveys=surveys,
                       natural.mortality=nm, 
                       land.frac=lf)
 
-if(!file.exists("model.cfg")){
-  saveConf(defcon(dat), file="model.cfg")
-}    
 conf <- loadConf(dat,"model.cfg")
-
 par <- defpar(dat,conf)
 fit <- sam.fit(dat,conf,par)
 
@@ -63,10 +59,7 @@ pdf(onefile=FALSE, width = 8, height = 8)
   legend("topright", legend=substitute(rho==RHO, list(RHO=rho[1])), bty="n")
 dev.off()
 
-summ<-summary(fit)
-cattab<-round(catchtable(fit))
-if((nrow(cattab)+1)==nrow(summ))cattab<-rbind(cattab,NA)
-tab1 <- cbind(Year=fit$data$years, summ, cattab)
+tab1 <- cbind(Year=fit$data$years, summary(fit), round(catchtable(fit)))
 colnames(tab1) <- sub("Estimate", "Catch", colnames(tab1))
 write.table(tab1, file="tab1.csv", sep=",\t", quote=FALSE, row.names=FALSE)
 

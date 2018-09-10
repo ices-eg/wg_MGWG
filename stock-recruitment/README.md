@@ -40,6 +40,7 @@ Proposal: WGMG provide some analyses of this issue, and recommendations on poten
   * Noel Cadigan  Memorial University
   * Tim Miller NEFSC
   * Vanessa Trijoulet NEFSC
+  * Colin Miller
 * Background
   * Area of research
   * Brief literature review
