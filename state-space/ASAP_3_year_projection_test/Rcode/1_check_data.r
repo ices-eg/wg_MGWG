@@ -62,11 +62,11 @@ for (ind in 1:nindices){
     unlist()
   tempindatage <- asap.full$index.comp.mats[[(ind - 1) * 2 + 1]]
   thisiaadf <- data.frame(Index = ind,
-                          Year = rep(seq(asap.full$parms$endyr - 2, asap.full$parms$endyr), each = asap.full$parms$nages),
+                          ProjYear = rep(1:3, each = asap.full$parms$nages),
                           Age = rep(seq(1, asap.full$parms$nages), 3),
-                          IndexAtAge = c(tempindatage[asap.full$parms$nyears-2,],
-                                         tempindatage[asap.full$parms$nyears-1,],
-                                         tempindatage[asap.full$parms$nyears,]))
+                          ObsIndexAtAge = c(tempindatage[asap.full$parms$nyears-2,],
+                                            tempindatage[asap.full$parms$nyears-1,],
+                                            tempindatage[asap.full$parms$nyears,]))
   indicesatage3proj <- rbind(indicesatage3proj, thisiaadf)
 }
 

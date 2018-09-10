@@ -16,3 +16,12 @@ agg.ind.plot <- ggplot(ind.pred.agg.df, aes(x=ProjYear, y=PredIndex, group=Index
 ggsave("..\\output\\aggregate_index_plot.png", agg.ind.plot)
 
 # need to figure out a nice way to plot indices at age comparison
+
+atage.ind.plot <- ggplot(ind.pred.at.age.df, aes(x=Age, y=PredIndexProp)) +
+  geom_jitter(alpha=0.2, height = 0, width = 0.2) +
+  geom_point(data = indicesatage3proj, aes(x=Age, y=ObsIndexAtAge), color="red") +
+  facet_grid(ProjYear~Index) +
+  expand_limits(y = 0) +
+  theme_bw()
+#print(atage.ind.plot)
+ggsave("..\\output\\index_proportions_at_age.png", atage.ind.plot)

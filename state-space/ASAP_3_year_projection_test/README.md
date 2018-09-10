@@ -17,6 +17,9 @@ The rho-adjusted SSB and Freport were both outside the 90% CI, as seen in the fo
 The distribution of predicted aggregate indices (black circles) are well above the observed index values (red circles) for all three years in both indices (the two panels).
 <img src=".\\output\\aggregate_index_plot.png" width="800">
 
+The index proportions at age are fit a bit better (index as columns, projection year as rows, black and red circles as in the plot above).
+<img src=".\\output\\index_proportions_at_age.png" width="800">
+
 ## To do
 There are still a number of items on the to do list. 
 * Include the predicted indices at age comparison.
