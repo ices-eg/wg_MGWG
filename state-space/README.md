@@ -17,7 +17,7 @@ Cape Cod-Gulf of Maine yellowtail (CCGOMYT) | |X|X|
 Georges Bank winter flounder | |X|X|
 Plaice | | |X|
 Georges Bank Haddock (GBhaddock) | |X|X| 
-Gulf of Maine Haddock (GOMhaddock)  | | |X| 
+Gulf of Maine Haddock (GOMhaddock)  | |X|X| 
 White Hake | | |X|
 Pollock | | |X|
 
