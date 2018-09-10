@@ -14,10 +14,17 @@ library(ggplotFL)
 setwd('../')
 idxs <- readFLIndices('WHITEHAKE_survey.dat')
 idxs <- window(idxs, end=2016)
-stk <- readFLStock('index.low', no.discards = TRUE)
-stk <- window(stk, end=2016, start=1983)
-stk <- setPlusGroup(stk, 6)
+stk <- readFLStock('WHITEHAKE_index.low', no.discards = TRUE)
+stk <- window(stk, end = 2016, start = 1989)
+stk <- setPlusGroup(stk, 9)
 range(stk)[c('minfbar','maxfbar')] <- c(2,4)
+
+# replace 0 with half of the minimum
+catch.n(stk)[catch.n(stk)==0] <- min(catch.n(stk)[catch.n(stk)!=0])/2
+idxs <- lapply(idxs, function(x){
+	index(x)[index(x)==0] <- min(index(x)[index(x)!=0])/2
+	x
+})
 
 setwd('a4asca')
 
