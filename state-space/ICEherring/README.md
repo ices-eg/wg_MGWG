@@ -19,6 +19,7 @@ References:
 
 File | Content
 ---- | -------
+convert.R | script to convert data VPA -> ICES format
 RUN1NWWG.AUX |
 RUN1NWWG.CV |
 RUN1NWWG.DAT | catch, weight, M, maturity, survey
