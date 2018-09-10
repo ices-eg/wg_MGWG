@@ -87,9 +87,11 @@ Do we want to tackle items on this outline that Arni provided?
       * We should try to minimize the number of knobs to improve the retro for a given model
       * This would save time and make comparisons easier.
     * Define the diagnostics for each stock.
-      * Survey and Catch Residuals (predicted-observed)
+      * Survey and Catch Residuals (log(observed) - log(predicted))
+        * remove 3 years of survey data, keep 3 years of catch data
+        * root-mean square error of log-scale residuals
+        * remove residuals where index (at age) = 0 
       * Get plot functions used in SAM
-      * OneStepAhead function for residuals
     * Define output (table)
       * Mohn's rho SSB, F (7 peels)
       * 3 year predictions (MSE) of survey observations. Fix catch. Remove surveys. Essentially one 3 year peel.
