@@ -12,12 +12,17 @@ library(ggplotFL)
 #====================================================================
 
 setwd('../')
-idxs <- readFLIndices('survey.dat')
-idxs <- window(idxs, end=2016)
+idxs <- readFLIndices('GOMCOD_survey.dat')
 stk <- readFLStock('index.low', no.discards = TRUE)
-stk <- window(stk, end=2016, start=1983)
-stk <- setPlusGroup(stk, 6)
+stk <- setPlusGroup(stk, 9)
 range(stk)[c('minfbar','maxfbar')] <- c(2,4)
+
+# replace 0 with half of the minimum
+catch.n(stk)[catch.n(stk)==0] <- min(catch.n(stk)[catch.n(stk)!=0])/2
+idxs <- lapply(idxs, function(x){
+	index(x)[index(x)==0] <- min(index(x)[index(x)!=0])/2
+	x
+})
 
 setwd('a4asca')
 
@@ -35,6 +40,7 @@ plot(stk+simulate(fit, 250))
 wireframe(data~year+age, data=harvest(fit))
 
 fitmc <- sca(stk, idxs, fit='MCMC', mcmc=SCAMCMC(mcmc=25000))
+plot(stk+fitmc)
 
 #====================================================================
 # separable model
