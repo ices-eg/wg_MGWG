@@ -11,14 +11,14 @@ The R code is set up to be able to be run by sourcing the highest number file. R
 There are currently only two output graphics. The first shows the Mohn's rho plot for the stock with the point estimates of SSB and Freport surrounded by a box of the 90% confidence intervals from the MCMC. The rho-adjusted (= point estimate / (1 + Mohn's rho value)) SSB and F point is also shown. The standard approach in the Northeast US is to apply the Mohn's rho adjustment when the adjusted point is outside the box (meaning either the SSB or the Freport is outside the 90% CI). In the SNEMAYT case, the adjusted point is outside the 90%CI for both, so the rho-adjustment is applied.
 
 ## SNEMAYT example
-The rho-adjusted SSB and Freport were both outside the 90% CI, as seen in the following plot where the rho-adjusted point is shown in red, so the rho-adjustment was applied to the starting population.
-<img src=".\\output\\Mohns.rho.plot.png" width="800">
+The rho-adjusted SSB and Freport were both outside the 90% CI, as seen in the following plot where the rho-adjusted point is shown in red, so the rho-adjustment was applied to the starting population.  
+<img src=".\\output\\Mohns.rho.plot.png" width="800">  
 
-The distribution of predicted aggregate indices (black circles) are well above the observed index values (red circles) for all three years in both indices (the two panels).
-<img src=".\\output\\aggregate_index_plot.png" width="800">
+The distribution of predicted aggregate indices (black circles) are well above the observed index values (red circles) for all three years in both indices (the two panels).  
+<img src=".\\output\\aggregate_index_plot.png" width="800">  
 
-The index proportions at age are fit a bit better (index as columns, projection year as rows, black and red circles as in the plot above).
-<img src=".\\output\\index_proportions_at_age.png" width="800">
+The index proportions at age are fit a bit better (index as columns, projection year as rows, black and red circles as in the plot above).  
+<img src=".\\output\\index_proportions_at_age.png" width="800">  
 
 ## To do
 There are still a number of items on the to do list. 
