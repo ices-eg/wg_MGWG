@@ -40,7 +40,7 @@ Research questions:
 * Which fisheries are not using an optimal selectivity pattern and what are the
   impacts of these decisions?
 
-* Does using too large of an age plus group mask important nuances of
+* Does using too young of an age plus group mask important nuances of
   selectivity patterns?
 
 ## Plan
