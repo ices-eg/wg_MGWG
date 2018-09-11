@@ -60,7 +60,7 @@ predIdxs <- function(stk, idxs, yrs=3, ...){
 	})
 	args <- list(...)
 	args$stock <- stk
-	args$indices <- i0
+	args$indices <- FLIndices(i0)
 	fit <- do.call("sca", args)
 	lst0 <- index(fit)
 	for(i in seq_along(idxs)){
