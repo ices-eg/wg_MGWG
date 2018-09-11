@@ -21,6 +21,7 @@ Gulf of Maine Haddock (GOMhaddock)  | |X|X|X|
 White Hake | |X|X|X|
 Pollock | |X|X| |
 US Atlantic Herring (USAtlHerring) | |X| | |
+Mid-Atlantic Winter Flounder (SNEMAwinter) | |X| | |
 
 Comparison of merits and issues for traditional SCAA and state-space
 age-structured models. This could include different varieties of each class of
