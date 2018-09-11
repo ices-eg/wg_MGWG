@@ -60,13 +60,14 @@ predIdxs <- function(stk, idxs, yrs=3, ...){
 	})
 	args <- list(...)
 	args$stock <- stk
-	args$indices <- i0
+	args$indices <- FLIndices(i0)
 	fit <- do.call("sca", args)
 	lst0 <- index(fit)
+    myr <- unlist(lapply(idxs, function(x) range(x)['maxyear'])) 
 	for(i in seq_along(idxs)){
-		lst0[[i]] <- log(index(idxs[[i]])/index(fit)[[i]])^2
+		lst0[[i]] <- log(index(idxs[[i]])[,ac((myr[i]-yrs+1):myr[i])]/index(fit)[[i]][,ac((myr[i]-yrs+1):myr[i])])^2
 	}
-	mean(unlist(lst0))	
+	mean(unlist(lst0), na.rm=TRUE)	
 }
 
 # retro
@@ -89,10 +90,22 @@ mohn <- function (stks, qoi=c('fbar','ssb','rec'), ...){
 	names(v0) <- qoi
 	for(i in qoi){
 		lst0 <- lapply(stks, i)
-		v0[i] <- sum(unlist(lst0[-1])/c(lst0[[1]])-1)
+		v0[i] <- mean(unlist(lst0[-1])/c(lst0[[1]])-1, na.rm=TRUE)
 	}	
 	v0	
 }
+
+dumpTab1 <- function(stock, indices, fit, probs=c(0.5,0.025, 0.975), prefix='fit', predIdxs, mohnRho){
+	fitmet <- metrics(stock+fit)
+	fitmet <- lapply(fitmet, quantile, probs=probs)
+	fitmet <- lapply(fitmet, '[', drop=TRUE)
+	fitmet <- do.call('cbind', fitmet)
+	colnames(fitmet) <- c('R', 'Low', 'High', 'SSB', 'Low', 'High', 'Catch', 'Low', 'High', 'Fbar', 'Low', 'High')
+	write.csv(fitmet, file=paste(prefix, 'tab1.csv', sep='-')) 
+	write.table(predIdxs, file=paste(prefix, 'predIdxs.txt', sep='-'), quote=FALSE, col.names=FALSE, row.names=FALSE)
+	write.csv(t(mohnRho), file=paste(prefix, 'mohn.txt', sep='-'), quote=FALSE, row.names=FALSE)
+}
+
 
 
 

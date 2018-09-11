@@ -4,7 +4,7 @@
 # Running stock assessments for WGMG 2018 projects
 #####################################################################
 
-library(FLa4a)
+library(RMGWG)
 library(ggplotFL)
 
 #====================================================================
@@ -17,7 +17,7 @@ idxs <- window(idxs, end=2016)
 stk <- readFLStock('WHITEHAKE_index.low', no.discards = TRUE)
 stk <- window(stk, end = 2016, start = 1989)
 stk <- setPlusGroup(stk, 9)
-range(stk)[c('minfbar','maxfbar')] <- c(2,4)
+range(stk)[c('minfbar','maxfbar')] <- c(5,8)
 
 # replace 0 with half of the minimum
 catch.n(stk)[catch.n(stk)==0] <- min(catch.n(stk)[catch.n(stk)!=0])/2
@@ -33,31 +33,21 @@ setwd('a4asca')
 #====================================================================
 
 fit <- sca(stk, idxs)
-res <- residuals(fit, stk, idxs)
-plot(res)
-plot(fit, stk)
-plot(fit, idxs[1])
-plot(fit, idxs[2])
-plot(stk+simulate(fit, 250))
-wireframe(data~year+age, data=harvest(fit))
-
-fitmc <- sca(stk, idxs, fit='MCMC', mcmc=SCAMCMC(mcmc=25000))
+stk.retro <- retro(stk, idxs, retro=7)
+fit.rm <- mohn(stk.retro)
+fit.pi <- predIdxs(stk, idxs)
+fitmc <- sca(stk, idxs, fit='MCMC', mcmc=SCAMCMC(mcmc=250000))
+dumpTab1(stk, idxs, fitmc, predIdxs=fit.pi, mohnRho=fit.rm, prefix='te')
 
 #====================================================================
 # separable model
 #====================================================================
 
-fitsep <- sca(stk, idxs, fmod=~s(age, k=5) + s(year, k=17))
-ressep <- residuals(fitsep, stk, idxs)
-plot(ressep)
-plot(fitsep, stk)
-plot(fitsep, idxs[1])
-plot(fitsep, idxs[2])
-plot(stk+simulate(fitsep, 250))
-wireframe(data~year+age, data=harvest(fitsep))
-
-fitsepmc <- sca(stk, idxs, fit='MCMC', mcmc=SCAMCMC(mcmc=25000))
-
-plot(stk+fitsepmc)
-
+fmod <- ~s(age, k=5) + s(year, k=17)
+fitsep <- sca(stk, idxs, fmodel=fmod)
+stksep.retro <- retro(stk, idxs, retro=7, fmodel=fmod)
+fitsep.rm <- mohn(stksep.retro)
+fitsep.pi <- predIdxs(stk, idxs, fmodel=fmod)
+fitsepmc <- sca(stk, idxs, fmodel=fmod, fit='MCMC', mcmc=SCAMCMC(mcmc=250000))
+dumpTab1(stk, idxs, fitsepmc, predIdxs=fitsep.pi, mohnRho=fitsep.rm, prefix='sep')
 

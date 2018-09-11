@@ -79,11 +79,14 @@ indices3proj.df <- data.frame(ProjYear = rep(1:3, each = nindices),
 # assumes Retro.rho.values_<asap.file.name>_DROP3_RETRO_000.csv copied into data directory
 mohn.rho.dat <- read.csv(paste0("..\\data\\Retro.rho.values_", asap.file.name, "_DROP3_RETRO_000.csv"), header = TRUE)
 
-### important user selection ###
+
 mohns.rho.Freport <- mohn.rho.dat$f.rho[mohn.rho.dat$X == "Mohn.rho"]
 mohns.rho.ssb <- mohn.rho.dat$ssb.rho[mohn.rho.dat$X == "Mohn.rho"]
 # alternatively can select age specific Mohn's rho values
-# need to add code to do this
+mohns.rho.naa <- mohn.rho.dat[mohn.rho.dat$X == "Mohn.rho", seq(8, 7 + asap$parms$nages)]
+
+### important user selection ###
+mohn.rho.option <- "SSB" # alternatively can be "NAA" to use mohns.rho.naa to adjust projections
 
 # get 90% CI from MCMC runs for SSB and Freport - assumes ASAPplots has been applied to MCMC run
 # assumes Freport.90pi_ and ssb.90pi_ <asap.file.name>_DROP3_MCMC.csv files copied to data directory
@@ -100,8 +103,14 @@ Freportpoint <- asap$F.report[length(asap$F.report)]
 SSBpoint <- asap$SSB[length(asap$SSB)]
 Freportadj <- Freportpoint / (1 + mohns.rho.Freport)
 SSBadj <- SSBpoint / (1 + mohns.rho.ssb)
-if (Freportadj < FreportCI[1] | Freportadj > FreportCI[2]) mohn.rho <- mohns.rho.ssb
-if (SSBadj < SSBCI[1] | SSBadj > SSBCI[2]) mohn.rho <- mohns.rho.ssb
+if (Freportadj < FreportCI[1] | Freportadj > FreportCI[2]){
+  if (mohn.rho.option == "SSB") mohns.rho <- mohns.rho.ssb
+  if (mohn.rho.option == "NAA") mohns.rho <- mohns.rho.naa
+} 
+if (SSBadj < SSBCI[1] | SSBadj > SSBCI[2]){
+  if (mohn.rho.option == "SSB") mohns.rho <- mohns.rho.ssb
+  if (mohn.rho.option == "NAA") mohns.rho <- mohns.rho.naa
+} 
 
 # make the Mohn's rho plot
 mohn.rho.df <- data.frame(Source = c("Point", "Adjusted"),
