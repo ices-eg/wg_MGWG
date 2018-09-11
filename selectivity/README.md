@@ -75,6 +75,8 @@ Cod stock     | Data        | Analysis
 Iceland       | Arni        | Arni, Alejandro
 North Sea     | Arni        | Arni
 Gulf of Maine | Jacob, Arni | Arni
+Georges Bank  | Arni, Jacob | Jacob
+NEArctic Cod  | Arni, Jacob | Jacob
 ...           | ...         | ...
 
 Across stocks: All coauthors
