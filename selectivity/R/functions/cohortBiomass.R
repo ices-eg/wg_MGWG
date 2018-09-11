@@ -30,3 +30,4 @@ cohortBiomass <- function(Ninit, w, M, Fvec = 0)
 
 ## Fm <- Fcalc(Fsel, Ftime)
 ## Fm
+
