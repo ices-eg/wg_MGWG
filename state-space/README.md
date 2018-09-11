@@ -10,11 +10,11 @@ Stock | ASAP | SAM | WHAM | a4a sca | Comments
 ------| ---- | --- | ---  | ------- | --------
 North Sea cod (Nscod) | |X|X|X| Priority
 Gulf of Maine Cod (GOMcod) |X|X|X|X| Priority
-US West Coast lingcod (USWCLingcod) | | | X| | 
-Icelandic herring (ICEherring) | |X| X| | 
-Southern New England-Mid-Atlantic yellowtail (SNEMAYT) | |X|X|X| 
+US West Coast lingcod (USWCLingcod) | | | | | 
+Icelandic herring (ICEherring) | |X| | | 
+Southern New England-Mid-Atlantic yellowtail (SNEMAYT) | |X| |X| 
 Cape Cod-Gulf of Maine yellowtail (CCGOMYT) | |X|X|X| 
-Georges Bank winter flounder | |X|X|X|
+Georges Bank winter flounder | |X| |X|
 Plaice | |X|X| |
 Georges Bank Haddock (GBhaddock) | |X|X|X| 
 Gulf of Maine Haddock (GOMhaddock)  | |X|X|X| 
