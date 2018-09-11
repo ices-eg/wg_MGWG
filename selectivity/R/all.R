@@ -32,10 +32,16 @@ w.WBaltic <- w
 S.WBaltic  <- S
 BPR.WBaltic <- BPR
 
+
+source("Faroes_Plateau.R")
+w.FPlateau <- w
+S.FPlateau <- S
+BPR.FPlateau <- BPR
+
 ## 2  Plot
 
 stocks <- c("North Sea", "Gulf of Maine", "Georges Bank", "NEArctic",
-            "Iceland", "WBaltic")
+            "Iceland", "WBaltic", "Faroes Plateau")
 lwd <- 2
 
 pdf("all.pdf", 10, 10)                         # 4, 9
@@ -49,8 +55,9 @@ lines(as.integer(names(w.GeorgesBank)), w.GeorgesBank, lwd=lwd, col=3)
 lines(as.integer(names(w.NEArctic)), w.NEArctic, lwd=lwd, col=4)
 lines(as.integer(names(w.Iceland)), w.Iceland, lwd=lwd, col=5)
 lines(as.integer(names(w.WBaltic)), w.WBaltic, lwd=lwd, col=6)
-legend("topleft", legend=stocks, bty="n", lty=1, lwd=lwd, col=1:6, inset=0.02,
-       cex = .8)
+lines(as.integer(names(w.FPlateau)), w.FPlateau, lwd=lwd, col=8)
+legend("topleft", legend=stocks, bty="n", lty=1, lwd=lwd, col=c(1:6, 8),
+       inset=0.02, cex = .8)
 
 plot(NA, xlim=c(1,14), ylim=c(0,4.5), yaxs="i",
      xlab="Age", ylab="Biomass per recruit (kg)",
@@ -61,7 +68,8 @@ lines(as.integer(names(BPR.GeorgesBank)), BPR.GeorgesBank, lwd=lwd, col=3)
 lines(as.integer(names(BPR.NEArctic)), BPR.NEArctic, lwd=lwd, col=4)
 lines(as.integer(names(BPR.Iceland)), BPR.Iceland, lwd=lwd, col=5)
 lines(as.integer(names(BPR.WBaltic)), BPR.WBaltic, lwd=lwd, col=6)
-legend("bottomright", legend=stocks, bty="n", lty=1, lwd=lwd, col=1:6,
+lines(as.integer(names(BPR.FPlateau)), BPR.FPlateau, lwd=lwd, col=8)
+legend("bottomright", legend=stocks, bty="n", lty=1, lwd=lwd, col=c(1:6, 8),
        inset=0.02, cex = .6)
 
 plot(NA, xlim=c(1,14), ylim=c(0,1.05), yaxs="i",
@@ -72,7 +80,8 @@ lines(as.integer(names(S.GeorgesBank)), S.GeorgesBank, lwd=lwd, col=3)
 lines(as.integer(names(S.NEArctic)), S.NEArctic, lwd=lwd, col=4)
 lines(as.integer(names(S.Iceland)), S.Iceland, lwd=lwd, col=5)
 lines(as.integer(names(S.WBaltic)), S.WBaltic, lwd=lwd, col=6)
-legend("bottomright", legend=stocks, bty="n", lty=1, lwd=lwd, col=1:6,
+lines(as.integer(names(S.FPlateau)), S.FPlateau, lwd=lwd, col=8)
+legend("bottomright", legend=stocks, bty="n", lty=1, lwd=lwd, col=c(1:6, 8),
        inset=0.02, cex = .8)
 
 dev.off()
@@ -89,7 +98,8 @@ lines(as.integer(names(w.GeorgesBank)), w.GeorgesBank, lwd=lwd, col=3)
 lines(as.integer(names(w.NEArctic)), w.NEArctic, lwd=lwd, col=4)
 lines(as.integer(names(w.Iceland)), w.Iceland, lwd=lwd, col=5)
 lines(as.integer(names(w.WBaltic)), w.WBaltic, lwd=lwd, col=6)
-legend("topleft", legend=stocks, bty="n", lty=1, lwd=lwd, col=1:6, inset=0.02)
+lines(as.integer(names(w.FPlateau)), w.FPlateau, lwd=lwd, col=8)
+legend("topleft", legend=stocks, bty="n", lty=1, lwd=lwd, col=c(1:6, 8), inset=0.02)
 dev.off()
 
 pdf("all-bio-sel.pdf", 10, 4)
@@ -104,7 +114,10 @@ lines(as.integer(names(BPR.GeorgesBank)), BPR.GeorgesBank, lwd=lwd, col=3)
 lines(as.integer(names(BPR.NEArctic)), BPR.NEArctic, lwd=lwd, col=4)
 lines(as.integer(names(BPR.Iceland)), BPR.Iceland, lwd=lwd, col=5)
 lines(as.integer(names(BPR.WBaltic)), BPR.WBaltic, lwd=lwd, col=6)
-legend("bottomright", legend=stocks, bty="n", lty=1, lwd=lwd, col=1:6, inset=0.02)
+lines(as.integer(names(BPR.FPlateau)), BPR.FPlateau, lwd=lwd, col=8)
+legend("bottomright", legend=stocks, bty="n", lty=1, lwd=lwd, col=c(1:6, 8),
+       inset=0.02)
+
 plot(NA, xlim=c(1,14), ylim=c(0,1.05), yaxs="i",
      xlab="Age", ylab="Selectivity", main="Average selectivity")
 lines(as.integer(names(S.NorthSea)), S.NorthSea, lwd=lwd, col=1)
@@ -113,5 +126,7 @@ lines(as.integer(names(S.GeorgesBank)), S.GeorgesBank, lwd=lwd, col=3)
 lines(as.integer(names(S.NEArctic)), S.NEArctic, lwd=lwd, col=4)
 lines(as.integer(names(S.Iceland)), S.Iceland, lwd=lwd, col=5)
 lines(as.integer(names(S.WBaltic)), S.WBaltic, lwd=lwd, col=6)
-legend("bottomright", legend=stocks, bty="n", lty=1, lwd=lwd, col=1:6, inset=0.02)
+lines(as.integer(names(S.FPlateau)), S.FPlateau, lwd=lwd, col=8)
+legend("bottomright", legend=stocks, bty="n", lty=1, lwd=lwd, col=c(1:6, 8),
+       inset=0.02)
 dev.off()

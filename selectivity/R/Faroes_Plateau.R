@@ -1,20 +1,20 @@
 source("functions/cohortBiomass.R")
 
-path <- "../data/western_baltic/"
+path <- "../data/Faroe_Plateau/"
 
 yrs <- 2008:2017
-ages <- as.character(1:6)
+ages <- as.character(2:9)
 
 ## 1  Cohort biomass
 
 w <- read.csv(paste0(path,"wcatch.csv"), check.names=FALSE)
-w <- w[w$year %in% yrs,]
+w <- w[w$Year %in% yrs,]
 w <- colMeans(w[ages])
 
 M <- 0.2
 
 N <- read.csv(paste0(path,"natage.csv"), check.names=FALSE)
-Ninit <- N$"1"[N$year %in% yrs]
+Ninit <- N$"2"[N$Year %in% yrs]
 Ninit <- mean(Ninit) / 1000
 
 B <- cohortBiomass(Ninit, w, M)
@@ -22,15 +22,15 @@ BPR <- cohortBiomass(exp(M+M), w, M)
 
 ## 2  Catch and selectivity
 
-C <- structure(rep(0,6), names=1:6)
+C <- structure(rep(0,8), names=2:9)
 Cw <- C * w
 
 Fmort <- read.csv(paste0(path,"fatage.csv"), check.names=FALSE)
-Fmort <- Fmort[Fmort$year %in% yrs,]
+Fmort <- Fmort[Fmort$Year %in% yrs,]
 Fmort <- colMeans(Fmort[ages])
 S <- Fmort / max(Fmort)
 
-pdf("WBaltic.pdf", 12, 6)  # 4, 12
+pdf("Faroes_Plateau.pdf", 12, 6)  # 4, 12
 par(mfrow=c(1,2))           # 4, 1
 ## barplot(C, xlab="Age", ylab="Catch (millions)", main="Average catch in numbers")
 ## barplot(Cw, xlab="Age", ylab="Catch (kt)", main="Average catch in weight")

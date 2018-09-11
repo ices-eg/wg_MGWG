@@ -27,3 +27,12 @@ mat_prop.csv Table 2.3.19. Western baltic cod. Proportion mature at age (spawnin
 matage.csv Table 2.3.20. Western Baltic cod. Natural mortality at age.
 fatage.csv Table 2.3.24. Western Baltic cod. Estimated fishing mortality at age from SAM.
 
+Faroe Island Plateau
+ICES. 2017. Report of the North Western Working Group (NWWG), 27 April – 4 May
+2017, Copenhagen, Denmark. ICES CM 2017/ACOM:08. 642 pp.
+wcatch	Table 4.2.7. Faroe Plateau cod (sub-division 5.b.1). Mean weight at age (kg) in the catches. Stock weights are set equal
+to catch weights.
+fatage	Table 4.6.2. Faroe Plateau cod (sub-division 5.b.1). Fishing mortality at age from the SAM model
+natage Table 4.6.3. Faroe Plateau cod (sub division 5.b.1). Stock number at age from the SAM model
+wmature	Table 4.2.7. Faroe Plateau cod (sub-division 5.b.1). Mean weight at age (kg) in the catches. Stock weights are set equal
+to catch weights.
