@@ -104,7 +104,7 @@ Time     | Milestone
 * [Stewart 2017](www.sciencedirect.com/science/article/pii/S0165783616302077)
 * [Vasilakopoulos et al. 2015](http://onlinelibrary.wiley.com/doi/10.1111/faf.12117/abstract)
 "Currently, MSY and FMSY are usually calculated keeping selectivity constant (ICES 2011). Our meta-analysis, in line with previous stock-specific studies (e.g. Froese et al. 2008; Scott and Sampson 2011; Colloca et al. 2013), suggests that this traditional calculation of MSY is very restrictive in that it ignores the higher MSYs that can be extracted by shifting selectivity towards older/larger fish."
-* [STECF Technical measures report 2015](https://stecf.jrc.ec.europa.eu/documents/43805/935868/STECF+15-05+-+Technical+Measures+part+III.pdf) Page 62: Trade-offs between selectivity and F for hake. 
+* [STECF Technical measures report 2015](https://stecf.jrc.ec.europa.eu/documents/43805/935868/STECF+15-05+-+Technical+Measures+part+III.pdf) Page 47: Trade-offs between selectivity and F for hake. 
 "Increasing size/age-at-selection allows greater exploitation rates and greater yields to be extracted at lower levels of stock depletion."
 * [Vasilakopoulos et al. 2014](https://www.cell.com/current-biology/abstract/S0960-9822(14)00671-X) 
 "an optimal exploitation regime is more than a single value of F applied at an optimal selectivity level. Rather, there is a species-specific continuum of optimal combinations of F and selectivity corresponding to areas of high long-term yield and SSB."
