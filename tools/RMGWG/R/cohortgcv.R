@@ -90,7 +90,7 @@ mohn <- function (stks, qoi=c('fbar','ssb','rec'), ...){
 	names(v0) <- qoi
 	for(i in qoi){
 		lst0 <- lapply(stks, i)
-		v0[i] <- sum(unlist(lst0[-1])/c(lst0[[1]])-1)
+		v0[i] <- mean(unlist(lst0[-1])/c(lst0[[1]])-1, na.rm=TRUE)
 	}	
 	v0	
 }
