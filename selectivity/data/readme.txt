@@ -18,3 +18,12 @@ wcatch	Table B12 -  Catch mean weight (kg)  at age,
 fatage	Table B23b. ASAP BASE model results for fishing mortality (F,unweighted,  average ages 5+) at age, 1978-2011.
 natage	Table B23b. ASAP BASE model results for stock numbers (000s) (F,unweighted,  average ages 5+) at age, 1978-2011.
 wmature	Table B17a.  Georges Bank Atlantic cod January 1 stock weights at age, 1978-2011.
+
+Western Baltic
+"ICES WGBFAS REPORT 2018 ICES ADVISORY COMMITTEE ICES CM2018/ACOM:11"
+natage.csv Table 2.3.14. Western Baltic cod. Numbers at age (thousands)
+wcatch.csv Table 2.3.17. Western Baltic cod. Mean weight at age (kg)
+mat_prop.csv Table 2.3.19. Western baltic cod. Proportion mature at age (spawning probability)
+matage.csv Table 2.3.20. Western Baltic cod. Natural mortality at age.
+fatage.csv Table 2.3.24. Western Baltic cod. Estimated fishing mortality at age from SAM.
+
