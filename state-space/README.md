@@ -20,6 +20,7 @@ Georges Bank Haddock (GBhaddock) | |X|X|X|
 Gulf of Maine Haddock (GOMhaddock)  | |X|X|X| 
 White Hake | |X|X|X|
 Pollock | |X|X| |
+USAtlHerring | |X| | |
 
 Comparison of merits and issues for traditional SCAA and state-space
 age-structured models. This could include different varieties of each class of
