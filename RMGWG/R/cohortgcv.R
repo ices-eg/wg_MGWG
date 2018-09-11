@@ -63,10 +63,11 @@ predIdxs <- function(stk, idxs, yrs=3, ...){
 	args$indices <- FLIndices(i0)
 	fit <- do.call("sca", args)
 	lst0 <- index(fit)
+    myr <- unlist(lapply(idxs, function(x) range(x)['maxyear'])) 
 	for(i in seq_along(idxs)){
-		lst0[[i]] <- log(index(idxs[[i]])/index(fit)[[i]])^2
+		lst0[[i]] <- log(index(idxs[[i]])[,ac((myr[i]-yrs+1):myr[i])]/index(fit)[[i]][,ac((myr[i]-yrs+1):myr[i])])^2
 	}
-	mean(unlist(lst0))	
+	mean(unlist(lst0), na.rm=TRUE)	
 }
 
 # retro
