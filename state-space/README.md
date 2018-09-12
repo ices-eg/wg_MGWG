@@ -11,17 +11,17 @@ Stock | ASAP | SAM | WHAM | a4a sca | Comments
 North Sea cod (Nscod) | |X|X|X| Priority
 Gulf of Maine Cod (GOMcod) |X|X|X|X| Priority
 US West Coast lingcod (USWCLingcod) | | | | | 
-Icelandic herring (ICEherring) | |X| | | 
+Icelandic herring (ICEherring) | |X| |X| 
 Southern New England-Mid-Atlantic yellowtail (SNEMAYT) | |X|X|X| 
 Cape Cod-Gulf of Maine yellowtail (CCGOMYT) | |X|X|X| 
 Georges Bank winter flounder | |X|X|X|
-Plaice | |X|X| |
+Plaice | |X|X|X|
 Georges Bank Haddock (GBhaddock) | |X|X|X| 
 Gulf of Maine Haddock (GOMhaddock)  | |X|X|X| 
 White Hake | |X|X|X|
-Pollock | |X|X| |
-US Atlantic Herring (USAtlHerring) | |X|X| |
-Mid-Atlantic Winter Flounder (SNEMAwinter) | |X| | |
+Pollock | |X|X|X|
+US Atlantic Herring (USAtlHerring) | |X|X|X|
+Mid-Atlantic Winter Flounder (SNEMAwinter) | |X| |X|
 
 Comparison of merits and issues for traditional SCAA and state-space
 age-structured models. This could include different varieties of each class of
