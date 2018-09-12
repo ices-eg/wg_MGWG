@@ -81,13 +81,6 @@ NEArctic Cod  | Arni, Jacob | Jacob
 
 Across stocks: All coauthors
 
-*Literature and context*
-
-Paris: Papers on Lopt, optimal length at capture
-
-Daniel: Papers where Norwegian fisheries managers ask for analysis/advice on
-selectivity
-
 *Milestones*
 
 Time     | Milestone
@@ -95,6 +88,16 @@ Time     | Milestone
 2016 Dec | Identify stocks, decide who will handle each stock
 
 ## Literature
+
+*Specific topics*
+
+Papers on Lopt, optimal length at capture (Paris)
+
+Papers where Norwegian fisheries managers ask for analysis/advice on selectivity
+(Daniel)
+
+*Links*
+
 * [Jørgensen et al. 2009](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3352490/)
 * [Caddy and Seijo 2002](https://ac.els-cdn.com/S0165783602000115/1-s2.0-S0165783602000115-main.pdf?_tid=a4c1f17c-cae0-11e7-bb2b-00000aacb35f&acdnat=1510845365_53ad53d0c714479caf1258a58ab230ec) argues to protect the largest (especially female) fish
 * [CAPAM](http://capamresearch.org/current-projects/selectivity)
