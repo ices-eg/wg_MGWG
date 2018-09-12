@@ -13,3 +13,6 @@ mohn: $(SAMTARGET)
 
 clean:
 	for d in $(SAMDIRS); do cd $$d && make clean && cd -; done
+
+addres: 
+	for d in $(SAMDIRS); do cd $$d && git add *.csv Mohn.txt && cd -; done
