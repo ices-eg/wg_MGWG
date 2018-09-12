@@ -12,7 +12,7 @@ natage.csv | 000s | Table 3.16|   Stock number-at-age  |
 wmature.csv| kg |  Table 3.9|    Stock weights at age   |
 
 Gulf of Maine
-Data Source: https://www.nefsc.noaa.gov/publications/crd/crd1205/parta.pdf
+Data Source| https://www.nefsc.noaa.gov/publications/crd/crd1205/parta.pdf
 -----------|-----------------------------------------------------------------------------------------------------------------------|
 A.  GULF OF MAINE ATLANTIC COD (GADUS MORHUA) STOCK ASSESSMENT FOR 2012, UPDATED THROUGH 2011 SAW 55|
 
