@@ -27,10 +27,10 @@ Data Source: http://www.ices.dk/sites/pub/Publication%20Reports/Expert%20Group%2
 "ICES WGBFAS REPORT 2018 ICES ADVISORY COMMITTEE ICES CM2018/ACOM:11"
 catage.csv   Table 2.3.14   Western Baltic cod. Catch at age (thousands)
 wcatch.csv   Table 2.3.17   Western Baltic cod. Mean weight at age (kg)
-maturity.csv Table 2.3.19 Western baltic cod. Proportion mature at age (spawning probability)
+maturity.csv Table 2.3.19   Western baltic cod. Proportion mature at age (spawning probability)
 natmort.csv  Table 2.3.20   Western Baltic cod. Natural mortality at age.
 fatage.csv   Table 2.3.24   Western Baltic cod. Estimated fishing mortality at age from SAM.
-
+natage.csv   Table 2.3.23   Wstern Baltic cod. Estimated stock numbers at age from SAM. 
 Faroe Island Plateau
 Data Source: http://www.ices.dk/sites/pub/Publication%20Reports/Expert%20Group%20Report/acom/2017/NWWG/NWWG%202017%20Report.pdf
 ICES. 2017. Report of the North Western Working Group (NWWG), 27 April – 4 May
