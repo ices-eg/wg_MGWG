@@ -97,7 +97,7 @@ Time     | Milestone
   selectivity (Daniel)
 
 *Links*
-
+* [Diekert, 2010] (https://folk.uio.no/floriakd/papers/Diekert2010_ERE.pdf)  "the current exploitation pattern implies that essentially the wrong fish are targeted. Catching older and heavier fish could double the fishery’s Net-Present-Value. "
 * [Jørgensen et al. 2009](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3352490/)
 * [Caddy and Seijo 2002](https://ac.els-cdn.com/S0165783602000115/1-s2.0-S0165783602000115-main.pdf?_tid=a4c1f17c-cae0-11e7-bb2b-00000aacb35f&acdnat=1510845365_53ad53d0c714479caf1258a58ab230ec) argues to protect the largest (especially female) fish
 * [CAPAM](http://capamresearch.org/current-projects/selectivity)
