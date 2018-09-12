@@ -91,10 +91,10 @@ Time     | Milestone
 
 *Specific topics*
 
-Papers on Lopt, optimal length at capture (Paris)
+* Papers on Lopt, optimal length at capture (Paris)
 
-Papers where Norwegian fisheries managers ask for analysis/advice on selectivity
-(Daniel)
+* Papers where Norwegian fisheries managers ask for analysis/advice on
+  selectivity (Daniel)
 
 *Links*
 
