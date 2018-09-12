@@ -88,7 +88,17 @@ Time     | Milestone
 2016 Dec | Identify stocks, decide who will handle each stock
 
 ## Literature
-* [Jørgensen et al. 2009](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3352490/) 
+
+*Specific topics*
+
+* Papers on Lopt, optimal length at capture (Paris)
+
+* Papers where Norwegian fisheries managers ask for analysis/advice on
+  selectivity (Daniel)
+
+*Links*
+* [Diekert, 2010] (https://folk.uio.no/floriakd/papers/Diekert2010_ERE.pdf)  "the current exploitation pattern implies that essentially the wrong fish are targeted. Catching older and heavier fish could double the fishery’s Net-Present-Value. "
+* [Jørgensen et al. 2009](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3352490/)
 * [Caddy and Seijo 2002](https://ac.els-cdn.com/S0165783602000115/1-s2.0-S0165783602000115-main.pdf?_tid=a4c1f17c-cae0-11e7-bb2b-00000aacb35f&acdnat=1510845365_53ad53d0c714479caf1258a58ab230ec) argues to protect the largest (especially female) fish
 * [CAPAM](http://capamresearch.org/current-projects/selectivity)
 * [CAPAM workshop report](https://swfsc.noaa.gov/publications/CR/2013/2013Crone.pdf)
@@ -104,18 +114,18 @@ Time     | Milestone
 * [Stewart 2017](www.sciencedirect.com/science/article/pii/S0165783616302077)
 * [Vasilakopoulos et al. 2015](http://onlinelibrary.wiley.com/doi/10.1111/faf.12117/abstract)
 "Currently, MSY and FMSY are usually calculated keeping selectivity constant (ICES 2011). Our meta-analysis, in line with previous stock-specific studies (e.g. Froese et al. 2008; Scott and Sampson 2011; Colloca et al. 2013), suggests that this traditional calculation of MSY is very restrictive in that it ignores the higher MSYs that can be extracted by shifting selectivity towards older/larger fish."
-* [STECF Technical measures report 2015](https://stecf.jrc.ec.europa.eu/documents/43805/935868/STECF+15-05+-+Technical+Measures+part+III.pdf) Page 47: Trade-offs between selectivity and F for hake. 
+* [STECF Technical measures report 2015](https://stecf.jrc.ec.europa.eu/documents/43805/935868/STECF+15-05+-+Technical+Measures+part+III.pdf) Page 47: Trade-offs between selectivity and F for hake.
 "Increasing size/age-at-selection allows greater exploitation rates and greater yields to be extracted at lower levels of stock depletion."
-* [Vasilakopoulos et al. 2014](https://www.cell.com/current-biology/abstract/S0960-9822(14)00671-X) 
+* [Vasilakopoulos et al. 2014](https://www.cell.com/current-biology/abstract/S0960-9822(14)00671-X)
 "an optimal exploitation regime is more than a single value of F applied at an optimal selectivity level. Rather, there is a species-specific continuum of optimal combinations of F and selectivity corresponding to areas of high long-term yield and SSB."
-* [Scott and Sampson 2011](https://ideas.repec.org/a/eee/marpol/v35y2011i1p79-84.html) 
+* [Scott and Sampson 2011](https://ideas.repec.org/a/eee/marpol/v35y2011i1p79-84.html)
 "The results illustrate the potential extent of variation in MSY and the corresponding fishing mortality required to achieve it (FMSY) that may result solely due to changes in population selectivity. They show that relatively subtle changes in selection can produce substantial differences in MSY and FMSY."
 * [Sampson and Scott 2012](https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-2979.2011.00417.x) An exploration of the shapes and stability of population–selection curves.
 "For all 15 stocks, the population–selection curves were not stable through time but underwent changes in shape, which in some cases were quite radical."
 
-*Less than helpful citations...*
+*Less relevant for our study...*
 
-* [Fauconnet et al. 2016](https://www.cell.com/current-biology/abstract/S0960-9822(14)00671-X) T
+* [Fauconnet et al. 2016](https://www.sciencedirect.com/science/article/pii/S0308597X15003231)
 
 ## Appendix
 

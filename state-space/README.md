@@ -10,17 +10,18 @@ Stock | ASAP | SAM | WHAM | a4a sca | Comments
 ------| ---- | --- | ---  | ------- | --------
 North Sea cod (Nscod) | |X|X|X| Priority
 Gulf of Maine Cod (GOMcod) |X|X|X|X| Priority
-US West Coast lingcod (USWCLingcod) | | | X| | 
-Icelandic herring (ICEherring) | |X| X| | 
+US West Coast lingcod (USWCLingcod) | | | | | 
+Icelandic herring (ICEherring) | |X| |X| 
 Southern New England-Mid-Atlantic yellowtail (SNEMAYT) | |X|X|X| 
 Cape Cod-Gulf of Maine yellowtail (CCGOMYT) | |X|X|X| 
 Georges Bank winter flounder | |X|X|X|
-Plaice | |X|X| |
+Plaice | |X|X|X|
 Georges Bank Haddock (GBhaddock) | |X|X|X| 
 Gulf of Maine Haddock (GOMhaddock)  | |X|X|X| 
 White Hake | |X|X|X|
-Pollock | |X|X| |
-US Atlantic Herring (USAtlHerring) | |X| | |
+Pollock | |X|X|X|
+US Atlantic Herring (USAtlHerring) | |X|X|X|
+Mid-Atlantic Winter Flounder (SNEMAwinter) | |X| |X|
 
 Comparison of merits and issues for traditional SCAA and state-space
 age-structured models. This could include different varieties of each class of
@@ -39,7 +40,7 @@ Standard papers that people cite for this topic?  | [Szuwalski et al. 2017: Redu
 Another working group already working on this?    | Not likely
 How can this be structured into a journal paper?  | Part I: Apply various models to real data for stocks that have bad retrospective patterns. Stocks to tackle: SNE yellowtail flounder, GB yellowtail flounder, (US) Atlantic herring, Icelandic herring, North Sea cod (no retro, control), other European stocks TBD, New Zealand stock TBD. Also forecasting ability of different models for stock with and without retrospective patterns. Part II: Simulation study with different sources of model mis-specficiation and fit various models to these simulated data. The possible models to fit to real or simulated data are: SAM, Miller model, ASAP, SS3, VPA, a4a. Factors to consider in simulation study scenarios: Mis-specification of catch, q, M, precision of catch or indices. Quantify uncertainty in Mohn's rho?
 What kind of work is required, and how much work? | Part II: Simulate data for each scenario using Miller and/or SAM state-space models.
-Participants that would like to work on this?     | Tim Miller, Anders Nielsen, Andres Stoerksen Stordal, Arni  Magnusson, Casper Berg, Chris Legault, Cole Monahan, Craig Marsh, Jacob Kasper, Vanessa Trijoulet, Kelli Johnson, Jon Deroba, Niels Hintzen, Noel Cadigan, Ernesto Jardim, Dan Hennen
+Participants that would like to work on this?     | Tim Miller, Anders Nielsen, Arni  Magnusson, Casper Berg, Chris Legault, Cole Monahan, Craig Marsh, Jacob Kasper, Vanessa Trijoulet, Kelli Johnson, Jon Deroba, Niels Hintzen, Noel Cadigan, Ernesto Jardim, Dan Hennen, Olav Nikolai Breivik
 Who would like to lead, what will coauthors do?   | Tim Miller
 
 
@@ -57,7 +58,6 @@ Do we want to tackle items on this outline that Arni provided?
   * Chris Legault, NEFSC
   * Anders Nielsen DTU Aqua
   * Casper Berg DTU Aqua
-  * Andres Stoerksen Stordal ?
   * Arni  Magnusson ICES
   * Kelli Johnson NWFSC
   * Cole Monnahan NWFSC/UW?
@@ -67,6 +67,7 @@ Do we want to tackle items on this outline that Arni provided?
   * Noel Cadigan Memorial University
   * Ernesto Jardim JRC
   * Dan Hennen NEFSC
+  * Olav Nikolai Breivik NCC
 * Background
   * Area of research
   * Brief literature review
@@ -154,6 +155,7 @@ Georges Bank Haddock | 5-7
 Gulf of Maine Haddock | 5-7
 White Hake | 5-8
 Pollock | 5-7
+US Herring | 7-8
 
 ***
 

@@ -7,13 +7,13 @@ ages <- as.character(1:6)
 
 ## 1  Cohort biomass
 
-w <- read.csv(paste0(path,"catch_weight.csv"), check.names=FALSE)
+w <- read.csv(paste0(path,"wcatch.csv"), check.names=FALSE)
 w <- w[w$year %in% yrs,]
 w <- colMeans(w[ages])
 
 M <- 0.2
 
-N <- read.csv(paste0(path,"total_catch.csv"), check.names=FALSE)
+N <- read.csv(paste0(path,"natage.csv"), check.names=FALSE)
 Ninit <- N$"1"[N$year %in% yrs]
 Ninit <- mean(Ninit) / 1000
 
@@ -25,7 +25,7 @@ BPR <- cohortBiomass(exp(M+M), w, M)
 C <- structure(rep(0,6), names=1:6)
 Cw <- C * w
 
-Fmort <- read.csv(paste0(path,"F.csv"), check.names=FALSE)
+Fmort <- read.csv(paste0(path,"fatage.csv"), check.names=FALSE)
 Fmort <- Fmort[Fmort$year %in% yrs,]
 Fmort <- colMeans(Fmort[ages])
 S <- Fmort / max(Fmort)

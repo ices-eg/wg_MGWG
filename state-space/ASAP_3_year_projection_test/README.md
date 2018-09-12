@@ -25,5 +25,5 @@ There are still a number of items on the to do list.
 * ~~Include the predicted indices at age comparison.~~
 * ~~Add option for adjusting starting population in projections by Mohn's rho at age.~~
 * Add a number of checks to prevent crashing when data are missing.
-* If program starts to take too long to run, figure out the matrix multiplication in projections.
+* ~~If program starts to take too long to run, figure out the matrix multiplication in projections.~~
 
