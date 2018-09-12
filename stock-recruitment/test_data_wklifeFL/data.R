@@ -25,7 +25,12 @@ xyplot(data ~ age | factor(year), data = iterMedians(harvest(stk)),
 
 # create index
 ages <- 1:dims(stk)$age
-mat(stk)
+
+# set selectivity at a50 of maturity
+mat <- c(iterMedians(mat(stk)[,1]))
+a50_pars <- coef(glm(mat ~ ages, family = binomial))
+a50 <- unname(-1 * a50_pars[1] / a50_pars[2])
+
 catchability <-
 
 indx <-
