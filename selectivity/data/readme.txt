@@ -1,4 +1,4 @@
-﻿NEArtic Cod
+﻿NEArctic Cod
 Data Source: http://www.ices.dk/sites/pub/Publication%20Reports/Expert%20Group%20Report/acom/2018/AFWG/00-AFWG%202018%20Report.pdf
 "ICES AFWG REPORT 2018 ICES ADVISORY COMMITTEE ICES CM2018/ACOM:06"
 wcatch.csv Table 3.8. Northeast Arctic COD. Catch weights at age (kg)
