@@ -1,5 +1,5 @@
- catch-at-age - catch.n (units : NA )
-1	25	
+ landings-at-age - landings.n (units : NA )
+1	2	
 2	100	
 1	20	
 1 

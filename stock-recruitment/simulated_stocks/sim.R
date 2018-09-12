@@ -55,7 +55,7 @@ plot(om1)
 # OUTPUT stock as VPA
 
 writeVPA(om1, output.file="vpa/sim",
-  slots=c("catch.n","catch.wt","m","mat","stock.wt", "m.spwn", "harvest.spwn"))
+  slots=c("landings.n","landings.wt","m","mat","stock.wt", "m.spwn", "harvest.spwn"))
 
 # OUTPUT real ssb, rec, naa, fbar, faa, catch.sel, params, model
 
@@ -65,3 +65,5 @@ writeVPA(om1, output.file="vpa/sim",
 # - rwalk()
 # - rlnorm(500, 0, 0.4)
 
+
+ plot({x <- cumsum(rnorm(40, sd = 0.05)); exp(x - mean(x))}, ylab = "deviate")

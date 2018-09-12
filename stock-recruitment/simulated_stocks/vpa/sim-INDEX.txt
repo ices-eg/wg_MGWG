@@ -1,9 +1,9 @@
  
 1
+vpa/sim-LANUM.txt
+vpa/sim-WELAND.txt
 vpa/sim-WEST.txt
 vpa/sim-NATMOR.txt
 vpa/sim-MATPROP.txt
 vpa/sim-FPROP.txt
 vpa/sim-MPROP.txt
-vpa/sim-CANUM.txt
-vpa/sim-WECA.txt
