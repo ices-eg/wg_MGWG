@@ -20,7 +20,7 @@ Georges Bank Haddock (GBhaddock) | |X|X|X|
 Gulf of Maine Haddock (GOMhaddock)  | |X|X|X| 
 White Hake | |X|X|X|
 Pollock | |X|X| |
-US Atlantic Herring (USAtlHerring) | |X| | |
+US Atlantic Herring (USAtlHerring) | |X|X| |
 Mid-Atlantic Winter Flounder (SNEMAwinter) | |X| | |
 
 Comparison of merits and issues for traditional SCAA and state-space
