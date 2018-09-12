@@ -48,7 +48,7 @@ fit <- sam.fit(dat,conf,par, map=list(logSdLogN=factor(c(0,NA))))
 RES <- residuals(fit)
 #RESP <- procres(fit)
 RETRO <- retro(fit, year=7)
-PRED <- suppressWarnings(predictYears(fit,years=max(fit$data$years)-2:0))
+PRED <- suppressWarnings(predictYears(fit,years=max(fit$data$aux[fit$data$aux[,2]==1,1])-2:0))
 colnames(PRED)<-sub("obs", "logObs", colnames(PRED))
 
 rho <- mohn(RETRO, lag=0)
