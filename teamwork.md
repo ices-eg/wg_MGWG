@@ -9,7 +9,7 @@
 - We have lots of other things to do
 
 - We tend to prioritize things that (a) our boss asks us to do, (b) have a clear
-  deadline, or (c) we find simple and straightforward.
+  deadline, or (c) we find simple and straightforward
 
 ### Solutions
 
