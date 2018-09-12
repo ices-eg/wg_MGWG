@@ -155,6 +155,7 @@ Georges Bank Haddock | 5-7
 Gulf of Maine Haddock | 5-7
 White Hake | 5-8
 Pollock | 5-7
+US Herring | 7-8
 
 ***
 
