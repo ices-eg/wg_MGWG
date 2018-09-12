@@ -1,0 +1,15 @@
+SAMDIRS := $(shell echo 'cat(list.dirs()[grep("SAM$$", list.dirs())])' | R --slave)
+
+SAMSOURCE := $(foreach dir,$(SAMDIRS),$(dir)/run.R)
+SAMTARGET := $(foreach dir,$(SAMDIRS),$(dir)/Mohn.txt)
+
+$(SAMTARGET):
+	cd $(@D); make
+
+runsam: $(SAMTARGET)
+
+mohn: $(SAMTARGET)
+	@for m in $(SAMTARGET); do cat $$m; done
+
+clean:
+	for d in $(SAMDIRS); do cd $$d && make clean && cd -; done
