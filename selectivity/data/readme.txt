@@ -41,3 +41,9 @@ fatage	Table 4.6.2 Faroe Plateau cod (sub-division 5.b.1). Fishing mortality at 
 natage Table 4.6.3. Faroe Plateau cod (sub division 5.b.1). Stock number at age from the SAM model
 wmature	Table 4.2.7 Faroe Plateau cod (sub-division 5.b.1). Mean weight at age (kg) in the catches. Stock weights are set equal
 to catch weights.
+
+Iceland Cod
+http://data.hafro.is/assmt/2017/cod/
+
+North Sea Cod
+https://stockassessment.org/datadisk/stockassessment/userdirs/user3/nscod_ass06_fc17/
