@@ -7,16 +7,16 @@
 ##
 
 
-rm(list=ls(all.names=F))
-graphics.off()
+#rm(list=ls(all.names=F))
+#graphics.off()
 
 
 #==============================================================
 ## User specify below
 
 #-------------------
-user.wd <- ""   #user: specify path to working directory where ICES files are
-user.od <- ""   #user: specify path to output directory
+#user.wd <- ""   #user: specify path to working directory where ICES files are
+#user.od <- ""   #user: specify path to output directory
 #model.id <- "CCGOMyt_"   # user: specify prefix found on ICES files (will create same name for ASAP case)
 #-------------------
 #user.wd <- "C:/liz/SAM/GBhaddock/"  # user: specify path to working directory where ICES files are
@@ -33,7 +33,7 @@ user.od <- ""   #user: specify path to output directory
 #-------------------
 #user.wd <- "C:/liz/SAM/NScod/"  # user: specify path to working directory where ICES files are
 #user.od <- "C:/liz/SAM/NScod/"  # user: specify path to output directory
-model.id <- "GBWINTER_"  # user: specify prefix found on ICES files (will create same name for ASAP case)
+#model.id <- "GBWINTER_"  # user: specify prefix found on ICES files (will create same name for ASAP case)
    ## *** Notes: had to append "NScod_" to all ICES filenames
 #-------------------
 #user.wd <- "C:/liz/SAM/ICEherring/"  # user: specify path to working directory where ICES files are
@@ -304,9 +304,9 @@ write( '# Index data matrices (n.ind.avail.*nyears)' , file=out.file,append=T)  
   for ( kk in 1:length(ind.use))  {
      if (ind.use[kk]==1) {
 write( paste0('# Index   ', survey.names[kk]) , file=out.file,append=T)   #, ncol=(nyears))
-        tmp.s <- surveys[[kk]]
-        ind.mat <- get.index.mat(tmp.s, ind.cv, ind.neff, first.year, nyears, asap.nages)
-write(t(ind.mat), file=out.file,append=T, ncol=(asap.nages + 4) )
+        tmp.s <- ind.mat[[kk]]
+        ind.mat2 <- get.index.mat(tmp.s, ind.cv, ind.neff, first.year, nyears, asap.nages)
+write(t(ind.mat2), file=out.file,append=T, ncol=(asap.nages + 4) )
         } # end ind.use test
   } #end kk loop
 
@@ -658,7 +658,7 @@ is.whole.positive.number=function (x, tol = .Machine$double.eps^0.5)
 #---------------------------------------------------------------------
 get.survey.time=function (x)    #func to grab survey timing from ICES surveys object
 {
-n.surv <- length(surveys)
+n.surv <- length(x)
 tt <- rep(NA, n.surv)
 for (i in 1:n.surv) {
     tt[i] <- attr(x[[i]], 'time') [1]
@@ -671,12 +671,12 @@ return(tt)
 #---------------------------------------------------------------------
  get.survey.ages=function (x)    #func to grab survey ages from ICES surveys object
 {
-n.surv <- length(surveys)
+n.surv <- length(x)
 aa1 <- rep(NA, n.surv)
 aa2 <- rep(NA, n.surv)
 for (i in 1:n.surv) {
-    aa1[i] <- min(colnames(surveys[[i]]))
-    aa2[i] <- max(colnames(surveys[[i]]))
+    aa1[i] <- min(colnames(x[[i]]))
+    aa2[i] <- max(colnames(x[[i]]))
 }
 
 aa<- rbind(as.numeric(aa1), as.numeric(aa2) )
@@ -777,121 +777,122 @@ get.index.mat<- function(x, cv, neff, first.year, nyears, asap.nages)  {
 
 #omid = model.id
 #model.id = ''
-
-cn <- read.ices(paste(user.wd,model.id,"cn.dat",sep=""))
-cw <- read.ices(paste(user.wd,model.id,"cw.dat",sep=""))
-dw <- read.ices(paste(user.wd,model.id,"dw.dat",sep=""))
-lf <- read.ices(paste(user.wd,model.id,"lf.dat",sep=""))
-lw <- read.ices(paste(user.wd,model.id,"lw.dat",sep=""))
-mo <- read.ices(paste(user.wd,model.id,"mo.dat",sep=""))
-nm <- read.ices(paste(user.wd,model.id,"nm.dat",sep=""))
-propf <- read.ices(paste(user.wd,model.id,"pf.dat",sep=""))
-pm <- read.ices(paste(user.wd,model.id,"pm.dat",sep=""))
-sw <- read.ices(paste(user.wd,model.id,"sw.dat",sep=""))
-surveys <- read.ices(paste(user.wd,model.id,"survey.dat",sep=""))
-
-#model.id = omid
-
-t.spawn <- pm[1,1] #assuming time/age invariant spawning time
-
-catch.yy <- as.numeric(c(min(rownames(cn)), max(rownames(cn)) ))  # assuming there is only one CAA matrix
-nfleets <- 1                       # thus, also assuming nfleets=1
-catch.yrs <- seq(catch.yy[1], catch.yy[2])     #assuming catch defines the start/end year
-catch.nyrs <- length(catch.yrs)
-catch.nages <- dim(cn) [2]     #assuming catch matrix defines total number of modeled ages
-                       # setting Freport as (catch.nages):(catch.nages-1)  ; unweighted F
-catch.ages <- as.numeric(c(min(colnames(cn)), max(colnames(cn)) ))
-
-
-# assuming 3 WAA matrices (catch, discard, and spawning weight); since assuming 1 fleet, cw should equal lw in ASAP)
-waa.array <- array(NA, dim=c(catch.nyrs, catch.nages, 3))
-waa.array[,,1] <- cw[1:catch.nyrs,]
-waa.array[,,2] <- dw[1:catch.nyrs,]
-waa.array[,,3] <- sw[1:catch.nyrs,]
-waa.pointer.vec <- c(1, 2, 1, 2, 3, 3) #assuming spawning weight-jan-1 biomass
-
-f.sel.blks <- rep(1, catch.nyrs) # assuming 1 selectivity block for all years (catch)
-f.sel.type <-  2 # assuming logistic (1=by age; 2=logistic; 3=double logistic)
-f.peak <- get.peak.age(cn)
-f.sel.mats.c1 <- c( seq(0.1,0.9, length.out=(catch.nages)),  round((f.peak)/2,2), 0.9,
-              round((f.peak)/4,2), 0.6,  round((catch.nages)/1.5,2), 1.1)
-f.sel.mats.c1[f.peak] <-1
-f.sel.mats.c2 <- c( rep(1, catch.nages), 2,3, rep(1, 4)) # phase for estimation
-f.sel.mats.c2[f.peak] <- -1
-f.sel.mats.c3 <- rep(0, (catch.nages+6)) # lambda for sel parameters
-f.sel.mats.c4 <- rep(1, (catch.nages+6)) # CV for sel parameters (irrelevant if lambda=0)
-f.sel.mats <- cbind(f.sel.mats.c1, f.sel.mats.c2, f.sel.mats.c3, f.sel.mats.c4)
-
-rel.mort.fleet <- rep(0,nfleets) # assuming release mortality at age (discard) is 0
-rel.prop <- matrix(0,nfleets*catch.nyrs, catch.nages)
-tot.catch <- apply(cn*cw,1,sum)
-
-
-n.surveys <- length(surveys)
-units.ind <- rep(2, n.surveys) # assuming unites=number (1=biomass; 2=number)
-time.ind <- get.survey.time(surveys)
-fish.ind <- rep(-1, n.surveys) #assuming none of the indices link to a fleet (i.e. all fishery-independent indices)
-index.sel.type <-  rep(2, n.surveys) #assuming logistic for simple setup
-ind.ages <- get.survey.ages(surveys)
-ind.age1 <- ind.ages[1,]
-ind.age2 <-  ind.ages[2,]
-ind.use <-  rep(1, n.surveys)
-i.peak <- get.peak.age(surveys)
-ind.sel.mats <- setup.surv.sel(surveys, i.peak, catch.nages)
-ind.cv = 0.2    # assume same CV for all years, all indices to setup ASAP indices matrix
-ind.neff = 50   # assume same Effective sample size for all years, all indices to setup ASAP indices matrix
-#ind.mat <- get.index.mat(x=surveys, a=ind.ages,  cv=0.2, neff=50)  #calculate total index and append CV and Neff columns
-
-recr.CV <- rep(0.5, catch.nyrs)
-catch.CV <- rep(0.1, catch.nyrs)
-disc.CV <- rep(0, catch.nyrs)
-Neff.catch <- rep(100, catch.nyrs)
-Neff.disc <- rep(0, catch.nyrs)
-Fmult.y1 <- 0.1
-naa.y1 <- (nm[1,1]/(nm[1,1]+Fmult.y1))*cn[1,]/(1-exp(-nm[1,1]-Fmult.y1))
-if(naa.y1[1]==min(naa.y1) ) naa.y1[1] <-  10*mean(naa.y1)
-naa.y1[which(naa.y1==0)] <- mean(naa.y1)
-q.y1 <-  jitter(rep(0.05, n.surveys) , 30 )
-
-proj.yr=(catch.yy[2]+2) #dummy set up for 2 year projection
-proj.specs <- matrix(NA, nrow=2, ncol=5)
-proj.specs[,1] <- c((catch.yy[2]+1), (catch.yy[2]+2))
-proj.specs[,2] <- rep(-1, 2)
-proj.specs[,3]<- c(1,3)
-proj.specs[,4] <-  c(150,-99)
-proj.specs[,5] <-  rep(0,2)
-
-fleet.names <- "fleet1"
-survey.names <- names(surveys)
-fleet.dir <-  rep(1,nfleets)
-disc.flag =  F
-
-# call the function to setup ASAP
+ICES2ASAP <- function(user.wd,user.od,model.id){
+  cn <- read.ices(paste(user.wd,model.id,"cn.dat",sep=""))
+  cw <- read.ices(paste(user.wd,model.id,"cw.dat",sep=""))
+  dw <- read.ices(paste(user.wd,model.id,"dw.dat",sep=""))
+  lf <- read.ices(paste(user.wd,model.id,"lf.dat",sep=""))
+  lw <- read.ices(paste(user.wd,model.id,"lw.dat",sep=""))
+  mo <- read.ices(paste(user.wd,model.id,"mo.dat",sep=""))
+  nm <- read.ices(paste(user.wd,model.id,"nm.dat",sep=""))
+  propf <- read.ices(paste(user.wd,model.id,"pf.dat",sep=""))
+  pm <- read.ices(paste(user.wd,model.id,"pm.dat",sep=""))
+  sw <- read.ices(paste(user.wd,model.id,"sw.dat",sep=""))
+  surveys <- read.ices(paste(user.wd,model.id,"survey.dat",sep=""))
+  
+  #model.id = omid
+  
+  t.spawn <- pm[1,1] #assuming time/age invariant spawning time
+  
+  catch.yy <- as.numeric(c(min(rownames(cn)), max(rownames(cn)) ))  # assuming there is only one CAA matrix
+  nfleets <- 1                       # thus, also assuming nfleets=1
+  catch.yrs <- seq(catch.yy[1], catch.yy[2])     #assuming catch defines the start/end year
+  catch.nyrs <- length(catch.yrs)
+  catch.nages <- dim(cn) [2]     #assuming catch matrix defines total number of modeled ages
+  # setting Freport as (catch.nages):(catch.nages-1)  ; unweighted F
+  catch.ages <- as.numeric(c(min(colnames(cn)), max(colnames(cn)) ))
+  
+  
+  # assuming 3 WAA matrices (catch, discard, and spawning weight); since assuming 1 fleet, cw should equal lw in ASAP)
+  waa.array <- array(NA, dim=c(catch.nyrs, catch.nages, 3))
+  waa.array[,,1] <- cw[1:catch.nyrs,]
+  waa.array[,,2] <- dw[1:catch.nyrs,]
+  waa.array[,,3] <- sw[1:catch.nyrs,]
+  waa.pointer.vec <- c(1, 2, 1, 2, 3, 3) #assuming spawning weight-jan-1 biomass
+  
+  f.sel.blks <- rep(1, catch.nyrs) # assuming 1 selectivity block for all years (catch)
+  f.sel.type <-  2 # assuming logistic (1=by age; 2=logistic; 3=double logistic)
+  f.peak <- get.peak.age(cn)
+  f.sel.mats.c1 <- c( seq(0.1,0.9, length.out=(catch.nages)),  round((f.peak)/2,2), 0.9,
+                      round((f.peak)/4,2), 0.6,  round((catch.nages)/1.5,2), 1.1)
+  f.sel.mats.c1[f.peak] <-1
+  f.sel.mats.c2 <- c( rep(1, catch.nages), 2,3, rep(1, 4)) # phase for estimation
+  f.sel.mats.c2[f.peak] <- -1
+  f.sel.mats.c3 <- rep(0, (catch.nages+6)) # lambda for sel parameters
+  f.sel.mats.c4 <- rep(1, (catch.nages+6)) # CV for sel parameters (irrelevant if lambda=0)
+  f.sel.mats <- cbind(f.sel.mats.c1, f.sel.mats.c2, f.sel.mats.c3, f.sel.mats.c4)
+  
+  rel.mort.fleet <- rep(0,nfleets) # assuming release mortality at age (discard) is 0
+  rel.prop <- matrix(0,nfleets*catch.nyrs, catch.nages)
+  tot.catch <- apply(cn*cw,1,sum)
+  
+  
+  n.surveys <- length(surveys)
+  units.ind <- rep(2, n.surveys) # assuming unites=number (1=biomass; 2=number)
+  time.ind <- get.survey.time(surveys)
+  fish.ind <- rep(-1, n.surveys) #assuming none of the indices link to a fleet (i.e. all fishery-independent indices)
+  index.sel.type <-  rep(2, n.surveys) #assuming logistic for simple setup
+  ind.ages <- get.survey.ages(surveys)
+  ind.age1 <- ind.ages[1,]
+  ind.age2 <-  ind.ages[2,]
+  ind.use <-  rep(1, n.surveys)
+  i.peak <- get.peak.age(surveys)
+  ind.sel.mats <- setup.surv.sel(surveys, i.peak, catch.nages)
+  ind.cv = 0.2    # assume same CV for all years, all indices to setup ASAP indices matrix
+  ind.neff = 50   # assume same Effective sample size for all years, all indices to setup ASAP indices matrix
+  #ind.mat <- get.index.mat(x=surveys, a=ind.ages,  cv=0.2, neff=50)  #calculate total index and append CV and Neff columns
+  
+  recr.CV <- rep(0.5, catch.nyrs)
+  catch.CV <- rep(0.1, catch.nyrs)
+  disc.CV <- rep(0, catch.nyrs)
+  Neff.catch <- rep(100, catch.nyrs)
+  Neff.disc <- rep(0, catch.nyrs)
+  Fmult.y1 <- 0.1
+  naa.y1 <- (nm[1,1]/(nm[1,1]+Fmult.y1))*cn[1,]/(1-exp(-nm[1,1]-Fmult.y1))
+  if(naa.y1[1]==min(naa.y1) ) naa.y1[1] <-  10*mean(naa.y1)
+  naa.y1[which(naa.y1==0)] <- mean(naa.y1)
+  q.y1 <-  jitter(rep(0.05, n.surveys) , 30 )
+  
+  proj.yr=(catch.yy[2]+2) #dummy set up for 2 year projection
+  proj.specs <- matrix(NA, nrow=2, ncol=5)
+  proj.specs[,1] <- c((catch.yy[2]+1), (catch.yy[2]+2))
+  proj.specs[,2] <- rep(-1, 2)
+  proj.specs[,3]<- c(1,3)
+  proj.specs[,4] <-  c(150,-99)
+  proj.specs[,5] <-  rep(0,2)
+  
+  fleet.names <- "fleet1"
+  survey.names <- names(surveys)
+  fleet.dir <-  rep(1,nfleets)
+  disc.flag =  F
+  
+  # call the function to setup ASAP
   #phases indicated by p.(param.name) have been set at simple default
   #by default, steepness is fixed at 1 (estimates mean recruitment with deviations)
   #  to change this default, set "h.guess" to a value in [0.21, 0.99] and set p.h to positive integer
-setup.asap.w(wd=user.wd, od=user.od, model.id=model.id, nyears=catch.nyrs,
-        first.year=catch.yy[1], asap.nages=catch.nages, nfleets=nfleets,
-        nselblks=nfleets, n.ind.avail=n.surveys, M.mat=nm[1:catch.nyrs,],
-        fec.opt=0, t.spawn=t.spawn, mat.mat=mo[1:catch.nyrs,],
-        n.waa.mats=3, waa.array=waa.array, waa.pointer.vec=waa.pointer.vec,
-        sel.blks=f.sel.blks, sel.types=f.sel.type, sel.mats=f.sel.mats,
-        fleet.age1=catch.ages[1], fleet.age2=catch.ages[2],
-        F.report.ages=c((catch.nages-1),catch.nages), F.report.opt=1,
-        like.const=0, rel.mort.fleet=rel.mort.fleet, caa.mats=cbind(cn, tot.catch), daa.mats=cbind(cn*0, 0*tot.catch),
-        rel.prop=rel.prop, units.ind=units.ind, time.ind=time.ind,
-        fish.ind=fish.ind, sel.ind=index.sel.type,
-        ind.age1, ind.age2, ind.use, ind.sel.mats, ind.mat=surveys, ind.cv=ind.cv, ind.neff=ind.neff,
-        p.Fmult1=1, p.Fmult.dev=3, p.recr.dev=3, p.N1=2, p.q1=1, p.q.dev=-1, p.SR=1, p.h=-2,
-        recr.CV=rep(0.5,catch.nyrs), lam.ind=rep(1,n.surveys),
-        lam.c.wt=rep(1,nfleets), lam.disc=rep(0,nfleets), catch.CV=catch.CV, disc.CV=disc.CV,
-        Neff.catch, Neff.disc, lam.Fmult.y1=rep(0, nfleets),
-        CV.Fmult.y1=rep(1, nfleets), lam.Fmult.dev=rep(0,nfleets), CV.Fmult.dev=rep(1,nfleets),
-        lam.N1.dev=0, CV.N1.dev=1, lam.recr.dev=1,
-        lam.q.y1=rep(0, n.surveys), CV.q.y1=rep(1, n.surveys), lam.q.dev=rep(0, n.surveys),
-        CV.q.dev=rep(1, n.surveys), lam.h=0, CV.h=1, lam.SSB0=0, CV.SSB0=1,
-        naa.y1, Fmult.y1, q.y1, SSB0=1e7, h.guess=1.0, F.max=5, ignore.guess=0,
-        do.proj=0, fleet.dir=fleet.dir, proj.yr=proj.yr, proj.specs=proj.specs,
-        do.mcmc=0, mcmc.nyr.opt=0, mcmc.nboot=1000, mcmc.thin=200, mcmc.seed=5230547,
-        recr.agepro=0, recr.start.yr=(catch.yy[2]-12), recr.end.yr=(catch.yy[2]-2),
-        test.val=-23456, fleet.names, survey.names, disc.flag )
+  setup.asap.w(wd=user.wd, od=user.od, model.id=model.id, nyears=catch.nyrs,
+               first.year=catch.yy[1], asap.nages=catch.nages, nfleets=nfleets,
+               nselblks=nfleets, n.ind.avail=n.surveys, M.mat=nm[1:catch.nyrs,],
+               fec.opt=0, t.spawn=t.spawn, mat.mat=mo[1:catch.nyrs,],
+               n.waa.mats=3, waa.array=waa.array, waa.pointer.vec=waa.pointer.vec,
+               sel.blks=f.sel.blks, sel.types=f.sel.type, sel.mats=f.sel.mats,
+               fleet.age1=catch.ages[1], fleet.age2=catch.ages[2],
+               F.report.ages=c((catch.nages-1),catch.nages), F.report.opt=1,
+               like.const=0, rel.mort.fleet=rel.mort.fleet, caa.mats=cbind(cn, tot.catch), daa.mats=cbind(cn*0, 0*tot.catch),
+               rel.prop=rel.prop, units.ind=units.ind, time.ind=time.ind,
+               fish.ind=fish.ind, sel.ind=index.sel.type,
+               ind.age1, ind.age2, ind.use, ind.sel.mats, ind.mat=surveys, ind.cv=ind.cv, ind.neff=ind.neff,
+               p.Fmult1=1, p.Fmult.dev=3, p.recr.dev=3, p.N1=2, p.q1=1, p.q.dev=-1, p.SR=1, p.h=-2,
+               recr.CV=rep(0.5,catch.nyrs), lam.ind=rep(1,n.surveys),
+               lam.c.wt=rep(1,nfleets), lam.disc=rep(0,nfleets), catch.CV=catch.CV, disc.CV=disc.CV,
+               Neff.catch, Neff.disc, lam.Fmult.y1=rep(0, nfleets),
+               CV.Fmult.y1=rep(1, nfleets), lam.Fmult.dev=rep(0,nfleets), CV.Fmult.dev=rep(1,nfleets),
+               lam.N1.dev=0, CV.N1.dev=1, lam.recr.dev=1,
+               lam.q.y1=rep(0, n.surveys), CV.q.y1=rep(1, n.surveys), lam.q.dev=rep(0, n.surveys),
+               CV.q.dev=rep(1, n.surveys), lam.h=0, CV.h=1, lam.SSB0=0, CV.SSB0=1,
+               naa.y1, Fmult.y1, q.y1, SSB0=1e7, h.guess=1.0, F.max=5, ignore.guess=0,
+               do.proj=0, fleet.dir=fleet.dir, proj.yr=proj.yr, proj.specs=proj.specs,
+               do.mcmc=0, mcmc.nyr.opt=0, mcmc.nboot=1000, mcmc.thin=200, mcmc.seed=5230547,
+               recr.agepro=0, recr.start.yr=(catch.yy[2]-12), recr.end.yr=(catch.yy[2]-2),
+               test.val=-23456, fleet.names, survey.names, disc.flag )
+}

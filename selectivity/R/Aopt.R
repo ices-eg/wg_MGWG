@@ -75,11 +75,29 @@ vbObj <- a4aGr(
 AoptGB=c(predict(vbObj, len=loptGB))
 AoptGB #4.24
 
+########################################################################
+#Icelandic cod (Elvarsson pers comm.)
+k = 0.104
+linf = 153.67
+t0 = 0.34
+loptIC=2/3*linf
+loptIC #102.45
+
+#Create the von Bertalanffy object
+vbObj <- a4aGr(
+  grMod=~linf*(1-exp(-k*(t-t0))),      
+  grInvMod=~t0-1/k*log(1-len/linf),      
+  params=FLPar(linf=linf, k=k, t0=t0, units=c('cm','year-1','year')))
+
+# Predict
+AoptIC=c(predict(vbObj, len=loptIC))
+AoptIC #10.28
+
 ###########################################################################
 #summary of Aopts
-Aopts <- matrix(c(loptNS,AoptNS,loptWB,AoptWB,loptGoM,AoptGoM,loptGB,AoptGB),ncol=2,byrow=TRUE)
+Aopts <- matrix(c(loptNS,AoptNS,loptWB,AoptWB,loptGoM,AoptGoM,loptGB,AoptGB,loptIC,AoptIC),ncol=2,byrow=TRUE)
 colnames(Aopts) <- c("Lopt (cm)","Aopt (y)")
-rownames(Aopts ) <- c("North Sea","West Baltic","Gulf of Main","George's Bank")
+rownames(Aopts ) <- c("North Sea","West Baltic","Gulf of Main","George's Bank","Iceland")
 Aopts=round(Aopts,2)
 as.table(Aopts)
 

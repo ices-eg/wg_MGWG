@@ -1,5 +1,5 @@
 library(stockassessment)
-source("pred.R") # function to predict 
+source("../../helper_code/sampred.R") # function to predict 
 
 prefix <- "../"
 
@@ -68,9 +68,9 @@ cattab<-round(catchtable(fit))
 if((nrow(cattab)+1)==nrow(summ))cattab<-rbind(cattab,NA)
 tab1 <- cbind(Year=fit$data$years, summ, cattab)
 colnames(tab1) <- sub("Estimate", "Catch", colnames(tab1))
-write.table(tab1, file="tab1.csv", sep=",\t", quote=FALSE, row.names=FALSE)
+write.table(tab1, file="tab1.csv", sep=",", quote=FALSE, row.names=FALSE)
 
-write.table(PRED, file="tab2.csv", sep=",\t", quote=FALSE, row.names=FALSE)
+write.table(PRED, file="tab2.csv", sep=",", quote=FALSE, row.names=FALSE)
 
 sink("Mohn.txt")
 print(rho)

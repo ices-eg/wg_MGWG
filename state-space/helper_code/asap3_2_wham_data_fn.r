@@ -161,7 +161,7 @@ asap3_2_wham_data_fn <- function(asap3, recruit_model = 2)
   par$log_NAA = matrix(10, data$n_years_model-1, data$n_ages)
   par$M_pars1 = log(asap3$M[1,]) #log(mean(asap3$M))
   par$M_sigma_pars = 0
-  par$M_re = matrix(log(asap3$M[-1,]), data$n_years_model-1, data$n_M_re, byrow = TRUE)
+  par$M_re = matrix(log(asap3$M[-1,]), data$n_years_model-1, data$n_M_re)
   par$log_b = log(0.305)
   par$log_R = rep(10, data$n_years_model-1) #/n_years_model-1, if used.
   par$log_R_sigma = 0
