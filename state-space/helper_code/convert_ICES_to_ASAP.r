@@ -7,16 +7,16 @@
 ##
 
 
-rm(list=ls(all.names=F))
-graphics.off()
+#rm(list=ls(all.names=F))
+#graphics.off()
 
 
 #==============================================================
 ## User specify below
 
 #-------------------
-user.wd <- ""   #user: specify path to working directory where ICES files are
-user.od <- ""   #user: specify path to output directory
+#user.wd <- ""   #user: specify path to working directory where ICES files are
+#user.od <- ""   #user: specify path to output directory
 #model.id <- "CCGOMyt_"   # user: specify prefix found on ICES files (will create same name for ASAP case)
 #-------------------
 #user.wd <- "C:/liz/SAM/GBhaddock/"  # user: specify path to working directory where ICES files are
@@ -33,7 +33,7 @@ user.od <- ""   #user: specify path to output directory
 #-------------------
 #user.wd <- "C:/liz/SAM/NScod/"  # user: specify path to working directory where ICES files are
 #user.od <- "C:/liz/SAM/NScod/"  # user: specify path to output directory
-model.id <- "GBWINTER_"  # user: specify prefix found on ICES files (will create same name for ASAP case)
+#model.id <- "GBWINTER_"  # user: specify prefix found on ICES files (will create same name for ASAP case)
    ## *** Notes: had to append "NScod_" to all ICES filenames
 #-------------------
 #user.wd <- "C:/liz/SAM/ICEherring/"  # user: specify path to working directory where ICES files are
