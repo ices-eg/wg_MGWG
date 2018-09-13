@@ -1,5 +1,5 @@
 library(stockassessment)
-source("../SAM/pred.R") # function to predict 
+source("../../helper_code/sampred.R") # function to predict 
 source("../../helper_code/get_aref_fn.r")
 source("../../helper_code/read.asap3.dat.fn.r")
 source("../../helper_code/asap3_2_wham_data_fn.r")

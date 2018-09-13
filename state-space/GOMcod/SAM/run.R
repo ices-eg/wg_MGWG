@@ -1,5 +1,5 @@
 library(stockassessment)
-source("pred.R") # function to predict 
+source("../../helper_code/sampred.R") # function to predict 
 
 prefix <- "../GOMCOD_"
 
