@@ -12,9 +12,9 @@ Tentative date for the next ICES Methods WG meeting:
 **23-27 September 2019**
 
 This timing gets us safely past family vacation time, makes it easier for NOAA
-staff to get funded, and enables people to attend related events such as the JRC
-Ensemble Modelling group (26-30 Aug), ICES Annual Science Conference (9-12 Sep),
-AFS Annual Meeting (29 Sep-3 Oct), etc.
+staff to get their travel funded, and enables people to attend related events
+such as the JRC Ensemble Modelling group (26-30 Aug), ICES Annual Science
+Conference (9-12 Sep), AFS Annual Meeting (29 Sep-3 Oct), etc.
 
 Venue TBD.
 
