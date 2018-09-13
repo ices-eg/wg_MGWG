@@ -40,10 +40,10 @@ fit <- sam.fit(dat,conf,par)
 RES <- residuals(fit)
 RESP <- procres(fit)
 RETRO <- retro(fit, year=7)
-PRED <- predictYears(fit,years=max(fit$data$years)-2:0)
+PRED <- predictYears(fit,years=max(fit$data$aux[fit$data$aux[,2]==1,1])-2:0)
 colnames(PRED)<-sub("obs", "logObs", colnames(PRED))
 
-rho <- mohn(RETRO, lag=0)
+rho <- mohn(RETRO)
 
 
 
