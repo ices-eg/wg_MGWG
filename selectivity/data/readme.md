@@ -78,6 +78,7 @@ Faroe Island Plateau
 Data Source | http://www.ices.dk/sites/pub/Publication%20Reports/Expert%20Group%20Report/acom/2017/NWWG/NWWG%202017%20Report.pdf
 -----------|-----------------------------------------------------------------------------------------------------------------------|
 ICES. 2017. Report of the North Western Working Group (NWWG), 27 April – 4 May 2017, Copenhagen, Denmark. ICES CM 2017/ACOM:08 section 4 |
+
 file         | units| source table  | table info                        |
 -------------|------|---------------|-----------------------------------|
 wcatch.csv	 | kg   | Table 4.2.7  | Stock weights are set equal to catch weights |
@@ -93,6 +94,7 @@ Iceland Cod
 Data Source | http://www.ices.dk/sites/pub/Publication%20Reports/Expert%20Group%20Report/acom/2017/NWWG/NWWG%202017%20Report.pdf
 -----------|-----------------------------------------------------------------------------------------------------------------------|
 ICES. 2017. Report of the North Western Working Group (NWWG), 27 April – 4 May 2017, Copenhagen, Denmark. ICES CM 2017/ACOM:08 section 9|
+
 file| units| source table| table info |
 ----|------|-------------|------------|
 wcatch.csv	 | kg   | p203   |        |
@@ -107,6 +109,7 @@ North Sea Cod
 -------------
 Data Source | https://stockassessment.org/datadisk/stockassessment/userdirs/user3/nscod_ass06_fc17/
 -----------|-----------------------------------------------------------------------------------------------------------------------|
+
 file| units| source table| table info |
 ----|------|-------------|------------|
 
@@ -115,6 +118,7 @@ NAFO 2J3KL
 Data Source | http://publications.gc.ca/collections/collection_2018/mpo-dfo/fs70-5/Fs70-5-2018-018-eng.pdf |
 -----------|-----------------------------------------------------------------------------------------------------------------------|
 Assessment of the Northern Cod (Gadus morhua) stock in NAFO Divisions 2J3KL in 2016 |
+
 file         | units| source table  | table info                        |
 -------------|------|---------------|-----------------------------------|
 wcatch.csv   | kg   | Table 11   | Mean annual weights-at-age calculated from lengths-at-age based on samples from commercial fisheries |
