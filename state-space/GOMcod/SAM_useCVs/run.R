@@ -40,10 +40,11 @@ dat <- setup.sam.data(surveys=surveys,
                       natural.mortality=nm, 
                       land.frac=lf)
 
+conf <- loadConf(dat,"../SAM/model.cfg")
+
 if(!file.exists("model.cfg")){
-  saveConf(defcon(dat), file="model.cfg")
-}    
-conf <- loadConf(dat,"model.cfg")
+  saveConf(conf, file="model.cfg")
+}
 
 par <- defpar(dat,conf)
 fit <- sam.fit(dat,conf,par)
