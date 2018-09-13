@@ -1,0 +1,32 @@
+COLERAINE ASSMT 2011
+
+Data    Start  Ages  Feature
+Catch   1987   2-12  Large cohort is age 7 in 1990
+Survey  1987   3-12  Large cohort is age 7 in 1990, no data from 1994
+
+
+ICELANDIC REPORT 2015
+
+Data    Start    Ages  Feature
+Catch   1987/88  2-15  Large cohort is age 7 in 1990/91
+
+
+NWWG REPORT 2018
+
+Data    Start    Ages  Feature
+Catch   1975     2-15  Large cohort is age 7 in 1990    (157.225)
+Survey  1973/74  2-15  Large cohort is age 7 in 1990/91 (514.403)
+
+
+RUN1NWWG.DAT
+
+Data    Start  Ages  Feature
+Catch   1987   3-13  Large cohort (157.225) is in row 4, col 5
+Survey  1986   3-12  Large cohort (514.403) is in row 5, col 5
+
+
+CN.DAT, SURVEY.DAT
+
+Data     Start  Ages  Feature
+Catch    1987   3-13  Large cohort (157.225) is in row 4, col 5
+Survey   1986   3-10  Large cohort (514.403) is in row 5, col 5
