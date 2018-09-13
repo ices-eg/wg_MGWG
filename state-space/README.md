@@ -10,18 +10,17 @@ Stock | ASAP | SAM | WHAM | a4a sca | Comments
 ------| ---- | --- | ---  | ------- | --------
 North Sea cod (Nscod) | |X|X|X| Priority
 Gulf of Maine Cod (GOMcod) |X|X|X|X| Priority
-US West Coast lingcod (USWCLingcod) | | | | | 
-Icelandic herring (ICEherring) | |X| |X| 
+Georges Bank Haddock (GBhaddock) | |X|X|X| 
+Gulf of Maine Haddock (GOMhaddock)  | |X|X|X| 
+US Pollock | |X|X|X|
 Southern New England-Mid-Atlantic yellowtail (SNEMAYT) | |X|X|X| 
 Cape Cod-Gulf of Maine yellowtail (CCGOMYT) | |X|X|X| 
 Georges Bank winter flounder | |X|X|X|
-Plaice | |X|X|X|
-Georges Bank Haddock (GBhaddock) | |X|X|X| 
-Gulf of Maine Haddock (GOMhaddock)  | |X|X|X| 
+Southern New England-Mid-Atlantic winter flounder (SNEMAwinter) | |X|X|X|
+American Plaice | |X|X|X|
 White Hake | |X|X|X|
-Pollock | |X|X|X|
+Icelandic herring (ICEherring) | |X| |X| 
 US Atlantic Herring (USAtlHerring) | |X|X|X|
-Mid-Atlantic Winter Flounder (SNEMAwinter) | |X| |X|
 
 Comparison of merits and issues for traditional SCAA and state-space
 age-structured models. This could include different varieties of each class of
@@ -77,10 +76,18 @@ Do we want to tackle items on this outline that Arni provided?
 * Plan
   * Part I: Real Data
     * Start with these stocks:
-      * SNEMA yellowtail
+      * Southern New England-Mid Atlantic yellowtail flounder
+      * Cape cod-Gulf of Maine yellowtail flounder
+      * Southern New England-Mid Atlantic winter flounder
+      * Georges Bank winter flounder
+      * Gulf of Maine cod
       * North Sea cod
-      * US West Coast lingcod (California stock; USWCLingcod)
+      * Georges Bank haddock
+      * Gulf of Maine haddock
+      * US pollock
+      * White hake
       * Icelandic herring
+      * US Atlantic herring
     * In the end, we may focus on a few stocks that have a good story to tell.
     * Uploader of data can specify setting of original model for the specific stock.
     * No special cases for models such as catch scaling in SAM.
@@ -150,6 +157,7 @@ Icelandic herring | 5-10
 Southern New England-Mid-Atlantic yellowtail | 4-5
 Cape Cod-Gulf of Maine yellowtail | 4-5
 Georges Bank winter flounder | 4-6
+Southern New England-Mid-Atlantic winter flounder | 4-5
 Plaice | 6-9
 Georges Bank Haddock | 5-7 
 Gulf of Maine Haddock | 5-7
@@ -158,4 +166,25 @@ Pollock | 5-7
 US Herring | 7-8
 
 ***
+
+## After Ispra meeting
+
+We will have a Skype call every third Thursday of the month until next MGWG meeting. We will sort tasks to be completed prior to each meeting. 
+* 18 October 4pm
+  * Ernesto J. will provide predicted indices at age with standard errors for terminal three years
+  * Chris L. will provide ASAP fit results
+  * Vanessa T. will work on plots of results
+  * Anders, Casper, Tim, Chris, Ernesto will work on text describing methods for the respective models and their implimentation here.
+  * Vanessa T. help drafting Intro?
+* 15 November 4pm
+* 20 December 4pm
+* 17 January 4pm
+* 21 February 4pm
+* 21 March 4pm
+* 18 April 4pm
+* 16 May 4pm
+* 20 June 4pm
+* 18 July 4pm
+* 15 August 4pm
+
 
