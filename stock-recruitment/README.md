@@ -79,7 +79,7 @@ Proposal: WGMG provide some analyses of this issue, and recommendations on poten
       * variance of log-recruitment
         * 0.4
         * 0.8 
-        * random walk (on mean recruitment)
+        * random walk
       * Contrast in population/SSB
         * Low F: runif(0.2*Fmsy, 0.4*Fmsy)
         * High F: runif(1.2*Fmsy, 1.4*Fmsy)
@@ -100,7 +100,7 @@ Proposal: WGMG provide some analyses of this issue, and recommendations on poten
 * Proposed first contact: October 25, 2019 (can send doodle poll if needed)
 * Identify what we will have accomplished by this first call
 * Identify what each person will work on between now and the first call, and overall what each person will contribute
-  * Iago Mosquiera - simulating; uploading simulation iterations
+  * Iago Mosqueira - simulating; uploading simulation iterations
   * Christoph Konrad - simulating; ...
   * Colin Millar - simulation design, adding code, a4a runs, fitting SR external, summarizing various fits, ...
   * Liz Brooks - simulation design, code for output collection, ASAP runs, ...  
