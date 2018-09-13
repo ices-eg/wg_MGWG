@@ -28,8 +28,8 @@ ind.mats$n <- 1
 ind.mats$names <- "Acoustic"
 ind.mats$start.year <- 1987
 ind.mats$end.year <- 2017
-ind.mats$start.age <- 1
-ind.mats$end.age <- 8
+ind.mats$start.age <- 4
+ind.mats$end.age <- 11
 ind.mats$timing <- 0
 use.cols.start <- 1
 use.cols.end <- 8
