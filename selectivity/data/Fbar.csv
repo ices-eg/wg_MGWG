@@ -1,10 +1,11 @@
 stock,start_age,end_age,Table,Source
 faroes,3,7,Table 4.6.4,ICES CM 2017/ACOM:08 
-iceland,,,,
+iceland,5,10,p221,ICES CM 2017/ACOM:08 
 North Sea Cod,2,4,Table 4.8,ICES CM 2017/ACOM:21 
-NAFO 2J3KL,,,,
+NAFO 2J3KL,4,6,Table 22,Research Document 2018/018 
+NAFO 2J3KL,7,9,Table 22,Research Document 2018/018 
 NEArctic Cod,5,10,Table 3.15,ICES CM 2018/ACOM:06 
-Gulf of Maine,,,,
-Gulf of Maine 2017,,,,
-Georges Bank,,,,
-Western Baltic,,,,
+Gulf of Maine,8,8,,2015_COD_GM_MOD_ASAP_M02.dat
+Gulf of Maine 2017,8,8,,GOM_COD_2017_UPDATE_MRAMP.dat
+Georges Bank,5,+,,SAW 55 
+Western Baltic,3,5,Table 2.3.26, ICES CM2018/ACOM:11
