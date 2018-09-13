@@ -8,7 +8,7 @@ John and Vanessa currently working on creating a script which standardizes and p
 
 Stock | ASAP | SAM | WHAM | a4a sca | Comments
 ------| ---- | --- | ---  | ------- | --------
-North Sea cod (Nscod) | |X|X|X| Priority
+North Sea cod (Nscod) |X|X|X|X| Priority
 Gulf of Maine Cod (GOMcod) |X|X|X|X| Priority
 Georges Bank Haddock (GBhaddock) | |X|X|X| 
 Gulf of Maine Haddock (GOMhaddock)  |X|X|X|X| 
