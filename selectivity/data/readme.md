@@ -124,7 +124,23 @@ file         | units| source table  | table info                        |
 wcatch.csv   | kg   | Table 11   | Mean annual weights-at-age calculated from lengths-at-age based on samples from commercial fisheries |
 wstock.csv   | kg   | Table 15b  | Beginning of year weight-at-age estimates from a generalized Von Bertalanffy (VonB2)  |
 catage.csv   | 000s	| Table 10   | Catch numbers-at-age (000s) |
-maturity.csv | ?  | ?     | ?           |
+maturity.csv | Proportion | Table 18 | proportions mature for female cod from NAFO         |
 natmort.csv  | M    | Table A2-6 | Northern cod M-at-age estimates from the M-shift        |
 fatage.csv   | F    | Table A2-5 | Northern cod F-at-age estimates from the M-shift        |
 natage.csv   | 000s | Table A2-2 | abundance-at-age estimates (millions) converted to 000s |
+
+NAFO 3P
+-------------
+Data Source | http://waves-vagues.dfo-mpo.gc.ca/Library/40644777.pdf |
+-----------|-----------------------------------------------------------------------------------------------------------------------|
+AAssessing the status of the cod (Gadus morhua) stock in NAFO Subdivision 3Ps in 2013 and 2014  |
+
+file         | units| source table  | table info                        |
+-------------|------|---------------|-----------------------------------|
+wcatch.csv   | kg   | Table 7a |  Mean annual weights-at-age calculated from lengths-at-age based on samples from commercial fisheries |
+wstock.csv   | kg   | Table 7b |  Beginning of the year weights-at-age calculated from commercial  |
+catage.csv   | 000s	| Table 6|  Numbers-at-age (000s) for the commercial cod fishery   |
+maturity.csv | Proportion | Table 18 | proportions mature for female cod from NAFO         |
+natmort.csv  | M    |  |      |
+fatage.csv   | F    |  |         |
+natage.csv   | 000s | | |
