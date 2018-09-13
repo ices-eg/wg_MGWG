@@ -71,19 +71,19 @@ Proposal: WGMG provide some analyses of this issue, and recommendations on poten
       * Stock-recruit types
         * Beverton-Holt
         * Ricker
-        * None
         * Hockey (not differentiable)
+        * Mean recruitment
       * Number of years
-        * 20
-        * 40
+        * 25
+        * 50
       * variance of log-recruitment
-        * 0.3
-        * 0.6 
-        * 0.9
+        * 0.4
+        * 0.8 
+        * random walk (on mean recruitment)
       * Contrast in population/SSB
-        * Low F
-        * High F
-        * variation in F
+        * Low F: runif(0.2*Fmsy, 0.4*Fmsy)
+        * High F: runif(1.2*Fmsy, 1.4*Fmsy)
+        * rollercoaster F
   * Tasks, who's doing what
   * Milestones, timeline
 * References
@@ -111,7 +111,7 @@ Proposal: WGMG provide some analyses of this issue, and recommendations on poten
   * Dvora Hart - CASA runs, ...
   * Ernesto Jardim - a4a runs, ...
   * Jon Deroba - SAM runs?, ... 
-  * Noel Cadigan - ...
+  * Noel Cadigan - provide code for SR with ar1 process on parameters (for external fitting)
   * Tim Miller - WHAM, ...
   * Vanessa Trijoulet - output summarization, ...
 
