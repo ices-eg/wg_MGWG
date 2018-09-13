@@ -5,6 +5,19 @@ listing research topics<br>
 \- See [Sharepoint](http://www.ices.dk/community/groups/Pages/MGWG.aspx) site
 for overall objectives, latest report, etc.
 
+## Next meeting
+
+Tentative date for the next ICES Methods WG meeting:
+
+**23-27 September 2019**
+
+This timing gets us safely past family vacation time, makes it easier for NOAA
+staff to get funded, and enables people to attend related events such as the JRC
+Ensemble Modelling group (26-30 Aug), ICES Annual Science Conference (9-12 Sep),
+AFS Annual Meeting (29 Sep-3 Oct), etc.
+
+Venue TBD.
+
 ***
 
 ## Dining in Ispra
@@ -16,11 +29,11 @@ for overall objectives, latest report, etc.
 - [Pizzeria Il Capriccio](https://www.google.com/maps/place/Pizzeria+Il+Capriccio/@45.8145797,8.6209942,19z/data=!4m8!1m2!2m1!1sristorante!3m4!1s0x0:0x3aa3182130f04533!8m2!3d45.815165!4d8.6224021)
 - [Roby´s bistrot](https://www.google.com/maps/place/Roby%C2%B4s+bistrot/@45.8141217,8.6118747,18z/data=!4m8!1m2!2m1!1sristorante!3m4!1s0x478677314f9c06db:0x22a6738bd1f63aca!8m2!3d45.8135622!4d8.6116277)
 
-
 ### Gelateria
 
 - [Il Capriccio](https://www.google.com/maps/place/Il+Capriccio/@45.8156063,8.6099541,19z/data=!4m8!1m2!2m1!1sristorante!3m4!1s0x4786773055897ebf:0xf6a74d89e78badc0!8m2!3d45.8156238!4d8.6100592)
 
+***
 
 ## Meeting agenda (10-14 Sep 2018, Ispra)
 
