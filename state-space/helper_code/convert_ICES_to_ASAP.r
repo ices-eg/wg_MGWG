@@ -658,7 +658,7 @@ is.whole.positive.number=function (x, tol = .Machine$double.eps^0.5)
 #---------------------------------------------------------------------
 get.survey.time=function (x)    #func to grab survey timing from ICES surveys object
 {
-n.surv <- length(surveys)
+n.surv <- length(x)
 tt <- rep(NA, n.surv)
 for (i in 1:n.surv) {
     tt[i] <- attr(x[[i]], 'time') [1]
