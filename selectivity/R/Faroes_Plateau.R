@@ -15,15 +15,18 @@ M <- 0.2
 
 N <- read.csv(paste0(path,"natage.csv"), check.names=FALSE)
 Ninit <- N$"2"[N$Year %in% yrs]
-Ninit <- mean(Ninit) / 1000
+Ninit <- mean(Ninit)
 
 B <- cohortBiomass(Ninit, w, M)
 BPR <- cohortBiomass(exp(M+M), w, M)
 
 ## 2  Catch and selectivity
 
-C <- structure(rep(0,8), names=2:9)
+C <- read.csv(paste0(path,"catage.csv"), check.names=FALSE)
+C <- C[C$Year %in% yrs, ages]
+C <- colMeans(C)
 Cw <- C * w
+
 
 Fmort <- read.csv(paste0(path,"fatage.csv"), check.names=FALSE)
 Fmort <- Fmort[Fmort$Year %in% yrs,]

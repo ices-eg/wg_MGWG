@@ -8,27 +8,33 @@ ages <- as.character(1:6)
 ## 1  Cohort biomass
 
 w <- read.csv(paste0(path,"wcatch.csv"), check.names=FALSE)
-w <- w[w$year %in% yrs,]
+w <- w[w$Year %in% yrs,]
 w <- colMeans(w[ages])
 
 M <- 0.2
 
 N <- read.csv(paste0(path,"natage.csv"), check.names=FALSE)
-Ninit <- N$"1"[N$year %in% yrs]
-Ninit <- mean(Ninit) / 1000
+Ninit <- N$"1"[N$Year %in% yrs]
+Ninit <- mean(Ninit)
+
 
 B <- cohortBiomass(Ninit, w, M)
 BPR <- cohortBiomass(exp(M+M), w, M)
 
 ## 2  Catch and selectivity
 
-C <- structure(rep(0,6), names=1:6)
+C <- read.csv(paste0(path,"catage.csv"), check.names=FALSE)
+C <- C[C$Year %in% yrs, ages]
+C <- colMeans(C)
 Cw <- C * w
 
+
 Fmort <- read.csv(paste0(path,"fatage.csv"), check.names=FALSE)
-Fmort <- Fmort[Fmort$year %in% yrs,]
-Fmort <- colMeans(Fmort[ages])
+Fmort <- Fmort[Fmort$Year %in% yrs,]
+Fmort <- colMeans(Fmort[-1])
 S <- Fmort / max(Fmort)
+S <- c(S[1:5], rep(S["5+"],1))
+names(S) <- 1:6
 
 pdf("WBaltic.pdf", 12, 6)  # 4, 12
 par(mfrow=c(1,2))           # 4, 1

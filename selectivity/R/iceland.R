@@ -1,20 +1,21 @@
 ## Icelandic cod: cohort biomass, catch, selectivity
 
 source("functions/cohortBiomass.R")
+path <- "../data/iceland/"
 
-url <- "http://data.hafro.is/assmt/2017/cod/"
 
-yrs <- 2007:2016
+yrs <- 2008:2017
+ages <- as.character(3:13)
 
 ## 1  Cohort biomass
 
-w <- read.csv(paste0(url, "catch_weights.csv"), check.names = FALSE)
+w <- read.csv(paste0(path, "wcatch.csv"), check.names = FALSE)
 w <- w[w$Year %in% yrs,]
-w <- colMeans(w[-1]/1000)
+w <- colMeans(w[ages])
 
 M <- 0.2
 
-N <- read.csv(paste0(url, "nmat.csv"), check.names = FALSE)
+N <- read.csv(paste0(path, "natage.csv"), check.names = FALSE)
 Ninit <- N$"3"[N$Year %in% yrs]
 Ninit <- mean(Ninit)
 
@@ -23,12 +24,12 @@ BPR <- cohortBiomass(1, w, M)
 
 ## 2  Catch and selectivity
 
-C <- read.csv(paste0(url, "catage.csv"), check.names = FALSE)
-C <- C[C$Year %in% yrs,]
-C <- colMeans(C[-1])
+C <- read.csv(paste0(path, "catage.csv"), check.names = FALSE)
+C <- C[C$Year %in% yrs, ages]
+C <- colMeans(C)
 Cw <- C * w
 
-Fmort <- read.csv(paste0(url, "fmat.csv"), check.names = FALSE)
+Fmort <- read.csv(paste0(path, "fatage.csv"), check.names = FALSE)
 Fmort <- Fmort[Fmort$Year %in% yrs,]
 Fmort <- colMeans(Fmort[-1])
 S <- Fmort / max(Fmort)

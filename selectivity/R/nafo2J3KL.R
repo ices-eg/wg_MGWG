@@ -1,39 +1,38 @@
 source("functions/cohortBiomass.R")
 
-path <- "../data/gulf_of_maine/"
+path <- "../data/nafo2J3KL/"
 
-yrs <- 2002:2011
-ages <- as.character(1:8)
+yrs <- 2006:2015
+ages <- as.character(2:14)
 
 ## 1  Cohort biomass
 
 w <- read.csv(paste0(path,"wcatch.csv"), check.names=FALSE)
 w <- w[w$Year %in% yrs,]
-w <- colMeans(w[ages])
+w <- colMeans(w[ages], na.rm = TRUE)
 
 M <- 0.2
 
 N <- read.csv(paste0(path,"natage.csv"), check.names=FALSE)
-Ninit <- N$"1"[N$Year %in% yrs]
-Ninit <- mean(Ninit)
+Ninit <- N$"2"[N$Year %in% yrs]
+Ninit <-  mean(as.integer(Ninit))
 
 B <- cohortBiomass(Ninit, w, M)
 BPR <- cohortBiomass(exp(M+M), w, M)
 
 ## 2  Catch and selectivity
 
-
-## C <- read.csv(paste0(path,"catage.csv"), check.names=FALSE)
-## C <- C[C$Year %in% yrs, ages]
-## C <- colMeans(C)
-## Cw <- C * w
+C <- read.csv(paste0(path,"catage.csv"), check.names=FALSE)
+C <- C[C$Year %in% yrs, ages]
+C <- colMeans(C)
+Cw <- C * w
 
 Fmort <- read.csv(paste0(path,"fatage.csv"), check.names=FALSE)
 Fmort <- Fmort[Fmort$Year %in% yrs,]
-Fmort <- colMeans(Fmort[ages])
+Fmort <- colMeans(Fmort[-1])
 S <- Fmort / max(Fmort)
 
-pdf("gulf_of_maine.pdf", 12, 6)  # 4, 12
+pdf("nafo2J3KL.pdf", 12, 6)  # 4, 12
 par(mfrow=c(1,2))           # 4, 1
 ## barplot(C, xlab="Age", ylab="Catch (millions)", main="Average catch in numbers")
 ## barplot(Cw, xlab="Age", ylab="Catch (kt)", main="Average catch in weight")

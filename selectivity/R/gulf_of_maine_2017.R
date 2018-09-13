@@ -1,8 +1,8 @@
 source("functions/cohortBiomass.R")
 
-path <- "../data/gulf_of_maine/"
+path <- "../data/gulf_of_maine_2017/"
 
-yrs <- 2002:2011
+yrs <- 2007:2016
 ages <- as.character(1:8)
 
 ## 1  Cohort biomass
@@ -23,17 +23,17 @@ BPR <- cohortBiomass(exp(M+M), w, M)
 ## 2  Catch and selectivity
 
 
-## C <- read.csv(paste0(path,"catage.csv"), check.names=FALSE)
-## C <- C[C$Year %in% yrs, ages]
-## C <- colMeans(C)
-## Cw <- C * w
+C <- read.csv(paste0(path,"catage.csv"), check.names=FALSE)
+C <- C[C$Year %in% yrs, ages]
+C <- colMeans(C)
+Cw <- C * w
 
 Fmort <- read.csv(paste0(path,"fatage.csv"), check.names=FALSE)
 Fmort <- Fmort[Fmort$Year %in% yrs,]
 Fmort <- colMeans(Fmort[ages])
 S <- Fmort / max(Fmort)
 
-pdf("gulf_of_maine.pdf", 12, 6)  # 4, 12
+pdf("gulf_of_maine_2017.pdf", 12, 6)  # 4, 12
 par(mfrow=c(1,2))           # 4, 1
 ## barplot(C, xlab="Age", ylab="Catch (millions)", main="Average catch in numbers")
 ## barplot(Cw, xlab="Age", ylab="Catch (kt)", main="Average catch in weight")
