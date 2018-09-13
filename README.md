@@ -5,6 +5,55 @@ listing research topics<br>
 \- See [Sharepoint](http://www.ices.dk/community/groups/Pages/MGWG.aspx) site
 for overall objectives, latest report, etc.
 
+## Vacancy for a co-chair
+
+We are seeking applications for the role of co-chair of the ICES Methods WG.
+
+​The responsibilities of the co-chair will be to coordinate, guide, and support
+the working group to reach its objectives. See
+http://www.ices.dk/community/groups/Pages/MGWG.aspx.
+
+You will join a dynamic and collaborative international team of scientists, who
+are committed to providing a welcoming, efficient and rewarding working
+environment, and advancing the development of stock assessment methods.
+
+**Main responsibilities**
+
+The co-chair will initiate and maintain communication between WG members,
+prepare and steer annual meetings, mentor new participants, compile and edit WG
+report, assist with project management. In short, support WG members in every
+way possible in their endeavor to publish valuable contributions in the field of
+stock assessment methods.
+
+**Qualifications and experience**
+
+We seek a co-chair who is motivated, organised, collaborative and flexible.
+Applicants are expected to have:
+
+- Strong background in stock assessment methods.
+
+- Exceptional writing and presentation skills, computer literacy and attention
+  to detail.
+
+- Experience participating in international working groups that have succeeded
+  in publishing group-authored papers in scientific journals.
+
+- Ability to travel internationally 1-2 times per year, to attend the ICES
+  Methods WG meeting and the ICES WGCHAIRS meeting.
+
+**Terms of appointment**
+
+The co-chair will be appointed following an election by the working group
+members. It is a 3-year term, which can be followed by one other 3-year term.
+
+Experience as a chair of an international working group of scientists is
+considered a part of the portfolio as a senior scientist and academic, it
+invites networking with scientists worldwide and gives increased visibility
+among peers. Also, for the right person, the co-chairing task is enjoyable in
+itself.
+
+***
+
 ## Next meeting
 
 Tentative date for the next ICES Methods WG meeting:
