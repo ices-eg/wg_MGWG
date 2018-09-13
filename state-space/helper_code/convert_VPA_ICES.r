@@ -6,114 +6,114 @@
 ## rm(list=ls())
 ## graphics.off()
 
-write.cn <- function(ices.dir, ices.base, start.yr, end.yr, nages, CAA, startage=1){
+write.cn <- function(ices.dir, ices.base, start.yr, end.yr, nages, CAA, minage=1){
   file_name <- paste0(ices.dir, ices.base, "_cn.dat")
   cat("Catch in Numbers (thousands)\n", file=file_name, append=FALSE)
   cat("1 2\n", file=file_name, append=TRUE)  ### need to figure out what this row does!!!
   cat(paste(start.yr, end.yr, "\n"), file=file_name, append=TRUE)
-  cat(paste(startage, startage+nages-1, "\n"), file=file_name, append=TRUE)
+  cat(paste(minage, minage+nages-1, "\n"), file=file_name, append=TRUE)
   cat("1\n", file=file_name, append=TRUE)
   write.table(CAA, col=FALSE, row=FALSE, quote=TRUE, file=file_name, append=TRUE)
   return()
 }
 
-write.cw <- function(ices.dir, ices.base, start.yr, end.yr, nages, WAA, startage=1){
+write.cw <- function(ices.dir, ices.base, start.yr, end.yr, nages, WAA, minage=1){
   file_name <- paste0(ices.dir, ices.base, "_cw.dat")
   cat("Mean Weight in Catch (kilograms)\n", file=file_name, append=FALSE)
   cat("1 3\n", file=file_name, append=TRUE)  ### need to figure out what this row does!!!
   cat(paste(start.yr, end.yr, "\n"), file=file_name, append=TRUE)
-  cat(paste(startage, startage+nages-1, "\n"), file=file_name, append=TRUE)
+  cat(paste(minage, minage+nages-1, "\n"), file=file_name, append=TRUE)
   cat("1\n", file=file_name, append=TRUE)
   write.table(WAA, col=FALSE, row=FALSE, quote=TRUE, file=file_name, append=TRUE)
   return()
 }
 
-write.dw <- function(ices.dir, ices.base, start.yr, end.yr, nages, WAA, startage=1){
+write.dw <- function(ices.dir, ices.base, start.yr, end.yr, nages, WAA, minage=1){
   file_name <- paste0(ices.dir, ices.base, "_dw.dat")
   cat("Mean Weight in Catch (kilograms)\n", file=file_name, append=FALSE)
   cat("1 3\n", file=file_name, append=TRUE)  ### need to figure out what this row does!!!
   cat(paste(start.yr, end.yr, "\n"), file=file_name, append=TRUE)
-  cat(paste(startage, startage+nages-1, "\n"), file=file_name, append=TRUE)
+  cat(paste(minage, minage+nages-1, "\n"), file=file_name, append=TRUE)
   cat("1\n", file=file_name, append=TRUE)
   write.table(WAA, col=FALSE, row=FALSE, quote=TRUE, file=file_name, append=TRUE)
   return()
 }
 
-write.lf <- function(ices.dir, ices.base, start.yr, end.yr, nages, startage=1){
+write.lf <- function(ices.dir, ices.base, start.yr, end.yr, nages, minage=1){
   lf <- matrix(1, nrow=(end.yr - start.yr + 1), ncol=nages)
   file_name <- paste0(ices.dir, ices.base, "_lf.dat")
   cat("Proportion of Catch that is Landed\n", file=file_name, append=FALSE)
   cat("1 1\n", file=file_name, append=TRUE)  ### need to figure out what this row does!!!
   cat(paste(start.yr, end.yr, "\n"), file=file_name, append=TRUE)
-  cat(paste(startage, startage+nages-1, "\n"), file=file_name, append=TRUE)
+  cat(paste(minage, minage+nages-1, "\n"), file=file_name, append=TRUE)
   cat("1\n", file=file_name, append=TRUE)
   write.table(lf, col=FALSE, row=FALSE, quote=TRUE, file=file_name, append=TRUE)
   return()
 }
 
-write.lw <- function(ices.dir, ices.base, start.yr, end.yr, nages, WAA, startage=1){
+write.lw <- function(ices.dir, ices.base, start.yr, end.yr, nages, WAA, minage=1){
   file_name <- paste0(ices.dir, ices.base, "_lw.dat")
   cat("Mean Weight in Catch (kilograms)\n", file=file_name, append=FALSE)
   cat("1 3\n", file=file_name, append=TRUE)  ### need to figure out what this row does!!!
   cat(paste(start.yr, end.yr, "\n"), file=file_name, append=TRUE)
-  cat(paste(startage, startage+nages-1, "\n"), file=file_name, append=TRUE)
+  cat(paste(minage, minage+nages-1, "\n"), file=file_name, append=TRUE)
   cat("1\n", file=file_name, append=TRUE)
   write.table(WAA, col=FALSE, row=FALSE, quote=TRUE, file=file_name, append=TRUE)
   return()
 }
 
-write.mo <- function(ices.dir, ices.base, start.yr, end.yr, nages, maturity, startage=1){
+write.mo <- function(ices.dir, ices.base, start.yr, end.yr, nages, maturity, minage=1){
   file_name <- paste0(ices.dir, ices.base, "_mo.dat")
   cat("Proportion Mature at Year Start\n", file=file_name, append=FALSE)
   cat("1 6\n", file=file_name, append=TRUE)  ### need to figure out what this row does!!!
   cat(paste(start.yr, end.yr, "\n"), file=file_name, append=TRUE)
-  cat(paste(startage, startage+nages-1, "\n"), file=file_name, append=TRUE)
+  cat(paste(minage, minage+nages-1, "\n"), file=file_name, append=TRUE)
   cat("1\n", file=file_name, append=TRUE)
   write.table(maturity, col=FALSE, row=FALSE, quote=TRUE, file=file_name, append=TRUE)
   return()
 }
 
-write.nm <- function(ices.dir, ices.base, start.yr, end.yr, nages, M, startage=1){
+write.nm <- function(ices.dir, ices.base, start.yr, end.yr, nages, M, minage=1){
   file_name <- paste0(ices.dir, ices.base, "_nm.dat")
   cat("Natural Mortality\n", file=file_name, append=FALSE)
   cat("1 5\n", file=file_name, append=TRUE)  ### need to figure out what this row does!!!
   cat(paste(start.yr, end.yr, "\n"), file=file_name, append=TRUE)
-  cat(paste(startage, startage+nages-1, "\n"), file=file_name, append=TRUE)
+  cat(paste(minage, minage+nages-1, "\n"), file=file_name, append=TRUE)
   cat("1\n", file=file_name, append=TRUE)
   write.table(M, col=FALSE, row=FALSE, quote=TRUE, file=file_name, append=TRUE)
   return()
 }
 
-write.pf <- function(ices.dir, ices.base, start.yr, end.yr, nages, pf, startage=1){
+write.pf <- function(ices.dir, ices.base, start.yr, end.yr, nages, pf, minage=1){
   pf.tab <- matrix(pf, nrow=(end.yr - start.yr + 1), ncol=nages)
   file_name <- paste0(ices.dir, ices.base, "_pf.dat")
   cat("Proportion of F before Spawning\n", file=file_name, append=FALSE)
   cat("1 7\n", file=file_name, append=TRUE)  ### need to figure out what this row does!!!
   cat(paste(start.yr, end.yr, "\n"), file=file_name, append=TRUE)
-  cat(paste(startage, startage+nages-1, "\n"), file=file_name, append=TRUE)
+  cat(paste(minage, minage+nages-1, "\n"), file=file_name, append=TRUE)
   cat("1\n", file=file_name, append=TRUE)
   write.table(pf.tab, col=FALSE, row=FALSE, quote=TRUE, file=file_name, append=TRUE)
   return()
 }
 
-write.pm <- function(ices.dir, ices.base, start.yr, end.yr, nages, pm, startage=1){
+write.pm <- function(ices.dir, ices.base, start.yr, end.yr, nages, pm, minage=1){
   pm.tab <- matrix(pm, nrow=(end.yr - start.yr + 1), ncol=nages)
   file_name <- paste0(ices.dir, ices.base, "_pm.dat")
   cat("Proportion of M before Spawning\n", file=file_name, append=FALSE)
   cat("1 8\n", file=file_name, append=TRUE)  ### need to figure out what this row does!!!
   cat(paste(start.yr, end.yr, "\n"), file=file_name, append=TRUE)
-  cat(paste(startage, startage+nages-1, "\n"), file=file_name, append=TRUE)
+  cat(paste(minage, minage+nages-1, "\n"), file=file_name, append=TRUE)
   cat("1\n", file=file_name, append=TRUE)
   write.table(pm.tab, col=FALSE, row=FALSE, quote=TRUE, file=file_name, append=TRUE)
   return()
 }
 
-write.sw <- function(ices.dir, ices.base, start.yr, end.yr, nages, WAA, startage=1){
+write.sw <- function(ices.dir, ices.base, start.yr, end.yr, nages, WAA, minage=1){
   file_name <- paste0(ices.dir, ices.base, "_sw.dat")
   cat("Mean Weight in Stock (kilograms)\n", file=file_name, append=FALSE)
   cat("1 4\n", file=file_name, append=TRUE)  ### need to figure out what this row does!!!
   cat(paste(start.yr, end.yr, "\n"), file=file_name, append=TRUE)
-  cat(paste(startage, startage+nages-1, "\n"), file=file_name, append=TRUE)
+  cat(paste(minage, minage+nages-1, "\n"), file=file_name, append=TRUE)
   cat("1\n", file=file_name, append=TRUE)
   write.table(WAA, col=FALSE, row=FALSE, quote=TRUE, file=file_name, append=TRUE)
   return()

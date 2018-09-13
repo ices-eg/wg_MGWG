@@ -19,6 +19,7 @@ vpa <- dget(paste0(vpa.dir,vpa.file))
 
 start.yr <- vpa$genparms$minyear
 end.yr <- vpa$genparms$maxyear
+minage <- vpa$genparms$minage
 nages <- vpa$genparms$nages
 
 ## Have to figure this out for each stock
@@ -27,7 +28,6 @@ ind.mats.all <- vpa$surveyobs
 ind.mats.all <- ind.mats.all[-1,]
 rownames(ind.mats.all) <- as.integer(rownames(ind.mats.all)) - 1
 ## Survey offset done
-startage <- 3  # first age in catch-at-age data
 ind.mats <- list()
 ind.mats$n <- 1
 ind.mats$names <- "Acoustic"
@@ -48,17 +48,17 @@ for (i in 1:ind.mats$n){
   colnames(ind.mats$ob[[i]]) <- seq(ind.mats$start.age[i], ind.mats$end.age[i])
 }
 
-write.cn(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchnumbers, startage)
-write.cw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchwt, startage)
-write.dw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchwt, startage)
-write.lf(ices.dir, ices.base, start.yr, end.yr, nages, startage)
-write.lw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchwt, startage)
-write.mo(ices.dir, ices.base, start.yr, end.yr, nages, vpa$maturity, startage)
-write.nm(ices.dir, ices.base, start.yr, end.yr, nages, vpa$natmort, startage)
-write.pf(ices.dir, ices.base, start.yr, end.yr, nages, vpa$fspawn, startage)
-write.pm(ices.dir, ices.base, start.yr, end.yr, nages, vpa$mspawn, startage)
+write.cn(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchnumbers, minage)
+write.cw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchwt, minage)
+write.dw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchwt, minage)
+write.lf(ices.dir, ices.base, start.yr, end.yr, nages, minage)
+write.lw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$catchwt, minage)
+write.mo(ices.dir, ices.base, start.yr, end.yr, nages, vpa$maturity, minage)
+write.nm(ices.dir, ices.base, start.yr, end.yr, nages, vpa$natmort, minage)
+write.pf(ices.dir, ices.base, start.yr, end.yr, nages, vpa$fspawn, minage)
+write.pm(ices.dir, ices.base, start.yr, end.yr, nages, vpa$mspawn, minage)
 write.survey(ices.dir, ices.base, start.yr, end.yr, nages, ind.mats)
-write.sw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$spstockwt, startage)
+write.sw(ices.dir, ices.base, start.yr, end.yr, nages, vpa$spstockwt, minage)
 
 from <- paste0(ices.base, dir(ices.base))  # single slash
 to <- sub("/_", "/", from)
