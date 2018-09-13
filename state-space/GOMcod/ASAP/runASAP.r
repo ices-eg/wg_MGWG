@@ -15,6 +15,8 @@ model.id <- "GOMCOD_"
 # convert Lowestoft input files to vanilla ASAP
 ICES2ASAP(user.wd, user.od, model.id)
 
+# remember to change Freport age range
+
 # externally run ASAP in different directory
 #  copy ASAP_<model.id>.rdat file into user.od directory
 
@@ -25,6 +27,9 @@ ICES2ASAP(user.wd, user.od, model.id)
 
 # externally modify ASAP file to drop recent 3 years of index data and run in different directory
 #  copy ASAP_<model.id>DROP3.rdat file into user.od directory
+
+# remember to change working directory back to MGWG
+setwd("C:\\Users\\chris.legault\\Desktop\\qqq\\MGWG")
 
 # create Mohn.txt
 mohns.rho <- read.csv(paste0(user.od,"Retro.rho.values_ASAP_",model.id,"RETRO_000.csv"), header = TRUE)
