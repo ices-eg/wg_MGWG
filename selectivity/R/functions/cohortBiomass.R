@@ -19,15 +19,3 @@ cohortBiomass <- function(Ninit, w, M, Fvec = 0)
 ## M <- 0.2
 ## B <- cohortBiomass(Ninit, w, M)
 ## barplot(B)
-
-## For later consideration
-## Fsel <- c(0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1)
-## Ftime <- 0
-
-## Fcalc <- function(Fsel,Ftime){
-##   c(Fsel%o%Ftime )
-## }
-
-## Fm <- Fcalc(Fsel, Ftime)
-## Fm
-
