@@ -30,8 +30,9 @@ wmature.csv	     |   kg  | Table A.50 | January	1/spawning	stock	weights-at-age 
 Gulf of Maine 2017
 -------------
 Data Source | https://www.nefsc.noaa.gov/saw/sasi/uploads/GoM_cod_2017_update_supplemental_information_20170817.pdf |
-2017 Assessment Update Report Supplemental Information |
 -----------|-----------------------------------------------------------------------------------------------------------------------|
+2017 Assessment Update Report Supplemental Information |
+
 file         | units | source table  | table info                          |
 -------------|-------|---------------|------------------------------------|
 wcatch.csv   | kg    | Table 22      | Mean weights-at-age (kg) of the total catch  |
