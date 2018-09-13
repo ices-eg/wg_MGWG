@@ -1,11 +1,10 @@
-stock,start_age,end_age,source,
-faroes,3,7,Table 4.6.4,
+stock,start_age,end_age,Table,Source
+faroes,3,7,Table 4.6.4,ICES CM 2017/ACOM:08 
 iceland,,,,
-North Sea Cod,2,4,Table 4.8,"http://ices.dk/sites/pub/Publication%20Reports/Expert%20Group%20Report/acom/2017/WGNSSK/06%20WGNSSK%20Report%20-%20Section%2004%20Cod%20in%204,%207d%20and%2020.pdf"
+North Sea Cod,2,4,Table 4.8,ICES CM 2017/ACOM:21 
 NAFO 2J3KL,,,,
 NEArctic Cod,5,10,Table 3.15,ICES CM 2018/ACOM:06 
 Gulf of Maine,,,,
 Gulf of Maine 2017,,,,
 Georges Bank,,,,
 Western Baltic,,,,
-Faroe Island Plateau,3,7,p58,ICES CM 2017/ACOM:08 
