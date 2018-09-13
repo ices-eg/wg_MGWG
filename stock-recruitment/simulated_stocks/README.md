@@ -8,7 +8,7 @@
 - Mean
 - Hockey stick
 
-![]("png/srm.png")
+![](png/srm.png)
 
 ## Recruitment deviances
 
@@ -16,7 +16,7 @@
 - Lognormal(SD=0.4)
 - Lognormal(SD=0.8)
 
-![]("png/devs.png")
+![](png/devs.png)
 
 ## Population trajectories
 
@@ -24,4 +24,4 @@
 - High F
 - Low F
 
-![]("png/traj.png")
+![](png/traj.png)
