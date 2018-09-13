@@ -304,9 +304,9 @@ write( '# Index data matrices (n.ind.avail.*nyears)' , file=out.file,append=T)  
   for ( kk in 1:length(ind.use))  {
      if (ind.use[kk]==1) {
 write( paste0('# Index   ', survey.names[kk]) , file=out.file,append=T)   #, ncol=(nyears))
-        tmp.s <- surveys[[kk]]
-        ind.mat <- get.index.mat(tmp.s, ind.cv, ind.neff, first.year, nyears, asap.nages)
-write(t(ind.mat), file=out.file,append=T, ncol=(asap.nages + 4) )
+        tmp.s <- ind.mat[[kk]]
+        ind.mat2 <- get.index.mat(tmp.s, ind.cv, ind.neff, first.year, nyears, asap.nages)
+write(t(ind.mat2), file=out.file,append=T, ncol=(asap.nages + 4) )
         } # end ind.use test
   } #end kk loop
 
