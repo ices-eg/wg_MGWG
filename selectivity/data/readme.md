@@ -61,6 +61,7 @@ Western Baltic
 Data Source | http://www.ices.dk/sites/pub/Publication%20Reports/Expert%20Group%20Report/acom/2018/WGBFAS/01%20WGBFAS%20Report%202018.pdf |
 -----------|-----------------------------------------------------------------------------------------------------------------------|
 ICES WGBFAS REPORT 2018 ICES ADVISORY COMMITTEE ICES CM2018/ACOM:11 |
+
 file         | units| source table  | table info                        |
 -------------|------|---------------|-----------------------------------|
 wcatch.csv   | kg   | Table 2.3.17  | Mean weight at age in  catch      |
