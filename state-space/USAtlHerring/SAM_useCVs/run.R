@@ -47,26 +47,31 @@ dat <- setup.sam.data(surveys=surveys,
 
 conf <- loadConf(dat,"../SAM/model.cfg")
 
+if(!file.exists("model.cfg")){
+  saveConf(conf, file="model.cfg")
+}
+
 par <- defpar(dat,conf)
 fit <- sam.fit(dat,conf,par)
 
 ## Repeat without weights
-surveys <- read.ices(paste0(prefix,"survey.dat"))
-dat <- setup.sam.data(surveys=surveys,
-                      residual.fleet=cn, 
-                      prop.mature=mo, 
-                      stock.mean.weight=sw, 
-                      catch.mean.weight=cw, 
-                      dis.mean.weight=dw, 
-                      land.mean.weight=lw,
-                      prop.f=pf, 
-                      prop.m=pm, 
-                      natural.mortality=nm, 
-                      land.frac=lf)
-fit2 <- sam.fit(dat,conf,par)
-
-plot(c(fit2,weighted=fit))
-
+if(FALSE){
+    surveys <- read.ices(paste0(prefix,"survey.dat"))
+    dat <- setup.sam.data(surveys=surveys,
+                          residual.fleet=cn, 
+                          prop.mature=mo, 
+                          stock.mean.weight=sw, 
+                          catch.mean.weight=cw, 
+                          dis.mean.weight=dw, 
+                          land.mean.weight=lw,
+                          prop.f=pf, 
+                          prop.m=pm, 
+                          natural.mortality=nm, 
+                          land.frac=lf)
+    fit2 <- sam.fit(dat,conf,par)
+    
+    plot(c(fit2,weighted=fit))
+}
 
 RES <- residuals(fit)
 RESP <- procres(fit)
