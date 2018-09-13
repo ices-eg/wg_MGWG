@@ -671,12 +671,12 @@ return(tt)
 #---------------------------------------------------------------------
  get.survey.ages=function (x)    #func to grab survey ages from ICES surveys object
 {
-n.surv <- length(surveys)
+n.surv <- length(x)
 aa1 <- rep(NA, n.surv)
 aa2 <- rep(NA, n.surv)
 for (i in 1:n.surv) {
-    aa1[i] <- min(colnames(surveys[[i]]))
-    aa2[i] <- max(colnames(surveys[[i]]))
+    aa1[i] <- min(colnames(x[[i]]))
+    aa2[i] <- max(colnames(x[[i]]))
 }
 
 aa<- rbind(as.numeric(aa1), as.numeric(aa2) )
