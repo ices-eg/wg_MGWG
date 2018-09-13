@@ -39,15 +39,16 @@ wcatch.csv   | kg    | Table 22      | Mean weights-at-age (kg) of the total cat
 wstock.csv   | kg    | Table 23      | January 1/spawning stock weights-at-age     |
 catage.csv   | 000s  | Table 21      | catch-at-age individuals converted to 000s  |
 maturity.csv | Proportion |          |                             |
-natmort      |       | request       | mramp or m0.2?              |
-fatage       |       | Table 33 or 34 depending on mramp or m0.2 | |
-natage       |       | Table 35 or 36 depending on mramp or m0.2 | |
+natmort.csv  |  M    | 0.2       |               |
+fatage       |  F    | Table 33  |  Gulf of Maine Atlantic cod fishing mortality-at-age  M = 0.2 |
+natage       |  000s | Table 35  |  January 1 numbers-at-age M = 0.2 model |
 
 Georges Bank
 -------------
 Data Source | https://www.nefsc.noaa.gov/publications/crd/crd1205/partb.pdf |
------------|-----------------------------------------------------------------------------------------------------------------------|
+-----------|----------------------------------------------------------------|
 B. Stock Assessment of Georges Bank Atlantic Cod (Gadus morhua) for 2012 SAW 55 |
+
 file         | units| source table  | table info                         |
 -------------|------|---------------|------------------------------------|
 wcatch       | kg	  | Table B12     | Catch mean weight at age           |
