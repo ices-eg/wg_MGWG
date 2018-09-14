@@ -108,12 +108,14 @@ Time     | Milestone
 * [CAPAM workshop report](https://swfsc.noaa.gov/publications/CR/2013/2013Crone.pdf)
 * [Francis 2017](http://www.sciencedirect.com/science/article/pii/S0165783616301953)
 * [Froese et al. 2008](http://www.sciencedirect.com/science/article/pii/S016578360800043X)
-* [Garcia et al. 2012](http://science.sciencemag.org/content/335/6072/1045) argues balanced harvest
+* [Garcia et al. 2012](http://science.sciencemag.org/content/335/6072/1045)
+  argues balanced harvest
 * [Hixon et al. 2014](https://academic.oup.com/icesjms/article/71/8/2171/748104)
   argues to protect the largest (especially female) fish
 * [Jorgensen et al. 2009](http://archimer.ifremer.fr/doc/00000/6867/)
 * [Kindsvater et al. 2017](onlinelibrary.wiley.com/doi/10.1111/faf.12208/abstract)
-* [Law et al. 2012](https://academic.oup.com/icesjms/article/69/4/602/634795) argues balanced harvest
+* [Law et al. 2012](https://academic.oup.com/icesjms/article/69/4/602/634795)
+  argues balanced harvest
 * [Matsumura et al. 2011](https://link.springer.com/article/10.1007/s10682-010-9444-8)
 * [Prellezo et al. 2017](http://scientiamarina.revistas.csic.es/index.php/scientiamarina/article/view/1722)
 * [Stewart 2017](www.sciencedirect.com/science/article/pii/S0165783616302077)
@@ -124,11 +126,10 @@ Time     | Milestone
   suggests that this traditional calculation of MSY is very restrictive in that
   it ignores the higher MSYs that can be extracted by shifting selectivity
   towards older/larger fish."
-* [STECF Technical measures report 2015]
-  (https://stecf.jrc.ec.europa.eu/documents/43805/935868/STECF+15-05+-+Technical+Measures+part+III.pdf)
-  Page 47: Trade-offs between selectivity and F for hake. "Increasing
-  size/age-at-selection allows greater exploitation rates and greater yields to
-  be extracted at lower levels of stock depletion."
+* [STECF 2015](https://stecf.jrc.ec.europa.eu/documents/43805/935868/STECF+15-05+-+Technical+Measures+part+III.pdf)
+  Technical measures report. Page 47: Trade-offs between selectivity and F for
+  hake. "Increasing size/age-at-selection allows greater exploitation rates and
+  greater yields to be extracted at lower levels of stock depletion."
 * [Vasilakopoulos et al. 2014](https://www.cell.com/current-biology/abstract/S0960-9822(14)00671-X)
   "an optimal exploitation regime is more than a single value of F applied at an
   optimal selectivity level. Rather, there is a species-specific continuum of
