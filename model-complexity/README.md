@@ -16,6 +16,7 @@ Who would like to lead, what will coauthors do?   |
 
 ## Outline
 •	The objective of this project shifted during the meeting to focus on model evaluation/model selection metrics and their relative performance in helping to select a model that corresponds to the true level of complexity AND develop “good” catch recommendations.
+
 •	The project will involve
 1.	3 operating models: low, medium, and high levels of complexity
 2.	3 estimation model classes matching the operating model complexity
