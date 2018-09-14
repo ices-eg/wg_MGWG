@@ -52,7 +52,7 @@ The co-chair will be appointed following an election by the working group
 members. It is a 3-year term, which can be followed by one other 3-year term.
 
 Experience as a chair of an international working group of scientists is
-considered a part of the professional portfolio as a senior scientist and
+considered a part of the professional portfolio as a senior scientist and in
 academia, it invites networking with scientists worldwide and gives increased
 visibility among peers. Also, for the right person, the co-chairing task is
 enjoyable in itself.
