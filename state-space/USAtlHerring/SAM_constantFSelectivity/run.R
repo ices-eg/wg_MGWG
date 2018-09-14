@@ -1,7 +1,7 @@
 library(stockassessment)
-source("../../helper_code/sampred.R") # function to predict 
+source("../../helper_code/sampred.R") # function to predict
 
-prefix <- "../USAtHERRING_" 
+prefix <- "../USAtHERRING_"
 
 cn <- read.ices(paste0(prefix,"cn.dat"))
 cw <- read.ices(paste0(prefix,"cw.dat"))
@@ -16,25 +16,29 @@ lf = pf/pf #dw and lw not given
 surveys <- read.ices(paste0(prefix,"survey.dat"))
 
 dat <- setup.sam.data(surveys=surveys,
-                      residual.fleet=cn, 
-                      prop.mature=mo, 
-                      stock.mean.weight=sw, 
-                      catch.mean.weight=cw, 
-                     dis.mean.weight=dw, 
+                      residual.fleet=cn,
+                      prop.mature=mo,
+                      stock.mean.weight=sw,
+                      catch.mean.weight=cw,
+                     dis.mean.weight=dw,
                      land.mean.weight=lw,
-                      prop.f=pf, 
-                      prop.m=pm, 
-                      natural.mortality=nm, 
+                      prop.f=pf,
+                      prop.m=pm,
+                      natural.mortality=nm,
                      land.frac=lf
 )
+conf <- loadConf(dat,"../SAM/model.cfg")
 
 if(!file.exists("model.cfg")){
-  saveConf(defcon(dat), file="model.cfg")
-}    
-conf <- loadConf(dat,"model.cfg")
+  saveConf(conf, file="model.cfg")
+}
 
 par <- defpar(dat,conf)
-fit <- sam.fit(dat,conf,par)
+
+rhoF = 0.99999
+par$itrans_rho = -log(2/(1+rhoF)-1)/2
+fit <- sam.fit(dat,conf,par, map = list(itrans_rho = as.factor(NA)))
+fselectivityplot(fit, cexAge = 1)
 
 RES <- residuals(fit)
 RESP <- procres(fit)
