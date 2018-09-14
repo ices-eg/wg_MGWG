@@ -66,26 +66,30 @@ Research questions:
 
 ## Tasks
 
-*Who's doing what*
+Cod stock     | Data        | CSB plots | Potential | Historical
+------------- | ----------- | --------- | --------- | ----------
+(R functions) |             | Arni      | Arni      | Cecilia
+------------- | ----------- | --------- | --------- | ----------
+Faroe Plateau | Jacob       | Jacob     |           | Cecilia
+Georges Bank  | Jacob       | Jacob     |           |
+Gulf of Maine | Jacob       | Jacob     |           |
+Iceland       | Arni        | Alejandro |           |
+NE Arctic     | Jacob       | Jacob     |           |
+North Sea     | Arni        | Arni      |           |
+W Baltic      | Cecilia     | Jacob     |           |
 
-Within stock:
+CSB plots show C=catch at age, S=selectivity, and B=biomass of cohort in the
+absence of fishing
 
-Cod stock     | Data        | Analysis
-------------- | ----------- | ---------------
-Iceland       | Arni        | Arni, Alejandro
-North Sea     | Arni        | Arni
-Gulf of Maine | Jacob, Arni | Arni
-Georges Bank  | Arni, Jacob | Jacob
-NEArctic Cod  | Arni, Jacob | Jacob
-...           | ...         | ...
+Potential yield is calculated using the `applyFmax` function, using a variety of
+selectivity curves with different `A50` values
 
-Across stocks: All coauthors
+Historical analysis looks at long-term changes in weights, maturity, and
+selectivity
+
 
 *Milestones*
 
-Time     | Milestone
--------- | --------------------------------------------------
-2016 Dec | Identify stocks, decide who will handle each stock
 
 ## Literature
 
