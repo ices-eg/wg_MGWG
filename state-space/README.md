@@ -10,7 +10,7 @@ Stock | ASAP | SAM | WHAM | a4a sca | Comments
 ------| ---- | --- | ---  | ------- | --------
 North Sea cod (Nscod) |X|X|X|X| Priority
 Gulf of Maine Cod (GOMcod) |X|X|X|X| Priority
-Georges Bank Haddock (GBhaddock) | |X|X|X| 
+Georges Bank Haddock (GBhaddock) |X|X|X|X| 
 Gulf of Maine Haddock (GOMhaddock)  |X|X|X|X| 
 US Pollock |X|X|X|X|
 Southern New England-Mid-Atlantic yellowtail (SNEMAYT) |X|X|X|X| 
