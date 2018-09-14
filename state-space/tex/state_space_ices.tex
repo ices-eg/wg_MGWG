@@ -1,0 +1,224 @@
+
+% LaTeX Report Template - customizing header and footer
+\documentclass[12pt,letterpaper, leqno]{article}
+\usepackage[bottom=1in, top=1in, left=1in, right=1in]{geometry}
+\usepackage{amsmath,rotating}
+\usepackage[scanall]{psfrag}
+\usepackage{setspace}
+\usepackage{bm}
+\usepackage{lineno}
+\usepackage{caption,graphics}
+\usepackage{graphicx}
+\usepackage{lscape}
+\usepackage{natbib}
+\usepackage[nottoc]{tocbibind}
+\usepackage{indentfirst}
+\usepackage{longtable}
+\usepackage{sectsty}
+\usepackage{color}
+\usepackage{fancyhdr}
+\usepackage{xspace}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\bibpunct[, ]{(}{)}{;}{a}{}{,}
+\renewcommand\bibname{References}
+\renewcommand\figurename{Fig.}
+\captionsetup{labelsep=period, singlelinecheck=false}
+%\doublespace
+\def\little{\fontsize{7pt}{7pt}\selectfont}
+\def\Little{\fontsize{10pt}{10pt}\selectfont}
+\special{papersize=8.5in,11in}
+
+\newcommand{\diag}{\text{diag}} 
+\newcommand{\super}[1]{\ensuremath{^{\text{#1}}}}
+\newcommand{\sub}[1]{\ensuremath{_{\text{#1}}}}
+\newcommand{\CP}{\ensuremath{\text{CP}}\xspace} 
+\newcommand{\SSB}{\ensuremath{\text{SSB}}\xspace} 
+
+\begin{document}
+\input{journalshortcuts}
+
+\pagestyle{plain}
+
+\begin{titlepage}\center \large
+
+\vspace{144pt}
+
+Do state-space assessment models perform better than traditional statistical catch-at-age models?
+
+\vspace{144pt}
+
+Timothy J. Miller, Anders Nielsen, Chris Legault, Ernesto Jardim, Olav Nikolai Breivik, Jonathan Deroba, Dan Hennan, Arni Magnusson, Vanessa Trijoulet, %\footnote{Northeast Fisheries Science Center, National Marine Fisheries Service, 166 Water Street, Woods Hole, MA 02543 USA} 
+and ???
+\end{titlepage}
+
+\setcounter{page}{2}
+%\linenumbers
+
+\cfoot{\thepage}
+
+\setcounter{page}{2}
+\def\fourteenbold{\fontseries{b}\fontsize{14pt}{12pt}\selectfont}
+\def\twelvebold{\fontseries{b}\fontsize{12pt}{12pt}\selectfont}
+\def\twelveit{\fontshape{it}\fontseries{m}\fontsize{12pt}{12pt}\selectfont}
+\sectionfont{\fourteenbold}
+\subsectionfont{\twelvebold}
+\subsectionfont{\twelvebold}
+\subsubsectionfont{\twelveit}
+
+\setcounter{footnote}{0}
+
+
+%\section*{Abstract}
+
+%Here we report on fits of a general state-space model that estimates abundance at age for male and female components of the summer flounder stock. Estimates of spawning stock biomass, fishing mortality rates and diagnostics such as catch and index residuals and Mohn's $\rho$ are provided.
+
+\pagebreak
+
+\section*{Introduction}
+
+\section*{Methods}
+
+\subsection*{The WHAM state-space model}
+
+The definitions for probability models describing stochastic changes in abundance at age from one year to another are identical to that given in \citet{milleretal16} and \citet{millerhyun18}. Log-abundance for ages and years greater than 1 are normally distributed conditional on the vector of numbers at age from the previous
+time step,
+
+\vspace{-12pt}
+\begin{equation*}
+\log\left( N_{y,a}\right) | \textbf{\textsl{N}}_{y-1} \sim \text{N}\left[f_a\left(\textbf{\textsl{N}}_{y-1}\right), \sigma_{N,j}^2\right],
+\end{equation*}
+for $y>1$ where $\text{N}(x,y)$ indicates a normal distribution with mean $x$ and variance $y$,
+
+\vspace{-12pt}
+\begin{equation*}
+ f_a\left(\textbf{\textsl{N}}_{y-1}\right) = \left\{ 
+ \begin{array}{cc}
+   g(N_{y-1,1}) & \text{for}\;\;a = 1,\\
+   \log\left(N_{y-1,a-1}e^{-Z_{y-1,a-1}}\right) & \text{for}\;\;1<a<A,\\
+   \log\left(N_{y-1,a-1}e^{-Z_{y-1,a-1}} + N_{y-1,a}e^{-Z_{y-1,a}}\right) & \text{for}\;\;a = A,
+ \end{array}\right.
+\end{equation*}
+$Z_{y,a} = M_{y,a}+ \sum^G_{f=1} F_{f,y,a}$ is the total mortality, and $A$ indicates the terminal age class (i.e., the ``plus group''). We assume two different variance parameters ($\sigma_{N,j}$) for the abundance at age: one for the variance of annual deviations around mean log-recruitment $\mu_s$ and one for inter-annual transitions of abundance at older ages. Define $j = 1,2$ for variance parameters for recruitment and older ages, respectively. Here we do not consider spawning biomass effects on recruitment, but Beverton-Holt and Ricker assumptions are configured options in the general model. We assume recruitment is a white noise process with $g(N_{y-1,1}) = \mu$. We treat the initial numbers at age are treated as fixed effects parameters
+
+Annual fully-selected fishing mortality rates for fleet $f$ were parameterized as (unpenalized) deviations from the previous year,
+
+\vspace{-12pt}
+\begin{equation*}
+ \log\left(F_{f,y+1}\right) = \log\left(F_{f,y}\right) + \delta_{f,y}
+\end{equation*}
+where $y=1,\ldots,T-1$ and $\delta_{f,y}$ are the inter-annual, deviations in log-fully selected fishing mortality. 
+
+To relate population abundance to observed relative abundance indices and corresponding age composition, we estimate a fully-selected catchability $q_{d}$ for each index $d$. and a selectivity
+Then year- and age-specific fishing mortality is parameterized by multiplying age-specific selectivity and annual fishing mortality, $ F_{f,s,y,a} = s_{f,s,y,a} F_{f,y}$, where $s_{f,s,y,a}$ is selectivity at age and sex for fishing fleet $f$. Similarly, we relate population abundance to observed relative abundance indices and corresponding age composition with a fully-selected catchability $q_{d}$ for each index $d$ and an age-specific selectivity $s_{d,a}$. For both fishing fleets and relative abundance indices, we have the same age-based logistic and age-specific parameterization options for selectivity models as the ASAP moodel.
+
+Observed log-aggregate relative abundance indices from survey $d$ are also normally distributed,
+
+\vspace{-12pt}
+\begin{equation*}
+ \log\left(I_{d,y}\right) \sim \text{N}\left[\log\left(\widehat I_{d,y}\right), \sigma^2_{d,y}\right]
+\end{equation*}
+where observation error variances $\sigma^2_{d,y}$ are assumed known. The predicted aggregated relative abundance index is just the sum of the predicted relative abundance index at each age,
+
+\vspace{-12pt}
+\begin{equation*}
+\widehat I_{d,y} = \sum^A_{a=1} \widehat I_{d,y,a}.
+\end{equation*}
+where
+\vspace{-12pt}
+\begin{equation*}
+\widehat I_{d,y,a} = q_d s_{d,a} N_{y,a} e^{- Z_{y,a} \phi_d}, 
+\end{equation*}
+$q_d$ is the fully-selected catchability from survey $d$, $s_{d,a}$ is the selectivity from survey $d$, and $\phi_d$ is the fraction of the year elapsed when survey $d$ occurs. 
+
+Finally, the observed log-aggregate catches by fishing fleet $f$ are also normally distributed,
+
+\vspace{-12pt}
+\begin{equation*}
+\log\left(C_{f,y}\right) \sim \text{N}\left[\log\left(\widehat C_{f,y}\right), \tau^2_{f,y}\right]
+\end{equation*}
+where observation error variances $\tau^2_{f,y}$ are assumed to be known. The predicted catch at age given abundances at age is
+\begin{equation}\label{pred.caa}
+\widehat C_{f,y,a} = \frac{F_{f,y,a}}{Z_{y,a}}\left(1 - e^{-Z_{y,a}}\right) N_{y,a} W_{f,y,a}
+\end{equation}
+where $W_{f,y,a}$ is the weight at age in the catch by fleet $f$. The predicted aggregated annual catch is just the sum over ages
+\begin{equation}\label{pred.catch}
+\widehat C_{f,y} = \sum^A_{a=1} \widehat C_{f,y,a}.
+\end{equation}
+
+We assumed a multinomial distribution for the vector of frequencies at age in survey $d$ in year $y$, 
+
+\vspace{-12pt}
+\begin{equation}\label{multinom.dist}
+\textbf{\textsl{n}}_{d,y} = E_{d,y} \textsl{\textbf{p}}_{d,y} \sim \text{Multinomial}\left(E_{d,y}, \widehat {\textsl{\textbf{p}}} _{d,y}\right)
+\end{equation}
+where $E_{d,y}$ represented the sample size and the age-specific elements of the vector $\widehat {\textsl{\textbf{p}}} _{d,y}$ are
+\vspace{-12pt}
+\begin{equation*}
+  \widehat p_{d,y,a} = \frac{\widehat I_{d,y,a}}{\widehat I_{d,y}}.
+\end{equation*}
+
+Similarly, we assume a multinomial distribution with sample size $E_{f,y}$ for the proportions at age in the catch,
+
+\vspace{-12pt}
+\begin{equation*}
+  \widehat p_{f,y,a} = \frac{\widetilde C_{f,y,a}}{\widetilde C_{f,y}},
+\end{equation*}
+where $\widetilde C_{f,y,a}$ is the predicted number at age (i.e., Eq. \ref{pred.caa} with $W_{f,y,a} = 1$) and $\widetilde C_{f,y}$ is analogous to Eq. \ref{pred.catch}. However, there are options for other distributions for the age composition observations.
+
+
+\subsubsection*{Parameter Estimation}
+
+Abundance at age in the first year ($N_{1,a}$), fully-selected fishing mortality in the first year ($F_{f,1}$), and annual deviations in log-fully-selected fishing mortality ($\delta_{f,y}$) after the first year, mean log-recruitment ($\mu$), index catchability ($q_d$), all selectivity parameters, and process error variances ($\sigma^2_{N,j}$) are fixed effects parameters $\bm{\theta}$ estimated by ML. Abundance at age ($N_{y,a}$) after the first year ($y>1$), are treated as random effects that are integrated out to obtain the marginal likelihood.
+
+We perform ML estimation of the fixed effects parameters with a Laplace approximation of the marginal log-likelihood function \citep{skaugfournier06},
+
+\vspace{-12pt}
+\begin{equation*}
+\int {\cal L}\left(\bm{\theta},\textsl{\textbf{S}} | \textsl{\textbf{D}}\right) d\textsl{\textbf{S}} = {\cal L}\left(\bm{\theta} | \textsl{\textbf{D}}\right),
+\end{equation*}
+where \textsl{\textbf{D}} are all observations, using TMB \citep{kristensenetal16} and R \citep{R17}. Specifically, we used the ``nlminb'' function in R to minimize the negative of the Laplace approximation of the marginal log-likelihood. Estimates of the random state variables are provided by the mode of posterior distributions of $\textsl{\textbf{S}}$, conditioned on $\widehat {\bm{\theta}}$. For a fuller description of variance estimation by the TMB package, see \citet{kristensenetal16}.
+
+
+\section*{Results}
+
+\section*{Discussion}
+
+\clearpage
+
+\bibliographystyle{cjfas2}
+
+\bibliography{state_space_ices}
+
+\clearpage
+
+%Figures
+
+\begin{figure}
+\caption{Estimates for annual total spawning stock biomass from each fitted model.}\label{SSB_compare}
+\begin{center}
+%\includegraphics[width = \textwidth]{SSB_compare.pdf}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\caption{Estimates for annual total recruitment (age 0) from each fitted model.}\label{R_compare}
+\begin{center}
+%\includegraphics[width = \textwidth]{R_compare.pdf}
+\end{center}
+\end{figure}
+
+\clearpage
+
+%Tables
+
+\begin{landscape}
+\begin{table}
+\begin{center}
+\caption{Number of parameters, AIC, and Mohn's $\rho$ for SSB, mean fishing mortality at ages 4+, and recruitment for each model.}\label{model_compare}
+%\input{model_compare.tex}
+\end{center}
+\end{table}
+\end{landscape}
+
+\end{document}

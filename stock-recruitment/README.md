@@ -71,19 +71,19 @@ Proposal: WGMG provide some analyses of this issue, and recommendations on poten
       * Stock-recruit types
         * Beverton-Holt
         * Ricker
-        * None
         * Hockey (not differentiable)
+        * Mean recruitment
       * Number of years
-        * 20
-        * 40
+        * 25
+        * 50
       * variance of log-recruitment
-        * 0.3
-        * 0.6 
-        * 0.9
+        * 0.4
+        * 0.8 
+        * random walk
       * Contrast in population/SSB
-        * Low F
-        * High F
-        * variation in F
+        * Low F: runif(0.2*Fmsy, 0.4*Fmsy)
+        * High F: runif(1.2*Fmsy, 1.4*Fmsy)
+        * rollercoaster F
   * Tasks, who's doing what
   * Milestones, timeline
 * References
@@ -91,4 +91,29 @@ Proposal: WGMG provide some analyses of this issue, and recommendations on poten
 * Appendix
   * Preliminary diagram, table, plots
 
+
 ***
+
+## After Ispra meeting
+
+* We need to identify day of week and frequency for touching base. 
+* Proposed first contact: October 25, 2019 (can send doodle poll if needed)
+* Identify what we will have accomplished by this first call
+* Identify what each person will work on between now and the first call, and overall what each person will contribute
+  * Iago Mosqueira - simulating; uploading simulation iterations
+  * Christoph Konrad - simulating; ...
+  * Colin Millar - simulation design, adding code, a4a runs, fitting SR external, summarizing various fits, ...
+  * Liz Brooks - simulation design, code for output collection, ASAP runs, ...  
+  * Chris Legault - ASAP runs, ...
+  * Casper Berg - ...SAM runs?, ...
+  * Chris Legault - ASAP runs, ...
+  * Craig Marsh - ...
+  * Dvora Hart - CASA runs, ...
+  * Ernesto Jardim - a4a runs, ...
+  * Jon Deroba - SAM runs?, ... 
+  * Noel Cadigan - provide code for SR with ar1 process on parameters (for external fitting)
+  * Tim Miller - WHAM, ...
+  * Vanessa Trijoulet - output summarization, ...
+
+
+

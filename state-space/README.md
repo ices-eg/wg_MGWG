@@ -8,17 +8,17 @@ John and Vanessa currently working on creating a script which standardizes and p
 
 Stock | ASAP | SAM | WHAM | a4a sca | Comments
 ------| ---- | --- | ---  | ------- | --------
-North Sea cod (Nscod) | |X|X|X| Priority
+North Sea cod (Nscod) |X|X|X|X| Priority
 Gulf of Maine Cod (GOMcod) |X|X|X|X| Priority
 Georges Bank Haddock (GBhaddock) | |X|X|X| 
-Gulf of Maine Haddock (GOMhaddock)  | |X|X|X| 
-US Pollock | |X|X|X|
-Southern New England-Mid-Atlantic yellowtail (SNEMAYT) | |X|X|X| 
-Cape Cod-Gulf of Maine yellowtail (CCGOMYT) | |X|X|X| 
-Georges Bank winter flounder | |X|X|X|
-Southern New England-Mid-Atlantic winter flounder (SNEMAwinter) | |X|X|X|
-American Plaice | |X|X|X|
-White Hake | |X|X|X|
+Gulf of Maine Haddock (GOMhaddock)  |X|X|X|X| 
+US Pollock |X|X|X|X|
+Southern New England-Mid-Atlantic yellowtail (SNEMAYT) |X|X|X|X| 
+Cape Cod-Gulf of Maine yellowtail (CCGOMYT) |X|X|X|X| 
+Georges Bank winter flounder |X|X|X|X|
+Southern New England-Mid-Atlantic winter flounder (SNEMAwinter) |X|X|X|X|
+American Plaice |X|X|X|X|
+White Hake |X|X|X|X|
 Icelandic herring (ICEherring) | |X| |X| 
 US Atlantic Herring (USAtlHerring) | |X|X|X|
 
@@ -170,21 +170,21 @@ US Herring | 7-8
 ## After Ispra meeting
 
 We will have a Skype call every third Thursday of the month until next MGWG meeting. We will sort tasks to be completed prior to each meeting. 
-* 18 October 4pm
+* 18 October 10am (EST, UTC-5) 
   * Ernesto J. will provide predicted indices at age with standard errors for terminal three years
   * Chris L. will provide ASAP fit results
   * Vanessa T. will work on plots of results
   * Anders, Casper, Tim, Chris, Ernesto will work on text describing methods for the respective models and their implimentation here.
   * Vanessa T. help drafting Intro?
-* 15 November 4pm
-* 20 December 4pm
-* 17 January 4pm
-* 21 February 4pm
-* 21 March 4pm
-* 18 April 4pm
-* 16 May 4pm
-* 20 June 4pm
-* 18 July 4pm
-* 15 August 4pm
+* 15 November 10am (EST, UTC-5) 
+* 20 December 10am (EST, UTC-5) 
+* 17 January 10am (EST, UTC-5) 
+* 21 February 10am (EST, UTC-5) 
+* 21 March 10am (EST, UTC-5) 
+* 18 April 10am (EST, UTC-5) 
+* 16 May 10am (EST, UTC-5) 
+* 20 June 10am (EST, UTC-5) 
+* 18 July 10am (EST, UTC-5) 
+* 15 August 10am (EST, UTC-5) 
 
 

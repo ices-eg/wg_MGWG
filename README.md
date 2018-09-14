@@ -7,20 +7,90 @@ for overall objectives, latest report, etc.
 
 ***
 
+## Vacancy for a co-chair
+
+We are seeking applications for the role of co-chair of the ICES Methods WG.
+
+The responsibilities of the co-chair will be to coordinate, guide, and support
+the working group to reach its objectives. See
+http://www.ices.dk/community/groups/Pages/MGWG.aspx.
+
+You will join a dynamic and collaborative international team of scientists, who
+are committed to providing a welcoming, efficient and rewarding working
+environment, and advancing the development of stock assessment methods.
+
+**Main responsibilities**
+
+The co-chair will initiate and maintain communication between WG members,
+prepare and steer annual meetings, mentor new participants, compile and edit the
+WG report, and assist with project management. In short, support WG members in
+every way possible in their endeavor to co-author and publish valuable
+contributions in the field of stock assessment methods.
+
+**Qualifications and experience**
+
+We seek a co-chair who is motivated, organised, collaborative and flexible.
+Applicants are expected to have:
+
+- A strong background in stock assessment methods.
+
+- The ability to inspire, delegate tasks, and instill a positive teamwork
+  spirit.
+
+- Exceptional writing and presentation skills, computer literacy and attention
+  to detail.
+
+- Experience participating in international working groups that have
+  successfully published group-authored papers in scientific journals.
+
+- The ability to travel internationally 1-2 times per year, to attend the ICES
+  Methods WG meeting and the ICES WGCHAIRS meeting.
+
+**Terms of appointment**
+
+The co-chair will be appointed following an election by the working group
+members. It is a 3-year term, which can be followed by one other 3-year term.
+
+Experience as a chair of an international working group of scientists is
+considered a part of the professional portfolio as a senior scientist and in
+academia, it invites networking with scientists worldwide and gives increased
+visibility among peers. Also, for the right person, the co-chairing task is
+enjoyable in itself.
+
+The Methods WG will discuss the selection of a co-chair on Friday 14 September
+2019, and a decision will be made soon afterwards.
+
+***
+
+## Next meeting
+
+Tentative date for the next ICES Methods WG meeting:
+
+**23-27 September 2019**
+
+This timing gets us safely past family vacation time, makes it easier for NOAA
+staff to get their travel funded, and enables people to attend related events
+such as the JRC Ensemble Modelling group (26-30 Aug), ICES Annual Science
+Conference (9-12 Sep), AFS Annual Meeting (29 Sep-3 Oct), etc.
+
+Venue TBD.
+
+***
+
 ## Dining in Ispra
 
 - [La Baita](https://www.google.com/maps/place/La+Baita/@45.8123151,8.6115044,16z/data=!4m8!1m2!2m1!1sristorante!3m4!1s0x0:0xc3ccb16370a6a47c!8m2!3d45.8163533!4d8.6118543)
 - [Ristorante San Gottardo](https://www.google.com/maps/place/Ristorante+San+Gottardo/@45.8123151,8.6115044,16z/data=!4m8!1m2!2m1!1sristorante!3m4!1s0x0:0xdc7ea21c7ddc9e43!8m2!3d45.8144792!4d8.6100988)
-- [Caffè Vespucci](https://www.google.com/maps/place/Caff%C3%A8+Vespucci/@45.8120721,8.6096698,17z/data=!4m8!1m2!2m1!1sristorante!3m4!1s0x0:0xdced185cf1319f82!8m2!3d45.8139632!4d8.6074602)
+- [Caffe Vespucci](https://www.google.com/maps/place/Caff%C3%A8+Vespucci/@45.8120721,8.6096698,17z/data=!4m8!1m2!2m1!1sristorante!3m4!1s0x0:0xdced185cf1319f82!8m2!3d45.8139632!4d8.6074602)
 - [Setteduequattro](https://www.google.com/maps/place/SETTEDUEQUATTRO+%7C+Pizza%26Cucina/@45.8123637,8.6145621,17z/data=!4m8!1m2!2m1!1sristorante!3m4!1s0x0:0x786095823c6376b7!8m2!3d45.8116768!4d8.6207237)
 - [Pizzeria Il Capriccio](https://www.google.com/maps/place/Pizzeria+Il+Capriccio/@45.8145797,8.6209942,19z/data=!4m8!1m2!2m1!1sristorante!3m4!1s0x0:0x3aa3182130f04533!8m2!3d45.815165!4d8.6224021)
-- [Roby´s bistrot](https://www.google.com/maps/place/Roby%C2%B4s+bistrot/@45.8141217,8.6118747,18z/data=!4m8!1m2!2m1!1sristorante!3m4!1s0x478677314f9c06db:0x22a6738bd1f63aca!8m2!3d45.8135622!4d8.6116277)
-
+- [Roby's bistrot](https://www.google.com/maps/place/Roby%C2%B4s+bistrot/@45.8141217,8.6118747,18z/data=!4m8!1m2!2m1!1sristorante!3m4!1s0x478677314f9c06db:0x22a6738bd1f63aca!8m2!3d45.8135622!4d8.6116277)
 
 ### Gelateria
 
 - [Il Capriccio](https://www.google.com/maps/place/Il+Capriccio/@45.8156063,8.6099541,19z/data=!4m8!1m2!2m1!1sristorante!3m4!1s0x4786773055897ebf:0xf6a74d89e78badc0!8m2!3d45.8156238!4d8.6100592)
 
+***
 
 ## Meeting agenda (10-14 Sep 2018, Ispra)
 

@@ -4,7 +4,7 @@ datafiles := $(wildcard ../data/*)
 
 all: Mohn.txt
 
-Mohn.txt: $(datafiles) run.R ../SAM/model.cfg ../SAM/pred.R 
+Mohn.txt: $(datafiles) run.R ../SAM/model.cfg  
 	echo 'source("run.R")' | R --slave 
 
 clean: 
