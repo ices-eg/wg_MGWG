@@ -35,6 +35,12 @@
 \newcommand{\CP}{\ensuremath{\text{CP}}\xspace} 
 \newcommand{\SSB}{\ensuremath{\text{SSB}}\xspace} 
 
+\makeatletter
+\def\@xfootnote[#1]{%
+  \protected@xdef\@thefnmark{#1}%
+  \@footnotemark\@footnotetext}
+\makeatother
+
 \begin{document}
 \input{journalshortcuts}
 
@@ -179,6 +185,72 @@ We perform ML estimation of the fixed effects parameters with a Laplace approxim
 \end{equation*}
 where \textsl{\textbf{D}} are all observations, using TMB \citep{kristensenetal16} and R \citep{R17}. Specifically, we used the ``nlminb'' function in R to minimize the negative of the Laplace approximation of the marginal log-likelihood. Estimates of the random state variables are provided by the mode of posterior distributions of $\textsl{\textbf{S}}$, conditioned on $\widehat {\bm{\theta}}$. For a fuller description of variance estimation by the TMB package, see \citet{kristensenetal16}.
 
+
+\subsection*{The SAM state-space assessment model}
+
+The basic state-space assessment model (SAM) is described in \citet{nielsen2014estimation}. The model has been continuously developed and adapted for different stocks (e.g.~to include tagging data and biomass indices). The current implementation, which is available at: https://github.com/fishfollower/SAM, is an R-package based on Template Model Builder (TMB) \citep{kristensenetal16}.
+
+The model is a state--space model. The states $\alpha$ are the log-transformed stock sizes $\log{N_1},\ldots,\log{N_A}$ and fishing mortalities $\log{F_1},\ldots,\log{F_{A}}$ corresponding to total age specific catches. It is often assumed that some age classes have the same fishing mortality. In any given year $y$ the state is the combined vector $\alpha_y$ $=$ $(\log{N_1},\ldots,\log{N_A},$ $ \log{F_1},\ldots,\log{F_{A}})'$. The transition equation describes the distribution of the next years state from a given state in the current year. The following is assumed: 
+ \begin{align*}
+ \alpha_{y}=T(\alpha_{y-1})+\eta_y
+ \end{align*}  
+ The transition function $T$ is where the stock equation and assumptions about stock--recruitment enters the model. The equations are:   
+ \begin{align*}
+ \log N_{1,y}&=SR(\log(N_{,y-1}))&\\
+ \log N_{a,y}&=\log N_{a-1,y-1} - F_{a-1,y-1} - M_{a-1,y-1}\ , \quad &2\leq a < A \\
+ \log N_{A,y}&=\log( N_{A-1,y-1}\exp^{- F_{A-1,y-1} - M_{A-1},y-1} + N_{A,y-1}\exp^{- F_{A,y-1} - M_{A,y-1}})&\\
+ \log F_{a,y}&=\log F_{a,y-1}\ , \quad &1\leq a \leq A 
+ \end{align*}  
+Here $M_{a,y}$ is the age and year specific natural mortality parameter, which is assumed known from outside sources. $F_{a,y}$ is the total fishing mortality. The function `$SR$' is the stock-recruitment relationship assumed (options are: plain random walk on logaritmic scale, Ricker, and Beverton-Holt). 
+
+The process noise $\eta$ is assumed to be Gaussian with zero mean, and separate variance parameters. Typically one for recruitment ($\sigma^2_{N_{a=1}}$), one for survival ($\sigma^2_{N_{a>1}}$), one for fishing mortality at age ($\sigma^2_{F}$), but these can be flexibily configured. The $N$-part of $\eta$ is assumed uncorrelated, and the $F$-part can be assumed correlated according to an AR(1) correlation structure, such that $\mbox{cor}(\Delta\log(F_{a,y}),\Delta\log(F_{\tilde{a},y}))=\rho^{|a-\tilde{a}|}$. 
+
+The observation part of the state--space model describes the distribution of the observations for a given state $\alpha_y$. Here the vector of all observations from a given year $y$ is denoted $x_y$. The elements of $x_y$ are age-specific log-catches $\log C_{a,y}$ and age-specific log-indices from scientific surveys $\log I^{(s)}_{a,y}$.  The combined observation equation is:
+ \begin{align*}
+ x_y=O(\alpha_y)+\varepsilon_y
+ \end{align*}
+ The observation function $O$ consists of the catch equations for total catches and scientific surveys. The measurement noise term $\varepsilon_y$ is assumed to be Gaussian. An expanded view of the observation equation becomes:
+ \begin{align*}
+ \log C_{a,y} &= 
+\log\left(\frac{F_{a,y}}{Z_{a,y}}(1-e^{-Z_{a,y}})N_{a,y}\right)+\varepsilon^{(c)}_{a,y}\\
+ \log I^{(s)}_{a,y} &= 
+ \log\left(Q^{(s)}_a e^{-Z_{a,y}\frac{D^{(s)}}{365}}N_{a,y}\right)+\varepsilon^{(s)}_{a,y}
+\end{align*}   
+Here $Z$ is the total mortality rate $Z_{a,y}=M_{a,y}+F_{a,y}$, $D^{(s)}$ is the number of days into the year where the survey $s$ is conducted, $Q^{(s)}_a$ are model parameters describing catchability coefficients. The variance of $\varepsilon_y$ is setup such that each data source catches, and the four scientific surveys have their own covariance matrix. 
+
+Observation uncertainty is important e.g.~to get the relative weighting of the different information sources correct, so a lot of effort has been invested in getting the optimal options into SAM. In \citet{berg2016accounting} different covariance structures are compared for four ICES stocks. It was found that irregular lattice AR(1) observation correlation structure was optimal for surveys. The covariance structures tested were inspired by a previous study \citep{berg2014evaluation} of the structures obtained from survey calculations. In the paper \citet{albertsen2016choosing} 13 different observational likelihood formulations were evaluated for four ICES stocks. It was found that the multivariate log-normal representation was among the optimal in all four cases.
+
+To describe the options available consider a yearly vector $C_y=(C_{a=1,y},\ldots,C_{a=A,y})$ of age specific observations from a fleet (survey or commercial). Assume first that the $\log(C_y)$ is multivariate Gaussian: 
+\[
+\log(C_y) \sim N(\log(\widehat{C}_y), \Sigma)
+\]   
+where $\Sigma$ is the covariance matrix, and $\hat{C}_y$ is the vector of the usual model predictions. The covariance matrix is specified from a vector of standard deviations $\sigma=(\sigma_1\ldots\sigma_A)$ and a correlation matrix $\rho$ (by $\Sigma_{a\tilde{a}}=\sigma_a\sigma_{\tilde{a}}\rho_{a\tilde{a}}$). Four options are available for the correlation $\rho$: Independent ($\rho=I$), auto-regressive of order 1 ($\rho_{a\tilde{a}}=0.5^{\theta|a-\tilde{a}|}, \ \theta>0$)\footnote[$\star$]{This parametrization is equvivalent to the more common $\phi^{|a-\tilde{a}|}$, where $0<\phi<1$}, irregular auto-regressive of order 1 ($\rho_{a\tilde{a}}=0.5^{|\theta_a-\theta_{\tilde{a}}|}, \ \theta_1=0\leq\theta_2\leq\cdots\leq\theta_A$), and unstructured (parameterized by the Cholesky of $\rho$). The options for covariance structure can be set for each fleet individually. In addition it is also possible to supply external weights for each individual observation. This option can be used in two ways. To set the relative weighting, or to actually set the fixed variance of each individual observation.
+
+\subsubsection*{Likelihood and approximation}
+
+The likelihood function for this is set up by first defining the joint likelihood of both random effects (here collected in the $\alpha_y$ states), and the observations (here collected in the $x_y$ vectors). The joint likelihood is:
+ \begin{align*}
+ L(\theta,\alpha,x)=\prod_{y=2}^Y\{ \phi(\alpha_y-T(\alpha_{y-1}),\Sigma_\eta)\}
+                    \prod_{y=1}^Y\{ \phi(x_y-O(\alpha_{y}),\Sigma_\varepsilon)\}
+ \end{align*}
+ Here $\theta$ is a vector of model parameters. Since the random effects $\alpha$ are not observed inference should be obtain from the marginal likelihood:
+ \begin{align*}
+ L_M(\theta,x)=\int L(\theta,\alpha,x) d\alpha
+ \end{align*}
+ This integral is difficult to calculate directly, so the Laplace  approximation is used. The Laplace approximation is derived by first  approximating the joint log likelihood $\ell(\theta,\alpha,x)$ by a  second order Taylor approximation around the optimum $\hat{\alpha}$  w.r.t.~$\alpha$. The resulting approximated joint log likelihood can  then be integrated by recognizing it as a constant term and a term  where the integral is know as the normalizing constant from a  multivariate Gaussian. The approximation becomes:
+ \begin{align*}
+ \int L(\theta,\alpha,x)d\alpha \approx  \sqrt{\frac{(2\pi)^{n}}{\det(-\ell_{\alpha\alpha}''(\theta,\alpha,x)|_{\alpha=\hat{\alpha}_\theta})}}\exp(\ell(\theta,\hat{\alpha}_\theta,x))
+ \end{align*}
+ Taking the logarithm gives the Laplace approximation of the marginal log likelihood  
+ \begin{align*}
+ \ell_M(\theta,x) = \ell(\theta,\hat{u}_\theta,x)-\frac{1}{2}\log(\det(-\ell_{uu}
+ ''(\theta,u,x)|_{u=\hat{u}_\theta}))+\frac{n}{2}\log(2\pi)
+ \end{align*}
+
+
+\subsubsection*{Diagnostics}
+
+To get independent residuals from a state-space model the so-called `one-observation-ahead' residuals are computed. The residual for the $n$'th observation is computed by using the first $n-1$ observations to predict the $n$'th. Details can be found in \citet{thygesen2017validation}.   
 
 \section*{Results}
 
