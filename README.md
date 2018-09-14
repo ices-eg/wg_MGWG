@@ -5,6 +5,8 @@ listing research topics<br>
 \- See [Sharepoint](http://www.ices.dk/community/groups/Pages/MGWG.aspx) site
 for overall objectives, latest report, etc.
 
+***
+
 ## Vacancy for a co-chair
 
 We are seeking applications for the role of co-chair of the ICES Methods WG.
