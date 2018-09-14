@@ -58,18 +58,18 @@ Research questions:
    * Identify optimal age of harvest (highest column in barplot)
    * Compare with selectivity
    * Calculate optimal Fbar for this stock, given constant recruitment
-   * Evaluate how selectivity could be changed to improve this cod fishery
+   * Evaluate how selectivity could be changed to improve this cod fishery,
+     by sliding the selectivity pattern towards younger or older fish
 
 3. Across-stocks analysis:
-   * Compare stocks A and B, be evaluate how things would change if selectivity
-     A would be applied to stock B
+   * Compare all stocks, using summary statistics and composite plots
 
 ## Tasks
 
 Cod stock     | Data        | CSB plots | Potential | Historical
 ------------- | ----------- | --------- | --------- | ----------
 (R functions) |             | Arni      | Arni      | Cecilia
-------------- | ----------- | --------- | --------- | ----------
+---           | -           | ***       |           |
 Faroe Plateau | Jacob       | Jacob     |           | Cecilia
 Georges Bank  | Jacob       | Jacob     |           |
 Gulf of Maine | Jacob       | Jacob     |           |
@@ -78,18 +78,15 @@ NE Arctic     | Jacob       | Jacob     |           |
 North Sea     | Arni        | Arni      |           |
 W Baltic      | Cecilia     | Jacob     |           |
 
-CSB plots show C=catch at age, S=selectivity, and B=biomass of cohort in the
+*CSB plots* show C=catch at age, S=selectivity, and B=biomass of cohort in the
 absence of fishing
 
-Potential yield is calculated using the `applyFmax` function, using a variety of
-selectivity curves with different `A50` values
+*Potential yield* is calculated using the [applyFmax](R/functions/applyFmax.R)
+function, using a variety of selectivity curves with different
+[A50](R/functions/A50.R) values
 
-Historical analysis looks at long-term changes in weights, maturity, and
+*Historical analysis* looks at long-term changes in weights, maturity, and
 selectivity
-
-
-*Milestones*
-
 
 ## Literature
 
