@@ -124,7 +124,8 @@ Time     | Milestone
   suggests that this traditional calculation of MSY is very restrictive in that
   it ignores the higher MSYs that can be extracted by shifting selectivity
   towards older/larger fish."
-* [STECF Technical measures report 2015](https://stecf.jrc.ec.europa.eu/documents/43805/935868/STECF+15-05+-+Technical+Measures+part+III.pdf)
+* [STECF Technical measures report 2015]
+  (https://stecf.jrc.ec.europa.eu/documents/43805/935868/STECF+15-05+-+Technical+Measures+part+III.pdf)
   Page 47: Trade-offs between selectivity and F for hake. "Increasing
   size/age-at-selection allows greater exploitation rates and greater yields to
   be extracted at lower levels of stock depletion."
