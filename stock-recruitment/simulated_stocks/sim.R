@@ -147,7 +147,7 @@ out <- foreach(i=seq(nrow(runs))) %dopar% {
 }
 
 names(out) <- seq(nrow(runs))
-out <- FLStocks(out)
+oms <- FLStocks(out)
 
 # PLOTS
 
@@ -155,7 +155,6 @@ out <- FLStocks(out)
 png(file='png/stk_rwdev.png')
   plot(oms[[1]], iter=1:5)
 dev.off()
-
 
 # 3 x PLOT 3 runs: diff srr, diff trajectory, diff deviances
 png(file="figs/devs.png")
@@ -177,21 +176,19 @@ png(file="figs/traj.png")
 dev.off()
 
 
-plot(out)
-
-plot(out[[1]], iter=1:5)
-
 # OUTPUT real ssb, rec, naa, fbar, faa, catch.sel, params, model
 
 
-# OBSERVATION
+# --- OBSERVATIONS
 
-cpue(out[[1]])
-stock.n(out[[1]]) / survey(out[[1]])
+# CATCH
+
+x <- mnlnoise(catch.n(oms[[1]]))
 
 # SURVEY
-# 20% CV, ESS 200
+# 20% CV
 
+CM(survey(oms, sel, timing))
 
 # 3 x PLOT 3 runs: diff srr, diff trajectory, diff deviances
 
