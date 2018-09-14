@@ -166,9 +166,10 @@ meeting. We will organize tasks to be completed prior to each meeting.
 **11 Oct 2018** 4pm (CEST, UTC+2)
 
 1. Examine, summarize, and interpret the results so far
-2. Identify stocks we could add to the analysis
-3. Status update on side stories (Lopt, Norwegian literature,
-4. historical changes)
+2. Review gaps in data, identify stocks that could be added
+3. Status update on side stories (Lopt, Norwegian literature, historical
+   changes)
+4. Prepare a list of next tasks, decide who will report on what next meeting
 
 **08 Nov 2018** 4pm (CET, UTC+1)
 
