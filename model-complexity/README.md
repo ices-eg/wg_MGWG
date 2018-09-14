@@ -30,7 +30,7 @@ Who would like to lead, what will coauthors do?   |
 5.	Management performance
  *	Need some value for “true” FMSY so we can compare FMSYs (proxies) estimated by the models – perhaps YPR to get F0.1 from operating model and compare using relative error (direction seems important, so maybe not absolute)…maybe SPR instead of YPR?...REVISE: use catch recommendation (MSY) for comparison
  *	Also, consider a model averaging approach related to FMSY (averaged within models over complexity and across models at a given level of complexity)?
- *...
+ * ...
 •	Operating model scenarios (gadoid-like) – error consistent across scenarios?
 1.	Low complexity: simple base configuration (no time variation); obs error only (catch/indices), deterministic stock-recruit – time = 1940-2040, catch starts in 1970
 2.	Medium complexity: add 2 selectivity blocks (1975 to 1995-logistic, then domed); stock-recruit with process error/devs (Give Gadget the actual dev vector in real space)
