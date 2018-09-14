@@ -15,54 +15,47 @@ Participants that would like to work on this?     | Alejandro Yanez, Brandon Cha
 Who would like to lead, what will coauthors do?   |
 
 ## Outline
+•	The objective of this project shifted during the meeting to focus on model evaluation/model selection metrics and their relative performance in helping to select a model that corresponds to the true level of complexity AND develop “good” catch recommendations.
+•	The project will involve
+1.	3 operating models: low, medium, and high levels of complexity
+2.	3 estimation model classes matching the operating model complexity
+3.	Potentially multiple estimating model frameworks: length-based, age-based, and integrated (and maybe state-space)
+4.	Various validation/selection metrics
+	Information theoretic – AIC, BIC, DIC, WAIC?
+	Prediction-based – cross-validation and/or something that systematically predicts a quantity (e.g., survey biomass) by stepping back through data omission (n, n-1, n-2, etc.)
+	Retrospective analysis – Mohn’s rho
+	Residuals – QQ?, residual trends/distribution/RMSE – all fits; a low level of thinking toward Patrick’s random RMSE thing; component likelihoods 
+	Some combination of metrics? Correlation matrix between metrics?
+5.	Management performance
+	Need some value for “true” FMSY so we can compare FMSYs (proxies) estimated by the models – perhaps YPR to get F0.1 from operating model and compare using relative error (direction seems important, so maybe not absolute)…maybe SPR instead of YPR?...REVISE: use catch recommendation (MSY) for comparison
+	Also, consider a model averaging approach related to FMSY (averaged within models over complexity and across models at a given level of complexity)?
+	…
+•	Operating model scenarios (gadoid-like) – error consistent across scenarios?
+1.	Low complexity: simple base configuration (no time variation); obs error only (catch/indices), deterministic stock-recruit – time = 1940-2040, catch starts in 1970
+2.	Medium complexity: add 2 selectivity blocks (1975 to 1995-logistic, then domed); stock-recruit with process error/devs (Give Gadget the actual dev vector in real space)
+3.	High complexity: 2 selectivity blocks; stock-recruit with devs + increasing M (2 time steps) (time varying growth/dec Linf?)
+•	Consider another OM life history? –faster, herring-like? Either/or multiple estimating model frameworks…TENTATIVE: do gadoid first then evaluate whether warrants
+•	Estimating models
+1.	Age-based (ASAP?) – low, medium, high complexity; model years: 1975-2015
+2.	Length-based (CASA?) – low, medium, high complexity
+3.	Integrated (SS?) – low, medium, high complexity
+•	Input data from the operating model 
+1.	Catch data across scenarios (w/obs error=0.1)? Full retention?
+2.	Abundance indices: apply selectivity with sigma=0.2
+3.	Age, length comps, ALK…: eff. sample size=?; multinomial dist; apply to index and catch after obs error
+•	Specifying the error in estimating models
+1.	Start by specifying correct error/structure/eff sample size throughout
+•	What parameters should be estimated/specified in the estimating models?
+1.	Selectivity/q/rec devs
+2.	For M, start with “true”, and with time-varying, use diagnotics to guide M2 (fixed), and when to estimate selectivity 2 
+•	What informs the time-varying parameters?
+1.	For time blocks, perhaps truth is not exact, but rapidly changing; thus, estimation models treat the change coarser than OM – not for ASAP
+2.	Index correlated with true trend, but with error?
+•	Weighting – start with true
 
-1. need to consider the complexity of the stock being modeled
 
-...  simulation work with perhaps 2 different patterns of complexity {to be decided}:
 
-i)   groundfish and invertebrate.  
 
-ii)  differences in mortality, plastic growth, rate of maturation
-
-iii) incorporate process error in M, length, SR
-
-iv)  simulation cases:
-
-2. compare and learn from models that have similar data input and the question is how complex those models need to be
-
-... [review literature for other studies of determining model complexity]
-
-... list of models to apply and who can run those {to be determined}
-
-* any current state space models that can fit to length data?
-* gadget may be able to do length and also simulate
-* casal can do length but isn't state space
-* look at droppinig age info and see what you can get with just length data
-* VPA   -Liz, Helen?
-* SCAA (ASAP? a4a) -Liz, Helen? Ernesto
-* SS (SAM?) - Geir
-* CASA/SAMS -Dvora
-* CASAL - (Craig in group 1)
-* Gadget - (Arni Magnusson)
-* SS?
-
-3. look at diagnostics (residuals, support for model assumptions);
-
-is information criteria reliable for model selection ? retrospective pattern; predictive performance ; uncertainty measured by the models versus the true uncertainty
-
-4. can simple models provide additional diagnostics to inform the complex model
-(example: BH mean length for length based model; catch curve for age based model)
-
-5. where the drop-offs are:
- 
- what do you lose by using a simpler model;
- 
-  is the advice given less informative or limited? 
-
-6. Management advice :
-
-stock status, catch advice ; depends on what managers want to get out of the assmt model : catch advice or effort adjustment--days fishing or number of boats; can 
-you give advice at all?  if the data quality is not high, what advice can (should) be given?
 
 ### Other thoughts:
 - how to explain the complex models to the public (words and pictures)
