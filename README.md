@@ -5,6 +5,8 @@ listing research topics<br>
 \- See [Sharepoint](http://www.ices.dk/community/groups/Pages/MGWG.aspx) site
 for overall objectives, latest report, etc.
 
+***
+
 ## Vacancy for a co-chair
 
 We are seeking applications for the role of co-chair of the ICES Methods WG.
@@ -50,10 +52,13 @@ The co-chair will be appointed following an election by the working group
 members. It is a 3-year term, which can be followed by one other 3-year term.
 
 Experience as a chair of an international working group of scientists is
-considered a part of the portfolio as a senior scientist and academic, it
-invites networking with scientists worldwide and gives increased visibility
-among peers. Also, for the right person, the co-chairing task is enjoyable in
-itself.
+considered a part of the professional portfolio as a senior scientist and
+academia, it invites networking with scientists worldwide and gives increased
+visibility among peers. Also, for the right person, the co-chairing task is
+enjoyable in itself.
+
+The Methods WG will discuss the selection of a co-chair on Friday 14 September
+2019, and a decision will be made soon afterwards.
 
 ***
 
