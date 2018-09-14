@@ -181,14 +181,12 @@ dev.off()
 
 # --- OBSERVATIONS
 
-# CATCH
+# CATCH, mnlnoise
 
-x <- mnlnoise(catch.n(oms[[1]]))
 
-# SURVEY
+# SURVEY, mnlnoise
 # 20% CV
 
-CM(survey(oms, sel, timing))
 
 # 3 x PLOT 3 runs: diff srr, diff trajectory, diff deviances
 
@@ -198,6 +196,3 @@ CM(survey(oms, sel, timing))
 
 writeVPA(om1, output.file="vpa/sim",
   slots=c("landings.n","landings.wt","m","mat","stock.wt", "m.spwn", "harvest.spwn"))
-
-
-# No. years: 20, 40
