@@ -36,24 +36,31 @@ Operating model scenarios (gadoid-like) – error consistent across scenarios?
 1.	Low complexity: simple base configuration (no time variation); obs error only (catch/indices), deterministic stock-recruit – time = 1940-2040, catch starts in 1970
 2.	Medium complexity: add 2 selectivity blocks (1975 to 1995-logistic, then domed); stock-recruit with process error/devs (Give Gadget the actual dev vector in real space)
 3.	High complexity: 2 selectivity blocks; stock-recruit with devs + increasing M (2 time steps) (time varying growth/dec Linf?)
-•	Consider another OM life history? –faster, herring-like? Either/or multiple estimating model frameworks…TENTATIVE: do gadoid first then evaluate whether warrants
-•	Estimating models
+
+Consider another OM life history? –faster, herring-like? Either/or multiple estimating model frameworks…TENTATIVE: do gadoid first then evaluate whether warrants
+
+Estimating models
 1.	Age-based (ASAP?) – low, medium, high complexity; model years: 1975-2015
 2.	Length-based (CASA?) – low, medium, high complexity
 3.	Integrated (SS?) – low, medium, high complexity
-•	Input data from the operating model 
+
+Input data from the operating model 
 1.	Catch data across scenarios (w/obs error=0.1)? Full retention?
 2.	Abundance indices: apply selectivity with sigma=0.2
 3.	Age, length comps, ALK…: eff. sample size=?; multinomial dist; apply to index and catch after obs error
-•	Specifying the error in estimating models
+
+Specifying the error in estimating models
 1.	Start by specifying correct error/structure/eff sample size throughout
-•	What parameters should be estimated/specified in the estimating models?
+
+What parameters should be estimated/specified in the estimating models?
 1.	Selectivity/q/rec devs
 2.	For M, start with “true”, and with time-varying, use diagnotics to guide M2 (fixed), and when to estimate selectivity 2 
-•	What informs the time-varying parameters?
+
+What informs the time-varying parameters?
 1.	For time blocks, perhaps truth is not exact, but rapidly changing; thus, estimation models treat the change coarser than OM – not for ASAP
 2.	Index correlated with true trend, but with error?
-•	Weighting – start with true
+
+Weighting – start with true
 
 
 
