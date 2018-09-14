@@ -15,15 +15,15 @@ Participants that would like to work on this?     | Alejandro Yanez, Brandon Cha
 Who would like to lead, what will coauthors do?   |
 
 ## Outline
-•	The objective of this project shifted during the meeting to focus on model evaluation/model selection metrics and their relative performance in helping to select a model that corresponds to the true level of complexity AND develop “good” catch recommendations.
+•	The objective of this project shifted during the meeting to focus on model evaluation/model selection metrics and their relative performance in helping to select a model that corresponds to the true level of complexity AND develop “good” catch recommendations.  The old Readme file was a poor match, so it was reanamed "Readme_old" in case we want to easily see the previous thinking on this project.
 
 •	The project will involve
 1.	3 operating models: low, medium, and high levels of complexity
 2.	3 estimation model classes matching the operating model complexity
 3.	Potentially multiple estimating model frameworks: length-based, age-based, and integrated (and maybe state-space)
 4.	Various validation/selection metrics
-	Information theoretic – AIC, BIC, DIC, WAIC?
-	Prediction-based – cross-validation and/or something that systematically predicts a quantity (e.g., survey biomass) by stepping back through data omission (n, n-1, n-2, etc.)
+ # Information theoretic – AIC, BIC, DIC, WAIC?
+ # Prediction-based – cross-validation and/or something that systematically predicts a quantity (e.g., survey biomass) by stepping back through data omission (n, n-1, n-2, etc.)
 	Retrospective analysis – Mohn’s rho
 	Residuals – QQ?, residual trends/distribution/RMSE – all fits; a low level of thinking toward Patrick’s random RMSE thing; component likelihoods 
 	Some combination of metrics? Correlation matrix between metrics?
