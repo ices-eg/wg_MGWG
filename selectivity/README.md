@@ -155,3 +155,25 @@ Time     | Milestone
 *Preliminary plot, from Icelandic cod analysis*
 
 <img src="earlier-studies/icelandic-cod/cohort-biomass.png" width="400">
+
+## Calendar - project web meetings
+
+We will have a Skype call the second Thursday of every month until the next MGWG
+meeting. We will organize tasks to be completed prior to each meeting.
+
+**11 Oct 2018** 4pm (CEST, UTC+2)
+1. Examine, summarize, and interpret the results so far
+2. Identify stocks we could add to the analysis
+3. Status update on side stories (Lopt, Norwegian literature,
+4. historical changes)
+**08 Nov 2018** 4pm (CET, UTC+1)
+**13 Dec 2018** 4pm (CET, UTC+1)
+**10 Jan 2019** 4pm (CET, UTC+1)
+**14 Feb 2019** 4pm (CET, UTC+1)
+**14 Mar 2019** 4pm (CET, UTC+1)
+**11 Apr 2019** 4pm (CEST, UTC+2)
+**09 May 2019** 4pm (CEST, UTC+2)
+**13 Jun 2019** 4pm (CEST, UTC+2)
+**11 Jul 2019** 4pm (CEST, UTC+2)
+**08 Aug 2019** 4pm (CEST, UTC+2)
+**12 Sep 2019** 4pm (CEST, UTC+2)
