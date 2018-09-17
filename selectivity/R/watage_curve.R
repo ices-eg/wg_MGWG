@@ -8,7 +8,7 @@ library(gridExtra)
 wc<-read.csv("../data/Faroe_Plateau/wcatch.csv") #no information for age 1
 
 wc2<-as.matrix(wc[,c(1,3:dim(wc)[2])])
-pdf("../weight_year_plots/Faroe_Plateau/watage_year.pdf")
+pdf("../weight_year_plots/Faroe_Plateau/watage_year_catchdata.pdf")
 matplot(wc2[,1],wc2[,2:dim(wc2)[2]], type="l", xlab="Years", ylab="Mean weight at age (kg)", main="Faroe Plateau")
 dev.off()
 
@@ -22,7 +22,7 @@ w8<-ggplot(wc, aes(Year, wc[,9])) + labs(y="Mean weight", title="Age 8") + geom_
 w9<-ggplot(wc, aes(Year, wc[,10])) + labs(y="Mean weight", title="Age 9") + geom_point() + geom_smooth()
 w10<-ggplot(wc, aes(Year, wc[,11])) + labs(y="Mean weight", title="Age 10") + geom_point() + geom_smooth()
 
-pdf("../weight_year_plots/Faroe_Plateau/wy_age.pdf")
+pdf("../weight_year_plots/Faroe_Plateau/wy_age_catchdata.pdf")
 grid.arrange(w2,w3,w4,w5,w6,w7,w8,w9,w10, nrow=3)
 dev.off()
 
@@ -32,7 +32,7 @@ wc<-read.csv("../data/Faroe_Plateau/wcatchCohorts.csv")
 wc[wc==0]<-NA
 
 wc2<-as.matrix(wc[,c(1,3:dim(wc)[2])])
-pdf("../weight_year_plots/Faroe_Plateau/watage_cohort.pdf")
+pdf("../weight_year_plots/Faroe_Plateau/watage_cohort_catchdata.pdf")
 matplot(wc2[,1],wc2[,2:dim(wc2)[2]], type="l", xlab="Cohorts", ylab="Mean weight at cohort (kg)", main="Faroe Plateau")
 dev.off()
 
@@ -46,7 +46,7 @@ w8<-ggplot(wc, aes(Cohort, wc[,9])) + labs(y="Mean weight", title="Age 8") + geo
 w9<-ggplot(wc, aes(Cohort, wc[,10])) + labs(y="Mean weight", title="Age 9") + geom_point() + geom_smooth()
 w10<-ggplot(wc, aes(Cohort, wc[,11])) + labs(y="Mean weight", title="Age 10") + geom_point() + geom_smooth()
 
-pdf("../weight_year_plots/Faroe_Plateau/wc_age.pdf")
+pdf("../weight_year_plots/Faroe_Plateau/wc_age_cohortdata.pdf")
 grid.arrange(w2,w3,w4,w5,w6,w7,w8,w9,w10, nrow=3)
 dev.off()
 
@@ -56,7 +56,7 @@ wc<-read.csv("../data/georges_bank/wcatch.csv")
 head(wc)
 
 wc2<-as.matrix(wc)
-pdf("../weight_year_plots/georges_bank/watage_year.pdf")
+pdf("../weight_year_plots/georges_bank/watage_year_catchdata.pdf")
 matplot(wc2[,1],wc2[,2:dim(wc2)[2]], type="l", xlab="Years", ylab="Mean weight at age (kg)", main="Georges bank")
 dev.off()
 
@@ -70,7 +70,7 @@ w8<-ggplot(wc, aes(Year, wc[,9])) + labs(y="Mean weight", title="Age 8") + geom_
 w9<-ggplot(wc, aes(Year, wc[,10])) + labs(y="Mean weight", title="Age 9") + geom_point() + geom_smooth()
 w10<-ggplot(wc, aes(Year, wc[,11])) + labs(y="Mean weight", title="Age 10") + geom_point() + geom_smooth()
 
-pdf("../weight_year_plots/georges_bank/wy_year.pdf")
+pdf("../weight_year_plots/georges_bank/wy_year_catchdata.pdf")
 grid.arrange(w2,w3,w4,w5,w6,w7,w8,w9,w10, nrow=3)
 dev.off()
 
@@ -80,7 +80,7 @@ wc<-read.csv("../data/georges_bank/wcatchCohorts.csv")
 wc[wc==0]<-NA
 
 wc2<-as.matrix(wc[,c(1,2:dim(wc)[2])])
-pdf("../weight_year_plots/georges_bank/watage_cohort.pdf")
+pdf("../weight_year_plots/georges_bank/watage_cohort_catchdata.pdf")
 matplot(wc2[,1],wc2[,2:dim(wc2)[2]], type="l", xlab="Cohorts", ylab="Mean weight at cohort (kg)", main="Georges bank")
 dev.off()
 
@@ -94,28 +94,10 @@ w8<-ggplot(wc, aes(Cohort, wc[,9])) + labs(y="Mean weight", title="Age 8") + geo
 w9<-ggplot(wc, aes(Cohort, wc[,10])) + labs(y="Mean weight", title="Age 9") + geom_point() + geom_smooth()
 w10<-ggplot(wc, aes(Cohort, wc[,11])) + labs(y="Mean weight", title="Age 10") + geom_point() + geom_smooth()
 
-pdf("../weight_year_plots/georges_bank/wy_cohort.pdf")
+pdf("../weight_year_plots/georges_bank/wy_cohort_catchdata.pdf")
 grid.arrange(w2,w3,w4,w5,w6,w7,w8,w9,w10, nrow=3)
 dev.off()
 
-##Gulf of Maine
-##catch data
-# wc<-read.csv("../data/gulf_of_maine/wcatch.csv")
-# head(wc)
-# 
-# wc2<-as.matrix(wc)
-# matplot(wc2[,1],wc2[,2:dim(wc2)[2]], type="l", xlab="Years", ylab="Mean weight at age (kg)", main="Gulf of Maine")
-# 
-# w2<-ggplot(wc, aes(Year, wc[,4])) + labs(y="Mean weight", title="Age 2") + geom_point() + geom_smooth()
-# w3<-ggplot(wc, aes(Year, wc[,5])) + labs(y="Mean weight", title="Age 3") + geom_point() + geom_smooth()
-# w4<-ggplot(wc, aes(Year, wc[,6])) + labs(y="Mean weight", title="Age 4") + geom_point() + geom_smooth()
-# w5<-ggplot(wc, aes(Year, wc[,7])) + labs(y="Mean weight", title="Age 5") + geom_point() + geom_smooth()
-# w6<-ggplot(wc, aes(Year, wc[,8])) + labs(y="Mean weight", title="Age 6") + geom_point() + geom_smooth()
-# w7<-ggplot(wc, aes(Year, wc[,9])) + labs(y="Mean weight", title="Age 7") + geom_point() + geom_smooth()
-# w8<-ggplot(wc, aes(Year, wc[,10])) + labs(y="Mean weight", title="Age 8") + geom_point() + geom_smooth()
-# w9<-ggplot(wc, aes(Year, wc[,11])) + labs(y="Mean weight", title="Age 9") + geom_point() + geom_smooth()
-# 
-# grid.arrange(w2,w3,w4,w5,w6,w7,w8,w9, nrow=3)
 
 ##Gulf of Maine
 ##catch data
@@ -123,7 +105,7 @@ wc<-read.csv("../data/gulf_of_maine_2017/wcatch.csv")
 head(wc)
 
 wc2<-as.matrix(wc)
-pdf("../weight_year_plots/gulf_of_maine/watage_year.pdf")
+pdf("../weight_year_plots/gulf_of_maine/watage_year_catchdata.pdf")
 matplot(wc2[,1],wc2[,2:dim(wc2)[2]], type="l", xlab="Years", ylab="Mean weight at age (kg)", main="Gulf of Maine")
 dev.off()
 
@@ -136,17 +118,19 @@ w7<-ggplot(wc, aes(Year, wc[,9])) + labs(y="Mean weight", title="Age 7") + geom_
 w8<-ggplot(wc, aes(Year, wc[,10])) + labs(y="Mean weight", title="Age 8") + geom_point() + geom_smooth()
 w9<-ggplot(wc, aes(Year, wc[,11])) + labs(y="Mean weight", title="Age 9") + geom_point() + geom_smooth()
 
-pdf("../weight_year_plots/gulf_of_maine/wy_age.pdf")
+pdf("../weight_year_plots/gulf_of_maine/wy_age_catchdata.pdf")
 grid.arrange(w2,w3,w4,w5,w6,w7,w8,w9, nrow=3)
 dev.off()
 
 #cohort data
-wc<-read.csv("../data/gulf_of_maine_2017/wcatchCohort.csv")
+wc<-read.csv("../data/gulf_of_maine_2017/wstockCohort.csv")
 head(wc)
 wc[wc==0]<-NA
 
 wc2<-as.matrix(wc)
+pdf("../weight_year_plots/gulf_of_maine/watage_cohort_stock data.pdf")
 matplot(wc2[,1],wc2[,2:dim(wc2)[2]], type="l", xlab="Cohorts", ylab="Mean weight at age (kg)", main="Gulf of Maine")
+dev.off()
 
 w2<-ggplot(wc, aes(Cohort, wc[,4])) + labs(y="Mean weight", title="Age 2") + geom_point() + geom_smooth()
 w3<-ggplot(wc, aes(Cohort, wc[,5])) + labs(y="Mean weight", title="Age 3") + geom_point() + geom_smooth()
@@ -157,8 +141,9 @@ w7<-ggplot(wc, aes(Cohort, wc[,9])) + labs(y="Mean weight", title="Age 7") + geo
 w8<-ggplot(wc, aes(Cohort, wc[,10])) + labs(y="Mean weight", title="Age 8") + geom_point() + geom_smooth()
 w9<-ggplot(wc, aes(Cohort, wc[,11])) + labs(y="Mean weight", title="Age 9") + geom_point() + geom_smooth()
 
+pdf("../weight_year_plots/gulf_of_maine/wc_age_stock data.pdf")
 grid.arrange(w2,w3,w4,w5,w6,w7,w8,w9, nrow=3)
-
+dev.off()
 
 ##North East Arctic
 ##catch data
@@ -166,7 +151,7 @@ wc<-read.csv("../data/NEArctic_cod/wcatch.csv")
 head(wc)
 
 wc2<-as.matrix(wc)
-pdf("../weight_year_plots/NEArctic/watage_year.pdf")
+pdf("../weight_year_plots/NEArctic/watage_year_catchdata.pdf")
 matplot(wc2[,1],wc2[,2:(dim(wc2)[2]-1)], type="l", xlab="Years", ylab="Mean weight at age (kg)", main="North East Arctic")
 dev.off()
 
@@ -183,11 +168,11 @@ w12<-ggplot(wc, aes(Year, wc[,11])) + labs(y="Mean weight", title="Age 12") + ge
 w13<-ggplot(wc, aes(Year, wc[,12])) + labs(y="Mean weight", title="Age 13") + geom_point() + geom_smooth()
 w14<-ggplot(wc, aes(Year, wc[,13])) + labs(y="Mean weight", title="Age 14") + geom_point() + geom_smooth()
 
-pdf("../weight_year_plots/NEArctic/wy_age_3_11.pdf")
+pdf("../weight_year_plots/NEArctic/wy_age_3_11_catchdata.pdf")
 grid.arrange(w3,w4,w5,w6,w7,w8,w9,w10,w11, nrow=3)
 dev.off()
 
-pdf("../weight_year_plots/NEArctic/wy_age_6_14.pdf")
+pdf("../weight_year_plots/NEArctic/wy_age_6_14_catchdata.pdf")
 grid.arrange(w6,w7,w8,w9,w10,w11,w12,w13,w14, nrow=3)
 dev.off()
 
@@ -197,7 +182,7 @@ head(wc)
 wc[wc==0]<-NA
 
 wc2<-as.matrix(wc)
-pdf("../weight_year_plots/NEArctic/watage_cohort.pdf")
+pdf("../weight_year_plots/NEArctic/watage_cohort_catchdata.pdf")
 matplot(wc2[,1],wc2[,2:(dim(wc2)[2]-1)], type="l", xlab="Cohorts", ylab="Mean weight at age (kg)", main="North East Arctic")
 dev.off()
 
@@ -214,11 +199,11 @@ w12<-ggplot(wc, aes(Cohort, wc[,11])) + labs(y="Mean weight", title="Age 12") + 
 w13<-ggplot(wc, aes(Cohort, wc[,12])) + labs(y="Mean weight", title="Age 13") + geom_point() + geom_smooth()
 w14<-ggplot(wc, aes(Cohort, wc[,13])) + labs(y="Mean weight", title="Age 14") + geom_point() + geom_smooth()
 
-pdf("../weight_year_plots/NEArctic/wc_age_3_11.pdf")
+pdf("../weight_year_plots/NEArctic/wc_age_3_11_catchdata.pdf")
 grid.arrange(w3,w4,w5,w6,w7,w8,w9,w10,w11, nrow=3)
 dev.off()
 
-pdf("../weight_year_plots/NEArctic/wc_age_6_14.pdf")
+pdf("../weight_year_plots/NEArctic/wc_age_6_14_catchdata.pdf")
 grid.arrange(w6,w7,w8,w9,w10,w11,w12,w13,w14, nrow=3)
 dev.off()
 
@@ -228,7 +213,7 @@ wc<-read.csv("../data/western_baltic/wcatch.csv")
 head(wc)
 
 wc2<-as.matrix(wc)
-pdf("../weight_year_plots/western_baltic/watage_year.pdf")
+pdf("../weight_year_plots/western_baltic/watage_year_catchdata.pdf")
 matplot(wc2[,1],wc2[,2:(dim(wc2)[2])], type="l", xlab="Years", ylab="Mean weight at age (kg)", main="Western Baltic")
 dev.off()
 
@@ -240,7 +225,7 @@ w5<-ggplot(wc, aes(Year, wc[,6])) + labs(y="Mean weight", title="Age 5") + geom_
 w6<-ggplot(wc, aes(Year, wc[,7])) + labs(y="Mean weight", title="Age 6") + geom_point() + geom_smooth()
 w7<-ggplot(wc, aes(Year, wc[,8])) + labs(y="Mean weight", title="Age 7") + geom_point() + geom_smooth()
 
-pdf("../weight_year_plots/western_baltic/wy_age.pdf")
+pdf("../weight_year_plots/western_baltic/wy_age_catchdata.pdf")
 grid.arrange(w1,w2,w3,w4,w5,w6,w7, nrow=3)
 dev.off()
 
@@ -295,7 +280,7 @@ wc <- read.csv(paste0(url, "catch_weights.csv"), check.names = FALSE)
 #wc <- colMeans(wc[-1]/1000)
 
 wc2<-as.matrix(wc)
-pdf("../weight_year_plots/Iceland/watage_year.pdf")
+pdf("../weight_year_plots/Iceland/watage_year_catchdata.pdf")
 matplot(wc2[,1],wc2[,2:(dim(wc2)[2])]/1000, type="l", xlab="Years", ylab="Mean weight at age (kg)", main="Iceland")
 dev.off()
 
@@ -312,11 +297,71 @@ w12<-ggplot(wc, aes(Year, wc[,11]/1000)) + labs(y="Mean weight", title="Age 12")
 w13<-ggplot(wc, aes(Year, wc[,12]/1000)) + labs(y="Mean weight", title="Age 13") + geom_point() + geom_smooth()
 w14<-ggplot(wc, aes(Year, wc[,13]/1000)) + labs(y="Mean weight", title="Age 14") + geom_point() + geom_smooth()
 
-pdf("../weight_year_plots/Iceland/wy_age_3_11.pdf")
+pdf("../weight_year_plots/Iceland/wy_age_3_11_catchdata.pdf")
 grid.arrange(w3,w4,w5,w6,w7,w8,w9,w10,w11, nrow=3)
 dev.off()
 
-pdf("../weight_year_plots/Iceland/wy_age_6_14.pdf")
+pdf("../weight_year_plots/Iceland/wy_age_6_14_catchdata.pdf")
+grid.arrange(w6,w7,w8,w9,w10,w11,w12,w13,w14, nrow=3)
+dev.off()
+
+#stock data
+wc <- read.csv("../data/iceland/wstock.csv")
+
+wc2<-as.matrix(wc)
+
+pdf("../weight_year_plots/Iceland/watage_year_stockData.pdf")
+matplot(wc2[,1],wc2[,2:(dim(wc2)[2])], type="l", xlab="Years", ylab="Mean weight at age (kg)", main="Iceland")
+dev.off()
+
+w3<-ggplot(wc, aes(Year, wc[,2])) + labs(y="Mean weight", title="Age 3") + geom_point() + geom_smooth()
+w4<-ggplot(wc, aes(Year, wc[,3])) + labs(y="Mean weight", title="Age 4") + geom_point() + geom_smooth()
+w5<-ggplot(wc, aes(Year, wc[,4])) + labs(y="Mean weight", title="Age 5") + geom_point() + geom_smooth()
+w6<-ggplot(wc, aes(Year, wc[,5])) + labs(y="Mean weight", title="Age 6") + geom_point() + geom_smooth()
+w7<-ggplot(wc, aes(Year, wc[,6])) + labs(y="Mean weight", title="Age 7") + geom_point() + geom_smooth()
+w8<-ggplot(wc, aes(Year, wc[,7])) + labs(y="Mean weight", title="Age 8") + geom_point() + geom_smooth()
+w9<-ggplot(wc, aes(Year, wc[,8])) + labs(y="Mean weight", title="Age 9") + geom_point() + geom_smooth()
+w10<-ggplot(wc, aes(Year, wc[,9])) + labs(y="Mean weight", title="Age 10") + geom_point() + geom_smooth()
+w11<-ggplot(wc, aes(Year, wc[,10])) + labs(y="Mean weight", title="Age 11") + geom_point() + geom_smooth()
+w12<-ggplot(wc, aes(Year, wc[,11])) + labs(y="Mean weight", title="Age 12") + geom_point() + geom_smooth()
+w13<-ggplot(wc, aes(Year, wc[,12])) + labs(y="Mean weight", title="Age 13") + geom_point() + geom_smooth()
+w14<-ggplot(wc, aes(Year, wc[,13])) + labs(y="Mean weight", title="Age 14") + geom_point() + geom_smooth()
+
+pdf("../weight_year_plots/Iceland/wc_age_3_11_stockData.pdf")
+grid.arrange(w3,w4,w5,w6,w7,w8,w9,w10,w11, nrow=3)
+dev.off()
+
+pdf("../weight_year_plots/Iceland/wc_age_6_14_stockData.pdf")
+grid.arrange(w6,w7,w8,w9,w10,w11,w12,w13,w14, nrow=3)
+dev.off()
+
+#cohort data
+wc <- read.csv("../data/iceland/wstockCohort.csv")
+wc[wc==0]<-NA
+wc2<-as.matrix(wc)
+
+pdf("../weight_year_plots/Iceland/watage_cohort_stockData.pdf")
+matplot(wc2[,1],wc2[,2:(dim(wc2)[2])], type="l", xlab="Years", ylab="Mean weight at age (kg)", main="Iceland")
+dev.off()
+
+w3<-ggplot(wc, aes(Cohort, wc[,2])) + labs(y="Mean weight", title="Age 3") + geom_point() + geom_smooth()
+w4<-ggplot(wc, aes(Cohort, wc[,3])) + labs(y="Mean weight", title="Age 4") + geom_point() + geom_smooth()
+w5<-ggplot(wc, aes(Cohort, wc[,4])) + labs(y="Mean weight", title="Age 5") + geom_point() + geom_smooth()
+w6<-ggplot(wc, aes(Cohort, wc[,5])) + labs(y="Mean weight", title="Age 6") + geom_point() + geom_smooth()
+w7<-ggplot(wc, aes(Cohort, wc[,6])) + labs(y="Mean weight", title="Age 7") + geom_point() + geom_smooth()
+w8<-ggplot(wc, aes(Cohort, wc[,7])) + labs(y="Mean weight", title="Age 8") + geom_point() + geom_smooth()
+w9<-ggplot(wc, aes(Cohort, wc[,8])) + labs(y="Mean weight", title="Age 9") + geom_point() + geom_smooth()
+w10<-ggplot(wc, aes(Cohort, wc[,9])) + labs(y="Mean weight", title="Age 10") + geom_point() + geom_smooth()
+w11<-ggplot(wc, aes(Cohort, wc[,10])) + labs(y="Mean weight", title="Age 11") + geom_point() + geom_smooth()
+w12<-ggplot(wc, aes(Cohort, wc[,11])) + labs(y="Mean weight", title="Age 12") + geom_point() + geom_smooth()
+w13<-ggplot(wc, aes(Cohort, wc[,12])) + labs(y="Mean weight", title="Age 13") + geom_point() + geom_smooth()
+w14<-ggplot(wc, aes(Cohort, wc[,13])) + labs(y="Mean weight", title="Age 14") + geom_point() + geom_smooth()
+
+pdf("../weight_year_plots/Iceland/wc_age_3_11_stockdata.pdf")
+grid.arrange(w3,w4,w5,w6,w7,w8,w9,w10,w11, nrow=3)
+dev.off()
+
+pdf("../weight_year_plots/Iceland/wc_age_6_14_stockdata.pdf")
 grid.arrange(w6,w7,w8,w9,w10,w11,w12,w13,w14, nrow=3)
 dev.off()
 
@@ -364,11 +409,11 @@ dev.off()
 wc <- read.csv("../data/nafo2j3kl/wcatch.csv", check.names = FALSE)
 
 wc2<-as.matrix(wc)
-pdf("../weight_year_plots/nafo2j3kl/watage_2to10_year.pdf")
+pdf("../weight_year_plots/nafo2j3kl/watage_2to10_year_catchdata.pdf")
 matplot(wc2[,1],wc2[,2:10], type="l", xlab="Years", ylab="Mean weight at age (kg)", main="Newfoundland\n age class 2 to 10")
 dev.off()
 
-pdf("../weight_year_plots/nafo2j3kl/watage_11to20_year.pdf")
+pdf("../weight_year_plots/nafo2j3kl/watage_11to20_year_catchdata.pdf")
 matplot(wc2[,1],wc2[,11:20], type="l", xlab="Years", ylab="Mean weight at age (kg)", main="Newfoundland\n age class 11 to 20")
 dev.off()
 
@@ -392,11 +437,11 @@ w19<-ggplot(wc, aes(Year, wc[,18])) + labs(y="Mean weight", title="Age 18") + ge
 w20<-ggplot(wc, aes(Year, wc[,19])) + labs(y="Mean weight", title="Age 19") + geom_point() + geom_smooth()
 w21<-ggplot(wc, aes(Year, wc[,20])) + labs(y="Mean weight", title="Age 20") + geom_point() + geom_smooth()
 
-pdf("../weight_year_plots/nafo2j3kl/wy_age_2_10.pdf")
+pdf("../weight_year_plots/nafo2j3kl/wy_age_2_10_catchdata.pdf")
 grid.arrange(w3,w4,w5,w6,w7,w8,w9,w10,w11, nrow=3)
 dev.off()
 
-pdf("../weight_year_plots/nafo2j3kl/wy_age_11_20.pdf")
+pdf("../weight_year_plots/nafo2j3kl/wy_age_11_20_catchdata.pdf")
 grid.arrange(w6,w7,w8,w9,w10,w11,w12,w13,w14, nrow=3)
 dev.off()
 
@@ -406,7 +451,7 @@ dev.off()
 wc <- read.csv("../data/nafo3p/wcatch.csv", check.names = FALSE)
 
 wc2<-as.matrix(wc)
-pdf("../weight_year_plots/nafo3p/watage_year.pdf")
+pdf("../weight_year_plots/nafo3p/watage_year_catchdata.pdf")
 matplot(wc2[,1],wc2[,2:dim(wc2)[2]], type="l", xlab="Years", ylab="Mean weight at age (kg)", main="Newfoundland\nnafo3p")
 dev.off()
 

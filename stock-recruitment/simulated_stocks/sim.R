@@ -147,7 +147,7 @@ out <- foreach(i=seq(nrow(runs))) %dopar% {
 }
 
 names(out) <- seq(nrow(runs))
-out <- FLStocks(out)
+oms <- FLStocks(out)
 
 # PLOTS
 
@@ -155,7 +155,6 @@ out <- FLStocks(out)
 png(file='png/stk_rwdev.png')
   plot(oms[[1]], iter=1:5)
 dev.off()
-
 
 # 3 x PLOT 3 runs: diff srr, diff trajectory, diff deviances
 png(file="figs/devs.png")
@@ -177,20 +176,16 @@ png(file="figs/traj.png")
 dev.off()
 
 
-plot(out)
-
-plot(out[[1]], iter=1:5)
-
 # OUTPUT real ssb, rec, naa, fbar, faa, catch.sel, params, model
 
 
-# OBSERVATION
+# --- OBSERVATIONS
 
-cpue(out[[1]])
-stock.n(out[[1]]) / survey(out[[1]])
+# CATCH, mnlnoise
 
-# SURVEY
-# 20% CV, ESS 200
+
+# SURVEY, mnlnoise
+# 20% CV
 
 
 # 3 x PLOT 3 runs: diff srr, diff trajectory, diff deviances
@@ -201,6 +196,3 @@ stock.n(out[[1]]) / survey(out[[1]])
 
 writeVPA(om1, output.file="vpa/sim",
   slots=c("landings.n","landings.wt","m","mat","stock.wt", "m.spwn", "harvest.spwn"))
-
-
-# No. years: 20, 40

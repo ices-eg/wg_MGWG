@@ -10,16 +10,16 @@ Stock | ASAP | SAM | WHAM | a4a sca | Comments
 ------| ---- | --- | ---  | ------- | --------
 North Sea cod (Nscod) |X|X|X|X| Priority
 Gulf of Maine Cod (GOMcod) |X|X|X|X| Priority
-Georges Bank Haddock (GBhaddock) | |X|X|X| 
+Georges Bank Haddock (GBhaddock) |X|X|X|X| 
 Gulf of Maine Haddock (GOMhaddock)  |X|X|X|X| 
 US Pollock |X|X|X|X|
 Southern New England-Mid-Atlantic yellowtail (SNEMAYT) |X|X|X|X| 
 Cape Cod-Gulf of Maine yellowtail (CCGOMYT) |X|X|X|X| 
 Georges Bank winter flounder |X|X|X|X|
 Southern New England-Mid-Atlantic winter flounder (SNEMAwinter) |X|X|X|X|
-American Plaice |X|X|X|X|
+American Plaice |X|X|3|X|
 White Hake |X|X|X|X|
-Icelandic herring (ICEherring) | |X| |X| 
+Icelandic herring (ICEherring) | |X|3|X| 
 US Atlantic Herring (USAtlHerring) | |X|X|X|
 
 Comparison of merits and issues for traditional SCAA and state-space
