@@ -1,7 +1,7 @@
 ####Extract von Bertalanffy params###
 #####################################
 
-alk <-read.csv('../../Aopt_estimates/data/ALK.csv',header = TRUE)
+alk <-read.csv('../../Aopt_estimates/data/ALK_FP.csv',header = TRUE)
 str(alk)
 
 library(ggplot2)

@@ -131,7 +131,25 @@ AoptFP=c(predict(vbObj, len=loptFP))
 AoptFP #9.91
 
 ########################################################################
-#NAFO 3K (Petur pers comm.)
+#NAFO 2J 
+k = 0.150
+linf = 103.7
+t0 = 0
+lopt2J=2/3*linf
+lopt2J #69.13
+
+#Create the von Bertalanffy object
+vbObj <- a4aGr(
+  grMod=~linf*(1-exp(-k*(t-t0))),      
+  grInvMod=~t0-1/k*log(1-len/linf),      
+  params=FLPar(linf=linf, k=k, t0=t0, units=c('cm','year-1','year')))
+
+# Predict
+Aopt2J=c(predict(vbObj, len=lopt2J))
+Aopt2J #7.32
+
+########################################################################
+#NAFO 3K 
 k = 0.138
 linf = 107.7
 t0 = 0
@@ -149,12 +167,12 @@ Aopt3K=c(predict(vbObj, len=lopt3K))
 Aopt3K #7.96
 
 ########################################################################
-#NAFO 3L (Petur pers comm.)
+#NAFO 3L
 k = 0.087
 linf = 153.35
 t0 = 0
 lopt3L=2/3*linf
-lopt3L #102.23
+lopt3L #92.4
 
 #Create the von Bertalanffy object
 vbObj <- a4aGr(
@@ -166,13 +184,49 @@ vbObj <- a4aGr(
 Aopt3L=c(predict(vbObj, len=lopt3L))
 Aopt3L #12.6
 
-###########################################################################
-#summary of Aopts
-Aopts <- matrix(c(loptNS,AoptNS,loptWB,AoptWB,loptGoM,AoptGoM,loptGB,AoptGB,loptIC,AoptIC,loptBS,AoptBS,loptFP,AoptFP),ncol=2,byrow=TRUE)
-colnames(Aopts) <- c("Lopt (cm)","Aopt (y)")
-rownames(Aopts ) <- c("North Sea","West Baltic","Gulf of Main","George's Bank","Iceland","NE Arctic","Faroes plateau")
-Aopts=round(Aopts,2)
-as.table(Aopts)
+########################################################################
+#NE Arctic Lofoten_17
+k = 0.152
+linf = 124.1
+t0 = 1.037
+loptBS17=2/3*linf
+loptBS17 #82.7
+
+#Create the von Bertalanffy object
+vbObj <- a4aGr(
+  grMod=~linf*(1-exp(-k*(t-t0))),      
+  grInvMod=~t0-1/k*log(1-len/linf),      
+  params=FLPar(linf=linf, k=k, t0=t0, units=c('cm','year-1','year')))
+
+# Predict
+AoptBS17=c(predict(vbObj, len=loptBS17))
+AoptBS17 #8.26
+
+########################################################################
+#NE Arctic Lofoten_18
+k = 0.051
+linf = 190.9
+t0 = -2.93
+loptBS18=2/3*linf
+loptBS18 #127.27
+
+#Create the von Bertalanffy object
+vbObj <- a4aGr(
+  grMod=~linf*(1-exp(-k*(t-t0))),      
+  grInvMod=~t0-1/k*log(1-len/linf),      
+  params=FLPar(linf=linf, k=k, t0=t0, units=c('cm','year-1','year')))
+
+# Predict
+AoptBS18=c(predict(vbObj, len=loptBS17))
+AoptBS18 #8.21
+
+# ###########################################################################
+# #summary of Aopts
+# Aopts <- matrix(c(loptNS,AoptNS,loptWB,AoptWB,loptGoM,AoptGoM,loptGB,AoptGB,loptIC,AoptIC,loptBS,AoptBS,loptFP,AoptFP),ncol=2,byrow=TRUE)
+# colnames(Aopts) <- c("Lopt (cm)","Aopt (y)")
+# rownames(Aopts ) <- c("North Sea","West Baltic","Gulf of Main","George's Bank","Iceland","NE Arctic","Faroes plateau")
+# Aopts=round(Aopts,2)
+# as.table(Aopts)
 
 
 
