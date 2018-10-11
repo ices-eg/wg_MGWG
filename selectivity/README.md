@@ -4,8 +4,8 @@ Coordinators: Arni Magnusson, Jacob Kasper
 
 ## Participants
 
-Alejandro Yanez, Arni Magnusson, Cecilia Pinto, Jacob Kasper, Knut Korsbrekke,
-Michael Schirripa, Paris Vasilakopoulos, Tim Earl
+Alejandro Yanez, Arni Magnusson, Cecilia Pinto, Daniel Howell, Jacob Kasper,
+Knut Korsbrekke, Michael Schirripa, Paris Vasilakopoulos, Tim Earl
 
 ## Background
 
