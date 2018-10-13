@@ -1,4 +1,4 @@
-﻿NEArctic Cod
+﻿NE Arctic Cod
 -------------
 Data Source| http://www.ices.dk/sites/pub/Publication%20Reports/Expert%20Group%20Report/acom/2018/AFWG/00-AFWG%202018%20Report.pdf |
 -----------|-----------------------------------------------------------------------------------------------------------------------|
@@ -73,7 +73,7 @@ fatage.csv   | F    | Table 2.3.24  | fishing mortality at age from SAM |
 natage.csv   | 000s  | Table 2.3.23  | stock numbers at age from SAM    |
 
 
-Faroe Island Plateau
+Faroe Plateau
 -------------
 Data Source | http://www.ices.dk/sites/pub/Publication%20Reports/Expert%20Group%20Report/acom/2017/NWWG/NWWG%202017%20Report.pdf
 -----------|-----------------------------------------------------------------------------------------------------------------------|
@@ -89,7 +89,7 @@ natmort      |  ?   |       ?      | ?                                          
 fatage.csv   |  F   | Table 4.6.2  | Fishing mortality at age from the SAM model  |
 natage.csv   | 000s | Table 4.6.3  | Stock number at age from the SAM model       |
 
-Iceland Cod
+Icelandic Cod
 -------------
 Data Source | http://www.ices.dk/sites/pub/Publication%20Reports/Expert%20Group%20Report/acom/2017/NWWG/NWWG%202017%20Report.pdf
 -----------|-----------------------------------------------------------------------------------------------------------------------|
@@ -113,7 +113,7 @@ Data Source | https://stockassessment.org/datadisk/stockassessment/userdirs/user
 file| units| source table| table info |
 ----|------|-------------|------------|
 
-NAFO 2J3KL
+NAFO 2J3KL (Northern Cod)
 -------------
 Data Source | http://publications.gc.ca/collections/collection_2018/mpo-dfo/fs70-5/Fs70-5-2018-018-eng.pdf |
 -----------|-----------------------------------------------------------------------------------------------------------------------|
@@ -129,7 +129,7 @@ natmort.csv  | M    | Table A2-6 | Northern cod M-at-age estimates from the M-sh
 fatage.csv   | F    | Table A2-5 | Northern cod F-at-age estimates from the M-shift        |
 natage.csv   | 000s | Table A2-2 | abundance-at-age estimates (millions) converted to 000s |
 
-NAFO 3P
+NAFO 3P (St Pierre Bank Cod)
 -------------
 Data Source | http://waves-vagues.dfo-mpo.gc.ca/Library/40644777.pdf |
 -----------|-----------------------------------------------------------------------------------------------------------------------|
