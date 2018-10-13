@@ -16,7 +16,7 @@ natage.csv   | 000s | Table 4.6.3  | Stock number at age from the SAM model     
 
 Georges Bank
 -------------
-Data Source | https://www.nefsc.noaa.gov/publications/crd/crd1205/partb.pdf |
+Data Source | https://www.nefsc.noaa.gov/publications/crd/crd1311/partb.pdf |
 -----------|----------------------------------------------------------------|
 B. Stock Assessment of Georges Bank Atlantic Cod (Gadus morhua) for 2012 SAW 55 |
 
