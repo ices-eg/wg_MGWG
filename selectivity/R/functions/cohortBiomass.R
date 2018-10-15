@@ -1,4 +1,4 @@
-cohortBiomass <- function(Ninit, w, M, Fvec = 0)
+cohortBiomass <- function(Ninit, M, w, Fvec=0)
 {
   len <- length(w)
   M <- rep(M, length=len)
@@ -14,8 +14,8 @@ cohortBiomass <- function(Ninit, w, M, Fvec = 0)
 
 ## Example
 ## Ninit <- 136
+## M <- 0.2
 ## w <- c(1.2, 1.7, 2.4, 3.3, 4.3, 5.4, 6.4, 7.4, 8.7, 10.1, 11.6, 14.6)
 ## names(w) <- 3:14
-## M <- 0.2
-## B <- cohortBiomass(Ninit, w, M)
+## B <- cohortBiomass(Ninit, M, w)
 ## barplot(B)
