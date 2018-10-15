@@ -1,33 +1,36 @@
 source("functions/cohortBiomass.R")
+source("functions/read.R")
+source("functions/stdplot.R")
 
 path <- "../data/georges_bank/"
-
 yrs <- 2002:2011
-ages <- as.character(1:9)
+ages <- as.character(1:10)
 
 ## 1  Cohort biomass
 
-w <- read.csv(paste0(path,"wcatch.csv"), check.names=FALSE)
-w <- w[w$Year %in% yrs,]
-w <- colMeans(w[ages])
-
-M <- 0.2
-
-N <- read.csv(paste0(path,"natage.csv"), check.names=FALSE)
+N <- read("natage", plus=TRUE)
 Ninit <- N$"1"[N$Year %in% yrs]
 Ninit <- mean(Ninit)
 
-B <- cohortBiomass(Ninit, w, M)
-BPR <- cohortBiomass(exp(M+M), w, M)
+w <- read("wcatch", plus=TRUE)
+w <- w[w$Year %in% yrs,]
+w <- colMeans(w[ages])
+
+M <- read("natmort", plus=TRUE)
+M <- M[M$Year %in% yrs,]
+M <- colMeans(M[ages])
+
+B <- cohortBiomass(Ninit, M, w)
+BPR <- cohortBiomass(1, M, w)
 
 ## 2  Catch and selectivity
 
-## C <- read.csv(paste0(path,"catage.csv"), check.names=FALSE)
+## C <- read("catage", plus=TRUE)
 ## C <- C[C$Year %in% yrs, ages]
 ## C <- colMeans(C)
 ## Cw <- C * w
 
-Fmort <- read.csv(paste0(path,"fatage.csv"), check.names=FALSE)
+Fmort <- read("fatage", plus=TRUE)
 Fmort <- Fmort[Fmort$Year %in% yrs,]
 Fmort <- colMeans(Fmort[ages])
 S <- Fmort / max(Fmort)
