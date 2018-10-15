@@ -1,5 +1,3 @@
-## Icelandic cod: cohort biomass, catch, selectivity
-
 source("functions/cohortBiomass.R")
 source("functions/stdplot.R")
 path <- "../data/iceland"
