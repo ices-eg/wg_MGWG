@@ -3,7 +3,7 @@ A50 <- function(age, value)
 {
   ## Only two datapoints are included in the analysis:
   inc <- match(TRUE, value>=0.5)  # the first point above 0.5
-  inc <- c(inc-1L, inc)           # and the point before it
+  inc <- c(inc-1, inc)            # and the point before it
   approx(value[inc], age[inc], 0.5)$y
 }
 
