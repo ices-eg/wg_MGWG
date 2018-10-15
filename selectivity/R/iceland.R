@@ -1,35 +1,38 @@
 source("functions/cohortBiomass.R")
+source("functions/read.R")
 source("functions/stdplot.R")
-path <- "../data/iceland"
 
+path <- "../data/iceland"
 yrs <- 2008:2017
 ages <- as.character(3:14)
 
 ## 1  Cohort biomass
 
-N <- read.csv(file.path(path,"natage.csv"), check.names=FALSE)
+N <- read("natage")
 Ninit <- N$"3"[N$Year %in% yrs]
 Ninit <- mean(Ninit)
 
-M <- 0.2
+M <- read("natmort")
+M <- M[M$Year %in% yrs,]
+M <- colMeans(M[ages])
 
-w <- read.csv(file.path(path,"wcatch.csv"), check.names=FALSE)
+w <- read("wcatch")
 w <- w[w$Year %in% yrs,]
 w <- colMeans(w[ages])
 
 B <- cohortBiomass(Ninit, M, w)
-BPR <- cohortBiomass(1, M, w)
+BPR <- cohortBiomass(exp(-0.4), M, w)  # 1 recruit at age 1 => 0.67 at age 3
 
 ## 2  Catch and selectivity
 
-C <- read.csv(file.path(path,"catage.csv"), check.names=FALSE)
-C <- C[C$Year %in% yrs, ages]
-C <- colMeans(C)
+C <- read("catage")
+C <- C[C$Year %in% yrs,]
+C <- colMeans(C[ages])
 Cp <- C / sum(C)
 
-Fmort <- read.csv(file.path(path,"fatage.csv"), check.names=FALSE)
+Fmort <- read("fatage")
 Fmort <- Fmort[Fmort$Year %in% yrs,]
-Fmort <- colMeans(Fmort[-1])
+Fmort <- colMeans(Fmort[ages])
 S <- Fmort / max(Fmort)
 
 ## 3  Plot
