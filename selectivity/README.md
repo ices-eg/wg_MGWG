@@ -175,6 +175,8 @@ meeting. We will organize tasks to be completed prior to each meeting.
    changes)
 4. Prepare a list of next tasks, decide who will report on what next meeting
 
+[minutes](minutes.md#11-oct-2018)
+
 **08 Nov 2018** 4pm (CET, UTC+1)
 
 **13 Dec 2018** 4pm (CET, UTC+1)
