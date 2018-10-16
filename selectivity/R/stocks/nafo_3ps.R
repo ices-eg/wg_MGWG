@@ -24,6 +24,7 @@ w <- w[w$Year %in% yrs,]
 w <- colMeans(w[ages])
 
 ## B <- cohortBiomass(Ninit, M, w)
+## One recruit at age 3
 ## BPR <- cohortBiomass(1, M, w)
 
 ## 2  Catch and selectivity
@@ -47,4 +48,4 @@ Cp <- C / sum(C)
 ## 4  Export
 
 nafo_3ps <-
-  list(N=N, Ninit=Ninit, M=M, w=w, B=B, BPR=BPR, C=C, Cp=Cp, Fmort=Fmort, S=S)
+  list(w=w, C=C, Cp=Cp)
