@@ -1,4 +1,4 @@
-## All stocks: weight, selectivity, biomass per recruit
+## Overview plots: weight, biomass per recruit, selectivity, catch, maturity
 
 library(gplots)  # rich.colors
 source("functions/stdline.R")
@@ -26,7 +26,7 @@ col <- rich.colors(8)
 stocks <- c("Faroe Plateau", "Georges Bank", "Gulf of Maine", "Iceland",
             "NAFO 2J3KL", "NE Arctic", "North Sea", "W Baltic")
 
-pdf("all.pdf", 10, 20)
+pdf("overview.pdf", 10, 20)
 layout(matrix(c(1,2,3,3,4,4,5,5), nrow=4, byrow=TRUE))
 
 ## Weight
