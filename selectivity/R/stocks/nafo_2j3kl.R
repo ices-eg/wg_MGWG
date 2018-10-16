@@ -26,7 +26,8 @@ w <- w[w$Year %in% yrs,]
 w <- colMeans(w[ages], na.rm=TRUE)
 
 B <- cohortBiomass(Ninit, M, w)
-BPR <- cohortBiomass(exp(-0.2), M, w)  # 1 recruit at age 1 => 0.82 at age 2
+## One recruit at age 3 => exp(M["2"]) at age 2
+BPR <- cohortBiomass(exp(M["2"]), M, w)
 
 ## 2  Catch and selectivity
 
