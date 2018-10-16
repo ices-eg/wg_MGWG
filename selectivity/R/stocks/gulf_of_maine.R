@@ -3,7 +3,7 @@ source("../functions/dims.R")
 source("../functions/read.R")
 source("../functions/stdplot.R")
 
-path <- "../../data/gulf_of_maine_2017"
+path <- "../../data/gulf_of_maine"
 dims(path)
 yrs <- 2007:2016
 ages <- as.character(1:8)
@@ -50,5 +50,5 @@ S <- Fmort / max(Fmort)
 
 ## 4  Export
 
-gulf_of_maine_2017 <-
+gulf_of_maine <-
   list(N=N, Ninit=Ninit, M=M, w=w, B=B, BPR=BPR, C=C, Cp=Cp, Fmort=Fmort, S=S)

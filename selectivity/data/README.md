@@ -26,18 +26,6 @@ wcatch  | kg   | B12   | Catch mean weight at age
 wstock  | kg   | B17a  | January 1 stock weights at age
 
 ## Gulf of Maine
-Data Source | https://www.nefsc.noaa.gov/publications/crd/crd1311/crd1311.pdf
------------ | ---------------------------------------------------------------
-NEFSC. 2013. 55th Northeast Regional Stock Assessment Workshop (55th SAW). NEFSC Ref Doc 13-11. |
-
-csv    | unit | table | info
------- | ---- | ----- | ---------------------------------------
-fatage | yr-1 | A.87  | Fishing mortality-at-age
-natage | 000s | A.88  | January 1 numbers-at-age
-wcatch | kg   | A.49  | Total catch weights-at-age
-wstock | kg   | A.50  | January 1 spawning stock weights-at-age
-
-## Gulf of Maine 2017
 Data Source | https://www.nefsc.noaa.gov/saw/sasi/uploads/GoM_cod_2017_update_supplemental_information_20170817.pdf
 ----------- | -----------------------------------------------------------------------------------------------------
 NEFSC. 2017. Gulf of Maine Atlantic cod 2017 assessment update report supplemental information. Draft working paper. |
@@ -51,6 +39,18 @@ natage   | 000s | 35     | January 1 numbers-at-age M=0.2 model
 natmort  | yr-1 |        |
 wcatch   | kg   | 22     | Mean weights-at-age (kg) of the total catch
 wstock   | kg   | 23     | January 1/spawning stock weights-at-age
+
+## Gulf of Maine 2013
+Data Source | https://www.nefsc.noaa.gov/publications/crd/crd1311/crd1311.pdf
+----------- | ---------------------------------------------------------------
+NEFSC. 2013. 55th Northeast Regional Stock Assessment Workshop (55th SAW). NEFSC Ref Doc 13-11. |
+
+csv    | unit | table | info
+------ | ---- | ----- | ---------------------------------------
+fatage | yr-1 | A.87  | Fishing mortality-at-age
+natage | 000s | A.88  | January 1 numbers-at-age
+wcatch | kg   | A.49  | Total catch weights-at-age
+wstock | kg   | A.50  | January 1 spawning stock weights-at-age
 
 ## Icelandic Cod
 Data Source | http://www.ices.dk/sites/pub/Publication%20Reports/Expert%20Group%20Report/acom/2017/NWWG/NWWG%202017%20Report.pdf

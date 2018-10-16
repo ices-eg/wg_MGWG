@@ -9,8 +9,8 @@ setwd("stocks")
 
 source("faroe_plateau.R")
 source("georges_bank.R")
+source("gulf_of_maine.R")
 source("gulf_of_maine_2013.R")
-source("gulf_of_maine_2017.R")
 source("iceland.R")
 source("nafo_2j3kl.R")
 source("nafo_3ps.R")
@@ -25,8 +25,8 @@ setwd("..")
 lwd <- 2
 col <- rich.colors(10)
 
-stocks <- c("Faroe Plateau", "Georges Bank", "Gulf of Maine 2013",
-            "Gulf of Maine 2017", "Iceland", "NAFO 2J3KL", "NAFO 3Ps",
+stocks <- c("Faroe Plateau", "Georges Bank", "Gulf of Maine",
+            "Gulf of Maine 2013", "Iceland", "NAFO 2J3KL", "NAFO 3Ps",
             "NE Arctic", "North Sea", "W Baltic")
 
 pdf("all.pdf", 10, 10)
@@ -36,8 +36,8 @@ plot(NA, xlim=c(1,15), ylim=c(0,16), yaxs="i",
      xlab="Age", ylab="Weight (kg)", main="Average weight")
 stdline(faroe_plateau$w,      lwd, col[1])
 stdline(georges_bank$w,       lwd, col[2])
-stdline(gulf_of_maine_2013$w, lwd, col[3])
-stdline(gulf_of_maine_2017$w, lwd, col[4])
+stdline(gulf_of_maine$w,      lwd, col[3])
+stdline(gulf_of_maine_2013$w, lwd, col[4])
 stdline(iceland$w,            lwd, col[5])
 stdline(nafo_2j3kl$w,         lwd, col[6])
 stdline(nafo_3ps$w,           lwd, col[7])
@@ -52,8 +52,8 @@ plot(NA, xlim=c(1,15), ylim=c(0,3.9), yaxs="i",
      main="Biomass per recruit, in the absence of fishing")
 stdline(faroe_plateau$BPR,      lwd, col[1])
 stdline(georges_bank$BPR,       lwd, col[2])
-stdline(gulf_of_maine_2013$BPR, lwd, col[3])
-stdline(gulf_of_maine_2017$BPR, lwd, col[4])
+stdline(gulf_of_maine$BPR,      lwd, col[3])
+stdline(gulf_of_maine_2013$BPR, lwd, col[4])
 stdline(iceland$BPR,            lwd, col[5])
 stdline(nafo_2j3kl$BPR,         lwd, col[6])
 stdline(nafo_3ps$BPR,           lwd, col[7])
@@ -67,8 +67,8 @@ plot(NA, xlim=c(1,15), ylim=c(0,1.05), yaxs="i",
      xlab="Age", ylab="Selectivity", main="Average selectivity")
 stdline(faroe_plateau$S,      lwd, col[1])
 stdline(georges_bank$S,       lwd, col[2])
-stdline(gulf_of_maine_2013$S, lwd, col[3])
-stdline(gulf_of_maine_2017$S, lwd, col[4])
+stdline(gulf_of_maine$S,      lwd, col[3])
+stdline(gulf_of_maine_2013$S, lwd, col[4])
 stdline(iceland$S,            lwd, col[5])
 stdline(nafo_2j3kl$S,         lwd, col[6])
 stdline(nafo_3ps$S,           lwd, col[7])
