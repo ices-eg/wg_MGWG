@@ -9,7 +9,7 @@ yrs <- 2004:2013
 ages <- as.character(3:14)
 plus <- TRUE
 
-## 1  Cohort biomass
+## 1  Population
 
 ## N <- read("natage", path, plus)
 ## Ninit <- N$"1"[N$Year %in% yrs]
@@ -19,15 +19,21 @@ plus <- TRUE
 ## M <- M[M$Year %in% yrs,]
 ## M <- colMeans(M[ages])
 
-w <- read("wcatch", path, plus)
-w <- w[w$Year %in% yrs,]
-w <- colMeans(w[ages])
+## 2  Weights, cohort biomass
 
-## B <- cohortBiomass(Ninit, M, w)
+wcatch <- read("wcatch", path, plus)
+wcatch <- wcatch[wcatch$Year %in% yrs,]
+wcatch <- colMeans(wcatch[ages])
+
+wstock <- read("wstock", path, plus)
+wstock <- wstock[wstock$Year %in% yrs,]
+wstock <- colMeans(wstock[ages])
+
+## B <- cohortBiomass(Ninit, M, wcatch)
 ## One recruit at age 3
-## BPR <- cohortBiomass(1, M, w)
+## BPR <- cohortBiomass(1, M, wcatch)
 
-## 2  Catch and selectivity
+## 3  Catch and selectivity
 
 C <- read("catage", path, plus)
 C <- C[C$Year %in% yrs,]
@@ -39,13 +45,22 @@ Cp <- C / sum(C)
 ## Fmort <- colMeans(Fmort[ages])
 ## S <- Fmort / max(Fmort)
 
-## 3  Plot
+## 4  Maturity
 
-## par(mfrow=c(2,2))
+mat <- read("maturity", path, plus)
+mat <- mat[mat$Year %in% yrs,]
+mat <- colMeans(mat[ages])
+
+## 5  Plot
+
+## par(mfrow=c(3,2))
 ## stdplot(Cp, "Catch composition", "Proportion of catch")
-## stdplot(w, "Average weight", "Weight (kg)")
+## stdplot(wcatch, "Average catch weights", "Weight (kg)")
+## stdplot(mat, "Average maturity", "Proportion mature")
+## stdplot(wstock, "Average stock weights", "Weight (kg)")
 
-## 4  Export
+## 6  Export
 
 nafo_3ps <-
-  list(w=w, C=C, Cp=Cp)
+  list(wcatch=wcatch, wstock=wstock,
+       C=C, Cp=Cp, mat=mat)

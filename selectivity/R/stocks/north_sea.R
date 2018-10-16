@@ -9,7 +9,7 @@ yrs <- 2008:2017
 ages <- as.character(1:10)
 plus <- FALSE
 
-## 1  Cohort biomass
+## 1  Population
 
 N <- read("natage", path, plus)
 Ninit <- N$"1"[N$Year %in% yrs]
@@ -21,15 +21,21 @@ M <- colMeans(M[-1])
 M <- c(M, rep(M[length(M)], length(ages)-length(M)))
 names(M) <- ages
 
-w <- read("wcatch", path, plus)
-w <- w[w$Year %in% yrs,]
-w <- colMeans(w[ages], na.rm=TRUE)
+## 2  Weights, cohort biomass
 
-B <- cohortBiomass(Ninit, M, w)
+wcatch <- read("wcatch", path, plus)
+wcatch <- wcatch[wcatch$Year %in% yrs,]
+wcatch <- colMeans(wcatch[ages])
+
+wstock <- read("wstock", path, plus)
+wstock <- wstock[wstock$Year %in% yrs,]
+wstock <- colMeans(wstock[ages])
+
+B <- cohortBiomass(Ninit, M, wcatch)
 ## One recruit at age 3 => exp(M["1"]+M["2"]) at age 1
-BPR <- cohortBiomass(exp(M["1"]+M["2"]), M, w)
+BPR <- cohortBiomass(exp(M["1"]+M["2"]), M, wcatch)
 
-## 2  Catch and selectivity
+## 3  Catch and selectivity
 
 C <- read("catage", path, plus)
 C <- C[C$Year %in% yrs,]
@@ -43,16 +49,28 @@ Fmort <- c(Fmort, rep(Fmort[length(Fmort)], length(ages)-length(Fmort)))
 names(Fmort) <- ages
 S <- Fmort / max(Fmort)
 
-## 3  Plot
+## 4  Maturity
 
-## par(mfrow=c(2,2))
+mat <- read("maturity", path, plus)
+mat <- mat[mat$Year %in% yrs,]
+mat <- colMeans(mat[-1])
+mat <- c(mat, rep(mat[length(mat)], length(ages)-length(mat)))
+names(mat) <- ages
+
+
+## 5  Plot
+
+## par(mfrow=c(3,2))
 ## stdplot(Cp, "Catch composition", "Proportion of catch")
-## stdplot(w, "Average weight", "Weight (kg)")
+## stdplot(wcatch, "Average catch weights", "Weight (kg)")
 ## stdplot(S, "Average selectivity", "Selectivity")
 ## stdplot(BPR, "Biomass per recruit, in the absence of fishing",
 ##         "Biomass per recruit (kg)")
+## stdplot(mat, "Average maturity", "Proportion mature")
+## stdplot(wstock, "Average stock weights", "Weight (kg)")
 
-## 4  Export
+## 6  Export
 
 north_sea <-
-  list(N=N, Ninit=Ninit, M=M, w=w, B=B, BPR=BPR, C=C, Cp=Cp, Fmort=Fmort, S=S)
+  list(N=N, Ninit=Ninit, M=M, wcatch=wcatch, wstock=wstock,
+       B=B, BPR=BPR, C=C, Cp=Cp, Fmort=Fmort, S=S, mat=mat)
