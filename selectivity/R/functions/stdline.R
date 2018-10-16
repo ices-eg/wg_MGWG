@@ -1,5 +1,7 @@
-stdline <- function(x, lwd=2, col=1, ...)
+stdline <- function(x, lwd=2, col=1, from=NULL, ...)
 {
+  if(!is.null(from))
+    x <- x[as.integer(names(x)) >= from]
   lines(as.integer(names(x)), x, lwd=lwd, col=col, ...)
 }
 
