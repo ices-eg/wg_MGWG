@@ -1,18 +1,18 @@
-source("functions/cohortBiomass.R")
-source("functions/dims.R")
-source("functions/read.R")
-source("functions/stdplot.R")
+source("../functions/cohortBiomass.R")
+source("../functions/dims.R")
+source("../functions/read.R")
+source("../functions/stdplot.R")
 
-path <- "../data/georges_bank"
+path <- "../../data/faroe_plateau"
 dims(path)
-yrs <- 2002:2011
-ages <- as.character(1:9)
-plus <- FALSE
+yrs <- 2008:2017
+ages <- as.character(2:10)
+plus <- TRUE
 
 ## 1  Cohort biomass
 
 N <- read("natage", path, plus)
-Ninit <- N$"1"[N$Year %in% yrs]
+Ninit <- N$"2"[N$Year %in% yrs]
 Ninit <- mean(Ninit)
 
 M <- read("natmort", path, plus)
@@ -24,7 +24,7 @@ w <- w[w$Year %in% yrs,]
 w <- colMeans(w[ages])
 
 B <- cohortBiomass(Ninit, M, w)
-BPR <- cohortBiomass(1, M, w)
+BPR <- cohortBiomass(exp(-0.2), M, w)  # 1 recruit at age 1 => 0.82 at age 2
 
 ## 2  Catch and selectivity
 
@@ -49,3 +49,8 @@ if(interactive())
   stdplot(BPR, "Biomass per recruit, in the absence of fishing",
           "Biomass per recruit (kg)")
 }
+
+## 4  Export
+
+faroe_plateau <-
+  list(N=N, Ninit=Ninit, M=M, w=w, B=B, BPR=BPR, C=C, Cp=Cp, Fmort=Fmort, S=S)

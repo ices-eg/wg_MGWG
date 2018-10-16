@@ -1,13 +1,13 @@
-source("functions/cohortBiomass.R")
-source("functions/dims.R")
-source("functions/read.R")
-source("functions/stdplot.R")
+source("../functions/cohortBiomass.R")
+source("../functions/dims.R")
+source("../functions/read.R")
+source("../functions/stdplot.R")
 
-path <- "../data/w_baltic"
+path <- "../../data/gulf_of_maine_2017"
 dims(path)
-yrs <- 2008:2017
-ages <- as.character(1:7)
-plus <- TRUE
+yrs <- 2007:2016
+ages <- as.character(1:8)
+plus <- FALSE
 
 ## 1  Cohort biomass
 
@@ -35,9 +35,7 @@ Cp <- C / sum(C)
 
 Fmort <- read("fatage", path, plus)
 Fmort <- Fmort[Fmort$Year %in% yrs,]
-Fmort <- colMeans(Fmort[-1])
-Fmort <- c(Fmort, rep(Fmort[length(Fmort)], length(ages)-length(Fmort)))
-names(Fmort) <- ages
+Fmort <- colMeans(Fmort[ages])
 S <- Fmort / max(Fmort)
 
 ## 3  Plot
@@ -51,3 +49,8 @@ if(interactive())
   stdplot(BPR, "Biomass per recruit, in the absence of fishing",
           "Biomass per recruit (kg)")
 }
+
+## 4  Export
+
+gulf_of_maine_2017 <-
+  list(N=N, Ninit=Ninit, M=M, w=w, B=B, BPR=BPR, C=C, Cp=Cp, Fmort=Fmort, S=S)

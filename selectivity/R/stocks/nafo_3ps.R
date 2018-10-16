@@ -1,9 +1,9 @@
-source("functions/cohortBiomass.R")
-source("functions/dims.R")
-source("functions/read.R")
-source("functions/stdplot.R")
+source("../functions/cohortBiomass.R")
+source("../functions/dims.R")
+source("../functions/read.R")
+source("../functions/stdplot.R")
 
-path <- "../data/nafo_3ps"
+path <- "../../data/nafo_3ps"
 dims(path)
 yrs <- 2004:2013
 ages <- as.character(3:14)
@@ -49,3 +49,8 @@ if(interactive())
   ## stdplot(BPR, "Biomass per recruit, in the absence of fishing",
           ## "Biomass per recruit (kg)")
 }
+
+## 4  Export
+
+nafo_3ps <-
+  list(N=N, Ninit=Ninit, M=M, w=w, B=B, BPR=BPR, C=C, Cp=Cp, Fmort=Fmort, S=S)
