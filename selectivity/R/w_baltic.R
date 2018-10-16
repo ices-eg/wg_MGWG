@@ -3,11 +3,11 @@ source("functions/dims.R")
 source("functions/read.R")
 source("functions/stdplot.R")
 
-path <- "../data/north_sea"
+path <- "../data/w_baltic"
 dims(path)
 yrs <- 2008:2017
-ages <- as.character(1:10)
-plus <- FALSE
+ages <- as.character(1:7)
+plus <- TRUE
 
 ## 1  Cohort biomass
 
@@ -17,13 +17,11 @@ Ninit <- mean(Ninit)
 
 M <- read("natmort", path, plus)
 M <- M[M$Year %in% yrs,]
-M <- colMeans(M[-1])
-M <- c(M, rep(M[length(M)], length(ages)-length(M)))
-names(M) <- ages
+M <- colMeans(M[ages])
 
 w <- read("wcatch", path, plus)
 w <- w[w$Year %in% yrs,]
-w <- colMeans(w[ages], na.rm=TRUE)
+w <- colMeans(w[ages])
 
 B <- cohortBiomass(Ninit, M, w)
 BPR <- cohortBiomass(1, M, w)

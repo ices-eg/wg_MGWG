@@ -1,8 +1,10 @@
 source("functions/cohortBiomass.R")
+source("functions/dims.R")
 source("functions/read.R")
 source("functions/stdplot.R")
 
 path <- "../data/iceland"
+dims(path)
 yrs <- 2008:2017
 ages <- as.character(3:14)
 plus <- FALSE
