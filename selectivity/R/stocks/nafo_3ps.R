@@ -40,15 +40,9 @@ Cp <- C / sum(C)
 
 ## 3  Plot
 
-if(interactive())
-{
-  par(mfrow=c(2,2))
-  stdplot(Cp, "Catch composition", "Proportion of catch")
-  stdplot(w, "Average weight", "Weight (kg)")
-  ## stdplot(S, "Average selectivity", "Selectivity")
-  ## stdplot(BPR, "Biomass per recruit, in the absence of fishing",
-          ## "Biomass per recruit (kg)")
-}
+## par(mfrow=c(2,2))
+## stdplot(Cp, "Catch composition", "Proportion of catch")
+## stdplot(w, "Average weight", "Weight (kg)")
 
 ## 4  Export
 
