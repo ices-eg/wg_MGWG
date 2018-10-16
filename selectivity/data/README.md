@@ -110,19 +110,19 @@ wcatch   | kg   | 3.8   | Catch weights at age
 wstock   | kg   | 3.9   | Stock weights at age
 
 ## North Sea Cod
-Data Source | https://stockassessment.org/datadisk/stockassessment/userdirs/user3/nscod_ass06_fc17/
------------ | -------------------------------------------------------------------------------------
-ICES. 2017. Report of the Working Group on Assessment of Demersal Stocks in the North Sea and Skagerrak (WGNSSK). ICES CM 2017/ACOM:21. |
+Data Source | https://community.ices.dk/ExpertGroups/WGNSSK/_layouts/15/start.aspx#/SitePages/HomePage.aspx
+----------- | ---------------------------------------------------------------------------------------------
+ICES. 2018. Provisional report of the Working Group on Assessment of Demersal Stocks in the North Sea and Skagerrak (WGNSSK). Draft report. |
 
 csv      | unit | table | info
 -------- | ---- | ----- | --------------------------------------------------------------------
 catage   | 000s | 4.2c  | Catch numbers at age
-fatage   | yr-1 | 8     | Estimated fishing mortality at age
-maturity | prop | 5a    | Proportion mature by age
-natage   | 000s | 9     | Population numbers at age
-natmort  | yr-1 | 5b    | Natural mortality by age
-wcatch   | yr-1 | 3c    | Catch weights at age, also assumed to represent stock weights at age
-wcatch   | yr-1 | 3c    | Catch weights at age, also assumed to represent stock weights at age
+fatage   | yr-1 | 4.8   | Estimated fishing mortality at age
+maturity | prop | 4.5a  | Proportion mature by age
+natage   | 000s | 4.9   | Numbers at age
+natmort  | yr-1 | 4.5b  | Natural mortality by age
+wcatch   | yr-1 | 4.3c  | Catch weights at age, also assumed to represent stock weights at age
+wcatch   | yr-1 | 4.3c  | Catch weights at age, also assumed to represent stock weights at age
 
 ## Western Baltic
 Data Source | http://www.ices.dk/sites/pub/Publication%20Reports/Expert%20Group%20Report/acom/2018/WGBFAS/01%20WGBFAS%20Report%202018.pdf
