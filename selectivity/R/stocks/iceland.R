@@ -49,7 +49,7 @@ S <- Fmort / max(Fmort)
 
 mat <- read("maturity", path, plus)
 mat <- mat[mat$Year %in% yrs,]
-mat <- colMeans(mat[ages])
+mat <- colMeans(mat[ages], na.rm=TRUE)
 
 ## 5  Plot
 
