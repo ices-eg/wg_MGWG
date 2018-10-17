@@ -1,6 +1,6 @@
 ## Profile the effect of sliding the selectivity left or right
-profSlide <- function(stock, shift=seq(-2,2), strategy=applyFmax, focus="Y",
-                      div=1000)
+prof <- function(stock, shift=seq(-2,2), strategy=applyFmax, focus="Y",
+                 div=1000)
 {
   n <- length(shift)
   yield <- numeric(n)
@@ -20,4 +20,4 @@ profSlide <- function(stock, shift=seq(-2,2), strategy=applyFmax, focus="Y",
 ## source("iceland.R")
 ## setwd(owd)
 ##
-## profSlide(iceland)
+## prof(iceland)
