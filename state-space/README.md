@@ -20,7 +20,7 @@ Southern New England-Mid-Atlantic winter flounder (SNEMAwinter) |X|X|X|X|
 American Plaice |X|X|3|X|
 White Hake |X|X|X|X|
 Icelandic herring (ICEherring) | |X|3|X| 
-US Atlantic Herring (USAtlHerring) | |X|X|X|
+US Atlantic Herring (USAtlHerring) |X|X|X|X|
 
 Comparison of merits and issues for traditional SCAA and state-space
 age-structured models. This could include different varieties of each class of
