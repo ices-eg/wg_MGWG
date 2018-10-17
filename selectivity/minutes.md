@@ -17,11 +17,11 @@ Alejandro, Arni, Cecilia, Jacob, Paris
 
 To be presented at next meeting
 
-- Take a closer look at which cod fisheries active today? [Arni]
+- Take a closer look at which cod fisheries active today. [Arni, Jacob]
 
-- Add natural mortality in data folder [Jacob]
+- Add natural mortality in data folder. [Arni, Jacob]
 
-- Experiment with `applyFmax`: what is the potential yield of the Icelandic cod
+- Experiment with `applyFmax`. What is the potential yield of the Icelandic cod
   given the (1) current selectivity, (2) current selectivity shifted one age
   younger, and (3) current selectivity shifted one age higher? [Alejandro, Arni,
   Cecilia, Paris]
