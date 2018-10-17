@@ -2,7 +2,7 @@
 
 source("functions/applyFmax.R")
 source("functions/applyF0.1.R")
-source("functions/profSlide.R")
+source("functions/prof.R")
 source("functions/slide.R")
 
 ## 1  Import
@@ -18,18 +18,7 @@ source("north_sea.R")
 source("w_baltic.R")
 setwd("..")
 
-################################################################################
-
-profPlot <- function(stock, shift, strategy=applyFmax, focus="Y",
-                     xlim=range(shift), ylim=NULL)
-{
-  main <- deparse(substitute(stock))
-  ylab <- switch(focus, Y="Potential yield (kt)", SSB="SSB (kt)")
-  stock$profile <- profSlide(stock, shift, strategy, focus)
-  plot(stock$profile, type="l", xlim=xlim, ylim=ylim, yaxs="i",
-       xlab="Age shift (yrs)", ylab=ylab, main=main)
-  points(stock$profile[stock$profile$shift==0,])
-}
+## 2  Apply Fmax
 
 shift <- list(fp=-1:8, gb=-1:8, gm=-1:7, ic=-1:9,
               n2=-1:9, ne=-1:9, ns=-1:9, wb=-1:6)
@@ -54,7 +43,7 @@ profPlot(ne_arctic,     shift$ne, applyFmax, "SSB", c(-1,9), c(0,6000))
 profPlot(north_sea,     shift$ns, applyFmax, "SSB", c(-1,9), c(0,700))
 profPlot(w_baltic,      shift$wb, applyFmax, "SSB", c(-1,9), c(0,160))
 
-################################################################################
+## 3  Apply F0.1
 
 par(mfrow=c(3,3))
 profPlot(faroe_plateau, shift$fp, applyF0.1, "Y", c(-1,9), c(0,14))
