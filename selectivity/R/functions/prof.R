@@ -3,12 +3,12 @@ prof <- function(stock, shift=seq(-2,2), strategy=applyFmax, focus="Y",
                  div=1000)
 {
   n <- length(shift)
-  yield <- numeric(n)
+  result <- numeric(n)
   for(i in 1:n)
-    yield[i] <-
-      with(stock, strategy(Ninit, M, slide(S,shift[i]), mat, wcatch)[[focus]])
-  yield <- yield / div
-  data.frame(shift, yield)
+    result[i] <- with(stock, strategy(Ninit, M, slide(S,shift[i]),
+                                      mat, wcatch, wstock)[[focus]])
+  result <- result / div
+  data.frame(shift, result)
 }
 
 ## Example
