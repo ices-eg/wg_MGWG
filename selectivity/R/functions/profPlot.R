@@ -4,8 +4,9 @@ profPlot <- function(stock, shift, strategy=applyFmax, focus="Y",
 {
   main <- deparse(substitute(stock))
   ylab <- switch(focus, Y="Potential yield (kt)", SSB="SSB (kt)")
-  stock$profile <- prof(stock, shift, strategy, focus)
-  plot(stock$profile, type="l", xlim=xlim, ylim=ylim, yaxs="i",
+  profile <- prof(stock, shift, strategy, focus)
+  plot(profile, type="l", xlim=xlim, ylim=ylim, yaxs="i",
        xlab="Age shift (yrs)", ylab=ylab, main=main)
-  points(stock$profile[stock$profile$shift==0,])
+  points(profile[profile$shift==0,])
+  profile
 }
