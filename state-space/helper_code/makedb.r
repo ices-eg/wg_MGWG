@@ -3,6 +3,7 @@
 
 library(ggplot2)
 library(dplyr)
+library(tidyr)
 
 stocks <- list.dirs(path = "../", full.names = FALSE, recursive = FALSE)
 stocks <- stocks[!(stocks %in% c("ASAP_3_year_projection_test", "helper_code", "plots_for_README", "tex", "USWCLingcod"))]
@@ -77,3 +78,25 @@ for (imetric in 1:3){
   #print(ggtiled)
   ggsave(filename = paste0("../db/gg", mymetric[imetric], "_tiled.png"), ggtiled)
 }
+
+# spread data to allow SSB vs F Mohn's rho plotting
+dbps <- dbp %>%
+  spread(key = metric, value = rho)
+
+ggs <- ggplot(dbps, aes(x=SSB, y=Fbar, color=model)) +
+  geom_point() +
+  xlab("Mohn's rho SSB") +
+  ylab("Mohn's rho Fbar") +
+  theme_bw()
+# print(ggs)
+ggsave(filename = "../db/SSBvsFbarMohnRho.png", ggs)
+
+ggstiled <- ggplot(dbps, aes(x=SSB, y=Fbar, color=model)) +
+  geom_point() +
+  facet_wrap(model ~ .) +
+  xlab("Mohn's rho SSB") +
+  ylab("Mohn's rho Fbar") +
+  theme_bw()
+# print(ggstiled)
+ggsave(filename = "../db/SSBvsFbarMohnRho_tiled.png", ggstiled)
+
