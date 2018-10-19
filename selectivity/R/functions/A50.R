@@ -8,6 +8,6 @@ A50 <- function(age, value)
 }
 
 ## Example
-## age <- 1:4
-## sel <- c(0.1, 0.2, 0.8, 0.9)
-## A50(age, sel)
+age <- 1:4
+sel <- c(0.2, 0.4, 0.9, 1)
+A50(age, sel)
