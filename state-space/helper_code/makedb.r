@@ -106,5 +106,5 @@ ggstiled2 <- ggplot(dbps, aes(x=SSB, y=Fbar, color=stock)) +
   xlab("Mohn's rho SSB") +
   ylab("Mohn's rho Fbar") +
   theme_bw()
-# print(ggstiled)
+# print(ggstiled2)
 ggsave(filename = "../db/SSBvsFbarMohnRho_tiled2.png", ggstiled)
