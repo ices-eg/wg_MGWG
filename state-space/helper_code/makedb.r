@@ -100,3 +100,11 @@ ggstiled <- ggplot(dbps, aes(x=SSB, y=Fbar, color=model)) +
 # print(ggstiled)
 ggsave(filename = "../db/SSBvsFbarMohnRho_tiled.png", ggstiled)
 
+ggstiled2 <- ggplot(dbps, aes(x=SSB, y=Fbar, color=stock)) +
+  geom_point() +
+  facet_wrap(model ~ .) +
+  xlab("Mohn's rho SSB") +
+  ylab("Mohn's rho Fbar") +
+  theme_bw()
+# print(ggstiled)
+ggsave(filename = "../db/SSBvsFbarMohnRho_tiled2.png", ggstiled)
