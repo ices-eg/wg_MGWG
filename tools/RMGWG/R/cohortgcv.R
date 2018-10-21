@@ -84,13 +84,15 @@ retro <- function(stk, idxs, retro=5, ...){
 	FLStocks(lst0)
 }
 
-
 mohn <- function (stks, qoi=c('fbar','ssb','rec'), ...){
 	v0 <- vector(mode='numeric', len=length(qoi))
 	names(v0) <- qoi
+	yrs <- unlist(lapply(stks, function(x) range(x)['maxyear']))[-1]
 	for(i in qoi){
 		lst0 <- lapply(stks, i)
-		v0[i] <- mean(unlist(lst0[-1])/c(lst0[[1]])-1, na.rm=TRUE)
+		base <- c(lst0[[1]][,ac(yrs)])
+		retros <- unlist(lapply(lst0[-1], function(x) x[,dim(x)[2]]))
+		v0[i] <- mean(retros/base-1, na.rm=TRUE)
 	}	
 	v0	
 }

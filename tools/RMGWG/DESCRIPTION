@@ -1,6 +1,6 @@
 Package: RMGWG
 Title: Supporting functions to MGWG
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: c(
   person("Colin P.", "Millar", email = "colin.millar@ices.dk", role = "aut"),
   person("Ernesto", "Jardim", email = "ernesto.jardim@ec.europa.eu", role = c("aut", "cre")))
