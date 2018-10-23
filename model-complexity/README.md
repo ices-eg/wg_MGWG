@@ -3,7 +3,9 @@
 ...
 ## Meeting Information
 Date: Monday 29 October 2018
+
 Time: 14:00 GMT / 16:00 Oslo & Copenhagen / 10:00 EDT / 7:00 PDT 
+
 Connection Method: 
 
 ***
