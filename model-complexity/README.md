@@ -1,16 +1,20 @@
 # Appropriate level of model complexity
 
 ...
+## Meeting Information
+Date: Monday 29 October 2018
+Time: 14:00 GMT / 16:00 Oslo & Copenhagen / 10:00 EDT / 7:00 PDT 
+Connection Method: 
 
 ***
 
 Criteria | Comments
 -------- | --------
-Important for many stock assessment scientists?   |
+Important for many stock assessment scientists?   | Yes
 Standard papers that people cite for this topic?  | See list of references at bottom of page
-Another working group already working on this?    |
+Another working group already working on this?    | Not that we are aware
 How can this be structured into a journal paper?  |
-What kind of work is required, and how much work? |
+What kind of work is required, and how much work? | Data simulation, model fitting, comparison of results
 Participants that would like to work on this?     | Alejandro Yanez, Brandon Chasco, Dvora Hart, Geir Olve Sorvik, Helen Takade-Heumacher, Liz Brooks, Patrick Lynch, Ernesto Jardim
 Who would like to lead, what will coauthors do?   |
 
