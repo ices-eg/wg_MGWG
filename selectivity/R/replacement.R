@@ -16,6 +16,9 @@ stock <- function(Ninit, M, wcatch, wstock, mat, Fvec)
        B=sum(N*wstock), SSB=sum(N*wstock*mat), Y=Y)
 }
 
+bevholt <- function (a, b, S)
+  a*S / (b+S)
+
 dat <- read.table(text="
 a       M       w       mat     S
 1       0.2     0.087   0.1     0.0
@@ -42,10 +45,10 @@ a       M       w       mat     S
 
 ################################################################################
 
-Rmax <- 10
-S50 <- 10
+a <- 10
+b <- 10
 Svec <- seq(0, 120)
-Rvec <- bevholt.Rmax(Rmax, S50, Svec)
+Rvec <- bevholt(a, b, Svec)
 
 plot(Svec, Rvec, type="l")
 
