@@ -13,7 +13,7 @@ Additional perspective on modelling assessment model outputs is given by Brooks 
 Criteria | Comments
 -------- | --------
 Important for many stock assessment scientists?   |
-Standard papers that people cite for this topic?  | [Brooks and Deroba 2015](https://doi.org/10.1139/cjfas-2014-0231)
+Standard papers that people cite for this topic?  | [Brooks and Deroba 2015](https://doi.org/10.1139/cjfas-2014-0231); [Conn et al. 2010 CJFAS] (https://doi.org/10.1139/F09-194)
 Another working group already working on this?    |
 How can this be structured into a journal paper?  |
 What kind of work is required, and how much work? |
@@ -87,7 +87,7 @@ Proposal: WGMG provide some analyses of this issue, and recommendations on poten
   * Tasks, who's doing what
   * Milestones, timeline
 * References
-  * [Brooks and Deroba 2015](https://doi.org/10.1139/cjfas-2014-0231)
+  * [Brooks and Deroba 2015](https://doi.org/10.1139/cjfas-2014-0231); [Conn et al. 2010 CJFAS] (https://doi.org/10.1139/F09-194)
 * Appendix
   * Preliminary diagram, table, plots
 
