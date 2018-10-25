@@ -48,7 +48,7 @@ Proposal: WGMG provide some analyses of this issue, and recommendations on poten
   * Why is this important
 * Objectives - Set of Questions to Answer
   * For Internal Estimation
-    * Can correct S-R be identified? (AIC for model selection?)
+    * Can correct S-R be identified? (AIC for model selection?) see [Conn et al. 2010 CJFAS](https://doi.org/10.1139/F09-194)
     * How precise are S-R parameters?
     * Should we also try a 3-parameter S-R?
     * How precisely are reference points estimated?
