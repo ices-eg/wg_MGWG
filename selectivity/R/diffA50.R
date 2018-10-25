@@ -1,9 +1,9 @@
 library(reshape)
 library(minpack.lm)
 
-fm <-read.csv('../../../selectivity/data/gulf_of_maine/fatage.csv',
+fm <-read.csv('../../selectivity/data/gulf_of_maine/fatage.csv',
                 header = TRUE)
-mat <-read.csv('../../../selectivity/data/gulf_of_maine/maturity.csv',
+mat <-read.csv('../../selectivity/data/gulf_of_maine/maturity.csv',
                 header = TRUE)
 
 #stock-specific adjustments; e.g. making sure fm and mat have same years, sorting out NAs
