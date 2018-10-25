@@ -22,7 +22,7 @@ slide <- function(sel, by=0, scale=FALSE)
 }
 
 ## Example
-## sel <- c(0.1, 0.2, 0.9, 1.0)
+## sel <- c(0.2, 0.4, 0.9, 1.0)
 ## names(sel) <- 1:4
 ## slide(sel, -1)
 ## sel
