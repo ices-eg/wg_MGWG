@@ -22,17 +22,21 @@ The objective of this project shifted during the meeting from the original ideas
 2.	3 estimation model (EM) structures matching the OM complexity
 3.	Multiple EM frameworks: length-based, age-based, and integrated (and maybe state-space)
 4.	For each OM complexity level, each EM will fit low, medium, and high complexity models
-5.  We will evaluate various validation/selection metrics for their ability to identify the correct model complexity
+5.  We will evaluate various validation/selection metrics and diagnostics for their ability to identify the correct model complexity
     * Information theoretic – AIC, BIC, DIC, WAIC?
     * Prediction-based – cross-validation and/or something that systematically predicts a quantity (e.g., survey biomass) by stepping back through data omission (n, n-1, n-2, etc.)
     *	Retrospective analysis – Mohn’s rho
     *	Residuals – QQ?, residual trends/distribution/RMSE – all fits; a low level of thinking toward Patrick’s random RMSE thing; component likelihoods 
     *	Some combination of metrics? Correlation matrix between metrics?
 5.	Management performance
-    *	Need some value for “true” FMSY so we can compare FMSYs (proxies) estimated by the models – perhaps YPR to get F0.1 from operating model and compare using relative error (direction seems important, so maybe not absolute)…maybe SPR instead of YPR?...REVISE: use catch recommendation (MSY) for comparison
-    *	Also, consider a model averaging approach related to FMSY (averaged within models over complexity and across models at a given level of complexity)?
-    * other...
- 
+    *	Each EM will provide an estimate of MSY, and these estimates will be compared with the OM MSY so that we can evaluate within and between model ability to produce unbiased catch advice.  (old ideas: Need some value for “true” FMSY so we can compare FMSYs (proxies) estimated by the models – perhaps YPR to get F0.1 from operating model and compare using relative error (direction seems important, so maybe not absolute)…maybe SPR instead of YPR?...)
+    *	Does anyone remember what this sentence is about (if not, it will be deleted): Also, consider a model averaging approach related to FMSY (averaged within models over complexity and across models at a given level of complexity)?
+    
+### Details for the simulated case study 
+*Operating model scenarios
+
+1.	Low complexity: simple base configuration (no time variation); obs error only (catch/indices), deterministic stock-recruit – time = 1940-2040, catch starts in 1970
+
 •	Operating model scenarios (gadoid-like) – error consistent across scenarios?
 1.	Low complexity: simple base configuration (no time variation); obs error only (catch/indices), deterministic stock-recruit – time = 1940-2040, catch starts in 1970
 2.	Medium complexity: add 2 selectivity blocks (1975 to 1995-logistic, then domed); stock-recruit with process error/devs (Give Gadget the actual dev vector in real space)
