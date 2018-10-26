@@ -8,17 +8,12 @@ Time: 14:00 GMT / 16:00 Oslo & Copenhagen / 10:00 EDT / 7:00 PDT
 
 Connection Method: Skype 
 
+[Notes](Notes_2018_10_29.md)  will be posted after meeting
+
+
 ***
 
-Criteria | Comments
--------- | --------
-Important for many stock assessment scientists?   | Yes
-Standard papers that people cite for this topic?  | See list of references at bottom of page
-Another working group already working on this?    | Not that we are aware
-How can this be structured into a journal paper?  |
-What kind of work is required, and how much work? | Data simulation, model fitting, comparison of results
-Participants that would like to work on this?     | Alejandro Yanez, Brandon Chasco, Dvora Hart, Geir Olve Sorvik, Helen Takade-Heumacher, Liz Brooks, Patrick Lynch, Ernesto Jardim
-Who would like to lead, what will coauthors do?   |
+
 
 ## Outline
 •	The objective of this project shifted during the meeting to focus on model evaluation/model selection metrics and their relative performance in helping to select a model that corresponds to the true level of complexity AND develop “good” catch recommendations.  The old Readme file was a poor match, so it was reanamed "Readme_old" in case we want to easily see the previous thinking on this project.
