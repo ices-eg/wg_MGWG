@@ -12,6 +12,7 @@ Connection Method: Skype
 
 ***
 ## Task List
+
 Item | Lackey | Date for completion
 -------- | -------- | --------
 - [x] Schedule first meeting: 29 October 2019 
