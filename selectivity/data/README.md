@@ -95,7 +95,7 @@ wcatch   | kg   |  3    | Weight-at-age (kg) in catch.
 wstock   | kg   | 6     | BWeight-at-age (kg) in stock.  
 fatage   |      | 9     | F at age (posterior median).
 natage   | 000s |  10   | N at age (posterior median)
-natmort  |      |  p6   | Prior over natural mortality, M:
+natmort  |      |  p6   | Prior over natural mortality, M
 ## NAFO 3NO (Southern Grand Bank of Newfoundland)
 under moratorium, data not extracted
 Data Source | https://archive.nafo.int/open/sc/2015/scr15-034.pdf
