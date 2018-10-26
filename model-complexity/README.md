@@ -19,7 +19,7 @@ Connection Method: Skype
 * date?
 - [ ] Convert GADGET output into format for each EM 
 * Daniel Howell? Dan Hennen? Liz Brooks? 
-* date
+* date?
 - [ ] Test each EM with test data (make sure we can recover 'truth' before commencing with many data sets and different complexity levels) 
 - [ ] Schedule next meeting after we reach this point?
 - [ ] Develop code to compare EM output with OM truth
