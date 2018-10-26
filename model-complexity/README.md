@@ -13,17 +13,17 @@ Connection Method: Skype
 ***
 ## Task List
 
-Item | Lackey | Date for completion
+.. | Item | Lackey | Date for completion
 -------- | -------- | --------
-- [x] Schedule first meeting: 29 October 2019 
-- [ ] Simulate test data set with Gadget, post on Git site | Daniel Howell | date
-- [ ] Convert GADGET output into format for each EM | Daniel Howell? Dan Hennen? Liz Brooks? | date
-- [ ] Test each EM with test data (make sure we can recover 'truth' before commencing with many data sets and different complexity levels) | ... | date
-- [ ] Develop code to compare EM output with OM truth | ... | date
-- [ ] Simulate full suite of data sets (need to discuss best way to manage sharing of these data sets);  | ... | date
-- [ ] Run each EM on all data sets | ... | date
-- [ ] Evaluate results | ... | date
-- [ ] Manuscript preparation | ... | date
+.. | - [x] Schedule first meeting: 29 October 2019 
+.. | - [ ] Simulate test data set with Gadget, post on Git site | Daniel Howell | date
+.. | - [ ] Convert GADGET output into format for each EM | Daniel Howell? Dan Hennen? Liz Brooks? | date
+.. | - [ ] Test each EM with test data (make sure we can recover 'truth' before commencing with many data sets and different complexity levels) | ... | date
+.. | - [ ] Develop code to compare EM output with OM truth | ... | date
+.. | - [ ] Simulate full suite of data sets (need to discuss best way to manage sharing of these data sets);  | ... | date
+.. | - [ ] Run each EM on all data sets | ... | date
+.. | - [ ] Evaluate results | ... | date
+.. | - [ ] Manuscript preparation | ... | date
 
 ***
 
