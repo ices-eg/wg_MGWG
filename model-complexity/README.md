@@ -18,20 +18,20 @@ Connection Method: Skype
 The objective of this project shifted during the meeting from the original ideas generated during the 2017 Woods Hole meeting. The current objective of this subgroup is to focus on model evaluation/model selection metrics and their relative performance in helping to select a model that corresponds to the true level of complexity.  At the same time, we are interested in how catch recommendations may vary within complexity levels for a given assessment model framework as well as between different model frameworks, with a goal of developing “good” catch recommendations.  We will track the project here; the original Readme file has been reanamed "Readme_old" in case we want to easily see the previous thinking on this project.
 
 ### The project will involve
-•	The project will involve
-1.	3 operating models: low, medium, and high levels of complexity
-2.	3 estimation model classes matching the operating model complexity
-3.	Potentially multiple estimating model frameworks: length-based, age-based, and integrated (and maybe state-space)
-4.	Various validation/selection metrics
-   * Information theoretic – AIC, BIC, DIC, WAIC?
-   * Prediction-based – cross-validation and/or something that systematically predicts a quantity (e.g., survey biomass) by stepping back through data omission (n, n-1, n-2, etc.)
-   *	Retrospective analysis – Mohn’s rho
-   *	Residuals – QQ?, residual trends/distribution/RMSE – all fits; a low level of thinking toward Patrick’s random RMSE thing; component likelihoods 
-   *	Some combination of metrics? Correlation matrix between metrics?
+1.	3 operating models (OMs): low, medium, and high levels of complexity
+2.	3 estimation model (EM) structures matching the OM complexity
+3.	Multiple EM frameworks: length-based, age-based, and integrated (and maybe state-space)
+4.	For each OM complexity level, each EM will fit low, medium, and high complexity models
+5.  We will evaluate various validation/selection metrics for their ability to identify the correct model complexity
+    * Information theoretic – AIC, BIC, DIC, WAIC?
+    * Prediction-based – cross-validation and/or something that systematically predicts a quantity (e.g., survey biomass) by stepping back through data omission (n, n-1, n-2, etc.)
+    *	Retrospective analysis – Mohn’s rho
+    *	Residuals – QQ?, residual trends/distribution/RMSE – all fits; a low level of thinking toward Patrick’s random RMSE thing; component likelihoods 
+    *	Some combination of metrics? Correlation matrix between metrics?
 5.	Management performance
-   *	Need some value for “true” FMSY so we can compare FMSYs (proxies) estimated by the models – perhaps YPR to get F0.1 from operating model and compare using relative error (direction seems important, so maybe not absolute)…maybe SPR instead of YPR?...REVISE: use catch recommendation (MSY) for comparison
-   *	Also, consider a model averaging approach related to FMSY (averaged within models over complexity and across models at a given level of complexity)?
-   * other...
+    *	Need some value for “true” FMSY so we can compare FMSYs (proxies) estimated by the models – perhaps YPR to get F0.1 from operating model and compare using relative error (direction seems important, so maybe not absolute)…maybe SPR instead of YPR?...REVISE: use catch recommendation (MSY) for comparison
+    *	Also, consider a model averaging approach related to FMSY (averaged within models over complexity and across models at a given level of complexity)?
+    * other...
  
 •	Operating model scenarios (gadoid-like) – error consistent across scenarios?
 1.	Low complexity: simple base configuration (no time variation); obs error only (catch/indices), deterministic stock-recruit – time = 1940-2040, catch starts in 1970
