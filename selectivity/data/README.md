@@ -98,7 +98,7 @@ natage   | 000s |  10   | N at age (posterior median)
 natmort  |      |  p6   | Prior over natural mortality, M:
 ## NAFO 3NO (Southern Grand Bank of Newfoundland)
 under moratorium, data not extracted
-Data Source | hhttps://archive.nafo.int/open/sc/2015/scr15-034.pdf
+Data Source | https://archive.nafo.int/open/sc/2015/scr15-034.pdf
 ----------- | ------------------------------------------------------
 
 ## NAFO 3Ps (St Pierre Bank Cod)
