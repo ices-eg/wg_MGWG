@@ -82,6 +82,25 @@ natmort  | yr-1 | A2-6   | Northern cod M-at-age estimates from the M-shift
 wcatch   | kg   | 11     | Mean annual weights-at-age calculated from lengths-at-age based on samples from commercial fisheries
 wstock   | kg   | 15b    | Beginning of year weight-at-age estimates from a generalized Von Bertalanffy (VonB2)
 
+## NAFO 3m ()
+Data Source | http://www.repositorio.ieo.es/e-ieo/bitstream/handle/10508/9350/scr15-033.pdf?sequence=1&isAllowed=y
+----------- | ------------------------------------------------------
+González-Troncoso 2015. Assessment of the Cod Stock in NAFO Division 3M. Serial No. N6458. NAFO SCR |
+
+csv      | unit | table  | info
+-------- | ---- | ------ | ----------------------------------------------------------------------------------------------------
+catage   | 000s | 2     | Catch-at-age (thousands).
+maturity | prop | 7     | Maturity at age and age of first maturation (median values of ogives).
+wcatch   | kg   |  3    | Weight-at-age (kg) in catch.
+wstock   | kg   | 6     | BWeight-at-age (kg) in stock.  
+fatage   |      | 9     | F at age (posterior median).
+natage   | 000s |  10   | N at age (posterior median)
+natmort  |      |  p6   | Prior over natural mortality, M:
+## NAFO 3NO (Southern Grand Bank of Newfoundland)
+under moratorium, data not extracted
+Data Source | hhttps://archive.nafo.int/open/sc/2015/scr15-034.pdf
+----------- | ------------------------------------------------------
+
 ## NAFO 3Ps (St Pierre Bank Cod)
 Data Source | http://waves-vagues.dfo-mpo.gc.ca/Library/40644777.pdf
 ----------- | ------------------------------------------------------
