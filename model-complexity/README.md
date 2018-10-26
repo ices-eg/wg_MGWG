@@ -15,7 +15,7 @@ Connection Method: Skype
 
 
 ## Outline
-The objective of this project shifted during the meeting from the original ideas generated during the 2017 Woods Hole meeting. The current objective of this subgroup is to focus on model evaluation/model selection metrics and their relative performance in helping to select a model that corresponds to the true level of complexity.  At the same time, we are interested in how catch recommendations may vary within complexity levels for a given assessment model framework as well as between different model frameworks, with a goal of developing “good” catch recommendations.  We will track the project here; the original Readme file has been reanamed "Readme_old" in case we want to easily see the previous thinking on this project.
+The objective of this project shifted during the meeting from the original ideas generated during the 2017 Woods Hole meeting. The current objective of this subgroup is to focus on model evaluation/model selection metrics and their relative performance in helping to select a model that corresponds to the true level of complexity.  At the same time, we are interested in how catch recommendations may vary within complexity levels for a given assessment model framework as well as between different model frameworks, with a goal of developing “good” catch recommendations.  We will track the project here; the original Readme file has been reanamed [Readme_old](Readme_old.md) in case we want to easily see the previous thinking on this project.
 
 ### The project will involve
 1.	3 operating models (OMs): low, medium, and high levels of complexity
@@ -36,19 +36,21 @@ The objective of this project shifted during the meeting from the original ideas
 The first case study OM will be based on a gadoid-like fish.  While we initially had discussed multiple life-histories (including a pelagic and invertebrate), we are thinking that a scaled back project focused on one life history will be more manageable, and more likely to produce results for the 2019 meeting.  A follow-up study (and manuscript) could build on our conclusions from this case study, and we could explore additional issues that would be presented by the other two life-histories.
 
 [GADGET](https://github.com/Hafro/gadget) will be used for the OM.
-The OM complexity levels will be simulated with the following configuration:
-1.	Low complexity: simple base configuration (no time variation); observation error only (catch and indices), deterministic stock-recruit – time = 1940-2040, catch starts in 1970
-2.	Medium complexity: add 2 selectivity blocks (1975 to 1995-logistic, then domed); stock-recruit with process error/devs (Give Gadget the actual dev vector in real space)
-3.	High complexity: 2 selectivity blocks; stock-recruit with devs + increasing M (2 time steps) (time varying growth/dec Linf?)
+The OM will simulate data for 100 years (1940-2040).  The first 30 years of simulated data will have no fishing, and are to allow the model to equilibrate.  Catches will be removed beginning in 1970.  Data through 2015 will be used in the estimation models, and data for years 2016-2040 will be reserved in case we want to test projection skill or harvest control rules.
 
-•	Consider another OM life history? –faster, herring-like? Either/or multiple estimating model frameworks…TENTATIVE: do gadoid first then evaluate whether warrants
+OM complexity levels will be simulated with the following configuration:
+1.	Low complexity: time invariant biological parameters; observation error only (catch and indices), deterministic stock-recruit, single selectivity function for all years 
+2.	Medium complexity: same as (1) but with 2 selectivity blocks (1970 to 1995 is logistic, 1996-2015 is dome-shaped); stock-recruit with process error/devs (Give Gadget the actual dev vector in real space)
+3.	High complexity: same as (2) + increasing M (2 time steps) (maybe: time varying growth/decreasing Linf?)
 
-•	Estimating models
-1.	Age-based (ASAP?) – low, medium, high complexity; model years: 1975-2015
-2.	Length-based (CASA?) – low, medium, high complexity
-3.	Integrated (SS?) – low, medium, high complexity
 
-•	Input data from the operating model 
+### Estimating models and who will perform runs
+1.	Age-based, non state space (ASAP) – Liz Brooks; ...
+2. Age-based, maybe state space? (a4a) - Ernesto Jardim?
+3.	Age-based (SS) – Dan Hennen?
+3.	Length-based (CASA? or CASAL? or..?) – Question: will we explore this model? If so, what additional simulated output is needed?
+
+### Input data from the operating model 
 1.	Catch data across scenarios (w/obs error=0.1)? Full retention?
 2.	Abundance indices: apply selectivity with sigma=0.2
 3.	Age, length comps, ALK…: eff. sample size=?; multinomial dist; apply to index and catch after obs error
