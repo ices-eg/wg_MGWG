@@ -1,45 +1,42 @@
 # Appropriate level of model complexity
 
-...
 ## Meeting Information
 Date: Monday 29 October 2018
 
 Time: 14:00 GMT / 16:00 Oslo & Copenhagen / 10:00 EDT / 7:00 PDT 
 
-Connection Method: 
+Connection Method: Skype 
+
+[Notes](Notes_2018_10_29.md)  will be posted after meeting
+
 
 ***
 
-Criteria | Comments
--------- | --------
-Important for many stock assessment scientists?   | Yes
-Standard papers that people cite for this topic?  | See list of references at bottom of page
-Another working group already working on this?    | Not that we are aware
-How can this be structured into a journal paper?  |
-What kind of work is required, and how much work? | Data simulation, model fitting, comparison of results
-Participants that would like to work on this?     | Alejandro Yanez, Brandon Chasco, Dvora Hart, Geir Olve Sorvik, Helen Takade-Heumacher, Liz Brooks, Patrick Lynch, Ernesto Jardim
-Who would like to lead, what will coauthors do?   |
+
 
 ## Outline
-•	The objective of this project shifted during the meeting to focus on model evaluation/model selection metrics and their relative performance in helping to select a model that corresponds to the true level of complexity AND develop “good” catch recommendations.  The old Readme file was a poor match, so it was reanamed "Readme_old" in case we want to easily see the previous thinking on this project.
+The objective of this project shifted during the meeting from the original ideas generated during the 2017 Woods Hole meeting. The current objective of this subgroup is to focus on model evaluation/model selection metrics and their relative performance in helping to select a model that corresponds to the true level of complexity.  At the same time, we are interested in how catch recommendations may vary within complexity levels for a given assessment model framework as well as between different model frameworks, with a goal of developing “good” catch recommendations.  We will track the project here; the original Readme file has been reanamed "Readme_old" in case we want to easily see the previous thinking on this project.
 
-•	The project will involve
-1.	3 operating models: low, medium, and high levels of complexity
-2.	3 estimation model classes matching the operating model complexity
-3.	Potentially multiple estimating model frameworks: length-based, age-based, and integrated (and maybe state-space)
-4.	Various validation/selection metrics
-   * Information theoretic – AIC, BIC, DIC, WAIC?
-   * Prediction-based – cross-validation and/or something that systematically predicts a quantity (e.g., survey biomass) by stepping back through data omission (n, n-1, n-2, etc.)
-   *	Retrospective analysis – Mohn’s rho
-   *	Residuals – QQ?, residual trends/distribution/RMSE – all fits; a low level of thinking toward Patrick’s random RMSE thing; component likelihoods 
-   *	Some combination of metrics? Correlation matrix between metrics?
+### The project will involve
+1.	3 operating models (OMs): low, medium, and high levels of complexity
+2.	3 estimation model (EM) structures matching the OM complexity
+3.	Multiple EM frameworks: length-based, age-based, and integrated (and maybe state-space)
+4.	For each OM complexity level, each EM will fit low, medium, and high complexity models
+5.  We will evaluate various validation/selection metrics and diagnostics for their ability to identify the correct model complexity
+    * Information theoretic – AIC, BIC, DIC, WAIC?
+    * Prediction-based – cross-validation and/or something that systematically predicts a quantity (e.g., survey biomass) by stepping back through data omission (n, n-1, n-2, etc.)
+    *	Retrospective analysis – Mohn’s rho
+    *	Residuals – QQ?, residual trends/distribution/RMSE – all fits; a low level of thinking toward Patrick’s random RMSE thing; component likelihoods 
+    *	Some combination of metrics? Correlation matrix between metrics?
 5.	Management performance
-   *	Need some value for “true” FMSY so we can compare FMSYs (proxies) estimated by the models – perhaps YPR to get F0.1 from operating model and compare using relative error (direction seems important, so maybe not absolute)…maybe SPR instead of YPR?...REVISE: use catch recommendation (MSY) for comparison
-   *	Also, consider a model averaging approach related to FMSY (averaged within models over complexity and across models at a given level of complexity)?
-   * other...
- 
-•	Operating model scenarios (gadoid-like) – error consistent across scenarios?
-1.	Low complexity: simple base configuration (no time variation); obs error only (catch/indices), deterministic stock-recruit – time = 1940-2040, catch starts in 1970
+    *	Each EM will provide an estimate of MSY, and these estimates will be compared with the OM MSY so that we can evaluate within and between model ability to produce unbiased catch advice.  (old ideas: Need some value for “true” FMSY so we can compare FMSYs (proxies) estimated by the models – perhaps YPR to get F0.1 from operating model and compare using relative error (direction seems important, so maybe not absolute)…maybe SPR instead of YPR?...)
+    *	Does anyone remember what this sentence is about (if not, it will be deleted): Also, consider a model averaging approach related to FMSY (averaged within models over complexity and across models at a given level of complexity)?
+    
+### Details for the simulated case study 
+The first case study OM will be based on a gadoid-like fish.  While we initially had discussed multiple life-histories (including a pelagic and invertebrate), we are thinking that a scaled back project focused on one life history will be more manageable.  A follow-up study (and manuscript) could build on our conclusions from this case study, and we could explore additional issues that would be presented by the other two life-histories.
+
+The OM complexity levels will be simulated with the following configuration:
+1.	Low complexity: simple base configuration (no time variation); obs error only (catch and indices), deterministic stock-recruit – time = 1940-2040, catch starts in 1970
 2.	Medium complexity: add 2 selectivity blocks (1975 to 1995-logistic, then domed); stock-recruit with process error/devs (Give Gadget the actual dev vector in real space)
 3.	High complexity: 2 selectivity blocks; stock-recruit with devs + increasing M (2 time steps) (time varying growth/dec Linf?)
 
