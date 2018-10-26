@@ -1,6 +1,5 @@
 # Appropriate level of model complexity
 
-...
 ## Meeting Information
 Date: Monday 29 October 2018
 
@@ -18,7 +17,7 @@ Connection Method: Skype
 ## Outline
 The objective of this project shifted during the meeting from the original ideas generated during the 2017 Woods Hole meeting. The current objective of this subgroup is to focus on model evaluation/model selection metrics and their relative performance in helping to select a model that corresponds to the true level of complexity.  At the same time, we are interested in how catch recommendations may vary within complexity levels for a given assessment model framework as well as between different model frameworks, with a goal of developing “good” catch recommendations.  We will track the project here; the original Readme file has been reanamed "Readme_old" in case we want to easily see the previous thinking on this project.
 
-The project will involve
+### The project will involve
 •	The project will involve
 1.	3 operating models: low, medium, and high levels of complexity
 2.	3 estimation model classes matching the operating model complexity
