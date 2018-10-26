@@ -12,9 +12,9 @@ Connection Method: Skype
 
 ***
 ## Task List
-- [x] Schedule first meeting: 29 October 2019
-- [ ] Simulate test data set with Gadget, post on Git site
-- [ ] Convert GADGET output into format for each EM
+- [x] Schedule first meeting: 29 October 2019 
+- [ ] Simulate test data set with Gadget, post on Git site | Daniel Howell | date
+- [ ] Convert GADGET output into format for each EM | Daniel Howell? Dan Hennen? Liz Brooks?
 - [ ] Test each EM with test data (make sure we can recover 'truth' before commencing with many data sets and different complexity levels)
 - [ ] Develop code to compare EM output with OM truth
 - [ ] Simulate full suite of data sets (need to discuss best way to manage sharing of these data sets); 
