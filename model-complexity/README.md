@@ -12,11 +12,15 @@ Connection Method: Skype
 
 ***
 ## Task List
-- [ ] a task list item
-- [ ] list syntax required
-- [ ] normal **formatting**, @mentions, #1234 refs
-- [ ] incomplete
-- [x] completed
+- [x] Schedule first meeting: 29 October 2019
+- [ ] Simulate test data set with Gadget, post on Git site
+- [ ] Convert GADGET output into format for each EM
+- [ ] Test each EM with test data (make sure we can recover 'truth' before commencing with many data sets and different complexity levels)
+- [ ] Develop code to compare EM output with OM truth
+- [ ] Simulate full suite of data sets (need to discuss best way to manage sharing of these data sets); 
+- [ ] Run each EM on all data sets
+- [ ] Evaluate results
+- [ ] Manuscript preparation
 
 ***
 
@@ -93,9 +97,12 @@ Some parameter details:
 
 
 ***
+## List of references
+Provide a link to the reference if possible.
+Can we store pdfs in a folder for this project?
 
-*References can be found here:*
-* Cotter et al (2004) Fish and Fisheries “Are stock assessments too complicated?” 
+* [Cotter et al (2004) Fish and Fisheries “Are stock assessments too complicated?”](https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-2679.2004.00157.x)
+* others...
 
 ## After Ispra meeting
 
