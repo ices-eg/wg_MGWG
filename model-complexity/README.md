@@ -11,11 +11,7 @@ Connection Method: Skype
 
 
 ***
-## Task List
-
-Item 
-* Lackey
-* Date for completion
+## Task List (identify lackey and date for completion)
 
 - [x] Schedule first meeting: 29 October 2019 
 - [ ] Simulate test data set with Gadget, post on Git site
@@ -24,12 +20,13 @@ Item
 - [ ] Convert GADGET output into format for each EM 
 * Daniel Howell? Dan Hennen? Liz Brooks? 
 * date
-- [ ] Test each EM with test data (make sure we can recover 'truth' before commencing with many data sets and different complexity levels) | ... | date
-- [ ] Develop code to compare EM output with OM truth | ... | date
-- [ ] Simulate full suite of data sets (need to discuss best way to manage sharing of these data sets);  | ... | date
-- [ ] Run each EM on all data sets | ... | date
-- [ ] Evaluate results | ... | date
-- [ ] Manuscript preparation | ... | date
+- [ ] Test each EM with test data (make sure we can recover 'truth' before commencing with many data sets and different complexity levels) 
+- [ ] Schedule next meeting after we reach this point?
+- [ ] Develop code to compare EM output with OM truth
+- [ ] Simulate full suite of data sets (need to discuss best way to manage sharing of these data sets)
+- [ ] Run each EM on all data sets
+- [ ] Evaluate results
+- [ ] Manuscript preparation
 
 ***
 
