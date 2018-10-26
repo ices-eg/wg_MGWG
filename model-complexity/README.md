@@ -33,10 +33,11 @@ The objective of this project shifted during the meeting from the original ideas
     *	Does anyone remember what this sentence is about (if not, it will be deleted): Also, consider a model averaging approach related to FMSY (averaged within models over complexity and across models at a given level of complexity)?
     
 ### Details for the simulated case study 
-The first case study OM will be based on a gadoid-like fish.  While we initially had discussed multiple life-histories (including a pelagic and invertebrate), we are thinking that a scaled back project focused on one life history will be more manageable.  A follow-up study (and manuscript) could build on our conclusions from this case study, and we could explore additional issues that would be presented by the other two life-histories.
+The first case study OM will be based on a gadoid-like fish.  While we initially had discussed multiple life-histories (including a pelagic and invertebrate), we are thinking that a scaled back project focused on one life history will be more manageable, and more likely to produce results for the 2019 meeting.  A follow-up study (and manuscript) could build on our conclusions from this case study, and we could explore additional issues that would be presented by the other two life-histories.
 
+[GADGET](https://github.com/Hafro/gadget) will be used for the OM.
 The OM complexity levels will be simulated with the following configuration:
-1.	Low complexity: simple base configuration (no time variation); obs error only (catch and indices), deterministic stock-recruit – time = 1940-2040, catch starts in 1970
+1.	Low complexity: simple base configuration (no time variation); observation error only (catch and indices), deterministic stock-recruit – time = 1940-2040, catch starts in 1970
 2.	Medium complexity: add 2 selectivity blocks (1975 to 1995-logistic, then domed); stock-recruit with process error/devs (Give Gadget the actual dev vector in real space)
 3.	High complexity: 2 selectivity blocks; stock-recruit with devs + increasing M (2 time steps) (time varying growth/dec Linf?)
 
