@@ -120,10 +120,18 @@ wstock   | kg   | 6      | Weight-at-age in stock
 
 ## NAFO 3NO (Southern Grand Bank)
 
-Rideout et al. 2015. An assessment of the cod stock in NAFO Divisions 3NO.
-[NAFO SCR Doc 15/034](https://archive.nafo.int/open/sc/2015/scr15-034.pdf).
+Rideout et al. 2018. An assessment of the cod stock in NAFO Divisions 3NO.
+[NAFO SCR Doc 18/028](https://www.nafo.int/Portals/0/PDFs/sc/2018/scr18-028.pdf).
 
-Under moratorium, data not extracted.
+csv      | unit | table  | info
+-------- | ---- | ------ | --------------------------------------------------------
+catage   | 000s | 4      | Catch at age
+fatage   | yr-1 | 22     | Fishing mortality
+maturity | prop | 19     | Proportions mature
+natage   | 000s | 21     | Population numbers
+natmort  | yr-1 | p4     | Natural mortality was assumed to be 0.2
+wcatch   | kg   | 5      | Catch weight at age
+wstock   | kg   | 23     | Beginning of year weights at age from commercial catches
 
 ## NAFO 3Ps (St Pierre Bank)
 
