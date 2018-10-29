@@ -23,6 +23,8 @@ Vanessa T. and Chris L. will figure out how to summarize/plot the results across
 Some confusion about the goal of this project and importance of retrospective patterns/Mohn's rho for comparing models. Arni M.
 provided a summary that he has given to ICES ACOM, etc.
 
+Vanessa T. and Arni M. will come up with ideas for a structure of the introduction.
+
 Next call is 15 November 2018 at 10am (EST, UTC-5) 
 
 
