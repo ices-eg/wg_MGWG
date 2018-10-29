@@ -171,5 +171,7 @@ wstock   | kg   | 2.3.18  | Weight at age in stock
 
 ### Links
 
-| CSAS Res Doc | http://www.isdm-gdsi.gc.ca/csas-sccs/applications/Publications/index-eng.asp |
-| NAFO SCR Doc | https://www.nafo.int/Library/Documents/Scientific-Council-SC/SCR             |
+Series       | URL
+------------ | ----------------------------------------------------------------------------
+CSAS Res Doc | http://www.isdm-gdsi.gc.ca/csas-sccs/applications/Publications/index-eng.asp
+NAFO SCR Doc | https://www.nafo.int/Library/Documents/Scientific-Council-SC/SCR
