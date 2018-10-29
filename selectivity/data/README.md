@@ -88,6 +88,21 @@ natmort  | yr-1 | A2-6   | M-at-age from the M-shift formulation of NCAM
 wcatch   | kg   | 11     | Weights-at-age from commercial fisheries
 wstock   | kg   | 15b    | Weight-at-age from bottom-trawl surveys
 
+## NAFO 3M (Flemish Cap)
+
+González-Troncoso. 2018. Assessment of the cod stock in NAFO Division 3M.
+[NAFO SCR Doc 18/042](https://www.nafo.int/Portals/0/PDFs/sc/2018/scr18-042.pdf).
+
+csv      | unit | table  | info
+-------- | ---- | ------ | ---------------------------------------------
+catage   | 000s | 2      | Catch-at-age
+fatage   | yr-1 | 8      | F-at-age
+maturity | prop | 6      | Maturity at age
+natage   | 000s | 9      | N at age
+natmort  | yr-1 | 10     | Posterior median for M
+wcatch   | kg   | 3      | Weight-at-age in catch
+wstock   | kg   | 5      | Weight-at-age in stock
+
 ## NAFO 3M (Flemish Cap) 2015
 
 González-Troncoso. 2015. Assessment of the cod stock in NAFO Division 3M.
