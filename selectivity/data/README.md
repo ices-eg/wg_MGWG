@@ -1,7 +1,6 @@
 ﻿## Faroe Plateau
-Data Source | http://www.ices.dk/sites/pub/Publication%20Reports/Expert%20Group%20Report/acom/2017/NWWG/NWWG%202017%20Report.pdf
------------ | ------------------------------------------------------------------------------------------------------------------
-ICES. 2017. Report of the North Western Working Group (NWWG). ICES CM 2017/ACOM:08. |
+Report | ICES. 2018. Report of the North Western Working Group (NWWG). ICES CM 2018/ACOM:09.
+URL    | http://www.ices.dk/sites/pub/Publication%20Reports/Expert%20Group%20Report/acom/2018/NWWG/01%20NWWG%20Report%202018.pdf
 
 csv      | unit | table | info
 -------- | ---- | ----- | ----------------------------------------------------------------------------------------------
@@ -15,8 +14,8 @@ wstock   | kg   | 4.2.7 | Stock weights are set equal to catch weights
 
 ## Georges Bank
 Data Source | https://www.nefsc.noaa.gov/publications/crd/crd1311/crd1311.pdf
------------ | ---------------------------------------------------------------
-NEFSC. 2013. 55th Northeast Regional Stock Assessment Workshop (55th SAW). NEFSC Ref Doc 13-11. |
+----------- | -----------------------------------------------------------------------------------------------
+            | NEFSC. 2013. 55th Northeast Regional Stock Assessment Workshop (55th SAW). NEFSC Ref Doc 13-11.
 
 csv      | unit | table | info
 -------- | ---- | ----- | ---------------------------------------
@@ -30,8 +29,8 @@ wstock   | kg   | B17a  | Stock weights at age
 
 ## Gulf of Maine
 Data Source | https://www.nefsc.noaa.gov/saw/sasi/uploads/GoM_cod_2017_update_supplemental_information_20170817.pdf
------------ | -----------------------------------------------------------------------------------------------------
-NEFSC. 2017. Gulf of Maine Atlantic cod 2017 assessment update report supplemental information. Draft working paper. |
+----------- | --------------------------------------------------------------------------------------------------------------------
+            | NEFSC. 2017. Gulf of Maine Atlantic cod 2017 assessment update report supplemental information. Draft working paper.
 
 csv      | unit | table | info
 -------- | ---- | ----- | --------------------------------------------------
@@ -45,8 +44,8 @@ wstock   | kg   | 23    | Spawning stock weights-at-age
 
 ## Gulf of Maine 2013
 Data Source | https://www.nefsc.noaa.gov/publications/crd/crd1311/crd1311.pdf
------------ | ---------------------------------------------------------------
-NEFSC. 2013. 55th Northeast Regional Stock Assessment Workshop (55th SAW). NEFSC Ref Doc 13-11. |
+----------- | -----------------------------------------------------------------------------------------------
+            | NEFSC. 2013. 55th Northeast Regional Stock Assessment Workshop (55th SAW). NEFSC Ref Doc 13-11.
 
 csv      | unit | table | info
 -------- | ---- | ----- | ----------------------------------------------
@@ -59,9 +58,8 @@ wcatch   | kg   | A.49  | Weights-at-age of the total catch
 wstock   | kg   | A.50  | Spawning stock weights-at-age
 
 ## Iceland
-Data Source | http://www.ices.dk/sites/pub/Publication%20Reports/Expert%20Group%20Report/acom/2017/NWWG/NWWG%202017%20Report.pdf
------------ | ------------------------------------------------------------------------------------------------------------------
-ICES. 2017. Report of the North Western Working Group (NWWG). ICES CM 2017/ACOM:08. |
+Report | ICES. 2018. Report of the North Western Working Group (NWWG). ICES CM 2018/ACOM:09.
+URL    | http://www.ices.dk/sites/pub/Publication%20Reports/Expert%20Group%20Report/acom/2018/NWWG/01%20NWWG%20Report%202018.pdf
 
 csv      | unit | table    | info
 -------- | ---- | -------- | ----------------------------------------------------------------------------------
@@ -75,8 +73,8 @@ wstock   | kg   | 9.4      | Weight at age in the spawning stock
 
 ## NAFO 2J3KL (Northern cod)
 Data Source | http://waves-vagues.dfo-mpo.gc.ca/Library/40702017.pdf
------------ | ------------------------------------------------------
-Brattey et al. 2018. Assessment of the Northern Cod (Gadus morhua) stock in NAFO Divisions 2J3KL in 2016. CSAS Res Doc 2018/018. |
+----------- | --------------------------------------------------------------------------------------------------------------------------------
+            | Brattey et al. 2018. Assessment of the Northern Cod (Gadus morhua) stock in NAFO Divisions 2J3KL in 2016. CSAS Res Doc 2018/018.
 
 csv      | unit | table  | info
 -------- | ---- | ------ | -----------------------------------------------------
@@ -90,8 +88,8 @@ wstock   | kg   | 15b    | Weight-at-age from bottom-trawl surveys
 
 ## NAFO 3M (Flemish Cap) 2015
 Data Source | https://www.nafo.int/Portals/0/PDFs/sc/2015/scr15-033.pdf
------------ | ---------------------------------------------------------
-González-Troncoso. 2015. Assessment of the cod stock in NAFO Division 3M. NAFO SCR Doc 15/033. |
+----------- | ----------------------------------------------------------------------------------------------
+            | González-Troncoso. 2015. Assessment of the cod stock in NAFO Division 3M. NAFO SCR Doc 15/033.
 
 csv      | unit | table  | info
 -------- | ---- | ------ | ---------------------------------------------
@@ -105,15 +103,15 @@ wstock   | kg   | 6      | Weight-at-age in stock
 
 ## NAFO 3NO (Southern Grand Bank)
 Data Source | https://archive.nafo.int/open/sc/2015/scr15-034.pdf
------------ | ---------------------------------------------------
-Rideout et al. 2015. An assessment of the cod stock in NAFO Divisions 3NO. NAFO SCR Doc 15/034. |
+----------- | -----------------------------------------------------------------------------------------------
+            | Rideout et al. 2015. An assessment of the cod stock in NAFO Divisions 3NO. NAFO SCR Doc 15/034.
 
 Under moratorium, data not extracted.
 
-## NAFO 3Ps (St Pierre Bank Cod)
+## NAFO 3Ps (St Pierre Bank)
 Data Source | http://waves-vagues.dfo-mpo.gc.ca/Library/40644777.pdf
------------ | ------------------------------------------------------
-Rideout et al. 2017. Assessing the status of the cod (Gadus morhua) stock in NAFO Subdivision 3Ps in 2016. CSAS Res Doc 2017/063. |
+----------- | ---------------------------------------------------------------------------------------------------------------------------------
+            | Rideout et al. 2017. Assessing the status of the cod (Gadus morhua) stock in NAFO Subdivision 3Ps in 2016. CSAS Res Doc 2017/063.
 
 csv      | unit | table  | info
 -------- | ---- | ------ | --------------------------------------------------------------------------
@@ -122,10 +120,10 @@ maturity | prop | 14     | Proportions mature
 wcatch   | kg   | 6a     | Weights-at-age from commercial fisheries
 wstock   | kg   | 6b     | Beginning of year weights-at-age calculated from commercial weights-at-age
 
-## NE Arctic Cod
+## NE Arctic
 Data Source | http://www.ices.dk/sites/pub/Publication%20Reports/Expert%20Group%20Report/acom/2018/AFWG/00-AFWG%202018%20Report.pdf
 ----------- | ---------------------------------------------------------------------------------------------------------------------
-ICES. 2018. Report of the Arctic Fisheries Working Group (AFWG). ICES CM 2018/ACOM:06. |
+            | ICES. 2018. Report of the Arctic Fisheries Working Group (AFWG). ICES CM 2018/ACOM:06.
 
 csv      | unit | table | info
 -------- | ---- | ----- | ------------------------
@@ -137,10 +135,10 @@ natmort  | yr-1 | 3.17  | Natural mortality
 wcatch   | kg   | 3.8   | Catch weights at age
 wstock   | kg   | 3.9   | Stock weights at age
 
-## North Sea Cod
+## North Sea
 Data Source | https://community.ices.dk/ExpertGroups/WGNSSK/_layouts/15/start.aspx#/SitePages/HomePage.aspx
------------ | ---------------------------------------------------------------------------------------------
-ICES. 2018. Provisional report of the Working Group on Assessment of Demersal Stocks in the North Sea and Skagerrak (WGNSSK). Draft report. |
+----------- | -------------------------------------------------------------------------------------------------------------------------------------------
+            | ICES. 2018. Provisional report of the Working Group on Assessment of Demersal Stocks in the North Sea and Skagerrak (WGNSSK). Draft report.
 
 csv      | unit | table | info
 -------- | ---- | ----- | --------------------------------------------------------------------
@@ -155,7 +153,7 @@ wcatch   | yr-1 | 4.3c  | Catch weights at age, also assumed to represent stock 
 ## Western Baltic
 Data Source | http://www.ices.dk/sites/pub/Publication%20Reports/Expert%20Group%20Report/acom/2018/WGBFAS/01%20WGBFAS%20Report%202018.pdf
 ----------- | ---------------------------------------------------------------------------------------------------------------------------
-ICES. 2018. Report of the Baltic Fisheries Assessment Working Group (WGBFAS). ICES CM 2018/ACOM:11. |
+            | ICES. 2018. Report of the Baltic Fisheries Assessment Working Group (WGBFAS). ICES CM 2018/ACOM:11.
 
 csv      | unit | table   | info
 -------- | ---- | ------- | ------------------------
