@@ -75,7 +75,7 @@ wstock   | kg   | 9.4      | Weight at age in the spawning stock
 
 ## NAFO 2J3KL (Northern cod)
 
-Brattey et al. 2018. Assessment of the Northern Cod (Gadus morhua) stock in NAFO Divisions 2J3KL in 2016.
+Brattey et al. 2018. Assessment of the Northern cod (Gadus morhua) stock in NAFO Divisions 2J3KL in 2016.
 [CSAS Res Doc 2018/018](http://waves-vagues.dfo-mpo.gc.ca/Library/40702017.pdf).
 
 csv      | unit | table  | info
@@ -169,10 +169,7 @@ wstock   | kg   | 2.3.18  | Weight at age in stock
 
 ***
 
-*CSAS Res Doc*
+### Links
 
-http://www.isdm-gdsi.gc.ca/csas-sccs/applications/Publications/index-eng.asp
-
-*NAFO SCR Doc*
-
-https://www.nafo.int/Library/Documents/Scientific-Council-SC/SCR
+| CSAS Res Doc | http://www.isdm-gdsi.gc.ca/csas-sccs/applications/Publications/index-eng.asp |
+| NAFO SCR Doc | https://www.nafo.int/Library/Documents/Scientific-Council-SC/SCR             |
