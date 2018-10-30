@@ -175,6 +175,21 @@ natmort  | yr-1 | 4.5b  | Natural mortality by age
 wcatch   | yr-1 | 4.3c  | Catch weights at age, also assumed to represent stock weights at age
 wcatch   | yr-1 | 4.3c  | Catch weights at age, also assumed to represent stock weights at age
 
+## Norwegian coastal
+
+ICES. 2018. Report of the Arctic Fisheries Working Group (AFWG).
+[ICES CM 2018/ACOM:06](http://www.ices.dk/sites/pub/Publication%20Reports/Expert%20Group%20Report/acom/2018/AFWG/00-AFWG%202018%20Report.pdf).
+
+csv      | unit | table | info
+-------- | ---- | ----- | -----------------------------------------------------------
+catage   | kg   | 2.1c  | Catch number at age
+fatage   | yr-1 | 2.14a | Fishing mortalities from XSA trial run
+maturity | prop | 2.13c | Proportion mature
+natage   | 000s | 2.14b | Population numbers from XSA trial run
+natmort  | yr-1 | p65   | Natural mortality of 0.2 has been assumed in the assessment
+wcatch   | kg   | 2.13b | Catch weights
+wstock   | kg   | 2.13a | Stock weight
+
 ## Western Baltic
 
 ICES. 2018. Report of the Baltic Fisheries Assessment Working Group (WGBFAS).

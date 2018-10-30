@@ -16,6 +16,7 @@ source("nafo_3m.R")
 source("nafo_3no.R")
 source("ne_arctic.R")
 source("north_sea.R")
+source("norway.R")
 source("w_baltic.R")
 
 setwd("..")
@@ -25,7 +26,7 @@ setwd("..")
 lwd <- 2
 stocks <- c("Faroe Plateau", "Georges Bank", "Gulf of Maine", "Iceland",
             "NAFO 2J3KL", "NAFO 3M", "NAFO 3NO", "NE Arctic", "North Sea",
-            "W Baltic")
+            "Norwegian coastal", "W Baltic")
 col <- rich.colors(length(stocks))
 
 ## Fishing mortality
@@ -40,7 +41,8 @@ stdline(nafo_3m$Fmort,       lwd, col[6])
 stdline(nafo_3no$Fmort,      lwd, col[7])
 stdline(ne_arctic$Fmort,     lwd, col[8], from=4, to=14)
 stdline(north_sea$Fmort,     lwd, col[9])
-stdline(w_baltic$Fmort,      lwd, col[10])
+stdline(norway$Fmort,        lwd, col[10])
+stdline(w_baltic$Fmort,      lwd, col[11])
 legend("topright", legend=stocks, bty="n", lty=1, lwd=lwd, col=col,
        inset=0.02, cex=0.8)
 box()
@@ -48,7 +50,7 @@ box()
 ## 3  Plot
 
 stocks <- c("Faroe Plateau", "Georges Bank", "Gulf of Maine", "Iceland",
-            "NAFO 3M", "NE Arctic", "North Sea", "W Baltic")
+            "NAFO 3M", "NE Arctic", "North Sea", "Norwegian coastal", "W Baltic")
 col <- rich.colors(length(stocks))
 
 pdf("overview.pdf", 10, 20)
@@ -64,7 +66,8 @@ stdline(iceland$wcatch,       lwd, col[4])
 stdline(nafo_3m$wcatch,       lwd, col[5])
 stdline(ne_arctic$wcatch,     lwd, col[6], to=14)
 stdline(north_sea$wcatch,     lwd, col[7])
-stdline(w_baltic$wcatch,      lwd, col[8])
+stdline(norway$wcatch,        lwd, col[8])
+stdline(w_baltic$wcatch,      lwd, col[9])
 legend("topleft", legend=stocks, bty="n", lty=1, lwd=lwd, col=col,
        inset=0.02, cex=0.8)
 
@@ -80,7 +83,8 @@ stdline(nafo_3m$BPR,       lwd, col[5])
 stdline(ne_arctic$BPR,     lwd, col[6], to=14)
 stdline(north_sea$BPR,     lwd*1.5, col[7], to=3, lty=3)
 stdline(north_sea$BPR,     lwd, col[7], from=3)
-stdline(w_baltic$BPR,      lwd, col[8])
+stdline(norway$BPR,        lwd, col[8])
+stdline(w_baltic$BPR,      lwd, col[9])
 legend("topright", legend=stocks, bty="n", lty=1, lwd=lwd, col=col,
        inset=0.02, cex=0.8)
 
@@ -94,7 +98,8 @@ stdline(iceland$S,       lwd, col[4])
 stdline(nafo_3m$S,       lwd, col[5], from=4)
 stdline(ne_arctic$S,     lwd, col[6], to=14)
 stdline(north_sea$S,     lwd, col[7])
-stdline(w_baltic$S,      lwd, col[8])
+stdline(norway$S,        lwd, col[8])
+stdline(w_baltic$S,      lwd, col[9])
 legend("topright", legend=stocks, bty="n", lty=1, lwd=lwd, col=col,
        inset=0.02, cex=0.8)
 box()
@@ -109,7 +114,8 @@ stdline(iceland$Cp,       lwd, col[4])
 stdline(nafo_3m$Cp,       lwd, col[5])
 stdline(ne_arctic$Cp,     lwd, col[6], to=14)
 stdline(north_sea$Cp,     lwd, col[7], to=8)
-stdline(w_baltic$Cp,      lwd, col[8])
+stdline(norway$Cp,        lwd, col[8])
+stdline(w_baltic$Cp,      lwd, col[9])
 legend("topright", legend=stocks, bty="n", lty=1, lwd=lwd, col=col,
        inset=0.02, cex=0.8)
 box()
@@ -124,7 +130,8 @@ stdline(iceland$mat,       lwd, col[4])
 stdline(nafo_3m$mat,       lwd, col[5])
 stdline(ne_arctic$mat,     lwd, col[6], from=4, to=14)
 stdline(north_sea$mat,     lwd, col[7])
-stdline(w_baltic$mat,      lwd, col[8])
+stdline(norway$mat,        lwd, col[8])
+stdline(w_baltic$mat,      lwd, col[9])
 legend("bottomright", legend=stocks, bty="n", lty=1, lwd=lwd, col=col,
        inset=0.02, cex=0.8)
 box()
