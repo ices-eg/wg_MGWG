@@ -26,7 +26,7 @@ setwd("..")
 ## 2  Identify stocks that are actively fished
 
 lwd <- 2
-stocks <- c("Faroe Plateu", "Georges Bank", "Greenland", "Gulf of Maine",
+stocks <- c("Faroe Plateu", "Georges Bank", "Greenl inshore", "Gulf of Maine",
             "Iceland", "NAFO 2J3KL", "NAFO 3M", "NAFO 3NO", "NE Arctic",
             "North Sea", "Norw coastal", "S Celtic", "W Baltic")
 col <- rich.colors(length(stocks))
@@ -53,7 +53,7 @@ box()
 
 ## 3  Plot
 
-stocks <- c("Faroe Plateu", "Georges Bank", "Greenland", "Gulf of Maine",
+stocks <- c("Faroe Plateu", "Georges Bank", "Greenl inshore", "Gulf of Maine",
             "Iceland", "NAFO 3M", "NE Arctic", "North Sea", "Norw coastal",
             "S Celtic", "W Baltic")
 col <- rich.colors(length(stocks))
