@@ -12,8 +12,7 @@ stock <- function(Ninit, M, wcatch, wstock, mat, Fvec)
   names(N) <- names(wcatch)
   C <- Fvec/Z * N *(1-exp(-Z))
   Y <- sum(C * wcatch)
-  list(Fmult=Fmult, N=N, Fvec=Fvec, C=C,
-       B=sum(N*wstock), SSB=sum(N*wstock*mat), Y=Y)
+  list(N=N, Fvec=Fvec, C=C, B=sum(N*wstock), SSB=sum(N*wstock*mat), Y=Y)
 }
 
 bevholt <- function (a, b, S)
