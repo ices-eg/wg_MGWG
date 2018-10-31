@@ -92,6 +92,8 @@ Proposal: WGMG provide some analyses of this issue, and recommendations on poten
   * [de Valpine and Hastings 2002](https://doi.org/10.1890/0012-9615(2002)072[0057:FPMIPN]2.0.CO;2)
   * [Subbey et al. 2014](https://doi:10.1093/icesjms/fsu148)
   * [Zhou 2007](https://doi.org/10.1016/j.fishres.2007.06.026)
+  * [Magnusson and Hilborn 2007](http://dx.doi.org/10.1111/j.1467-2979.2007.00258.x) - Stock‐recruitment steepness, h, was estimated with some reliability when abundance‐index or age‐composition data were available from years of very low abundance.
+  * [Francis 1992](https://doi.org/10.1139/f92-102) - Introduces steepness in a reparametrized Beverton-Holt curve.
 * Appendix
   * Preliminary diagram, table, plots
 
