@@ -3,7 +3,7 @@ source("../functions/dims.R")
 source("../functions/read.R")
 source("../functions/stdplot.R")
 
-path <- "../../data/celtic"
+path <- "../../data/s_celtic"
 dims(path)
 yrs <- 2008:2017
 ages <- as.character(1:7)
@@ -64,6 +64,6 @@ mat <- colMeans(mat[ages], na.rm=TRUE)
 
 ## 6  Export
 
-celtic <-
+s_celtic <-
   list(N=N, Ninit=Ninit, M=M, wcatch=wcatch, wstock=wstock,
        B=B, BPR=BPR, C=C, Cp=Cp, Fmort=Fmort, S=S, mat=mat)
