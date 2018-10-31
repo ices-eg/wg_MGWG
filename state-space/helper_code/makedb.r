@@ -1,5 +1,5 @@
 # makedb.r
-# create database of state-space results for Mohn's rho
+# create databases of state-space results for Mohn's rho and time series of F, SSB, R, and Catch
 
 library(ggplot2)
 library(dplyr)
@@ -9,6 +9,7 @@ stocks <- list.dirs(path = "../", full.names = FALSE, recursive = FALSE)
 stocks <- stocks[!(stocks %in% c("ASAP_3_year_projection_test", "helper_code", "plots_for_README", "tex", "USWCLingcod"))]
 nstocks <- length(stocks)
 
+# Mohn's rho first
 db <- data.frame(stock = character(),
                  model = character(),
                  file = character(),
@@ -108,3 +109,88 @@ ggstiled2 <- ggplot(dbps, aes(x=SSB, y=Fbar, color=stock)) +
   theme_bw()
 # print(ggstiled2)
 ggsave(filename = "../db/SSBvsFbarMohnRho_tiled2.png", ggstiled)
+
+#########################
+# now for the time series
+dc <- data.frame(stock = character(),
+                 model = character(),
+                 file = character(),
+                 metric = character(),
+                 year = integer(),
+                 value = double(),
+                 low = double(),
+                 high = double())
+
+for (istock in 1:nstocks){
+  models <- list.dirs(path = paste0("../", stocks[istock]), full.names = FALSE, recursive = FALSE)
+  nmodels <- length(models)
+  for (imodel in 1:nmodels){
+    files <- list.files(path = paste0("../", stocks[istock], "/", models[imodel]), full.names = FALSE)
+    files <- files[grep("tab1.csv", files)]
+    nfiles <- length(files)
+    if (nfiles > 0){
+      for (ifile in 1:nfiles){
+        myfile <- paste0("../", stocks[istock], "/", models[imodel], "/", files[ifile])
+        dat <- read.csv(file = myfile, header = TRUE)
+        nyears <- length(dat[,1])
+        if (models[imodel] == "ASAP"){
+          thisdb <- data.frame(stock = stocks[istock],
+                               model = models[imodel],
+                               file = files[ifile],
+                               metric = rep(c("Fbar", "SSB", "R", "Catch"), each=nyears),
+                               year = rep(dat$Year, 4),
+                               value = c(dat$Frep, dat$SSB, dat$R, dat$PredCatch),
+                               low = c(dat$Low, dat$Low.1, dat$Low.2, rep(NA, nyears)),
+                               high = c(dat$High, dat$High.1, dat$High.2, rep(NA, nyears)))
+        } else if (models[imodel] == "a4asca"){
+          thisdb <- data.frame(stock = stocks[istock],
+                               model = models[imodel],
+                               file = files[ifile],
+                               metric = rep(c("R", "SSB", "Catch", "Fbar"), each=nyears),
+                               year = rep(dat$X, 4),
+                               value = c(dat$R, dat$SSB, dat$Catch, dat$Fbar),
+                               low = c(dat$Low, dat$Low.1, dat$Low.2, dat$Low.3),
+                               high = c(dat$High, dat$High.1, dat$High.2, dat$High.3))
+        } else {
+          if (models[imodel] == "SAM") modelyears <- dat$Year
+          # for some reason SAM did extra year for NScod relative to WHAM
+          if (models[imodel] == "WHAM" && stocks[istock] == "NScod"){
+            modelyears <- modelyears[-length(modelyears)] 
+          }
+          thisdb <- data.frame(stock = stocks[istock],
+                               model = models[imodel],
+                               file = files[ifile],
+                               metric = rep(c("R", "SSB", "Fbar", "Catch"), each=nyears),
+                               year = rep(modelyears, 4),
+                               value = c(dat[,2], dat$SSB, dat[,8], dat[,11]),
+                               low = c(dat$Low, dat$Low.1, dat$Low.2, dat$Low.3),
+                               high = c(dat$High, dat$High.1, dat$High.2, dat$High.3))
+        }
+        # add to the database
+        dc <- rbind(dc, thisdb)
+      }
+    }
+  }
+}
+write.csv(dc, file = "../db/timeseriesdb.csv", row.names = FALSE)
+
+# for plotting rename a4a models according to filename
+dc1 <- dc %>%
+  filter(model == "a4asca") %>%
+  mutate(model = ifelse(file == "sep-tab1.csv", "a4asca sep", "a4asca te"))
+dc2 <- dc %>%
+  filter(model != "a4asca")
+dcp1 <- rbind(dc1, dc2)
+
+# need to deal with multiple time series for WHAM for ICEherring and Plaice
+for (istock in 1:nstocks){
+  tsp <- ggplot(filter(dcp1, stock == stocks[istock], metric == "SSB"), 
+                aes(x=year, y=value, color=model)) +
+    geom_line() +
+    geom_ribbon(aes(ymin = low, ymax = high)) +
+    facet_wrap(model ~ .) +
+    ggtitle(stocks[istock]) +
+    theme_bw()
+  
+  print(tsp)
+}
