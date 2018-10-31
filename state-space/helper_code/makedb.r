@@ -6,7 +6,7 @@ library(dplyr)
 library(tidyr)
 
 stocks <- list.dirs(path = "../", full.names = FALSE, recursive = FALSE)
-stocks <- stocks[!(stocks %in% c("ASAP_3_year_projection_test", "helper_code", "plots_for_README", "tex", "USWCLingcod"))]
+stocks <- stocks[!(stocks %in% c("ASAP_3_year_projection_test", "helper_code", "plots_for_README", "tex", "USWCLingcod", "db"))]
 nstocks <- length(stocks)
 
 # Mohn's rho first
@@ -183,6 +183,8 @@ dc2 <- dc %>%
 dcp1 <- rbind(dc1, dc2)
 
 # need to deal with multiple time series for WHAM for ICEherring and Plaice
+
+# make plot
 for (istock in 1:nstocks){
   tsp <- ggplot(filter(dcp1, stock == stocks[istock], metric == "SSB"), 
                 aes(x=year, y=value, color=model)) +
