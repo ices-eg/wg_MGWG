@@ -87,7 +87,11 @@ Proposal: WGMG provide some analyses of this issue, and recommendations on poten
   * Tasks, who's doing what
   * Milestones, timeline
 * References
-  * [Brooks and Deroba 2015](https://doi.org/10.1139/cjfas-2014-0231) [Conn et al. 2010 CJFAS](https://doi.org/10.1139/F09-194)
+  * [Brooks and Deroba 2015](https://doi.org/10.1139/cjfas-2014-0231) 
+  * [Conn et al. 2010 CJFAS](https://doi.org/10.1139/F09-194)
+  * [de Valpine and Hastings 2002] (https://doi.org/10.1890/0012-9615(2002)072[0057:FPMIPN]2.0.CO;2)
+  * [Subbey et al. 2014] (https://doi:10.1093/icesjms/fsu148)
+  * [Zhou 2007] (https://doi.org/10.1016/j.fishres.2007.06.026)
 * Appendix
   * Preliminary diagram, table, plots
 
