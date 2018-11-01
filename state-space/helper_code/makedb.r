@@ -143,8 +143,9 @@ for (istock in 1:nstocks){
                                low = c(dat$Low, dat$Low.1, dat$Low.2, rep(NA, nyears)),
                                high = c(dat$High, dat$High.1, dat$High.2, rep(NA, nyears)))
         } else if (models[imodel] == "a4asca"){
+          mymodelname <- ifelse(files[ifile] == "sep-tab1.csv", "a4asca sep", "a4asca te")
           thisdb <- data.frame(stock = stocks[istock],
-                               model = models[imodel],
+                               model = mymodelname,
                                file = files[ifile],
                                metric = rep(c("R", "SSB", "Catch", "Fbar"), each=nyears),
                                year = rep(dat$X, 4),
@@ -157,8 +158,11 @@ for (istock in 1:nstocks){
           if (models[imodel] == "WHAM" && stocks[istock] == "NScod"){
             modelyears <- modelyears[-length(modelyears)] 
           }
+          mymodelname <- ifelse(nfiles > 1, 
+                                paste0(models[imodel],"_",substr(files[ifile],1,2)), 
+                                models[imodel])
           thisdb <- data.frame(stock = stocks[istock],
-                               model = models[imodel],
+                               model = mymodelname,
                                file = files[ifile],
                                metric = rep(c("R", "SSB", "Fbar", "Catch"), each=nyears),
                                year = rep(modelyears, 4),
@@ -173,16 +177,6 @@ for (istock in 1:nstocks){
   }
 }
 write.csv(dc, file = "../db/timeseriesdb.csv", row.names = FALSE)
-
-# for plotting rename a4a models according to filename
-dc1 <- dc %>%
-  filter(model == "a4asca") %>%
-  mutate(model = ifelse(file == "sep-tab1.csv", "a4asca sep", "a4asca te"))
-dc2 <- dc %>%
-  filter(model != "a4asca")
-dcp1 <- rbind(dc1, dc2)
-
-# need to deal with multiple time series for WHAM for ICEherring and Plaice
 
 # make plot
 for (istock in 1:nstocks){
