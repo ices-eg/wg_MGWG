@@ -290,7 +290,7 @@ write.csv(dd, file = "../db/predmissingdb.csv", row.names = FALSE)
 
 # plot of observed and expected on log scale
 # not sure if want to try to fancy this up by including sdprd
-pdf(file="../db/obsprdmissing.pdf")
+pdf(file="../db/predmissing_obsprd.pdf")
 for (istock in 1:nstocks){
   mip <- ggplot(filter(dd, stock == stocks[istock], 
                        !model %in% c("WHAM", "WHAM_m4", "WHAM_m5", "WHAM_m6")), 
@@ -327,7 +327,7 @@ biasplot <- ggplot(dd2, aes(x=year, y=bias, color=model)) +
   theme_bw() +
   theme(legend.position = "bottom")
 #print(biasplot)
-ggsave(filename = "../db/biasplot.png", biasplot)
+ggsave(filename = "../db/predmissing_biasplot.png", biasplot)
 
 rmseplot <- ggplot(dd2, aes(x=year, y=rmse, color=model)) +
   geom_point() +
@@ -337,5 +337,5 @@ rmseplot <- ggplot(dd2, aes(x=year, y=rmse, color=model)) +
   theme_bw() +
   theme(legend.position = "bottom")
 #print(rmseplot)
-ggsave(filename = "../db/rmseplot.png", rmseplot)
+ggsave(filename = "../db/predmissing_rmseplot.png", rmseplot)
 
