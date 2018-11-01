@@ -108,7 +108,7 @@ ggstiled2 <- ggplot(dbps, aes(x=SSB, y=Fbar, color=stock)) +
   ylab("Mohn's rho Fbar") +
   theme_bw()
 # print(ggstiled2)
-ggsave(filename = "../db/SSBvsFbarMohnRho_tiled2.png", ggstiled)
+ggsave(filename = "../db/SSBvsFbarMohnRho_tiled2.png", ggstiled2)
 
 #########################
 # now for the time series
@@ -205,3 +205,73 @@ for (imetric in 1:length(mymetric)){
 }
 dev.off()
 
+###################################################
+# now for the predictions of missing recent indices
+
+dd <- data.frame(stock = character(),
+                 model = character(),
+                 file = character(),
+                 index = integer(),
+                 year = integer(),
+                 age = integer(),
+                 obs = double(),
+                 prd = double(),
+                 sdprd = double())
+
+for (istock in 1:nstocks){
+  models <- list.dirs(path = paste0("../", stocks[istock]), full.names = FALSE, recursive = FALSE)
+  nmodels <- length(models)
+  for (imodel in 1:nmodels){
+    files <- list.files(path = paste0("../", stocks[istock], "/", models[imodel]), full.names = FALSE)
+    files <- files[grep("tab1.csv", files)]
+    nfiles <- length(files)
+    if (nfiles > 0){
+      for (ifile in 1:nfiles){
+        myfile <- paste0("../", stocks[istock], "/", models[imodel], "/", files[ifile])
+        dat <- read.csv(file = myfile, header = TRUE)
+        nyears <- length(dat[,1])
+        if (models[imodel] == "ASAP"){
+          thisdb <- data.frame(stock = stocks[istock],
+                               model = models[imodel],
+                               file = files[ifile],
+                               index = dat$Index
+                               metric = rep(c("Fbar", "SSB", "R", "Catch"), each=nyears),
+                               year = rep(dat$Year, 4),
+                               value = c(dat$Frep, dat$SSB, dat$R, dat$PredCatch),
+                               low = c(dat$Low, dat$Low.1, dat$Low.2, rep(NA, nyears)),
+                               high = c(dat$High, dat$High.1, dat$High.2, rep(NA, nyears)))
+        } else if (models[imodel] == "a4asca"){
+          mymodelname <- ifelse(files[ifile] == "sep-tab1.csv", "a4asca sep", "a4asca te")
+          thisdb <- data.frame(stock = stocks[istock],
+                               model = mymodelname,
+                               file = files[ifile],
+                               metric = rep(c("R", "SSB", "Catch", "Fbar"), each=nyears),
+                               year = rep(dat$X, 4),
+                               value = c(dat$R, dat$SSB, dat$Catch, dat$Fbar),
+                               low = c(dat$Low, dat$Low.1, dat$Low.2, dat$Low.3),
+                               high = c(dat$High, dat$High.1, dat$High.2, dat$High.3))
+        } else {
+          if (models[imodel] == "SAM") modelyears <- dat$Year
+          # for some reason SAM did extra year for NScod relative to WHAM
+          if (models[imodel] == "WHAM" && stocks[istock] == "NScod"){
+            modelyears <- modelyears[-length(modelyears)] 
+          }
+          mymodelname <- ifelse(nfiles > 1, 
+                                paste0(models[imodel],"_",substr(files[ifile],1,2)), 
+                                models[imodel])
+          thisdb <- data.frame(stock = stocks[istock],
+                               model = mymodelname,
+                               file = files[ifile],
+                               metric = rep(c("R", "SSB", "Fbar", "Catch"), each=nyears),
+                               year = rep(modelyears, 4),
+                               value = c(dat[,2], dat$SSB, dat[,8], dat[,11]),
+                               low = c(dat$Low, dat$Low.1, dat$Low.2, dat$Low.3),
+                               high = c(dat$High, dat$High.1, dat$High.2, dat$High.3))
+        }
+        # add to the database
+        dd <- rbind(dd, thisdb)
+      }
+    }
+  }
+}
+write.csv(dd, file = "../db/predmissingdb.csv", row.names = FALSE)
