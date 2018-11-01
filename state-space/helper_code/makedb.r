@@ -178,15 +178,30 @@ for (istock in 1:nstocks){
 }
 write.csv(dc, file = "../db/timeseriesdb.csv", row.names = FALSE)
 
-# make plot
-for (istock in 1:nstocks){
-  tsp <- ggplot(filter(dcp1, stock == stocks[istock], metric == "SSB"), 
-                aes(x=year, y=value, color=model)) +
-    geom_line() +
-    geom_ribbon(aes(ymin = low, ymax = high)) +
-    facet_wrap(model ~ .) +
-    ggtitle(stocks[istock]) +
-    theme_bw()
-  
-  print(tsp)
+# make plots
+pdf(file="../db/timeseriesplots.pdf")
+mymetric <- c("SSB", "Fbar", "R", "Catch")
+for (imetric in 1:length(mymetric)){
+  for (istock in 1:nstocks){
+    tsp <- ggplot(filter(dc, stock == stocks[istock], metric == mymetric[imetric]), 
+                  aes(x=year, y=value, color=model)) +
+      geom_line() +
+      geom_ribbon(aes(ymin=low, ymax=high, fill=model), alpha=0.3) +
+      xlab("Year") +
+      ylab(mymetric[imetric]) +
+      ggtitle(stocks[istock]) +
+      expand_limits(y=0) +
+      theme_bw() +
+      theme(legend.position = "bottom")
+    
+    print(tsp)
+    
+    tsp_tiled <- tsp +
+      facet_wrap(model ~ .)
+    
+    print(tsp_tiled)
+    
+  }
 }
+dev.off()
+
