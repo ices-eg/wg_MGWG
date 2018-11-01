@@ -19,7 +19,7 @@ Georges Bank winter flounder |X|X|X|X|
 Southern New England-Mid-Atlantic winter flounder (SNEMAwinter) |X|X|X|X|
 American Plaice |X|X|3|X|
 White Hake |X|X|X|X|
-Icelandic herring (ICEherring) | |X|3|X| 
+Icelandic herring (ICEherring) |X|X|3|X| 
 US Atlantic Herring (USAtlHerring) |X|X|X|X|
 
 Comparison of merits and issues for traditional SCAA and state-space
