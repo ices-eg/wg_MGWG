@@ -223,55 +223,119 @@ for (istock in 1:nstocks){
   nmodels <- length(models)
   for (imodel in 1:nmodels){
     files <- list.files(path = paste0("../", stocks[istock], "/", models[imodel]), full.names = FALSE)
-    files <- files[grep("tab1.csv", files)]
+    files <- files[grep("tab2.csv", files)]
     nfiles <- length(files)
     if (nfiles > 0){
       for (ifile in 1:nfiles){
         myfile <- paste0("../", stocks[istock], "/", models[imodel], "/", files[ifile])
         dat <- read.csv(file = myfile, header = TRUE)
-        nyears <- length(dat[,1])
-        if (models[imodel] == "ASAP"){
-          thisdb <- data.frame(stock = stocks[istock],
-                               model = models[imodel],
-                               file = files[ifile],
-                               index = dat$Index
-                               metric = rep(c("Fbar", "SSB", "R", "Catch"), each=nyears),
-                               year = rep(dat$Year, 4),
-                               value = c(dat$Frep, dat$SSB, dat$R, dat$PredCatch),
-                               low = c(dat$Low, dat$Low.1, dat$Low.2, rep(NA, nyears)),
-                               high = c(dat$High, dat$High.1, dat$High.2, rep(NA, nyears)))
-        } else if (models[imodel] == "a4asca"){
-          mymodelname <- ifelse(files[ifile] == "sep-tab1.csv", "a4asca sep", "a4asca te")
-          thisdb <- data.frame(stock = stocks[istock],
-                               model = mymodelname,
-                               file = files[ifile],
-                               metric = rep(c("R", "SSB", "Catch", "Fbar"), each=nyears),
-                               year = rep(dat$X, 4),
-                               value = c(dat$R, dat$SSB, dat$Catch, dat$Fbar),
-                               low = c(dat$Low, dat$Low.1, dat$Low.2, dat$Low.3),
-                               high = c(dat$High, dat$High.1, dat$High.2, dat$High.3))
-        } else {
-          if (models[imodel] == "SAM") modelyears <- dat$Year
-          # for some reason SAM did extra year for NScod relative to WHAM
-          if (models[imodel] == "WHAM" && stocks[istock] == "NScod"){
-            modelyears <- modelyears[-length(modelyears)] 
+        if (names(dat)[4] != "V3"){  # skip problem with WHAM GOMcod tab2.csv
+          if (models[imodel] == "ASAP"){
+            thisdb <- data.frame(stock = stocks[istock],
+                                 model = models[imodel],
+                                 file = files[ifile],
+                                 index = dat$Index,
+                                 year = dat$Year,
+                                 age = dat$Age,
+                                 obs = dat$logObs,
+                                 prd = dat$Pred,
+                                 sdprd = NA)
+          } else if (models[imodel] == "a4asca"){
+            mymodelname <- ifelse(files[ifile] == "sep-tab1.csv", "a4asca sep", "a4asca te")
+            thisdb <- data.frame(stock = stocks[istock],
+                                 model = mymodelname,
+                                 file = files[ifile],
+                                 index = dat$Index,  #herehere need to update this once files are available
+                                 year = dat$Year,
+                                 age = dat$Age,
+                                 obs = dat$logObs,
+                                 prd = dat$Pred,
+                                 sdprd = NA)
+          } else if (models[imodel] == "WHAM"){
+            mymodelname <- ifelse(nfiles > 1, 
+                                  paste0(models[imodel],"_",substr(files[ifile],1,2)), 
+                                  models[imodel])
+            thisdb <- data.frame(stock = stocks[istock],
+                                 model = mymodelname,
+                                 file = files[ifile],
+                                 index = dat$fleet,  
+                                 year = dat$year,
+                                 age = dat$age,
+                                 obs = dat$logObs,
+                                 prd = dat$pred,
+                                 sdprd = dat$predSd)
+          } else { # the SAM variants
+            thisdb <- data.frame(stock = stocks[istock],
+                                 model = models[imodel],
+                                 file = files[ifile],
+                                 index = dat$fleet - 1,  # SAM fleet 1 is catch  
+                                 year = dat$year,
+                                 age = dat$age,
+                                 obs = dat$logObs,
+                                 prd = dat$pred,
+                                 sdprd = dat$predSd)
           }
-          mymodelname <- ifelse(nfiles > 1, 
-                                paste0(models[imodel],"_",substr(files[ifile],1,2)), 
-                                models[imodel])
-          thisdb <- data.frame(stock = stocks[istock],
-                               model = mymodelname,
-                               file = files[ifile],
-                               metric = rep(c("R", "SSB", "Fbar", "Catch"), each=nyears),
-                               year = rep(modelyears, 4),
-                               value = c(dat[,2], dat$SSB, dat[,8], dat[,11]),
-                               low = c(dat$Low, dat$Low.1, dat$Low.2, dat$Low.3),
-                               high = c(dat$High, dat$High.1, dat$High.2, dat$High.3))
+          # add to the database
+          dd <- rbind(dd, thisdb)
+          thisdb <- NULL
+          dat <- NULL
         }
-        # add to the database
-        dd <- rbind(dd, thisdb)
       }
     }
   }
 }
 write.csv(dd, file = "../db/predmissingdb.csv", row.names = FALSE)
+
+# note years are wrong in WHAM tab1 and tab2 csv files, asked Tim to fix
+
+# plot of observed and expected on log scale
+# not sure if want to try to fancy this up by including sdprd
+pdf(file="../db/obsprdmissing.pdf")
+for (istock in 1:nstocks){
+  mip <- ggplot(filter(dd, stock == stocks[istock], 
+                       !model %in% c("WHAM", "WHAM_m4", "WHAM_m5", "WHAM_m6")), 
+                aes(x=year, y=prd, color=model)) +
+    geom_line() +
+    geom_point(aes(y=obs)) +
+    xlab("Year") +
+    ylab("Index") +
+    ggtitle(stocks[istock]) +
+    facet_grid(index ~ age) +
+    expand_limits(y=0) +
+    theme_bw() +
+    theme(legend.position = "bottom")
+  
+  print(mip)
+}
+dev.off()
+
+# calculate residuals and resid squared and summarize different ways
+dd1 <- dd %>%
+  mutate(resid = prd - obs, resid2 = (prd - obs)^2)
+
+dd2 <- dd1 %>%
+  filter(!model %in% c("WHAM", "WHAM_m4", "WHAM_m5", "WHAM_m6")) %>%
+  group_by(stock, model, year) %>%
+  summarize(bias = mean(resid), rmse = sqrt(mean(resid2)))
+
+biasplot <- ggplot(dd2, aes(x=year, y=bias, color=model)) +
+  geom_point() +
+  geom_hline(yintercept=0, color="red", linetype="dashed") +
+  facet_wrap(stock ~ ., scales = "free") +
+  xlab("Year") +
+  ylab("Bias") +
+  theme_bw() +
+  theme(legend.position = "bottom")
+#print(biasplot)
+ggsave(filename = "../db/biasplot.png", biasplot)
+
+rmseplot <- ggplot(dd2, aes(x=year, y=rmse, color=model)) +
+  geom_point() +
+  facet_wrap(stock ~ ., scales = "free") +
+  xlab("Year") +
+  ylab("RMSE") +
+  theme_bw() +
+  theme(legend.position = "bottom")
+#print(rmseplot)
+ggsave(filename = "../db/rmseplot.png", rmseplot)
+
