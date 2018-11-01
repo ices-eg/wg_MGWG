@@ -30,7 +30,7 @@ wstock <- wstock[wstock$Year %in% yrs,]
 wstock <- colMeans(wstock[ages])
 
 B <- cohortBiomass(Ninit, M, wcatch)
-## One recruit at age 3 => 1.22 at age 2
+## One recruit at age 3 => exp(M["2"]) at age 2
 BPR <- cohortBiomass(exp(M["2"]), M, wcatch)
 
 ## 3  Catch and selectivity
