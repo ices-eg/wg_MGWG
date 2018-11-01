@@ -6,7 +6,7 @@ source("../functions/stdplot.R")
 path <- "../../data/nafo_3no"
 dims(path)
 yrs <- 2008:2017
-ages <- as.character(3:12)
+ages <- as.character(3:11)
 plus <- FALSE
 
 ## 1  Population
