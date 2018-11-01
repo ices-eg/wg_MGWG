@@ -63,32 +63,56 @@ profPlot(w_baltic,      shift$wb, applyFmax, "SSB", c(-1,9), c(0,160))
 
 ## 3  Apply F0.1
 
-par(mfrow=c(4,4))
-profPlot(faroe_plateau, shift$fp, applyF0.1, "Y", c(-1,9), c(0,14))
-profPlot(georges_bank,  shift$gb, applyF0.1, "Y", c(-1,9), c(0,10))
-profPlot(greenland,     shift$gr, applyF0.1, "Y", c(-1,9), c(0,28))
-profPlot(gulf_of_maine, shift$gm, applyF0.1, "Y", c(-1,9), c(0,4))
-profPlot(iceland,       shift$ic, applyF0.1, "Y", c(-1,9), c(0,320))
-profPlot(nafo_2j3kl,    shift$n2, applyF0.1, "Y", c(-1,9), c(0,80))
-profPlot(nafo_3m,       shift$n3, applyF0.1, "Y", c(-1,9), c(0,8))
-profPlot(nafo_3no,      shift$n4, applyF0.1, "Y", c(-1,9), c(0,5))
-profPlot(ne_arctic,     shift$ne, applyF0.1, "Y", c(-1,9), c(0,800))
-profPlot(north_sea,     shift$ns, applyF0.1, "Y", c(-1,9), c(0,90))
-profPlot(norway,        shift$nw, applyF0.1, "Y", c(-1,9), c(0,34))
-profPlot(s_celtic,      shift$sc, applyF0.1, "Y", c(-1,9), c(0,1.6))
-profPlot(w_baltic,      shift$wb, applyF0.1, "Y", c(-1,9), c(0,33))
+Y <- list()
 
 par(mfrow=c(4,4))
-profPlot(faroe_plateau, shift$fp, applyF0.1, "SSB", c(-1,9), c(0,100))
-profPlot(georges_bank,  shift$gb, applyF0.1, "SSB", c(-1,9), c(0,65))
-profPlot(greenland,     shift$gr, applyF0.1, "SSB", c(-1,9), c(0,130))
-profPlot(gulf_of_maine, shift$gm, applyF0.1, "SSB", c(-1,9), c(0,17))
-profPlot(iceland,       shift$ic, applyF0.1, "SSB", c(-1,9), c(0,2500))
-profPlot(nafo_2j3kl,    shift$n2, applyF0.1, "SSB", c(-1,9), c(0,460))
-profPlot(nafo_3m,       shift$n3, applyF0.1, "SSB", c(-1,9), c(0,30))
-profPlot(nafo_3no,      shift$n4, applyF0.1, "SSB", c(-1,9), c(0,28))
-profPlot(ne_arctic,     shift$ne, applyF0.1, "SSB", c(-1,9), c(0,7000))
-profPlot(north_sea,     shift$ns, applyF0.1, "SSB", c(-1,9), c(0,800))
-profPlot(norway,        shift$nw, applyF0.1, "SSB", c(-1,9), c(0,150))
-profPlot(s_celtic,      shift$sc, applyF0.1, "SSB", c(-1,9), c(0,9))
-profPlot(w_baltic,      shift$wb, applyF0.1, "SSB", c(-1,9), c(0,150))
+Y$fp <- profPlot(faroe_plateau, shift$fp, applyF0.1, "Y", c(-1,9), c(0,14))
+Y$gb <- profPlot(georges_bank,  shift$gb, applyF0.1, "Y", c(-1,9), c(0,10))
+Y$gr <- profPlot(greenland,     shift$gr, applyF0.1, "Y", c(-1,9), c(0,28))
+Y$gm <- profPlot(gulf_of_maine, shift$gm, applyF0.1, "Y", c(-1,9), c(0,4))
+Y$ic <- profPlot(iceland,       shift$ic, applyF0.1, "Y", c(-1,9), c(0,320))
+Y$n2 <- profPlot(nafo_2j3kl,    shift$n2, applyF0.1, "Y", c(-1,9), c(0,80))
+Y$n3 <- profPlot(nafo_3m,       shift$n3, applyF0.1, "Y", c(-1,9), c(0,8))
+Y$n4 <- profPlot(nafo_3no,      shift$n4, applyF0.1, "Y", c(-1,9), c(0,5))
+Y$ne <- profPlot(ne_arctic,     shift$ne, applyF0.1, "Y", c(-1,9), c(0,800))
+Y$ns <- profPlot(north_sea,     shift$ns, applyF0.1, "Y", c(-1,9), c(0,90))
+Y$nw <- profPlot(norway,        shift$nw, applyF0.1, "Y", c(-1,9), c(0,34))
+Y$sc <- profPlot(s_celtic,      shift$sc, applyF0.1, "Y", c(-1,9), c(0,1.6))
+Y$wb <- profPlot(w_baltic,      shift$wb, applyF0.1, "Y", c(-1,9), c(0,33))
+
+optx <- function(stock, y.list=Y)
+{
+  xy <- y.list[[stock]]
+  opt <- xy$shift[which.max(xy$result)]
+  opt
+}
+
+opty <- function(stock, b.list=B, y.list=Y)
+{
+  xy <- b.list[[stock]]
+  x <- optx(stock, y.list=y.list)
+  opt <- xy$result[xy$shift==x]
+  opt
+}
+
+point <- function(stock)
+{
+  points(optx(stock), opty(stock), pch="x")
+}
+
+B <- list()
+
+par(mfrow=c(4,4))
+B$fp <- profPlot(faroe_plateau, shift$fp, applyF0.1, "SSB", c(-1,9), c(0,100));  point("fp")
+B$gb <- profPlot(georges_bank,  shift$gb, applyF0.1, "SSB", c(-1,9), c(0,65));   point("gb")
+B$gr <- profPlot(greenland,     shift$gr, applyF0.1, "SSB", c(-1,9), c(0,130));  point("gr")
+B$gm <- profPlot(gulf_of_maine, shift$gm, applyF0.1, "SSB", c(-1,9), c(0,17));   point("gm")
+B$ic <- profPlot(iceland,       shift$ic, applyF0.1, "SSB", c(-1,9), c(0,2500)); point("ic")
+B$n2 <- profPlot(nafo_2j3kl,    shift$n2, applyF0.1, "SSB", c(-1,9), c(0,460));  point("n2")
+B$n3 <- profPlot(nafo_3m,       shift$n3, applyF0.1, "SSB", c(-1,9), c(0,30));   point("n3")
+B$n4 <- profPlot(nafo_3no,      shift$n4, applyF0.1, "SSB", c(-1,9), c(0,28));   point("n4")
+B$ne <- profPlot(ne_arctic,     shift$ne, applyF0.1, "SSB", c(-1,9), c(0,7000)); point("ne")
+B$ns <- profPlot(north_sea,     shift$ns, applyF0.1, "SSB", c(-1,9), c(0,800));  point("ns")
+B$nw <- profPlot(norway,        shift$nw, applyF0.1, "SSB", c(-1,9), c(0,150));  point("nw")
+B$sc <- profPlot(s_celtic,      shift$sc, applyF0.1, "SSB", c(-1,9), c(0,9));    point("sc")
+B$wb <- profPlot(w_baltic,      shift$wb, applyF0.1, "SSB", c(-1,9), c(0,150));  point("wb")
