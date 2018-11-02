@@ -339,9 +339,16 @@ rmseplot <- ggplot(dd2, aes(x=year, y=rmse, color=model)) +
 #print(rmseplot)
 ggsave(filename = "../db/predmissing_rmseplot.png", rmseplot)
 
-residboxplot <- ggplot(dd2, aes(x=model, y=resid)) +
+modelnumdf <- data.frame(model = sort(unique(dd1$model)), 
+                         modelnum = as.factor(1:length(unique(dd1$model))))
+print(modelnumdf)
+dd3 <- left_join(dd1, modelnumdf, by="model")
+residboxplot <- ggplot(dd3, aes(x=modelnum, y=resid)) +
   geom_boxplot() +
-  facet_wrap(stock~.) +
+  geom_hline(yintercept=0, color="red", linetype="dashed") +
+  facet_wrap(stock~., scales = "free_y") +
+  xlab("Model Number") +
   ylab("Log Scale Residual") +
   theme_bw()
 print(residboxplot)
+ggsave(filename = "../db/predmissing_residboxplot.png", residboxplot)
