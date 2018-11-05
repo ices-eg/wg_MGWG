@@ -8,7 +8,9 @@ There has been a proliferation of published analyses on stock productivity based
 
 External estimation is affected by covariate measurement error bias, which could include overestimation of the slope-at-the-origin and underestimation of Rmax. This could be bad for sustainable management.
 
-Additional perspective on modelling assessment model outputs is given by Brooks and Deroba (2015)
+Additional perspective on modelling assessment model outputs is given by Brooks and Deroba (2015) and Conn et al. (2010)
+
+The objectives of this research are: 1) Determine when parameters of stock recruit relationships can be estimated internally to a stock assessment model (e.g., Conn et al., 2010), 2) Determine when parameters of stock recruit relationships can be estimated using estimates of parental stock size and recruitment from a stock assessment, but with the relationship estimated external to the stock assessment.  Ultimately, is it better to use internal or external estimation?
 
 Criteria | Comments
 -------- | --------
@@ -20,27 +22,13 @@ What kind of work is required, and how much work? |
 Participants that would like to work on this?     | Casper Berg, Chris Legault, Craig Marsh, Dvora Hart, Ernesto Jardim, Jon Deroba, Liz Brooks, Noel Cadigan, Tim Miller, Vanessa Trijoulet
 Who would like to lead, what will coauthors do?   |
 
-
-Proposal: WGMG provide some analyses of this issue, and recommendations on potential problems with external vs internal estimation of SR functions.
-
 ***
 
 ## Proposal Format
 
 * Working title
 * Participants
-  * Leader(s)
-  * Casper Berg DTU Aqua
-  * Chris Legault NEFSC
-  * Craig Marsh NIWA
-  * Dvora Hart  NEFSC
-  * Ernesto Jardim
-  * Jon Deroba NEFSC
-  * Liz Brooks NEFSC
-  * Noel Cadigan  Memorial University
-  * Tim Miller NEFSC
-  * Vanessa Trijoulet NEFSC
-  * Colin Miller
+  * See below
 * Background
   * Area of research
   * Brief literature review
