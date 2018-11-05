@@ -26,15 +26,12 @@ Who would like to lead, what will coauthors do?   |
 
 ## Proposal Format
 
-* Working title
+* Working title:  Interanl versus external estimation of stock-recruit relationships: can we and should we?
 * Participants
   * See below
 * Background
-  * Area of research
-  * Brief literature review
-  * Remaining questions
-  * Why is this important
-* Objectives - Set of Questions to Answer
+  * Brief literature review: [Brooks and Deroba 2015](https://doi.org/10.1139/cjfas-2014-0231) [Conn et al. 2010 CJFAS](https://doi.org/10.1139/F09-194)
+* Objectives - See above
   * For Internal Estimation
     * Can correct S-R be identified? (AIC for model selection?) see [Conn et al. 2010 CJFAS](https://doi.org/10.1139/F09-194)
     * How precise are S-R parameters?
@@ -49,7 +46,6 @@ Who would like to lead, what will coauthors do?   |
 * Plan
   * Methods, data
     * Assessment model types
-      * VPA (SR external)
       * SCAA (SR internal, sigma_R known)
       * State-space (SR internal, process error in recruitment only)
       * State-space (SR internal, process error in survival)
