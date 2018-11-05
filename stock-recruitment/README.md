@@ -84,12 +84,8 @@ Who would like to lead, what will coauthors do?   |
 
 ***
 
-## After Ispra meeting
-
-* We need to identify day of week and frequency for touching base. 
-* Proposed first contact: October 25, 2019 (can send doodle poll if needed)
-* Identify what we will have accomplished by this first call
-* Identify what each person will work on between now and the first call, and overall what each person will contribute
+## At the Ispra meeting...
+* Identified what people will contribute
   * Iago Mosqueira - simulating; uploading simulation iterations
   * Christoph Konrad - simulating; ...
   * Colin Millar - simulation design, adding code, a4a runs, fitting SR external, summarizing various fits, ...
@@ -104,6 +100,8 @@ Who would like to lead, what will coauthors do?   |
   * Noel Cadigan - provide code for SR with ar1 process on parameters (for external fitting)
   * Tim Miller - WHAM, ...
   * Vanessa Trijoulet - output summarization, ...
+  
+* We have conducted a followup call.  See minutes file.
 
 
 
