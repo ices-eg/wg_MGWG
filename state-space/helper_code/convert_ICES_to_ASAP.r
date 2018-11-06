@@ -783,7 +783,8 @@ get.index.mat<- function(x, cv, neff, first.year, nyears, catch.ages, survey.age
 #omid = model.id
 #model.id = ''
 #ices.id because sometimes there is no stock id at the beginning of the file names
-ICES2ASAP <- function(user.wd,user.od,model.id,ices.id){ 
+# set ices.id=model.id by default to facilitate backward compatability
+ICES2ASAP <- function(user.wd,user.od,model.id,ices.id=model.id){ 
   cn <- read.ices(paste(user.wd,ices.id,"cn.dat",sep=""))
   cw <- read.ices(paste(user.wd,ices.id,"cw.dat",sep=""))
   dw <- read.ices(paste(user.wd,ices.id,"dw.dat",sep=""))
