@@ -81,10 +81,12 @@ retro <- function(stk, idxs, retro=5, k="missing", ftype="missing", ...){
 		args$stock <- window(stk, end=yr)
 		args$indices <- window(idxs, end=yr)
 		if(!kT & !tT){
-			KA <- k['age']
-			KY <- k['year'] - floor(x/2)
+			KA <- unname(k['age'])
+			KY <- unname(k['year'] - floor(x/2))
+			if(!is.na(k['age2'])) KA2 <- k['age2'] else KA2 <- KA
+			KA2 <- unname(KA2)
 			if(ftype=='te'){
-				fmod <- substitute(~te(age, year, k = c(KA, KY))+s(age, k=KA), list(KA = KA, KY=KY))
+				fmod <- substitute(~te(age, year, k = c(KA, KY))+s(age, k=KA2), list(KA = KA, KY=KY, KA2=KA2))
 			} else {
 				fmod <- substitute(~s(year, k = KY)+s(age, k = KA), list(KA = KA, KY=KY))
 			}
