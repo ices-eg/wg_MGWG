@@ -24,11 +24,13 @@ setwd('a4asca')
 # default model
 #====================================================================
 
-fit <- sca(stk, idxs)
-stk.retro <- retro(stk, idxs, retro=7)
+qmod <- list(~s(age, k=4), ~s(age, k=3))
+fmod <- ~te(age, year, k = c(4, 17), bs = "tp") + s(age, k = 5)
+fit <- sca(stk, idxs, qmodel=qmod, fmodel=fmod)
+stk.retro <- retro(stk, idxs, retro=7, qmodel=qmod, k=c(age=4, year=17, age2=5), ftype='te')
 fit.rm <- mohn(stk.retro)
 fit.pi <- predIdxs(stk, idxs)
-fitmc <- sca(stk, idxs, fit='MCMC', mcmc=SCAMCMC(mcmc=250000))
+fitmc <- sca(stk, idxs, fit='MCMC', mcmc=SCAMCMC(mcmc=250000), qmodel=qmod, fmodel=fmod)
 dumpTab1(stk, idxs, fitmc, predIdxs=fit.pi, mohnRho=fit.rm, prefix='te')
 
 #====================================================================
