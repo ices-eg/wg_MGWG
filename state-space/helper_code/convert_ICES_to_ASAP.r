@@ -747,27 +747,20 @@ get.index.mat<- function(x, cv, neff, first.year, nyears, catch.ages, survey.age
    last.yr <- first.year+nyears - 1
    
    tmp.yrs <- as.numeric(rownames(x))
+   all.years = first.year-1 + 1:nyears
    if (tmp.yrs[length(tmp.yrs)]>last.yr)  tmp.yrs <- tmp.yrs[-which(tmp.yrs>last.yr)]
    tmp.ages <- as.numeric(colnames(x))
    tmp.ages = catch.ages
    survey.ages.index = which(catch.ages %in% survey.ages)
    i.mat <- matrix(0, nyears, (n.ages + 4))
-   i.mat[,1] <- seq(first.year, last.yr)
+   i.mat[,1] <- all.years
    rownames(x) <- c()
    colnames(x) <- c()
    x[is.na(x)] <- 0
    tmp.ind.total <- apply(x[1:length(tmp.yrs),], 1, sum)
-   if (tmp.yrs[1]==first.year) {
-   i.mat[ , 1:3 ] <- cbind(tmp.yrs, tmp.ind.total, rep(cv, length(tmp.yrs))  )
-   i.mat[ , (3+survey.ages.index)]  <- x
-   i.mat[ , (n.ages+4)]  <- rep(neff, length(tmp.yrs))
-        }
-
-   if (tmp.yrs[1]>first.year) {
-   i.mat[(tmp.yrs[1]-first.year+1):nyears, 2:3 ] <- cbind( tmp.ind.total, rep(cv, length(tmp.yrs))  )
-   i.mat[(tmp.yrs[1]-first.year+1):nyears, (3+tmp.ages[1]):(3+tmp.ages[length(tmp.ages)]) ]  <- x[1:length(tmp.yrs),]
-   i.mat[(tmp.yrs[1]-first.year+1):nyears, (asap.nages+4)]  <- rep(neff, length(tmp.yrs))
-      }
+   i.mat[all.years %in% tmp.yrs,2:3] <- cbind(tmp.ind.total, rep(cv, length(tmp.yrs)))
+   i.mat[all.years %in% tmp.yrs, (3+survey.ages.index)]  <- x
+   i.mat[all.years %in% tmp.yrs , (n.ages+4)]  <- rep(neff, length(tmp.yrs))
 
  return(i.mat)
 
@@ -783,8 +776,7 @@ get.index.mat<- function(x, cv, neff, first.year, nyears, catch.ages, survey.age
 #omid = model.id
 #model.id = ''
 #ices.id because sometimes there is no stock id at the beginning of the file names
-# set ices.id=model.id by default to facilitate backward compatability
-ICES2ASAP <- function(user.wd,user.od,model.id,ices.id=model.id){ 
+ICES2ASAP <- function(user.wd,user.od,model.id,ices.id){ 
   cn <- read.ices(paste(user.wd,ices.id,"cn.dat",sep=""))
   cw <- read.ices(paste(user.wd,ices.id,"cw.dat",sep=""))
   dw <- read.ices(paste(user.wd,ices.id,"dw.dat",sep=""))
