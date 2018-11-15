@@ -28,3 +28,20 @@ Vanessa T. and Arni M. will come up with ideas for a structure of the introducti
 Next call is 15 November 2018 at 10am (EST, UTC-5) 
 
 
+## 15 November 2018
+Attendees: Tim Miller, Jon Deroba, Niels Hintzen, Anders Nielsen, Casper Berg, Vanessa Trijoulet
+
+Kelli has been working on a ASAP to SS3 converter.
+
+Chris has done work in DB directory summarizing results. Some questions on the last two plots in particular.
+
+Tim sorted out the issue with Iceland herring data. Just a problem for WHAM and ASAP because the converter was not set up right.
+
+Vanessa has done some work to structure the paper and added suggested paragraph topics.
+
+Those on the call like the idea of also doing model comparisons within model type. Refer back MGWG work where SAM was set up to mimic XSA. Methods for comparing models within model type could include AIC as well as Mohn's rho and survey observation prediction.
+
+Casper brought up trying to get a handle on uncertainty in RMSE. Need to define what type of uncertainty (e.g., variability between stocks?) and then think about how to estimate it.
+
+Forgot to bring up making a decision on what to do about surveys missing last three years (if it is an issue at all). 
+
