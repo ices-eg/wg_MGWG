@@ -7,7 +7,7 @@ Time: 14:00 GMT / 16:00 Oslo & Copenhagen / 10:00 EDT / 7:00 PDT
 
 Connection Method: Skype 
 
-[Notes](Notes#29-Oct-2018.md)  will be posted after meeting
+[Notes](Notes.md#29-Oct-2018)  will be posted after meeting
 
 
 ***
