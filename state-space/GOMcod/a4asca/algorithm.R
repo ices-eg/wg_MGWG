@@ -30,11 +30,15 @@ setwd('a4asca')
 # default model
 #====================================================================
 
-fit <- sca(stk, idxs)
-stk.retro <- retro(stk, idxs, retro=7)
+qmod <- list(~s(age, k=3), ~s(age, k=3), ~s(age, k=3))
+fmod <- ~te(age, year, k = c(4, 17), bs = "tp") + s(age, k = 6)
+fit <- sca(stk, idxs, qmodel=qmod, fmodel=fmod)
+# this retro is a bit manual ...
+stk.retro <- retro(stk, idxs, retro=7, qmodel=qmod, fmodel=fmod)
+stk.retro[c(7,8)] <- retro(stk, idxs, retro=7, qmodel=qmod, k=c(age=4, year=18, age2=6), ftype='te')[c(7,8)]
 fit.rm <- mohn(stk.retro)
 fit.pi <- predIdxs(stk, idxs)
-fitmc <- sca(stk, idxs, fit='MCMC', mcmc=SCAMCMC(mcmc=250000))
+fitmc <- sca(stk, idxs, fit='MCMC', mcmc=SCAMCMC(mcmc=250000), qmodel=qmod, fmodel=fmod)
 dumpTab1(stk, idxs, fitmc, predIdxs=fit.pi, mohnRho=fit.rm, prefix='te')
 
 #====================================================================
@@ -42,11 +46,11 @@ dumpTab1(stk, idxs, fitmc, predIdxs=fit.pi, mohnRho=fit.rm, prefix='te')
 #====================================================================
 
 fmod <- ~s(age, k=5) + s(year, k=17)
-fitsep <- sca(stk, idxs, fmodel=fmod)
-stksep.retro <- retro(stk, idxs, retro=7, fmodel=fmod)
+fitsep <- sca(stk, idxs, fmodel=fmod, qmodel=qmod)
+stksep.retro <- retro(stk, idxs, retro=7, fmodel=fmod, qmodel=qmod)
 fitsep.rm <- mohn(stksep.retro)
 fitsep.pi <- predIdxs(stk, idxs, fmodel=fmod)
-fitsepmc <- sca(stk, idxs, fmodel=fmod, fit='MCMC', mcmc=SCAMCMC(mcmc=250000))
+fitsepmc <- sca(stk, idxs, fmodel=fmod, fit='MCMC', mcmc=SCAMCMC(mcmc=250000), qmodel=qmod)
 dumpTab1(stk, idxs, fitsepmc, predIdxs=fitsep.pi, mohnRho=fitsep.rm, prefix='sep')
 
 

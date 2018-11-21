@@ -33,7 +33,7 @@
 #-------------------
 #user.wd <- "C:/liz/SAM/NScod/"  # user: specify path to working directory where ICES files are
 #user.od <- "C:/liz/SAM/NScod/"  # user: specify path to output directory
-#model.id <- "GBWINTER_"  # user: specify prefix found on ICES files (will create same name for ASAP case)
+#model.id <- "ICEHerr_"  # user: specify prefix found on ICES files (will create same name for ASAP case)
    ## *** Notes: had to append "NScod_" to all ICES filenames
 #-------------------
 #user.wd <- "C:/liz/SAM/ICEherring/"  # user: specify path to working directory where ICES files are
@@ -73,7 +73,7 @@
         do.proj, fleet.dir, proj.yr, proj.specs,
         do.mcmc, mcmc.nyr.opt, mcmc.nboot, mcmc.thin, mcmc.seed,
         recr.agepro, recr.start.yr, recr.end.yr, test.val,
-        fleet.names, survey.names, disc.flag )    {
+        fleet.names, survey.names, disc.flag, catch.ages, survey.ages )    {
 
 
 
@@ -228,9 +228,7 @@ write( '# Selectivity options for each block' , file=out.file,append=T)   #, nco
 write(t(sel.types), file=out.file,append=T, ncol=nselblks)
 temp = t(sel.mats)
 temp = sel.mats
-print(temp)
 x = asap.nages+6
-print(x)
 for(i in 1:nselblks)
 {
   write(paste0('# Selectivity Block #', i, " Data") , file=out.file,append=T)   #, ncol=(nyears))
@@ -291,8 +289,6 @@ write(t(rep(1,n.ind.avail)), file=out.file, append=T, ncol=n.ind.avail )
 write( '# Use Index' , file=out.file,append=T)   #, ncol=(nyears))
 write(ind.use, file=out.file, append=T, ncol=n.ind.avail )
 x = asap.nages+6
-print(x)
-print(dim(ind.sel.mats))
 for(i in 1:n.ind.avail)
 {
   write(paste0('# Index-', i, ' Selectivity Data') , file=out.file,append=T)   #, ncol=(nyears))
@@ -305,7 +301,7 @@ write( '# Index data matrices (n.ind.avail.*nyears)' , file=out.file,append=T)  
      if (ind.use[kk]==1) {
 write( paste0('# Index   ', survey.names[kk]) , file=out.file,append=T)   #, ncol=(nyears))
         tmp.s <- ind.mat[[kk]]
-        ind.mat2 <- get.index.mat(tmp.s, ind.cv, ind.neff, first.year, nyears, asap.nages)
+        ind.mat2 <- get.index.mat(tmp.s, ind.cv, ind.neff, first.year, nyears, catch.ages, survey.ages[[kk]])
 write(t(ind.mat2), file=out.file,append=T, ncol=(asap.nages + 4) )
         } # end ind.use test
   } #end kk loop
@@ -669,20 +665,14 @@ return(tt)
  }
 
 #---------------------------------------------------------------------
- get.survey.ages=function (x)    #func to grab survey ages from ICES surveys object
+get.survey.ages=function (x)    #func to grab survey ages from ICES surveys object
 {
-n.surv <- length(x)
-aa1 <- rep(NA, n.surv)
-aa2 <- rep(NA, n.surv)
-for (i in 1:n.surv) {
-    aa1[i] <- min(colnames(x[[i]]))
-    aa2[i] <- max(colnames(x[[i]]))
+  lapply(x, function(y) 
+  {
+    r = range(as.numeric(colnames(y)))
+    seq(r[1],r[2],1)
+  })
 }
-
-aa<- rbind(as.numeric(aa1), as.numeric(aa2) )
-return(aa)
-
- }
 
 #---------------------------------------------------------------------
 get.peak.age=function (x)    #grab peak age from first couple of rows
@@ -715,22 +705,32 @@ return(peak)
  }
 
 #---------------------------------------------------------------------
-setup.surv.sel = function(x, i.peak, a)  {   #set up matrix specs for index selectivities
+setup.surv.sel = function(x, i.peak, catch.ages,survey.ages)  {   #set up matrix specs for index selectivities
  n.ind <- length(x)
  sel.c1 <- rep()
  sel.c2 <- rep()
  sel.c3 <- rep()
  sel.c4 <- rep()
+ n.ages = length(catch.ages)
   for (i in 1:n.ind) {
 #  tmp.nages <- ind.ages[2,i]-ind.ages[1,i]+1
-   tmp.c1 <-  c( seq(0.1,0.9, length.out=(a)),  round((i.peak[i])/2,2), 0.9,
-              round((i.peak[i])/4,2), 0.6,  round((a)/1.5,2), 1.1)
-   tmp.c1[i.peak[i]] <-1
+   tmp.c1 = rep(0,n.ages)
+   if(sum(!(survey.ages[[i]] %in% catch.ages))) stop("some survey ages are not in catch.ages")
+   ind = which(catch.ages %in% survey.ages[[i]])
+   peak.age.class = ind[i.peak[i]] #not necessarily the peak age
+   tmp.c1[ind] = seq(0.1,0.9, length.out=length(ind))
+   tmp.c1[peak.age.class] <-1
+   tmp.c1 <-  c( tmp.c1,  round((peak.age.class)/2,2), 0.9,
+              round((peak.age.class)/4,2), 0.6,  round(n.ages/1.5,2), 1.1)
    sel.c1 <- c(sel.c1, tmp.c1)
-   sel.c2 <- c( sel.c2, rep(1, a), 2,3, rep(1, 4)) # phase for estimation
-   sel.c2[i.peak[i]+(i-1)*(a+6)] <- -1
-   sel.c3 <- c(sel.c3, rep(0, (a+6))  )# lambda for sel parameters
-   sel.c4 <- c(sel.c4, rep(1, (a+6)) )# CV for sel parameters (irrelevant if lambda=0)
+   tmp.c2 = rep(-1,n.ages)
+   tmp.c2[ind] = 1
+   tmp.c2[peak.age.class] = -1
+   tmp.c2 = c(tmp.c2, 2,3, rep(1,4))
+   sel.c2 <- c( sel.c2, tmp.c2)#, 2,3, rep(1, 4)) # phase for estimation
+   #sel.c2[peak.age.class+(i-1)*(n.ages+6)] <- -1
+   sel.c3 <- c(sel.c3, rep(0, (n.ages+6))  )# lambda for sel parameters
+   sel.c4 <- c(sel.c4, rep(1, (n.ages+6)) )# CV for sel parameters (irrelevant if lambda=0)
 
   }#end i loop
 
@@ -741,28 +741,26 @@ setup.surv.sel = function(x, i.peak, a)  {   #set up matrix specs for index sele
 } #end  setup
 
 #---------------------------------------------------------------------
-get.index.mat<- function(x, cv, neff, first.year, nyears, asap.nages)  {
-   last.yr <- first.year+nyears-1
+#get.index.mat<- function(x, cv, neff, first.year, nyears, asap.nages)  {
+get.index.mat<- function(x, cv, neff, first.year, nyears, catch.ages, survey.ages)  {
+   n.ages = length(catch.ages)
+   last.yr <- first.year+nyears - 1
+   
    tmp.yrs <- as.numeric(rownames(x))
+   all.years = first.year-1 + 1:nyears
    if (tmp.yrs[length(tmp.yrs)]>last.yr)  tmp.yrs <- tmp.yrs[-which(tmp.yrs>last.yr)]
    tmp.ages <- as.numeric(colnames(x))
-   i.mat <- matrix(0, nyears, (asap.nages+4 ) )
-   i.mat[,1] <- seq(first.year, last.yr)
+   tmp.ages = catch.ages
+   survey.ages.index = which(catch.ages %in% survey.ages)
+   i.mat <- matrix(0, nyears, (n.ages + 4))
+   i.mat[,1] <- all.years
    rownames(x) <- c()
    colnames(x) <- c()
    x[is.na(x)] <- 0
    tmp.ind.total <- apply(x[1:length(tmp.yrs),], 1, sum)
-   if (tmp.yrs[1]==first.year) {
-   i.mat[ , 1:3 ] <- cbind(tmp.yrs, tmp.ind.total, rep(cv, length(tmp.yrs))  )
-   i.mat[ , (3+tmp.ages[1]):(3+tmp.ages[length(tmp.ages)]) ]  <- x
-   i.mat[ , (asap.nages+4)]  <- rep(neff, length(tmp.yrs))
-        }
-
-   if (tmp.yrs[1]>first.year) {
-   i.mat[(tmp.yrs[1]-first.year+1):nyears, 2:3 ] <- cbind( tmp.ind.total, rep(cv, length(tmp.yrs))  )
-   i.mat[(tmp.yrs[1]-first.year+1):nyears, (3+tmp.ages[1]):(3+tmp.ages[length(tmp.ages)]) ]  <- x[1:length(tmp.yrs),]
-   i.mat[(tmp.yrs[1]-first.year+1):nyears, (asap.nages+4)]  <- rep(neff, length(tmp.yrs))
-      }
+   i.mat[all.years %in% tmp.yrs,2:3] <- cbind(tmp.ind.total, rep(cv, length(tmp.yrs)))
+   i.mat[all.years %in% tmp.yrs, (3+survey.ages.index)]  <- x
+   i.mat[all.years %in% tmp.yrs , (n.ages+4)]  <- rep(neff, length(tmp.yrs))
 
  return(i.mat)
 
@@ -777,20 +775,19 @@ get.index.mat<- function(x, cv, neff, first.year, nyears, asap.nages)  {
 
 #omid = model.id
 #model.id = ''
-ICES2ASAP <- function(user.wd,user.od,model.id){
-  cn <- read.ices(paste(user.wd,model.id,"cn.dat",sep=""))
-  cw <- read.ices(paste(user.wd,model.id,"cw.dat",sep=""))
-  dw <- read.ices(paste(user.wd,model.id,"dw.dat",sep=""))
-  lf <- read.ices(paste(user.wd,model.id,"lf.dat",sep=""))
-  lw <- read.ices(paste(user.wd,model.id,"lw.dat",sep=""))
-  mo <- read.ices(paste(user.wd,model.id,"mo.dat",sep=""))
-  nm <- read.ices(paste(user.wd,model.id,"nm.dat",sep=""))
-  propf <- read.ices(paste(user.wd,model.id,"pf.dat",sep=""))
-  pm <- read.ices(paste(user.wd,model.id,"pm.dat",sep=""))
-  sw <- read.ices(paste(user.wd,model.id,"sw.dat",sep=""))
-  surveys <- read.ices(paste(user.wd,model.id,"survey.dat",sep=""))
-  
-  #model.id = omid
+#ices.id because sometimes there is no stock id at the beginning of the file names
+ICES2ASAP <- function(user.wd,user.od,model.id,ices.id){ 
+  cn <- read.ices(paste(user.wd,ices.id,"cn.dat",sep=""))
+  cw <- read.ices(paste(user.wd,ices.id,"cw.dat",sep=""))
+  dw <- read.ices(paste(user.wd,ices.id,"dw.dat",sep=""))
+  #lf <- read.ices(paste(user.wd,ices.id,"lf.dat",sep=""))
+  #lw <- read.ices(paste(user.wd,ices.id,"lw.dat",sep=""))
+  mo <- read.ices(paste(user.wd,ices.id,"mo.dat",sep=""))
+  nm <- read.ices(paste(user.wd,ices.id,"nm.dat",sep=""))
+  #propf <- read.ices(paste(user.wd,ices.id,"pf.dat",sep=""))
+  pm <- read.ices(paste(user.wd,ices.id,"pm.dat",sep=""))
+  sw <- read.ices(paste(user.wd,ices.id,"sw.dat",sep=""))
+  surveys <- read.ices(paste(user.wd,ices.id,"survey.dat",sep=""))
   
   t.spawn <- pm[1,1] #assuming time/age invariant spawning time
   
@@ -800,9 +797,9 @@ ICES2ASAP <- function(user.wd,user.od,model.id){
   catch.nyrs <- length(catch.yrs)
   catch.nages <- dim(cn) [2]     #assuming catch matrix defines total number of modeled ages
   # setting Freport as (catch.nages):(catch.nages-1)  ; unweighted F
-  catch.ages <- as.numeric(c(min(colnames(cn)), max(colnames(cn)) ))
-  
-  
+  catch.ages <- range(as.numeric(colnames(cn)))
+  catch.ages = seq(catch.ages[1],catch.ages[2],1)
+  asap.ages = 1:catch.nages
   # assuming 3 WAA matrices (catch, discard, and spawning weight); since assuming 1 fleet, cw should equal lw in ASAP)
   waa.array <- array(NA, dim=c(catch.nyrs, catch.nages, 3))
   waa.array[,,1] <- cw[1:catch.nyrs,]
@@ -833,15 +830,18 @@ ICES2ASAP <- function(user.wd,user.od,model.id){
   fish.ind <- rep(-1, n.surveys) #assuming none of the indices link to a fleet (i.e. all fishery-independent indices)
   index.sel.type <-  rep(2, n.surveys) #assuming logistic for simple setup
   ind.ages <- get.survey.ages(surveys)
-  ind.age1 <- ind.ages[1,]
-  ind.age2 <-  ind.ages[2,]
+  #ind.age1 <- sapply(ind.ages, min)
+  ind.age1 <- rep(1, length(ind.ages))
+  #ind.age2 <-  sapply(ind.ages, max)
+  ind.age2 <- rep(length(catch.ages), length(ind.ages))
   ind.use <-  rep(1, n.surveys)
   i.peak <- get.peak.age(surveys)
-  ind.sel.mats <- setup.surv.sel(surveys, i.peak, catch.nages)
+  ind.sel.mats <- setup.surv.sel(surveys, i.peak, catch.ages, ind.ages)
   ind.cv = 0.2    # assume same CV for all years, all indices to setup ASAP indices matrix
   ind.neff = 50   # assume same Effective sample size for all years, all indices to setup ASAP indices matrix
   #ind.mat <- get.index.mat(x=surveys, a=ind.ages,  cv=0.2, neff=50)  #calculate total index and append CV and Neff columns
-  
+  #ind.mat = get.index.mat(x=surveys, cv = 0.2, neff = 50, first.year = catch.yy[1], nyears = catch.nyrs, catch.ages, survey.ages)  {
+ 
   recr.CV <- rep(0.5, catch.nyrs)
   catch.CV <- rep(0.1, catch.nyrs)
   disc.CV <- rep(0, catch.nyrs)
@@ -876,12 +876,13 @@ ICES2ASAP <- function(user.wd,user.od,model.id){
                fec.opt=0, t.spawn=t.spawn, mat.mat=mo[1:catch.nyrs,],
                n.waa.mats=3, waa.array=waa.array, waa.pointer.vec=waa.pointer.vec,
                sel.blks=f.sel.blks, sel.types=f.sel.type, sel.mats=f.sel.mats,
-               fleet.age1=catch.ages[1], fleet.age2=catch.ages[2],
+               fleet.age1=asap.ages[1], fleet.age2=asap.ages[length(asap.ages)],
                F.report.ages=c((catch.nages-1),catch.nages), F.report.opt=1,
                like.const=0, rel.mort.fleet=rel.mort.fleet, caa.mats=cbind(cn, tot.catch), daa.mats=cbind(cn*0, 0*tot.catch),
                rel.prop=rel.prop, units.ind=units.ind, time.ind=time.ind,
                fish.ind=fish.ind, sel.ind=index.sel.type,
-               ind.age1, ind.age2, ind.use, ind.sel.mats, ind.mat=surveys, ind.cv=ind.cv, ind.neff=ind.neff,
+               ind.age1, ind.age2, ind.use, ind.sel.mats, ind.mat=surveys, 
+               ind.cv=ind.cv, ind.neff=ind.neff,
                p.Fmult1=1, p.Fmult.dev=3, p.recr.dev=3, p.N1=2, p.q1=1, p.q.dev=-1, p.SR=1, p.h=-2,
                recr.CV=rep(0.5,catch.nyrs), lam.ind=rep(1,n.surveys),
                lam.c.wt=rep(1,nfleets), lam.disc=rep(0,nfleets), catch.CV=catch.CV, disc.CV=disc.CV,
@@ -894,5 +895,5 @@ ICES2ASAP <- function(user.wd,user.od,model.id){
                do.proj=0, fleet.dir=fleet.dir, proj.yr=proj.yr, proj.specs=proj.specs,
                do.mcmc=0, mcmc.nyr.opt=0, mcmc.nboot=1000, mcmc.thin=200, mcmc.seed=5230547,
                recr.agepro=0, recr.start.yr=(catch.yy[2]-12), recr.end.yr=(catch.yy[2]-2),
-               test.val=-23456, fleet.names, survey.names, disc.flag )
+               test.val=-23456, fleet.names, survey.names, disc.flag, catch.ages = catch.ages, survey.ages = ind.ages )
 }

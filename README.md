@@ -7,6 +7,13 @@ for overall objectives, latest report, etc.
 
 ***
 
+## New co-chair
+
+MGWG proposes *Chris Legault* as a new co-chair from 2019 onwards, as
+recommended by all participants at the 2018 meeting in Ispra.
+
+***
+
 ## Vacancy for a co-chair
 
 We are seeking applications for the role of co-chair of the ICES Methods WG.

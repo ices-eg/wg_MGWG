@@ -1,4 +1,4 @@
-applyF0.1 <- function(Ninit, M, sel, mat, wcatch, wstock=wcatch)
+applyF0.1 <- function(Ninit, M, sel, mat, wcatch, wstock=wcatch, step=0.005)
 {
   len <- length(sel)
   M <- rep(M, length=len)
@@ -21,7 +21,6 @@ applyF0.1 <- function(Ninit, M, sel, mat, wcatch, wstock=wcatch)
   slope <- function(Fmult, dx=1e-6) (yield(Fmult+dx/2) - yield(Fmult-dx/2)) / dx
 
   Fmult <- 0
-  step <- 1e-4
   while(slope(Fmult) > 0.1*slope(0))
     Fmult <- Fmult + step
   stock(Fmult)

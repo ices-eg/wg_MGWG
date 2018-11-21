@@ -1,11 +1,11 @@
-# Selectivity as part of management advice
+﻿# Selectivity as part of management advice
 
 Coordinators: Arni Magnusson, Jacob Kasper
 
 ## Participants
 
-Alejandro Yanez, Arni Magnusson, Cecilia Pinto, Jacob Kasper, Knut Korsbrekke,
-Michael Schirripa, Paris Vasilakopoulos, Tim Earl
+Alejandro Yanez, Arni Magnusson, Cecilia Pinto, Daniel Howell, Jacob Kasper,
+Knut Korsbrekke, Michael Schirripa, Paris Vasilakopoulos, Tim Earl
 
 ## Background
 
@@ -109,6 +109,9 @@ selectivity
 * [CAPAM workshop report](https://swfsc.noaa.gov/publications/CR/2013/2013Crone.pdf)
 * [Francis 2017](http://www.sciencedirect.com/science/article/pii/S0165783616301953)
 * [Froese et al. 2008](http://www.sciencedirect.com/science/article/pii/S016578360800043X)
+Paper on Lopt
+* [Froese et al. 2016](https://onlinelibrary.wiley.com/doi/abs/10.1111/faf.12146)
+Proposing new equations for Lopt and Aopt
 * [Garcia et al. 2012](http://science.sciencemag.org/content/335/6072/1045)
   argues balanced harvest
 * [Hixon et al. 2014](https://academic.oup.com/icesjms/article/71/8/2171/748104)
@@ -171,6 +174,8 @@ meeting. We will organize tasks to be completed prior to each meeting.
 3. Status update on side stories (Lopt, Norwegian literature, historical
    changes)
 4. Prepare a list of next tasks, decide who will report on what next meeting
+
+[minutes](minutes.md#11-oct-2018)
 
 **08 Nov 2018** 4pm (CET, UTC+1)
 

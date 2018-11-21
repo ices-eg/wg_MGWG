@@ -71,26 +71,42 @@ predIdxs <- function(stk, idxs, yrs=3, ...){
 }
 
 # retro
-retro <- function(stk, idxs, retro=5, ...){
+retro <- function(stk, idxs, retro=5, k="missing", ftype="missing", ...){
 	args <- list(...)
+	kT <- missing(k)
+	tT <- missing(ftype)
 	lst0 <- split(0:retro, 0:retro)
 	lst0 <- lapply(lst0, function(x){
 		yr <- range(stk)["maxyear"] - x
 		args$stock <- window(stk, end=yr)
 		args$indices <- window(idxs, end=yr)
+		if(!kT & !tT){
+			KA <- unname(k['age'])
+			KY <- unname(k['year'] - floor(x/2))
+			if(!is.na(k['age2'])) KA2 <- k['age2'] else KA2 <- KA
+			KA2 <- unname(KA2)
+			if(ftype=='te'){
+				fmod <- substitute(~te(age, year, k = c(KA, KY))+s(age, k=KA2), list(KA = KA, KY=KY, KA2=KA2))
+			} else {
+				fmod <- substitute(~s(year, k = KY)+s(age, k = KA), list(KA = KA, KY=KY))
+			}
+			args$fmodel <- as.formula(fmod)
+		}
 		fit <- do.call("sca", args)
 		args$stock + fit
 	})
 	FLStocks(lst0)
 }
 
-
 mohn <- function (stks, qoi=c('fbar','ssb','rec'), ...){
 	v0 <- vector(mode='numeric', len=length(qoi))
 	names(v0) <- qoi
+	yrs <- unlist(lapply(stks, function(x) range(x)['maxyear']))[-1]
 	for(i in qoi){
 		lst0 <- lapply(stks, i)
-		v0[i] <- mean(unlist(lst0[-1])/c(lst0[[1]])-1, na.rm=TRUE)
+		base <- c(lst0[[1]][,ac(yrs)])
+		retros <- unlist(lapply(lst0[-1], function(x) x[,dim(x)[2]]))
+		v0[i] <- mean(retros/base-1, na.rm=TRUE)
 	}	
 	v0	
 }
