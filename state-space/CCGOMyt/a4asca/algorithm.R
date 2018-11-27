@@ -24,6 +24,9 @@ idxs <- lapply(idxs, function(x){
 	x
 })
 
+my <- min(unlist(lapply(lapply(idxs, range), '[', 'minyear')))
+stk <- window(stk, start=my)
+
 setwd('a4asca')
 
 #====================================================================
@@ -31,12 +34,12 @@ setwd('a4asca')
 #====================================================================
 
 qmod <- list(~s(age, k=3), ~s(age, k=3), ~s(age, k=3), ~s(age, k=3))
-fit <- sca(stk, idxs, qmodel=qmod)
-stk.retro <- retro(stk, idxs, retro=7, qmodel=qmod)
-stk.retro <- retro(stk, idxs, retro=7, k=c(age=5, year=16), ftype="te", qmodel=qmod)
+fmod <- ~ te(age, year, k=c(3, 16)) + s(age, k=4)
+srmod <- ~geomean(CV=0.1)
+fit <- sca(stk, idxs, qmodel=qmod, fmodel=fmod, srmodel=srmod)
+stk.retro <- retro(stk, idxs, retro=7, k=c(age=3, year=16, age2=4), ftype="te", qmodel=qmod, srmodel=srmod)
 fit.rm <- mohn(stk.retro)
-fit.pi <- predIdxs(stk, idxs)
-fitmc <- sca(stk, idxs, fit='MCMC', mcmc=SCAMCMC(mcmc=250000))
+fit.pi <- predIdxs(stk, idxs, qmodel=qmod, fmodel=fmod, srmodel=srmod)
 dumpTab1(stk, idxs, fitmc, predIdxs=fit.pi, mohnRho=fit.rm, prefix='te')
 
 #====================================================================
@@ -44,10 +47,12 @@ dumpTab1(stk, idxs, fitmc, predIdxs=fit.pi, mohnRho=fit.rm, prefix='te')
 #====================================================================
 
 fmod <- ~s(age, k=4) + s(year, k=15)
-fitsep <- sca(stk, idxs, fmodel=fmod, qmodel=qmod)
-stksep.retro <- retro(stk, idxs, retro=7, k=c(age=4, year=15), ftype="sep", qmodel=qmod)
+fitsep <- sca(stk, idxs, fmodel=fmod, qmodel=qmod, srmodel=srmod)
+stksep.retro <- retro(stk, idxs, retro=7, k=c(age=4, year=15), ftype="sep", qmodel=qmod, srmodel=srmod)
 fitsep.rm <- mohn(stksep.retro)
-fitsep.pi <- predIdxs(stk, idxs, fmodel=fmod)
-fitsepmc <- sca(stk, idxs, fmodel=fmod, qmodel=qmod, fit='MCMC', mcmc=SCAMCMC(mcmc=250000))
+fitsep.pi <- predIdxs(stk, idxs, fmodel=fmod, qmodel=qmod, srmodel=srmod)
 dumpTab1(stk, idxs, fitsepmc, predIdxs=fitsep.pi, mohnRho=fitsep.rm, prefix='sep')
+
+
+
 

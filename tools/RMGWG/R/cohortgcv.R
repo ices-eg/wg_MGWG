@@ -53,9 +53,10 @@ chandler <- function(stks, qoi, distFun){
 }
 
 predIdxs <- function(stk, idxs, yrs=3, ...){
+	miny <- range(stk)['maxyear']-yrs+1
 	i0 <- lapply(idxs, function(x){
 		myr <- range(x)['maxyear']
-		index(x)[,ac((myr-yrs+1):myr)][] <- NA
+		if(myr>=miny) index(x)[,ac(miny:myr)][] <- NA
 		x
 	})
 	args <- list(...)
@@ -121,6 +122,24 @@ dumpTab1 <- function(stock, indices, fit, probs=c(0.5,0.025, 0.975), prefix='fit
 	write.table(predIdxs, file=paste(prefix, 'predIdxs.txt', sep='-'), quote=FALSE, col.names=FALSE, row.names=FALSE)
 	write.csv(t(mohnRho), file=paste(prefix, 'mohn.txt', sep='-'), quote=FALSE, row.names=FALSE)
 }
+
+!!Not working
+getBestPars <- function(stk, idxs, retro=7, kyini=missing){
+	age <- 3:6
+	cv <- seq(0.05,0.35, length=5)
+	if(missing(kyini)) kyini <- floor(diff(range(stk)[c('minyear','maxyear')])*0.7)
+	ky <- sort(c(seq(floor(kyini*0.7),ceiling(kyini*1.3), by=3), kyini))
+	df0 <- expand.grid(age=age, age2=age, year=ky, CV=cv)
+	lst0 <- split(df0, 1:nrow(df0))
+	lst0 <- lapply(lst0, funtion(x){
+		stk.retro <- retro(stk, idxs, retro=7, k=c(age=x$age, year=age$year, age2=x$age2), ftype="te", qmodel=qmod)
+		fit.rm <- mohn(stk.retro)
+		fit.pi <- predIdxs(stk, idxs, qmodel=qmod, fmodel=fmod, srmodel=srmod)
+	}
+}
+
+
+
 
 
 
