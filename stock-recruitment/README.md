@@ -19,7 +19,7 @@ Standard papers that people cite for this topic?  | [Brooks and Deroba 2015](htt
 Another working group already working on this?    |
 How can this be structured into a journal paper?  |
 What kind of work is required, and how much work? |
-Participants that would like to work on this?     | Casper Berg, Chris Legault, Craig Marsh, Dvora Hart, Ernesto Jardim, Jon Deroba, Liz Brooks, Noel Cadigan, Tim Miller, Vanessa Trijoulet, Christoph Konrad, Iago Mosqueira
+Participants that would like to work on this?     | Casper Berg, Chris Legault, Craig Marsh, Dvora Hart, Ernesto Jardim, Jon Deroba, Liz Brooks, Noel Cadigan, Tim Miller, Vanessa Trijoulet, Christoph Konrad, Iago Mosqueira, Colin Millar
 Who would like to lead, what will coauthors do?   |
 
 ***
