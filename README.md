@@ -9,8 +9,8 @@ for overall objectives, latest report, etc.
 
 ## Annual Science Conference 2019
 
-Let's present our projects at ICES ASC 2019 in Sweden! Deadline for submitting
-abstracts is 11 March 2019.
+Let's present our projects at ICES ASC 2019 in Sweden! The deadline for
+submitting abstracts is 11 March 2019.
 
 https://www.ices.dk/news-and-events/asc/asc2019/Pages/Call-for-abstracts.aspx
 
