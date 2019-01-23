@@ -7,14 +7,14 @@ for overall objectives, latest report, etc.
 
 ***
 
-## ICES Annual Science Conference 2019
+## Annual Science Conference 2019
 
-Let's present our projects at ASC 2019 in Sweden! Deadline for submitting
+Let's present our projects at ICES ASC 2019 in Sweden! Deadline for submitting
 abstracts is 11 March 2019.
 
-See https://www.ices.dk/news-and-events/asc/asc2019/Pages/Theme-sessions.aspx.
+https://www.ices.dk/news-and-events/asc/asc2019/Pages/Call-for-abstracts.aspx
 
-As a quick overview, here is a list of themes with abbreviated topics:
+As a quick overview, here is a list of themes with abbreviated titles:
 
 - (A) **Habitat** models to inform ecosystem-based management
 - (B) Marine **aquaculture**
@@ -36,10 +36,14 @@ As a quick overview, here is a list of themes with abbreviated topics:
 
 Mapping our projects to these theme sessions could look something like this:
 
-1. state-space: N
-2. stock-recruitment: N
-3. model-complexity: N
-4. selectivity: P
+1. state-space:
+   [N](https://www.ices.dk/news-and-events/asc/asc2019/Pages/Theme-sessions.aspx)
+2. stock-recruitment:
+   [N](https://www.ices.dk/news-and-events/asc/asc2019/Pages/Theme-sessions.aspx)
+3. model-complexity:
+   [N](https://www.ices.dk/news-and-events/asc/asc2019/Pages/Theme-sessions.aspx)
+4. selectivity:
+   [P](https://www.ices.dk/news-and-events/asc/asc2019/Pages/Theme-sessions.aspx)
 
 A presentation at a conference can be a great stepping stone, to transition from
 the initial analysis and results stage towards writing up a cohesive story in a
