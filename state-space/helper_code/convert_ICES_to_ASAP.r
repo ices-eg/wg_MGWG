@@ -680,9 +680,10 @@ get.peak.age=function (x)    #grab peak age from first couple of rows
 if (class(x)== "matrix") {
    t.age <- rep(NA, 5)
    for (i in 1:5) {
-   t.age[i] <- which(x[i,]==max(x[i,], na.rm=T))
-       }
-   peak <- round(mean(t.age), 0)
+     if(all(is.na(x[i,]))) t.age[i] = NA
+     else t.age[i] <- which(x[i,]==max(x[i,], na.rm=T))
+   }
+   peak <- round(mean(t.age, na.rm = TRUE), 0)
     } #end matrix class
 
 if (class(x)== "list") {
@@ -693,9 +694,11 @@ if (class(x)== "list") {
     t.mat <- x[[i]] [1:5,]
     t.age <- rep(NA,5)
     for (j in 1:5) {
-   t.age[j] <- which(t.mat[j,]==max(t.mat[j,], na.rm=T))
-       } # end j loop
-   peak[i] <- round(mean(t.age), 0)
+     if(all(is.na(t.mat[j,]))) t.age[j] = NA
+     else t.age[j] <- which(t.mat[j,]==max(t.mat[j,], na.rm=T))
+     #t.age[j] <- which(t.mat[j,]==max(t.mat[j,], na.rm=T))
+    } # end j loop
+    peak[i] <- round(mean(t.age, na.rm = TRUE), 0)
         }  # end i loop
 
     } # end list class
@@ -748,7 +751,8 @@ get.index.mat<- function(x, cv, neff, first.year, nyears, catch.ages, survey.age
    
    tmp.yrs <- as.numeric(rownames(x))
    all.years = first.year-1 + 1:nyears
-   if (tmp.yrs[length(tmp.yrs)]>last.yr)  tmp.yrs <- tmp.yrs[-which(tmp.yrs>last.yr)]
+   years.use.ind = which(tmp.yrs %in% all.years)
+   #if (tmp.yrs[length(tmp.yrs)]>last.yr)  tmp.yrs <- tmp.yrs[-which(tmp.yrs>last.yr)]
    tmp.ages <- as.numeric(colnames(x))
    tmp.ages = catch.ages
    survey.ages.index = which(catch.ages %in% survey.ages)
@@ -757,10 +761,18 @@ get.index.mat<- function(x, cv, neff, first.year, nyears, catch.ages, survey.age
    rownames(x) <- c()
    colnames(x) <- c()
    x[is.na(x)] <- 0
-   tmp.ind.total <- apply(x[1:length(tmp.yrs),], 1, sum)
-   i.mat[all.years %in% tmp.yrs,2:3] <- cbind(tmp.ind.total, rep(cv, length(tmp.yrs)))
-   i.mat[all.years %in% tmp.yrs, (3+survey.ages.index)]  <- x
-   i.mat[all.years %in% tmp.yrs , (n.ages+4)]  <- rep(neff, length(tmp.yrs))
+   print(dim(x))
+   print(dim(i.mat))
+   print(survey.ages.index)
+   print(tmp.yrs)
+   print(sum(all.years %in% tmp.yrs))
+   print(all.years)
+   print(x)
+   tmp.ind.total <- apply(x[years.use.ind,], 1, sum)
+   i.mat.ind = which(all.years %in% tmp.yrs[years.use.ind])
+   i.mat[i.mat.ind,2:3] <- cbind(tmp.ind.total, rep(cv, length(years.use.ind)))
+   i.mat[i.mat.ind, (3+survey.ages.index)]  <- x[years.use.ind,]
+   i.mat[i.mat.ind, (n.ages+4)]  <- rep(neff, length(years.use.ind))
 
  return(i.mat)
 
@@ -778,6 +790,7 @@ get.index.mat<- function(x, cv, neff, first.year, nyears, catch.ages, survey.age
 #ices.id because sometimes there is no stock id at the beginning of the file names
 ICES2ASAP <- function(user.wd,user.od,model.id,ices.id){ 
   cn <- read.ices(paste(user.wd,ices.id,"cn.dat",sep=""))
+  print(cn)
   cw <- read.ices(paste(user.wd,ices.id,"cw.dat",sep=""))
   dw <- read.ices(paste(user.wd,ices.id,"dw.dat",sep=""))
   #lf <- read.ices(paste(user.wd,ices.id,"lf.dat",sep=""))
@@ -810,6 +823,8 @@ ICES2ASAP <- function(user.wd,user.od,model.id,ices.id){
   f.sel.blks <- rep(1, catch.nyrs) # assuming 1 selectivity block for all years (catch)
   f.sel.type <-  2 # assuming logistic (1=by age; 2=logistic; 3=double logistic)
   f.peak <- get.peak.age(cn)
+  print("f.peak")
+  print(f.peak)
   f.sel.mats.c1 <- c( seq(0.1,0.9, length.out=(catch.nages)),  round((f.peak)/2,2), 0.9,
                       round((f.peak)/4,2), 0.6,  round((catch.nages)/1.5,2), 1.1)
   f.sel.mats.c1[f.peak] <-1
@@ -835,7 +850,10 @@ ICES2ASAP <- function(user.wd,user.od,model.id,ices.id){
   #ind.age2 <-  sapply(ind.ages, max)
   ind.age2 <- rep(length(catch.ages), length(ind.ages))
   ind.use <-  rep(1, n.surveys)
+  print(surveys)
   i.peak <- get.peak.age(surveys)
+  print("i.peak")
+  print(i.peak)
   ind.sel.mats <- setup.surv.sel(surveys, i.peak, catch.ages, ind.ages)
   ind.cv = 0.2    # assume same CV for all years, all indices to setup ASAP indices matrix
   ind.neff = 50   # assume same Effective sample size for all years, all indices to setup ASAP indices matrix
