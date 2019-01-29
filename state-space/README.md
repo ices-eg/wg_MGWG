@@ -178,7 +178,7 @@ We will have a Skype call every third Thursday of the month until next MGWG meet
   * Vanessa T. help drafting Intro?
 * 15 November 10am (EST, UTC-5) 
 * 20 December 10am (EST, UTC-5) 
-* ~~17 January 10am (EST, UTC-5) (cancelled due to US government shutdown)
+* ~~17 January 10am (EST, UTC-5)~~ (cancelled due to US government shutdown)
 * 21 February 10am (EST, UTC-5) 
 * 21 March 10am (EST, UTC-5) 
 * 18 April 10am (EST, UTC-5) 
