@@ -15,11 +15,11 @@ simAsapObs <- function(n, numbers, sd_totals, effective_sample_size) {
 
   ## add multinomial error to age comps
   proportions_obs <- propagate(proportions, n)
-  for (i in 1:dims(proportions)$age) {
-    proportions_obs[, i] <- 
-      rmultinom(n, 
-                c(effective_sample_size[,i]), 
-                c(proportions[, i])) / 
+  for (i in 1:dims(proportions)$year) {
+    proportions_obs[, i] <-
+      rmultinom(n,
+                c(effective_sample_size[,i]),
+                c(proportions[, i])) /
       c(effective_sample_size[, i])
   }
 
@@ -30,7 +30,7 @@ simAsapObs <- function(n, numbers, sd_totals, effective_sample_size) {
 
 # test data
 data(ple4)
-numbers <- catch.n(ple4)
+numbers <- window(catch.n(ple4), start = 2010) / 100
 
 # settings
 sd_totals <- quantSums(numbers)
