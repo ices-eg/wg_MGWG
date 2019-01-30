@@ -1,11 +1,7 @@
-# American Plaice WHAM fits
+### WHAM model fit details
 
-Process error on recruitment and and transitions in abundances at age over time.
+Using age-specific selectivity for the survey facilitated convergence. 
+Trial fits with all age-specific selectivities free, led to  peak selectivity at age 4,5,3,3 for indices 1,2,3,4.
+This was consistent for all 4 fitted models. 
 
-Observation error variances estimated for all aggregate indices.
-
-* m4: Logistic selectivity on catch and 4 surveys
-* m5: Age-specific selectivity on catch and 4 surveys
-* m6: Logistic selectivity on catch and age-specific selectivity on 4 surveys
-
-
+Model 4 is used to provide results for comparison with other model frameworks.

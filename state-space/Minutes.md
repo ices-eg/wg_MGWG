@@ -54,4 +54,8 @@ We decided that perhaps best to have details/equations for each model in an appe
 
 Ernesto would like us to try to get this submitted for review by this summer ideally. Everyone needs to give this some thought and see if it is possible with what is already on their calendar in the first half of 2019. We will revisit this on the next call.
 
+## 20 December 2018
+Attendees: None. 
+
+Meeting did not occur due to the US Goverment shutdown.
 
