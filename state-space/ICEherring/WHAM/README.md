@@ -1,11 +1,7 @@
-# Icelandic herring WHAM fits
+### WHAM model fit details
 
-Process error on recruitment and and transitions in abundances at age over time.
+Using age-specific selectivity for the survey facilitated convergence. 
+Trial fits with all age-specific selectivities free, led to  peak selectivity at age 5 for the index,
+This was consistent for all 4 fitted models. 
 
-Observation error variances estimated for all aggregate indices.
-
-* m4: Logistic selectivity on catch and survey
-* m5: Age-specific selectivity on catch survey
-* m6: Logistic selectivity on catch and age-specific selectivity on survey
-
-
+Model 3 is used to provide results for comparison with other model frameworks.

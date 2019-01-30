@@ -53,21 +53,35 @@ chandler <- function(stks, qoi, distFun){
 }
 
 predIdxs <- function(stk, idxs, yrs=3, ...){
+	miny <- range(stk)['maxyear']-yrs+1
 	i0 <- lapply(idxs, function(x){
 		myr <- range(x)['maxyear']
-		index(x)[,ac((myr-yrs+1):myr)][] <- NA
+		if(myr>=miny) index(x)[,ac(miny:myr)][] <- NA
 		x
 	})
 	args <- list(...)
 	args$stock <- stk
 	args$indices <- FLIndices(i0)
 	fit <- do.call("sca", args)
-	lst0 <- index(fit)
-    myr <- unlist(lapply(idxs, function(x) range(x)['maxyear'])) 
-	for(i in seq_along(idxs)){
-		lst0[[i]] <- log(index(idxs[[i]])[,ac((myr[i]-yrs+1):myr[i])]/index(fit)[[i]][,ac((myr[i]-yrs+1):myr[i])])^2
-	}
-	mean(unlist(lst0), na.rm=TRUE)	
+	fits <- simulate(fit, 500)
+	#pred <- window(index(fit), start=miny)
+	preds <- window(index(fits), start=miny)
+	pred <- as.data.frame(lapply(preds, function(x) iterMedians(log(x))))
+	fitVar <- as.data.frame(lapply(preds, function(x) iterVars(log(x))))
+	oeVar <- as.data.frame(window(predict(fit)$vmodel[-1], start=miny))
+	obs <- as.data.frame(window(lapply(lapply(idxs, index), log), start=miny))
+	df0 <- obs[,c(2,8,1)]
+	df0$logObs <- obs$data
+	df0$pred <- pred$data
+	df0$predSd <- sqrt(fitVar$data + oeVar$data)
+	df0
+#    myr <- unlist(lapply(idxs, function(x) range(x)['maxyear'])) 
+#	for(i in seq_along(idxs)){
+#		lst0[[i]] <- log(index(idxs[[i]])[,ac((myr[i]-yrs+1):myr[i])]/index(fit)[[i]][,ac((myr[i]-yrs+1):myr[i])])^2
+#	}
+#	
+#	mse <- mean(unlist(lst0), na.rm=TRUE)
+		
 }
 
 # retro
@@ -121,6 +135,24 @@ dumpTab1 <- function(stock, indices, fit, probs=c(0.5,0.025, 0.975), prefix='fit
 	write.table(predIdxs, file=paste(prefix, 'predIdxs.txt', sep='-'), quote=FALSE, col.names=FALSE, row.names=FALSE)
 	write.csv(t(mohnRho), file=paste(prefix, 'mohn.txt', sep='-'), quote=FALSE, row.names=FALSE)
 }
+
+#!!Not working
+#getBestPars <- function(stk, idxs, retro=7, kyini=missing){
+#	age <- 3:6
+#	cv <- seq(0.05,0.35, length=5)
+#	if(missing(kyini)) kyini <- floor(diff(range(stk)[c('minyear','maxyear')])*0.7)
+#	ky <- sort(c(seq(floor(kyini*0.7),ceiling(kyini*1.3), by=3), kyini))
+#	df0 <- expand.grid(age=age, age2=age, year=ky, CV=cv)
+#	lst0 <- split(df0, 1:nrow(df0))
+#	lst0 <- lapply(lst0, funtion(x){
+#		stk.retro <- retro(stk, idxs, retro=7, k=c(age=x$age, year=age$year, age2=x$age2), ftype="te", qmodel=qmod)
+#		fit.rm <- mohn(stk.retro)
+#		fit.pi <- predIdxs(stk, idxs, qmodel=qmod, fmodel=fmod, srmodel=srmod)
+#	}
+#}
+
+
+
 
 
 

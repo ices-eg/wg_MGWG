@@ -7,6 +7,59 @@ for overall objectives, latest report, etc.
 
 ***
 
+## Annual Science Conference 2019
+
+Let's present our projects at ICES ASC 2019 in Sweden! The deadline for
+submitting abstracts is 11 March 2019.
+
+https://www.ices.dk/news-and-events/asc/asc2019/Pages/Call-for-abstracts.aspx
+
+As a quick overview, here is a list of themes with abbreviated titles:
+
+- (A) **Habitat** models to inform ecosystem-based management
+- (B) Marine **aquaculture**
+- (C) **Machine** learning
+- (D) **Ecosystem** vulnerability
+- (E) Assessment models with stock **components** and/or migration
+- (F) **Management** objectives, trade-offs, MSE
+- (G) **Ecosystem** structure and life history
+- (H) Non-quota and **data-poor** stocks
+- (I) Humans within ecosystems, **socio-economic** aspects
+- (J) **Algal** blooms and jellyfish
+- (K) Energy transfer through the **food webs**
+- (L) Biological **adaptation** to climate change and fisheries
+- (M) Quantifying **seabed** impact
+- (N) **Data-limited** stock assessment methods
+- (O) Vulnerable marine ecosystems in the **deep sea**
+- (P) **Mixed** fishery management, discards and choke effects
+- (Q) Small-scale and **recreational** fisheries
+
+Mapping our projects to these theme sessions could look something like this:
+
+1. state-space:
+   [N](https://www.ices.dk/news-and-events/asc/asc2019/Pages/Theme-sessions.aspx)
+2. stock-recruitment:
+   [N](https://www.ices.dk/news-and-events/asc/asc2019/Pages/Theme-sessions.aspx)
+3. model-complexity:
+   [N](https://www.ices.dk/news-and-events/asc/asc2019/Pages/Theme-sessions.aspx)
+4. selectivity:
+   [P](https://www.ices.dk/news-and-events/asc/asc2019/Pages/Theme-sessions.aspx)
+
+A presentation at a conference can be a great stepping stone, to transition from
+the initial analysis and results stage towards writing up a cohesive story in a
+manuscript.
+
+Although the 11 March deadline for abstracts is close, keep in mind that the
+abstract can be short and somewhat vague, and we have until 9 September to
+prepare the slides. Later that month, we have our MGWG meeting in 23-27
+September, so our project presentations/slides are due in September anyway :)
+
+Even if only one person from a project subgroup can make it to the ASC, that
+person could present the research findings and celebrate that milestone in
+Sweden, Abba style!
+
+***
+
 ## New co-chair
 
 MGWG proposes *Chris Legault* as a new co-chair from 2019 onwards, as

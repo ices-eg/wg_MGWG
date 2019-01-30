@@ -24,6 +24,9 @@ idxs <- lapply(idxs, function(x){
 	x
 })
 
+my <- min(unlist(lapply(lapply(idxs, range), '[', 'minyear')))
+stk <- window(stk, start=my)
+
 setwd('a4asca')
 
 #====================================================================
@@ -31,23 +34,29 @@ setwd('a4asca')
 #====================================================================
 
 qmod <- list(~s(age, k=3), ~s(age, k=3), ~s(age, k=3), ~s(age, k=3))
-fit <- sca(stk, idxs, qmodel=qmod)
-stk.retro <- retro(stk, idxs, retro=7, qmodel=qmod)
-stk.retro <- retro(stk, idxs, retro=7, k=c(age=5, year=16), ftype="te", qmodel=qmod)
+fmod <- ~ te(age, year, k=c(4, 23)) + s(age, k=4)
+srmod <- ~geomean(CV=0.1)
+fit <- sca(stk, idxs, qmodel=qmod, fmodel=fmod, srmodel=srmod)
+fits <- simulate(fit, 500)
+stk.retro <- retro(stk, idxs, retro=7, k=c(age=4, year=23, age2=4), ftype="te", qmodel=qmod, srmodel=srmod)
 fit.rm <- mohn(stk.retro)
-fit.pi <- predIdxs(stk, idxs)
-fitmc <- sca(stk, idxs, fit='MCMC', mcmc=SCAMCMC(mcmc=250000))
-dumpTab1(stk, idxs, fitmc, predIdxs=fit.pi, mohnRho=fit.rm, prefix='te')
+fit.pi <- predIdxs(stk, idxs, qmodel=qmod, fmodel=fmod, srmodel=srmod)
+dumpTab1(stk, idxs, fits, predIdxs=fit.pi, mohnRho=fit.rm, prefix='te')
+write.csv(fit.pi, file=paste0("te-","tab2.csv"))
 
 #====================================================================
 # separable model
 #====================================================================
 
-fmod <- ~s(age, k=4) + s(year, k=15)
-fitsep <- sca(stk, idxs, fmodel=fmod, qmodel=qmod)
-stksep.retro <- retro(stk, idxs, retro=7, k=c(age=4, year=15), ftype="sep", qmodel=qmod)
+fmod <- ~s(age, k=4) + s(year, k=23)
+fitsep <- sca(stk, idxs, fmodel=fmod, qmodel=qmod, srmodel=srmod)
+fitseps <- simulate(fitsep, 500)
+stksep.retro <- retro(stk, idxs, retro=7, k=c(age=4, year=23), ftype="sep", qmodel=qmod, srmodel=srmod)
 fitsep.rm <- mohn(stksep.retro)
-fitsep.pi <- predIdxs(stk, idxs, fmodel=fmod)
-fitsepmc <- sca(stk, idxs, fmodel=fmod, qmodel=qmod, fit='MCMC', mcmc=SCAMCMC(mcmc=250000))
-dumpTab1(stk, idxs, fitsepmc, predIdxs=fitsep.pi, mohnRho=fitsep.rm, prefix='sep')
+fitsep.pi <- predIdxs(stk, idxs, fmodel=fmod, qmodel=qmod, srmodel=srmod)
+dumpTab1(stk, idxs, fitseps, predIdxs=fitsep.pi, mohnRho=fitsep.rm, prefix='sep')
+write.csv(fitsep.pi, file=paste0("sep-","tab2.csv"))
+
+
+
 
