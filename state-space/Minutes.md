@@ -45,7 +45,7 @@ Casper brought up trying to get a handle on uncertainty in RMSE. Need to define 
 
 Forgot to bring up making a decision on what to do about surveys missing last three years (if it is an issue at all). 
 
-## 20 November 2018
+## 20 December 2018
 Attendees: Tim Miller, Jon Deroba, Chris Legault, Anders Nielsen, Casper Berg, Vanessa Trijoulet, Ernesto Jardim, Kelli Johnson
 
 Tim has specified which WHAM models he will fit for each of the stocks. This is complete for US herring, now for the rest.
@@ -54,7 +54,7 @@ We decided that perhaps best to have details/equations for each model in an appe
 
 Ernesto would like us to try to get this submitted for review by this summer ideally. Everyone needs to give this some thought and see if it is possible with what is already on their calendar in the first half of 2019. We will revisit this on the next call.
 
-## 20 December 2018
+## 17 January 2019
 Attendees: None. 
 
 Meeting did not occur due to the US Goverment shutdown.
