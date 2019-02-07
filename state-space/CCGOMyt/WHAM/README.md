@@ -1,7 +1,9 @@
 ### WHAM model fit details
 
-Using age-specific selectivity for the survey facilitated convergence. 
-Trial fits with all age-specific selectivities free, led to  peak selectivity at age 3,2 for indices 2,4 in models 1 and 2
-Peak selectivity for index 4 was at age 2 in models 3 and 4
+Using age-specific selectivity for surveys or fishery catch facilitated convergence for one or more models.
+All models use the same selectivity assumptions for consistency.
+Trial fits with all age-specific selectivities free, led to assumed ages for peak selectivity.
+Age for peak selectivity in index 2 was 2,3.
+Age for peak selectivity in index 4 was 1,2,3.
 
 Model 4 is used to provide results for comparison with other model frameworks.
