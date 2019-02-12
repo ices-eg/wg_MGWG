@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: state_space_ices.aux
+The style file: cjfas2.bst
+Database file #1: state_space_ices.bib
+You've used 12 entries,
+            2804 wiz_defined-function locations,
+            664 strings with 7165 characters,
+and the built_in function-call counts, 7729 in all, are:
+= -- 674
+> -- 358
+< -- 5
++ -- 131
+- -- 117
+* -- 642
+:= -- 1213
+add.period$ -- 48
+call.type$ -- 12
+change.case$ -- 101
+chr.to.int$ -- 12
+cite$ -- 12
+duplicate$ -- 528
+empty$ -- 527
+format.name$ -- 159
+if$ -- 1512
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 123
+newline$ -- 40
+num.names$ -- 48
+pop$ -- 197
+preamble$ -- 1
+purify$ -- 87
+quote$ -- 0
+skip$ -- 153
+stack$ -- 0
+substring$ -- 415
+swap$ -- 308
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 108
+warning$ -- 0
+while$ -- 58
+width$ -- 0
+write$ -- 138

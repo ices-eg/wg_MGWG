@@ -45,16 +45,13 @@
   volume = 75,
   pages = {691--703},
   note = {doi: 10.1139/cjfas-2017-0035}}
-
-@article{milleretal18,
+  
+@misc{milleretal,
   author = {T. J. Miller and L. O'Brien and P. S. Fratantoni},
-  year = 2018,
+  year = {In press},
   title = {Temporal and environmental variation in growth and maturity and effects on management reference points of Georges Bank Atlantic cod},
-  journal = {\cjfas},
-  volume = 75,
-  number = 12,
-  pages = {2159--2171},
-  note = {doi: 10.1139/cjfas-2017-0124}}
+  howpublished = {\cjfas. doi: 10.1139/cjfas-2017-0124}}
+
 
 @Manual{R18,
   title        = {R: A Language and Environment for Statistical Computing},

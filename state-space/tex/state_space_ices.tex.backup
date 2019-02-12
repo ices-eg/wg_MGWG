@@ -100,89 +100,23 @@ and ???
 
 \subsection*{Estimation models}
 
-We fit four assessment models to identical data sets for each stock. Two of the models are in the class of statistical catch at age models (ASAP and A4A). ASAP is used extensively to assess US fish stocks in the northwest Atlantic ocean. SAM and A4A are used to assess stocks in Europe. WHAM is a more recently developed model that can be configured to estimate models ranging from statistical catch at age to state-space versions with options to treat various aspects as random effects. It has not been used in management but versions have been applied to yellowtail flounder, redfish and cod stocks \citep{milleretal16, millerhyun18, milleretalinpress} 
+We fit four assessment models to identical data sets for each stock. Two of the models are in the class of statistical catch at age models (ASAP and A4A). ASAP is used extensively to assess US fish stocks in the northwest Atlantic ocean. SAM and A4A are used to assess stocks in Europe. WHAM is a more recently developed model that can be configured to estimate models ranging from statistical catch at age to state-space versions with options to treat various aspects as random effects. It has not been used in management but versions have been applied to stocks of yellowtail flounder \citep{milleretal16}, redfish \citep{millerhyun18}, and Atlantic cod \citep{milleretal18}.
 
 All models treat mortality processes use the Baranov catch equations which treat survival over the annual time interval as
 
 \subsubsection*{WHAM models}
 
-We fitted 4 configurations of the WHAM model to each stock data set. Two configurations are close to traditional statistical catch at age models with deterministic annual transitions in the cohorts, but with recruitments treated as independent lognormal random effects. The other two configurations are full state-space models that treat the annual transitions as stochastic. The difference between the two types of each class of models is whether the obervation error variances for the aggregate indices of abundance are fixed at the default values (CV = 0.2) or estimated. We fit these models to determine whethere there were generalalities in model performance (AIC) or retrospective patterns across the stocks. The WHAM model with the lowest AIC was used for comparison with other model frameworks.
+We fitted 4 configurations of the WHAM model to each stock data set. Two configurations are close to traditional statistical catch at age models with deterministic annual transitions in the cohorts. However, annual numbers recruit to the population are treated as independent lognormal random effects. The other two configurations are full state-space models that treat the annual cohort transitions as stochastic. The difference between the two types of each class of models is how the age composition observations are treated. In models 1 and 3 we assumed multinomial distributions with a default effective sample size. For models 2 and 4 we assumed a simple logit normal distribution similar to \citet{milleretal16} except that we treated any unobserved age classes as missing. We fit these models to determine whether there were generalalities in model performance (AIC) or retrospective patterns across the stocks. The WHAM model with the lowest AIC was used for comparison with other model frameworks.
 
-The only differences in model configuration between stocks was in configuring selectivity for the age composition observations for the abundance indices and the catch. For many of the stocks, the range of ages used to comprise the aggregate index varied among indices. This led to some difficulties in applying a default logistic function of age, so we typically estimated age-specific parameters. The general approach was to initially estimate all age-specific parameters freely to see which ages exhibited peak selectivity. Then selectivity parametesr at these ages were fixed at one for final model results. The initial models cannot be used for final results because typically there is confounding of fully selected catchability when all selectivity parameters are free.
+The only differences in model configuration between stocks was in configuring selectivity for the age composition observations for the abundance indices and the catch. For many of the stocks, the range of ages used to comprise the aggregate index varied among indices. This led to some difficulties in applying a default logistic function of age, so we often estimated age-specific parameters. The general approach was to initially estimate all age-specific parameters freely to see which ages exhibited peak selectivity. Then selectivity parameters at these ages were fixed at one for final model results. The initial models cannot be used for final results because typically there is confounding of fully selected catchability with other model parameters (e.g., catchability) when all selectivity parameters are free.
 
 \subsubsection*{Parameter Estimation}
 
-Abundance at age in the first year ($N_{1,a}$), fully-selected fishing mortality in the first year ($F_{f,1}$), and annual deviations in log-fully-selected fishing mortality ($\delta_{f,y}$) after the first year, mean log-recruitment ($\mu$), index catchability ($q_d$), all selectivity parameters, and process error variances ($\sigma^2_{N,j}$) are fixed effects parameters $\bm{\theta}$ estimated by ML. Abundance at age ($N_{y,a}$) after the first year ($y>1$), are treated as random effects that are integrated out to obtain the marginal likelihood.
+%Abundance at age in the first year ($N_{1,a}$), fully-selected fishing mortality in the first year ($F_{f,1}$), and annual deviations in log-fully-selected fishing mortality ($\delta_{f,y}$) after the first year, mean log-recruitment ($\mu$), index catchability ($q_d$), all selectivity parameters, and process error variances ($\sigma^2_{N,j}$) are fixed effects parameters $\bm{\theta}$ estimated by ML. Abundance at age ($N_{y,a}$) after the first year ($y>1$), are treated as random effects that are integrated out to obtain the marginal likelihood.
 
-We perform ML estimation of the fixed effects parameters with a Laplace approximation of the marginal log-likelihood function \citep{skaugfournier06},
-
-\vspace{-12pt}
-\begin{equation*}
-\int {\cal L}\left(\bm{\theta},\textsl{\textbf{S}} | \textsl{\textbf{D}}\right) d\textsl{\textbf{S}} = {\cal L}\left(\bm{\theta} | \textsl{\textbf{D}}\right),
-\end{equation*}
-where \textsl{\textbf{D}} are all observations, using TMB \citep{kristensenetal16} and R \citep{R17}. Specifically, we used the ``nlminb'' function in R to minimize the negative of the Laplace approximation of the marginal log-likelihood. Estimates of the random state variables are provided by the mode of posterior distributions of $\textsl{\textbf{S}}$, conditioned on $\widehat {\bm{\theta}}$. For a fuller description of variance estimation by the TMB package, see \citet{kristensenetal16}.
+All model frameworks use some form of maximum likelihood estimation. ASAP is programmed in AD Model Builder \citep{fournieretal12} and can be configured to use various penalties to the likelihood, but no penalties were used for any applications here. Estimation for the A4A model is programmed in R \citep{R18} and is also likelihood-based. The WHAM and SAM models are programmed using the Template Model Builder (TMB) package in R \citep{kristensenetal16} and parameters are estimated by maximizing a Laplace approximation of the marginal likelihood \citep{skaugfournier06}. To use the TMB package, the joint log-likelihood is writen as a C++ program which is compiled and accessed from R. The Laplace approximation of the marginal log-likelihood is returned when called from R and we use the ``nlminb'' function in R to minimize the negative of the Laplace approximation of the marginal log-likelihood. Empirical Bayes estimates of the state variables (random effects) are provided by the mode of posterior distributions of $\textsl{\textbf{S}}$, conditioned on the fixed effects parameters.
 
 
-\subsubsection*{The SAM state-space assessment model}
-
-The basic state-space assessment model (SAM) is described in \citet{nielsen2014estimation}. The model has been continuously developed and adapted for different stocks (e.g.~to include tagging data and biomass indices). The current implementation, which is available at: https://github.com/fishfollower/SAM, is an R-package based on Template Model Builder (TMB) \citep{kristensenetal16}.
-
-The model is a state--space model. The states $\alpha$ are the log-transformed stock sizes $\log{N_1},\ldots,\log{N_A}$ and fishing mortalities $\log{F_1},\ldots,\log{F_{A}}$ corresponding to total age specific catches. It is often assumed that some age classes have the same fishing mortality. In any given year $y$ the state is the combined vector $\alpha_y$ $=$ $(\log{N_1},\ldots,\log{N_A},$ $ \log{F_1},\ldots,\log{F_{A}})'$. The transition equation describes the distribution of the next years state from a given state in the current year. The following is assumed: 
- \begin{align*}
- \alpha_{y}=T(\alpha_{y-1})+\eta_y
- \end{align*}  
- The transition function $T$ is where the stock equation and assumptions about stock--recruitment enters the model. The equations are:   
- \begin{align*}
- \log N_{1,y}&=SR(\log(N_{,y-1}))&\\
- \log N_{a,y}&=\log N_{a-1,y-1} - F_{a-1,y-1} - M_{a-1,y-1}\ , \quad &2\leq a < A \\
- \log N_{A,y}&=\log( N_{A-1,y-1}\exp^{- F_{A-1,y-1} - M_{A-1},y-1} + N_{A,y-1}\exp^{- F_{A,y-1} - M_{A,y-1}})&\\
- \log F_{a,y}&=\log F_{a,y-1}\ , \quad &1\leq a \leq A 
- \end{align*}  
-Here $M_{a,y}$ is the age and year specific natural mortality parameter, which is assumed known from outside sources. $F_{a,y}$ is the total fishing mortality. The function `$SR$' is the stock-recruitment relationship assumed (options are: plain random walk on logaritmic scale, Ricker, and Beverton-Holt). 
-
-The process noise $\eta$ is assumed to be Gaussian with zero mean, and separate variance parameters. Typically one for recruitment ($\sigma^2_{N_{a=1}}$), one for survival ($\sigma^2_{N_{a>1}}$), one for fishing mortality at age ($\sigma^2_{F}$), but these can be flexibily configured. The $N$-part of $\eta$ is assumed uncorrelated, and the $F$-part can be assumed correlated according to an AR(1) correlation structure, such that $\mbox{cor}(\Delta\log(F_{a,y}),\Delta\log(F_{\tilde{a},y}))=\rho^{|a-\tilde{a}|}$. 
-
-The observation part of the state--space model describes the distribution of the observations for a given state $\alpha_y$. Here the vector of all observations from a given year $y$ is denoted $x_y$. The elements of $x_y$ are age-specific log-catches $\log C_{a,y}$ and age-specific log-indices from scientific surveys $\log I^{(s)}_{a,y}$.  The combined observation equation is:
- \begin{align*}
- x_y=O(\alpha_y)+\varepsilon_y
- \end{align*}
- The observation function $O$ consists of the catch equations for total catches and scientific surveys. The measurement noise term $\varepsilon_y$ is assumed to be Gaussian. An expanded view of the observation equation becomes:
- \begin{align*}
- \log C_{a,y} &= 
-\log\left(\frac{F_{a,y}}{Z_{a,y}}(1-e^{-Z_{a,y}})N_{a,y}\right)+\varepsilon^{(c)}_{a,y}\\
- \log I^{(s)}_{a,y} &= 
- \log\left(Q^{(s)}_a e^{-Z_{a,y}\frac{D^{(s)}}{365}}N_{a,y}\right)+\varepsilon^{(s)}_{a,y}
-\end{align*}   
-Here $Z$ is the total mortality rate $Z_{a,y}=M_{a,y}+F_{a,y}$, $D^{(s)}$ is the number of days into the year where the survey $s$ is conducted, $Q^{(s)}_a$ are model parameters describing catchability coefficients. The variance of $\varepsilon_y$ is setup such that each data source catches, and the four scientific surveys have their own covariance matrix. 
-
-Observation uncertainty is important e.g.~to get the relative weighting of the different information sources correct, so a lot of effort has been invested in getting the optimal options into SAM. In \citet{berg2016accounting} different covariance structures are compared for four ICES stocks. It was found that irregular lattice AR(1) observation correlation structure was optimal for surveys. The covariance structures tested were inspired by a previous study \citep{berg2014evaluation} of the structures obtained from survey calculations. In the paper \citet{albertsen2016choosing} 13 different observational likelihood formulations were evaluated for four ICES stocks. It was found that the multivariate log-normal representation was among the optimal in all four cases.
-
-To describe the options available consider a yearly vector $C_y=(C_{a=1,y},\ldots,C_{a=A,y})$ of age specific observations from a fleet (survey or commercial). Assume first that the $\log(C_y)$ is multivariate Gaussian: 
-\[
-\log(C_y) \sim N(\log(\widehat{C}_y), \Sigma)
-\]   
-where $\Sigma$ is the covariance matrix, and $\hat{C}_y$ is the vector of the usual model predictions. The covariance matrix is specified from a vector of standard deviations $\sigma=(\sigma_1\ldots\sigma_A)$ and a correlation matrix $\rho$ (by $\Sigma_{a\tilde{a}}=\sigma_a\sigma_{\tilde{a}}\rho_{a\tilde{a}}$). Four options are available for the correlation $\rho$: Independent ($\rho=I$), auto-regressive of order 1 ($\rho_{a\tilde{a}}=0.5^{\theta|a-\tilde{a}|}, \ \theta>0$)\footnote[$\star$]{This parametrization is equvivalent to the more common $\phi^{|a-\tilde{a}|}$, where $0<\phi<1$}, irregular auto-regressive of order 1 ($\rho_{a\tilde{a}}=0.5^{|\theta_a-\theta_{\tilde{a}}|}, \ \theta_1=0\leq\theta_2\leq\cdots\leq\theta_A$), and unstructured (parameterized by the Cholesky of $\rho$). The options for covariance structure can be set for each fleet individually. In addition it is also possible to supply external weights for each individual observation. This option can be used in two ways. To set the relative weighting, or to actually set the fixed variance of each individual observation.
-
-\subsubsection*{Likelihood and approximation}
-
-The likelihood function for this is set up by first defining the joint likelihood of both random effects (here collected in the $\alpha_y$ states), and the observations (here collected in the $x_y$ vectors). The joint likelihood is:
- \begin{align*}
- L(\theta,\alpha,x)=\prod_{y=2}^Y\{ \phi(\alpha_y-T(\alpha_{y-1}),\Sigma_\eta)\}
-                    \prod_{y=1}^Y\{ \phi(x_y-O(\alpha_{y}),\Sigma_\varepsilon)\}
- \end{align*}
- Here $\theta$ is a vector of model parameters. Since the random effects $\alpha$ are not observed inference should be obtain from the marginal likelihood:
- \begin{align*}
- L_M(\theta,x)=\int L(\theta,\alpha,x) d\alpha
- \end{align*}
- This integral is difficult to calculate directly, so the Laplace  approximation is used. The Laplace approximation is derived by first  approximating the joint log likelihood $\ell(\theta,\alpha,x)$ by a  second order Taylor approximation around the optimum $\hat{\alpha}$  w.r.t.~$\alpha$. The resulting approximated joint log likelihood can  then be integrated by recognizing it as a constant term and a term  where the integral is know as the normalizing constant from a  multivariate Gaussian. The approximation becomes:
- \begin{align*}
- \int L(\theta,\alpha,x)d\alpha \approx  \sqrt{\frac{(2\pi)^{n}}{\det(-\ell_{\alpha\alpha}''(\theta,\alpha,x)|_{\alpha=\hat{\alpha}_\theta})}}\exp(\ell(\theta,\hat{\alpha}_\theta,x))
- \end{align*}
- Taking the logarithm gives the Laplace approximation of the marginal log likelihood  
- \begin{align*}
- \ell_M(\theta,x) = \ell(\theta,\hat{u}_\theta,x)-\frac{1}{2}\log(\det(-\ell_{uu}
- ''(\theta,u,x)|_{u=\hat{u}_\theta}))+\frac{n}{2}\log(2\pi)
- \end{align*}
 
 
 \subsubsection*{Diagnostics}
@@ -203,7 +137,7 @@ To get independent residuals from a state-space model the so-called `one-observa
 
 \section*{Appendix}
 
-\subsubsection*{WHAM model description}
+\subsection*{WHAM model description}
 
 The definitions for probability models describing stochastic changes in abundance at age from one year to another are identical to that given in \citet{milleretal16} and \citet{millerhyun18}. Log-abundance for ages and years greater than 1 are normally distributed conditional on the vector of numbers at age from the previous
 time step,
@@ -290,12 +224,73 @@ Similarly, we assume a multinomial distribution with sample size $E_{f,y}$ for t
 \end{equation*}
 where $\widetilde C_{f,y,a}$ is the predicted number at age (i.e., Eq. \ref{pred.caa} with $W_{f,y,a} = 1$) and $\widetilde C_{f,y}$ is analogous to Eq. \ref{pred.catch}. However, there are options for other distributions for the age composition observations.
 
+\subsection*{The SAM state-space assessment model}
+
+The basic state-space assessment model (SAM) is described in \citet{nielsen2014estimation}. The model has been continuously developed and adapted for different stocks (e.g.~to include tagging data and biomass indices). The current implementation, which is available at: https://github.com/fishfollower/SAM, is an R-package based on Template Model Builder (TMB) \citep{kristensenetal16}.
+
+The model is a state--space model. The states $\alpha$ are the log-transformed stock sizes $\log{N_1},\ldots,\log{N_A}$ and fishing mortalities $\log{F_1},\ldots,\log{F_{A}}$ corresponding to total age specific catches. It is often assumed that some age classes have the same fishing mortality. In any given year $y$ the state is the combined vector $\alpha_y$ $=$ $(\log{N_1},\ldots,\log{N_A},$ $ \log{F_1},\ldots,\log{F_{A}})'$. The transition equation describes the distribution of the next years state from a given state in the current year. The following is assumed: 
+ \begin{align*}
+ \alpha_{y}=T(\alpha_{y-1})+\eta_y
+ \end{align*}  
+ The transition function $T$ is where the stock equation and assumptions about stock--recruitment enters the model. The equations are:   
+ \begin{align*}
+ \log N_{1,y}&=SR(\log(N_{,y-1}))&\\
+ \log N_{a,y}&=\log N_{a-1,y-1} - F_{a-1,y-1} - M_{a-1,y-1}\ , \quad &2\leq a < A \\
+ \log N_{A,y}&=\log( N_{A-1,y-1}\exp^{- F_{A-1,y-1} - M_{A-1},y-1} + N_{A,y-1}\exp^{- F_{A,y-1} - M_{A,y-1}})&\\
+ \log F_{a,y}&=\log F_{a,y-1}\ , \quad &1\leq a \leq A 
+ \end{align*}  
+Here $M_{a,y}$ is the age and year specific natural mortality parameter, which is assumed known from outside sources. $F_{a,y}$ is the total fishing mortality. The function `$SR$' is the stock-recruitment relationship assumed (options are: plain random walk on logaritmic scale, Ricker, and Beverton-Holt). 
+
+The process noise $\eta$ is assumed to be Gaussian with zero mean, and separate variance parameters. Typically one for recruitment ($\sigma^2_{N_{a=1}}$), one for survival ($\sigma^2_{N_{a>1}}$), one for fishing mortality at age ($\sigma^2_{F}$), but these can be flexibily configured. The $N$-part of $\eta$ is assumed uncorrelated, and the $F$-part can be assumed correlated according to an AR(1) correlation structure, such that $\mbox{cor}(\Delta\log(F_{a,y}),\Delta\log(F_{\tilde{a},y}))=\rho^{|a-\tilde{a}|}$. 
+
+The observation part of the state--space model describes the distribution of the observations for a given state $\alpha_y$. Here the vector of all observations from a given year $y$ is denoted $x_y$. The elements of $x_y$ are age-specific log-catches $\log C_{a,y}$ and age-specific log-indices from scientific surveys $\log I^{(s)}_{a,y}$.  The combined observation equation is:
+ \begin{align*}
+ x_y=O(\alpha_y)+\varepsilon_y
+ \end{align*}
+ The observation function $O$ consists of the catch equations for total catches and scientific surveys. The measurement noise term $\varepsilon_y$ is assumed to be Gaussian. An expanded view of the observation equation becomes:
+ \begin{align*}
+ \log C_{a,y} &= 
+\log\left(\frac{F_{a,y}}{Z_{a,y}}(1-e^{-Z_{a,y}})N_{a,y}\right)+\varepsilon^{(c)}_{a,y}\\
+ \log I^{(s)}_{a,y} &= 
+ \log\left(Q^{(s)}_a e^{-Z_{a,y}\frac{D^{(s)}}{365}}N_{a,y}\right)+\varepsilon^{(s)}_{a,y}
+\end{align*}   
+Here $Z$ is the total mortality rate $Z_{a,y}=M_{a,y}+F_{a,y}$, $D^{(s)}$ is the number of days into the year where the survey $s$ is conducted, $Q^{(s)}_a$ are model parameters describing catchability coefficients. The variance of $\varepsilon_y$ is setup such that each data source catches, and the four scientific surveys have their own covariance matrix. 
+
+Observation uncertainty is important e.g.~to get the relative weighting of the different information sources correct, so a lot of effort has been invested in getting the optimal options into SAM. In \citet{berg2016accounting} different covariance structures are compared for four ICES stocks. It was found that irregular lattice AR(1) observation correlation structure was optimal for surveys. The covariance structures tested were inspired by a previous study \citep{berg2014evaluation} of the structures obtained from survey calculations. In the paper \citet{albertsen2016choosing} 13 different observational likelihood formulations were evaluated for four ICES stocks. It was found that the multivariate log-normal representation was among the optimal in all four cases.
+
+To describe the options available consider a yearly vector $C_y=(C_{a=1,y},\ldots,C_{a=A,y})$ of age specific observations from a fleet (survey or commercial). Assume first that the $\log(C_y)$ is multivariate Gaussian: 
+\[
+\log(C_y) \sim N(\log(\widehat{C}_y), \Sigma)
+\]   
+where $\Sigma$ is the covariance matrix, and $\hat{C}_y$ is the vector of the usual model predictions. The covariance matrix is specified from a vector of standard deviations $\sigma=(\sigma_1\ldots\sigma_A)$ and a correlation matrix $\rho$ (by $\Sigma_{a\tilde{a}}=\sigma_a\sigma_{\tilde{a}}\rho_{a\tilde{a}}$). Four options are available for the correlation $\rho$: Independent ($\rho=I$), auto-regressive of order 1 ($\rho_{a\tilde{a}}=0.5^{\theta|a-\tilde{a}|}, \ \theta>0$)\footnote[$\star$]{This parametrization is equvivalent to the more common $\phi^{|a-\tilde{a}|}$, where $0<\phi<1$}, irregular auto-regressive of order 1 ($\rho_{a\tilde{a}}=0.5^{|\theta_a-\theta_{\tilde{a}}|}, \ \theta_1=0\leq\theta_2\leq\cdots\leq\theta_A$), and unstructured (parameterized by the Cholesky of $\rho$). The options for covariance structure can be set for each fleet individually. In addition it is also possible to supply external weights for each individual observation. This option can be used in two ways. To set the relative weighting, or to actually set the fixed variance of each individual observation.
+
+\subsubsection*{Likelihood and approximation}
+
+The likelihood function for this is set up by first defining the joint likelihood of both random effects (here collected in the $\alpha_y$ states), and the observations (here collected in the $x_y$ vectors). The joint likelihood is:
+ \begin{align*}
+ L(\theta,\alpha,x)=\prod_{y=2}^Y\{ \phi(\alpha_y-T(\alpha_{y-1}),\Sigma_\eta)\}
+                    \prod_{y=1}^Y\{ \phi(x_y-O(\alpha_{y}),\Sigma_\varepsilon)\}
+ \end{align*}
+ Here $\theta$ is a vector of model parameters. Since the random effects $\alpha$ are not observed inference should be obtain from the marginal likelihood:
+ \begin{align*}
+ L_M(\theta,x)=\int L(\theta,\alpha,x) d\alpha
+ \end{align*}
+ This integral is difficult to calculate directly, so the Laplace  approximation is used. The Laplace approximation is derived by first  approximating the joint log likelihood $\ell(\theta,\alpha,x)$ by a  second order Taylor approximation around the optimum $\hat{\alpha}$  w.r.t.~$\alpha$. The resulting approximated joint log likelihood can  then be integrated by recognizing it as a constant term and a term  where the integral is know as the normalizing constant from a  multivariate Gaussian. The approximation becomes:
+ \begin{align*}
+ \int L(\theta,\alpha,x)d\alpha \approx  \sqrt{\frac{(2\pi)^{n}}{\det(-\ell_{\alpha\alpha}''(\theta,\alpha,x)|_{\alpha=\hat{\alpha}_\theta})}}\exp(\ell(\theta,\hat{\alpha}_\theta,x))
+ \end{align*}
+ Taking the logarithm gives the Laplace approximation of the marginal log likelihood  
+ \begin{align*}
+ \ell_M(\theta,x) = \ell(\theta,\hat{u}_\theta,x)-\frac{1}{2}\log(\det(-\ell_{uu}
+ ''(\theta,u,x)|_{u=\hat{u}_\theta}))+\frac{n}{2}\log(2\pi)
+ \end{align*}
+
 %Figures
 
 \begin{figure}
-\caption{Estimates for annual total spawning stock biomass from each fitted model.}\label{SSB_compare}
+\caption{Degree of retrospective pattern in spawning stock biomass as measured by Mohn's $\rho$ for each stock and model type.}\label{SSB_compare}
 \begin{center}
-%\includegraphics[width = \textwidth]{SSB_compare.pdf}
+\includegraphics[width = \textwidth]{../db/ggSSB.pdf}
 \end{center}
 \end{figure}
 

@@ -1,0 +1,73 @@
+\begin{thebibliography}{12}
+\providecommand{\natexlab}[1]{#1}
+
+\bibitem[{Albertsen et~al.(2016)Albertsen, Nielsen, and
+  Thygesen}]{albertsen2016choosing}
+Albertsen, C.~M., Nielsen, A., and Thygesen, U.~H. 2016. Choosing the
+  observational likelihood in state-space stock assessment models. Canadian
+  Journal of Fisheries and Aquatic Sciences \textbf{ 74}(5): 779--789.
+
+\bibitem[{Berg and Nielsen(2016)}]{berg2016accounting}
+Berg, C.~W. and Nielsen, A. 2016. Accounting for correlated observations in an
+  age-based state-space stock assessment model. ICES Journal of Marine Science
+  \textbf{ 73}(7): 1788--1797.
+
+\bibitem[{Berg et~al.(2014)Berg, Nielsen, and Kristensen}]{berg2014evaluation}
+Berg, C.~W., Nielsen, A., and Kristensen, K. 2014. Evaluation of alternative
+  age-based methods for estimating relative abundance from survey data in
+  relation to assessment models. Fisheries research \textbf{ 151}: 91--99.
+
+\bibitem[{Fournier et~al.(2012)Fournier, Skaug, Ancheta, Ianelli, Magnusson,
+  Maunder, Nielsen, and Sibert}]{fournieretal12}
+Fournier, D.~A., Skaug, H.~J., Ancheta, J., Ianelli, J., Magnusson, A.,
+  Maunder, M., Nielsen, A., and Sibert, J. 2012. {AD} {Model} {Builder}: using
+  automatic differentiation for statistical inference of highly parameterized
+  complex nonlinear models. Optimization Methods and Software \textbf{ 27}(2):
+  233--249.
+
+\bibitem[{Kristensen et~al.(2016)Kristensen, Nielsen, Berg, Skaug, and
+  Bell}]{kristensenetal16}
+Kristensen, K., Nielsen, A., Berg, C.~W., Skaug, H., and Bell, B.~M. 2016.
+  {TMB}: Automatic differentiation and {L}aplace approximation. Journal of
+  Statistical Software \textbf{ 70}(5): 1--21.
+
+\bibitem[{Miller et~al.(2016)Miller, Hare, and Alade}]{milleretal16}
+Miller, T.~J., Hare, J.~A., and Alade, L. 2016. A state-space approach to
+  incorporating environmental effects on recruitment in an age-structured
+  assessment model with an application to {S}outhern {N}ew {E}ngland yellowtail
+  flounder. \cjfas \textbf{ 73}(8): 1261--1270, doi:10.1139/cjfas-2015-0339.
+
+\bibitem[{Miller and Hyun(2018)}]{millerhyun18}
+Miller, T.~J. and Hyun, S.-Y. 2018. Evaluating evidence for alternative natural
+  mortality and process error assumptions using a state-space, age-structured
+  assessment model. \cjfas \textbf{ 75}(5): 691--703, doi:
+  10.1139/cjfas-2017-0035.
+
+\bibitem[{Miller et~al.(2018)Miller, O'Brien, and Fratantoni}]{milleretal18}
+Miller, T.~J., O'Brien, L., and Fratantoni, P.~S. 2018. Temporal and
+  environmental variation in growth and maturity and effects on management
+  reference points of georges bank atlantic cod. \cjfas \textbf{ 75}(12):
+  2159--2171, doi: 10.1139/cjfas-2017-0124.
+
+\bibitem[{Nielsen and Berg(2014)}]{nielsen2014estimation}
+Nielsen, A. and Berg, C.~W. 2014. Estimation of time-varying selectivity in
+  stock assessments using state-space models. Fisheries Research \textbf{ 158}:
+  96--101.
+
+\bibitem[{{R Core Team}(2018)}]{R18}
+{R Core Team}. 2018. R: A Language and Environment for Statistical Computing. R
+  Foundation for Statistical Computing, Vienna, Austria.
+
+\bibitem[{Skaug and Fournier(2006)}]{skaugfournier06}
+Skaug, H.~J. and Fournier, D.~A. 2006. Automatic approximation of the marginal
+  likelihood in non-{Gaussian} hierarchical models. \csda \textbf{ 51}(2):
+  699--709.
+
+\bibitem[{Thygesen et~al.(2017)Thygesen, Albertsen, Berg, Kristensen, and
+  Nielsen}]{thygesen2017validation}
+Thygesen, U.~H., Albertsen, C.~M., Berg, C.~W., Kristensen, K., and Nielsen, A.
+  2017. Validation of ecological state space models using the laplace
+  approximation. Environmental and Ecological Statistics \textbf{ 24}(2):
+  317--339.
+
+\end{thebibliography}
