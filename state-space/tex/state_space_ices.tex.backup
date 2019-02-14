@@ -20,6 +20,7 @@
 \usepackage{xspace}
 \usepackage{textcomp}
 \usepackage{marvosym}
+\usepackage{booktabs}
 \bibpunct[, ]{(}{)}{;}{a}{}{,}
 \renewcommand\bibname{References}
 \renewcommand\figurename{Fig.}
@@ -286,18 +287,27 @@ The likelihood function for this is set up by first defining the joint likelihoo
  \end{align*}
 
 %Figures
-
+\begin{landscape}
 \begin{figure}
-\caption{Degree of retrospective pattern in spawning stock biomass as measured by Mohn's $\rho$ for each stock and model type.}\label{SSB_compare}
+\caption{Degree of retrospective pattern in average fishing mortality, recruitment, and spawning stock biomass as measured by Mohn's $\rho$ for each stock and model type.}\label{rho_paper_plot}
 \begin{center}
-\includegraphics[width = \textwidth]{../db/ggSSB.pdf}
+\includegraphics[height = 0.9\textheight]{../db/rho_paper_plot.pdf}
 \end{center}
 \end{figure}
 
 \begin{figure}
-\caption{Estimates for annual total recruitment (age 0) from each fitted model.}\label{R_compare}
+\caption{Relationship between Mohn's $\rho$ for SSB and average fishing mortality by model.}\label{rho_ssb_vs_F}
 \begin{center}
-%\includegraphics[width = \textwidth]{R_compare.pdf}
+\includegraphics[height = 0.9\textheight]{../db/SSBvsFbarMohnRho_paper.pdf}
+\end{center}
+\end{figure}
+\end{landscape}
+
+\begin{landscape}
+\begin{figure}
+\caption{Degree of retrospective pattern in average fishing mortality, recruitment, and spawning stock biomass as measured by Mohn's $\rho$ for each stock and WHAM model configuration.}\label{wham_rho_paper_plot}
+\begin{center}
+\includegraphics[height = 0.9\textheight]{../db/wham_rho_paper_plot.pdf}
 \end{center}
 \end{figure}
 
@@ -305,13 +315,11 @@ The likelihood function for this is set up by first defining the joint likelihoo
 
 %Tables
 
-\begin{landscape}
 \begin{table}
 \begin{center}
-\caption{Number of parameters, AIC, and Mohn's $\rho$ for SSB, mean fishing mortality at ages 4+, and recruitment for each model.}\label{model_compare}
-%\input{model_compare.tex}
+\caption{Mean and Standard Deviation of Mohn's $\rho$ for SSB, $\overline{F}$, and recruitment across all stocks by model type.}\label{model_compare}
+\input{rho_model_summary.tex}
 \end{center}
 \end{table}
-\end{landscape}
 
 \end{document}

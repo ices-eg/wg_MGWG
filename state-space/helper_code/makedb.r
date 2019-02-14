@@ -50,17 +50,16 @@ write.csv(db, file = "../db/Mohnrhodb.csv", row.names = FALSE)
 
 
 # function to make graphs of Mohn's rho database
-ggdb <- function(db, mymetric, mytile){
-  gg <- ggplot(filter(db, metric == mymetric), aes(x=rho, y=stock, color=model)) +
+ggdb <- function(db, i, mytile){
+  gg <- ggplot(filter(db, metric == mymetric[i]), aes(x=rho, y=stock, color=model)) +
     geom_point() +
-    xlim(c(-1, ifelse(mymetric == "Fbar", 1, 3))) +
-    ggtitle(mymetric) +
-    labs(x = expression(paste("Mohn's ", rho)), y = "Stock") +
+    xlim(c(-1, ifelse(mymetric[i] == "Fbar", 1, 3))) +
+    ggtitle(parse(text = myMetric[i])) +
+    labs(x = expression(paste("Mohn's ", italic("\u03c1"))), y = "Stock", family="Times") +
     theme_bw()
     if (mytile == TRUE) gg <- gg + facet_wrap(~ model)
   return(gg)
 }
-ggdb(dbp, mymetric[2], mytile = FALSE)
 
 # for plotting rename a4a models according to filename
 db1 <- db %>%
@@ -81,62 +80,82 @@ db4$model = factor(db4$model)
 #model.names = c("A4A sep sel", "A4A smooth sel", "ASAP", "SAM", "SAM constant F", "SAM fixed CV", "SAM Cor obs", "WHAM")
 model.names = c("A4A", "ASAP", "SAM", "WHAM")
 levels(db4$model) = model.names
+xlabs = c("bar(italic(F))", "italic(R)", "SSB")
+db4$Metric = xlabs[match(db4$metric, levels(db4$metric))]
 
 # cap max rho at 3
 #dbp <- dbp %>%
 #  mutate(rho = ifelse(rho > 3, 3, rho))
 
 mymetric <- c("Fbar", "SSB", "R")
+myMetric = c("bar(italic(F))", "SSB", "italic(R)")
 
 for (imetric in 1:3){
-  gg <- ggdb(db4, mymetric[imetric], mytile = FALSE)
+  gg <- ggdb(db4, imetric, mytile = FALSE)
+  gg$labels$colour = "Model"
   #print(gg)
   ggsave(filename = paste0("../db/gg", mymetric[imetric], ".png"), gg)
-  ggsave(filename = paste0("../db/gg", mymetric[imetric], ".pdf"), gg, width = 8, height = 8, dpi = 500)
-  ggtiled <- ggdb(db4, mymetric[imetric], mytile = TRUE)
+  ggsave(filename = paste0("../db/gg", mymetric[imetric], ".pdf"), gg, width = 8, height = 8, dpi = 500, device = cairo_pdf)
+  ggtiled <- ggdb(db4, imetric, mytile = TRUE)
+  ggtiled$labels$colour = "Model"
   #print(ggtiled)
   ggsave(filename = paste0("../db/gg", mymetric[imetric], "_tiled.png"), ggtiled)
-  ggsave(filename = paste0("../db/gg", mymetric[imetric], "_tiled.pdf"), ggtiled, width = 8, height = 8, dpi = 500)
+  ggsave(filename = paste0("../db/gg", mymetric[imetric], "_tiled.pdf"), ggtiled, width = 8, height = 8, dpi = 500, device = cairo_pdf)
 }
 
+gg <- ggplot(db4, aes(x=rho, y=stock, color=stock)) +
+  geom_point(show.legend = FALSE) +
+  xlim(c(-1, 3)) +
+  labs(x = expression(paste("Mohn's ", italic("\u03c1"))), y = "Stock", family="Times") +
+  theme(strip.background = element_blank(), text = element_text(family = "Times"), strip.text = element_text(size = 20), axis.title = element_text(size = 20)) + #, strip.text.x = element_blank()) +
+  facet_grid(model ~ Metric, labeller = label_parsed)
+#gg
+ggsave(filename = paste0("../db/rho_paper_plot.pdf"), gg, width = 12, height = 8, dpi = 500, device = cairo_pdf)
+
+library(knitr)
 library(kableExtra)
 #make table of mean and sd of mohn's rho across stocks for each model type.
 x = aggregate(rho ~ model*metric, data = db4, FUN = mean)
 x = cbind(x, sd = aggregate(rho ~ model*metric, data = db4, FUN = sd)[,3])
 x$metric = as.character(x$metric)
-x$metric[x$metric == "Fbar"] = "$\\overline{F}$"
+x$metric[x$metric == "Fbar"] = "$\\\\overline{F}$"
 x$metric[x$metric == "R"] = "$R$"
 colnames(x) = c("Model", "Metric", "Mean", "SD")
 x = x[,c(2,1,3,4)]
 x[,3:4] = round(x[,3:4],2)
 
-kable(x[,-1], "latex", caption = "Group Rows", booktabs = T) %>% kable_styling() %>% group_rows("Group 1", 4, 7) %>% group_rows ("Group 2", 8, 10)
-y = latex(x[-1], file = "../tex/rho_model_summary.tex", n.rgroup = c(4,4,4), rgroup = unique(x$Metric), table.env = FALSE, rowname = x$Model, booktabs = TRUE)
-y = latex(x[-1], file = "../tex/rho_model_summary.tex", n.rgroup = c(4,4,4), rgroup = unique(x$Metric), table.env = FALSE, rowname = NULL, booktabs = TRUE)
+starts = (1:length(unique(x$Metric)))*4 - 3
+y = kable(x[,-1], 'latex', booktabs = T, escape = FALSE) %>% 
+  group_rows(unique(x$Metric)[1], starts[1], starts[1] + 3, escape = FALSE, bold = FALSE) %>%
+  group_rows(unique(x$Metric)[2], starts[2], starts[2] + 3, escape = FALSE, bold = FALSE) %>%
+  group_rows(unique(x$Metric)[3], starts[3], starts[3] + 3, escape = FALSE, bold = FALSE)
+cat(y, sep = "\n", file = "../tex/rho_model_summary.tex")
 
 # spread data to allow SSB vs F Mohn's rho plotting
-dbps <- db4 %>%
+dbps <- db4[,1:5] %>%
   spread(key = metric, value = rho)
 
 ggs <- ggplot(dbps, aes(x=SSB, y=Fbar, color=model)) +
   geom_point() +
   xlim(c(-1, 3)) +
   ylim(c(-1, 3)) +
-  xlab(expression(paste("Mohn's ", rho, bgroup("(", "SSB", ")")))) +
-  ylab(expression(paste("Mohn's ", rho, bgroup("(", bar(italic(F)), ")")))) +
+  xlab(expression(paste("Mohn's ", italic("\u03c1"), bgroup("(", "SSB", ")")))) +
+  ylab(expression(paste("Mohn's ", italic("\u03c1"), bgroup("(", bar(italic(F)), ")")))) +
   theme_bw()
-# print(ggs)
+ggs$labels$colour = "Model"
+ggs
 ggsave(filename = "../db/SSBvsFbarMohnRho.png", ggs)
 
 ggstiled <- ggplot(dbps, aes(x=SSB, y=Fbar, color=stock)) +
   geom_point() +
-  #facet_wrap(model ~ .) +
   facet_wrap(~ model) +
   xlim(c(-1, 3)) +
   ylim(c(-1, 3)) +
-  xlab(expression(paste("Mohn's ", rho, bgroup("(", "SSB", ")")))) +
-  ylab(expression(paste("Mohn's ", rho, bgroup("(", bar(italic(F)), ")")))) +
+  xlab(expression(paste("Mohn's ", italic("\u03c1"), bgroup("(", "SSB", ")")))) +
+  ylab(expression(paste("Mohn's ", italic("\u03c1"), bgroup("(", bar(italic(F)), ")")))) +
   theme_bw()
+ggstiled$labels$colour = "Stock"
+ggstiled
 # print(ggstiled)
 ggsave(filename = "../db/SSBvsFbarMohnRho_tiled.png", ggstiled)
 
@@ -144,14 +163,27 @@ ggstiled2 <- ggplot(dbps, aes(x=SSB, y=Fbar, color=model)) +
   geom_point() +
   #facet_wrap(model ~ .) +
   facet_wrap(~stock) +
-  xlab("Mohn's rho SSB") +
-  ylab("Mohn's rho Fbar") +
+  xlab(expression(paste("Mohn's ", italic("\u03c1"), bgroup("(", "SSB", ")")))) +
+  ylab(expression(paste("Mohn's ", italic("\u03c1"), bgroup("(", bar(italic(F)), ")")))) +
   xlim(c(-1, 3)) +
   ylim(c(-1, 3)) +
   theme_bw()
+ggstiled2$labels$colour = "Model"
 # print(ggstiled2)
 ggsave(filename = "../db/SSBvsFbarMohnRho_tiled2.png", ggstiled2)
 
+ggstiled3 <- ggplot(dbps, aes(x=SSB, y=Fbar, color=stock)) +
+  geom_point() +
+  facet_wrap(~ model) +
+  xlim(c(-1, 3)) +
+  ylim(c(-1, 3)) +
+  xlab(expression(paste("Mohn's ", italic("\u03c1"), bgroup("(", "SSB", ")")))) +
+  ylab(expression(paste("Mohn's ", italic("\u03c1"), bgroup("(", bar(italic(F)), ")")))) +
+  #theme_bw()
+  theme(strip.background = element_blank(), text = element_text(family = "Times"), strip.text = element_text(size = 20), axis.title = element_text(size = 20))
+ggstiled3
+ggstiled3$labels$colour = "Stock"
+ggsave(filename = "../db/SSBvsFbarMohnRho_paper.pdf", ggstiled3, width = 8, height = 8, dpi = 500, device = cairo_pdf)
 
 # WHAM models rho
 whamdb <- data.frame(stock = character(),
@@ -172,18 +204,26 @@ for (istock in 1:nstocks){
   whamdb <- rbind(whamdb, thisdb)
   }
 }
-#write.csv(whamdb, file = "../db/WHAMMohnrhodb.csv", row.names = FALSE)
+write.csv(whamdb, file = "../db/WHAMMohnrhodb.csv", row.names = FALSE)
 
-mymetric <- c("Fbar", "SSB", "R")
+#check the levels of db$stock to make sure they match
+#stock.names = c("CC-GOM yellowtail flounder", "GB haddock", "GB winter flounder", "GOM Atlantic cod", "GOM haddock", "Icelandic herring", "NS Atlantic cod",
+#  "American Plaice", "Pollock", "SNE winter flounder", "SNE-MA yellowtail flounder", "Atlantic herring", "White hake")
+levels(whamdb$stock) = stock.names
 
-for (imetric in 1:3){
-  gg <- ggdb(whamdb, mymetric[imetric], mytile = FALSE)
-  #print(gg)
-  ggsave(filename = paste0("../db/gg", mymetric[imetric], ".png"), gg)
-  ggtiled <- ggdb(whamdb, mymetric[imetric], mytile = TRUE)
-  #print(ggtiled)
-  ggsave(filename = paste0("../db/gg", mymetric[imetric], "_tiled.png"), ggtiled)
-}
+model.names = paste0("M[",1:4, "]")
+levels(whamdb$model) = model.names
+whamdb$Metric = xlabs[match(whamdb$metric, levels(whamdb$metric))]
+
+gg <- ggplot(whamdb, aes(x=rho, y=stock, color=stock)) +
+  geom_point(show.legend = FALSE) +
+  xlim(c(-1, 3)) +
+  labs(x = expression(paste("Mohn's ", italic("\u03c1"))), y = "Stock", family="Times") +
+  theme(strip.background = element_blank(), text = element_text(family = "Times"), strip.text = element_text(size = 20), axis.title = element_text(size = 20)) + #, strip.text.x = element_blank()) +
+  facet_grid(model ~ Metric, labeller = label_parsed)
+gg
+ggsave(filename = paste0("../db/wham_rho_paper_plot.pdf"), gg, width = 12, height = 8, dpi = 500, device = cairo_pdf)
+
 
 #########################
 # now for the time series
@@ -253,21 +293,31 @@ for (istock in 1:nstocks){
 }
 write.csv(dc, file = "../db/timeseriesdb.csv", row.names = FALSE)
 
+levels(dc$stock) = stock.names
+dc4 = dc[which(dc$model %in% c("a4asca te", "ASAP", "SAM", "WHAM")),]
+dc4$model = factor(dc4$model)
+#model.names = c("A4A sep sel", "A4A smooth sel", "ASAP", "SAM", "SAM constant F", "SAM fixed CV", "SAM Cor obs", "WHAM")
+model.names = c("A4A", "ASAP", "SAM", "WHAM")
+levels(dc4$model) = model.names
+xlabs = c("Catch", "bar(italic(F))", "italic(R)", "SSB")
+dc4$Metric = xlabs[match(dc4$metric, levels(dc4$metric))]
+
 # make plots
-pdf(file="../db/timeseriesplots.pdf")
+cairo_pdf(file="../db/timeseriesplots.pdf", onefile = TRUE)
 mymetric <- c("SSB", "Fbar", "R", "Catch")
 for (imetric in 1:length(mymetric)){
   for (istock in 1:nstocks){
-    tsp <- ggplot(filter(dc, stock == stocks[istock], metric == mymetric[imetric]), 
+    tsp <- ggplot(filter(dc4, stock == stock.names[istock], Metric == xlabs[imetric]), 
                   aes(x=year, y=value, color=model)) +
       geom_line() +
       geom_ribbon(aes(ymin=low, ymax=high, fill=model), alpha=0.3, linetype = 0) +
       xlab("Year") +
-      ylab(mymetric[imetric]) +
-      ggtitle(stocks[istock]) +
+      ylab(parse(text = xlabs[imetric])) +
+      ggtitle(stock.names[istock]) +
       expand_limits(y=0) +
       theme_bw() +
       theme(legend.position = "bottom")
+      tsp$labels$colour = tsp$labels$fill = ""
     
     #print(tsp)
     
@@ -305,6 +355,9 @@ for (istock in 1:nstocks){
       for (ifile in 1:nfiles){
         myfile <- paste0("../", stocks[istock], "/", models[imodel], "/", files[ifile])
         dat <- read.csv(file = myfile, header = TRUE)
+        print(myfile)
+        print(dim(dat))
+        print(c(istock,imodel,ifile))
         if (names(dat)[4] != "V3"){  # skip problem with WHAM GOMcod tab2.csv
           if (models[imodel] == "ASAP"){
             thisdb <- data.frame(stock = stocks[istock],

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2018.10.15)  12 FEB 2019 10:49
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2018.10.15)  14 FEB 2019 14:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -512,22 +512,48 @@ Overfull \hbox (10.52124pt too wide) in paragraph at lines 235--237
  is where the stock equa-tion and as-sump-tions about stock--recruitment
  []
 
-[8] [9] <../db/ggSSB.pdf, id=51, 578.16pt x 578.16pt>
-File: ../db/ggSSB.pdf Graphic file (type pdf)
- <use ../db/ggSSB.pdf>
-Package pdftex.def Info: ../db/ggSSB.pdf used on input line 294.
-(pdftex.def)             Requested size: 469.75502pt x 469.75385pt.
+[8] [9] [10] <../db/rho_paper_plot.pdf, id=54, 867.24pt x 578.16pt>
+File: ../db/rho_paper_plot.pdf Graphic file (type pdf)
 
-[10] [11 <../db/ggSSB.pdf>] (./rho_model_summary.tex) [12]
+<use ../db/rho_paper_plot.pdf>
+Package pdftex.def Info: ../db/rho_paper_plot.pdf used on input line 294.
+(pdftex.def)             Requested size: 634.16505pt x 422.77664pt.
+
+
+LaTeX Warning: Float too large for page by 18.0216pt on input line 296.
+
+<../db/SSBvsFbarMohnRho_paper.pdf, id=55, 578.16pt x 578.16pt>
+File: ../db/SSBvsFbarMohnRho_paper.pdf Graphic file (type pdf)
+
+<use ../db/SSBvsFbarMohnRho_paper.pdf>
+Package pdftex.def Info: ../db/SSBvsFbarMohnRho_paper.pdf used on input line 30
+1.
+(pdftex.def)             Requested size: 422.77669pt x 422.77664pt.
+
+
+LaTeX Warning: Float too large for page by 3.5216pt on input line 303.
+
+<../db/wham_rho_paper_plot.pdf, id=56, 867.24pt x 578.16pt>
+File: ../db/wham_rho_paper_plot.pdf Graphic file (type pdf)
+
+<use ../db/wham_rho_paper_plot.pdf>
+Package pdftex.def Info: ../db/wham_rho_paper_plot.pdf used on input line 308.
+(pdftex.def)             Requested size: 634.16505pt x 422.77664pt.
+
+
+LaTeX Warning: Float too large for page by 18.0216pt on input line 310.
+
+[11 <../db/rho_paper_plot.pdf>] [12 <../db/SSBvsFbarMohnRho_paper.pdf>]
+[13 <../db/wham_rho_paper_plot.pdf>] (./rho_model_summary.tex) [14]
 (./state_space_ices.aux) ) 
 Here is how much of TeX's memory you used:
- 5887 strings out of 495028
- 84056 string characters out of 6181496
- 150671 words of memory out of 5000000
- 8966 multiletter control sequences out of 15000+600000
+ 5898 strings out of 495028
+ 84459 string characters out of 6181496
+ 150680 words of memory out of 5000000
+ 8975 multiletter control sequences out of 15000+600000
  17678 words of font info for 60 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 38i,12n,43p,1144b,375s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,12n,43p,1144b,333s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/tmiller2/.texmf-var/fonts/pk/ljfour/jknappen/
 ec/tcrm1200.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmb10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12
@@ -546,11 +572,13 @@ fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on state_space_ices.pdf (12 pages, 226716 bytes).
+f-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
+w/times/utmri8a.pfb>
+Output written on state_space_ices.pdf (14 pages, 358859 bytes).
 PDF statistics:
- 132 PDF objects out of 1000 (max. 8388607)
- 95 compressed objects within 1 object stream
+ 198 PDF objects out of 1000 (max. 8388607)
+ 141 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
