@@ -177,13 +177,22 @@ meeting. We will organize tasks to be completed prior to each meeting.
 
 [minutes](minutes.md#11-oct-2018)
 
-~~08 Nov 2018 4pm (CET, UTC+1)~~
+~~08 Nov 2018~~
 
-~~**13 Dec 2018** 4pm (CET, UTC+1)~~
+~~13 Dec 2018~~
 
 **10 Jan 2019** 4pm (CET, UTC+1)
 
-**14 Feb 2019** 4pm (CET, UTC+1)
+1. Overview of datasets, recently added stocks, summary plots
+2. Profile results from `applyFmax` and `applyF0.1` across all stocks, shifting
+   selectivity to younger/older fish, effects on catch and SSB
+3. Summarize the results, by focusing on the effect of shifting one year up or
+   down
+4. Comparison of maturity and selectivity
+
+[minutes](minutes.md#10-jan-2019)
+
+~~14 Feb 2019~~
 
 **14 Mar 2019** 4pm (CET, UTC+1)
 
