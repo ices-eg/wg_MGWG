@@ -346,6 +346,8 @@ dd <- data.frame(stock = character(),
 
 for (istock in 1:nstocks){
   models <- list.dirs(path = paste0("../", stocks[istock]), full.names = FALSE, recursive = FALSE)
+  print(models)
+  models = models[which(models != "a4asca")] #until predicted indices get fixed.
   nmodels <- length(models)
   for (imodel in 1:nmodels){
     files <- list.files(path = paste0("../", stocks[istock], "/", models[imodel]), full.names = FALSE)
@@ -357,6 +359,8 @@ for (istock in 1:nstocks){
         dat <- read.csv(file = myfile, header = TRUE)
         print(myfile)
         print(dim(dat))
+        print(myfile)
+        print(dat)
         print(c(istock,imodel,ifile))
         if (names(dat)[4] != "V3"){  # skip problem with WHAM GOMcod tab2.csv
           if (models[imodel] == "ASAP"){
@@ -413,16 +417,25 @@ for (istock in 1:nstocks){
     }
   }
 }
-write.csv(dd, file = "../db/predmissingdb.csv", row.names = FALSE)
 
-# note years are wrong in WHAM tab1 and tab2 csv files, asked Tim to fix
+#NOTE: no standard error of predicted indices at age for ASAP
+levels(dd$stock) = stock.names
+dd4 = dd[which(dd$model %in% c("a4asca te", "ASAP", "SAM", "WHAM")),]
+dd4$model = factor(dd4$model)
+#model.names = c("A4A sep sel", "A4A smooth sel", "ASAP", "SAM", "SAM constant F", "SAM fixed CV", "SAM Cor obs", "WHAM")
+#model.names = c("A4A", "ASAP", "SAM", "WHAM")
+model.names = c("ASAP", "SAM", "WHAM") #until A4A results are corrected
+levels(dd4$model) = model.names
+
+write.csv(dd, file = "../db/predmissingdb.csv", row.names = FALSE)
 
 # plot of observed and expected on log scale
 # not sure if want to try to fancy this up by including sdprd
 pdf(file="../db/predmissing_obsprd.pdf")
 for (istock in 1:nstocks){
-  mip <- ggplot(filter(dd, stock == stocks[istock], 
-                       !model %in% c("WHAM", "WHAM_m4", "WHAM_m5", "WHAM_m6")), 
+  #print(filter(dd4, stock == stock == stock.names[istock]))
+  mip <- ggplot(filter(dd4, stock == stock.names[istock]),#, 
+                       #!model %in% c("WHAM", "WHAM_m4", "WHAM_m5", "WHAM_m6")), 
                 aes(x=year, y=prd, color=model)) +
     geom_line() +
     geom_point(aes(y=obs)) +
@@ -438,19 +451,32 @@ for (istock in 1:nstocks){
 }
 dev.off()
 
+dd4$resid = dd4$obs - dd4$prd
+aggregate(resid ~ model * stock, data = dd4, FUN = sd)
+aggregate(resid ~ model * stock, data = dd4, FUN = mean)
+#aggregate(resid ~ model * stock, data = dd4, FUN = function(x) sqrt(mean(x)^2 + var(x)))
+aggregate(resid ~ model, data = dd4, FUN = sd)
+aggregate(resid ~ model, data = dd4, FUN = mean)
+#aggregate(resid ~ model, data = dd4, FUN = function(x) sqrt(mean(x)^2 + var(x)))
+
 # calculate residuals and resid squared and summarize different ways
-dd1 <- dd %>%
+dd1 <- dd4 %>%
   mutate(resid = prd - obs, resid2 = (prd - obs)^2)
 
+sapply(stock.names, function(x) unique(dd1$year[dd1$stock == x]))
+dd1$yearmiss = (1:3)[match(dd1$year, 2014:2016)]
+#terminal years of Atl. herring different
+dd1$yearmiss[dd1$stock == stock.names[12]] = (1:3)[match(dd1$year[dd1$stock == stock.names[12]], 2012:2014)]
+
 dd2 <- dd1 %>%
-  filter(!model %in% c("WHAM", "WHAM_m4", "WHAM_m5", "WHAM_m6")) %>%
+  #filter(!model %in% c("WHAM", "WHAM_m4", "WHAM_m5", "WHAM_m6")) %>%
   group_by(stock, model, year) %>%
-  summarize(bias = mean(resid), rmse = sqrt(mean(resid2)))
+  summarize(bias = mean(resid, na.rm = TRUE), rmse = sqrt(mean(resid2, na.rm = TRUE)))
 
 biasplot <- ggplot(dd2, aes(x=year, y=bias, color=model)) +
   geom_point() +
   geom_hline(yintercept=0, color="red", linetype="dashed") +
-  facet_wrap(stock ~ ., scales = "free") +
+  facet_wrap(~ stock, scales = "free") +
   xlab("Year") +
   ylab("Bias") +
   theme_bw() +
@@ -460,7 +486,7 @@ ggsave(filename = "../db/predmissing_biasplot.png", biasplot)
 
 rmseplot <- ggplot(dd2, aes(x=year, y=rmse, color=model)) +
   geom_point() +
-  facet_wrap(stock ~ ., scales = "free") +
+  facet_wrap(~ stock, scales = "free") +
   xlab("Year") +
   ylab("RMSE") +
   theme_bw() +
@@ -468,20 +494,42 @@ rmseplot <- ggplot(dd2, aes(x=year, y=rmse, color=model)) +
 #print(rmseplot)
 ggsave(filename = "../db/predmissing_rmseplot.png", rmseplot)
 
+dd3 <- dd1 %>%
+  #filter(!model %in% c("WHAM", "WHAM_m4", "WHAM_m5", "WHAM_m6")) %>%
+  group_by(model, yearmiss) %>%
+  summarize(bias = mean(resid, na.rm = TRUE), rmse = sqrt(mean(resid2, na.rm = TRUE)))
+
+avgbiasplot = ggplot(dd3, aes(x=yearmiss, y=bias, color=model)) +
+  geom_point() +
+  geom_hline(yintercept=0, color="red", linetype="dashed") +
+  xlab("Year") +
+  ylab("Bias") +
+  theme_bw() +
+  theme(legend.position = "bottom")
+ggsave(filename = "../db/predmissing_avgbiasplot.png", avgbiasplot)
+
+avgrmseplot = ggplot(dd3, aes(x=yearmiss, y=rmse, color=model)) +
+  geom_point() +
+  xlab("Year") +
+  ylab("RMSE") +
+  theme_bw() +
+  theme(legend.position = "bottom")
+ggsave(filename = "../db/predmissing_avgrmseplot.png", avgrmseplot)
+
 modelnumdf <- data.frame(model = sort(unique(dd1$model)), 
                          modelnum = as.factor(1:length(unique(dd1$model))))
 print(modelnumdf)
-dd3 <- left_join(dd1, modelnumdf, by="model")
+dd5 <- left_join(dd1, modelnumdf, by="model")
 mn <- substr(modelnumdf$model, 1, 16)
 mytitle <- paste0("1=",mn[1],", 2=",mn[2],", 3=",mn[3],", 4=",mn[4],", 5=",mn[5],", 6=",mn[6],
                   "\n7=",mn[7],", 8=",mn[8],", 9=",mn[9])
-residboxplot <- ggplot(dd3, aes(x=modelnum, y=resid)) +
+residboxplot <- ggplot(dd5, aes(x=model, y=resid)) +
   geom_boxplot() +
   geom_hline(yintercept=0, color="red", linetype="dashed") +
-  facet_wrap(stock~., scales = "free_y") +
-  xlab("Model Number") +
+  facet_wrap(~ stock, scales = "free_y") +
+  xlab("Model") +
   ylab("Log Scale Residual") +
-  labs(title = NULL, subtitle = mytitle) +
+  #labs(title = NULL, subtitle = mytitle) +
   theme_bw()
 #print(residboxplot)
 ggsave(filename = "../db/predmissing_residboxplot.png", residboxplot)
