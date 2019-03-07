@@ -35,6 +35,12 @@ The square root of the mean of the squared residuals (RMSE) is smaller for bette
 
 ![RMSE plot](predmissing_rmseplot.png)
 
+However, when you look at results averaged across stocks we see that SAM and WHAM provide less biased and more accurate predictions in each year of prediction.
+
+![Avg Bias plot](predmissing_avgbiasplot.png)
+
+![Avg RMSE plot](predmissing_avgrmseplot.png)
+
 ## Other thoughts?
 
 Please feel free to add your observations or new ways of plotting the results to this directory.
