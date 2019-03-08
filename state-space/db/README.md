@@ -41,6 +41,14 @@ However, when you look at results averaged across stocks we see that SAM and WHA
 
 ![Avg RMSE plot](predmissing_avgrmseplot.png)
 
+But these averages are driven by a single stock (GB haddock), as seen by comparing boxplots for bias
+
+![Avg Bias boxplot](predmissing_avgbiasboxplot.png)
+
+and RMSE. So overall, there is not much difference among the models.
+
+![Avg RMSE boxplot](predmissing_avgrmseboxplot.png)
+
 ## Other thoughts?
 
 Please feel free to add your observations or new ways of plotting the results to this directory.

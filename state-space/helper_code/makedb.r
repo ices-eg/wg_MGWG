@@ -484,6 +484,17 @@ biasplot <- ggplot(dd2, aes(x=year, y=bias, color=model)) +
 #print(biasplot)
 ggsave(filename = "../db/predmissing_biasplot.png", biasplot)
 
+biasboxplot <- ggplot(filter(dd2, year %in% c(2014, 2015, 2016)), 
+                      aes(x=as.factor(year), y=bias, fill=model)) +
+  geom_boxplot(position=position_dodge(0.8)) +
+  geom_hline(yintercept=0, color="red", linetype="dashed") +
+  xlab("Year") +
+  ylab("Bias") +
+  theme_bw() +
+  theme(legend.position = "bottom")
+print(biasboxplot)
+ggsave(filename = "../db/predmissing_biasboxplot.png", biasboxplot)
+
 rmseplot <- ggplot(dd2, aes(x=year, y=rmse, color=model)) +
   geom_point() +
   facet_wrap(~ stock, scales = "free") +
@@ -493,6 +504,16 @@ rmseplot <- ggplot(dd2, aes(x=year, y=rmse, color=model)) +
   theme(legend.position = "bottom")
 #print(rmseplot)
 ggsave(filename = "../db/predmissing_rmseplot.png", rmseplot)
+
+rmseboxplot <- ggplot(filter(dd2, year %in% c(2014, 2015, 2016)),
+                      aes(x=as.factor(year), y=rmse, fill=model)) +
+  geom_boxplot(position = position_dodge(0.8)) +
+  xlab("Year") +
+  ylab("RMSE") +
+  theme_bw() +
+  theme(legend.position = "bottom")
+#print(rmseboxplot)
+ggsave(filename = "../db/predmissing_rmseboxplot.png", rmseboxplot)
 
 dd3 <- dd1 %>%
   #filter(!model %in% c("WHAM", "WHAM_m4", "WHAM_m5", "WHAM_m6")) %>%
