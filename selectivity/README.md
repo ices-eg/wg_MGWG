@@ -149,6 +149,11 @@ Proposing new equations for Lopt and Aopt
   An exploration of the shapes and stability of population–selection curves.
   "For all 15 stocks, the population–selection curves were not stable through
   time but underwent changes in shape, which in some cases were quite radical."
+* [Sampson 2014](https://doi.org/10.1016/j.fishres.2013.10.004)
+  Fishery selection (selectivity) measures relative fishing mortality-at-age.
+  Fishing gear and the locations of the fish and the fishing influence selectivity.
+  VPA estimates indicate diverse selectivity curve shapes and temporal variability.
+  Selectivity influences fishery performance and stock assessments.
 
 *Less relevant for our study...*
 
