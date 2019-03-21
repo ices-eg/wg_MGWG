@@ -59,3 +59,13 @@ Attendees: None.
 
 Meeting did not occur due to the US Goverment shutdown.
 
+## 21 February 2019
+Attendees: Ernesto, Casper, Anders, Vanessa, Tim, Chris
+
+Tim has completed WHAM fits for all stocks and edited text in draft manuscript.
+
+Ernesto will not have time until late spring/early summer to finish predicted indices results for A4A models.
+
+Casper will determine a consistent set of SAM models to fit to the stocks.
+
+## 21 March 2019
