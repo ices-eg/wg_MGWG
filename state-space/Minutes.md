@@ -69,3 +69,12 @@ Ernesto will not have time until late spring/early summer to finish predicted in
 Casper will determine a consistent set of SAM models to fit to the stocks.
 
 ## 21 March 2019
+Attendees: Kelli, Brian Stock, Arni, Tim
+
+Tim has put WHAM model on github: https://github.com/timjmiller/wham
+
+Cole M. will not be able to contribute to the project due to other commitments. Kelli will try to take up SS3 work. Perhaps Jon D. can help?
+
+Arni M. has submitted an ICES ASC abstract for the project. He will work on generating draft presentation slides from material on the github site.
+
+Colin messaged that he will help Ernesto with getting the A4A predicted indices results fixed up.
