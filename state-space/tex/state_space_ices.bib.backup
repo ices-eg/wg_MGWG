@@ -1,0 +1,124 @@
+
+@article{fournieretal12,
+  author = {D. A. Fournier and H. J. Skaug and J. Ancheta and J. Ianelli and A. Magnusson and M.N. Maunder and A. Nielsen and J. Sibert},
+  year =  2012,
+  title = {{AD} {Model} {Builder}: using automatic differentiation for statistical inference of highly parameterized complex nonlinear models}, 	
+  journal = {Optimization Methods and Software},
+  volume = 27,
+  number = 2,
+  pages = {233--249}}
+
+@article{kristensenetal16,
+  author = {K. Kristensen and A. Nielsen and C. W. Berg and H. Skaug and B. M. Bell},
+  year = {2016},
+  title = {{TMB}: Automatic differentiation and {L}aplace approximation},
+  journal = {Journal of Statistical Software},
+  volume = 70,
+  number = 5,
+  pages = {1--21}}
+
+@article{milleretal16,
+  author = {T. J. Miller and J. A. Hare and L. Alade},
+  year = {2016},
+  title = {A state-space approach to incorporating environmental effects on recruitment in an age-structured assessment model with an application to {S}outhern {N}ew {E}ngland yellowtail flounder},
+  journal = {\cjfas},
+  volume = 73,
+  number = 8,
+  pages = {1261--1270},
+  note = {doi:10.1139/cjfas-2015-0339}}
+
+@article{millerlegault17,
+  author = {T. J. Miller and C. M. Legault},
+  year = 2017,
+  title = {Statistical behavior of retrospective patterns and their effects on estimation of stock and harvest status},
+  journal = {\fr},
+  volume = 186,
+  number = 1,
+  pages = {109--120}}
+
+@article{millerhyun18,
+  author = {T. J. Miller and S.-Y. Hyun},
+  year = 2018,
+  title = {Evaluating evidence for alternative natural mortality and process error assumptions using a state-space, age-structured assessment model},
+  journal = {\cjfas},
+  number = 5,
+  volume = 75,
+  pages = {691--703},
+  note = {doi: 10.1139/cjfas-2017-0035}}
+  
+@misc{milleretal,
+  author = {T. J. Miller and L. O'Brien and P. S. Fratantoni},
+  year = {In press},
+  title = {Temporal and environmental variation in growth and maturity and effects on management reference points of Georges Bank Atlantic cod},
+  howpublished = {\cjfas. doi: 10.1139/cjfas-2017-0124}}
+
+
+@Manual{R18,
+  title        = {R: A Language and Environment for Statistical Computing},
+  author       = {{R Core Team}},
+  organization = {R Foundation for Statistical Computing},
+  address      = {Vienna, Austria},
+  year         = 2018,
+  url          = {https://www.R-project.org}}
+
+@ARTICLE{skaugfournier06,
+	author = {H. J. Skaug and D. A. Fournier},
+	title = {Automatic approximation of the marginal likelihood in non-{Gaussian} hierarchical models},
+	journal = {\csda},
+	volume = 51,
+	year = 2006,
+	number =2,
+	pages = {699--709}}
+
+@article{nielsen2014estimation,
+  title={Estimation of time-varying selectivity in stock assessments using state-space models},
+  author={Nielsen, Anders and Berg, Casper W},
+  journal={Fisheries Research},
+  volume={158},
+  pages={96--101},
+  year={2014},
+  publisher={Elsevier}
+}
+
+@article{berg2016accounting,
+  title={Accounting for correlated observations in an age-based state-space stock assessment model},
+  author={Berg, Casper W and Nielsen, Anders},
+  journal={ICES Journal of Marine Science},
+  volume={73},
+  number={7},
+  pages={1788--1797},
+  year={2016},
+  publisher={Oxford University Press}
+}
+
+@article{albertsen2016choosing,
+  title={Choosing the observational likelihood in state-space stock assessment models},
+  author={Albertsen, Christoffer Moesgaard and Nielsen, Anders and Thygesen, Uffe H{\o}gsbro},
+  journal={Canadian Journal of Fisheries and Aquatic Sciences},
+  volume={74},
+  number={5},
+  pages={779--789},
+  year={2016},
+  publisher={NRC Research Press}
+}
+
+@article{berg2014evaluation,
+  title={Evaluation of alternative age-based methods for estimating relative abundance from survey data in relation to assessment models},
+  author={Berg, Casper W and Nielsen, Anders and Kristensen, Kasper},
+  journal={Fisheries research},
+  volume={151},
+  pages={91--99},
+  year={2014},
+  publisher={Elsevier}
+}
+
+@article{thygesen2017validation,
+  title={Validation of ecological state space models using the Laplace approximation},
+  author={Thygesen, Uffe H{\o}gsbro and Albertsen, Christoffer Moesgaard and Berg, Casper Willestofte and Kristensen, Kasper and Nielsen, Anders},
+  journal={Environmental and Ecological Statistics},
+  volume={24},
+  number={2},
+  pages={317--339},
+  year={2017},
+  publisher={Springer US}
+}

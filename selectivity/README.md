@@ -1,4 +1,4 @@
-﻿# Selectivity as part of management advice
+# Selectivity as part of management advice
 
 Coordinators: Arni Magnusson, Jacob Kasper
 
@@ -149,7 +149,18 @@ Proposing new equations for Lopt and Aopt
   An exploration of the shapes and stability of population–selection curves.
   "For all 15 stocks, the population–selection curves were not stable through
   time but underwent changes in shape, which in some cases were quite radical."
-
+* [Sampson 2014](https://doi.org/10.1016/j.fishres.2013.10.004)
+  Fishery selection (selectivity) measures relative fishing mortality-at-age.
+  Fishing gear and the locations of the fish and the fishing influence selectivity.
+  VPA estimates indicate diverse selectivity curve shapes and temporal variability.
+  Selectivity influences fishery performance and stock assessments.
+* [O'Boyle et al. 2016](https://academic.oup.com/icesjms/article/73/7/1774/2458751)
+  "Building simulations that reflect the life history of the stock can guide assessment efforts by
+  placing priors and constraints on model fits to selectivity patterns and be used to explore trade-offs
+  between model complexity and the ability to produce reasonable management advice. Their development is
+  encouraged as a standard feature in the assessment of migratory fish stocks." Expands on Sampson's
+  work.
+  
 *Less relevant for our study...*
 
 * [Fauconnet et al. 2016](https://www.sciencedirect.com/science/article/pii/S0308597X15003231)
@@ -177,13 +188,22 @@ meeting. We will organize tasks to be completed prior to each meeting.
 
 [minutes](minutes.md#11-oct-2018)
 
-**08 Nov 2018** 4pm (CET, UTC+1)
+~~08 Nov 2018~~
 
-**13 Dec 2018** 4pm (CET, UTC+1)
+~~13 Dec 2018~~
 
 **10 Jan 2019** 4pm (CET, UTC+1)
 
-**14 Feb 2019** 4pm (CET, UTC+1)
+1. Overview of datasets, recently added stocks, summary plots
+2. Profile results from `applyFmax` and `applyF0.1` across all stocks, shifting
+   selectivity to younger/older fish, effects on catch and SSB
+3. Summarize the results, by focusing on the effect of shifting one year up or
+   down
+4. Comparison of maturity and selectivity
+
+[minutes](minutes.md#10-jan-2019)
+
+~~14 Feb 2019~~
 
 **14 Mar 2019** 4pm (CET, UTC+1)
 

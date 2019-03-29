@@ -20,6 +20,7 @@
 \usepackage{xspace}
 \usepackage{textcomp}
 \usepackage{marvosym}
+\usepackage{booktabs}
 \bibpunct[, ]{(}{)}{;}{a}{}{,}
 \renewcommand\bibname{References}
 \renewcommand\figurename{Fig.}
@@ -86,8 +87,8 @@ and ???
 \item General notions on importance of stock assessments for fisheries management
 \item Evolution of stock assessments: increase in complexity, single or multifleet, state-space vs. deterministic processes
 \item Numerous models used currently in fisheries management with different modelling assumptions
-\item Meta-analysis on X stocks to investigate how the models differ in performance according to their assumptions
-\item Quick description of methods: Fit 5 models to X stocks and compare the predictability of the models to conclude on the forecast performance
+\item Meta-analysis on 13 stocks to investigate how the models differ in performance according to their assumptions
+\item Quick description of methods: Fit 4 models to 13 stocks and compare the predictability of the models to conclude on the forecast performance
 \end{itemize}
 
 \section*{Methods}
@@ -98,7 +99,46 @@ and ???
 \item Presentation of fish stocks (summary in a table and data in supplementary material?)
 \end{itemize}
 
-\subsection*{The WHAM state-space model}
+\subsection*{Estimation models}
+
+We fit four assessment models to identical data sets for each stock. Two of the models are in the class of statistical catch at age models (ASAP and A4A) and two are state+space models (WHAM and SAM). ASAP is used extensively to assess US fish stocks in the northwest Atlantic ocean. SAM and A4A are used to assess stocks in Europe. WHAM is a more recently developed model that can be configured to estimate models ranging from statistical catch at age to state-space versions with options to treat various aspects as random effects. It has not been used in management but versions have been applied to stocks of yellowtail flounder \citep{milleretal16}, redfish \citep{millerhyun18}, and Atlantic cod \citep{milleretal18}.
+
+All models treat mortality processes use the Baranov catch equations which treat survival over the annual time interval as
+
+\subsubsection*{WHAM models}
+
+We fitted 4 configurations of the WHAM model to each stock data set. Two configurations are close to traditional statistical catch at age models with deterministic annual transitions in the cohorts. However, annual numbers recruit to the population are treated as independent lognormal random effects. The other two configurations are full state-space models that treat the annual cohort transitions as stochastic. The difference between the two types of each class of models is how the age composition observations are treated. In models 1 and 3 we assumed multinomial distributions with a default effective sample size. For models 2 and 4 we assumed a simple logit normal distribution similar to \citet{milleretal16} except that we treated any unobserved age classes as missing. We fit these models to determine whether there were generalalities in model performance (AIC) or retrospective patterns across the stocks. The WHAM model with the lowest AIC was used for comparison with other model frameworks.
+
+The only differences in model configuration between stocks was in configuring selectivity for the age composition observations for the abundance indices and the catch. For many of the stocks, the range of ages used to comprise the aggregate index varied among indices. This led to some difficulties in applying a default logistic function of age, so we often estimated age-specific parameters. The general approach was to initially estimate all age-specific parameters freely to see which ages exhibited peak selectivity. Then selectivity parameters at these ages were fixed at one for final model results. The initial models cannot be used for final results because typically there is confounding of fully selected catchability with other model parameters (e.g., catchability) when all selectivity parameters are free.
+
+\subsubsection*{Parameter Estimation}
+
+%Abundance at age in the first year ($N_{1,a}$), fully-selected fishing mortality in the first year ($F_{f,1}$), and annual deviations in log-fully-selected fishing mortality ($\delta_{f,y}$) after the first year, mean log-recruitment ($\mu$), index catchability ($q_d$), all selectivity parameters, and process error variances ($\sigma^2_{N,j}$) are fixed effects parameters $\bm{\theta}$ estimated by ML. Abundance at age ($N_{y,a}$) after the first year ($y>1$), are treated as random effects that are integrated out to obtain the marginal likelihood.
+
+All model frameworks use some form of maximum likelihood estimation. ASAP is programmed in AD Model Builder \citep{fournieretal12} and can be configured to use various penalties to the likelihood, but no penalties were used for any applications here. Estimation for the A4A model is programmed in R \citep{R18} and is also likelihood-based. The WHAM and SAM models are programmed using the Template Model Builder (TMB) package in R \citep{kristensenetal16} and parameters are estimated by maximizing a Laplace approximation of the marginal likelihood \citep{skaugfournier06}. To use the TMB package, the joint log-likelihood is writen as a C++ program which is compiled and accessed from R. The Laplace approximation of the marginal log-likelihood is returned when called from R and we use the ``nlminb'' function in R to minimize the negative of the Laplace approximation of the marginal log-likelihood. Empirical Bayes estimates of the state variables (random effects) are provided by the mode of posterior distributions of $\textsl{\textbf{S}}$, conditioned on the fixed effects parameters.
+
+
+
+
+\subsubsection*{Diagnostics}
+
+To get independent residuals from a state-space model the so-called `one-observation-ahead' residuals are computed. The residual for the $n$'th observation is computed by using the first $n-1$ observations to predict the $n$'th. Details can be found in \citet{thygesen2017validation}.   
+
+\section*{Results}
+
+\section*{Discussion}
+
+\clearpage
+
+\bibliographystyle{cjfas2}
+
+\bibliography{state_space_ices}
+
+\clearpage
+
+\section*{Appendix}
+
+\subsection*{WHAM model description}
 
 The definitions for probability models describing stochastic changes in abundance at age from one year to another are identical to that given in \citet{milleretal16} and \citet{millerhyun18}. Log-abundance for ages and years greater than 1 are normally distributed conditional on the vector of numbers at age from the previous
 time step,
@@ -185,20 +225,6 @@ Similarly, we assume a multinomial distribution with sample size $E_{f,y}$ for t
 \end{equation*}
 where $\widetilde C_{f,y,a}$ is the predicted number at age (i.e., Eq. \ref{pred.caa} with $W_{f,y,a} = 1$) and $\widetilde C_{f,y}$ is analogous to Eq. \ref{pred.catch}. However, there are options for other distributions for the age composition observations.
 
-
-\subsubsection*{Parameter Estimation}
-
-Abundance at age in the first year ($N_{1,a}$), fully-selected fishing mortality in the first year ($F_{f,1}$), and annual deviations in log-fully-selected fishing mortality ($\delta_{f,y}$) after the first year, mean log-recruitment ($\mu$), index catchability ($q_d$), all selectivity parameters, and process error variances ($\sigma^2_{N,j}$) are fixed effects parameters $\bm{\theta}$ estimated by ML. Abundance at age ($N_{y,a}$) after the first year ($y>1$), are treated as random effects that are integrated out to obtain the marginal likelihood.
-
-We perform ML estimation of the fixed effects parameters with a Laplace approximation of the marginal log-likelihood function \citep{skaugfournier06},
-
-\vspace{-12pt}
-\begin{equation*}
-\int {\cal L}\left(\bm{\theta},\textsl{\textbf{S}} | \textsl{\textbf{D}}\right) d\textsl{\textbf{S}} = {\cal L}\left(\bm{\theta} | \textsl{\textbf{D}}\right),
-\end{equation*}
-where \textsl{\textbf{D}} are all observations, using TMB \citep{kristensenetal16} and R \citep{R17}. Specifically, we used the ``nlminb'' function in R to minimize the negative of the Laplace approximation of the marginal log-likelihood. Estimates of the random state variables are provided by the mode of posterior distributions of $\textsl{\textbf{S}}$, conditioned on $\widehat {\bm{\theta}}$. For a fuller description of variance estimation by the TMB package, see \citet{kristensenetal16}.
-
-
 \subsection*{The SAM state-space assessment model}
 
 The basic state-space assessment model (SAM) is described in \citet{nielsen2014estimation}. The model has been continuously developed and adapted for different stocks (e.g.~to include tagging data and biomass indices). The current implementation, which is available at: https://github.com/fishfollower/SAM, is an R-package based on Template Model Builder (TMB) \citep{kristensenetal16}.
@@ -260,50 +286,53 @@ The likelihood function for this is set up by first defining the joint likelihoo
  ''(\theta,u,x)|_{u=\hat{u}_\theta}))+\frac{n}{2}\log(2\pi)
  \end{align*}
 
-
-\subsubsection*{Diagnostics}
-
-To get independent residuals from a state-space model the so-called `one-observation-ahead' residuals are computed. The residual for the $n$'th observation is computed by using the first $n-1$ observations to predict the $n$'th. Details can be found in \citet{thygesen2017validation}.   
-
-\section*{Results}
-
-\section*{Discussion}
-
-\clearpage
-
-\bibliographystyle{cjfas2}
-
-\bibliography{state_space_ices}
-
-\clearpage
-
 %Figures
-
+\begin{landscape}
 \begin{figure}
-\caption{Estimates for annual total spawning stock biomass from each fitted model.}\label{SSB_compare}
+\caption{Degree of retrospective pattern in average fishing mortality, recruitment, and spawning stock biomass as measured by Mohn's $\rho$ for each stock and model type.}\label{rho_paper_plot}
 \begin{center}
-%\includegraphics[width = \textwidth]{SSB_compare.pdf}
+\includegraphics[height = 0.9\textheight]{../db/rho_paper_plot.pdf}
 \end{center}
 \end{figure}
 
 \begin{figure}
-\caption{Estimates for annual total recruitment (age 0) from each fitted model.}\label{R_compare}
+\caption{Relationship between Mohn's $\rho$ for SSB and average fishing mortality by model.}\label{rho_ssb_vs_F}
 \begin{center}
-%\includegraphics[width = \textwidth]{R_compare.pdf}
+\includegraphics[height = 0.9\textheight]{../db/SSBvsFbarMohnRho_paper.pdf}
 \end{center}
 \end{figure}
+
+\begin{figure}
+\caption{Degree of retrospective pattern in average fishing mortality, recruitment, and spawning stock biomass as measured by Mohn's $\rho$ for each stock and WHAM model configuration.}\label{wham_rho_paper_plot}
+\begin{center}
+\includegraphics[height = 0.9\textheight]{../db/wham_rho_paper_plot.pdf}
+\end{center}
+\end{figure}
+\end{landscape}
 
 \clearpage
 
 %Tables
 
-\begin{landscape}
 \begin{table}
 \begin{center}
-\caption{Number of parameters, AIC, and Mohn's $\rho$ for SSB, mean fishing mortality at ages 4+, and recruitment for each model.}\label{model_compare}
-%\input{model_compare.tex}
+\caption{Modelling assumptions for the four estimation models.}\label{assumption_models}
+\input{table_difference_models.tex}
 \end{center}
 \end{table}
-\end{landscape}
+
+\begin{table}
+\begin{center}
+\caption{Fish stocks considered in this study.}\label{fish_stocks}
+\input{table_fish_stocks.tex}
+\end{center}
+\end{table}
+
+\begin{table}
+\begin{center}
+\caption{Mean and Standard Deviation of Mohn's $\rho$ for SSB, $\overline{F}$, and recruitment across all stocks by model type.}\label{model_compare}
+\input{rho_model_summary.tex}
+\end{center}
+\end{table}
 
 \end{document}

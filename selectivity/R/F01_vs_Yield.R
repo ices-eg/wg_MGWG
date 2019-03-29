@@ -10,7 +10,7 @@ refs<-setNames(data.frame(matrix(0,0,5)), c("Yield", "Biomass", "SSB", "stock", 
 
 
 for(i in 1:length(nms)){
-  if(i==10) next        ##skip nafo_3ps stock as there is no S value 
+  if(i==10) next        ##skip nafo_3ps stock as there is no S value
   #i=1
   setwd("stocks")
   source(nms[i])
@@ -19,28 +19,28 @@ for(i in 1:length(nms)){
   source("functions/slide.R")
   Syoung <- slide(S, -1)
   Sold <- slide(S, +1)
-  
-  sy<-applyF0.1(Ninit, M, Syoung, mat, wcatch) 
-  sc<-applyF0.1(Ninit, M, S, mat, wcatch)
-  so<-applyF0.1(Ninit, M, Sold, mat, wcatch)
-  
+
+  sy<-applyF0.1(Ninit, M, Syoung, mat, wcatch)
+  sc<-applyF0.1(Ninit, M, S,      mat, wcatch)
+  so<-applyF0.1(Ninit, M, Sold,   mat, wcatch)
+
   ref<-setNames(data.frame(cbind(c(sy$Y, sc$Y, so$Y),
                                  c(sy$B,  sc$B,  so$B),
-                                 c(sy$SSB,  sc$SSB,  so$SSB), rep(strsplit(nms[i],".R")[[1]],3),c("l","c","h"))), 
+                                 c(sy$SSB,  sc$SSB,  so$SSB), rep(strsplit(nms[i],".R")[[1]],3),c("l","c","h"))),
                 c("Yield", "Biomass", "SSB", "stock", "selectivity"))
   refs<-rbind(refs,ref)
   rm(list=setdiff(ls(),c("refs","nms")))
-}  
+}
 
 str(refs)
 refs$Yield<-as.numeric(as.character(refs$Yield))
 refs$stnum<-as.numeric(refs$stock)
 
-jpeg("../F01_plots/Yield_perStock_atS.jpg", quality=100, width = 700, height = 700)   
-gap.plot(refs$stnum, refs$Yield,  col=c("black", "grey", "blue"), pch=19, 
-         gap=c(70000,210000,260000,530000), ytics=c(seq(0,70000,10000),220000,250000,550000,600000), 
+jpeg("../F01_plots/Yield_perStock_atS.jpg", quality=100, width = 700, height = 700)
+gap.plot(refs$stnum, refs$Yield,  col=c("black", "grey", "blue"), pch=19,
+         gap=c(70000,210000,260000,530000), ytics=c(seq(0,70000,10000),220000,250000,550000,600000),
          xtics=levels(as.factor(refs$stnum)), xticlab=F, ylab="Yield", xlab="Stocks")
-mtext(c(unique(as.character(refs$stock))), 1, cex=0.8, at=levels(as.factor(refs$stnum)), line=rep(c(1,2),7), 
+mtext(c(unique(as.character(refs$stock))), 1, cex=0.8, at=levels(as.factor(refs$stnum)), line=rep(c(1,2),7),
       col=rep(1:2,3, each=2))
 legend("topright", c("young S","current S","old S"), pch=19, col=c("black", "grey", "blue") )
 dev.off()

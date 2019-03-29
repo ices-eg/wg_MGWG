@@ -63,7 +63,8 @@ Sweden, Abba style!
 ## New co-chair
 
 MGWG proposes *Chris Legault* as a new co-chair from 2019 onwards, as
-recommended by all participants at the 2018 meeting in Ispra.
+recommended by all participants at the 2018 meeting in Ispra. Congratulations to
+Chris and all of us!
 
 ***
 
