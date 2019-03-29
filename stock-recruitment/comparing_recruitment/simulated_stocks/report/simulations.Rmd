@@ -1,0 +1,38 @@
+---
+title: "Simulated populationas for evaluation of stock-recruit fitting"
+author:
+  - name: Iago Mosqueira
+    affiliation: a
+  - name: Elizabeth Brooks
+    affiliation: b
+address:
+  - code: a
+    address: Institute of Smoke and Magic, University of Sometown, Sometown, XY, 12345
+  - code: b
+    address: Department of Neat Tricks, Whereever State University, Someplace, MC, 67890
+    lead_author_surname: Mosqueira and Brooks
+doi_footer: "https://github.com/ices-eg/MGWG/tree/master/stock-recruitment"
+abstract: |
+  Your abstract will be typeset here, and used by default a visually distinctive font.
+  An abstract should explain to the general reader the major contributions of the article. 
+keywords: [SRR stock assessment]
+output: pinp::pinp
+papersize: a4paper
+bibliography: references
+---
+
+# Introduction 
+
+# Methods
+
+## Initial population
+
+## Stock-recruitment deviates
+
+## Stock trajectories
+
+## Observation error
+
+# Simulated populations
+
+# Grid of scenarios
