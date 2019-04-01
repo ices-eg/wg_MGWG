@@ -220,9 +220,9 @@ srrs <- rbindlist(lapply(list(bhm=bhm, rim=rim, gmm=gmm, hsm=hsm)[runs$srm], fun
 numbers <- catch.n(oms[[1]])
 sdlog <- sqrt(log(1 + ((catch(oms[[1]]) * 0.10)^2 / catch(oms[[1]])^2)))
 
-catch.n <- lapply(oms, function(x)
+catch.n <- mclapply(oms, function(x)
   mnlnoise(n=its, numbers=catch.n(x),
-  sdlog=sqrt(log(1 + ((catch(x) * 0.10)^2 / catch(x)^2))), ess=200))
+  sdlog=sqrt(log(1 + ((catch(x) * 0.10)^2 / catch(x)^2))), ess=200), mc.cores=36)
 
 
 # SURVEY, mnlnoise w/ 20% CV, 100 ESS
