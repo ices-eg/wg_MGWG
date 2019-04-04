@@ -2,7 +2,7 @@
 
 \- See [Wiki](https://github.com/ices-eg/MGWG/wiki) for a discussion board
 listing research topics<br>
-\- See [ICES MGWG](http://www.ices.dk/community/groups/Pages/MGWG.aspx) homepage
+\- See [ICES](http://www.ices.dk/community/groups/Pages/MGWG.aspx) MGWG homepage
 for overall objectives, latest report, etc.
 
 ***
