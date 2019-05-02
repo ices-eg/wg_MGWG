@@ -6,14 +6,20 @@
 #
 # Distributed under the terms of the European Union Public Licence (EUPL) V.1.1.
 
-install.packages()
+# INSTALL PKGS from FLR and CRAN depenencies
+
+install.packages(c("FLife", "FLasher", "ggplotFL", "data.table", "doParallel"),
+  repos=structure(c(CRAN="https://cran.uni-muenster.de/",
+    FLR="http://flr-project.org/R")))
+
+# LOAD PKGS
 
 library(FLife)
 library(FLasher)
 library(ggplotFL)
 library(data.table)
 
-# SOURCE mlnoise()
+# GET colinmillar:::mlnoise()
 
 source("R/functions.R")
 
@@ -21,13 +27,17 @@ source("R/functions.R")
 
 lastyr <- 100
 its <- 100
+
 set.seed(1809)
 
 # --- INITIAL population
 
-# SET initial parameters
+# SET initial parameters:
 
+# h = 0.65, B0 = 1000, Linf = 90
 par <- FLPar(linf=90, a=0.00001, sl=1, sr=2000, a1=4, s=0.65, v=1000)
+
+# ages 1-20+, fbar = 4-15
 range <- c(min=1, max=20, minfbar=4, maxfbar=15, plusgroup=20)
 
 # GET full LH params set
@@ -213,8 +223,11 @@ metrics <- lapply(oms, metrics,
 srrs <- rbindlist(lapply(list(bhm=bhm, rim=rim, gmm=gmm, hsm=hsm)[runs$srm], function(x)
   cbind(data.frame(model=SRModelName(model(x)), data.frame(as(params(x), 'list'))))),
   fill=TRUE)
- 
 
+# RUNS: devs, srm, traj, model, a, b
+runs <- cbind(runs, srrs)
+
+ 
 # PLOT stock, mat, m, waa
 
 # --- OBSERVATIONS
@@ -240,6 +253,8 @@ index <- FLQuants(mclapply(oms, function(x)
 save(index, catch.n, metrics, srrs, runs, file="out/sims.RData", compress="xz")
 
 save(oms, runs, file="out/stocks.RData", compress="xz")
+
+
 
 # -- SA INPUTS
 
@@ -273,4 +288,3 @@ writeVPAFiles(iter(oms[[1]],1), indices=FLIndices(A=FLIndex(index=iter(index[[1]
 # TRUE F, rec, Q as DF, txt / VPA files
 
 # 
-
