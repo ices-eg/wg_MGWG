@@ -78,3 +78,8 @@ Cole M. will not be able to contribute to the project due to other commitments. 
 Arni M. has submitted an ICES ASC abstract for the project. He will work on generating draft presentation slides from material on the github site.
 
 Colin messaged that he will help Ernesto with getting the A4A predicted indices results fixed up.
+
+## 18 April 2019
+Attendees: Tim, Kelli
+
+Kelli has made progress on code to convert ASAP files to SS3! Focused primarily on North Sea cod to test the conversion code. Once that is complete, application to other stocks should be straightforward.
