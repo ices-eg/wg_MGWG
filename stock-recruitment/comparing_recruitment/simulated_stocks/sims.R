@@ -1,16 +1,19 @@
-# sim.R - DESC
-# /sim.R
+# sims.R - DESC
+# /sims.R
 
 # Copyright European Union, 2018
 # Author: Iago Mosqueira (EC JRC) <iago.mosqueira@ec.europa.eu>
 #
 # Distributed under the terms of the European Union Public Licence (EUPL) V.1.1.
 
+install.packages()
 
 library(FLife)
 library(FLasher)
 library(ggplotFL)
 library(data.table)
+
+# SOURCE mlnoise()
 
 source("R/functions.R")
 
@@ -158,7 +161,8 @@ runs <- expand.grid(sce)
 # JUST DO IT!
 
 library(doParallel)
-registerDoParallel(36)
+ncores <- 36
+registerDoParallel(ncores)
 
 out <- foreach(i=seq(nrow(runs)),
   .final=function(i) setNames(i, seq(nrow(runs)))) %dopar% {
@@ -220,29 +224,41 @@ srrs <- rbindlist(lapply(list(bhm=bhm, rim=rim, gmm=gmm, hsm=hsm)[runs$srm], fun
 numbers <- catch.n(oms[[1]])
 sdlog <- sqrt(log(1 + ((catch(oms[[1]]) * 0.10)^2 / catch(oms[[1]])^2)))
 
-catch.n <- mclapply(oms, function(x)
+catch.n <- FLQuants(mclapply(oms, function(x)
   mnlnoise(n=its, numbers=catch.n(x),
-  sdlog=sqrt(log(1 + ((catch(x) * 0.10)^2 / catch(x)^2))), ess=200), mc.cores=36)
+  sdlog=sqrt(log(1 + ((catch(x) * 0.10)^2 / catch(x)^2))), ess=200), mc.cores=ncores))
 
 
 # SURVEY, mnlnoise w/ 20% CV, 100 ESS
 
-index <- lapply(oms, function(x)
+index <- FLQuants(mclapply(oms, function(x)
   mnlnoise(n=its, numbers=stock.n(x),
-  sdlog=sqrt(log(1 + ((stock(x) * 0.20)^2 / stock(x)^2))), ess=100))
+  sdlog=sqrt(log(1 + ((stock(x) * 0.20)^2 / stock(x)^2))), ess=100), mc.cores=ncores))
 
 # 3 x PLOT 3 runs: diff srr, diff trajectory, diff deviances
 
-save(index, catch.n, metrics, srrs, file="sims.RData", compress="xz")
-save(oms, file="stocks.RData", compress="xz")
+save(index, catch.n, metrics, srrs, runs, file="out/sims.RData", compress="xz")
+
+save(oms, runs, file="out/stocks.RData", compress="xz")
 
 # -- SA INPUTS
 
 # OUTPUT stock as VPA
 
-writeVPA(om1, output.file="vpa/sim",
+writeVPAFiles <- function(stock, indices, file) {
+
+  FLCore:::writeVPA(stock, output.file=file,
   slots=c("landings.n","landings.wt","m","mat","stock.wt", "m.spwn", "harvest.spwn"))
 
+  FLCore:::writeIndicesVPA(indices, file=paste0(file, "-TUNE.txt"))
+
+  write("sim-TUNE.txt", file=paste0(file, "-INDEX.txt"), append=TRUE)
+
+}
+
+writeVPAFiles(iter(oms[[1]],1), indices=FLIndices(A=FLIndex(index=iter(index[[1]],1),
+  effort=FLQuant(1, dimnames=dimnames(iter(index[[1]], 1))["year"]),
+  name="A", desc="Simulated")), file="vpa/sim")
 
 # ASAP
 
@@ -251,3 +267,10 @@ writeVPA(om1, output.file="vpa/sim",
 # SAM
 
 # CASAL
+
+# S/R TSs
+
+# TRUE F, rec, Q as DF, txt / VPA files
+
+# 
+
