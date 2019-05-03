@@ -1,5 +1,5 @@
 ---
-title: "Simulated populationas for evaluation of stock-recruit fitting"
+title: "Simulated populations for evaluation of stock-recruit fitting"
 author:
   - name: Iago Mosqueira
     affiliation: a
@@ -15,7 +15,7 @@ doi_footer: "https://github.com/ices-eg/MGWG/tree/master/stock-recruitment"
 abstract: |
   Your abstract will be typeset here, and used by default a visually distinctive font.
   An abstract should explain to the general reader the major contributions of the article. 
-keywords: [SRR stock assessment]
+keywords: [SRR stock assessment simulation]
 output: pinp::pinp
 papersize: a4paper
 bibliography: references
@@ -23,7 +23,7 @@ bibliography: references
 
 # Introduction 
 
-# Methods
+# Operating models
 
 ## Initial population
 
@@ -33,6 +33,7 @@ bibliography: references
 
 ## Observation error
 
+# Grid of scenarios
+
 # Simulated populations
 
-# Grid of scenarios
