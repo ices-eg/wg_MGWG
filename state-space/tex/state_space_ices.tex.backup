@@ -56,7 +56,7 @@ Do state-space assessment models perform better than traditional statistical cat
 \vspace{144pt}
 
 Timothy J. Miller, Anders Nielsen, Chris Legault, Ernesto Jardim, Olav Nikolai Breivik, Jonathan Deroba, Dan Hennan, Arni Magnusson, Vanessa Trijoulet, %\footnote{Northeast Fisheries Science Center, National Marine Fisheries Service, 166 Water Street, Woods Hole, MA 02543 USA} 
-and ???
+and Kelli Johnson
 \end{titlepage}
 
 \setcounter{page}{2}
@@ -87,8 +87,8 @@ and ???
 \item General notions on importance of stock assessments for fisheries management
 \item Evolution of stock assessments: increase in complexity, single or multifleet, state-space vs. deterministic processes
 \item Numerous models used currently in fisheries management with different modelling assumptions
-\item Meta-analysis on X stocks to investigate how the models differ in performance according to their assumptions
-\item Quick description of methods: Fit 5 models to X stocks and compare the predictability of the models to conclude on the forecast performance
+\item Meta-analysis on 13 stocks to investigate how the models differ in performance according to their assumptions
+\item Quick description of methods: Fit 4 models to 13 stocks and compare the predictability of the models to conclude on the forecast performance
 \end{itemize}
 
 \section*{Methods}
@@ -101,13 +101,13 @@ and ???
 
 \subsection*{Estimation models}
 
-We fit four assessment models to identical data sets for each stock. Two of the models are in the class of statistical catch at age models (ASAP and A4A). ASAP is used extensively to assess US fish stocks in the northwest Atlantic ocean. SAM and A4A are used to assess stocks in Europe. WHAM is a more recently developed model that can be configured to estimate models ranging from statistical catch at age to state-space versions with options to treat various aspects as random effects. It has not been used in management but versions have been applied to stocks of yellowtail flounder \citep{milleretal16}, redfish \citep{millerhyun18}, and Atlantic cod \citep{milleretal18}.
+We fit four assessment models to identical data sets for each stock. Two of the models are in the class of statistical catch at age models (ASAP and A4A) and two are state+space models (WHAM and SAM). ASAP is used extensively to assess US fish stocks in the northwest Atlantic ocean. SAM and A4A are used to assess stocks in Europe. WHAM is a more recently developed model that can be configured to estimate models ranging from statistical catch at age to state-space versions with options to treat various aspects as random effects. It has not been used in management but versions have been applied to stocks of yellowtail flounder \citep{milleretal16}, redfish \citep{millerhyun18}, and Atlantic cod \citep{milleretal18}. Currently, WHAM can be installed as an R package from https://github.com/timjmiller/wham.
 
 All models treat mortality processes use the Baranov catch equations which treat survival over the annual time interval as
 
 \subsubsection*{WHAM models}
 
-We fitted 4 configurations of the WHAM model to each stock data set. Two configurations are close to traditional statistical catch at age models with deterministic annual transitions in the cohorts. However, annual numbers recruit to the population are treated as independent lognormal random effects. The other two configurations are full state-space models that treat the annual cohort transitions as stochastic. The difference between the two types of each class of models is how the age composition observations are treated. In models 1 and 3 we assumed multinomial distributions with a default effective sample size. For models 2 and 4 we assumed a simple logit normal distribution similar to \citet{milleretal16} except that we treated any unobserved age classes as missing. We fit these models to determine whether there were generalalities in model performance (AIC) or retrospective patterns across the stocks. The WHAM model with the lowest AIC was used for comparison with other model frameworks.
+We fitted 4 configurations of the WHAM model to each stock data set. Two configurations are close to traditional statistical catch at age models with deterministic annual transitions in the cohorts. However, annual numbers recruit to the population are treated as independent lognormal random effects. The other two configurations are full state-space models that treat the annual cohort transitions as stochastic. The difference between the two types of each class of models is how the age composition observations are treated. In models 1 and 3 we assumed multinomial distributions with a default effective sample size. For models 2 and 4 we assumed a simple logit normal distribution similar to \citet{milleretal16} except that we treated any unobserved age classes as missing. We fit these models to determine whether there were generalities in model performance (AIC) or retrospective patterns across the stocks. The WHAM model with the lowest AIC was used for comparison with other model frameworks.
 
 The only differences in model configuration between stocks was in configuring selectivity for the age composition observations for the abundance indices and the catch. For many of the stocks, the range of ages used to comprise the aggregate index varied among indices. This led to some difficulties in applying a default logistic function of age, so we often estimated age-specific parameters. The general approach was to initially estimate all age-specific parameters freely to see which ages exhibited peak selectivity. Then selectivity parameters at these ages were fixed at one for final model results. The initial models cannot be used for final results because typically there is confounding of fully selected catchability with other model parameters (e.g., catchability) when all selectivity parameters are free.
 
@@ -125,6 +125,12 @@ All model frameworks use some form of maximum likelihood estimation. ASAP is pro
 To get independent residuals from a state-space model the so-called `one-observation-ahead' residuals are computed. The residual for the $n$'th observation is computed by using the first $n-1$ observations to predict the $n$'th. Details can be found in \citet{thygesen2017validation}.   
 
 \section*{Results}
+
+\subsection{WHAM model fits}
+
+State-space configurations with stochastic transitions in the numbers at age always outperformed SCAA configurations of the WHAM model with regard to AIC whether the multinomial or logistic distributions was assumed for the age composition observations. 
+
+Uncertainty in model estimates (SSB, Fishing mortaltity, etc.) was alway greater for state-space configurations than the the SCAA configurations, give a particular age composition distribution. However, using the logistic distribution for age composition rather than the multinomial also often resulted in greater uncertainty estimates given a SCAA or state-space configuration (Fig. \ref{wham_SSB_CV}.
 
 \section*{Discussion}
 
@@ -301,9 +307,7 @@ The likelihood function for this is set up by first defining the joint likelihoo
 \includegraphics[height = 0.9\textheight]{../db/SSBvsFbarMohnRho_paper.pdf}
 \end{center}
 \end{figure}
-\end{landscape}
 
-\begin{landscape}
 \begin{figure}
 \caption{Degree of retrospective pattern in average fishing mortality, recruitment, and spawning stock biomass as measured by Mohn's $\rho$ for each stock and WHAM model configuration.}\label{wham_rho_paper_plot}
 \begin{center}
@@ -311,9 +315,31 @@ The likelihood function for this is set up by first defining the joint likelihoo
 \end{center}
 \end{figure}
 
+\begin{figure}
+\caption{Estimated coefficient of variation for annual spawning stock biomass estimates for each stock and WHAM model configuration.}\label{wham_SSB_CV}
+\begin{center}
+\includegraphics[height = 0.9\textheight]{wham_SSB_CV.pdf}
+\end{center}
+\end{figure}
+\end{landscape}
+
 \clearpage
 
 %Tables
+
+\begin{table}
+\begin{center}
+\caption{Modelling assumptions for the four estimation models.}\label{assumption_models}
+\input{table_difference_models.tex}
+\end{center}
+\end{table}
+
+\begin{table}
+\begin{center}
+\caption{Fish stocks considered in this study.}\label{fish_stocks}
+\input{table_fish_stocks.tex}
+\end{center}
+\end{table}
 
 \begin{table}
 \begin{center}

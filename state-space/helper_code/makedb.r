@@ -302,6 +302,15 @@ levels(dc4$model) = model.names
 xlabs = c("Catch", "bar(italic(F))", "italic(R)", "SSB")
 dc4$Metric = xlabs[match(dc4$metric, levels(dc4$metric))]
 
+
+dc4$symtest = log(dc4$high)-log(dc4$value) - log(dc4$value)+log(dc4$low)
+head(filter(dc4, model == "A4A"))
+dc4$symtest = dc4$high - dc4$value - dc4$value + dc4$low
+head(filter(dc4, model == "A4A"))
+#not sure how CI is calculated for A4A. SAM is a little off from symmetric on log-scale too.
+dc4$CV = log(dc4$high/dc4$value)/qnorm(0.975)
+
+
 # make plots
 cairo_pdf(file="../db/timeseriesplots.pdf", onefile = TRUE)
 mymetric <- c("SSB", "Fbar", "R", "Catch")
@@ -328,6 +337,35 @@ for (imetric in 1:length(mymetric)){
     print(tsp_tiled)
     
   }
+}
+dev.off()
+
+cairo_pdf(file="../db/CVs.pdf", onefile = TRUE)
+for (imetric in 1:length(xlabs)){
+#  for (istock in 1:nstocks){
+    tsp <- ggplot(filter(dc4, Metric == xlabs[imetric]),# & stock == stock.names[11]), 
+                  aes(x=year, y=CV, color=model)) +
+      geom_line() +
+      #geom_ribbon(aes(ymin=low, ymax=high, fill=model), alpha=0.3, linetype = 0) +
+      xlab("Year") +
+      ylab("CV") +
+      ggtitle(parse(text = xlabs[imetric])) +
+      coord_cartesian(ylim = c(0,0.5)) +
+      #ylim(0,0.5) + 
+      #expand_limits(y=0) +
+      theme_bw() +
+      theme(legend.position = "bottom")
+      tsp$labels$colour = tsp$labels$fill = ""
+    
+    #print(tsp)
+    
+    tsp_tiled <- tsp +
+      facet_wrap(~stock)
+#      facet_wrap(model ~ .)
+    
+    print(tsp_tiled)
+    
+#  }
 }
 dev.off()
 
