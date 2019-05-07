@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2018.10.15)  14 FEB 2019 14:42
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2018.10.11)  6 MAY 2019 16:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **state_space_ices.tex
 (./state_space_ices.tex
 LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+Babel <3.9h> and hyphenation patterns for 78 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/leqno.clo
@@ -502,83 +502,109 @@ Non-PDF special ignored!
 
 
 Non-PDF special ignored!{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-[2] [3] [4] (./state_space_ices.bbl) [5
+[2] [3] [4] [5] (./state_space_ices.bbl) [6
 
-] [6
+] [7
 
-] [7]
-Overfull \hbox (10.52124pt too wide) in paragraph at lines 235--237
+] [8]
+Overfull \hbox (10.52124pt too wide) in paragraph at lines 241--243
 \OT1/cmr/m/n/12 The tran-si-tion func-tion $\OML/cmm/m/it/12 T$ \OT1/cmr/m/n/12
  is where the stock equa-tion and as-sump-tions about stock--recruitment
  []
 
-[8] [9] [10] <../db/rho_paper_plot.pdf, id=54, 867.24pt x 578.16pt>
+[9] [10] [11] <../db/rho_paper_plot.pdf, id=57, 867.24pt x 578.16pt>
 File: ../db/rho_paper_plot.pdf Graphic file (type pdf)
 
 <use ../db/rho_paper_plot.pdf>
-Package pdftex.def Info: ../db/rho_paper_plot.pdf used on input line 294.
+Package pdftex.def Info: ../db/rho_paper_plot.pdf used on input line 300.
 (pdftex.def)             Requested size: 634.16505pt x 422.77664pt.
 
 
-LaTeX Warning: Float too large for page by 18.0216pt on input line 296.
+LaTeX Warning: Float too large for page by 18.0216pt on input line 302.
 
-<../db/SSBvsFbarMohnRho_paper.pdf, id=55, 578.16pt x 578.16pt>
+<../db/SSBvsFbarMohnRho_paper.pdf, id=58, 578.16pt x 578.16pt>
 File: ../db/SSBvsFbarMohnRho_paper.pdf Graphic file (type pdf)
 
 <use ../db/SSBvsFbarMohnRho_paper.pdf>
 Package pdftex.def Info: ../db/SSBvsFbarMohnRho_paper.pdf used on input line 30
-1.
+7.
 (pdftex.def)             Requested size: 422.77669pt x 422.77664pt.
 
 
-LaTeX Warning: Float too large for page by 3.5216pt on input line 303.
+LaTeX Warning: Float too large for page by 3.5216pt on input line 309.
 
-<../db/wham_rho_paper_plot.pdf, id=56, 867.24pt x 578.16pt>
+<../db/wham_rho_paper_plot.pdf, id=59, 867.24pt x 578.16pt>
 File: ../db/wham_rho_paper_plot.pdf Graphic file (type pdf)
 
 <use ../db/wham_rho_paper_plot.pdf>
-Package pdftex.def Info: ../db/wham_rho_paper_plot.pdf used on input line 308.
+Package pdftex.def Info: ../db/wham_rho_paper_plot.pdf used on input line 314.
 (pdftex.def)             Requested size: 634.16505pt x 422.77664pt.
 
 
-LaTeX Warning: Float too large for page by 18.0216pt on input line 310.
+LaTeX Warning: Float too large for page by 18.0216pt on input line 316.
 
-[11 <../db/rho_paper_plot.pdf>] [12 <../db/SSBvsFbarMohnRho_paper.pdf>]
-[13 <../db/wham_rho_paper_plot.pdf>] (./rho_model_summary.tex) [14]
-(./state_space_ices.aux) ) 
+<wham_SSB_CV.pdf, id=60, 867.24pt x 578.16pt>
+File: wham_SSB_CV.pdf Graphic file (type pdf)
+ <use wham_SSB_CV.pdf>
+Package pdftex.def Info: wham_SSB_CV.pdf used on input line 321.
+(pdftex.def)             Requested size: 634.16505pt x 422.77664pt.
+
+
+LaTeX Warning: Float too large for page by 18.0216pt on input line 323.
+
+<wham_CV_ratio_SSB.pdf, id=61, 867.24pt x 578.16pt>
+File: wham_CV_ratio_SSB.pdf Graphic file (type pdf)
+
+<use wham_CV_ratio_SSB.pdf>
+Package pdftex.def Info: wham_CV_ratio_SSB.pdf used on input line 328.
+(pdftex.def)             Requested size: 634.16505pt x 422.77664pt.
+
+
+LaTeX Warning: Float too large for page by 18.0216pt on input line 330.
+
+[12 <../db/rho_paper_plot.pdf>] [13 <../db/SSBvsFbarMohnRho_paper.pdf>]
+[14 <../db/wham_rho_paper_plot.pdf>] [15 <./wham_SSB_CV.pdf>] [16 <./wham_CV_ra
+tio_SSB.pdf>] (./table_difference_models.tex) (./table_fish_stocks.tex)
+Overfull \hbox (51.31363pt too wide) in paragraph at lines 2--348
+ [] 
+ []
+
+(./rho_model_summary.tex) [17] [18] (./state_space_ices.aux) ) 
 Here is how much of TeX's memory you used:
- 5898 strings out of 495028
- 84459 string characters out of 6181496
- 150680 words of memory out of 5000000
- 8975 multiletter control sequences out of 15000+600000
+ 5918 strings out of 493304
+ 84881 string characters out of 6139870
+ 156002 words of memory out of 5000000
+ 9236 multiletter control sequences out of 15000+600000
  17678 words of font info for 60 fonts, out of 8000000 for 9000
- 14 hyphenation exceptions out of 8191
+ 957 hyphenation exceptions out of 8191
  38i,12n,43p,1144b,333s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/tmiller2/.texmf-var/fonts/pk/ljfour/jknappen/
-ec/tcrm1200.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmb10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxsl10.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
-w/times/utmri8a.pfb>
-Output written on state_space_ices.pdf (14 pages, 358859 bytes).
+{/usr/share/texmf
+/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmb10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmbxsl10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
+i12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr
+/share/texmf/fonts/type1/public/tex-gyre/qhvr.pfb></usr/share/texmf/fonts/type1
+/public/tex-gyre/qhvri.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm12
+00.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on state_space_ices.pdf (18 pages, 642537 bytes).
 PDF statistics:
- 198 PDF objects out of 1000 (max. 8388607)
- 141 compressed objects within 2 object streams
+ 260 PDF objects out of 1000 (max. 8388607)
+ 184 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
