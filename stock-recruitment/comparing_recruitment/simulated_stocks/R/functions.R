@@ -18,6 +18,7 @@ mnlnoise <- function(n, numbers, sdlog, ess) {
   # ess / sdlog
   if(!is(sdlog, "FLQuant"))
     sdlog <- totals %=% sdlog
+
   if(!is(ess, "FLQuant"))
     ess <- totals %=% ess
 
@@ -52,6 +53,7 @@ mnlnoise <- function(n, numbers, sdlog, ess) {
   proportions_obs %*% totals_obs
 }
 
+#
 
 writeVPAFiles <- function(stock, indices, file) {
 
@@ -63,4 +65,3 @@ writeVPAFiles <- function(stock, indices, file) {
   write("sim-TUNE.txt", file=paste0(file, "-INDEX.txt"), append=TRUE)
 
 }
-

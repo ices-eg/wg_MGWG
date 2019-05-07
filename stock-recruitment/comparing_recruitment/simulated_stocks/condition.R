@@ -146,7 +146,7 @@ FMSY <- c(fmsy(eql))
 
 rcc <- fwdControl(year=3:lastyr, quant="f", value=c(
   rep(0.001, length=40),
-  seq(0, FMSY * 1.4, length=20),
+  seq(0.001, FMSY * 1.4, length=20),
   rep(FMSY * 1.4, 18),
   seq(FMSY * 1.4, FMSY * 0.75, length=20)
   ))
@@ -191,6 +191,7 @@ registerDoParallel(ncores)
 library(doRNG)
 registerDoRNG(8234)
 
+# SETUP for psocks connection
 out <- foreach(i=seq(nrow(runs)),
   .final=function(i) setNames(i, seq(nrow(runs)))) %dopar% {
 
@@ -252,12 +253,11 @@ catch.n <- FLQuants(mclapply(oms, function(x)
 
 # SURVEY, mnlnoise w/ 20% CV, 100 ESS
 
-# TODO ADD q and selex to sampling
-# index = stock * q * selex
-surveyq <- 0.14
+survey.q <- 0.14
+survey.sel <- catch.sel(oms[[1]])[,1]
 
 index <- FLQuants(mclapply(oms, function(x)
-  mnlnoise(n=its, numbers=stock.n(x),
+  mnlnoise(n=its, numbers=survey.q * stock.n(x) %*% survey.sel,
   sdlog=sqrt(log(1 + ((stock(x) * 0.20)^2 / stock(x)^2))), ess=100), mc.cores=ncores))
 
 # 3 x PLOT 3 runs: diff srr, diff trajectory, diff deviances
@@ -265,9 +265,8 @@ index <- FLQuants(mclapply(oms, function(x)
 # SAVE
 
 save(index, catch.n, metrics, srrs, runs, file="out/metrics.RData", compress="xz")
+
 save(oms, runs, file="out/oms.RData", compress="xz")
-
-
 
 # -- SA INPUTS
 
