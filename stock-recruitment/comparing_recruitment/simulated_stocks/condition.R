@@ -9,7 +9,7 @@
 
 # -- SETUP
 
-# INSTALL PKGS from FLR and CRAN depenencies
+# INSTALL PKGS from FLR and CRAN dependencies
 
 install.packages(c("FLife", "FLasher", "ggplotFL", "data.table", "doParallel",
   "doRNG"), repos=structure(c(CRAN="https://cran.uni-muenster.de/",
@@ -70,7 +70,7 @@ om <- fwdWindow(stk[,2], eql, end=lastyr)
 
 om <- propagate(om, its)
 
-# { CHECK initial SRR
+# {{{ CHECK initial SRR
 
 eqlR <- lhEql(parg, range=range, m=mJensen, sr="ricker")
 stkR <- as(eql, "FLStock")
@@ -81,7 +81,7 @@ comp <- FLQuants(BH=iter(stock.n(om)[,1],1), RK=stock.n(omR)[,1])
 
 ggplot(comp, aes(x=age, y=data, colour=qname)) + geom_line() + facet_wrap(~qname)
 
-# }
+# }}}
 
 # -- DEVIANCES
 
@@ -251,6 +251,10 @@ catch.n <- FLQuants(mclapply(oms, function(x)
 
 
 # SURVEY, mnlnoise w/ 20% CV, 100 ESS
+
+# TODO ADD q and selex to sampling
+# index = stock * q * selex
+surveyq <- 0.14
 
 index <- FLQuants(mclapply(oms, function(x)
   mnlnoise(n=its, numbers=stock.n(x),
