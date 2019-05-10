@@ -499,7 +499,7 @@ aggregate(resid ~ model, data = dd4, FUN = mean)
 
 # calculate residuals and resid squared and summarize different ways
 dd1 <- dd4 %>%
-  mutate(resid = prd - obs, resid2 = (prd - obs)^2)
+  mutate(resid = obs - prd, resid2 = (obs - prd)^2)
 
 sapply(stock.names, function(x) unique(dd1$year[dd1$stock == x]))
 dd1$yearmiss = (1:3)[match(dd1$year, 2014:2016)]
