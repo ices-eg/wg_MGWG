@@ -4,6 +4,6 @@ Using age-specific selectivity for surveys or fishery catch facilitated converge
 All models use the same selectivity assumptions for consistency.
 Trial fits with all age-specific selectivities free, led to assumed ages for peak selectivity.
 Age for peak selectivity in index 1 was 5.
-Age for peak selectivity in index 2 was 3.
+Age for peak selectivity in index 2 was 3,4.
 
 Model 4 is used to provide results for comparison with other model frameworks.
