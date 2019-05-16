@@ -87,7 +87,7 @@ Kelli has made progress on code to convert ASAP files to SS3! Focused primarily 
 ## 16 May 2019
 Attendees: Tim, Brian, Chris, Jon, Arni, Vanessa, Casper
 
-Kelli has gotten an SS model fitted to one stock (Northern cod?).
+Kelli has gotten an SS model fitted to one stock (North Sea cod?).
 
 Tim revised index prediction results to fix an error in usage of data in the last three years. Also added text and plots for WHAM-specific results into the manuscript.
 
