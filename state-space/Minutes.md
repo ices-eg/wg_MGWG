@@ -83,3 +83,14 @@ Colin messaged that he will help Ernesto with getting the A4A predicted indices 
 Attendees: Tim, Kelli
 
 Kelli has made progress on code to convert ASAP files to SS3! Focused primarily on North Sea cod to test the conversion code. Once that is complete, application to other stocks should be straightforward.
+
+## 16 May 2019
+Attendees: Tim, Brian, Chris, Jon, Arni, Vanessa, Casper
+
+Kelli has gotten an SS model fitted to one stock (Northern cod?).
+
+Tim revised index prediction results to fix an error in usage of data in the last three years. Also added text and plots for WHAM-specific results into the manuscript.
+
+ICES abstract was not accepted, but Tim may submit an abstract to the November CAPAM (next-generation stock assessment models) in New Zealand.
+
+Casper is going to coordinate with Anders to fit SAM models with and without time-varying selectivity. This will be a nice comparison with the alternative A4A models.
