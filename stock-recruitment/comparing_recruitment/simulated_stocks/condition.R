@@ -12,7 +12,7 @@
 # INSTALL PKGS from FLR and CRAN dependencies
 
 install.packages(c("FLife", "FLasher", "ggplotFL", "data.table", "doParallel",
-  "doRNG"), repos=structure(c(CRAN="https://cran.uni-muenster.de/",
+  "rngtools", "doRNG"), repos=structure(c(CRAN="https://cran.uni-muenster.de/",
     FLR="http://flr-project.org/R")))
 
 # LOAD PKGS
@@ -29,7 +29,7 @@ source("R/functions.R")
 # VARIABLES
 
 lastyr <- 100
-its <- 5
+its <- 50
 
 set.seed(1809)
 
@@ -45,7 +45,7 @@ par <- FLPar(linf=90, a=0.00001, sl=1, sr=2000, a1=4, s=0.65, v=1000)
 range <- c(min=1, max=20, minfbar=4, maxfbar=15, plusgroup=20)
 
 # GET full LH params set
-
+0
 parg <- lhPar(par)
 
 # M Jensen
@@ -62,6 +62,13 @@ eql <- lhEql(parg, range=range, m=mJensen)
 # COERCE
 
 stk <- as(eql, "FLStock")
+# BUG: FLife does not set right units
+units(stk) <- list(
+  landings="t", landings.n="1000", landings.wt="kg",
+  discards="t", discards.n="1000", discards.wt="kg",
+  catch="t", catch.n="1000", catch.wt="kg",
+  stock="t", stock.n="1000", stock.wt="kg",
+  m="m")
 srr <- as(eql, "predictModel")
 
 # EXTEND w/F=0.0057226 until year=lastyr
@@ -83,6 +90,7 @@ ggplot(comp, aes(x=age, y=data, colour=qname)) + geom_line() + facet_wrap(~qname
 
 # }}}
 
+
 # -- DEVIANCES
 
 # rand walk
@@ -100,8 +108,7 @@ rwdev <- Reduce(combine, FLQuants(lapply(1:its, function(x)
 lndev03 <- rlnorm(its, FLQuant(0, dimnames=list(year=3:lastyr)), 0.3)
 lndev06 <- rlnorm(its, FLQuant(0, dimnames=list(year=3:lastyr)), 0.6)
 
-plot(FLQuants(rw=rwdev, ln03=lndev03, ln06=lndev06))
-
+devs <- FLQuants(rw=rwdev, ln03=lndev03, ln06=lndev06)
 
 # -- SRRs
 
@@ -135,6 +142,7 @@ ggplot(FLQuants(
     label=c("Ricker", "SegReg", "Mean", "BevHolt"))) +
   scale_color_discrete(name="SRR: ")
 
+srms <- list(bhm=bhm, rim=rim, gmm=gmm, hsm=hsm)
 
 # -- TRAJECTORIES
 
@@ -167,6 +175,7 @@ hfc <- fwdControl(
   # year 41-lastyr, F=FMSY * [1.2-1.4]
   list(year=seq(41, lastyr), quant="f", value=FMSY * runif(60, 1.2, 1.4)))
 
+trajs <- list(rcc=rcc, lfc=lfc, hfc=hfc)
 
 # SCENARIOS
 
@@ -178,6 +187,8 @@ sce <- list(
 runs <- expand.grid(sce)
 
 # -- PROJECT OMs
+
+# WARNING: This code runs better in Linux, using multicore {{{
 
 library(parallel)
 library(doParallel)
@@ -206,23 +217,7 @@ out <- foreach(i=seq(nrow(runs)),
 
 oms <- FLStocks(out)
 
-# PLOTS
-
-# PLOT one stock
-plot(oms[[1]], iter=1:5)
-
-# 3 x PLOT 3 runs: diff srr, diff trajectory, diff deviances
-plot(oms[1:3]) +
-  scale_fill_discrete(labels=runs[1:3,'devs']) +
-  scale_color_discrete(labels=runs[1:3,'devs'])
-
-plot(oms[c(1,4,7,10)]) +
-  scale_fill_discrete(labels=runs[c(1,4,7,10),'srm']) +
-  scale_color_discrete(labels=runs[c(1,4,7,10),'srm'])
-
-plot(oms[c(1,13,25)]) +
-  scale_fill_discrete(labels=runs[c(1,13,25),'traj']) +
-  scale_color_discrete(labels=runs[c(1,13,25),'traj'])
+# }}}
 
 # OUTPUT real ssb, rec, naa, fbar, faa, catch.sel, params, model
 
@@ -243,30 +238,36 @@ runs <- cbind(runs, srrs)
 
 # CATCH.N, mnlnoise w/ 10% CV, 200 ESS
 
-numbers <- catch.n(oms[[1]])
-sdlog <- sqrt(log(1 + ((catch(oms[[1]]) * 0.10)^2 / catch(oms[[1]])^2)))
-
 catch.n <- FLQuants(mclapply(oms, function(x)
   mnlnoise(n=its, numbers=catch.n(x),
   sdlog=sqrt(log(1 + ((catch(x) * 0.10)^2 / catch(x)^2))), ess=200), mc.cores=ncores))
 
-
 # SURVEY, mnlnoise w/ 20% CV, 100 ESS
 
-survey.q <- 0.14
-survey.sel <- catch.sel(oms[[1]])[,1]
+# Q
+survey.q <- 3e-3
+
+# SEL
+a50 <- 2.3
+slope <- 0.4
+survey.sel <- FLQuant(1 / ( 1 + exp(-(seq(1, 20) - a50) / slope)),
+  dimnames=dimnames(m(oms[[1]])))
+
+timing <- 0.5
 
 index <- FLQuants(mclapply(oms, function(x)
-  mnlnoise(n=its, numbers=survey.q * stock.n(x) %*% survey.sel,
-  sdlog=sqrt(log(1 + ((stock(x) * 0.20)^2 / stock(x)^2))), ess=100), mc.cores=ncores))
+  mnlnoise(n=its, numbers=stock.n(x) * exp(-(harvest(x) * timing + m(x) * timing)) %*%
+    survey.sel * survey.q, sdlog=sqrt(log(1 + ((stock(x) * 0.20)^2 / stock(x)^2))),
+    ess=100), mc.cores=ncores))
 
 # 3 x PLOT 3 runs: diff srr, diff trajectory, diff deviances
 
 # SAVE
 
-save(index, catch.n, metrics, srrs, runs, file="out/metrics.RData", compress="xz")
+save(index, catch.n, metrics, runs, file="out/metrics.RData", compress="xz")
 
-save(oms, runs, file="out/oms.RData", compress="xz")
+save(oms, runs, devs, srms, trajs, file="out/oms.RData", compress="xz")
+
 
 # -- SA INPUTS
 
@@ -274,21 +275,29 @@ save(oms, runs, file="out/oms.RData", compress="xz")
 
 res <- foreach(i=seq(nrow(runs))) %dopar% {
 
-  paths <- file.path("vpa", paste0("r", i), paste0("iter", seq(its)))
+  paths <- file.path("sa/vpa", paste0("r", i), paste0("iter", seq(its)))
 
   for(j in seq(its)) {
   
     # CREATE FLIndices
     idxs <- FLIndices(A=FLIndex(index=iter(index[[i]], j),
       effort=FLQuant(1, dimnames=dimnames(iter(index[[1]], 1))["year"]),
-      name="A", desc="Simulated"))
+      name="A", desc="Simulated", range=c(startf=0, endf=0)))
 
+    # CREATE folder, if missing
     if(!dir.exists(paths[j]))
       dir.create(paths[j], recursive=TRUE)
 
-    writeVPAFiles(iter(oms[[i]], j), indices=idxs, file=file.path(paths[[j]], "sim"))
+    # DELETE existing files
+    del <- file.remove(dir(paths[j], pattern='*.txt', full.name=TRUE))
+
+    # WRITE VPA files FLStock + FLIndices)
+    writeVPAFiles(window(iter(oms[[i]], j), start=42),
+      indices=lapply(idxs, window, start=42), file=file.path(paths[[j]], "sim"))
   }
 }
+
+zip("sa/vpa.zip", "sa/vpa/")
 
 # ASAP
 
@@ -301,3 +310,4 @@ res <- foreach(i=seq(nrow(runs))) %dopar% {
 # S/R TSs
 
 # TRUE F, rec, Q as DF, txt / VPA files
+

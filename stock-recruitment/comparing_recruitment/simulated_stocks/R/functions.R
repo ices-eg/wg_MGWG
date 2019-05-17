@@ -6,6 +6,7 @@
 #
 # Distributed under the terms of the European Union Public Licence (EUPL) V.1.1.
 
+#' mnlnoise
 #' data(ple4)
 #' mnlnoise(n=100, numbers=catch.n(ple4), sdlog=log(catch(ple4)), ess=10)
 #' mnlnoise(n=100, numbers=catch.n(ple4), sdlog=0.5, ess=10)
