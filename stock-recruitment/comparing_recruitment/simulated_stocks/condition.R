@@ -266,5 +266,3 @@ save(index, catch.n, metrics, runs, file="out/metrics.RData", compress="xz")
 
 save(oms, runs, devs, srms, trajs, file="out/oms.RData", compress="xz")
 
-
-

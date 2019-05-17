@@ -7,13 +7,17 @@
 # Distributed under the terms of the European Union Public Licence (EUPL) V.1.1.
 
 
-library(FLCore)
+# LOAD PKGS
 
-load("out/oms.RData")
-load("out/metrics.RData")
+library(FLCore)
 
 library(parallel)
 library(doParallel)
+
+# LOAD OMs
+
+load("out/oms.RData")
+load("out/metrics.RData")
 
 # REGISTER ncores
 ncores <- min(nrow(runs), floor(detectCores() * 0.9))
@@ -56,8 +60,7 @@ res <- foreach(i=seq(nrow(runs))) %dopar% {
   }
 }
 
-system("(cd sa; zip -r vpa.zip vpa;)")
-
+system("(cd sa; zip -r vpa.zip vpa/;)")
 
 # ASAP
 
