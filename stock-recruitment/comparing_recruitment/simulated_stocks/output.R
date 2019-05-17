@@ -56,7 +56,8 @@ res <- foreach(i=seq(nrow(runs))) %dopar% {
   }
 }
 
-zip("sa/vpa.zip", "sa/vpa/")
+system("(cd sa; zip -r vpa.zip vpa;)")
+
 
 # ASAP
 
