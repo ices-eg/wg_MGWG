@@ -27,11 +27,21 @@ knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE,
 
 ```
 
-
-
 # Introduction 
 
 # Operating models
+
+## Initial population
+
+## Stock-recruitment deviates
+
+## Stock trajectories
+
+## Observation error
+
+# Grid of scenarios
+
+# Simulated populations
 
 ```{r loadoms}
 load("../out/oms.RData")
@@ -60,17 +70,4 @@ plot(oms[c(1,13,25)]) +
   scale_color_discrete(labels=runs[c(1,13,25),'traj'])
 ```
 
-
-
-## Initial population
-
-## Stock-recruitment deviates
-
-## Stock trajectories
-
-## Observation error
-
-# Grid of scenarios
-
-# Simulated populations
 

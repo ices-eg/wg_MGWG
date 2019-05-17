@@ -188,7 +188,7 @@ runs <- expand.grid(sce)
 
 # -- PROJECT OMs
 
-# WARNING: This code runs better in Linux, using multicore {{{
+# WARNING: This code runs (better) in Linux, using multicore
 
 library(parallel)
 library(doParallel)
@@ -216,8 +216,6 @@ out <- foreach(i=seq(nrow(runs)),
 }
 
 oms <- FLStocks(out)
-
-# }}}
 
 # OUTPUT real ssb, rec, naa, fbar, faa, catch.sel, params, model
 
@@ -269,45 +267,4 @@ save(index, catch.n, metrics, runs, file="out/metrics.RData", compress="xz")
 save(oms, runs, devs, srms, trajs, file="out/oms.RData", compress="xz")
 
 
-# -- SA INPUTS
-
-# VPA
-
-res <- foreach(i=seq(nrow(runs))) %dopar% {
-
-  paths <- file.path("sa/vpa", paste0("r", i), paste0("iter", seq(its)))
-
-  for(j in seq(its)) {
-  
-    # CREATE FLIndices
-    idxs <- FLIndices(A=FLIndex(index=iter(index[[i]], j),
-      effort=FLQuant(1, dimnames=dimnames(iter(index[[1]], 1))["year"]),
-      name="A", desc="Simulated", range=c(startf=0, endf=0)))
-
-    # CREATE folder, if missing
-    if(!dir.exists(paths[j]))
-      dir.create(paths[j], recursive=TRUE)
-
-    # DELETE existing files
-    del <- file.remove(dir(paths[j], pattern='*.txt', full.name=TRUE))
-
-    # WRITE VPA files FLStock + FLIndices)
-    writeVPAFiles(window(iter(oms[[i]], j), start=42),
-      indices=lapply(idxs, window, start=42), file=file.path(paths[[j]], "sim"))
-  }
-}
-
-zip("sa/vpa.zip", "sa/vpa/")
-
-# ASAP
-
-# a4a
-
-# SAM
-
-# CASAL
-
-# S/R TSs
-
-# TRUE F, rec, Q as DF, txt / VPA files
 
