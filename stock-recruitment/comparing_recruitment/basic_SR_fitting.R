@@ -1,5 +1,6 @@
 
 library(dplyr)
+require(msy)
 
 # read in some stock and recuit data
 # https://doi.org/10.7489/12085-1
@@ -19,7 +20,7 @@ plot(rec ~ ssb,
 
 # fit a few models (externally)
 
-mods <- c("Ricker", "Bevholt", "smooth_hockey", "Segreg")
+mods <- c("Ricker", "Bevholt", "Smooth_hockey", "Segreg")
 
 pred_data <-
   data.frame(
