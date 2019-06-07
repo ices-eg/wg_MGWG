@@ -256,8 +256,8 @@ test <- model.frame(metrics(oms[[1]], mets), drop=TRUE)
 
 res <- rbindlist(mclapply(oms, function(x)
   # REC and SSB lag = 1
-  data.table(model.frame(metrics(x, list(rec=rec[,-1], ssb=ssb[,-50], fbar=fbar[,-50])),
-  drop=TRUE)), mc.cores=ncores), idcol="run")
+  data.table(model.frame(metrics(x, mets), drop=TRUE)), mc.cores=ncores),
+    idcol="run")
 res[, c("model", "internal") := .("om", NA)]
 
 # SAVE
