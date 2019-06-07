@@ -11,9 +11,9 @@
 
 # INSTALL PKGS from FLR and CRAN dependencies
 
-install.packages(c("FLife", "FLasher", "ggplotFL", "data.table", "doParallel",
-  "rngtools", "doRNG"), repos=structure(c(CRAN="https://cran.uni-muenster.de/",
-    FLR="http://flr-project.org/R")))
+# install.packages(c("FLife", "FLasher", "ggplotFL", "data.table", "doParallel",
+#   "rngtools", "doRNG"), repos=structure(c(CRAN="https://cran.uni-muenster.de/",
+#   FLR="http://flr-project.org/R")))
 
 # LOAD PKGS
 
@@ -41,11 +41,12 @@ set.seed(1809)
 # h = 0.65, B0 = 1000, Linf = 90
 par <- FLPar(linf=90, a=0.00001, sl=1, sr=2000, a1=4, s=0.65, v=1000)
 
+# PLOT selex
+
 # ages 1-20+, fbar = 4-15
-range <- c(min=1, max=20, minfbar=4, maxfbar=15, plusgroup=20)
+range <- c(min=1, max=20, minfbar=4, maxfbar=7, plusgroup=20)
 
 # GET full LH params set
-0
 parg <- lhPar(par)
 
 # M Jensen
@@ -125,22 +126,6 @@ gmm <- predictModel(model=geomean, params=FLPar(a=400))
 # hockeystick 70% asymptote BH
 hsm <- predictModel(model=rec ~ FLQuant(ifelse(c(ssb) <= c(b), c(a) * c(ssb), c(a) * c(b)),
   dimnames = dimnames(ssb)), params=FLPar(a=0.9, b=450))
-
-ggplot(FLQuants(
-  ricker=predict(rim, ssb=FLQuant(seq(1, 2000, length=100))),
-  bevholt=predict(bhm, ssb=FLQuant(seq(1, 2000, length=100))),
-  geomean=predict(gmm, ssb=FLQuant(seq(1, 2000, length=100))),
-  segreg=predict(hsm, ssb=FLQuant(seq(1, 2000, length=100))),
-  replacement=FLQuant(seq(1, 2000, length=100))/c(spr0(eql)),),
-  aes(year, data, group=qname, colour=qname)) + geom_line() +
-  ylab("Recruits (1000s)") + xlab("SSB (t)") +
-  scale_x_continuous(expand=c(0,0),
-    labels=floor(seq(1, 2000, length=5)),
-    breaks=seq(1, 100, length=5)) +
-  scale_y_continuous(sec.axis = sec_axis(~ .,
-    breaks = c(160, 415, 380, 460),
-    label=c("Ricker", "SegReg", "Mean", "BevHolt"))) +
-  scale_color_discrete(name="SRR: ")
 
 srms <- list(bhm=bhm, rim=rim, gmm=gmm, hsm=hsm)
 
@@ -230,8 +215,6 @@ srrs <- rbindlist(lapply(list(bhm=bhm, rim=rim, gmm=gmm, hsm=hsm)[runs$srm], fun
 runs <- cbind(runs, srrs)
 
  
-# PLOT stock, mat, m, waa
-
 # -- OBSERVATIONS
 
 # CATCH.N, mnlnoise w/ 10% CV, 200 ESS
@@ -251,18 +234,24 @@ slope <- 0.4
 survey.sel <- FLQuant(1 / ( 1 + exp(-(seq(1, 20) - a50) / slope)),
   dimnames=dimnames(m(oms[[1]])))
 
-timing <- 0.5
+timing <- 0
 
 index <- FLQuants(mclapply(oms, function(x)
   mnlnoise(n=its, numbers=stock.n(x) * exp(-(harvest(x) * timing + m(x) * timing)) %*%
     survey.sel * survey.q, sdlog=sqrt(log(1 + ((stock(x) * 0.20)^2 / stock(x)^2))),
     ess=100), mc.cores=ncores))
 
-# 3 x PLOT 3 runs: diff srr, diff trajectory, diff deviances
+
+# -- RESULTS
+
+res <- rbindlist(mclapply(oms, function(x)
+  data.table(model.frame(metrics(x, list(rec=rec, ssb=ssb, fbar=fbar)), drop=TRUE)),
+  mc.cores=ncores), idcol="run")
+res[, c("model", "internal") := .("om", NA)]
+
 
 # SAVE
 
-save(index, catch.n, metrics, runs, file="out/metrics.RData", compress="xz")
+save(res, runs, file="out/metrics.RData", compress="xz")
 
-save(oms, runs, devs, srms, trajs, file="out/oms.RData", compress="xz")
-
+save(oms, eql, index, catch.n, runs, devs, srms, trajs, file="out/oms.RData", compress="xz")

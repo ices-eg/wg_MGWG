@@ -31,9 +31,34 @@ knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE,
 
 # Operating models
 
+```{r data}
+load("../out/oms.RData")
+```
+
+
 ## Initial population
 
-## Stock-recruitment deviates
+## Stock-recruitment realationships
+
+```{r}
+ggplot(FLQuants(
+  ricker=predict(srms$rim, ssb=FLQuant(seq(1, 2000, length=100))),
+  bevholt=predict(srms$bhm, ssb=FLQuant(seq(1, 2000, length=100))),
+  geomean=predict(srms$gmm, ssb=FLQuant(seq(1, 2000, length=100))),
+  segreg=predict(srms$hsm, ssb=FLQuant(seq(1, 2000, length=100))),
+  replacement=FLQuant(seq(1, 2000, length=100))/c(spr0(eql)),),
+  aes(year, data, group=qname, colour=qname)) + geom_line() +
+  ylab("Recruits (1000s)") + xlab("SSB (t)") +
+  scale_x_continuous(expand=c(0,0),
+    labels=floor(seq(1, 2000, length=5)),
+    breaks=seq(1, 100, length=5)) +
+  scale_y_continuous(sec.axis = sec_axis(~ .,
+    breaks = c(160, 415, 380, 455, 842),
+    label=c("Ricker", "SegReg", "Mean", "BevHolt", "Replace"))) +
+  theme(legend.position="none")
+```
+
+## Recruitment deviates
 
 ## Stock trajectories
 

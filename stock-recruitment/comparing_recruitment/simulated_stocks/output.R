@@ -10,6 +10,7 @@
 # LOAD PKGS
 
 library(FLCore)
+library(data.table)
 
 library(parallel)
 library(doParallel)
@@ -60,7 +61,7 @@ res <- foreach(i=seq(nrow(runs))) %dopar% {
   }
 }
 
-system("(cd sa; zip -r vpa.zip vpa/;)")
+system("(cd sa; zip -r9X vpa.zip vpa/;)")
 
 # ASAP
 
