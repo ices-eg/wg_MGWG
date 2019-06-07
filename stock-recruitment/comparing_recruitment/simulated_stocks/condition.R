@@ -29,7 +29,7 @@ source("R/functions.R")
 # VARIABLES
 
 lastyr <- 100
-its <- 50
+its <- 300
 
 set.seed(1809)
 
@@ -43,7 +43,7 @@ par <- FLPar(linf=90, a=0.00001, sl=1, sr=2000, a1=4, s=0.65, v=1000)
 
 # PLOT selex
 
-# ages 1-20+, fbar = 4-15
+# ages 1-20+, fbar = 4-7
 range <- c(min=1, max=20, minfbar=4, maxfbar=7, plusgroup=20)
 
 # GET full LH params set
@@ -63,6 +63,7 @@ eql <- lhEql(parg, range=range, m=mJensen)
 # COERCE
 
 stk <- as(eql, "FLStock")
+
 # BUG: FLife does not set right units
 units(stk) <- list(
   landings="t", landings.n="1000", landings.wt="kg",
@@ -244,14 +245,25 @@ index <- FLQuants(mclapply(oms, function(x)
 
 # -- RESULTS
 
+mets <- function(x)
+  FLQuants(list(rec=rec(x)[,-1], ssb=ssb(x)[,-50], fbar=fbar(x)[,-50]))
+
+# EXPORT test case: rcc bhm lndev03
+
+test <- model.frame(metrics(oms[[1]], mets), drop=TRUE)
+
+# RES
+
 res <- rbindlist(mclapply(oms, function(x)
-  data.table(model.frame(metrics(x, list(rec=rec, ssb=ssb, fbar=fbar)), drop=TRUE)),
-  mc.cores=ncores), idcol="run")
+  # REC and SSB lag = 1
+  data.table(model.frame(metrics(x, list(rec=rec[,-1], ssb=ssb[,-50], fbar=fbar[,-50])),
+  drop=TRUE)), mc.cores=ncores), idcol="run")
 res[, c("model", "internal") := .("om", NA)]
 
-
 # SAVE
-
 save(res, runs, file="out/metrics.RData", compress="xz")
 
-save(oms, eql, index, catch.n, runs, devs, srms, trajs, file="out/oms.RData", compress="xz")
+save(oms, eql, index, catch.n, runs, devs, srms, trajs, file="out/oms.RData",
+  compress="xz")
+
+write.csv(test, file="test/test_rcc-bhm-lndev03.csv")
