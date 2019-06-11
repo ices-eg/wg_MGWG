@@ -250,7 +250,7 @@ mets <- function(x)
 
 # EXPORT test case: rcc bhm lndev03
 
-test <- model.frame(metrics(oms[[1]], mets), drop=TRUE)
+test <- model.frame(metrics(iter(oms[[1]], 1), mets), drop=TRUE)
 
 # RES
 
