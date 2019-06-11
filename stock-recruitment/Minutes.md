@@ -13,4 +13,14 @@ Jon will clean the github site a bit and post minutes.
 
 Jon will setup the next meeting, but will wait for some progress on operating model development so that we can report something signigicant on the next call.
 
+## June 17-21
+Attendees: Jon Deroba, Liz Brooks, Iago,
+
+Agenda:
+Update everyone about progress (Jon: data generated, test case, rough plan)
+Review the git site (Iago, Liz: what is in each folder, how is it formatted, Iago is tracking the truth to be revealed later)
+Review needed ouputs from assessment models and standard output formats (Iago, Liz, Colin, Jon)
+Who is running each assessment model? Report writing (can start methods; use Rmd)
+Next steps and timing
+Anything else?
 
