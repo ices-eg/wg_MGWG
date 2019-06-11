@@ -12,15 +12,16 @@
 library(FLCore)
 library(data.table)
 
-library(parallel)
-library(doParallel)
-
 # LOAD OMs
 
 load("out/oms.RData")
 load("out/metrics.RData")
 
 # REGISTER ncores
+
+library(parallel)
+library(doParallel)
+
 ncores <- min(nrow(runs), floor(detectCores() * 0.9))
 
 registerDoParallel(ncores)
@@ -74,4 +75,3 @@ system("(cd sa; zip -r9X vpa.zip vpa/;)")
 # S/R TSs
 
 # TRUE F, rec, Q as DF, txt / VPA files
-

@@ -1,10 +1,10 @@
  
 1
-test/vpa/r1/iter1/sim-LANUM.txt
-test/vpa/r1/iter1/sim-WELAND.txt
-test/vpa/r1/iter1/sim-WEST.txt
-test/vpa/r1/iter1/sim-NATMOR.txt
-test/vpa/r1/iter1/sim-MATPROP.txt
-test/vpa/r1/iter1/sim-FPROP.txt
-test/vpa/r1/iter1/sim-MPROP.txt
+sa/vpa/r1/iter1/sim-LANUM.txt
+sa/vpa/r1/iter1/sim-WELAND.txt
+sa/vpa/r1/iter1/sim-WEST.txt
+sa/vpa/r1/iter1/sim-NATMOR.txt
+sa/vpa/r1/iter1/sim-MATPROP.txt
+sa/vpa/r1/iter1/sim-FPROP.txt
+sa/vpa/r1/iter1/sim-MPROP.txt
 sim-TUNE.txt

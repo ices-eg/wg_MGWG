@@ -140,9 +140,9 @@ FMSY <- c(fmsy(eql))
 
 rcc <- fwdControl(year=3:lastyr, quant="f", value=c(
   rep(0.001, length=40),
-  seq(0.001, FMSY * 1.4, length=20),
-  rep(FMSY * 1.4, 18),
-  seq(FMSY * 1.4, FMSY * 0.75, length=20)
+  seq(0.001, FMSY * 2.0, length=20),
+  rep(FMSY * 2.0, 18),
+  seq(FMSY * 2.0, FMSY * 0.75, length=20)
   ))
 
 # Low F: 0.30 * FMSY
@@ -252,6 +252,8 @@ mets <- function(x)
 
 test <- model.frame(metrics(iter(oms[[1]], 1), mets), drop=TRUE)
 
+write.csv(test, file="test/test_rcc-bhm-lndev03.csv")
+
 # RES
 
 res <- rbindlist(mclapply(oms, function(x)
@@ -265,5 +267,3 @@ save(res, runs, file="out/metrics.RData", compress="xz")
 
 save(oms, eql, index, catch.n, runs, devs, srms, trajs, file="out/oms.RData",
   compress="xz")
-
-write.csv(test, file="test/test_rcc-bhm-lndev03.csv")
