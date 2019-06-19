@@ -114,9 +114,9 @@ members. It is a 3-year term, which can be followed by one other 3-year term.
 
 Experience as a chair of an international working group of scientists is
 considered a part of the professional portfolio as a senior scientist and in
-academia, it invites networking with scientists worldwide and gives increased
-visibility among peers. Also, for the right person, the co-chairing task is
-enjoyable in itself.
+academia. It is an opportunity to network with scientists worldwide and will
+increase your visibility among peers. Also, for the right person, the
+co-chairing task is enjoyable in itself.
 
 The Methods WG will discuss the selection of a co-chair on Friday 14 September
 2019, and a decision will be made soon afterwards.
