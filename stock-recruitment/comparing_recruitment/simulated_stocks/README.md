@@ -3,18 +3,18 @@
 
 ## Stock-recruitment models
 
-- Beverton-Holt
-- Ricker
+- Beverton-Holt, R = a* * S / (b + S)
+- Ricker, R = a* * S* * *exp(-b * *S)
 - Mean
-- Hockey stick
+- Hockey stick (segreg), R = ifelse(S <= b, a * *S, a * *b)
 
 ![](png/srm.png)
 
 ## Recruitment deviances
 
 - Random walk 
-- Lognormal(SD=0.4)
-- Lognormal(SD=0.8)
+- Lognormal(SD=0.3)
+- Lognormal(SD=0.6)
 
 ![](png/devs.png)
 
