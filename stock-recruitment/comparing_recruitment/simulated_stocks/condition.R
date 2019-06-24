@@ -260,9 +260,11 @@ res <- rbindlist(mclapply(oms, function(x)
   # REC and SSB lag = 1
   data.table(model.frame(metrics(x, mets), drop=TRUE)), mc.cores=ncores),
     idcol="run")
+# TODO run year iter    rec    ssb     fbar fmult alpha beta steepness virginSSbiomass model internal
 res[, c("model", "internal") := .("om", NA)]
 
 # SAVE
+
 save(res, runs, file="out/metrics.RData", compress="xz")
 
 save(oms, eql, index, catch.n, runs, devs, srms, trajs, file="out/oms.RData",

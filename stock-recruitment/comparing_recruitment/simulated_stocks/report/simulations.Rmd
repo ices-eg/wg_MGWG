@@ -23,7 +23,7 @@ fontfamily: libertine
 ```{r pkgs, echo=FALSE, message=FALSE, warning=FALSE}
 library(ggplotFL)
 knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE,
-  results="hide", fig.cap=TRUE, cache=TRUE)
+  results="hide", fig.cap=TRUE, cache=FALSE)
 
 ```
 
@@ -33,6 +33,7 @@ knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE,
 
 ```{r data}
 load("../out/oms.RData")
+load("../out/metrics.RData")
 ```
 
 
@@ -40,7 +41,7 @@ load("../out/oms.RData")
 
 ## Stock-recruitment realationships
 
-```{r}
+```{r srrs}
 ggplot(FLQuants(
   ricker=predict(srms$rim, ssb=FLQuant(seq(1, 2000, length=100))),
   bevholt=predict(srms$bhm, ssb=FLQuant(seq(1, 2000, length=100))),
@@ -94,5 +95,4 @@ plot(oms[c(1,13,25)]) +
   scale_fill_discrete(labels=runs[c(1,13,25),'traj']) +
   scale_color_discrete(labels=runs[c(1,13,25),'traj'])
 ```
-
 
