@@ -3,7 +3,8 @@ ASAP estimates are reasonably close to the true simulated data, with the excepti
 
 ![3panel fit](3panel_true_vs_est.png)
 
-True vs estimated SR parameters:
+True vs estimated SR parameters
+
 | Parameter | True Value     | Estimated Value |
 |:---------:|---------------:|----------------:|
 | steepness | 0.65           |   0.75          |
