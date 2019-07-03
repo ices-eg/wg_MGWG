@@ -5,10 +5,10 @@ ASAP estimates are reasonably close to the true simulated data, with the excepti
 
 True vs estimated SR parameters
 
-| Parameter | True Value     | Estimated Value |
+| Parameter | True Value     | Estimated Value [95% CI|
 |:---------:|---------------:|----------------:|
-| steepness | 0.65           |   0.75          |
-| SSB0      | 1000           |   883.831       |
-| R0        | 421.9053       |   372.765       |
+| steepness | 0.65           |   0.75  [0.66 - 0.84]        |
+| SSB0      | 1000           |   883.831  [752.378, 1015.344]     |
+
 
 
