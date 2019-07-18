@@ -94,3 +94,14 @@ Tim revised index prediction results to fix an error in usage of data in the las
 ICES abstract was not accepted, but Tim may submit an abstract to the November CAPAM (next-generation stock assessment models) in New Zealand.
 
 Casper is going to coordinate with Anders to fit SAM models with and without time-varying selectivity. This will be a nice comparison with the alternative A4A models.
+
+## 20 June 2019
+Meeting cancelled to to scheduling conflicts.
+
+## 18 July 2019
+Attendees: Tim, Brian, Vanessa
+
+Tim has had positive correspondence with Mark Maunder about presenting work at CAPAM in New Zealand.
+Vanessa will touch base with Anders and Casper about finalizing SAM fits.
+
+
