@@ -68,6 +68,7 @@ system("(cd sa; zip -r9X vpa.zip vpa/;)")
 
 # a4a
 
+# START at y=42, set survey on 1 JAN
 indices <- FLIndices(setNames(lapply(index, function(x) {
     x[x == 0] <- 1e-12
     x <- FLIndex(name="A", index=window(x, start=42))
@@ -75,6 +76,7 @@ indices <- FLIndices(setNames(lapply(index, function(x) {
     return(x)
   }), names(index)))
 
+# START at y=42, drop F and N
 stocks <- lapply(oms, function(x) {
     x <- window(x, start=42)
     stock.n(x) <- 0
