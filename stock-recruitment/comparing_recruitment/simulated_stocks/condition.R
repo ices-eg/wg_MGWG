@@ -205,12 +205,14 @@ oms <- FLStocks(out)
 
 # OUTPUT real ssb, rec, naa, fbar, faa, catch.sel, params, model
 
-metrics <- lapply(oms, metrics,
-  list(ssb=ssb, rec=rec, naa=stock.n, fbar=fbar, faa=harvest, catch.sel=catch.sel))
+metrics <- lapply(oms, metrics, list(ssb=ssb, rec=rec, naa=stock.n,
+  fbar=fbar, faa=harvest, catch.sel=catch.sel))
 
-srrs <- rbindlist(lapply(list(bhm=bhm, rim=rim, gmm=gmm, hsm=hsm)[runs$srm], function(x)
-  cbind(data.frame(model=SRModelName(model(x)), data.frame(as(params(x), 'list'))))),
-  fill=TRUE)
+srrs <- rbindlist(lapply(
+  list(bhm=bhm, rim=rim, gmm=gmm, hsm=hsm)[runs$srm], function(x) {
+    cbind(data.frame(model=SRModelName(model(x)),
+    data.frame(as(params(x), 'list'))))
+  }), fill=TRUE)
 
 # RUNS: devs, srm, traj, model, a, b
 runs <- cbind(runs, srrs)
@@ -220,9 +222,10 @@ runs <- cbind(runs, srrs)
 
 # CATCH.N, mnlnoise w/ 10% CV, 200 ESS
 
-catch.n <- FLQuants(mclapply(oms, function(x)
+catch.n <- FLQuants(mclapply(oms, function(x) {
   mnlnoise(n=its, numbers=catch.n(x),
-  sdlog=sqrt(log(1 + ((catch(x) * 0.10)^2 / catch(x)^2))), ess=200), mc.cores=ncores))
+  sdlog=sqrt(log(1 + ((catch(x) * 0.10)^2 / catch(x)^2))), ess=200)
+  }, mc.cores=ncores))
 
 # SURVEY, mnlnoise w/ 20% CV, 100 ESS
 
@@ -237,10 +240,12 @@ survey.sel <- FLQuant(1 / ( 1 + exp(-(seq(1, 20) - a50) / slope)),
 
 timing <- 0
 
-index <- FLQuants(mclapply(oms, function(x)
-  mnlnoise(n=its, numbers=stock.n(x) * exp(-(harvest(x) * timing + m(x) * timing)) %*%
-    survey.sel * survey.q, sdlog=sqrt(log(1 + ((stock(x) * 0.20)^2 / stock(x)^2))),
-    ess=100), mc.cores=ncores))
+index <- FLQuants(mclapply(oms, function(x) {
+
+  mnlnoise(n=its, numbers=stock.n(x) * exp(-(harvest(x) * timing + m(x) *
+    timing)) %*% survey.sel * survey.q,
+    sdlog=sqrt(log(1 + ((stock(x) * 0.20)^2 / stock(x)^2))), ess=100)
+    }, mc.cores=ncores))
 
 
 # -- RESULTS

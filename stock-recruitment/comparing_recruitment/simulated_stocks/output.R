@@ -68,7 +68,18 @@ system("(cd sa; zip -r9X vpa.zip vpa/;)")
 
 # a4a
 
-# SAVE
+indices <- FLIndices(setNames(lapply(index, function(x) {
+  FLIndex(name="A", index=window(x, start=42))
+      }), names(index)))
+
+stocks <- lapply(oms, function(x) {
+  x <- window(x, start=42)
+  stock.n(x) <- 0
+  harvest(x) <- 0
+  return(x)
+  })
+
+save(indices, stocks, "sa/a4a/a4a.RData", compress="xz")
 
 # SAM
 
