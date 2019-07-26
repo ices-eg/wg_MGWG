@@ -11,8 +11,9 @@
 
 # INSTALL PKGS from FLR and CRAN dependencies
 
-# install.packages(c("FLife", "FLasher", "ggplotFL", "data.table", "doParallel",
-#   "rngtools", "doRNG"), repos=structure(c(CRAN="https://cran.uni-muenster.de/",
+# install.packages(c("FLife", "FLasher", "ggplotFL", "data.table",
+#   "doParallel", "rngtools", "doRNG"),
+#   repos=structure(c(CRAN="https://cran.uni-muenster.de/",
 #   FLR="http://flr-project.org/R")))
 
 # LOAD PKGS
@@ -180,7 +181,7 @@ library(parallel)
 library(doParallel)
 
 # REGISTER ncores
-ncores <- min(nrow(runs), floor(detectCores() * 0.9))
+ncores <- min(nrow(runs), floor(detectCores() * 0.8))
 
 registerDoParallel(ncores)
 
@@ -272,5 +273,5 @@ res[, c("model", "internal") := .("om", NA)]
 
 save(res, runs, file="out/metrics.RData", compress="xz")
 
-save(oms, eql, index, catch.n, runs, devs, srms, trajs, file="out/oms.RData",
-  compress="xz")
+save(oms, eql, index, catch.n, runs, devs, srms, trajs,
+  file="out/oms.RData", compress="xz")

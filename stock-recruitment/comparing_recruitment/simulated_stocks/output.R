@@ -42,6 +42,9 @@ res <- foreach(i=seq(nrow(runs))) %dopar% {
 
   paths <- file.path("sa/vpa", paste0("r", i), paste0("iter", seq(its)))
 
+  # ADD observed catch.n
+  catch.n(oms[[i]]) <- catch.n[[i]]
+
   for(j in seq(its)) {
   
     # CREATE FLIndices
