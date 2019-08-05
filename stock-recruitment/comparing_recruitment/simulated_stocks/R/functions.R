@@ -59,7 +59,8 @@ mnlnoise <- function(n, numbers, sdlog, ess) {
 writeVPAFiles <- function(stock, indices, file) {
 
   FLCore:::writeVPA(stock, output.file=file,
-  slots=c("landings.n","landings.wt","m","mat","stock.wt", "m.spwn", "harvest.spwn"))
+  slots=c("landings.n","landings.wt","m","mat","stock.wt",
+    "m.spwn", "harvest.spwn"))
 
   FLCore:::writeIndicesVPA(indices, file=paste0(file, "-TUNE.txt"))
 

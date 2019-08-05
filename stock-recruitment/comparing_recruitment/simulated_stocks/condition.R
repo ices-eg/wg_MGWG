@@ -31,6 +31,8 @@ source("R/functions.R")
 
 lastyr <- 100
 its <- 300
+ess_catch=200
+ess_index=100
 
 set.seed(1809)
 
@@ -72,6 +74,7 @@ units(stk) <- list(
   catch="t", catch.n="1000", catch.wt="kg",
   stock="t", stock.n="1000", stock.wt="kg",
   m="m")
+
 srr <- as(eql, "predictModel")
 
 # EXTEND w/F=0.0057226 until year=lastyr
@@ -79,19 +82,6 @@ srr <- as(eql, "predictModel")
 om <- fwdWindow(stk[,2], eql, end=lastyr)
 
 om <- propagate(om, its)
-
-# {{{ CHECK initial SRR
-
-eqlR <- lhEql(parg, range=range, m=mJensen, sr="ricker")
-stkR <- as(eql, "FLStock")
-srrR <- as(eql, "predictModel")
-omR <- fwdWindow(stk[,2], eql, end=lastyr)
-
-comp <- FLQuants(BH=iter(stock.n(om)[,1],1), RK=stock.n(omR)[,1])
-
-ggplot(comp, aes(x=age, y=data, colour=qname)) + geom_line() + facet_wrap(~qname)
-
-# }}}
 
 
 # -- DEVIANCES
@@ -164,7 +154,7 @@ hfc <- fwdControl(
 
 trajs <- list(rcc=rcc, lfc=lfc, hfc=hfc)
 
-# SCENARIOS
+# -- SCENARIOS
 
 sce <- list(
   devs=c('rwdev', 'lndev03', 'lndev06'),
@@ -189,7 +179,7 @@ registerDoParallel(ncores)
 library(doRNG)
 registerDoRNG(8234)
 
-# SETUP for psocks connection
+# LOOP over scenarios
 out <- foreach(i=seq(nrow(runs)),
   .final=function(i) setNames(i, seq(nrow(runs)))) %dopar% {
 
@@ -203,6 +193,9 @@ out <- foreach(i=seq(nrow(runs)),
 }
 
 oms <- FLStocks(out)
+
+
+
 
 # OUTPUT real ssb, rec, naa, fbar, faa, catch.sel, params, model
 
@@ -225,7 +218,7 @@ runs <- cbind(runs, srrs)
 
 catch.n <- FLQuants(mclapply(oms, function(x) {
   mnlnoise(n=its, numbers=catch.n(x),
-  sdlog=sqrt(log(1 + ((catch(x) * 0.10)^2 / catch(x)^2))), ess=200)
+  sdlog=sqrt(log(1 + ((catch(x) * 0.10)^2 / catch(x)^2))), ess=ess_catch)
   }, mc.cores=ncores))
 
 # SURVEY, mnlnoise w/ 20% CV, 100 ESS
@@ -245,7 +238,7 @@ index <- FLQuants(mclapply(oms, function(x) {
 
   mnlnoise(n=its, numbers=stock.n(x) * exp(-(harvest(x) * timing + m(x) *
     timing)) %*% survey.sel * survey.q,
-    sdlog=sqrt(log(1 + ((stock(x) * 0.20)^2 / stock(x)^2))), ess=100)
+    sdlog=sqrt(log(1 + ((stock(x) * 0.20)^2 / stock(x)^2))), ess=ess_index)
     }, mc.cores=ncores))
 
 
@@ -253,12 +246,6 @@ index <- FLQuants(mclapply(oms, function(x) {
 
 mets <- function(x)
   FLQuants(list(rec=rec(x)[,-1], ssb=ssb(x)[,-50], fbar=fbar(x)[,-50]))
-
-# EXPORT test case: rcc bhm lndev03
-
-test <- model.frame(metrics(iter(oms[[1]], 1), mets), drop=TRUE)
-
-write.csv(test, file="test/test_rcc-bhm-lndev03.csv")
 
 # RES
 
@@ -275,3 +262,11 @@ save(res, runs, file="out/metrics.RData", compress="xz")
 
 save(oms, eql, index, catch.n, runs, devs, srms, trajs,
   file="out/oms.RData", compress="xz")
+
+# EXPORT test case: rcc bhm lndev03
+
+test <- model.frame(metrics(iter(oms[[1]], 1), mets), drop=TRUE)
+
+write.csv(test, file="test/test_rcc-bhm-lndev03.csv")
+
+

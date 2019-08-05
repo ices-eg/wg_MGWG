@@ -22,8 +22,9 @@ load("out/metrics.RData")
 library(parallel)
 library(doParallel)
 
-ncores <- min(nrow(runs), floor(detectCores() * 0.9))
+# NOTE: TAKE around 80% of cores
 
+ncores <- min(nrow(runs), floor(detectCores() * 0.8))
 registerDoParallel(ncores)
 
 # GET writeVPAFiles
@@ -61,7 +62,8 @@ res <- foreach(i=seq(nrow(runs))) %dopar% {
 
     # WRITE VPA files FLStock + FLIndices)
     writeVPAFiles(window(iter(oms[[i]], j), start=42),
-      indices=lapply(idxs, window, start=42), file=file.path(paths[[j]], "sim"))
+      indices=lapply(idxs, window, start=42),
+      file=file.path(paths[[j]], "sim"))
   }
 }
 
@@ -80,12 +82,13 @@ indices <- FLIndices(setNames(lapply(index, function(x) {
   }), names(index)))
 
 # START at y=42, drop F and N
-stocks <- lapply(oms, function(x) {
-    x <- window(x, start=42)
-    stock.n(x) <- 0
-    harvest(x) <- 0
-    return(x)
-  })
+stocks <- mapply(function(x,y) {
+  x <- window(x, start=42)
+  catch.n(x) <- window(y, start=42)
+  stock.n(x) <- 0
+  harvest(x) <- 0
+  return(x)
+  }, oms, catch.n)
 
 save(indices, stocks, res, runs, file="sa/a4a/a4a.RData", compress="xz")
 
