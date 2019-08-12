@@ -42,8 +42,8 @@ fselectivityplot(fit, cexAge = 1)
 
 RES <- residuals(fit)
 RESP <- procres(fit)
-lower = list(logSdLogN = c(-5,-5))
-RETRO <- retro(fit, year=7, lower = lower ) #NB, currently produces an error
+##lower = list(logSdLogN = c(-5,-5))
+RETRO <- retro(fit, year=7) 
 PRED <- predictYears(fit,years=max(fit$data$years)-2:0)
 colnames(PRED)<-sub("obs", "logObs", colnames(PRED))
 
