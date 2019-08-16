@@ -104,4 +104,12 @@ Attendees: Tim, Brian, Vanessa
 Tim has had positive correspondence with Mark Maunder about presenting work at CAPAM in New Zealand.
 Vanessa will touch base with Anders and Casper about finalizing SAM fits.
 
+## 14 August 2019
+Attendees: Tim, Niels, Casper, Ernesto, Olav, Arni
+
+Tim has submitted an abstract for the CAPAM workshop on next generation assessment models in November. 
+Casper has completed consistent set of SAM fits for all stocks and added some text in manuscript.
+Ernesto plans to have results repaired for A4A models before the September meeting in Seattle.
+Tim will work on paper and possible presentation in September prior to ICES MGWG meeting. 
+
 
