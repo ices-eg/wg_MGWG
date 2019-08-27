@@ -14,6 +14,7 @@ source("georges_bank.R")
 source("greenland.R")
 source("gulf_of_maine.R")
 source("iceland.R")
+source("irish_sea.R")
 source("nafo_2j3kl.R")
 source("nafo_3m.R")
 source("nafo_3no.R")
@@ -26,10 +27,8 @@ setwd("..")
 
 ## 2  Apply Fmax
 
-shift <- list(fp=-1:8, gb=-1:8, gr=-1:6, gm=-1:7,
-              ic=-1:9, n2=-1:9, n3=-1:5, n4=-1:8,
-              ne=-1:9, ns=-1:9, nw=-1:7, sc=-1:6,
-              wb=-1:6)
+shift <- list(fp=-1:8, gb=-1:8, gr=-1:6, gm=-1:7, ic=-1:9, is=-1:6, n2=-1:9,
+              n3=-1:5, n4=-1:8, ne=-1:9, ns=-1:9, nw=-1:7, sc=-1:6, wb=-1:6)
 
 par(mfrow=c(4,4))
 profPlot(faroe_plateau, shift$fp, applyFmax, "Y", c(-1,9), c(0,14))
@@ -37,6 +36,7 @@ profPlot(georges_bank,  shift$gb, applyFmax, "Y", c(-1,9), c(0,10))
 profPlot(greenland,     shift$gr, applyFmax, "Y", c(-1,9), c(0,30))
 profPlot(gulf_of_maine, shift$gm, applyFmax, "Y", c(-1,9), c(0,4))
 profPlot(iceland,       shift$ic, applyFmax, "Y", c(-1,9), c(0,350))
+profPlot(irish_sea,     shift$is, applyFmax, "Y", c(-1,9), c(0,0.4))
 profPlot(nafo_2j3kl,    shift$n2, applyFmax, "Y", c(-1,9), c(0,100))
 profPlot(nafo_3m,       shift$n3, applyFmax, "Y", c(-1,9), c(0,9))
 profPlot(nafo_3no,      shift$n4, applyFmax, "Y", c(-1,9), c(0,6))
@@ -52,6 +52,7 @@ profPlot(georges_bank,  shift$gb, applyFmax, "SSB", c(-1,9), c(0,65))
 profPlot(greenland,     shift$gr, applyFmax, "SSB", c(-1,9), c(0,130))
 profPlot(gulf_of_maine, shift$gm, applyFmax, "SSB", c(-1,9), c(0,17))
 profPlot(iceland,       shift$ic, applyFmax, "SSB", c(-1,9), c(0,2300))
+profPlot(irish_sea,     shift$is, applyFmax, "SSB", c(-1,9), c(0,2))
 profPlot(nafo_2j3kl,    shift$n2, applyFmax, "SSB", c(-1,9), c(0,450))
 profPlot(nafo_3m,       shift$n3, applyFmax, "SSB", c(-1,9), c(0,30))
 profPlot(nafo_3no,      shift$n4, applyFmax, "SSB", c(-1,9), c(0,28))
