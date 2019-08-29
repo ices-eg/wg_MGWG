@@ -1,0 +1,9 @@
+Objects in A4Aruns.RData
+
+fit_store: list storing all the SA fits. It has 3 levels (plus those from the fits). fit_store[[x]][[y]][[z]]; 0 < x < 37, 0 < y < 51, 0 < z < 4. x:= run ID, y:= iteration ID, z:= SR ID (1 = BH, 2 = Ricker, 3= mean)
+
+sr_par: array storing the SR parameter estimates. dim(sr_par) = c(3, 2, 50, 36) = c(SRmod ID, parameters estimates, iteration ID, run ID)
+
+con.n & con.r: ignore
+
+
