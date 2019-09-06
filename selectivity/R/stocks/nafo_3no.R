@@ -6,7 +6,7 @@ source("../functions/stdplot.R")
 path <- "../../data/nafo_3no"
 dims(path)
 yrs <- 2008:2017
-ages <- as.character(3:11)
+ages <- as.character(2:11)
 plus <- FALSE
 
 ## 1  Population
@@ -23,10 +23,12 @@ M <- colMeans(M[ages])
 
 wcatch <- read("wcatch", path, plus)
 wcatch <- wcatch[wcatch$Year %in% yrs,]
+wcatch["2"] <- 0.2  # extrapolate age 2
 wcatch <- colMeans(wcatch[ages], na.rm=TRUE)
 
 wstock <- read("wstock", path, plus)
 wstock <- wstock[wstock$Year %in% yrs,]
+wstock["2"] <- 0.15  # extrapolate age 2
 wstock <- colMeans(wstock[ages])
 
 B <- cohortBiomass(Ninit, M, wcatch)
