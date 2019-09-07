@@ -69,8 +69,8 @@ suppressWarnings(dir.create("poster"))
 
 ## Yield
 filename <- "poster/effect_yield.eps"
-eps(filename, width=10, height=6)
-par(plt=c(0.26, 0.94, 0.14, 0.89))
+eps(filename, width=8, height=6)
+par(plt=c(0.19, 0.96, 0.14, 0.89))
 plot(NA, xlim=c(0.80, 1.32), ylim=c(15,1), ann=FALSE, axes=FALSE)
 sapply(1:15, dotline, Y)
 box()
@@ -84,8 +84,8 @@ file.remove(filename)
 
 ## SSB
 filename <- "poster/effect_ssb.eps"
-eps(filename, width=10, height=6)
-par(plt=c(0.26, 0.94, 0.14, 0.89))
+eps(filename, width=8, height=6)
+par(plt=c(0.19, 0.96, 0.14, 0.89))
 plot(NA, xlim=c(0.59, 1.50), ylim=c(15,1), ann=FALSE, axes=FALSE)
 sapply(1:15, dotline, SSB)
 box()
