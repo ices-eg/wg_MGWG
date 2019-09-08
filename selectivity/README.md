@@ -24,7 +24,16 @@ predicted increase in both the annual yield and spawning biomass in the long
 term. A similar analytical approach could be used to evaluate the likely effects
 of shifting the selectivity of other fish species sharing habitat with the cod.
 
-## [Download Poster](https://github.com/ices-eg/wg_MGWG/releases/download/asc2019/poster.pdf)
+## Download
+
+* [Poster](https://github.com/ices-eg/wg_MGWG/releases/download/asc2019/poster.pdf)
+* [More figures](https://github.com/ices-eg/wg_MGWG/releases/download/asc2019/morefigs.pdf)
+* [Abstract](https://github.com/ices-eg/wg_MGWG/releases/download/asc2019/abstract.pdf)
+
+## Browse
+
+* [MGWG on ices.dk](http://www.ices.dk/community/groups/Pages/MGWG.aspx)
+* [Code on GitHub](https://github.com/ices-eg/wg_MGWG/tree/master/selectivity/R)
 
 ***
 
