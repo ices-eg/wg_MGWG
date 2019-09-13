@@ -9,7 +9,7 @@ for overall objectives, latest report, etc.
 
 ## Meeting agenda, Seattle 23-27 September 2019
 
-> School of Aquatic and Fishery Sciences (SAFS), University of Washingon
+> School of Aquatic and Fishery Sciences (SAFS), University of Washington
 
 **Mon, 9am-5pm**
 * Welcome
