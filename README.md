@@ -7,6 +7,109 @@ for overall objectives, latest report, etc.
 
 ***
 
+## Meeting agenda, Seattle 23-27 September 2019
+
+> School of Aquatic and Fishery Sciences (SAFS), University of Washingon
+
+**Mon, 9am-5pm**
+* Welcome
+* Review of ongoing projects:
+  [state-space](state-space),
+  [stock-recruitment](stock-recruitment),
+  [model-complexity](model-complexity),
+  [selectivity](selectivity)
+* Status update
+* Describe main challenges/obstacles in each project
+* Consider whether to add/remove projects
+
+**Tue, 9am-5pm**
+* Work on projects
+* Introduce new members to tasks and workflow
+
+**Wed, 9am-5pm**
+* Work on projects
+* Status update
+* Afternoon walk
+
+**Thu, 9am-5pm**
+* Work on projects
+* Social evening
+
+**Fri, 9am-4pm**
+* Work on projects
+* Plan next months
+* SAFS lunchtime seminar
+* Wrap up
+
+## Letter of invitation, Seattle 23-27 September 2019
+
+(to MGWG members, sent 8 Aug 2019)
+
+Dear MGWG members,
+
+I am very much looking forward to our meeting next month in Seattle, 23-27
+September. We will be meeting in the Fishery Sciences Building
+(http://uw.edu/maps/?fsh) from 9:00-17:00 Monday-Thursday, and 9:00-16:00
+Friday. For the MGWG meeting, our main contacts in Seattle are Cole Monnahan,
+Trevor Branch, and Kelli Johnson.
+
+The draft agenda for Monday is: welcome and status update of ongoing MGWG
+projects, discussion with Seattle scientists (UW, NOAA, IPHC) about ongoing MGWG
+projects, an invitation to join the MGWG, and a group evaluation and decision
+whether to launch a new MGWG project during the meeting. Tuesday to Friday: work
+on projects.
+
+To interact with the local scientists, we may organize lunchtime seminars and
+guided walks through the local parks and pubs. Potential lunchtime seminar
+topics include the (1) MGWG state-space project, (2) MGWG selectivity project,
+and (3) ICES Transparent Assessment Framework. The state-space project is
+submitting an abstract for the CAPAM workshop in New Zealand in November and the
+selectivity project has an accepted abstract for the ICES conference in Sweden
+in September.
+
+Please use the Doodle poll
+
+  https://doodle.com/poll/umxz6dk83ee3vuna
+
+to indicate whether you will be attending the meeting. As before, we will be
+posting practical information about the meeting and venue on the GitHub MGWG
+front page, https://github.com/ices-eg/MGWG.
+
+All the best,
+Arni and Chris, MGWG Chairs
+
+---
+
+(to local quantitive folks in Seattle, sent 22 Aug 2019)
+
+Dear stock assessment experts,
+
+The ICES Methods Working Group will have its annual meeting in Seattle next
+month, 23-27 September. The meeting will be held at SAFS from 9:00-17:00
+Monday-Thursday, and 9:00-16:00 Friday. The homepage is
+https://www.ices.dk/community/groups/Pages/MGWG.aspx and the projects and
+manuscripts are organized on https://github.com/ices-eg/MGWG.
+
+The Working Group Chairs, Arni Magnusson and Chris Legault, would like to extend
+an invitation to local quantitative folks to attend the meeting and to join the
+Methods WG as coauthors of upcoming research projects.
+
+The draft agenda for Monday is: welcome and status update of ongoing MGWG
+projects, discussion with Seattle scientists (UW, NOAA, IPHC, etc.) about
+ongoing MGWG projects, an invitation to join the MGWG, and a group evaluation
+and decision whether to launch a new MGWG project during the meeting. Tuesday to
+Friday: work on projects. There will also be a lunchtime seminar (or two)
+scheduled in that week presenting the results of MGWG research projects.
+
+Please use the Doodle poll
+
+  https://doodle.com/poll/umxz6dk83ee3vuna
+
+to indicate whether you will be attending the meeting, or at least the Monday
+morning session.
+
+***
+
 ## Annual Science Conference 2019
 
 Let's present our projects at ICES ASC 2019 in Sweden! The deadline for
@@ -163,7 +266,7 @@ Venue TBD.
   [model-complexity](model-complexity),
   [selectivity](selectivity)
 * Status update
-* Describe main obstacles in each project
+* Describe main challenges/obstacles in each project
 * Consider whether to add/remove projects
 
 **Tue, 9am-5pm**
