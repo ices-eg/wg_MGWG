@@ -42,7 +42,7 @@ School of Aquatic and Fishery Sciences (SAFS), University of Washington. [Direct
 **Fri, 9am-4pm, Rooms FSH 314 & 329**
 * Work on projects
 * Plan next months
-* SAFS lunchtime seminar
+* SAFS quantitative seminar (12:30-1:30pm; FSH 203)
 * Wrap up
 
 ## Letter of invitation, Seattle 23-27 September 2019
