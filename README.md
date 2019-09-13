@@ -9,11 +9,12 @@ for overall objectives, latest report, etc.
 
 ## Meeting agenda, Seattle 23-27 September 2019
 
-> School of Aquatic and Fishery Sciences (SAFS), University of Washington. [Directions, parking, other visitor info](https://fish.uw.edu/about/visitor-info/). There are three SAFS buildings, this meeting will be in the _Fishery Sciences building_ (FSH, [google maps link](https://goo.gl/maps/CswN5tkrcqMUv1io9)).
-
-**Note the different room for Monday vs. the rest of the week**
+### Basic information
+School of Aquatic and Fishery Sciences (SAFS), University of Washington. [Directions, parking, other visitor info](https://fish.uw.edu/about/visitor-info/). There are three SAFS buildings, this meeting will be in the _Fishery Sciences building_ (FSH, [google maps link](https://goo.gl/maps/CswN5tkrcqMUv1io9)).
 
 ### Schedule
+**_Note the different room for Monday vs. the rest of the week_**
+
 **Mon, 9am-5pm, Room FSH 203**
 * Welcome
 * Review of ongoing projects:
