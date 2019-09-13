@@ -1,43 +1,27 @@
 ## 1  Import stocks
 
-setwd("stocks")
-source("faroe_plateau.R")
-source("georges_bank.R")
-source("greenland.R")
-source("gulf_of_maine.R")
-source("iceland.R")
-source("irish_sea.R")
-source("nafo_2j3kl.R")
-source("nafo_3m.R")
-source("nafo_3no.R")
-source("nafo_3ps.R")
-source("ne_arctic.R")
-source("north_sea.R")
-source("norway.R")
-source("s_celtic.R")
-source("w_baltic.R")
-setwd("..")
+source("stocks.R")
 
 ## 2  Load packages and functions
 
-library(arni)    # eps, eps2png, install_github("arnima-github/arni")
+library(arni)    # eps, eps2pdf, eps2png, install_github("arnima-github/arni")
 library(gplots)  # rich.colors
-source("functions/stdline.R")
+source("../functions/stdline.R")
 
 ## 3  Prepare labels and graphical parameters
 
 stocks <- c("Faroe Plateau", "Georges Bank", "Greenl inshore", "Gulf of Maine",
             "Iceland", "Irish Sea", "NAFO 2J3KL", "NAFO 3M", "NAFO 3NO",
-            "NAFO 3PS", "NE Arctic", "North Sea", "Norw coastal", "S Celtic",
+            "NAFO 3Ps", "NE Arctic", "North Sea", "Norw coastal", "S Celtic",
             "W Baltic")
 col <- rich.colors(length(stocks))
 lwd <- 2
 
 ## 4  Plot weights
 
-suppressWarnings(dir.create("poster"))
+suppressWarnings(dir.create("out"))
 
-filename <- "poster/weight.eps"
+filename <- "out/weight.eps"
 eps(filename, width=6, height=6)
 plot(NA, xlim=c(1,14), ylim=c(0,15), yaxs="i",
      xlab="Age", ylab="Weight in catches (kg)", main="Weight")
@@ -59,13 +43,14 @@ stdline(w_baltic$wcatch,      lwd, col[15])
 legend("topleft", legend=stocks, bty="n", lty=1, lwd=lwd, col=col,
        inset=0.02, cex=0.8)
 dev.off()
-eps2png(filename, dpi=600)
+eps2pdf(filename)
+## eps2png(filename, dpi=600)
 file.remove(filename)
 
 ## 5  Plot selectivity and maturity
 
 ## Selectivity
-filename <- "poster/selectivity.eps"
+filename <- "out/selectivity.eps"
 eps(filename, width=12, height=6)
 plot(NA, xlim=c(1,15), ylim=c(0,1.05), yaxs="i",
      xlab="Age", ylab="Selectivity", main="Selectivity")
@@ -88,11 +73,12 @@ legend("topright", legend=stocks, bty="n", lty=1, lwd=lwd, col=col,
        inset=0.02, cex=0.8)
 box()
 dev.off()
-eps2png(filename, dpi=600)
+eps2pdf(filename)
+## eps2png(filename, dpi=600)
 file.remove(filename)
 
 ## Maturity
-filename <- "poster/maturity.eps"
+filename <- "out/maturity.eps"
 eps(filename, width=12, height=6)
 plot(NA, xlim=c(1,15), ylim=c(0,1.05), yaxs="i",
      xlab="Age", ylab="Proportion mature", main="Maturity")
@@ -115,5 +101,6 @@ legend("bottomright", legend=stocks, bty="n", lty=1, lwd=lwd, col=col,
        inset=0.02, cex=0.8)
 box()
 dev.off()
-eps2png(filename, dpi=600)
+eps2pdf(filename)
+## eps2png(filename, dpi=600)
 file.remove(filename)
