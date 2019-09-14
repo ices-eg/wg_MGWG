@@ -309,6 +309,7 @@ dc4$symtest = dc4$high - dc4$value - dc4$value + dc4$low
 head(filter(dc4, model == "A4A"))
 #not sure how CI is calculated for A4A. SAM is a little off from symmetric on log-scale too.
 dc4$CV = log(dc4$high/dc4$value)/qnorm(0.975)
+dc4$CV[dc4$model == "SAM"] = log(dc4$high/dc4$value)[dc4$model == "SAM"]/2
 
 
 # make plots

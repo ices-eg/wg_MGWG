@@ -55,8 +55,18 @@ Do state-space assessment models perform better than traditional statistical cat
 
 \vspace{144pt}
 
-Timothy J. Miller, Anders Nielsen, Chris Legault, Ernesto Jardim, Olav Nikolai Breivik, Jonathan Deroba, Dan Hennan, Arni Magnusson, Vanessa Trijoulet, %\footnote{Northeast Fisheries Science Center, National Marine Fisheries Service, 166 Water Street, Woods Hole, MA 02543 USA} 
-and Kelli Johnson
+Timothy J. Miller\footnote{NOAA Fisheries, Northeast Fisheries Science Center, Woods Hole, MA USA}, 
+Casper Berg\footnote{National Institute for Aquatic Resources, Technical University of Denmark, Kgs. Lyngby
+Denmark}, 
+Christopher M. Legault\footnotemark[1], 
+Ernesto Jardim\footnote{European Commission Joint Research Centre, Ispra, Italy}, 
+Colin Millar\footnote{ICES Secretariat, Copenhagen Denmark},
+Anders Nielsen\footnotemark[2], 
+Olav N. Breivik\footnote{Norwegian Computing Center, Oslo, Norway}, 
+Vanessa Trijoulet\footnotemark[2], 
+Arni Magnusson\footnotemark[4], 
+and
+Jonathan D. Deroba\footnotemark[1]
 \end{titlepage}
 
 \setcounter{page}{2}
@@ -78,18 +88,26 @@ and Kelli Johnson
 
 \section*{Abstract}
 
+The current standard model for assessing fish stocks with age-structured data are commonly referred to statistical catch-at-age model, but applications of state-space versions that allow integration over temporally stochastic latent variables are growing. Although there are  
 
 \pagebreak
 
 \section*{Introduction}
 
-\begin{itemize}
-\item General notions on importance of stock assessments for fisheries management
-\item Evolution of stock assessments: increase in complexity, single or multifleet, state-space vs. deterministic processes
-\item Numerous models used currently in fisheries management with different modelling assumptions
-\item Meta-analysis on 13 stocks to investigate how the models differ in performance according to their assumptions
-\item Quick description of methods: Fit 4 models to 13 stocks and compare the predictability of the models to conclude on the forecast performance
-\end{itemize}
+Statistical age-structured population models are widely used to estimate population abundance, productivity, and harvest mortality for commercially important fish populations (references). Age-structured models are more realistic than simpler biomass-based models (e.g., surplus production) and can estimate maximum sustainable yield (MSY) and status of the stock and fishing levels relative to those associated with MSY. These assessments are critical toward achieving optimal utilization of these natural resources. The most common statistical approach used to estimate these population attributes model changes in abundances of cohorts over time deterministically. These models are often referred to as statistical catch-at-age (SCAA) models and there is a number of implimentations of these (SS3, ASAP, A4A, Cagean, BAM) with a wide range of possible assumptions and configurations, including multiple fleets, multiple indices of abundance, alternative selectivity at age (logistic, domed, age-specific), alternative stock-recruit assumptions, and alternative likelihoods for composition data components. 
+
+Current statistical catch-at-age models often include temporally varying aspects of the populations (e.g., recruitment, selectivity), but any distributions of these unobserved attributes (random effects) are typically treated as a penalty to the observation model likelihood. State-space versions of these models have some differences in important assumptions. First, state-space models typically also allow stochasticity in the changes in cohort abundance over time. State-space models also use Bayesian or maximum marginal likelihood to estimate population attributes where any random effects are integrated out of the likelihood and associated variance parameters are estimated (references, Millar and Meyers 2000). The presumably improved statistcal aspects of state-space assessment models has led to a growing interest in and application of them in management (ICES assessment references, DFO northern cod).
+
+Our objective here is to evaluate whether there is any empirical evidence that state-space models provide any improvemnt over SCAA models. We fit 4 modeling frameworks (2 SCAA and 2 state-space) to 13 stocks from the North Atlantic Ocean and assessed the relative average behaviour of the model frameworks. Basic configurations were assumed for the model frameworks. For 3 of the model frameworks a set of alternative configurations were fit to allow us to control all other aspects of the model across the stocks.
+
+
+%\begin{itemize}
+%\item General notions on importance of stock assessments for fisheries management
+%\item Evolution of stock assessments: increase in complexity, single or multifleet, state-space vs. deterministic processes
+%\item Numerous models used currently in fisheries management with different modelling assumptions
+%\item Meta-analysis on 13 stocks to investigate how the models differ in performance according to their assumptions
+%\item Quick description of methods: Fit 4 models to 13 stocks and compare the predictability of the models to conclude on the forecast performance
+%\end{itemize}
 
 \section*{Methods}
 
@@ -101,9 +119,16 @@ and Kelli Johnson
 
 \subsection*{Estimation models}
 
-We fit four assessment models to identical data sets for each stock. Two of the models are in the class of statistical catch at age models (ASAP and A4A) and two are state+space models (WHAM and SAM). ASAP is used extensively to assess US fish stocks in the northwest Atlantic ocean. SAM and A4A are used to assess stocks in Europe. WHAM is a more recently developed model that can be configured to estimate models ranging from statistical catch at age to state-space versions with options to treat various aspects as random effects. It has not been used in management but versions have been applied to stocks of yellowtail flounder \citep{milleretal16}, redfish \citep{millerhyun18}, and Atlantic cod \citep{milleretal18}. Currently, WHAM can be installed as an R package from https://github.com/timjmiller/wham.
+We considered four assessment model frameworks to identical data sets for each stock. Two of the models are in the class of statistical catch at age models (ASAP and A4A) and two are state-space models (WHAM and SAM). ASAP is used extensively to assess US fish stocks in the northwest Atlantic ocean. 
 
-All models treat mortality processes use the Baranov catch equations which treat survival over the annual time interval as
+SAM and A4A are used to assess stocks in Europe. SAM\footnote{SAM can be used to fit models at stockassessment.org} was originally devleoped in AD Model Builder, but the current version is programmed in Template Model Builder. Fishing mortality at age is modeled as a multivariate log-normal random walk and indices at age and catch at age observations assume a multivariate log-normal distribution.
+
+A4A does what?
+
+
+WHAM\footnote{WHAM can be installed as an R package from https://github.com/timjmiller/wham} is a more recently developed model that can be configured to estimate models ranging from statistical catch at age to state-space versions with options to treat various aspects as random effects. It has not been used in management but versions have been applied to stocks of yellowtail flounder \citep{milleretal16}, redfish \citep{millerhyun18}, and Atlantic cod \citep{milleretal18}. One of the primary differences from SAM are that  fishing mortality at age is modeled as seperable fixed effects with a selectivity function and a fully selected fishing mortality rate. The other difference is that aggregate catch and index observations are separated from corresponding age composition observations. 
+
+%All models treat mortality processes use the Baranov catch equations which treat survival over the annual time interval as
 
 \subsubsection*{WHAM models}
 
@@ -339,6 +364,7 @@ The likelihood function for this is set up by first defining the joint likelihoo
 
 %Tables
 
+\begin{landscape}
 \begin{table}
 \begin{center}
 \caption{Modelling assumptions for the four estimation models.}\label{assumption_models}
@@ -352,6 +378,8 @@ The likelihood function for this is set up by first defining the joint likelihoo
 \input{table_fish_stocks.tex}
 \end{center}
 \end{table}
+
+\end{landscape}
 
 \begin{table}
 \begin{center}
