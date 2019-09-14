@@ -20,7 +20,7 @@
 
 - Schedule online meetings with group (monthly) and everybody (quarterly)
 
-- Present findings at symposia (ICES, WFC, ICES)
+- Present findings at symposia (ICES, WFC, ISEC)
 
 - Tally beer points for bits completed
 

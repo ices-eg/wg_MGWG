@@ -1,29 +1,13 @@
 ## 1  Import stocks
 
-setwd("stocks")
-source("faroe_plateau.R")
-source("georges_bank.R")
-source("greenland.R")
-source("gulf_of_maine.R")
-source("iceland.R")
-source("irish_sea.R")
-source("nafo_2j3kl.R")
-source("nafo_3m.R")
-source("nafo_3no.R")
-source("nafo_3ps.R")
-source("ne_arctic.R")
-source("north_sea.R")
-source("norway.R")
-source("s_celtic.R")
-source("w_baltic.R")
-setwd("..")
+source("stocks.R")
 
 ## 2  Load packages and functions
 
-library(arni)    # eps, eps2png, install_github("arnima-github/arni")
-source("functions/applyF0.1.R")
-source("functions/applyFmax.R")
-source("functions/slide.R")
+library(arni)    # eps, eps2pdf, eps2png, install_github("arnima-github/arni")
+source("../functions/applyF0.1.R")
+source("../functions/applyFmax.R")
+source("../functions/slide.R")
 
 ## 3  Calculate effect of sliding selectivity to younger or older
 
@@ -55,7 +39,7 @@ names(SSB) <- c("Younger", "Current", "Older")
 
 labels <- c("Faroe Plateau", "Georges Bank", "Greenland inshore", "Gulf of Maine",
             "Iceland", "Irish Sea", "NAFO 2J3KL", "NAFO 3M", "NAFO 3NO",
-            "NAFO 3PS", "NE Arctic", "North Sea", "Norway coastal", "S Celtic",
+            "NAFO 3Ps", "NE Arctic", "North Sea", "Norway coastal", "S Celtic",
             "W Baltic")
 
 dotline <- function(i, quantity=Y)
@@ -65,10 +49,10 @@ dotline <- function(i, quantity=Y)
   points(quantity[i,c(1,3)], rep(i,2), pch=c("<", ">"), cex=1.5)
 }
 
-suppressWarnings(dir.create("poster"))
+suppressWarnings(dir.create("out"))
 
 ## Yield
-filename <- "poster/effect_yield.eps"
+filename <- "out/effect_yield.eps"
 eps(filename, width=8, height=6)
 par(plt=c(0.19, 0.96, 0.14, 0.89))
 plot(NA, xlim=c(0.80, 1.32), ylim=c(15,1), ann=FALSE, axes=FALSE)
@@ -80,11 +64,12 @@ axis(2, 1:15, labels, las=1, tcl=0)
 title(main="Effect of changing selectivity on Yield")
 title(xlab="Relative change in long-term yield")
 dev.off()
-eps2png(filename, dpi=600)
+## eps2pdf(filename)
+eps2png(filename, dpi=1000)
 file.remove(filename)
 
 ## SSB
-filename <- "poster/effect_ssb.eps"
+filename <- "out/effect_ssb.eps"
 eps(filename, width=8, height=6)
 par(plt=c(0.19, 0.96, 0.14, 0.89))
 plot(NA, xlim=c(0.59, 1.50), ylim=c(15,1), ann=FALSE, axes=FALSE)
@@ -96,5 +81,6 @@ axis(2, 1:15, labels, las=1, tcl=0)
 title(main="Effect of changing selectivity on SSB")
 title(xlab="Relative change in average spawning biomass")
 dev.off()
-eps2png(filename, dpi=600)
+eps2pdf(filename)
+## eps2png(filename, dpi=600)
 file.remove(filename)
