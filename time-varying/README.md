@@ -87,6 +87,7 @@ Define output to save for each model run
 ### References
 
 See CAPAM special issue
+https://www.sciencedirect.com/journal/fisheries-research/vol/158/suppl/C
 
 ### Appendix
 
