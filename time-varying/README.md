@@ -31,35 +31,30 @@ Time-varying selectivity
 
 Many factors can cause selectivity to change over time (e.g. changes in regulations, growth, and spatial distributions of stocks or fishing effort), and assessment frameworks provide scientists with a range of options to allow for time-varying selectivity. Not allowing modelled selectivity to change when changes have occurred in reality can result in biased estimates of key parameters. Including too much flexibility to estimate time-varying selectivity, however, can also come at a cost. Guidance on when and how to allow for time-varying selectivity is needed and should be based on expected effects on assessment output (accuracy and precision of reference points, catch advice)
 
-##### Questions
+##### Objectives
 
-* What are the tradeoffs in catch advice vs. model fit? How do you set reference points? Possible that fitting the data better does not result in better management (e.g. could increase uncertainty of forecasts)
-* Are time blocks effectively created by the more flexible approaches? And what is the precision tradeoff?
-* How does the answer depend on informativeness of survey vs. catch data?
-* Time-varying M and selectivity at the same time?
-
-### Objectives
-
-  1. 
-  2. 
-  3. 
+  1. For the assessments that include selectivity time blocks, does a more flexible method reduce retrospective or residual patterns (which would indicate including selectivity blocks)?
+  2. Does the more flexible method recreate selectivity time blocks that were included in the assessments or correspond to known fishing behavior changes?
+  3. Quantify the tradeoffs in catch advice vs. model fit. Possible that fitting the data better does not result in better management (e.g. could increase uncertainty of forecasts).
 
 ### Plan
 
 ##### Methods
 
-Selectivity options
-
-  * constant
-  * time blocks
-  * 2D AR on deviations in selectivity parameters
-
-Assessment models
+Selectivity options are model-dependent:
 
   * SS
+    * age-specific (time-invariant)
+    * age-specific with time blocks
+    * exponential logistic with 2D AR
   * WHAM
+    * age-specific (time-invariant)
+    * age-specific with time blocks
+    * AR process on selectivity parameters in assessment
   * SAM?
-  * ASAP?
+    * age-specific (time-invariant)
+    * 2D RW on F(a,y)
+  * a4a?
 
 This project will leverage work from the state-space project. We will use the same 13 stocks (data already compiled):
 
@@ -79,6 +74,10 @@ This project will leverage work from the state-space project. We will use the sa
 
 Define performance metrics
 Define output to save for each model run
+
+Future work?
+
+* Simulation study to look at simultaneously estimating time-varying M and time-varying selectivity?
 
 ##### Tasks, who's doing what
 
