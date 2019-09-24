@@ -143,4 +143,24 @@ dumpDiags <- function(stk, idxs, fit, ret, preds){
 
 }
 
+retro_plaice <- function(stk, idxs, retro=5, k, ...){
+	args <- list(...)
+	lst0 <- split(0:retro, 0:retro)
+	lst0 <- lapply(lst0, function(x){
+		yr <- range(stk)["maxyear"] - x
+		args$stock <- window(stk, end=yr)
+		args$indices <- window(idxs, end=yr)
+		KA <- unname(k['age'])
+		KY <- unname(k['year'] - floor(x/2))
+		KA2 <- k['age2']
+		KA2 <- unname(KA2)
+		fmod <- substitute(~te(age, year, k = c(KA, KY))+s(age, k=KA2)+s(year, k=KY-6, by=as.numeric(age==1)), list(KA = KA, KY=KY, KA2=KA2))
+		args$fmodel <- as.formula(fmod)
+		fit <- do.call("sca", args)
+		args$stock + fit
+	})
+	FLStocks(lst0)
+}
+
+
 

@@ -35,16 +35,16 @@ stk <- window(stk, start=my)
 #====================================================================
 # run model
 #====================================================================
-fmod <- ~te(age, year, k = c(3, 18), bs = "tp") + s(age, k = 5)
-qmod <- list(~s(age, k=4), ~s(age, k=3), ~s(age, k=3), ~s(age, k=3))
-#srmod <- ~geomean(CV=0.3)
+qmod <- list(~s(age, k=4), ~s(age, k=3), ~s(age, k=3)+year, ~s(age, k=3))
+fmod <- ~te(age, year, k = c(4, 18)) + s(age, k = 6) +s(year, k=12, by=as.numeric(age==1))
+srmod <- ~geomean(CV=0.2)
 fit <- sca(stk, idxs, fmodel=fmod, qmodel=qmod, srmodel=srmod)
 fits <- simulate(fit, 500)
 
 #====================================================================
 # run retro and predictions
 #====================================================================
-stk.retro <- retro_gomcod(stk, idxs, retro=7, k=c(age=6, year=14), qmodel=qmod, srmodel=srmod)
+stk.retro <- retro_plaice(stk, idxs, retro=7, k=c(age=4, year=18, age2=6), qmodel=qmod, srmodel=srmod)
 fit.rm <- mohn(stk.retro)
 fit.pi <- predIdxs(stk, idxs, qmodel=qmod, fmodel=fmod, srmodel=srmod)
 
@@ -53,4 +53,6 @@ fit.pi <- predIdxs(stk, idxs, qmodel=qmod, fmodel=fmod, srmodel=srmod)
 #====================================================================
 dumpTabs(stk, idxs, fits, preds=fit.pi, mohnRho=fit.rm)
 dumpDiags(stk, idxs, fit, stk.retro, fit.pi)
+
+
 

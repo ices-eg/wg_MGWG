@@ -10,13 +10,13 @@ source('../../helper_code/a4a_funs.R')
 #====================================================================
 # read data
 #====================================================================
-setwd('../')
-idxs <- readFLIndices('GBWINTER_survey.dat')
+setwd('../ices_data/')
+idxs <- readFLIndices('survey.dat')
+idxs <- window(idxs, end=2016)
 stk <- readFLStock('index.low', no.discards = TRUE)
-stk <- setPlusGroup(stk, 7)
-range(stk)[c('minfbar','maxfbar')] <- c(4,6)
-
-setwd('a4asca_constantFSelectivity')
+stk <- setPlusGroup(stk, 11)
+range(stk)[c('minfbar','maxfbar')] <- c(5,10)
+setwd('../a4asca_constantFSelectivity')
 
 #====================================================================
 # replace 0 with half of the minimum
@@ -36,16 +36,16 @@ stk <- window(stk, start=my)
 #====================================================================
 # run model
 #====================================================================
-qmod <- list(~s(age, k=3), ~s(age, k=3), ~s(age, k=3))
-fmod <- ~s(age, k=4) + s(year, k=17)
-srmod <- ~geomean(CV=0.3)
+qmod <- list(~s(age, k=3))
+fmod <- ~s(age, k=5) + s(year, k=15)
+srmod <- ~geomean(CV=0.2)
 fit <- sca(stk, idxs, qmodel=qmod, fmodel=fmod, srmodel=srmod)
 fits <- simulate(fit, 500)
 
 #====================================================================
 # run retro and predictions
 #====================================================================
-stk.retro <- retro(stk, idxs, retro=7, k=c(age=4, year=17), ftype="sep", qmodel=qmod, srmodel=srmod)
+stk.retro <- retro(stk, idxs, retro=7, k=c(age=4, year=15), ftype="sep", qmodel=qmod, srmodel=srmod)
 fit.rm <- mohn(stk.retro)
 fit.pi <- predIdxs(stk, idxs, qmodel=qmod, fmodel=fmod, srmodel=srmod)
 
