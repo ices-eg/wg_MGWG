@@ -162,5 +162,21 @@ retro_plaice <- function(stk, idxs, retro=5, k, ...){
 	FLStocks(lst0)
 }
 
+retro_snemayt <- function(stk, idxs, retro, k, ...){
+	args <- list(...)
+	lst0 <- split(0:retro, 0:retro)
+	lst0 <- lapply(lst0, function(x){
+		yr <- range(stk)["maxyear"] - x
+		args$stock <- window(stk, end=yr)
+		args$indices <- window(idxs, end=yr)
+		KA <- unname(k['age'])
+		KY <- unname(k['year'] - floor(x/2))
+		fmod <- substitute(~s(year, k = KY, by = breakpts(age, 0:6))+ s(age, k = KA), list(KA = KA, KY=KY))
+		args$fmodel <- as.formula(fmod)
+		fit <- do.call("sca", args)
+		args$stock + fit
+	})
+	FLStocks(lst0)
+}
 
 
