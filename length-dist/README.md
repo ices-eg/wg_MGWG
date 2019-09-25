@@ -31,12 +31,7 @@ Cecilia Pinto (JRC).
 Extending diagnostics for stock health.
 
 [Brief literature review]
-Burel & Piet 2013, 2015
-Golet et al. 2015 - ecosystem
-Zimmerman et al. 2011 
-Kvamme&Bogstad 2007
 
-Maternal effects papers
 
 [Remaining questions]
 
