@@ -61,7 +61,7 @@ Perspective paper
 
   Simulate/Demonstrate the problem of Ref points.
       2 stocks same Bmsy and Fmsy but different LD. I.E. different selectivity, introduce nat mort events. Check if one is more resilient/resistent. 
-      Cole + Maite: SS3 simulation based on Rockfish
+      Cole + Maite: SS3 simulation based on Yelloweye Rockfish
       Dvora: population at equilibrium approach
 
 
@@ -98,18 +98,32 @@ XXX     | YYY    | ZZZ
   Skype meetings
   Perspective Manuscript Q3
   Rest TBC
+  
 ## References
-Froese, R. (2004), Keep it simple: three indicators to deal with overfishing. Fish and Fisheries, 5: 86-91. https://doi.org/10.1111/j.1467-2979.2004.00144.x
 
-Cecilie Kvamme, Bjarte Bogstad, The effect of including length structure in yield-per-recruit estimates for northeast Arctic cod, ICES Journal of Marine Science, Volume 64, Issue 2, March 2007, Pages 357–368, https://doi.org/10.1093/icesjms/fsl027
+Zimmermann et al. 2011, Does size matter? A bioeconomic perspective on optimal harvesting when price is size-dependent. Canadian Journal of Fisheries and Aquatic Sciences, 68(9):1651-1659, https://doi.org/10.1139/f2011-093
 
-Adrian Hordyk, Kotaro Ono, Sarah Valencia, Neil Loneragan, Jeremy Prince, A novel length-based empirical estimation method of spawning potential ratio (SPR), and tests of its performance, for small-scale, data-poor fisheries, ICES Journal of Marine Science, Volume 72, Issue 1, January 2015, Pages 217–231, https://doi.org/10.1093/icesjms/fsu004
+Froese, R. 2004, Keep it simple: three indicators to deal with overfishing. Fish and Fisheries 5:86-91.  https://doi.org/10.1111/j.1467-2979.2004.00144.x
 
-Rudd & Thorson 2017. Accounting for variable recruitment and fishing mortality in length-based stock assessments for data-limited fisheries. Canadian Journal of Fisheries and Aquatic Sciences, 2018, 75(7): 1019-1035, https://doi.org/10.1139/cjfas-2017-0143
+Kvamme & Bogstad 2007, The effect of including length structure in yield-per-recruit estimates for northeast Arctic cod. ICES Journal of Marine Science 64(2):357–368, https://doi.org/10.1093/icesjms/fsl027
 
-Lewis et al. 2017, Old-Growth Fishes Become Scarce under Fishing, Current Biology, Volume 27(18) 2843-2848, https://doi.org/10.1016/j.cub.2017.07.069
+Hordyk et al. 2015, A novel length-based empirical estimation method of spawning potential ratio (SPR), and tests of its performance, for small-scale, data-poor fisheries. ICES Journal of Marine Science 72(1):217–231, https://doi.org/10.1093/icesjms/fsu004
 
-Brunel & Piet 2013, Is age structure a relevant criterion for the health of fish stocks?, ICES Journal of Marine Science, Volume 70, Issue 2, Pages 270–283, https://doi.org/10.1093/icesjms/fss184
+Rudd & Thorson 2018, Accounting for variable recruitment and fishing mortality in length-based stock assessments for data-limited fisheries. Canadian Journal of Fisheries and Aquatic Sciences, 75(7):1019-1035, https://doi.org/10.1139/cjfas-2017-0143
+Lewis et al. 2017, Old-Growth Fishes Become Scarce under Fishing. Current Biology 27(18):2843-2848, https://doi.org/10.1016/j.cub.2017.07.069
+Brunel & Piet 2013, Is age structure a relevant criterion for the health of fish stocks? ICES Journal of Marine Science 70(2):270–283, https://doi.org/10.1093/icesjms/fss184
+Wolfgang et al. 2016, A proposal for restructuring Descriptor 3 of the Marine Strategy Framework Directive (MSFD). Marine Policy 74:128-135, https://doi.org/10.1016/j.marpol.2016.09.026.
+
+Tu et al 2018, Fishing and temperature effects on the size structure of exploited fish stocks. Scientific Reports 8:7132  https://doi.org/10.1038/s41598-018-25403-x
+
+Froese, R. et al. 2016, Minimizing the impact of fishing. Fish and Fisheries, 17:785-802. https://doi.org/10.1111/faf.12146
+
+Vasilakopoulos & Maravelias 2016, Application of data‐limited assessment methods on black anglerfish (Lophius budegassa; Spinola, 1807) stocks in the Mediterranean Sea. J. Appl. Ichthyol., 32: 277-287. doi:10.1111/jai.12968
+
+Vasilakopoulos et al. 2014, The Alarming Decline of Mediterranean Fish Stocks,
+Current Biology. 24(14):1643-1648, https://doi.org/10.1016/j.cub.2014.05.070.
+
+Cope & Punt 2009, Length-Based Reference Points for Data-Limited Situations: Applications and Restrictions. Marine and Coastal Fisheries: Dynamics, Management, and Ecosystem Science, 1(1):169-186, https://doi.org/10.1577/C08-025.1
 
 ## Appendix
 
