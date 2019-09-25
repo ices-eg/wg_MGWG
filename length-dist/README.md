@@ -60,7 +60,9 @@ Perspective paper
 
 
   Simulate/Demonstrate the problem of Ref points.
-      2 stocks same Bmsy and Fmsy but different LD. I.E. different selectivity, introduce nat mort events. Check if one is more resilient/resistent.
+      2 stocks same Bmsy and Fmsy but different LD. I.E. different selectivity, introduce nat mort events. Check if one is more resilient/resistent. 
+      Cole + Maite: SS3 simulation based on Rockfish
+      Dvora: population at equilibrium approach
 
 
                 
