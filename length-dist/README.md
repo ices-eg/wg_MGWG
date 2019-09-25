@@ -104,6 +104,7 @@ Cecilie Kvamme, Bjarte Bogstad, The effect of including length structure in yiel
 Adrian Hordyk, Kotaro Ono, Sarah Valencia, Neil Loneragan, Jeremy Prince, A novel length-based empirical estimation method of spawning potential ratio (SPR), and tests of its performance, for small-scale, data-poor fisheries, ICES Journal of Marine Science, Volume 72, Issue 1, January 2015, Pages 217–231, https://doi.org/10.1093/icesjms/fsu004
 
 Rudd & Thorson 2017. Accounting for variable recruitment and fishing mortality in length-based stock assessments for data-limited fisheries. Canadian Journal of Fisheries and Aquatic Sciences, 2018, 75(7): 1019-1035, https://doi.org/10.1139/cjfas-2017-0143
+
 Lewis et al. 2017, Old-Growth Fishes Become Scarce under Fishing, Current Biology, Volume 27(18) 2843-2848, https://doi.org/10.1016/j.cub.2017.07.069
 
 Brunel & Piet 2013, Is age structure a relevant criterion for the health of fish stocks?, ICES Journal of Marine Science, Volume 70, Issue 2, Pages 270–283, https://doi.org/10.1093/icesjms/fss184
