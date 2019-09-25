@@ -1,6 +1,6 @@
 # Working title
 Can length distributions complement stock status reference points?
-Coordinators: Christoph Konrad and [XXX]
+Coordinators: Christoph Konrad and Maite Pons
 
 ## Participants
 
