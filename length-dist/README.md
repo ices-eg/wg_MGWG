@@ -1,17 +1,26 @@
 # Working title
 Can length distributions complement stock status reference points?
+
 Coordinators: Christoph Konrad and Maite Pons
 
 ## Participants
 
 Christoph Konrad,
+
 Lee Qi,
+
 Maite Pons,
+
 Cole Monnahan,
+
 Dvora Hart,
+
 Daniel Howell,
+
 Jacob Kasper,
+
 Arni Magnusson,
+
 Rick Methot.
 
 ## Background
@@ -44,8 +53,7 @@ reference points that can be applied
 
 ## Plan
 Perspective paper
-    Methods,
-       What is a healthy length distribution?
+  What is a healthy length distribution?
        Model output LD (length distribution):
             Tracking LDs of several stocks from around the globe:
                         Pac Halibut, NEA Cod, George's Bank haddock
@@ -54,8 +62,9 @@ Perspective paper
                         (all pending data availability)
 
 
-    Simulate/Demonstrate the problem of Ref points.
+  Simulate/Demonstrate the problem of Ref points.
       2 stocks same Bmsy and Fmsy but different LD. I.E. different selectivity, introduce nat mort events. Check if one is more resilient/resistent.
+
 
                 
 Diagnostic Development
