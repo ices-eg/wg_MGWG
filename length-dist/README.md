@@ -4,15 +4,15 @@ Coordinators: Christoph Konrad and [XXX]
 
 ## Participants
 
-Christoph Konrad
-Lee QI
-Maite Pons
-Cole Monnahan
-Dvora Hart
-Daniel Howell
-Jacob Kasper
-Arni Magnusson
-Rick Methot
+Christoph Konrad,
+Lee Qi,
+Maite Pons,
+Cole Monnahan,
+Dvora Hart,
+Daniel Howell,
+Jacob Kasper,
+Arni Magnusson,
+Rick Methot.
 
 ## Background
 
