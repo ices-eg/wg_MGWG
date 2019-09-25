@@ -36,9 +36,9 @@ stk <- window(stk, start=my)
 #====================================================================
 # run model
 #====================================================================
-qmod <- list(~s(age, k=3), ~s(age, k=3), ~s(age, k=3), ~s(age, k=3))
+qmod <- list(~s(age, k=3, by=breakpts(year, 2008)), ~s(age, k=3, by=breakpts(year, 2008)), ~s(age, k=3), ~s(age, k=3))
 fmod <- ~ te(age, year, k=c(4, 23)) + s(age, k=4)
-srmod <- ~geomean(CV=0.1)
+srmod <- ~factor(year)
 fit <- sca(stk, idxs, qmodel=qmod, fmodel=fmod, srmodel=srmod)
 fits <- simulate(fit, 500)
 

@@ -14,7 +14,6 @@ setwd('../')
 idxs <- readFLIndices('survey.dat')
 idxs <- window(idxs, end=2016)
 stk <- readFLStock('index.low', no.discards = TRUE)
-stk <- window(stk, end=2016, start=1983)
 stk <- setPlusGroup(stk, 6)
 range(stk)[c('minfbar','maxfbar')] <- c(2,4)
 setwd('a4asca')
@@ -38,7 +37,7 @@ stk <- window(stk, start=my)
 # run model
 #====================================================================
 qmod <- list(~s(age, k=3), ~s(age, k=3))
-fmod <- ~te(age, year, k = c(3, 15), bs = "tp") + s(age, k = 5)#3,15,5
+fmod <- ~te(age, year, k = c(3, 15)) + s(age, k = 5)
 srmod <- ~geomean(CV=0.3)
 fit <- sca(stk, idxs, fmodel=fmod, qmodel=qmod, srmodel=srmod)
 fits <- simulate(fit, 500)

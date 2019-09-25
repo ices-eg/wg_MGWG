@@ -36,16 +36,16 @@ stk <- window(stk, start=my)
 #====================================================================
 # run model
 #====================================================================
-qmod <- list(~s(age, k=3), ~s(age, k=3)+year, ~s(age, k=3))
-fmod <- ~s(age, k=4) + s(year, k=14)
-srmod <- ~geomean(CV=0.3)
+qmod <- list(~s(age, k=3, by=breakpts(year, 2008)), ~s(age, k=3, by=breakpts(year, 2008))+year, ~s(age, k=3))
+fmod <- ~s(age, k=4) + s(year, k=15)
+srmod <- ~factor(year)#geomean(CV=0.3)
 fit <- sca(stk, idxs, qmodel=qmod, fmodel=fmod, srmodel=srmod)
 fits <- simulate(fit, 500)
 
 #====================================================================
 # run retro and predictions
 #====================================================================
-stk.retro <- retro(stk, idxs, retro=7, k=c(age=4, year=14), ftype="sep", qmodel=qmod, srmodel=srmod)
+stk.retro <- retro(stk, idxs, retro=7, k=c(age=4, year=15), ftype="sep", qmodel=qmod, srmodel=srmod)
 fit.rm <- mohn(stk.retro)
 fit.pi <- predIdxs(stk, idxs, qmodel=qmod, fmodel=fmod, srmodel=srmod)
 

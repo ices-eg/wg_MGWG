@@ -14,7 +14,6 @@ setwd('../')
 idxs <- readFLIndices('WHITEHAKE_survey.dat')
 idxs <- window(idxs, end=2016)
 stk <- readFLStock('WHITEHAKE_index.low', no.discards = TRUE)
-stk <- window(stk, end = 2016, start = 1989)
 stk <- setPlusGroup(stk, 9)
 range(stk)[c('minfbar','maxfbar')] <- c(5,8)
 setwd('a4asca_constantFSelectivity')
@@ -38,7 +37,7 @@ stk <- window(stk, start=my)
 # run model
 #====================================================================
 qmod <- list(~s(age, k=5, by=breakpts(year, 2008))+year, ~s(age, k=4, by=breakpts(year, 2008)) +year)
-fmod <- ~s(age, k=5) + s(year, k=14)
+fmod <- ~s(age, k=6) + s(year, k=14)
 srmod <- ~geomean(CV=0.3)
 fit <- sca(stk, idxs, qmodel=qmod, fmodel=fmod, srmodel=srmod)
 fits <- simulate(fit, 500)
@@ -46,7 +45,7 @@ fits <- simulate(fit, 500)
 #====================================================================
 # run retro and predictions
 #====================================================================
-stk.retro <- retro(stk, idxs, retro=7, k=c(age=5, year=14), ftype="sep", qmodel=qmod, srmodel=srmod)
+stk.retro <- retro(stk, idxs, retro=7, k=c(age=6, year=14), ftype="sep", qmodel=qmod, srmodel=srmod)
 fit.rm <- mohn(stk.retro)
 fit.pi <- predIdxs(stk, idxs, qmodel=qmod, fmodel=fmod, srmodel=srmod)
 

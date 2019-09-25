@@ -1,0 +1,110 @@
+
+R version 3.5.1 (2018-07-02) -- "Feather Spray"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Previously saved workspace restored]
+
+> #####################################################################
+> # 20190922 EJ
+> #
+> # Running stock assessments for WGMG 2018 projects
+> #####################################################################
+> 
+> library(FLa4a)
+Loading required package: FLCore
+Loading required package: lattice
+Loading required package: iterators
+FLCore (Version 2.6.13.9007, packaged: Wed Sep 25 16:27:19 2019)
+Loading required package: triangle
+Loading required package: copula
+Loading required package: coda
+This is FLa4a 1.6.8. For overview type 'help(package="FLa4a")'
+
+> source('../../helper_code/a4a_funs.R')
+> 
+> #====================================================================
+> # read data
+> #====================================================================
+> setwd('../')
+> idxs <- readFLIndices('PLAICE_survey.dat')
+> stk <- readFLStock('index.low', no.discards = TRUE)
+> stk <- setPlusGroup(stk, 11)
+[1] "maxfbar has been changed to accomodate new plusgroup"
+> range(stk)[c('minfbar','maxfbar')] <- c(6,9)
+> setwd('a4asca')
+> 
+> #====================================================================
+> # replace 0 with half of the minimum
+> #====================================================================
+> catch.n(stk)[catch.n(stk)==0] <- min(catch.n(stk)[catch.n(stk)!=0])/2
+Warning message:
+In .local(x, i, ...) : Selected elements do not form a coherent 6D array
+> idxs <- lapply(idxs, function(x){
++ 	index(x)[index(x)==0] <- min(index(x)[index(x)!=0])/2
++ 	x
++ })
+> 
+> #====================================================================
+> # Use only years with surveys
+> #====================================================================
+> my <- min(unlist(lapply(lapply(idxs, range), '[', 'minyear')))
+> stk <- window(stk, start=my)
+> 
+> #====================================================================
+> # run model
+> #====================================================================
+> qmod <- list(~s(age, k=4, by=breakpts(year, 2008)), ~s(age, k=3, by=breakpts(year, 2008)), ~s(age, k=3)+year, ~s(age, k=3))
+> fmod <- ~te(age, year, k = c(4, 18)) + s(age, k = 6) +s(year, k=12, by=as.numeric(age==1))
+> srmod <- ~geomean(CV=0.2)
+> fit <- sca(stk, idxs, fmodel=fmod, qmodel=qmod, srmodel=srmod)
+> fits <- simulate(fit, 500)
+> 
+> #====================================================================
+> # run retro and predictions
+> #====================================================================
+> stk.retro <- retro_plaice(stk, idxs, retro=7, k=c(age=4, year=18, age2=6), qmodel=qmod, srmodel=srmod)
+Estimated covariance matrix may not be positive definite
+ 9.29762e-10 6.64168e-05 0.000101677 0.000292563 0.000379778 0.000847488 0.000895654 0.000992963 0.00107758 0.00115987 0.00128632 0.00130606 0.00136444 0.00154565 0.00162938 0.00169781 0.00173771 0.0018651 0.00191942 0.00202453 0.00205929 0.00217613 0.00223301 0.00234268 0.00240482 0.00252741 0.00257282 0.00264005 0.00267048 0.00276001 0.00280426 0.00284577 0.00287371 0.00289193 0.00289786 0.00290257 0.0029034 0.00290816 0.00290999 0.00291432 0.00291848 0.00291991 0.00294405 0.0029827 0.00309981 0.00313911 0.00333502 0.00343288 0.00354189 0.00358172 0.00372266 0.00420224 0.00422561 0.0044411 0.00459685 0.00467811 0.00474731 0.00479756 0.00495319 0.00516206 0.00522672 0.00544529 0.00567916 0.00582717 0.00602304 0.00646387 0.00684882 0.00710211 0.00722148 0.00840872 0.00910574 0.00947742 0.0104047 0.0106957 0.0111349 0.0116648 0.0119702 0.0127371 0.0134499 0.014041 0.0151577 0.0166293 0.0166353 0.0171357 0.017481 0.0179003 0.0213436 0.0231017 0.0243857 0.0258731 0.0285276 0.0349292 0.0368487 0.0374728 0.0387328 0.0395384 0.0562709 0.0723573 0.074874 0.0916761 0.0955429 0.107103 0.116481 0.117474 0.127664 0.138207 0.141963 0.148876 0.155879 0.163732 0.181497 0.187492 0.209079 0.240874 0.24335 0.263941 0.336954 0.380499 0.399115 0.407911 0.410215 0.421932 0.434323 0.448417 0.452722 0.494973 0.543312 0.565588 0.616358 0.674041 0.747489 0.771227 0.807735 1.02005 1.04389 2.09659 4.68588 5.45322 5.94118 10.194 10.9199 17.1482 120.024 188.561 830.629 1784.49 12260
+> fit.rm <- mohn(stk.retro)
+> fit.pi <- predIdxs(stk, idxs, qmodel=qmod, fmodel=fmod, srmodel=srmod)
+> 
+> #====================================================================
+> # save
+> #====================================================================
+> dumpTabs(stk, idxs, fits, preds=fit.pi, mohnRho=fit.rm)
+> dumpDiags(stk, idxs, fit, stk.retro, fit.pi)
+Loading required package: ggplotFL
+Loading required package: ggplot2
+
+Attaching package: ‘ggplot2’
+
+The following object is masked from ‘package:FLCore’:
+
+    %+%
+
+null device 
+          1 
+Warning message:
+replacing previous import ‘ggplot2::%+%’ by ‘FLCore::%+%’ when loading ‘ggplotFL’ 
+> 
+> 
+> 
+> 
+> proc.time()
+   user  system elapsed 
+ 66.795   2.422  69.245 

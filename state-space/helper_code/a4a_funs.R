@@ -66,8 +66,10 @@ retro_gomcod <- function(stk, idxs, retro, k, ...){
 		args$stock <- window(stk, end=yr)
 		args$indices <- window(idxs, end=yr)
 		KA <- unname(k['age'])
+		KA2 <- unname(k['age2'])
 		KY <- unname(k['year'] - floor(x/2))
-		fmod <- substitute(~s(year, k = KY, by = breakpts(age, c(0,2,4,8)))+ s(age, k = KA), list(KA = KA, KY=KY))
+		KY2 <- unname(k['year2'] - floor(x/2))
+		fmod <- substitute(~te(age, year, k = c(KA, KY)) + s(age, k = KA2) + s(year, k=KY2, by=as.numeric(age==1)), list(KA = KA, KY = KY, KA2 = KA2, KY2 = KY2))
 		args$fmodel <- as.formula(fmod)
 		fit <- do.call("sca", args)
 		args$stock + fit
@@ -75,6 +77,24 @@ retro_gomcod <- function(stk, idxs, retro, k, ...){
 	FLStocks(lst0)
 }
 
+retro_gomhad <- function(stk, idxs, retro, k, ...){
+	args <- list(...)
+	lst0 <- split(0:retro, 0:retro)
+	lst0 <- lapply(lst0, function(x){
+		yr <- range(stk)["maxyear"] - x
+		args$stock <- window(stk, end=yr)
+		args$indices <- window(idxs, end=yr)
+		KA <- unname(k['age'])
+		KA2 <- unname(k['age2'])
+		KY <- unname(k['year'] - floor(x/2))
+		KY2 <- unname(k['year2'])
+		fmod <- substitute(~te(age, year, k = c(KA, KY)) + s(age, k = KA2) + s(year, k=KY2, by=as.numeric(age==1)), list(KA = KA, KY = KY, KA2 = KA2, KY2 = KY2))
+		args$fmodel <- as.formula(fmod)
+		fit <- do.call("sca", args)
+		args$stock + fit
+	})
+	FLStocks(lst0)
+}
 
 # Mohn's rho
 mohn <- function (stks, qoi=c('fbar','ssb','rec'), ...){
