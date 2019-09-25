@@ -25,7 +25,7 @@
 \renewcommand\bibname{References}
 \renewcommand\figurename{Fig.}
 \captionsetup{labelsep=period, singlelinecheck=false}
-%\doublespace
+\doublespace
 \def\little{\fontsize{7pt}{7pt}\selectfont}
 \def\Little{\fontsize{10pt}{10pt}\selectfont}
 \special{papersize=8.5in,11in}
@@ -63,14 +63,12 @@ Ernesto Jardim\footnote{European Commission Joint Research Centre, Ispra, Italy}
 Colin Millar\footnote{ICES Secretariat, Copenhagen Denmark},
 Anders Nielsen\footnotemark[2], 
 Olav N. Breivik\footnote{Norwegian Computing Center, Oslo, Norway}, 
-Vanessa Trijoulet\footnotemark[2], 
-Arni Magnusson\footnotemark[4], 
-and
-Jonathan D. Deroba\footnotemark[1]
+Vanessa Trijoulet\footnotemark[2], and 
+Arni Magnusson\footnotemark[4]
 \end{titlepage}
 
 \setcounter{page}{2}
-%\linenumbers
+\linenumbers
 
 \cfoot{\thepage}
 
@@ -88,7 +86,7 @@ Jonathan D. Deroba\footnotemark[1]
 
 \section*{Abstract}
 
-The current standard model for assessing fish stocks with age-structured data are commonly referred to statistical catch-at-age model, but applications of state-space versions that allow integration over temporally stochastic latent variables are growing. Although there are  
+The current standard model for assessing fish stocks with age-structured data are commonly referred to statistical catch-at-age model, but applications of state-space versions that allow integration over temporally stochastic latent variables are growing. Although there are appealing aspects of the statistical framework of the state-space models, there has been little evaluation of the empical evidence for improvement in inferences from them. We fit data from 13 commercially important fish stocks to 4 different modeling frameworks. Two of these frameworks are statistical catch at age models used to assess stocks in the Northeast United States and Europe. The other two are state-space age structured models. We evaluated the relative performance of the different modeling frameworks using measures of retrospective patterns and prediction of indices not used to fit the models.
 
 \pagebreak
 
@@ -113,22 +111,36 @@ Our objective here is to evaluate whether there is any empirical evidence that s
 
 \begin{itemize}
 \item Quick presentation of models (refer mainly to papers)
-\item Table summarizing difference in assumptions between models (e.g. process error assumptions, measurement error assumptions, age-structured or no, fishing mortality model, etc.)
+%\item Table summarizing difference in assumptions between models (e.g. process error assumptions, measurement error assumptions, age-structured or no, fishing mortality model, etc.)
 \item Presentation of fish stocks (summary in a table and data in supplementary material?)
 \end{itemize}
 
 \subsection*{Estimation models}
 
-We considered four assessment model frameworks to identical data sets for each stock. Two of the models are in the class of statistical catch at age models (ASAP and A4A) and two are state-space models (WHAM and SAM). ASAP is used extensively to assess US fish stocks in the northwest Atlantic ocean. 
+We considered four assessment model frameworks to identical data sets for each stock. Two of the models are in the class of statistical catch at age models (A4A and ASAP) and two are more general state-space age-structured models (WHAM and SAM). A4A \citep{jardimetal15} and SAM \citep{nielsen2014estimation} are used to assess stocks primarily in Europe. ASAP is used to assess stocks primarily in the Northeast United States \citep{legaultrestrepo99}. WHAM is a more recently developed model that can be configured to estimate models ranging from statistical catch at age to state-space versions with options to treat various aspects as random effects. It has not been used in management but versions have been applied to stocks of yellowtail flounder \citep{milleretal16}, redfish \citep{millerhyun18}, and Atlantic cod \citep{milleretal18}. 
 
-SAM and A4A are used to assess stocks in Europe. SAM\footnote{SAM can be used to fit models at stockassessment.org} was originally devleoped in AD Model Builder, but the current version is programmed in Template Model Builder. Fishing mortality at age is modeled as a multivariate log-normal random walk and indices at age and catch at age observations assume a multivariate log-normal distribution.
+A4A\footnote{A4A is available as an R packages from github.com/flr/FLa4a.} uses a compiled AD Model Builder program to estimate a SCA model but uses the linear model formula expressions in R to configure the model parameters prior to fitting. Another useful feature of the A4A framework is the built in facilities to using model averaging methods to inform management \citep{millaretal15}. 
 
-A4A does what?
+SAM\footnote{SAM is available as an R package from github.com/fishfollower/SAM and can also be used to fit models at stockassessment.org.} was originally developed in AD Model Builder, but the current version is programmed in Template Model Builder. Fishing mortality at age is modeled as a multivariate log-normal random walk and indices at age and catch at age observations assume a multivariate log-normal distribution.
 
+ASAP\footnote{ASAP can be installed on Windows operating systems from www.nefsc.noaa.gov/nft/ASAP.html} is built in AD Model Builder and there is a GUI interface for both configuring model parameters and the input data and viewing model results and diagnostics. There is also a set of companion R programs to generate plot results
 
-WHAM\footnote{WHAM can be installed as an R package from https://github.com/timjmiller/wham} is a more recently developed model that can be configured to estimate models ranging from statistical catch at age to state-space versions with options to treat various aspects as random effects. It has not been used in management but versions have been applied to stocks of yellowtail flounder \citep{milleretal16}, redfish \citep{millerhyun18}, and Atlantic cod \citep{milleretal18}. One of the primary differences from SAM are that  fishing mortality at age is modeled as seperable fixed effects with a selectivity function and a fully selected fishing mortality rate. The other difference is that aggregate catch and index observations are separated from corresponding age composition observations. 
+WHAM\footnote{WHAM is available as an R package from github.com/timjmiller/wham.} has similarities to ASAP because it was originally developed to use its input data and parameter configuration files. WHAM was originally developed in AD Model Builder but has been converted to Template Model Builder. One of the primary differences from SAM are that  fishing mortality at age is modeled as seperable fixed effects with a selectivity function and a fully selected fishing mortality rate. The other difference (and similarity with ASAP) is that aggregate catch and index observations are separated from corresponding age composition observations. 
 
 %All models treat mortality processes use the Baranov catch equations which treat survival over the annual time interval as
+
+\subsubsection*{A4A models}
+
+We fitted 2 configurations of the A4A framework to each stock data set. One treats the fisheries selectivity as separable from fully-selected fishing mortality, in that there are separate smooth function of age and year for fishing mortality. What type of smoothers? Cubic spline regression?. The second configuration treats fishing mortality as a tensor product smoother of age and year. 
+
+\subsubsection*{SAM models}
+
+We fitted 2 configurations of SAM to each stock data set. The first configuration is based on the default SAM configuration, which has a relatively modest number of free parameters to ensure high probability of convergence. The default SAM configuration assumes uncorrelated log-normal observation likelihood, and AR(1) correlation structure for $F$-at-age vector increments. The last two age groups are assumed to have the same fishing mortality. Similarly, the last two age groups for each survey fleet are assumed to have equal catchabilities, and all observation variances are assumed equal within a fleet. If visual inspection of the standard residual plots showed clear systematic patterns we modified the first configuration slightly (either de-coupling of catchabilities or variance parameters, correlated observations for survey fleets) in order to remove or at least weaken the patterns.
+The second configuration was identical to the first, except that the commercial selectivity was assumed to be constant over time. This is accomplished by fixing the $F$-process correlation parameter close to a value of 1.
+
+\subsubsection*{ASAP models}
+
+
 
 \subsubsection*{WHAM models}
 
@@ -137,9 +149,6 @@ We fitted 4 configurations of the WHAM model to each stock data set. Two configu
 The only differences in model configuration between stocks was in configuring selectivity for the age composition observations for the abundance indices and the catch. For many of the stocks, the range of ages used to comprise the aggregate index varied among indices. This led to some difficulties in applying a default logistic function of age, so we often estimated age-specific parameters. The general approach was to initially estimate all age-specific parameters freely to see which ages exhibited peak selectivity. Then selectivity parameters at these ages were fixed at one for final model results. The initial models cannot be used for final results because typically there is confounding of fully selected catchability with other model parameters (e.g., catchability) when all selectivity parameters are free.
 
 
-\subsubsection*{SAM models}
-We fitted 2 configurations of SAM to each stock data set. The first configuration is based on the default SAM configuration, which has a relatively modest number of free parameters to ensure high probability of convergence. The default SAM configuration assumes uncorrelated log-normal observation likelihood, and AR(1) correlation structure for $F$-at-age vector increments. The last two age groups are assumed to have the same fishing mortality. Similarly, the last two age groups for each survey fleet are assumed to have equal catchabilities, and all observation variances are assumed equal within a fleet. If visual inspection of the standard residual plots showed clear systematic patterns we modified the first configuration slightly (either de-coupling of catchabilities or variance parameters, correlated observations for survey fleets) in order to remove or at least weaken the patterns.
-The second configuration was identical to the first, except that the commercial selectivity was assumed to be constant over time. This is accomplished by fixing the $F$-process correlation parameter close to a value of 1.
 
 \subsubsection*{Parameter Estimation}
 
@@ -147,16 +156,52 @@ The second configuration was identical to the first, except that the commercial 
 
 All model frameworks use some form of maximum likelihood estimation. ASAP is programmed in AD Model Builder \citep{fournieretal12} and can be configured to use various penalties to the likelihood, but no penalties were used for any applications here. Estimation for the A4A model is programmed in R \citep{R18} and is also likelihood-based. The WHAM and SAM models are programmed using the Template Model Builder (TMB) package in R \citep{kristensenetal16} and parameters are estimated by maximizing a Laplace approximation of the marginal likelihood \citep{skaugfournier06}. To use the TMB package, the joint log-likelihood is writen as a C++ program which is compiled and accessed from R. The Laplace approximation of the marginal log-likelihood is returned when called from R and we use the ``nlminb'' function in R to minimize the negative of the Laplace approximation of the marginal log-likelihood. Empirical Bayes estimates of the state variables (random effects) are provided by the mode of posterior distributions of $\textsl{\textbf{S}}$, conditioned on the fixed effects parameters.
 
+\subsection*{Fish stock data inputs}
+
+We fit the models to data from 13 fish stocks primarily in the Northwest Atlantic Ocean in waters off of the United States (Table \ref{fish_stocks}). However there are two stock (Icelandic herring and North Sea cod) from European waters. The stocks were chosen primarily due to presence of retrospective patterns in their assessments. The stocks represent a mix of flatfish, roundfish and semi-pelagic species. 
+
+For all stocks standard ICES/Lowestoft files were generated for data inputs. For the US fish stocks data were obtained from recent assessments that used ASAP or VPA models. R programs were written to create the ICES files from ASAP input files. Then separate ASAP and WHAM input files were created from the ICES files so that all model frameworks were using the same ICES file inputs.
+
+\subsubsection*{Evaluating model performance}
+
+We evaluated the relative performance of the different modeling frameworks in 2 ways. First we compared the Mohn's $\rho$ \citep{mohn99} as a measure of retrospective pattern. Retrospective patterns are characterized by systematic changes in estimates of important model outputs when terminal years of data are sequentially removed from the fit.
+
+We also measured the error of predictions of indices at age during the the last three years of data when those indices (and associated age composition observations) were not used to fit the model.
+
+We assessed these performance criteria for the models for each stock as well as the average performance of models across all 13 stocks.
 
 
-
-\subsubsection*{Diagnostics}
-
-To get independent residuals from a state-space model the so-called `one-observation-ahead' residuals are computed. The residual for the $n$'th observation is computed by using the first $n-1$ observations to predict the $n$'th. Details can be found in \citet{thygesen2017validation}.   
+%To get independent residuals from a state-space model the so-called `one-observation-ahead' residuals are computed. The residual for the $n$'th observation is computed by using the first $n-1$ observations to predict the $n$'th. Details can be found in \citet{thygesen2017validation}.   
 
 \section*{Results}
 
-\subsection*{WHAM model fits}
+\subsection*{Relative performance of the model frameworks}
+
+\subsubsection*{Retrospective patterns}
+
+The Mohn's rho values for all model/stock combinations are available in the file Mohnrhodb.csv. Mohn's rho values greater than 3 are shown at the value 3, see the csv file for the actual value. Each metric (SSB, $\overline F$, and Recruitment) is presented two ways, first with all models on the same plot and second with each model a separate tile. Note that a4asca has two tiles, one for the sep case and the other for the te case, while SAM has four variations that are shown separately, and WHAM has multiple models for two stocks (Plaice and ICEherring) that are shown in the same tile.
+
+
+As an example, the Mohn's rho plot for SSB shows a wide range of values across some models (e.g., USAtlHerring) while other models are much more consistent (e.g., Pollock) . 
+
+(Figure \ref{rho_paper_plot})
+
+\subsubsection*{Prediction error}
+
+The distribution of residuals for SAM and WHAM models are often quite similar, but different from ASAP. The mean of the residual distributions is plotted as the bias for each model across all indices and years of missing indices, where the horizontal red dashed line shows a bias of zero in this plot (Figure \ref{predmissing_biasplot}).
+
+
+The square root of the mean of the squared residuals (RMSE) is smaller for better fitting models and does not show a consistent pattern across models among the stocks (Figure \ref{predmissing_rmseplot}).
+
+However, when you look at results averaged across stocks we see that SAM and WHAM provide less biased and more accurate predictions in each year of prediction (Figures \ref{predmissing_avgbiasplot} and \ref{predmissing_avgrmseplot}).
+
+But these averages are driven by a single stock (GB haddock) (Figure \ref{predmissing_rmseboxplot})
+
+\subsection*{Relative performance among alternative SAM model fits}
+
+\subsection*{Relative performance among alternative A4A model fits}
+
+\subsection*{Relative performance among alternative WHAM model fits}
 
 State-space configurations with stochastic transitions in the numbers at age always outperformed SCAA configurations of the WHAM model with regard to AIC whether the multinomial or logistic distributions was assumed for the age composition observations. 
 
@@ -322,8 +367,11 @@ The likelihood function for this is set up by first defining the joint likelihoo
  ''(\theta,u,x)|_{u=\hat{u}_\theta}))+\frac{n}{2}\log(2\pi)
  \end{align*}
 
-%Figures
+ %Figures
+
 \begin{landscape}
+
+
 \begin{figure}
 \caption{Degree of retrospective pattern in average fishing mortality, recruitment, and spawning stock biomass as measured by Mohn's $\rho$ for each stock and model type.}\label{rho_paper_plot}
 \begin{center}
@@ -331,10 +379,39 @@ The likelihood function for this is set up by first defining the joint likelihoo
 \end{center}
 \end{figure}
 
+%\begin{figure}
+%\caption{Relationship between Mohn's $\rho$ for SSB and average fishing mortality by model.}\label{rho_ssb_vs_F}
+%\begin{center}
+%\includegraphics[height = 0.9\textheight]{../db/SSBvsFbarMohnRho_paper.pdf}
+%\end{center}
+%\end{figure}
+
 \begin{figure}
-\caption{Relationship between Mohn's $\rho$ for SSB and average fishing mortality by model.}\label{rho_ssb_vs_F}
+\caption{Bias of predicted indices at age in the final 3 years of the model that were presumed missing in model fits.}\label{predmissing_biasplot}
 \begin{center}
-\includegraphics[height = 0.9\textheight]{../db/SSBvsFbarMohnRho_paper.pdf}
+\includegraphics[height = 0.8\textheight]{../db/predmissing_biasplot.png}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\caption{Root mean square error of predicted indices at age in the final 3 years of the model that were presumed missing in model fits.}\label{predmissing_rmseplot}
+\begin{center}
+\includegraphics[height = 0.8\textheight]{../db/predmissing_rmseplot.png}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\caption{Average bias of predicted indices at age in the final 3 years of the model that were presumed missing in model fits across all 13 stocks.}\label{predmissing_avgbiasplot}
+\begin{center}
+\includegraphics[height = 0.8\textheight]{../db/predmissing_avgbiasplot.png}
+\end{center}
+\end{figure}
+
+
+\begin{figure}
+\caption{Average root mean square error of predicted indices at age in the final 3 years of the model that were presumed missing in model fits across all 13 stocks.}\label{predmissing_avgrmseplot}
+\begin{center}
+\includegraphics[height = 0.8\textheight]{../db/predmissing_avgrmseplot.png}
 \end{center}
 \end{figure}
 

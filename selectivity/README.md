@@ -139,6 +139,10 @@ selectivity
   selectivity (Daniel)
 
 *Links*
+* [Brunel and Piet 2013](https://doi.org/10.1093/icesjms/fss184) The current
+  paradigm in fishery management consists of promoting selective fishing in
+  order to protect the youngest fish to let them grow and have the opportunity
+  to reproduce before being caught.
 * [Diekert, 2010](https://folk.uio.no/floriakd/papers/Diekert2010_ERE.pdf)
   "the current exploitation pattern implies that essentially the wrong fish are
   targeted. Catching older and heavier fish could double the fishery’s
