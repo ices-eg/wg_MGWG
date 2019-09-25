@@ -97,7 +97,7 @@ XXX     | YYY    | ZZZ
   Perspective Manuscript Q3
   Rest TBC
 ## References
-Froese, R. (2004), Keep it simple: three indicators to deal with overfishing. Fish and Fisheries, 5: 86-91. doi:10.1111/j.1467-2979.2004.00144.x
+Froese, R. (2004), Keep it simple: three indicators to deal with overfishing. Fish and Fisheries, 5: 86-91. https://doi.org/10.1111/j.1467-2979.2004.00144.x
 
 Cecilie Kvamme, Bjarte Bogstad, The effect of including length structure in yield-per-recruit estimates for northeast Arctic cod, ICES Journal of Marine Science, Volume 64, Issue 2, March 2007, Pages 357–368, https://doi.org/10.1093/icesjms/fsl027
 
