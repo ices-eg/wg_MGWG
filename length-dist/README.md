@@ -110,8 +110,11 @@ Kvamme & Bogstad 2007, The effect of including length structure in yield-per-rec
 Hordyk et al. 2015, A novel length-based empirical estimation method of spawning potential ratio (SPR), and tests of its performance, for small-scale, data-poor fisheries. ICES Journal of Marine Science 72(1):217–231, https://doi.org/10.1093/icesjms/fsu004
 
 Rudd & Thorson 2018, Accounting for variable recruitment and fishing mortality in length-based stock assessments for data-limited fisheries. Canadian Journal of Fisheries and Aquatic Sciences, 75(7):1019-1035, https://doi.org/10.1139/cjfas-2017-0143
+
 Lewis et al. 2017, Old-Growth Fishes Become Scarce under Fishing. Current Biology 27(18):2843-2848, https://doi.org/10.1016/j.cub.2017.07.069
+
 Brunel & Piet 2013, Is age structure a relevant criterion for the health of fish stocks? ICES Journal of Marine Science 70(2):270–283, https://doi.org/10.1093/icesjms/fss184
+
 Wolfgang et al. 2016, A proposal for restructuring Descriptor 3 of the Marine Strategy Framework Directive (MSFD). Marine Policy 74:128-135, https://doi.org/10.1016/j.marpol.2016.09.026.
 
 Tu et al 2018, Fishing and temperature effects on the size structure of exploited fish stocks. Scientific Reports 8:7132  https://doi.org/10.1038/s41598-018-25403-x
@@ -124,6 +127,17 @@ Vasilakopoulos et al. 2014, The Alarming Decline of Mediterranean Fish Stocks,
 Current Biology. 24(14):1643-1648, https://doi.org/10.1016/j.cub.2014.05.070.
 
 Cope & Punt 2009, Length-Based Reference Points for Data-Limited Situations: Applications and Restrictions. Marine and Coastal Fisheries: Dynamics, Management, and Ecosystem Science, 1(1):169-186, https://doi.org/10.1577/C08-025.1
+
+Secor et al. 2015, Depressed resilience of bluefin tuna in the western atlantic and age truncation. Conservation Biology, 29: 400-408, https://doi.org/10.1111/cobi.12392
+
+Garcia et al. 2016, Balanced harvesting in fisheries: a preliminary analysis of management implications. ICES Journal of Marine Science, 73(6):1668–1678, https://doi.org/10.1093/icesjms/fsv156
+
+Vasilakopoulos et al. 2016, The unfulfilled potential of fisheries selectivity to promote sustainability. Fish & Fisheries, 17:399-416.  https://doi.org/10.1111/faf.12117
+
+Berkeley et al. 2004, Fisheries Sustainability via Protection of Age Structure and Spatial Distribution of Fish Populations, Fisheries, 29:8, 23-32, https://doi.org/10.1577/1548-8446(2004)29[23:FSVPOA]2.0.CO;2 
+
+Murua et al. 2017, Fast versus slow growing tuna species: age, growth,and implications for population dynamics and fisheries management. Rev Fish Biol Fisheries 27:733, https://doi.org/10.1007/s11160-017-9474-1
+
 
 ## Appendix
 
