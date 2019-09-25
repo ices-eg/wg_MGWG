@@ -5,23 +5,25 @@ Coordinators: Christoph Konrad and Maite Pons
 
 ## Participants
 
-Christoph Konrad,
+Christoph Konrad (JRC),
 
-Lee Qi,
+Qi Lee (UW),
 
-Maite Pons,
+Maite Pons (UW),
 
-Cole Monnahan,
+Cole Monnahan (UW),
 
-Dvora Hart,
+Dvora Hart (NOAA North East Fisheries Science Center),
 
-Daniel Howell,
+Daniel Howell (),
 
-Jacob Kasper,
+Jacob Kasper (),
 
-Arni Magnusson,
+Arni Magnusson (ICES),
 
-Rick Methot.
+Rick Methot (),
+
+Cecilia Pinto (JRC). 
 
 ## Background
 
