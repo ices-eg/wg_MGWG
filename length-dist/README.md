@@ -25,6 +25,9 @@ Extending diagnostics for stock health.
 
 [Brief literature review]
 
+WKSHARK4 ([ICES 2018](https://ices.dk/sites/pub/Publication%20Reports/Expert%20Group%20Report/acom/2018/WKSHARK4/WKSHARK4_Report2018.pdf)) reviewed the use of length-based indicators to infer stock status and provide management advice.
+
+
 [Gaps in the literature]
 
 [Why is this important]
