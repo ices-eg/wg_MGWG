@@ -1,4 +1,4 @@
-\begin{thebibliography}{12}
+\begin{thebibliography}{18}
 \providecommand{\natexlab}[1]{#1}
 
 \bibitem[{Albertsen et~al.(2016)Albertsen, Nielsen, and
@@ -17,6 +17,10 @@ Berg, C.~W., Nielsen, A., and Kristensen, K. 2014. Evaluation of alternative
   age-based methods for estimating relative abundance from survey data in
   relation to assessment models. Fisheries research \textbf{ 151}: 91--99.
 
+\bibitem[{Deroba(2015)}]{deroba15}
+Deroba, J. 2015. Atlantic herring operational assessment report 2015. {NEFSC}
+  {Ref}. {Doc}. 15-16. 30 p., doi: 10.7289/V5CN71WS.
+
 \bibitem[{Fournier et~al.(2012)Fournier, Skaug, Ancheta, Ianelli, Magnusson,
   Maunder, Nielsen, and Sibert}]{fournieretal12}
 Fournier, D.~A., Skaug, H.~J., Ancheta, J., Ianelli, J., Magnusson, A.,
@@ -25,11 +29,32 @@ Fournier, D.~A., Skaug, H.~J., Ancheta, J., Ianelli, J., Magnusson, A.,
   complex nonlinear models. Optimization Methods and Software \textbf{ 27}(2):
   233--249.
 
+\bibitem[{{ICES}(2018)}]{ices18}
+{ICES}. 2018. Report of the working group on the assessment of demersal stocks
+  in the {N}orth {S}ea and {S}kagerrak ({WGNSSK}), 24 april - 3 may 2018,
+  oostende, belgium. {ICES} {CM} 2018/{ACOM}:22. 1250 p.
+
+\bibitem[{Jardim et~al.(2015)Jardim, Millar, Mosqueira, Scott, Osio, Ferreti,
+  Alzorriz, and Orio}]{jardimetal15}
+Jardim, E., Millar, C.~P., Mosqueira, I., Scott, F., Osio, G.~C., Ferreti, M.,
+  Alzorriz, N., and Orio, A. 2015. What if stock assessment is as simple as a
+  linear model? the a4a initiative. \ijms \textbf{ 72}(1): 232--236.
+
 \bibitem[{Kristensen et~al.(2016)Kristensen, Nielsen, Berg, Skaug, and
   Bell}]{kristensenetal16}
 Kristensen, K., Nielsen, A., Berg, C.~W., Skaug, H., and Bell, B.~M. 2016.
   {TMB}: Automatic differentiation and {L}aplace approximation. Journal of
   Statistical Software \textbf{ 70}(5): 1--21.
+
+\bibitem[{Legault and Restrepo(1999)}]{legaultrestrepo99}
+Legault, C.~M. and Restrepo, V.~R. 1999. A flexible forward age-structured
+  assessment program. Col. Vol. Sci. Pap. ICCAT \textbf{ 49}(2): 246--253.
+
+\bibitem[{Millar et~al.(2015)Millar, Jardim, Scott, Osio, Mosqueira, and
+  Alzorriz}]{millaretal15}
+Millar, C.~P., Jardim, E., Scott, F., Osio, G.~C., Mosqueira, I., and Alzorriz,
+  N. 2015. Model averaging to streamline the stock assessment process. \ijms
+  \textbf{ 72}(1): 93--98.
 
 \bibitem[{Miller et~al.(2016)Miller, Hare, and Alade}]{milleretal16}
 Miller, T.~J., Hare, J.~A., and Alade, L. 2016. A state-space approach to
@@ -49,6 +74,16 @@ Miller, T.~J., O'Brien, L., and Fratantoni, P.~S. 2018. Temporal and
   reference points of georges bank atlantic cod. \cjfas \textbf{ 75}(12):
   2159--2171, doi: 10.1139/cjfas-2017-0124.
 
+\bibitem[{Mohn(1999)}]{mohn99}
+Mohn, R. 1999. The retrospective problem in sequential population analysis: an
+  investigation using cod fishery and simulated data. \ijms \textbf{ 56}(4):
+  473--488.
+
+\bibitem[{{NEFSC}(2017)}]{nefsc17}
+{NEFSC}. 2017. Operational assessment of 19 northeast groundfish stocks,
+  updated through 2016. {NEFSC} {Ref}. {Doc}. 17-17. 259 p., doi:
+  10.7289/V5/RD-NEFSC-17-17.
+
 \bibitem[{Nielsen and Berg(2014)}]{nielsen2014estimation}
 Nielsen, A. and Berg, C.~W. 2014. Estimation of time-varying selectivity in
   stock assessments using state-space models. Fisheries Research \textbf{ 158}:
@@ -62,12 +97,5 @@ Nielsen, A. and Berg, C.~W. 2014. Estimation of time-varying selectivity in
 Skaug, H.~J. and Fournier, D.~A. 2006. Automatic approximation of the marginal
   likelihood in non-{Gaussian} hierarchical models. \csda \textbf{ 51}(2):
   699--709.
-
-\bibitem[{Thygesen et~al.(2017)Thygesen, Albertsen, Berg, Kristensen, and
-  Nielsen}]{thygesen2017validation}
-Thygesen, U.~H., Albertsen, C.~M., Berg, C.~W., Kristensen, K., and Nielsen, A.
-  2017. Validation of ecological state space models using the laplace
-  approximation. Environmental and Ecological Statistics \textbf{ 24}(2):
-  317--339.
 
 \end{thebibliography}
