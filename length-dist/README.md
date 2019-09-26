@@ -6,31 +6,16 @@ Coordinators: Christoph Konrad and Maite Pons
 ## Participants
 
 Arni Magnusson (ICES),
-
-Cecilia Pinto (JRC)
-
+Cecilia Pinto (JRC),
 Christoph Konrad (JRC),
-
 Cole Monnahan (UW),
-
-Daniel Howell (IMR Norway),
-
-Dvora Hart (NOAA North East Fisheries Science Center),
-
+Daniel Howell (IMR),
+Dvora Hart (NOAA),
 Ernesto Jardim (JRC),
-
 Jacob Kasper (UConn),
-
+Lee Qi (UW),
 Maite Pons (UW),
-
-Qi Lee (UW),
-
-Rick Methot (). 
-
-
-
-
-
+Rick Methot (NOAA).
 
 
 ## Background
@@ -40,8 +25,7 @@ Extending diagnostics for stock health.
 
 [Brief literature review]
 
-
-[Remaining questions]
+[Gaps in the literature]
 
 [Why is this important]
 Policy demands EU side
