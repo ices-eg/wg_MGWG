@@ -51,10 +51,10 @@ Selectivity options are model-dependent:
     * age-specific (time-invariant)
     * age-specific with time blocks
     * AR process on selectivity parameters in assessment
-  * SAM?
+  * SAM
     * age-specific (time-invariant)
     * 2D RW on F(a,y)
-  * a4a?
+  * a4a
 
 This project will leverage work from the state-space project. We will use the same 13 stocks (data already compiled):
 
@@ -72,10 +72,26 @@ This project will leverage work from the state-space project. We will use the sa
   * Icelandic herring (ICEherring)
   * US Atlantic Herring (USAtlHerring)
 
-Define performance metrics
-Define output to save for each model run
+Phase 1: fit each model to each stock with 1) time-constant and 2) time-varying selectivity. For stocks in which time-varying selectivity makes a big difference (need to define), run models with selectivity time blocks.
 
-Future work?
+Phase 2: fit models with time blocks on selectivity:
+
+1. Time blocks used in production assessment (if done)
+2. Time blocks based on management changes (ask experts)
+3. Time blocks based on shifts in selectivity from runs with time-varying selectivity. TBD how to determine this...
+
+    * in production model?
+    * across models?
+    * each model individually?
+
+Define performance metrics
+
+Output to save for each model run:
+
+  * same as in state-space project
+  * matrix of selectivity (age x time)
+
+Future work
 
 * Simulation study to look at simultaneously estimating time-varying M and time-varying selectivity?
 
