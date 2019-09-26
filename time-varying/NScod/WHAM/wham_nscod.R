@@ -5,11 +5,12 @@
 #  2. time-varying
 
 # load wham
-# devtools::install_github("timjmiller/wham", ref="ecov_tstep", dependencies=TRUE)
+# devtools::install_github("timjmiller/wham", ref="master", dependencies=TRUE)
+# devtools::install_github("timjmiller/wham", ref="a-t-selectivity", dependencies=TRUE)
 library(wham)
 
 # create directory for analysis, E.g.,
-write.dir <- "/home/bstock/Documents/wham/sandbox/ex1"
+write.dir <- "/home/bstock/Documents/NRC/ices-time-varying"
 if(!exists("write.dir")) write.dir = getwd()
 dir.create(write.dir)
 setwd(write.dir)
