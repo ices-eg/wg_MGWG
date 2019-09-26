@@ -19,7 +19,7 @@ Dvora Hart (NOAA North East Fisheries Science Center),
 
 Ernesto Jardim (JRC),
 
-Jacob Kasper (),
+Jacob Kasper (UConn),
 
 Maite Pons (UW),
 
