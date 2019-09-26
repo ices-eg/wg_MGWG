@@ -13,17 +13,17 @@ getwd()
 
 ## Define locations of the models. Depends on which species for
 ## now
-## om <- file.path("models", "cod-om")
-## em <- file.path("models", "cod-em")
-om <- file.path("models", "yellow-om")
-em <- file.path("models", "yellow-em")
+om <- file.path(getwd(), "models", "cod-om")
+em <- file.path(getwd(), "models", "cod-em")
+om <- file.path(getwd(), "models", "yellow-om")
+em <- file.path(getwd(), "models", "yellow-em")
 case_folder <- "cases"
 case_files <- list(F="F", D=c("index", "lcomp", "agecomp"),
                     E="E", O="O")
 
 ## A run with deterministic process error for exploring
 ## equilibrium behavior of the OM
-## scens <- c("D0-E100-F0-O0-cod", "D0-E100-F0-O1-cod")
+ scens <- c("D0-E100-F0-O0-cod", "D0-E100-F0-O1-cod")
 scens <- c("D0-E100-F0-O0-yellow", "D0-E100-F0-O1-yellow")
 run_ss3sim(iterations = 1, scenarios=scens,
   case_folder = case_folder, case_files = case_files,
@@ -42,8 +42,8 @@ plot_ts_lines(ts, 'SpawnBio_om', vert='O')
 ## report2 <- SS_output('D0-E100-F0-O1-cod/1/om', ncols=300)
 report1 <- SS_output('D0-E100-F0-O0-yellow/1/om', ncols=300)
 report2 <- SS_output('D0-E100-F0-O1-yellow/1/om', ncols=300)
-SS_plots(report1, uncertainty=FALSE)
-SS_plots(report2, uncertainty=FALSE)
+SS_plots(report1, uncertainty=FALSE, plot=1:24)
+SS_plots(report2, uncertainty=FALSE, plot=1:24)
 
 get_poplengthfreq <- function(report){
   fd <- report$natlen
