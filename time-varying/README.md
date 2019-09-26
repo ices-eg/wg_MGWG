@@ -16,6 +16,7 @@ Time-varying selectivity
   * Brian Stock, NEFSC
   * Claudio Castillo-Jordan, UW
   * Rick Methot, NWFSC
+  * Daniel Howell, IMR
 
 ### Background
 
