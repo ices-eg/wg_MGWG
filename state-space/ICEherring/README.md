@@ -13,6 +13,7 @@ Notes:
 * Run retrospective: `vparetro run1nwwg.dat`
 
 References:
+* International Council for the Exploration of the Sea (ICES). 2017. Icelandic summer spawning herring. In: Report of the North Western Working Group. ICES CM 2017/ACOM:08, pp. 260-299. Available at https://ices.dk/sites/pub/Publication%20Reports/Expert%20Group%20Report/acom/2017/NWWG/NWWG%202017%20Report.pdf.
 * http://data.hafro.is/assmt/2017/herring/
 * https://www.hafogvatn.is/en/harvesting-advice/herring
 * http://dt.hafogvatn.is/astand/2017/30_sild.html
