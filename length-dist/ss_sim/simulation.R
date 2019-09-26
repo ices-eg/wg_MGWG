@@ -28,8 +28,8 @@ scens <- c("D0-E100-F0-O0-yellow", "D0-E100-F0-O1-yellow")
 run_ss3sim(iterations = 1, scenarios=scens,
   case_folder = case_folder, case_files = case_files,
   om_dir = om, em_dir = em, parallel=TRUE,
-  bias_adjust = FALSE, user_recdevs = matrix(0, nrow = 101, ncol = 2))
-##  unlink(scens, recursive = TRUE)
+  bias_adjust = FALSE, user_recdevs = matrix(0, nrow = 201, ncol = 2))
+unlink(scens, recursive = TRUE)
 
 ## Read in results and quick plot of OM biomass trajectories
 out <- get_results_all(overwrite_files=TRUE)

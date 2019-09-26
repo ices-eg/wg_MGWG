@@ -11,7 +11,7 @@
 #Stock Synthesis (SS) is a work of the U.S. Government and is not subject to copyright protection in the United States.
 #Foreign copyrights may apply. See copyright.txt for more information.
 1 #_StartYr
-100 #_EndYr
+201 #_EndYr
 1 #_Nseas
 12 #_months/season
 2 #_Nsubseasons (even number, minimum is 2)
@@ -141,6 +141,107 @@
 98 1 1 1 0.01
 99 1 1 1 0.01
 100 1 1 1 0.01
+101 1 1 1 0.01
+102 1 1 1 0.01
+103 1 1 1 0.01
+104 1 1 1 0.01
+105 1 1 1 0.01
+106 1 1 1 0.01
+107 1 1 1 0.01
+108 1 1 1 0.01
+109 1 1 1 0.01
+110 1 1 1 0.01
+111 1 1 1 0.01
+112 1 1 1 0.01
+113 1 1 1 0.01
+114 1 1 1 0.01
+115 1 1 1 0.01
+116 1 1 1 0.01
+117 1 1 1 0.01
+118 1 1 1 0.01
+119 1 1 1 0.01
+120 1 1 1 0.01
+121 1 1 1 0.01
+122 1 1 1 0.01
+123 1 1 1 0.01
+124 1 1 1 0.01
+125 1 1 1 0.01
+126 1 1 1 0.01
+127 1 1 1 0.01
+128 1 1 1 0.01
+129 1 1 1 0.01
+130 1 1 1 0.01
+131 1 1 1 0.01
+132 1 1 1 0.01
+133 1 1 1 0.01
+134 1 1 1 0.01
+135 1 1 1 0.01
+136 1 1 1 0.01
+137 1 1 1 0.01
+138 1 1 1 0.01
+139 1 1 1 0.01
+140 1 1 1 0.01
+141 1 1 1 0.01
+142 1 1 1 0.01
+143 1 1 1 0.01
+144 1 1 1 0.01
+145 1 1 1 0.01
+146 1 1 1 0.01
+147 1 1 1 0.01
+148 1 1 1 0.01
+149 1 1 1 0.01
+150 1 1 1 0.01
+151 1 1 1 0.01
+152 1 1 1 0.01
+153 1 1 1 0.01
+154 1 1 1 0.01
+155 1 1 1 0.01
+156 1 1 1 0.01
+157 1 1 1 0.01
+158 1 1 1 0.01
+159 1 1 1 0.01
+160 1 1 1 0.01
+161 1 1 1 0.01
+162 1 1 1 0.01
+163 1 1 1 0.01
+164 1 1 1 0.01
+165 1 1 1 0.01
+166 1 1 1 0.01
+167 1 1 1 0.01
+168 1 1 1 0.01
+169 1 1 1 0.01
+170 1 1 1 0.01
+171 1 1 1 0.01
+172 1 1 1 0.01
+173 1 1 1 0.01
+174 1 1 1 0.01
+175 1 1 1 0.01
+176 1 1 1 0.01
+177 1 1 1 0.01
+178 1 1 1 0.01
+179 1 1 1 0.01
+180 1 1 1 0.01
+181 1 1 1 0.01
+182 1 1 1 0.01
+183 1 1 1 0.01
+184 1 1 1 0.01
+185 1 1 1 0.01
+186 1 1 1 0.01
+187 1 1 1 0.01
+188 1 1 1 0.01
+189 1 1 1 0.01
+190 1 1 1 0.01
+191 1 1 1 0.01
+192 1 1 1 0.01
+193 1 1 1 0.01
+194 1 1 1 0.01
+195 1 1 1 0.01
+196 1 1 1 0.01
+197 1 1 1 0.01
+198 1 1 1 0.01
+199 1 1 1 0.01
+200 1 1 1 0.01
+
 -9999 0 0 0 0
 #
  #_CPUE_and_surveyabundance_observations
@@ -251,6 +352,106 @@
 98 7 1 1 0.2 #_ Fishery
 99 7 1 1 0.2 #_ Fishery
 100 7 1 1 0.2 #_ Fishery
+101 7 1 1 0.2 #_ Fishery
+102 7 1 1 0.2 #_ Fishery
+103 7 1 1 0.2 #_ Fishery
+104 7 1 1 0.2 #_ Fishery
+105 7 1 1 0.2 #_ Fishery
+106 7 1 1 0.2 #_ Fishery
+107 7 1 1 0.2 #_ Fishery
+108 7 1 1 0.2 #_ Fishery
+109 7 1 1 0.2 #_ Fishery
+110 7 1 1 0.2 #_ Fishery
+111 7 1 1 0.2 #_ Fishery
+112 7 1 1 0.2 #_ Fishery
+113 7 1 1 0.2 #_ Fishery
+114 7 1 1 0.2 #_ Fishery
+115 7 1 1 0.2 #_ Fishery
+116 7 1 1 0.2 #_ Fishery
+117 7 1 1 0.2 #_ Fishery
+118 7 1 1 0.2 #_ Fishery
+119 7 1 1 0.2 #_ Fishery
+120 7 1 1 0.2 #_ Fishery
+121 7 1 1 0.2 #_ Fishery
+122 7 1 1 0.2 #_ Fishery
+123 7 1 1 0.2 #_ Fishery
+124 7 1 1 0.2 #_ Fishery
+125 7 1 1 0.2 #_ Fishery
+126 7 1 1 0.2 #_ Fishery
+127 7 1 1 0.2 #_ Fishery
+128 7 1 1 0.2 #_ Fishery
+129 7 1 1 0.2 #_ Fishery
+130 7 1 1 0.2 #_ Fishery
+131 7 1 1 0.2 #_ Fishery
+132 7 1 1 0.2 #_ Fishery
+133 7 1 1 0.2 #_ Fishery
+134 7 1 1 0.2 #_ Fishery
+135 7 1 1 0.2 #_ Fishery
+136 7 1 1 0.2 #_ Fishery
+137 7 1 1 0.2 #_ Fishery
+138 7 1 1 0.2 #_ Fishery
+139 7 1 1 0.2 #_ Fishery
+140 7 1 1 0.2 #_ Fishery
+141 7 1 1 0.2 #_ Fishery
+142 7 1 1 0.2 #_ Fishery
+143 7 1 1 0.2 #_ Fishery
+144 7 1 1 0.2 #_ Fishery
+145 7 1 1 0.2 #_ Fishery
+146 7 1 1 0.2 #_ Fishery
+147 7 1 1 0.2 #_ Fishery
+148 7 1 1 0.2 #_ Fishery
+149 7 1 1 0.2 #_ Fishery
+150 7 1 1 0.2 #_ Fishery
+151 7 1 1 0.2 #_ Fishery
+152 7 1 1 0.2 #_ Fishery
+153 7 1 1 0.2 #_ Fishery
+154 7 1 1 0.2 #_ Fishery
+155 7 1 1 0.2 #_ Fishery
+156 7 1 1 0.2 #_ Fishery
+157 7 1 1 0.2 #_ Fishery
+158 7 1 1 0.2 #_ Fishery
+159 7 1 1 0.2 #_ Fishery
+160 7 1 1 0.2 #_ Fishery
+161 7 1 1 0.2 #_ Fishery
+162 7 1 1 0.2 #_ Fishery
+163 7 1 1 0.2 #_ Fishery
+164 7 1 1 0.2 #_ Fishery
+165 7 1 1 0.2 #_ Fishery
+166 7 1 1 0.2 #_ Fishery
+167 7 1 1 0.2 #_ Fishery
+168 7 1 1 0.2 #_ Fishery
+169 7 1 1 0.2 #_ Fishery
+170 7 1 1 0.2 #_ Fishery
+171 7 1 1 0.2 #_ Fishery
+172 7 1 1 0.2 #_ Fishery
+173 7 1 1 0.2 #_ Fishery
+174 7 1 1 0.2 #_ Fishery
+175 7 1 1 0.2 #_ Fishery
+176 7 1 1 0.2 #_ Fishery
+177 7 1 1 0.2 #_ Fishery
+178 7 1 1 0.2 #_ Fishery
+179 7 1 1 0.2 #_ Fishery
+180 7 1 1 0.2 #_ Fishery
+181 7 1 1 0.2 #_ Fishery
+182 7 1 1 0.2 #_ Fishery
+183 7 1 1 0.2 #_ Fishery
+184 7 1 1 0.2 #_ Fishery
+185 7 1 1 0.2 #_ Fishery
+186 7 1 1 0.2 #_ Fishery
+187 7 1 1 0.2 #_ Fishery
+188 7 1 1 0.2 #_ Fishery
+189 7 1 1 0.2 #_ Fishery
+190 7 1 1 0.2 #_ Fishery
+191 7 1 1 0.2 #_ Fishery
+192 7 1 1 0.2 #_ Fishery
+193 7 1 1 0.2 #_ Fishery
+194 7 1 1 0.2 #_ Fishery
+195 7 1 1 0.2 #_ Fishery
+196 7 1 1 0.2 #_ Fishery
+197 7 1 1 0.2 #_ Fishery
+198 7 1 1 0.2 #_ Fishery
+199 7 1 1 0.2 #_ Fishery
+200 7 1 1 0.2 #_ Fishery
 1 7 2 1 0.2 #_ Survey
 2 7 2 1 0.2 #_ Survey
 3 7 2 1 0.2 #_ Survey
@@ -351,6 +552,106 @@
 98 7 2 1 0.2 #_ Survey
 99 7 2 1 0.2 #_ Survey
 100 7 2 1 0.2 #_ Survey
+101 7 2 1 0.2 #_ Survey
+102 7 2 1 0.2 #_ Survey
+103 7 2 1 0.2 #_ Survey
+104 7 2 1 0.2 #_ Survey
+105 7 2 1 0.2 #_ Survey
+106 7 2 1 0.2 #_ Survey
+107 7 2 1 0.2 #_ Survey
+108 7 2 1 0.2 #_ Survey
+109 7 2 1 0.2 #_ Survey
+110 7 2 1 0.2 #_ Survey
+111 7 2 1 0.2 #_ Survey
+112 7 2 1 0.2 #_ Survey
+113 7 2 1 0.2 #_ Survey
+114 7 2 1 0.2 #_ Survey
+115 7 2 1 0.2 #_ Survey
+116 7 2 1 0.2 #_ Survey
+117 7 2 1 0.2 #_ Survey
+118 7 2 1 0.2 #_ Survey
+119 7 2 1 0.2 #_ Survey
+120 7 2 1 0.2 #_ Survey
+121 7 2 1 0.2 #_ Survey
+122 7 2 1 0.2 #_ Survey
+123 7 2 1 0.2 #_ Survey
+124 7 2 1 0.2 #_ Survey
+125 7 2 1 0.2 #_ Survey
+126 7 2 1 0.2 #_ Survey
+127 7 2 1 0.2 #_ Survey
+128 7 2 1 0.2 #_ Survey
+129 7 2 1 0.2 #_ Survey
+130 7 2 1 0.2 #_ Survey
+131 7 2 1 0.2 #_ Survey
+132 7 2 1 0.2 #_ Survey
+133 7 2 1 0.2 #_ Survey
+134 7 2 1 0.2 #_ Survey
+135 7 2 1 0.2 #_ Survey
+136 7 2 1 0.2 #_ Survey
+137 7 2 1 0.2 #_ Survey
+138 7 2 1 0.2 #_ Survey
+139 7 2 1 0.2 #_ Survey
+140 7 2 1 0.2 #_ Survey
+141 7 2 1 0.2 #_ Survey
+142 7 2 1 0.2 #_ Survey
+143 7 2 1 0.2 #_ Survey
+144 7 2 1 0.2 #_ Survey
+145 7 2 1 0.2 #_ Survey
+146 7 2 1 0.2 #_ Survey
+147 7 2 1 0.2 #_ Survey
+148 7 2 1 0.2 #_ Survey
+149 7 2 1 0.2 #_ Survey
+150 7 2 1 0.2 #_ Survey
+151 7 2 1 0.2 #_ Survey
+152 7 2 1 0.2 #_ Survey
+153 7 2 1 0.2 #_ Survey
+154 7 2 1 0.2 #_ Survey
+155 7 2 1 0.2 #_ Survey
+156 7 2 1 0.2 #_ Survey
+157 7 2 1 0.2 #_ Survey
+158 7 2 1 0.2 #_ Survey
+159 7 2 1 0.2 #_ Survey
+160 7 2 1 0.2 #_ Survey
+161 7 2 1 0.2 #_ Survey
+162 7 2 1 0.2 #_ Survey
+163 7 2 1 0.2 #_ Survey
+164 7 2 1 0.2 #_ Survey
+165 7 2 1 0.2 #_ Survey
+166 7 2 1 0.2 #_ Survey
+167 7 2 1 0.2 #_ Survey
+168 7 2 1 0.2 #_ Survey
+169 7 2 1 0.2 #_ Survey
+170 7 2 1 0.2 #_ Survey
+171 7 2 1 0.2 #_ Survey
+172 7 2 1 0.2 #_ Survey
+173 7 2 1 0.2 #_ Survey
+174 7 2 1 0.2 #_ Survey
+175 7 2 1 0.2 #_ Survey
+176 7 2 1 0.2 #_ Survey
+177 7 2 1 0.2 #_ Survey
+178 7 2 1 0.2 #_ Survey
+179 7 2 1 0.2 #_ Survey
+180 7 2 1 0.2 #_ Survey
+181 7 2 1 0.2 #_ Survey
+182 7 2 1 0.2 #_ Survey
+183 7 2 1 0.2 #_ Survey
+184 7 2 1 0.2 #_ Survey
+185 7 2 1 0.2 #_ Survey
+186 7 2 1 0.2 #_ Survey
+187 7 2 1 0.2 #_ Survey
+188 7 2 1 0.2 #_ Survey
+189 7 2 1 0.2 #_ Survey
+190 7 2 1 0.2 #_ Survey
+191 7 2 1 0.2 #_ Survey
+192 7 2 1 0.2 #_ Survey
+193 7 2 1 0.2 #_ Survey
+194 7 2 1 0.2 #_ Survey
+195 7 2 1 0.2 #_ Survey
+196 7 2 1 0.2 #_ Survey
+197 7 2 1 0.2 #_ Survey
+198 7 2 1 0.2 #_ Survey
+199 7 2 1 0.2 #_ Survey
+200 7 2 1 0.2 #_ Survey
 -9999 1 1 1 1 # terminator for survey observations
 #
 0 #_N_fleets_with_discard
