@@ -89,7 +89,7 @@ Future work
 ##### Task list
 
 Task | Who | By when
--------- | --------
+---- | --- | -------
 Contact SAM and a4a about involvement | Kelli | Nov 20 - [ ]
 SS fits (phase 1) | Kelli | Nov 20 - [ ]
 WHAM forecasts + time-varying sel | Brian | Nov 20 - [ ]
