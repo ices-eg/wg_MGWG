@@ -48,3 +48,5 @@ How Stock Synthesis estimates the process variability of the 2D AR process was b
 
 ### 2019-09-26 Seattle, WA
 
+Possible idea for future work (not part of this project currently) is to develop an algorithm for determining when to insert a new selectivity block in an assessment. Challenge is to apply time series breakpoint analysis to a matrix instead of a single series. Also, stock assessments are non-linear in response to new parameters, so adding a new selectivity block may not produce expected results due to tradeoffs being made elsewhere in the model. Brute force evaluation would be one approach, with minimizing the objective function for a given number of blocks an obvious performance metric, but something like AIC would be needed if different numbers of blocks (or different numbers of estimated parameters within the given blocks) was evaluated.
+
