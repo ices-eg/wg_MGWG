@@ -112,7 +112,7 @@ Fin-fish:
 
 Christoph: contact NWWG 
 
-Daniel: Norwegian and arctic fish stock as applicable
+Daniel: North Sea, Norwegian and arctic fish stock as applicable
 
 Maite+Lee Qi +Cole: west pacific stocks
 
