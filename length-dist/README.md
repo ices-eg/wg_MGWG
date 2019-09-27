@@ -110,9 +110,9 @@ Lee Qi: ask Cody about Invertebrates
 
 Fin-fish:
 
-Chris contact Bjarki
+Christoph: contact NWWG 
 
-Daniel get stuff from NWWG
+Daniel: Norwegian and arctic fish stock as applicable
 
 Maite+Lee Qi +Cole: west pacific stocks
 
