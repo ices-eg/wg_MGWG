@@ -94,11 +94,42 @@ Future issues
 
 
 ## Tasks
+#Simulations:
 
-Dataset | Method | Person
-------- | ------ | ------
-XXX     | YYY    | ZZZ
+Cole with SS3sim, try to get 2 populations with same MSY ref points but different length distributions.
 
+Dvora: theoretical length distributions vs realized/observed
+
+Christoph: simulations with a4a (2 sims)
+
+Maite: simulations with SS (not ss3Sim)
+
+#Get data sets: all
+
+Lee Qi: ask Cody about Invertebrates
+
+Fin-fish:
+
+Chris contact Bjarki
+
+Daniel get stuff from NWWG
+
+Maite+Lee Qi +Cole: west pacific stocks
+
+Maite: tunas
+
+#Literature review:
+
+-          existing metrics
+
+-          correlation of those metrics with F and B
+
+#Other
+Length-based metrics in data-limited world
+
+Maybe create a google doc folder with references and data and results
+
+Next Skype meeting: November 4th 1700 CET
 * Milestones, timeline
   Skype meetings
   Perspective Manuscript Q3
