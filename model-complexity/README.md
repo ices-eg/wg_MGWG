@@ -129,5 +129,9 @@ Can we store pdfs in a folder for this project?
     * Brandon Chasco - ...
     * Jose De Oliveira - ...
  
+## Seattle 2019 meeting
+
+* Decided to put this project on hold to allow focus on other ongoing projects and the addition of two new projects.
+* Will evaluate whether to restart this project at 2020 meeting.
 
 

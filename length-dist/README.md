@@ -112,7 +112,7 @@ Fin-fish:
 
 Christoph: contact NWWG 
 
-Daniel: Norwegian and arctic fish stock as applicable
+Daniel: North Sea, Norwegian and arctic fish stock as applicable
 
 Maite+Lee Qi +Cole: west pacific stocks
 
@@ -148,6 +148,7 @@ Next Skype meeting: November 4th 1700 CET
 * Hordyk et al. 2015, A novel length-based empirical estimation method of spawning potential ratio (SPR), and tests of its performance, for small-scale, data-poor fisheries. ICES Journal of Marine Science 72(1):217–231, https://doi.org/10.1093/icesjms/fsu004
 * International Council for the Exploration of the Sea (ICES), 2018a, Report of the Workshop on Length-Based Indicators and Reference Points for Elasmobranchs (WKSHARK4), ICES CM 2018/ACOM:37, https://ices.dk/sites/pub/Publication%20Reports/Expert%20Group%20Report/acom/2018/WKSHARK4/WKSHARK4_Report2018.pdf
 * International Council for the Exploration of the Sea (ICES), 2018b, ICES reference points for stocks in categories 3 and 4, In: ICES Technical Guidelines, https://ices.dk/sites/pub/Publication%20Reports/Guidelines%20and%20Policies/16.04.03.02_Category_3-4_Reference_Points.pdf
+* Jardim et al. 2015, Harvest control rules for data limited stocks using length-based reference points and survey biomass indices. Fisheries Research 171:12-19, https://doi.org/10.1016/j.fishres.2014.11.013
 * Kvamme & Bogstad 2007, The effect of including length structure in yield-per-recruit estimates for northeast Arctic cod. ICES Journal of Marine Science 64(2):357–368, https://doi.org/10.1093/icesjms/fsl027
 * Lewis et al. 2017, Old-Growth Fishes Become Scarce under Fishing. Current Biology 27(18):2843-2848, https://doi.org/10.1016/j.cub.2017.07.069
 * Miethe et al. 2019, Reference points for the length-based indicator Lmax5% for use in the assessment of data-limited stocks, ICES Journal of Marine Science fsz158, https://doi.org/10.1093/icesjms/fsz158
