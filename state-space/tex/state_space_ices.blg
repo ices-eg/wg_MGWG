@@ -1,46 +1,51 @@
-This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
-Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: state_space_ices.aux
 The style file: cjfas2.bst
 Database file #1: state_space_ices.bib
-You've used 12 entries,
+Repeated entry---line 277 of file state_space_ices.bib
+ : @misc{deroba15
+ :               ,
+I'm skipping whatever remains of this entry
+You've used 18 entries,
             2804 wiz_defined-function locations,
-            664 strings with 7165 characters,
-and the built_in function-call counts, 7729 in all, are:
-= -- 674
-> -- 358
-< -- 5
-+ -- 131
-- -- 117
-* -- 642
-:= -- 1213
-add.period$ -- 48
-call.type$ -- 12
-change.case$ -- 101
-chr.to.int$ -- 12
-cite$ -- 12
-duplicate$ -- 528
-empty$ -- 527
-format.name$ -- 159
-if$ -- 1512
+            692 strings with 8019 characters,
+and the built_in function-call counts, 10788 in all, are:
+= -- 945
+> -- 494
+< -- 10
++ -- 186
+- -- 162
+* -- 861
+:= -- 1733
+add.period$ -- 72
+call.type$ -- 18
+change.case$ -- 146
+chr.to.int$ -- 18
+cite$ -- 18
+duplicate$ -- 736
+empty$ -- 732
+format.name$ -- 216
+if$ -- 2105
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 123
-newline$ -- 40
-num.names$ -- 48
-pop$ -- 197
+missing$ -- 168
+newline$ -- 58
+num.names$ -- 72
+pop$ -- 270
 preamble$ -- 1
-purify$ -- 87
+purify$ -- 126
 quote$ -- 0
-skip$ -- 153
+skip$ -- 225
 stack$ -- 0
-substring$ -- 415
-swap$ -- 308
+substring$ -- 554
+swap$ -- 415
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 108
+type$ -- 162
 warning$ -- 0
-while$ -- 58
+while$ -- 82
 width$ -- 0
-write$ -- 138
+write$ -- 201
+(There was 1 error message)

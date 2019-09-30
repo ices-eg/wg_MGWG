@@ -1,0 +1,5 @@
+# A sample case file for OM change_o() arguments
+
+par_name; c("SizeSel_P1_Fishery(1)")
+
+par_int; c(100.8)

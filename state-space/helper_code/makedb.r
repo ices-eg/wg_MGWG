@@ -27,9 +27,9 @@ for (istock in 1:nstocks){
     if (nfiles > 0){
       for (ifile in 1:nfiles){
         myfile <- paste0("../", stocks[istock], "/", models[imodel], "/", files[ifile])
-        if (models[imodel] %in% c("a4asca", "ASAP")){
+        if (models[imodel] %in% c("a4asca", "a4asca_constantFSelectivity", "ASAP")){
           dat <- read.csv(file = myfile, header = TRUE)
-          if (models[imodel] == "a4asca") colnames(dat) <- c("Fbar", "SSB", "R")
+          if (models[imodel] %in%  c("a4asca", "a4asca_constantFSelectivity")) colnames(dat) <- c("Fbar", "SSB", "R")
         }else{
           dat <- read.table(file = myfile, skip = 1, sep = "")
           colnames(dat) <- c("R", "SSB", "Fbar")
@@ -62,12 +62,13 @@ ggdb <- function(db, i, mytile){
 }
 
 # for plotting rename a4a models according to filename
-db1 <- db %>%
-  filter(model == "a4asca") %>%
-  mutate(model = ifelse(file == "sep-mohn.txt", "a4asca sep", "a4asca te"))
-db2 <- db %>%
-  filter(model != "a4asca")
-dbp <- rbind(db1, db2)
+#db1 <- db %>%
+#  filter(model == "a4asca") %>%
+#  mutate(model = ifelse(file == "sep-mohn.txt", "a4asca sep", "a4asca te"))
+#db2 <- db %>%
+#  filter(model != "a4asca")
+#dbp <- rbind(db1, db2)
+dbp = db
 
 #check the levels of db$stock to make sure they match
 stock.names = c("CC-GOM yellowtail flounder", "GB haddock", "GB winter flounder", "GOM Atlantic cod", "GOM haddock", "Icelandic herring", "NS Atlantic cod",
@@ -75,7 +76,7 @@ stock.names = c("CC-GOM yellowtail flounder", "GB haddock", "GB winter flounder"
 levels(dbp$stock) = stock.names
 
 #Just look at 4 model types. Which of hte A4A, SAM, WHAM models to use here can change.
-db4 = dbp[which(dbp$model %in% c("a4asca te", "ASAP", "SAM", "WHAM")),]
+db4 = dbp[which(dbp$model %in% c("a4asca", "ASAP", "SAM", "WHAM")),]
 db4$model = factor(db4$model)
 #model.names = c("A4A sep sel", "A4A smooth sel", "ASAP", "SAM", "SAM constant F", "SAM fixed CV", "SAM Cor obs", "WHAM")
 model.names = c("A4A", "ASAP", "SAM", "WHAM")
@@ -217,12 +218,28 @@ whamdb$Metric = xlabs[match(whamdb$metric, levels(whamdb$metric))]
 
 gg <- ggplot(whamdb, aes(x=rho, y=stock, color=stock)) +
   geom_point(show.legend = FALSE) +
-  xlim(c(-1, 3)) +
+#  xlim(c(-1, 3)) +
   labs(x = expression(paste("Mohn's ", italic("\u03c1"))), y = "Stock", family="Times") +
   theme(strip.background = element_blank(), text = element_text(family = "Times"), strip.text = element_text(size = 20), axis.title = element_text(size = 20)) + #, strip.text.x = element_blank()) +
   facet_grid(model ~ Metric, labeller = label_parsed)
 gg
 ggsave(filename = paste0("../db/wham_rho_paper_plot.pdf"), gg, width = 12, height = 8, dpi = 500, device = cairo_pdf)
+
+x = aggregate(rho ~ model*metric, data = whamdb, FUN = mean)
+x = cbind(x, sd = aggregate(rho ~ model*metric, data = whamdb, FUN = sd)[,3])
+x$metric = as.character(x$metric)
+x$metric[x$metric == "Fbar"] = "$\\\\overline{F}$"
+x$metric[x$metric == "R"] = "$R$"
+colnames(x) = c("Model", "Metric", "Mean", "SD")
+x = x[,c(2,1,3,4)]
+x[,3:4] = round(x[,3:4],2)
+
+starts = (1:length(unique(x$Metric)))*4 - 3
+y = kable(x[,-1], 'latex', booktabs = T, escape = FALSE) %>% 
+  group_rows(unique(x$Metric)[1], starts[1], starts[1] + 3, escape = FALSE, bold = FALSE) %>%
+  group_rows(unique(x$Metric)[2], starts[2], starts[2] + 3, escape = FALSE, bold = FALSE) %>%
+  group_rows(unique(x$Metric)[3], starts[3], starts[3] + 3, escape = FALSE, bold = FALSE)
+cat(y, sep = "\n", file = "../tex/wham_rho_model_summary.tex")
 
 
 #########################
@@ -257,10 +274,10 @@ for (istock in 1:nstocks){
                                value = c(dat$Frep, dat$SSB, dat$R, dat$PredCatch),
                                low = c(dat$Low, dat$Low.1, dat$Low.2, rep(NA, nyears)),
                                high = c(dat$High, dat$High.1, dat$High.2, rep(NA, nyears)))
-        } else if (models[imodel] == "a4asca"){
-          mymodelname <- ifelse(files[ifile] == "sep-tab1.csv", "a4asca sep", "a4asca te")
+        } else if (models[imodel] %in% c("a4asca", "a4asca_constantFSelectivity"){
+          #mymodelname <- ifelse(files[ifile] == "sep-tab1.csv", "a4asca sep", "a4asca te")
           thisdb <- data.frame(stock = stocks[istock],
-                               model = mymodelname,
+                               model = models[imodel], #model = mymodelname,
                                file = files[ifile],
                                metric = rep(c("R", "SSB", "Catch", "Fbar"), each=nyears),
                                year = rep(dat$X, 4),
@@ -270,9 +287,9 @@ for (istock in 1:nstocks){
         } else {
           if (models[imodel] == "SAM") modelyears <- dat$Year
           # for some reason SAM did extra year for NScod relative to WHAM
-          if (models[imodel] == "WHAM" && stocks[istock] == "NScod"){
-            modelyears <- modelyears[-length(modelyears)] 
-          }
+          #if (models[imodel] == "WHAM" && stocks[istock] == "NScod"){
+          #  modelyears <- modelyears[-length(modelyears)] 
+          #}
           mymodelname <- ifelse(nfiles > 1, 
                                 paste0(models[imodel],"_",substr(files[ifile],1,2)), 
                                 models[imodel])

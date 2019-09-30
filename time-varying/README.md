@@ -1,16 +1,6 @@
 # Time-varying selectivity
 
-Coordinator: Kelli Johnson
-
-Criteria | Comments
--------- | --------
-Important for many stock assessment scientists?   | 
-Standard papers that people cite for this topic?  | 
-Another working group already working on this?    | 
-How can this be structured into a journal paper?  | 
-What kind of work is required, and how much work? | 
-Participants that would like to work on this?     | 
-Who would like to lead, what will coauthors do?   | Kelli Johnson
+Coordinators: Kelli Johnson, Brian Stock
 
 ***
 
@@ -26,6 +16,7 @@ Time-varying selectivity
   * Brian Stock, NEFSC
   * Claudio Castillo-Jordan, UW
   * Rick Methot, NWFSC
+  * Daniel Howell, IMR
 
 ### Background
 
@@ -50,11 +41,11 @@ Selectivity options are model-dependent:
   * WHAM
     * age-specific (time-invariant)
     * age-specific with time blocks
-    * AR process on selectivity parameters in assessment
-  * SAM?
+    * 2D AR process on selectivity parameters in assessment
+  * SAM
     * age-specific (time-invariant)
     * 2D RW on F(a,y)
-  * a4a?
+  * a4a
 
 This project will leverage work from the state-space project. We will use the same 13 stocks (data already compiled):
 
@@ -72,16 +63,47 @@ This project will leverage work from the state-space project. We will use the sa
   * Icelandic herring (ICEherring)
   * US Atlantic Herring (USAtlHerring)
 
-Define performance metrics
-Define output to save for each model run
+Phase 1: fit each model to each stock with 1) time-constant and 2) time-varying selectivity. For stocks in which time-varying selectivity makes a big difference (need to define), run models with selectivity time blocks.
 
-Future work?
+Phase 2: fit models with time blocks on selectivity:
+
+1. Time blocks used in production assessment (if done)
+2. Time blocks based on management changes (ask experts)
+3. Time blocks based on shifts in selectivity from runs with time-varying selectivity. TBD how to determine this...
+
+    * in production model?
+    * across models?
+    * each model individually?
+
+Define performance metrics
+
+Output to save for each model run:
+
+  * same as in state-space project
+  * matrix of selectivity (age x time)
+
+Future work
 
 * Simulation study to look at simultaneously estimating time-varying M and time-varying selectivity?
 
-##### Tasks, who's doing what
+##### Task list
 
-##### Milestones, timeline
+Task | Who | By when
+---- | --- | -------
+Contact SAM and a4a about involvement | Kelli | Nov 20 - [ ]
+SS fits (phase 1) | Kelli | Nov 20 - [ ]
+WHAM forecasts + time-varying sel | Brian | Nov 20 - [ ]
+WHAM fits (phase 1) | Brian  | Nov 20 - [ ]
+Literature review | Claudio/?  | Nov 20 - [ ]
+-------- | --------
+Decide how to handle blocks | group | Nov 20 - [ ]
+SS fits (phase 2) | Kelli | Jan 15 - [ ]
+WHAM fits (phase 2) | Tim | Jan 15 - [ ]
+SAM fits (phase 2) | ? | Jan 15 - [ ]
+a4a fits (phase 2) | ? | Jan 15 - [ ]
+-------- | --------
+Outline paper | group | Nov 20 - [ ]
+ICES abstract | ? | early March - []
 
 ### References
 
@@ -95,5 +117,10 @@ Preliminary diagram, table, plots
 
 ## After Seattle meeting
 
-We will have a Skype call 1x/month to discuss progress and timeline
+We will have a Skype call 3rd Wed each month to discuss progress and timeline:
+
+Date | To discuss
+-------- | --------
+Nov 20 7am PST / 10am EST / 4pm Eu | Phase 1 results, how to handle blocks
+Jan 15 7am PST / 10am EST / 4pm Eu | Phase 2 results (blocks), outline paper
 

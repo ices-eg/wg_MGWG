@@ -161,14 +161,10 @@ Proposing new equations for Lopt and Aopt
   argues balanced harvest
 * [Hixon et al. 2014](https://academic.oup.com/icesjms/article/71/8/2171/748104)
   argues to protect the largest (especially female) fish
-* [Jorgensen et al. 2009](http://archimer.ifremer.fr/doc/00000/6867/)
 * [Kindsvater et al. 2017](onlinelibrary.wiley.com/doi/10.1111/faf.12208/abstract)
 * [Law et al. 2012](https://academic.oup.com/icesjms/article/69/4/602/634795)
   argues balanced harvest
-* [Matsumura et al. 2011](https://link.springer.com/article/10.1007/s10682-010-9444-8)
-* [Prellezo et al. 2017](http://scientiamarina.revistas.csic.es/index.php/scientiamarina/article/view/1722)
-* [Stewart 2017](www.sciencedirect.com/science/article/pii/S0165783616302077)
-* [Vasilakopoulos et al. 2015](http://onlinelibrary.wiley.com/doi/10.1111/faf.12117/abstract)
+* [Vasilakopoulos et al. 2016](http://onlinelibrary.wiley.com/doi/10.1111/faf.12117/abstract)
   "Currently, MSY and FMSY are usually calculated keeping selectivity constant
   (ICES 2011). Our meta-analysis, in line with previous stock-specific studies
   (e.g. Froese et al. 2008; Scott and Sampson 2011; Colloca et al. 2013),
@@ -205,7 +201,7 @@ Proposing new equations for Lopt and Aopt
   between model complexity and the ability to produce reasonable management advice. Their development is
   encouraged as a standard feature in the assessment of migratory fish stocks." Expands on Sampson's
   work.
-  
+
 *Less relevant for our study...*
 
 * [Fauconnet et al. 2016](https://www.sciencedirect.com/science/article/pii/S0308597X15003231)

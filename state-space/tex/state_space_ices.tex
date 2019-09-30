@@ -140,7 +140,7 @@ The second configuration was identical to the first, except that the commercial 
 
 \subsubsection*{ASAP models}
 
-
+We fit two configurations of the ASAP model to each of the stock data sets. The first treated selectivity as constant across time for all fleets and surveys. The second model treated selectivity as constant within blocks of 10 years.
 
 \subsubsection*{WHAM models}
 
@@ -163,6 +163,9 @@ We fit the models to data from 13 fish stocks primarily in the Northwest Atlanti
 For all stocks standard ICES/Lowestoft files were generated for data inputs. For the US fish stocks data were obtained from recent assessments that used ASAP or VPA models. R programs were written to create the ICES files from ASAP input files. Then separate ASAP and WHAM input files were created from the ICES files so that all model frameworks were using the same ICES file inputs.
 
 \subsubsection*{Evaluating model performance}
+
+Confidence intervals for recruitment, SSB, and average fishing mortality were constructed based on parameter variance estimates derived from the hessian of the log-likelihood for ASAP, SAM, and WHAM. Confidence intervals for A4Aa models were based on the appropriate quantiles of 500 simulations, but we do not know how these are generated.
+
 
 We evaluated the relative performance of the different modeling frameworks in 2 ways. First we compared the Mohn's $\rho$ \citep{mohn99} as a measure of retrospective pattern. Retrospective patterns are characterized by systematic changes in estimates of important model outputs when terminal years of data are sequentially removed from the fit.
 
@@ -200,6 +203,10 @@ But these averages are driven by a single stock (GB haddock) (Figure \ref{predmi
 \subsection*{Relative performance among alternative SAM model fits}
 
 \subsection*{Relative performance among alternative A4A model fits}
+
+\subsection*{Relative performance among alternative ASAP model fits}
+
+For GOM haddock one of the retrospective peels of the selectivity block model did not properly converge and was excluded from the Mohn's $\rho$ calcluation.1
 
 \subsection*{Relative performance among alternative WHAM model fits}
 
@@ -415,6 +422,14 @@ The likelihood function for this is set up by first defining the joint likelihoo
 \end{center}
 \end{figure}
 
+\begin{figure}
+\caption{Average root mean square error of predicted indices at age in the final 3 years of the model that were presumed missing in model fits across all 13 stocks.}\label{predmissing_avgrmseplot}
+\begin{center}
+\includegraphics[height = 0.8\textheight]{../db/predmissing_avgrmseplot.png}
+\end{center}
+\end{figure}
+
+%WHAM plots
 \begin{figure}
 \caption{Degree of retrospective pattern in average fishing mortality, recruitment, and spawning stock biomass as measured by Mohn's $\rho$ for each stock and WHAM model configuration.}\label{wham_rho_paper_plot}
 \begin{center}
