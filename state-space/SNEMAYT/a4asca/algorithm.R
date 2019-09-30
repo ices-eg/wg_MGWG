@@ -35,16 +35,16 @@ stk <- window(stk, start=my)
 #====================================================================
 # run model
 #====================================================================
-qmod <- list(~s(age, k=4, by=breakpts(year, 2008)), ~s(age, k=3, by=breakpts(year, 2008)))
-fmod <- ~te(age, year, k = c(5, 22)) + s(age, k = 3)
-srmod <- ~factor(year)
+qmod <- list(~s(age, k=3, by=breakpts(year, 2008)), ~s(age, k=3, by=breakpts(year, 2008)))
+fmod <- ~s(year, k=4, by=breakpts(age,c(0:6))) + te(age, year, k=c(5,10))
+srmod <- ~geomean(a=~breakpts(year, 1990), CV=0.4)
 fit <- sca(stk, idxs, fmodel=fmod, qmodel=qmod, srmodel=srmod)
 fits <- simulate(fit, 500)
 
 #====================================================================
 # run retro and predictions
 #====================================================================
-stk.retro <- retro(stk, idxs, retro=7, k=c(age=5, year=22, age2=3), ftype='te', qmodel=qmod, srmodel=srmod)
+stk.retro <- retro_snemayt(stk, idxs, retro=7, k=c(age=5, year=10), frat=.22, qmodel=qmod, srmodel=srmod)
 fit.rm <- mohn(stk.retro)
 fit.pi <- predIdxs(stk, idxs, qmodel=qmod, fmodel=fmod, srmodel=srmod)
 

@@ -29,7 +29,7 @@ Type 'q()' to quit R.
 Loading required package: FLCore
 Loading required package: lattice
 Loading required package: iterators
-FLCore (Version 2.6.13.9007, packaged: Wed Sep 25 16:33:19 2019)
+FLCore (Version 2.6.13.9007, packaged: Fri Sep 27 18:02:27 2019)
 Loading required package: triangle
 Loading required package: copula
 Loading required package: coda
@@ -73,18 +73,113 @@ Warning messages:
 > #====================================================================
 > # run model
 > #====================================================================
-> qmod <- list(~s(age, k=4, by=breakpts(year, 2008)), ~s(age, k=3, by=breakpts(year, 2008)))
-> fmod <- ~te(age, year, k = c(5, 22)) + s(age, k = 3)
-> srmod <- ~factor(year)
+> qmod <- list(~s(age, k=3, by=breakpts(year, 2008)), ~s(age, k=3, by=breakpts(year, 2008)))
+> fmod <- ~s(year, k=4, by=breakpts(age,c(0:6))) + te(age, year, k=c(5,10))
+> srmod <- ~geomean(a=~breakpts(year, 1990), CV=0.4)
 > fit <- sca(stk, idxs, fmodel=fmod, qmodel=qmod, srmodel=srmod)
+Warning message:
+*** ~s(year, k = 4, by = breakpts(age, c(0:6))) + te(age, year, k = c(5,     10)) has 5 too many parameter(s)!!
+    i will remove the redundant ones:
+	te(age,year).19
+	te(age,year).29
+	te(age,year).39
+	te(age,year).48
+	te(age,year).49 
 > fits <- simulate(fit, 500)
+Warning message:
+*** ~s(year, k = 4, by = breakpts(age, c(0:6))) + te(age, year, k = c(5,     10)) has 5 too many parameter(s)!!
+    i will remove the redundant ones:
+	te(age,year).19
+	te(age,year).29
+	te(age,year).39
+	te(age,year).48
+	te(age,year).49 
 > 
 > #====================================================================
 > # run retro and predictions
 > #====================================================================
-> stk.retro <- retro(stk, idxs, retro=7, k=c(age=5, year=22, age2=3), ftype='te', qmodel=qmod, srmodel=srmod)
+> stk.retro <- retro_snemayt(stk, idxs, retro=7, k=c(age=5, year=10), frat=.22, qmodel=qmod, srmodel=srmod)
+Warning messages:
+1: *** ~s(year, k = 5, by = breakpts(age, 0:6)) + te(age, year, k = c(5,     10)) has 5 too many parameter(s)!!
+    i will remove the redundant ones:
+	te(age,year).19
+	te(age,year).29
+	te(age,year).39
+	te(age,year).48
+	te(age,year).49 
+2: *** ~s(year, k = 5, by = breakpts(age, 0:6)) + te(age, year, k = c(5,     10)) has 5 too many parameter(s)!!
+    i will remove the redundant ones:
+	te(age,year).19
+	te(age,year).29
+	te(age,year).39
+	te(age,year).48
+	te(age,year).49 
+3: *** ~s(year, k = 5, by = breakpts(age, 0:6)) + te(age, year, k = c(5,     10)) has 5 too many parameter(s)!!
+    i will remove the redundant ones:
+	te(age,year).19
+	te(age,year).29
+	te(age,year).39
+	te(age,year).48
+	te(age,year).49 
+4: *** ~s(year, k = 5, by = breakpts(age, 0:6)) + te(age, year, k = c(5,     10)) has 5 too many parameter(s)!!
+    i will remove the redundant ones:
+	te(age,year).19
+	te(age,year).29
+	te(age,year).39
+	te(age,year).48
+	te(age,year).49 
+5: *** ~s(year, k = 5, by = breakpts(age, 0:6)) + te(age, year, k = c(5,     10)) has 5 too many parameter(s)!!
+    i will remove the redundant ones:
+	te(age,year).19
+	te(age,year).29
+	te(age,year).39
+	te(age,year).48
+	te(age,year).49 
+6: *** ~s(year, k = 5, by = breakpts(age, 0:6)) + te(age, year, k = c(5,     9)) has 5 too many parameter(s)!!
+    i will remove the redundant ones:
+	te(age,year).17
+	te(age,year).26
+	te(age,year).35
+	te(age,year).43
+	te(age,year).44 
+7: *** ~s(year, k = 5, by = breakpts(age, 0:6)) + te(age, year, k = c(5,     9)) has 5 too many parameter(s)!!
+    i will remove the redundant ones:
+	te(age,year).17
+	te(age,year).26
+	te(age,year).35
+	te(age,year).43
+	te(age,year).44 
+8: *** ~s(year, k = 5, by = breakpts(age, 0:6)) + te(age, year, k = c(5,     9)) has 5 too many parameter(s)!!
+    i will remove the redundant ones:
+	te(age,year).17
+	te(age,year).26
+	te(age,year).35
+	te(age,year).43
+	te(age,year).44 
 > fit.rm <- mohn(stk.retro)
 > fit.pi <- predIdxs(stk, idxs, qmodel=qmod, fmodel=fmod, srmodel=srmod)
+Warning messages:
+1: *** ~s(year, k = 4, by = breakpts(age, c(0:6))) + te(age, year, k = c(5,     10)) has 5 too many parameter(s)!!
+    i will remove the redundant ones:
+	te(age,year).19
+	te(age,year).29
+	te(age,year).39
+	te(age,year).48
+	te(age,year).49 
+2: *** ~s(year, k = 4, by = breakpts(age, c(0:6))) + te(age, year, k = c(5,     10)) has 5 too many parameter(s)!!
+    i will remove the redundant ones:
+	te(age,year).19
+	te(age,year).29
+	te(age,year).39
+	te(age,year).48
+	te(age,year).49 
+3: *** ~s(year, k = 4, by = breakpts(age, c(0:6))) + te(age, year, k = c(5,     10)) has 5 too many parameter(s)!!
+    i will remove the redundant ones:
+	te(age,year).19
+	te(age,year).29
+	te(age,year).39
+	te(age,year).48
+	te(age,year).49 
 > 
 > #====================================================================
 > # save
@@ -102,10 +197,17 @@ The following object is masked from ‘package:FLCore’:
 
 null device 
           1 
-Warning message:
-replacing previous import ‘ggplot2::%+%’ by ‘FLCore::%+%’ when loading ‘ggplotFL’ 
+Warning messages:
+1: replacing previous import ‘ggplot2::%+%’ by ‘FLCore::%+%’ when loading ‘ggplotFL’ 
+2: *** ~s(year, k = 4, by = breakpts(age, c(0:6))) + te(age, year, k = c(5,     10)) has 5 too many parameter(s)!!
+    i will remove the redundant ones:
+	te(age,year).19
+	te(age,year).29
+	te(age,year).39
+	te(age,year).48
+	te(age,year).49 
 > 
 > 
 > proc.time()
    user  system elapsed 
- 39.724   1.131  40.851 
+ 41.575   0.843  42.426 

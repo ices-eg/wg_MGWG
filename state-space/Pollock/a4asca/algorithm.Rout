@@ -29,7 +29,7 @@ Type 'q()' to quit R.
 Loading required package: FLCore
 Loading required package: lattice
 Loading required package: iterators
-FLCore (Version 2.6.13.9007, packaged: Wed Sep 25 16:29:46 2019)
+FLCore (Version 2.6.13.9007, packaged: Fri Sep 27 15:38:32 2019)
 Loading required package: triangle
 Loading required package: copula
 Loading required package: coda
@@ -73,7 +73,7 @@ Warning messages:
 > #====================================================================
 > # run model
 > #====================================================================
-> qmod <- list(~s(age, k=4), ~s(age, k=4))
+> qmod <- list(~s(age, k=4, by=breakpts(year, 2008)), ~s(age, k=4, by=breakpts(year, 2008)))
 > fmod <- ~te(age, year, k=c(5, 17)) + s(age, k=5)
 > srmod <- ~geomean(CV=0.3)
 > fit <- sca(stk, idxs, fmodel=fmod, qmodel=qmod, srmodel=srmod)
@@ -108,4 +108,4 @@ replacing previous import ‘ggplot2::%+%’ by ‘FLCore::%+%’ when loading �
 > 
 > proc.time()
    user  system elapsed 
- 55.282   1.216  56.526 
+ 56.182   1.149  57.543 
