@@ -9,8 +9,8 @@ get_poplengthfreq <- function(report){
   d <- gather(fd, length, numbers, -Yr) %>%
     group_by(Yr) %>%   mutate(proportion=numbers/sum(numbers)) %>%
     ungroup() %>%
-    mutate(length=as.numeric(length),
-           decade=Yr-Yr%%10,
-           yr2=Yr-decade)
+    mutate(length=as.numeric(length)) %>%
+    ## The last year is assumed to be in equilibrium
+  filter(Yr == max(Yr))
   return(d)
 }
