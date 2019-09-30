@@ -1,4 +1,7 @@
-fleets; NULL
-Nsamp; NULL
-years; NULL
-cpar; NULL
+fleets; c(1)
+
+Nsamp; list(500)
+
+years; list(seq(25, 100, by=2))
+
+cpar; c(2)

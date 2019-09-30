@@ -220,7 +220,7 @@
 #
 #_          LO            HI          INIT         PRIOR         PR_SD       PR_type      PHASE    env-var    use_dev   dev_mnyr   dev_mxyr     dev_PH      Block    Blk_Fxn  #  parm_name
 # 1   Fishery LenSelex
-            20           199          50.8          50.8          0.05             0          2          0          0          0          0        0.5          0          0  #  SizeSel_P1_Fishery(1)
+            20           199          20.8          50.8          0.05             0          2          0          0          0          0        0.5          0          0  #  SizeSel_P1_Fishery(1)
             -5             3            -3            -3          0.05             0        -99          0          0          0          0        0.5          0          0  #  SizeSel_P2_Fishery(1)
             -4            12           5.1           5.1          0.05             0          3          0          0          0          0        0.5          0          0  #  SizeSel_P3_Fishery(1)
             -2            16            15            15          0.05             0        -99          0          0          0          0        0.5          0          0  #  SizeSel_P4_Fishery(1)

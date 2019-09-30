@@ -5,4 +5,4 @@
 years; 1:100
 fisheries; 1
 
-fvals; c(rep(0, 25), rep(0.1052, 75)) 
+fvals; c(rep(0, 25), rep(0.09, 75)) 

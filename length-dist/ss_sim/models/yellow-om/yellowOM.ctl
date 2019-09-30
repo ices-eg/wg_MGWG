@@ -119,7 +119,7 @@
 #_no timevary SR parameters
 1 #do_recdev:  0=none; 1=devvector (R=F(SSB)+dev); 2=deviations (R=F(SSB)+dev); 3=deviations (R=R0*dev; dev2=R-f(SSB)); 4=like 3 with sum(dev2) adding penalty
 1 # first year of main recr_devs; early devs can preceed this era
-100 # last year of main recr_devs; forecast devs start in following year
+300 # last year of main recr_devs; forecast devs start in following year
 -2 #_recdev phase
 1 # (0/1) to read 13 advanced options
  0 #_recdev_early_start (0=none; neg value makes relative to recdev_start)
@@ -128,8 +128,8 @@
  1 #_lambda for Fcast_recr_like occurring before endyr+1
  1 #_last_yr_nobias_adj_in_MPD; begin of ramp
  1 #_first_yr_fullbias_adj_in_MPD; begin of plateau
- 100 #_last_yr_fullbias_adj_in_MPD
- 100 #_end_yr_for_ramp_in_MPD (can be in forecast to shape ramp, but SS sets bias_adj to 0.0 for fcast yrs)
+ 300 #_last_yr_fullbias_adj_in_MPD
+ 300 #_end_yr_for_ramp_in_MPD (can be in forecast to shape ramp, but SS sets bias_adj to 0.0 for fcast yrs)
  0 #_max_bias_adj_in_MPD (-1 to override ramp and set biasadj=1.0 for all estimated recdevs)
  0 #_period of cycles in recruitment (N parms read below)
  -5 #min rec_dev
