@@ -90,20 +90,20 @@ run_ss3sim(iterations = 1:5, scenarios=scens,
            parallel=TRUE, bias_adjust = FALSE)
 d.cod <- list()
 for(i in 1:5){
-## r4ss pulls in the numbers at age for population
-report1 <- SS_output(paste0('D0-E0-F0-O0-cod/',i, '/om'),
-                     ncols=300, covar=FALSE)
-report2 <- SS_output(paste0('D0-E0-F1-O1-cod/',i, '/om'),
-                     ncols=300, covar=FALSE)
-## Get population length structure
-d1 <- get_poplengthfreq(report1)
-d2 <- get_poplengthfreq(report2)
+  ## r4ss pulls in the numbers at age for population
+  report1 <- SS_output(paste0('D0-E0-F0-O0-cod/',i, '/om'),
+                       ncols=300, covar=FALSE)
+  report2 <- SS_output(paste0('D0-E0-F1-O1-cod/',i, '/om'),
+                       ncols=300, covar=FALSE)
+  ## Get population length structure
+  d1 <- get_poplengthfreq(report1)
+  d2 <- get_poplengthfreq(report2)
   d.cod[[i]] <-
     cbind(rep=i, rbind(cbind(spp='cod', model='Original', d1),
-                            cbind(spp='cod', model='Updated', d2)))
+                       cbind(spp='cod', model='Updated', d2)))
 }
 d.cod <- do.call(rbind, d.cod)
-## Repeat with eyllow
+## Repeat with yellow
 scens <- c("D0-E0-F0-O0-yellow", "D0-E0-F1-O1-yellow")
 unlink(scens, recursive = TRUE)
 om <- file.path(getwd(), "models", "yellow-om")
@@ -114,17 +114,17 @@ run_ss3sim(iterations = 1:5, scenarios=scens,
            parallel=TRUE, bias_adjust = FALSE)
 d.yellow <- list()
 for(i in 1:5){
-## r4ss pulls in the numbers at age for population
-report1 <- SS_output(paste0('D0-E0-F0-O0-yellow/',i, '/om'),
-                     ncols=300, covar=FALSE)
-report2 <- SS_output(paste0('D0-E0-F1-O1-yellow/',i, '/om'),
-                     ncols=300, covar=FALSE)
-## Get population length structure
-d1 <- get_poplengthfreq(report1)
-d2 <- get_poplengthfreq(report2)
+  ## r4ss pulls in the numbers at age for population
+  report1 <- SS_output(paste0('D0-E0-F0-O0-yellow/',i, '/om'),
+                       ncols=300, covar=FALSE)
+  report2 <- SS_output(paste0('D0-E0-F1-O1-yellow/',i, '/om'),
+                       ncols=300, covar=FALSE)
+  ## Get population length structure
+  d1 <- get_poplengthfreq(report1)
+  d2 <- get_poplengthfreq(report2)
   d.yellow[[i]] <-
     cbind(rep=i, rbind(cbind(spp='yellow', model='Original', d1),
-                            cbind(spp='yellow', model='Updated', d2)))
+                       cbind(spp='yellow', model='Updated', d2)))
 }
 d.yellow <- do.call(rbind, d.yellow)
 
@@ -137,8 +137,3 @@ g <- d.process %>%
                       col='red', lwd=1.25)
 ggsave('process_length_dist.png', g, width=7, height=5, units='in')
 
-get_results_all(user_scenarios=scens)
-## Why is yellow not producing recdevs past year 100?
-ts <- read.csv('ss3sim_ts.csv')
-plot_ts_points(ts, y='SpawnBio_om', vert='O')
-plot_ts_points(ts, y='dev_om', vert='O')
