@@ -6,7 +6,7 @@ Coordinators: Kelli Johnson, Brian Stock
 
 ### Working Title
 
-Time-varying selectivity
+Comparison of approaches to estimate time-varying selectivity
 
 ### Participants
 

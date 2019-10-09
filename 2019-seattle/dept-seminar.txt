@@ -1,0 +1,12 @@
+ICES and Stock Assessment Methods: Overview and Current Research
+
+Arni Magnusson, Chair of the ICES Methods Working Group
+
+This presentation gives an overview of three topics. (1) ICES, an organization
+that facilitates international collaboration in marine science, a network of
+more than 5000 scientists from over 700 marine institutes in our 20 member
+countries, including US and Canada. (2) The ICES Methods Working Group, an open
+group of stock assessment scientists that work together on projects that are
+oriented to fit in the format of multi-authored journal papers. (3) TAF, a new
+online system and workflow that makes all ICES stock assessments open and
+reproducible science.

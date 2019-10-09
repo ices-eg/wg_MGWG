@@ -5,16 +5,17 @@ Coordinators: Christoph Konrad and Maite Pons
 
 ## Participants
 
-Arni Magnusson (ICES),
-Cecilia Pinto (JRC),
-Christoph Konrad (JRC),
-Cole Monnahan (UW),
-Daniel Howell (IMR),
-Dvora Hart (NOAA),
-Ernesto Jardim (JRC),
-Jacob Kasper (UConn),
-Lee Qi (UW),
-Maite Pons (UW),
+Arni Magnusson (ICES),  
+Bjarkie Elvarsson,  
+Cecilia Pinto (JRC),  
+Christoph Konrad (JRC),  
+Cole Monnahan (UW),  
+Daniel Howell (IMR),  
+Dvora Hart (NOAA),  
+Ernesto Jardim (JRC),  
+Jacob Kasper (UConn),  
+Lee Qi (UW),  
+Maite Pons (UW),  
 Rick Methot (NOAA).
 
 

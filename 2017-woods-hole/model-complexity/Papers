@@ -1,0 +1,35 @@
+Cotter et al (2004): Are stock assessment methods too complicated?
+[http://onlinelibrary.wiley.com/doi/10.1111/j.1467-2679.2004.00157.x/full](URL_to_wiki)
+
+
+
+Wilberg and Bence (2008): Performance of deviance information criterion model selection in statistical catch-at-age analysis
+link:URL_to_wiki[http://www.sciencedirect.com/science/article/pii/S0165783608001343]
+Discuss DIC as an alternative to AIC/BIC claiming it is better in taking into account random effects.
+
+
+Butterworth and Rademeyer (2008): Statistical catch-at-age analysis vs. ADAPT-VPA: the case of Gulf of Maine cod: Compare SCAA and VPA on ground fish (cod).
+https://academic.oup.com/icesjms/article/65/9/1717/632337
+Do compare SCAA and VPA but mot state space models
+
+Butterworth and Rademeyer (2012): A COMPARISON OF INITIAL STATISTICAL CATCH-AT-AGE AND CATCH-AT- LENGTH ASSESSMENTS OF EASTERN ATLANTIC BLUEFIN TUNA. 
+http://www.iccat.es/Documents/CVSP/CV069_2013/n_2/CV069020710.pdf
+
+Anderson et al (2014): ss3sim: an R package for fisheries stock assessment simulation with Stock Synthesis
+http://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0092725&type=printable
+
+Kokkalis etal (2017):
+Estimating uncertainty of data limited stock assessments
+https://academic.oup.com/icesjms/article/74/1/69/2669561
+
+Deroba and Schueller (2013)
+Performance of stock assessments with misspecified age- and time varying natural mortality
+http://www.sciencedirect.com/science/article/pii/S0165783613000830
+
+Kuparinen et al (2012)
+Increasing biological realism of fisheries stock assessment: towards hierarchical Bayesian methods
+http://www.nrcresearchpress.com/doi/abs/10.1139/a2012-006#.Wg1pF7aZNZ0
+
+Magnusson, Arni & Hilborn, Ray. (2007)
+What makes fisheries data informative? Fish and Fisheries. 8. 337 - 358. 
+https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-2979.2007.00258.x

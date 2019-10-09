@@ -14,6 +14,9 @@ The order of the R code runs is:
 \- run2019.R - does three sets of ASAP runs, a base run, a retrospective run, and a run with the final 3 years of indices removed (takes a while to run)  
 \- gather2019.R - compiles the Mohn's rho values, time series of F, SSB, and R, and model predictions of missing indices for all stocks  
 
+
+Note that for two stocks (GOMhaddock and SNEMAwinter) the fourth peel produced wildly different estimates of SSB that were orders or magnitude larger than any of the other peels. This caused the Mohn's rho estimates for SSB to be in the thousands for these two stocks. These two peels were removed from the Mohn's rho calculations, resulting in large but reasonable values for both stocks.  
+
   
 During development of gather2019.R code, an error was found in how tab2.csv was calculated in 2018. This error was fixed in  
 \- redo2018tab2.R - calculates tab2.csv values correctly for the ASAP runs  
