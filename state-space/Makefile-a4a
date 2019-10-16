@@ -1,0 +1,9 @@
+A4ADIRS := $(shell echo 'cat(list.dirs()[grep("a4asca*", list.dirs())])' | R --slave)
+
+A4ASOURCE := $(foreach dir,$(A4ADIRS),$(dir)/algorithm.R)
+
+.PHONY: runs
+
+runs:
+	@for d in $(A4ADIRS); do cd $$d && echo 'source("algorithm.R");q("yes")' | R --slave && cd ../..; done
+

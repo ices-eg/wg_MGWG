@@ -199,4 +199,22 @@ retro_snemayt <- function(stk, idxs, retro, k, frat, ...){
 	FLStocks(lst0)
 }
 
+retro_usatlher <- function(stk, idxs, retro, k, frat, ...){
+	args <- list(...)
+	lst0 <- split(0:retro, 0:retro)
+	lst0 <- lapply(lst0, function(x){
+		yr <- range(stk)["maxyear"] - x
+		args$stock <- window(stk, end=yr)
+		args$indices <- window(idxs, end=yr)
+		KA <- unname(k['age'])
+		KY <- unname(k['year'] - floor(x*frat))
+		fmod <- substitute(~s(year, k = 4, by = breakpts(age, c(0,1,2,6,7,8)))+ te(age, year, k = c(KA, KY)) + s(age, k=6), list(KA = KA, KY=KY))
+		args$fmodel <- as.formula(fmod)
+		fit <- do.call("sca", args)
+		args$stock + fit
+	})
+	FLStocks(lst0)
+}
+
+
 

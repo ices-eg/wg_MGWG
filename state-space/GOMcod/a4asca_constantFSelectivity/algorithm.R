@@ -6,6 +6,7 @@
 
 library(FLa4a)
 source('../../helper_code/a4a_funs.R')
+wkdir <- system("pwd", intern=TRUE)
 
 #====================================================================
 # read data
@@ -16,7 +17,7 @@ stk <- readFLStock('index.low', no.discards = TRUE)
 stk <- setPlusGroup(stk, 9)
 range(stk)[c('minfbar','maxfbar')] <- c(5,9)
 
-setwd('a4asca_constantFSelectivity')
+setwd(wkdir)
 
 #====================================================================
 # replace 0 with half of the minimum

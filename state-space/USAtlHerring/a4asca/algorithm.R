@@ -6,6 +6,7 @@
 
 library(FLa4a)
 source('../../helper_code/a4a_funs.R')
+wkdir <- system("pwd", intern=TRUE)
 
 #====================================================================
 # read data
@@ -15,7 +16,8 @@ idxs <- readFLIndices('USAtHERRING_survey.dat')
 stk <- readFLStock('index.low', no.discards = TRUE)
 stk <- setPlusGroup(stk, 8)
 range(stk)[c('minfbar','maxfbar')] <- c(7,8)
-setwd('a4asca')
+
+setwd(wkdir)
 
 #====================================================================
 # replace 0 with half of the minimum
@@ -36,7 +38,7 @@ stk <- window(stk, start=my)
 # run model
 #====================================================================
 qmod <- list(~s(age, k=3, by=breakpts(year, 2008)), ~s(age, k=5, by=breakpts(year, 2008)))
-fmod <- ~te(age, year, k = c(4, 12)) + s(age, k = 6)
+fmod <- ~s(year, k=4, by=breakpts(age,c(0,1,2,6,7,8))) + te(age, year, k=c(4,10)) + s(age, k=6)
 srmod <- ~geomean(CV=0.3)
 fit <- sca(stk, idxs, fmodel=fmod, qmodel=qmod, srmodel=srmod)
 fits <- simulate(fit, 500)
@@ -44,7 +46,7 @@ fits <- simulate(fit, 500)
 #====================================================================
 # run retro and predictions
 #====================================================================
-stk.retro <- retro(stk, idxs, retro=7, k=c(age=4, year=12, age2=6), ftype="te", qmodel=qmod, srmodel=srmod)
+stk.retro <- retro_usatlher(stk, idxs, retro=7, k=c(age=5, year=10), frat=.36, qmodel=qmod, srmodel=srmod)
 fit.rm <- mohn(stk.retro)
 fit.pi <- predIdxs(stk, idxs, qmodel=qmod, fmodel=fmod, srmodel=srmod)
 
