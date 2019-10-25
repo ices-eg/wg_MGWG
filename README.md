@@ -7,6 +7,9 @@ for overall objectives, latest report, etc.
 
 ***
 
+## Save the dates
+The 2020 meeting of the ICES Methods Working Group is planned for 21-25 September in Reykjavik, Iceland. More details to follow.
+
 ## Meeting agenda, Seattle 23-27 September 2019
 
 ### Basic information
