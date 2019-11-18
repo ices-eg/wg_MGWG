@@ -17,6 +17,7 @@ Comparison of approaches to estimate time-varying selectivity
   * Claudio Castillo-Jordan, UW
   * Rick Methot, NWFSC
   * Daniel Howell, IMR
+  * Mark Muander, IATTC
 
 ### Background
 
@@ -121,6 +122,6 @@ We will have a Skype call 3rd Wed each month to discuss progress and timeline:
 
 Date | To discuss
 -------- | --------
-Nov 20 7am PST / 10am EST / 4pm Eu | Phase 1 results, how to handle blocks
+Dec 18 7am PST / 10am EST / 4pm Eu | Phase 1 results, how to handle blocks
 Jan 15 7am PST / 10am EST / 4pm Eu | Phase 2 results (blocks), outline paper
 
