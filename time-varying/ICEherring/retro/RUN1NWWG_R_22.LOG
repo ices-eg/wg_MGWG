@@ -1,0 +1,14 @@
+Log File Opened: 21 NOV 2017     16:55
+
+OPEN INPUT FILE: 
+RUN1NWWG_R_22.DAT                                                                                                               
+INPUT FILE READ COMPLETED
+Levenberg-Marquardt Algorithm Completed     9 Iterations
+RSS Calculated =    0.550064E+01
+IMSL - Error: (Matrix Inversion) Transpose Product of Jacobian Matrix is Invalid
+Survey Indices May Not Be Independent
+ *** Warning - Estimated Coefficient of Variation is Below Anticipated Level - Solution May Be Invalid ***
+
+--- VPA/ADAPT Model Execution Completed OK ---
+
+Log File Closed at: 16:55
