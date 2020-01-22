@@ -1,8 +1,8 @@
 # Fit WHAM models with time-varying selectivity
 # Brian Stock
-# Dec 2019
+# Jan 2019
 
-# source("/home/bstock/Documents/wg_MGWG/time-varying/NScod/WHAM/fit_wham_models.R")
+# source("/home/bstock/Documents/wg_MGWG/time-varying/GBhaddock/WHAM/fit_wham_models.R")
 
 # Phase 1: Fit each stock with 1) time-constant (no blocks) and 2) time-varying selectivity
 #   NAA model: Full state-space
@@ -21,8 +21,9 @@
 
 # State-space project selectivity:
 #   Fleet: logistic
-#   Index 1: age-specific (fix age 5)
-#   Index 2: age-specific (fix ages 3,4)
+#   Index 1: logistic
+#   Index 2: logistic
+#   Index 3: logistic
 
 # devtools::install_github("timjmiller/wham", dependencies=TRUE)
 library(wham)
@@ -30,32 +31,23 @@ library(tidyverse)
 library(viridis)
 
 # save model runs locally
-# only push summarized output to github: tab1.csv, tab2.csv, Mohn.txt
-model.id <- "NScod"
-Fbar.ages = 2:4
-user.wd <- user.od <- paste0("/home/bstock/Documents/wg_MGWG/time-varying/",model.id,"/")
-github.dir = paste0(user.wd,"WHAM")
+model.id <- "GBhaddock"
+ices.id = "GBHADDOCK_"
+Fbar.ages = 5:7
+user.od <- paste0("/home/bstock/Documents/wg_MGWG/time-varying/",model.id,"/")
+user.wd <- user.od
+github.dir = paste0(user.od,"WHAM/")
 local.dir = file.path("/home/bstock/Documents/wham/sandbox/ices_selectivity",model.id)
-if(!dir.exists(user.wd)) dir.create(user.wd)
+if(!dir.exists(user.od)) dir.create(user.od)
 if(!dir.exists(local.dir)) dir.create(local.dir)
 setwd(github.dir)
 
-source("../../helper_code/wham_tab1.r")
-source("../../helper_code/wham_tab2.r")
-source("../../helper_code/wham_predict_index.r")
-# source("../../helper_code/wham_write_readme.r")
-# source("../../helper_code/wham_make_model_input.r")
-
-# All 13 stocks have ASAP data files created already from state-space project
-#   was an issue with the ASAP file in state-space project... extra comment line caused error reading it in
+# Some stocks have ASAP data files already - maybe the original assessment code?
 #   Tim's code creates a new ASAP file every time
 source("../../helper_code/convert_ICES_to_ASAP.r")
-# ICES2ASAP(user.wd, user.od, model.id = model.id, ices.id="")
-# asap3 = read_asap3_dat(paste0("../", model.id,"_ASAP.dat"))
-# file.remove(paste0("ASAP_", model.id,".dat"))
-ICES2ASAP(user.wd, user.od, model.id = model.id, ices.id="")
-asap3 = read_asap3_dat(file.path(user.wd,paste0("ASAP_", model.id,".dat")))
-file.remove(file.path(user.wd,paste0("ASAP_", model.id,".dat")))
+ICES2ASAP(user.wd, github.dir, model.id = model.id, ices.id=ices.id)
+asap3 = read_asap3_dat(file.path(github.dir,paste0("ASAP_", model.id,".dat")))
+# file.remove(file.path(user.od,paste0("ASAP_", model.id,".dat")))
 
 # define models
 df <- data.frame(sel_mod = c(rep("logistic",5),rep("age-specific",5)),
@@ -68,12 +60,32 @@ conv <- vector("list",n.mods)
 selAA <- vector("list",n.mods)
 
 # --------------------------------------------------------------------------
-# initial fits - don't fix any fishery selectivity pars
-sel_inits_age <- c(0.5,0.5,0.5,0.5,0.5,0.5)
-fix_pars_age <- NULL
-sel_inits_logistic <- c(2,0.2)
+sel_inits_age <- rep(0.5,asap3$dat$n_ages)
+# fix_pars_age <- NULL
+# fix_pars_age <- 1
+# sel_inits_age[fix_pars_age] = 0
+# fix_pars_age <- 8
+# sel_inits_age[fix_pars_age] = 1
+# fix_pars_age <- c(1,8)
+# sel_inits_age[fix_pars_age] = c(0,1)
+# fix_pars_age <- 7:8
+# sel_inits_age[fix_pars_age] = 1
+sel_inits_age <- rep(0.5,asap3$dat$n_ages)
+fix_pars_age <- c(1,7:8)
+sel_inits_age[fix_pars_age] = c(0,1,1)
+sel_inits_logistic <- c(floor(asap3$dat$n_ages/2),0.2) # start a50 parameter in middle of age range
 fix_pars_logistic <- NULL
-for(m in 1:n.mods){
+
+# # get m4 par to start m5
+# m4 <- readRDS("/home/bstock/Documents/wham/sandbox/ices_selectivity/GBhaddock/run1/m4.rds")
+# m4_logit_selpars <- m4$parList$logit_selpars
+# m4_sel_repars <- m4$parList$sel_repars
+# rm("m4")
+
+# for(m in 1:n.mods){ # all
+for(m in 6:n.mods){ # only age-specific
+# for(m in c(1,6)){ # only time-constant	
+# for(m in 1:5){	# only logistic
 	if(df$sel_mod[m] == "age-specific"){
 		sel_inits <- sel_inits_age
 		fix_pars <- fix_pars_age
@@ -82,10 +94,18 @@ for(m in 1:n.mods){
 		fix_pars <- fix_pars_logistic
 	}
 	input <- prepare_wham_input(asap3, model_name = paste0(model.id," m",m,": NAA = ",df$NAA_mod[m],", sel = ",df$sel_mod[m]," (",df$sel_re[m],")"),
-						selectivity=list(model=c(df$sel_mod[m],"age-specific","age-specific"), re=c(df$sel_re[m],"none","none"),
-										initial_pars=list(sel_inits, c(0.5,0.5,0.5,0.5,1,0.5), c(0.5,0.5,1,1,0.5,0.5)),
-										fix_pars=list(fix_pars, 5, 3:4)))
+						selectivity=list(model=c(df$sel_mod[m],"logistic","logistic","logistic"), re=c(df$sel_re[m],"none","none","none"),
+										initial_pars=list(sel_inits, sel_inits_logistic, sel_inits_logistic, sel_inits_logistic),
+										fix_pars=list(fix_pars, NULL, NULL, NULL)))
 	input$data$Fbar_ages = Fbar.ages
+
+	# initialize selectivity parameters for time-varying models at estimated values from time-constant models
+	if(m %in% c(2:4,7:10)) input$par$logit_selpars = inits_logit_selpars
+
+	if(m == 5){
+		input$par$logit_selpars <- m4_logit_selpars
+		input$par$sel_repars <- m4_sel_repars
+	}
 
 	# logistic normal age comp
 	input$data$age_comp_model_indices = rep(7, input$data$n_indices)
@@ -114,6 +134,9 @@ for(m in 1:n.mods){
 	saveRDS(mod, file=file.path(local.dir,paste0("m",m,".rds")))
 	if(exists("err")) rm("err") # need to clean this up
 
+	# save selectivity parameter estimates from time-constant models, use as initial values for time-varying models
+	if(m %in% c(1,4,6)) inits_logit_selpars <- mod$parList$logit_selpars
+
 	df$runtime_min[m] = round(as.numeric(difftime(etime, btime), units="mins"),2)
 	df$nll[m] = mod$opt$obj
 	df$conv[m] = mod$opt$convergence
@@ -121,19 +144,52 @@ for(m in 1:n.mods){
 	conv[[m]] <- capture.output(check_convergence(mod))
 	rm("mod")
 }
-mod.list <- file.path(local.dir,paste0("m",1:n.mods,".rds"))
+# mod.list <- file.path(local.dir,paste0("m",1:n.mods,".rds"))
+
+mod.list <- file.path(local.dir,"run1",paste0("m",1:n.mods,".rds"))
+mod.list[5] <- "/home/bstock/Documents/wham/sandbox/ices_selectivity/GBhaddock/run2_fix1/m5.rds"
+mod.list[6:10] <- file.path(local.dir,paste0("m",6:n.mods,".rds"))
 mods <- lapply(mod.list, readRDS)
 # sapply(mods, function(x) x$opt$obj)
 # compare_wham_models(mods, sort=FALSE)$tab
 # sapply(mods, function(x) x$opt$convergence)
-# selAA <- lapply(mods, function(x) x$report()$selAA[[1]])
-# conv <- lapply(mods, function(x) capture.output(check_convergence(x)))
+selAA <- lapply(mods, function(x) x$report()$selAA[[1]])
+conv <- lapply(mods, function(x) capture.output(check_convergence(x)))
+df.tmp <- read.csv(file.path(local.dir,"run1",paste0("df_",model.id,".csv")))
+df[1:4,c("conv","runtime_min","nll","AIC")] <- df.tmp[1:4,c("conv","runtime_min","nll","AIC")]
+df$conv <- sapply(mods, function(x) x$opt$convergence)
+df$nll <- sapply(mods, function(x) x$opt$obj)
 
+# # look for selpars close to 0 or 1 (logit_selpars > 4 or < -4)
+# lapply(mods[1:5], function(x) x$parList$logit_selpars)
+# lapply(mods[1:5], function(x) x$parList$sel_repars) # log(sigma), rho, rho_y
+# lapply(mods[6:10], function(x) x$parList$logit_selpars)
+# lapply(mods[6:10], function(x) x$parList$sel_repars) # log(sigma), rho, rho_y
+# mod$parList$logit_selpars
+# mod$parList$sel_repars
+# lapply(mods[6:10], function(x) capture.output(check_convergence(x)))
+
+# # look for pars with NA sdrep
+# lapply(mods, function(x) unique(names(which(is.nan(summary(x$sdrep, select='fixed')[,"Std. Error"]))))) # log(sigma), rho, rho_y
+
+# summary(mods[[7]]$sdrep, select='fixed')
+# summary(mods[[9]]$sdrep, select='fixed')
+# summary(mods[[10]]$sdrep, select='fixed')
+
+# ----------------------------------------------------------------------------
+# Output summary table and selAA figures
+# -----------------------------------------------------------------------------
 # Which models converged? 0 = convergence
+# df <- df[,c("model","NAA_mod","sel_mod","sel_re","conv","runtime_min","nll"]
 df <- cbind(df, compare_wham_models(mods, sort=FALSE, calc.rho=FALSE)$tab)
 df$runtime_min <- round(df$runtime_min,2)
 df$nll <- round(df$nll,3)
+min.AIC <- min(df$AIC[df$conv==0])
+df$dAIC <- round(df$AIC - min.AIC, 1)
+df$dAIC[df$conv==1] = NA
 df <- df[,c("model","NAA_mod","sel_mod","sel_re","conv","runtime_min","nll","AIC","dAIC")]
+# df$conv <- sapply(mods, function(x) x$opt$convergence)
+# df$nll <- sapply(mods, function(x) x$opt$obj)
 write.csv(df, file=file.path(local.dir,paste0("df_",model.id,".csv")),quote=F,row.names=F)
 # df <- read.csv(file.path(local.dir,paste0("df_",model.id,".csv")))
 
@@ -145,41 +201,39 @@ for(m in 1:n.mods){
 	tmp <- as.data.frame(selAA[[m]])
 	tmp$Year <- input$years
 	colnames(tmp) <- c(paste0("Age_",1:input$data$n_ages),"Year")
-	# df$Model <- m
 	tmp$Model <- paste0("m",m,": NAA = ",df$NAA_mod[m],", sel = ",df$sel_mod[m]," (",df$sel_re[m],")")
+	tmp$sel_re <- df$sel_re[m]
+	tmp$sel_mod <- df$sel_mod[m]
 	df.selAA <- rbind(df.selAA, tmp)
 }
-df.plot <- df.selAA %>% pivot_longer(-c(Year,Model),
+# df.plot <- df.selAA %>% pivot_longer(-c(Year,Model),
+df.plot <- df.selAA %>% pivot_longer(-c(Year,Model,sel_re,sel_mod),
 				names_to = "Age", 
 				names_prefix = "Age_",
 				names_ptypes = list(Age = integer()),
 				values_to = "Selectivity")
 df.plot$Model <- factor(as.character(df.plot$Model), levels=paste0("m",1:n.mods,": NAA = ",df$NAA_mod,", sel = ",df$sel_mod," (",df$sel_re,")"))
+df.plot$sel_mod <- factor(as.character(df.plot$sel_mod), levels=c("logistic","age-specific"))
+df.plot$sel_re <- factor(as.character(df.plot$sel_re), levels=c("none","iid","ar1","ar1_y","2dar1"))
+df.plot$conv <- df.plot$Model
+df.plot$conv <- plyr::mapvalues(df.plot$conv, from=levels(df.plot$Model), to=df$conv)
 
 # df$sel_model <- factor(rep(c("Recruitment","Full state-space"), each=dim(df)[1]/2), levels=c("Recruitment","Full state-space"))
 # df$sel_re <- factor(c(rep(c("None","IID","AR1","AR1_y","2D AR1"), each=dim(df)[1]/n.mods), rep(c("None","IID","AR1","AR1_y","2D AR1"), each=dim(df)[1]/n.mods)), levels=c("None","IID","AR1","AR1_y","2D AR1"))
-png(file.path(local.dir,paste0("selAA_",model.id,".png")), width = 11, height = 9, res = 100, units='in')
+png(file.path(local.dir,paste0("selAA_",model.id,"_all.png")), width = 11, height = 9, res = 100, units='in')
 print(ggplot(df.plot, aes(x=Year, y=Age, fill=Selectivity)) + 
 	geom_tile() +
 	theme_bw() + 
-	facet_wrap(~Model, ncol=2, dir="v") +
-	# facet_grid(rows=vars(sel_re), cols=vars(sel_model)) +
+	# facet_wrap(~Model, ncol=2, dir="v") +
+	facet_grid(rows=vars(sel_re), cols=vars(sel_mod), drop=F) +
 	scale_fill_viridis())
 dev.off()
 
-# -------------------------------------------------------------------------------
-# # look for selpars close to 0 or 1 (logit_selpars > 4 or < -4)
-# lapply(mods[8:12], function(x) x$parList$logit_selpars)
-# lapply(mods[8:12], function(x) x$parList$sel_repars) # log(sigma), rho, rho_y
-
-# # look for selpars with NA sdrep
-# lapply(mods[8:12], function(x) x$parList$logit_selpars)
-
-# res <- compare_wham_models(list(m1=m1, m2=m2, m3=m3, m4=m4), fname="model_compare", sort = FALSE)
-
-# #3-year projection for best model
-# wham_predict_index()
-
-# #Describe what we did for model 4
-# best = "m4"
-# wham_write_readme()
+png(file.path(local.dir,paste0("selAA_",model.id,"_conv.png")), width = 11, height = 9, res = 100, units='in')
+print(ggplot(filter(df.plot, conv==0), aes(x=Year, y=Age, fill=Selectivity)) + 
+	geom_tile() +
+	theme_bw() + 
+	# facet_wrap(~Model, ncol=2, dir="v") +
+	facet_grid(rows=vars(sel_re), cols=vars(sel_mod), drop=F) +
+	scale_fill_viridis())
+dev.off()

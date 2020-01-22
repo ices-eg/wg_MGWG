@@ -19,6 +19,11 @@
 #     9: age-specific, AR1_y (correlation across years)
 #     10: age-specific, 2D AR1 (correlation across ages/pars and years)
 
+# State-space project selectivity:
+#   Fleet: age-specific (fix ages 4,5)
+#   Index 1: age-specific (fix age 4)
+#   Index 2: age-specific (fix ages 2,3,4)
+
 # devtools::install_github("timjmiller/wham", dependencies=TRUE)
 library(wham)
 library(tidyverse)

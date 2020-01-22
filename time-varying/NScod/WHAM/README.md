@@ -1,6 +1,11 @@
 ## WHAM model fit details
 
-Initial run matches state-space project: age-specific selectivity for Index 1 (fix age 5 at 1) and Index 2 (fix ages 3,4 at 1). All models achieved convergence in initial run, no further selectivity parameter fixing/initializing was necessary.
+State-space project selectivity:
+  Fleet: logistic
+  Index 1: age-specific (fix age 5)
+  Index 2: age-specific (fix ages 3,4)
+
+All models achieved convergence in initial run, no further selectivity parameter fixing/initializing was necessary.
 
 #### Run #1
 
