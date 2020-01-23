@@ -85,8 +85,10 @@ for(m in 1:n.mods){ # all
 	}
 	input <- prepare_wham_input(asap3, model_name = paste0(model.id," m",m,": NAA = ",df$NAA_mod[m],", sel = ",df$sel_mod[m]," (",df$sel_re[m],")"),
 						selectivity=list(model=c(df$sel_mod[m],"age-specific","age-specific"), re=c(df$sel_re[m],"none","none"),
-										initial_pars=list(sel_inits, c(0.5,0.5,0.5,0.5,0.5,0.5,1,0.5,1), rep(1,9)),
-										fix_pars=list(fix_pars, c(7,9), 1:9)))
+										initial_pars=list(sel_inits, c(0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,1), rep(1,9)),
+										fix_pars=list(fix_pars, 9, 1:9)))
+										# initial_pars=list(sel_inits, c(0.5,0.5,1,0.5,0.5,0.5,0.5,0.5,1), rep(1,9)),
+										# fix_pars=list(fix_pars, c(3,9), 1:9)))
 	input$data$Fbar_ages = Fbar.ages
 
 	# initialize selectivity parameters for time-varying models at estimated values from time-constant models
@@ -142,7 +144,7 @@ mods <- lapply(mod.list, readRDS)
 # selAA <- lapply(mods, function(x) x$report()$selAA[[1]])
 # conv <- lapply(mods, function(x) capture.output(check_convergence(x)))
 
-local.dir1 <- "/home/bstock/Documents/wham/sandbox/ices_selectivity/Pollock/run1"
+local.dir1 <- "/home/bstock/Documents/wham/sandbox/ices_selectivity/Pollock/run4_fix78"
 mod.list1 <- file.path(local.dir1,paste0("m",1:n.mods,".rds"))
 mods1 <- lapply(mod.list1, readRDS)
 

@@ -834,7 +834,7 @@
 # Fmult in 1st year by fleet
 0.1
 # Catchability in 1st year by index
-0.02827542 0.05080818
+0.05959476 0.05297846
 # S-R Unexploited specification (1=   0=)
 1
 # Unexploited initial guess

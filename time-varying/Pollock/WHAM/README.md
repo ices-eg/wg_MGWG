@@ -37,12 +37,12 @@ Fix ages 7,8.
 
 All converge except m6 and m8. logit_selpars for Index 1 ages 3 and 7 are still estimated high (really high for age-specific models... 90 and 75)
 
-#### Run #4
+#### Run #5
 
-Fix Index 1 age 7.
+Fix Index 1 age 3.
 
-
+Age-specific models converge. Logistic models estimate selAA = 1 for all ages and m1 doesn't converge...
 
 ## Comments
 
-
+Use Run 4 for now.

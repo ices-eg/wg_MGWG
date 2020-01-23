@@ -1,0 +1,11 @@
+model,NAA_mod,sel_mod,sel_re,conv,runtime_min,nll,AIC,dAIC
+m1,all,logistic,none,0,2.68,-1179.7,-2221.4,136.9
+m2,all,logistic,iid,0,3.79,-1231.854,-2323.7,34.6
+m3,all,logistic,ar1,0,3.99,-1232.379,-2322.8,35.5
+m4,all,logistic,ar1_y,0,3.87,-1250.154,-2358.3,0
+m5,all,logistic,2dar1,0,3.81,-1250.511,-2357,1.3
+m6,all,age-specific,none,0,3.01,-1193.93,-2237.9,120.4
+m7,all,age-specific,iid,0,4.11,-1209.421,-2266.8,91.5
+m8,all,age-specific,ar1,0,3.62,-1227.995,-2302,56.3
+m9,all,age-specific,ar1_y,0,4.32,-1240.814,-2327.6,30.7
+m10,all,age-specific,2dar1,0,4.32,-1254.605,-2353.2,5.1
