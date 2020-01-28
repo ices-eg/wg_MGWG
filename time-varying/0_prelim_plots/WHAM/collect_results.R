@@ -20,3 +20,49 @@ from.dirs <- file.path(species.dirs,"WHAM")
 file.copy(from=grep("df_",list.files(from.dirs,full.names=T),value=T), to=df.dir)
 file.copy(from=grep("_all",list.files(from.dirs,full.names=T),value=T), to=selAA.all.dir)
 file.copy(from=grep("_conv",list.files(from.dirs,full.names=T),value=T), to=selAA.conv.dir)
+
+# ----------------------------------------------------
+# Summary plots
+#   AIC rank by model
+#   % converged by model
+#   boxplot dAIC by model
+
+# get data frame of results
+library(tidyverse)
+res <- lapply(list.files(df.dir,full.names=TRUE), function(x) read.csv(x))
+species.labs <- gsub(".*/time-varying/","",species.dirs)
+names(res) <- species.labs
+df.res <- bind_rows(res, .id="Stock")
+df.res$model <- factor(as.character(df.res$model), levels=paste0("m",1:10))
+df.res$sel_mod <- factor(as.character(df.res$sel_mod), levels=c("logistic", "age-specific"))
+levels(df.res$sel_mod) = c("Logistic", "Age-specific")
+
+png(file.path(wham.dir,"dAIC_boxplot.png"), units='in', height=5, width=7, res=300)
+ggplot(df.res, aes(x=model,y=dAIC)) +
+	geom_boxplot(fill='grey') +
+	facet_wrap(~sel_mod, nrow=1, scales="free_x") +
+	xlab("Model") +
+	theme_bw()
+dev.off()
+
+png(file.path(wham.dir,"percent_converged.png"), units='in', height=5, width=7, res=300)
+ggplot(df.res %>% group_by(model) %>% summarize(p.conv=sum(1-conv)/n(), sel_mod=sel_mod[1]), aes(x=model,y=p.conv)) +
+	geom_point(size=3) +
+	facet_wrap(~sel_mod, nrow=1, scales="free_x") +
+	xlab("Model") +
+	ylab("Proportion of stocks converged (of 13)") +
+	ylim(c(0,1)) +
+	theme_bw()
+dev.off()
+
+aic.rank <- df.res %>% group_by(Stock) %>% mutate(Rank = rank(dAIC, na.last="keep",ties.method = "average"))
+png(file.path(wham.dir,"AIC_rank.png"), units='in', height=7, width=7, res=300)
+ggplot(aic.rank , aes(x=model,y=Stock,fill=Rank)) +
+	geom_tile() +
+	scale_fill_gradient2(midpoint=5.5, na.value = "grey80") +
+	# facet_wrap(~sel_mod, nrow=1, scales="free_x") +
+	xlab("Model") +
+	ylab("Stock") +
+	theme_bw()
+dev.off()
+
