@@ -26,7 +26,7 @@ Who would like to lead, what will coauthors do?   |
 
 ## Proposal Format
 
-* Working title:  Interanl versus external estimation of stock-recruit relationships: can we and should we?
+* Working title:  Internal versus external estimation of stock-recruit relationships: can we and should we?
 * Participants
   * See below
 * Background
