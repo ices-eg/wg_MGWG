@@ -1,0 +1,51 @@
+---
+title: "ICES Methods SR"
+author:
+- name: Jonathan J. Deroba
+  institute: one
+- name: Iago Sanchez Mosqueira 
+  institute: two
+- name: Elizabeth Brooks
+  institute: one
+- name: Timothy Miller 
+  institute: one
+- name: Colin Millar 
+  institute: three
+- name: other
+  institute: four
+institute:
+- one: NOAA Fisheries, Woods Hole, MA
+- two: Wageningen Marine Research
+- three: ICES, Copenhagen, DK
+- four: other place
+
+header-includes: \usepackage[export]{adjustbox}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F, warning = F, message = F)
+```
+
+# Abstract
+
+# Introduction
+
+# Methods
+
+## *Operating Model*
+
+## *Estimation Models*
+
+### ASAP
+### WHAM
+### SAM
+
+## *External Stock-Recruit Estimation*
+
+### BH
+
+### Ricker
+
+# Results
+
+# Discussion
