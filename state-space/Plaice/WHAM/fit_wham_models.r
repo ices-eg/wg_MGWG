@@ -1,4 +1,3 @@
-#write.dir = "~/work/ICES/MGWG/MGWG/state-space/CCGOMyt/WHAM"
 write.dir = "./"
 user.wd <- "../" #"~/work/ICES/MGWG/SS_vs_SCAA/R/ccgomyt/"
 user.od <- write.dir
@@ -16,6 +15,7 @@ source("../../helper_code/wham_tab2.r")
 source("../../helper_code/wham_predict_index.r")
 source("../../helper_code/wham_write_readme.r")
 source("../../helper_code/wham_make_model_input.r")
+source("../../helper_code/wham_output_sdrep.r")
 
 # convert Lowestoft input files to vanilla ASAP
 ICES2ASAP(user.wd, user.od, model.id = model.id, ices.id= ices.id)
@@ -48,6 +48,10 @@ m3 <- fit_wham(make_m3())
 m4 <- fit_wham(make_m4())
 
 res <- compare_wham_models(list(m1=m1, m2=m2, m3=m3, m4=m4), fname="model_compare", sort = FALSE)
+save(m1,m2,m3,m4, file = "fits.RData")
+
+#write out standard errors
+wham_output_sdrep()
 
 #3-year projection for best model
 wham_predict_index()

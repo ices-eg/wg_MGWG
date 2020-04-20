@@ -2,3 +2,4 @@ length-dist/ss_sim/*yellow
 length-dist/ss_sim/*cod
 ss3sim_scalar.csv
 ss3sim_ts.csv
+state-space/*/WHAM/fits.RData
