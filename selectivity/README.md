@@ -155,7 +155,10 @@ selectivity
 * [Francis 2017](http://www.sciencedirect.com/science/article/pii/S0165783616301953)
 * [Froese et al. 2008](http://www.sciencedirect.com/science/article/pii/S016578360800043X)
 Paper on Lopt
-* [Froese et al. 2016](https://onlinelibrary.wiley.com/doi/abs/10.1111/faf.12146)
+* [Froese et al. 2016a](https://doi.org/10.1093/icesjms/fsv122)
+Looks at balanced harvesting of sizes, and proposes sustainable and low-impact
+fishing instead.
+* [Froese et al. 2016b](https://onlinelibrary.wiley.com/doi/abs/10.1111/faf.12146)
 Proposing new equations for Lopt and Aopt
 * [Garcia et al. 2012](http://science.sciencemag.org/content/335/6072/1045)
   argues balanced harvest
@@ -201,6 +204,7 @@ Proposing new equations for Lopt and Aopt
   between model complexity and the ability to produce reasonable management advice. Their development is
   encouraged as a standard feature in the assessment of migratory fish stocks." Expands on Sampson's
   work.
+* [Vasilakopoulos et al. 2020](https://doi.org/10.1111/faf.12117)
 
 *Less relevant for our study...*
 
