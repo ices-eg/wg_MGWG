@@ -1,7 +1,8 @@
-Analyses to be done on output (and proposed analyst--subject to change):
-1. External SR fitting (with and without using variance-covariance; Noel's nonparametric method; also test what EQSim package identifies) (colin)
-2. Comparisons of estimated values with true values (iago?)
-3. Evaluation of whether AIC selects the correct OM (colin or iago?) - note, since i have only uploaded fits from one EM (all fits assumed mean recruitment with deviations), we can't do this evaluation yet, but look at the output and let me know if you think we have what we need.
+Analyses to be done on output (and proposed analyst--subject to change) as of November 13, 2020:
+1. External SR fitting (with and without using variance-covariance; Maybe Noel's nonparametric method; also test what EQSim package identifies for Bmsy, Fmsy, MSY) (Colin)
+2. Comparisons of estimated values with true values - recruitment parameters (e.g., "alpha" "beta"), recruitment, SSB, and F time series and recruitment variance when possible (Iago)
+3. For external fits, evaluation of whether AIC selects the correct OM (colin)
+4. For internal fits, evaluation of whether AIC selects the correct OM.  Thinking table of scenario, iter, Ricker AIC, BH AIC, "winner", is the "winner" correct.  Summary stats likely necessary to ID how frequently AIC worked. (Jon, Liz, Tim).
 
 other ideas?
 -summarize # converged fits per simulated case (# iterations per run)?
