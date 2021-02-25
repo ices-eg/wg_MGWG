@@ -39,6 +39,17 @@ We hope to have some results processed before the fall Working Group meeting in 
 
 Jon will schedule the next meeting for late July/early August.
 
+## 13 November 2020
+
+## updated 25 February 2021
+
+To do list
+1. External SR fitting (with and without using variance-covariance; Maybe Noel's nonparametric method; also test what EQSim package identifies for Bmsy, Fmsy, MSY) (Colin)
+2. Comparisons of estimated values with true values - recruitment parameters (e.g., "alpha" "beta"), MSY reference points, selectivity, recruitment, SSB, and F time series and recruitment variance when possible (Iago to provide true values; Liz, Tim, Jon to do comparisons)
+3. For external fits, evaluation of whether AIC selects the correct OM (colin)
+4. For internal fits, evaluation of whether AIC selects the correct OM. Thinking table of scenario, iter, Ricker AIC, BH AIC, "winner", is the "winner" correct. Summary stats likely necessary to ID how frequently AIC worked. Evaluate effect of deviation type (ln03, ln06, RW) and Fhistory.  (Jon, Liz, Tim).
+5. Maybe someday evaluate the ability of prediction skill in identifying the correct model (as an alternative to AIC).
+
 
 
 
