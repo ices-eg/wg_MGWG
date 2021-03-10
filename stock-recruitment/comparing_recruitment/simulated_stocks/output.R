@@ -98,4 +98,10 @@ save(indices, stocks, res, runs, file="sa/a4a/a4a.RData", compress="xz")
 
 # S/R TSs
 
-# TRUE F, rec, Q as DF, txt / VPA files
+# TRUE F, SSB, rec, alpha/beta, sigmaR
+
+true <- rbindlist(lapply(oms, metrics, list(F=fbar, SSB=ssb, Rec=rec)), idcol="run")
+params <- cbind(runs, run=1:36)
+
+save(true, params, file="out/true.RData")
+
