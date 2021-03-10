@@ -103,6 +103,7 @@ save(indices, stocks, res, runs, file="sa/a4a/a4a.RData", compress="xz")
 true <- rbindlist(lapply(oms, function(x) 
   as.data.frame(metrics(x, list(F=fbar, SSB=ssb, Rec=rec)), drop=TRUE)),
   idcol="run")
+
 params <- cbind(runs, run=1:36)
 
 save(true, params, file="out/true.RData", compress="xz")
