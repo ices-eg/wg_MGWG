@@ -107,10 +107,11 @@ Who would like to lead, what will coauthors do?   |
 
 ## October 1, 2021 Trying to get moving on this again. Below I catalog where results files are being stored and where the "truth" can be found. Maybe we can process results.
 
-*Liz created a table of true stock-recruit parameters for each of the 36 OMs: https://github.com/ices-eg/wg_MGWG/blob/master/stock-recruitment/evaluate_fit/runs_liz.csv
+* Liz created a table of true stock-recruit parameters for each of the 36 OMs: https://github.com/ices-eg/wg_MGWG/blob/master/stock-recruitment/evaluate_fit/runs_liz.csv
 
-*Iago posted the true values for a bunch of stuff (e.g., time series of SSB, F, recruitment, etc.) for each OM: https://github.com/ices-eg/wg_MGWG/tree/master/stock-recruitment/comparing_recruitment/simulated_stocks/out
-  *From Iago:
+* Iago posted the true values for a bunch of stuff (e.g., time series of SSB, F, recruitment, etc.) for each OM: https://github.com/ices-eg/wg_MGWG/tree/master/stock-recruitment/comparing_recruitment/simulated_stocks/out
+
+  * From Iago:
   true has the time series of rec, F and SSB by run, year and iteration,
 asd follows:
 
@@ -151,14 +152,14 @@ https://github.com/ices-eg/wg_MGWG/blob/master/stock-recruitment/comparing_recru
 The recruitment std were set at with a random walk with std=0.05
 (rwdev) or lnorm with 0.3 (lndev03) or 0.6 (lndev06)
 
-*Jon Deroba did SAM fits and they can be found here: ftp://ftp.nefsc.noaa.gov/pub/dropoff/jderoba  (as of 10/1/2021 Liz and I need to repost results to these sites, they are empty at the moment)
-  *There is a separate RData for each of the stock-recruit assumptions.  I did something similar in structure and naming convention to what Liz previously sent you for her ASAP fits (including srcode is 1=BH, 2=Ricker, and 3=RW; these numbers also ID the RData files).  More specifically, each RData contains a matrix of stock-recruit and MSY parameter estimates, a matrix of time series estimates, and a matrix of the variance-covariance matrix of the SSB and recruitment parameters.  Results in all cases can be uniquely identified based on run, iteration, and sr.code.  One oddity you'll find is that there are not results for all 300 datasets for all of the operating models.  For reasons I can't identify and have no way of trouble shooting at this time, TMB blew up for 1-2 datasets for some of the operating models.  I'll try to etch out time to figure out why, but for now I see no reason to delay progress for the sake of a small handful of odd datasets.
+* Jon Deroba did SAM fits and they can be found here: ftp://ftp.nefsc.noaa.gov/pub/dropoff/jderoba  (as of 10/1/2021 Liz and I need to repost results to these sites, they are empty at the moment)
+  * There is a separate RData for each of the stock-recruit assumptions.  I did something similar in structure and naming convention to what Liz previously sent you for her ASAP fits (including srcode is 1=BH, 2=Ricker, and 3=RW; these numbers also ID the RData files).  More specifically, each RData contains a matrix of stock-recruit and MSY parameter estimates, a matrix of time series estimates, and a matrix of the variance-covariance matrix of the SSB and recruitment parameters.  Results in all cases can be uniquely identified based on run, iteration, and sr.code.  One oddity you'll find is that there are not results for all 300 datasets for all of the operating models.  For reasons I can't identify and have no way of trouble shooting at this time, TMB blew up for 1-2 datasets for some of the operating models.  I'll try to etch out time to figure out why, but for now I see no reason to delay progress for the sake of a small handful of odd datasets.
   
-*Liz did ASAP fits: ftp://ftp.nefsc.noaa.gov/pub/dropoff/lbrooks
+* Liz did ASAP fits: ftp://ftp.nefsc.noaa.gov/pub/dropoff/lbrooks
 
-*Tim did WHAM fits: ftp://ftp.nefsc.noaa.gov/pub/dropoff/tmiller2/stock_recruit/
+* Tim did WHAM fits: ftp://ftp.nefsc.noaa.gov/pub/dropoff/tmiller2/stock_recruit/
 
-*Ernesto may have done some a4a fits, but I cannot find a record of where those results were stored.
+* Ernesto may have done some a4a fits, but I cannot find a record of where those results were stored.
 
 
 
