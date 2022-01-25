@@ -19,3 +19,6 @@ source("norway.R")
 source("s_celtic.R")
 source("w_baltic.R")
 setwd(owd)
+
+rm(ages, B, BPR, C, cohortBiomass, Cp, dims, Fmort, M, mat, N, Ninit, owd, path,
+   plus, read, S, stdplot, wcatch, wstock, yrs)
