@@ -80,8 +80,7 @@ out$Label <- c("Faroe", "Georges", "Greenland", "Maine", "Iceland", "Irish",
                "Celtic", "Baltic")
 
 filename <- "out/a50.eps"
-postscript(filename, width=6, height=6, pointsize=10,
-           horizontal=FALSE, onefile=FALSE, paper="special")
+eps(filename, width=6, height=6)
 plot(NA, xlim=c(0,8), ylim=c(0,8), xlab="Age at 50% maturity",
      ylab="Age at 50% selectivity")
 title(main="Selectivity vs. Maturity")
