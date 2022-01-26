@@ -4,7 +4,7 @@ source("stocks.R")
 
 ## 2  Load functions
 
-library(arni)   # eps, eps2pdf, eps2png, install_github("arnima-github/arni")
+library(arni)   # eps, eps2pdf, eps2png, install_github("arni-magnusson/arni")
 library(gdata)  # write.fwf
 source("../functions/A50.R")
 
