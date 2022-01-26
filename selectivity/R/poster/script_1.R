@@ -10,6 +10,7 @@ source("../functions/A50.R")
 
 ## 3  Prepare table
 tonnes <- read.csv("../../data/tonnes.csv")
+tonnes$kattegat <- NULL
 out <- data.frame(id=names(tonnes)[-1])
 out$Stock <- c("Faroe Plateau", "Georges Bank", "Greenland inshore",
                "Gulf of Maine", "Iceland", "Irish Sea", "NAFO 2J3KL", "NAFO 3M",
