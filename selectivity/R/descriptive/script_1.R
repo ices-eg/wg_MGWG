@@ -12,11 +12,11 @@ source("../functions/A50.R")
 tonnes <- read.csv("../../data/tonnes.csv")
 tonnes <- tonnes[c("year", "greenland", "iceland", "ne_arctic", "norway",
                    "faroe_plateau", "s_celtic", "irish_sea", "north_sea",
-                   "w_baltic")]
+                   "w_baltic", "kattegat")]
 out <- data.frame(id=names(tonnes)[-1])
 out$Stock <- c("Greenland inshore", "Iceland", "Northeast Arctic",
                "Norway coastal", "Faroe Plateau", "Southern Celtic",
-               "Irish Sea", "North Sea", "Western Baltic")
+               "Irish Sea", "North Sea", "Western Baltic", "Kattegat")
 
 ## 4  Look up year range and average catch
 
@@ -56,36 +56,42 @@ w5 <- function(id)
   stock <- get(id)
   stock$wcatch[["5"]]
 }
+abar <- function(id)
+{
+  stock <- get(id)
+  sum(stock$C * as.numeric(names(stock$C))) / sum(stock$C)
+}
 out$A50sel <- sapply(out$id, a50sel)
 out$A50mat <- sapply(out$id, a50mat)
 out$W5 <- sapply(out$id, w5)
+out$Abar <- sapply(out$id, abar)
 
 ## 6  Export table
 
 suppressWarnings(dir.create("out"))
 
-out.clean <- out[c("Stock", "Catch", "A50sel", "A50mat", "W5")]
+out.clean <- out[c("Stock", "Catch", "Abar", "A50mat", "W5")]
 out.clean$Catch <- round(out.clean$Catch, -2)
-out.clean$A50sel <- round(out.clean$A50sel, 1)
+out.clean$Abar <- round(out.clean$Abar, 1)
 out.clean$A50mat <- round(out.clean$A50mat, 1)
 out.clean$W5 <- round(out.clean$W5, 1)
 
-head.1 <- c("",       "",         "Age at 50%",  "Age at 50%", "Weight at")
-head.2 <- c("Stock", "Catch (t)", "Selectivity", "Maturity",   "age 5 (kg)")
+head.1 <- c("",       "",         "Average age", "Age at 50%", "Weight at")
+head.2 <- c("Stock", "Catch (t)", "in Catch",    "Maturity",   "Age 5 (kg)")
 write.fwf(rbind(head.1, head.2, format(out.clean)), "out/table.txt",
           colnames=FALSE)
 
 ## 7  Plot
 
 out$Label <- c("Greenland", "Iceland", "NE Arctic", "Norway", "Faroe", "Celtic",
-               "Irish", "North Sea", "Baltic")
-filename <- "out/a50.eps"
+               "Irish", "North Sea", "Baltic", "Kattegat")
+filename <- "out/abar.eps"
 eps(filename, width=6, height=6)
 plot(NA, xlim=c(0,8), ylim=c(0,8), xlab="Age at 50% maturity",
-     ylab="Age at 50% selectivity")
-title(main="Selectivity vs. Maturity")
+     ylab="Average age in catch")
+title(main="Catch at age vs. Maturity")
 abline(a=0, b=1, lty=3, col="gray")
-text(A50sel~A50mat, data=out, labels=Label, cex=0.8)
+text(Abar~A50mat, data=out, labels=Label, cex=0.8)
 dev.off()
 eps2pdf(filename)
 ## eps2png(filename, dpi=600)

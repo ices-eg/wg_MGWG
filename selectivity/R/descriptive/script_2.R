@@ -11,8 +11,8 @@ source("../functions/stdline.R")
 ## 3  Prepare labels and graphical parameters
 
 stocks <- c("Greenland inshore", "Iceland", "Northeast Arctic",
-            "Norway coastal", "Faroe Plateau", "Southern Celtic", "Irish Sea",
-            "North Sea", "Western Baltic")
+            "Norway coastal", "Faroe Plateau", "Southern Celtic",
+            "Irish Sea", "North Sea", "Kattegat", "Western Baltic")
 col <- rich.colors(length(stocks))
 lwd <- 2
 
@@ -32,7 +32,8 @@ stdline(faroe_plateau$wcatch, lwd, col[5])
 stdline(s_celtic$wcatch,      lwd, col[6])
 stdline(irish_sea$wcatch,     lwd, col[7])
 stdline(north_sea$wcatch,     lwd, col[8])
-stdline(w_baltic$wcatch,      lwd, col[9])
+stdline(kattegat$wcatch,      lwd, col[9])
+stdline(w_baltic$wcatch,      lwd, col[10])
 legend("topleft", legend=stocks, bty="n", lty=1, lwd=lwd, col=col,
        inset=0.02, cex=0.8)
 dev.off()
@@ -41,28 +42,6 @@ eps2pdf(filename)
 file.remove(filename)
 
 ## 5  Plot selectivity and maturity
-
-## Selectivity
-filename <- "out/selectivity.eps"
-eps(filename, width=12, height=6)
-plot(NA, xlim=c(1,15), ylim=c(0,1.05), yaxs="i",
-     xlab="Age", ylab="Selectivity", main="Selectivity")
-stdline(greenland$S,     lwd, col[1])
-stdline(iceland$S,       lwd, col[2])
-stdline(ne_arctic$S,     lwd, col[3], to=14)
-stdline(norway$S,        lwd, col[4])
-stdline(faroe_plateau$S, lwd, col[5])
-stdline(s_celtic$S,      lwd, col[6])
-stdline(irish_sea$S,     lwd, col[7])
-stdline(north_sea$S,     lwd, col[8])
-stdline(w_baltic$S,      lwd, col[9])
-legend("topright", legend=stocks, bty="n", lty=1, lwd=lwd, col=col,
-       inset=0.02, cex=0.8)
-box()
-dev.off()
-eps2pdf(filename)
-## eps2png(filename, dpi=600)
-file.remove(filename)
 
 ## Maturity
 filename <- "out/maturity.eps"
@@ -77,7 +56,8 @@ stdline(faroe_plateau$mat, lwd, col[5])
 stdline(s_celtic$mat,      lwd, col[6])
 stdline(irish_sea$mat,     lwd, col[7])
 stdline(north_sea$mat,     lwd, col[8])
-stdline(w_baltic$mat,      lwd, col[9])
+stdline(kattegat$mat,      lwd, col[9])
+stdline(w_baltic$mat,      lwd, col[10])
 legend("bottomright", legend=stocks, bty="n", lty=1, lwd=lwd, col=col,
        inset=0.02, cex=0.8)
 box()

@@ -12,6 +12,7 @@ source("s_celtic.R")
 source("irish_sea.R")
 source("north_sea.R")
 source("w_baltic.R")
+source("kattegat.R")
 setwd(owd)
 
 rm(ages, B, BPR, C, cohortBiomass, Cp, dims, Fmort, M, mat, N, Ninit, owd, path,
