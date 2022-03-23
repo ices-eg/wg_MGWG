@@ -21,7 +21,8 @@ To register, please complete the following doodle poll
 https://doodle.com/meeting/participate/id/xe7GJnye
 to let us know you are attending the 2022 meeting. We will be following up with an email about logistics in Lowestoft. The plan is for an in person meeting. We may be able to make part of the meeting virtual, but probably cannot make the entire meeting virtual unless the in person meeting is not possible.  
 
-Feel free to forward the invitation to those you think might be interested.
+Feel free to forward the invitation to those you think might be interested.  
+
 All the best,
 Chris and Anders
 
