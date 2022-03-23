@@ -1,14 +1,34 @@
 # ICES Methods Working Group
 
-\- See [Wiki](https://github.com/ices-eg/MGWG/wiki) for a discussion board
-listing research topics<br>
-\- See [ICES](http://www.ices.dk/community/groups/Pages/MGWG.aspx) MGWG homepage
-for overall objectives, latest report, etc.
+## Letter of invitation, Lowestoft 14-18 November 2022
+
+(to MGWG members, sent 23 March 2022)
+Dear stock assessment experts,  
+
+The ICES Methods Working Group will be meeting 14-18 November 2022 in Lowestoft, England, at the historic CEFAS laboratory and you are invited to attend!  
+
+As the Chairs of the WG, our goal is to bring together the best stock assessment modellers from all continents, to share experiences, and have fun together. In consultation with ICES HQ, the Terms of Reference have been modified from the previous cycle to be more focused on the application of stock assessment models to address specific questions. The full Terms of Reference are attached, but briefly are:  
+
+*	Share new techniques for use in stock assessment
+*	Evaluate details of stock assessment models
+*	Validate new methods
+*	Identify need for ICES training courses
+*	Prioritize and address modeling questions supplied by ICES EGs  
+
+We will also have an opportunity to discuss the projects begun during the last cycle of the ICES MGWG. These projects can be found on the GitHub site of the ICES Methods Working Group (https://github.com/ices-eg/MGWG).  
+
+To register, please complete the following doodle poll
+https://doodle.com/meeting/participate/id/xe7GJnye
+to let us know you are attending the 2022 meeting. We will be following up with an email about logistics in Lowestoft. The plan is for an in person meeting. We may be able to make part of the meeting virtual, but probably cannot make the entire meeting virtual unless the in person meeting is not possible.  
+
+Feel free to forward the invitation to those you think might be interested.
+All the best,
+Chris and Anders
 
 ***
 
 ## Save the dates
-The 2020 meeting of the ICES Methods Working Group is planned for 21-25 September in Reykjavik, Iceland. More details to follow.
+The 2020 meeting of the ICES Methods Working Group is planned for 21-25 September in Reykjavik, Iceland. More details to follow. The pandemic forced cancelation of both the 2020 and 2021 meetings.
 
 ## Meeting agenda, Seattle 23-27 September 2019
 
