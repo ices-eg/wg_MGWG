@@ -2,7 +2,7 @@ options(stringsAsFactors=FALSE)
 
 ## Import stocks
 
-setwd("../stocks")
+owd <- setwd("../stocks")
 source("faroe_plateau.R")
 source("georges_bank.R")
 source("greenland.R")
@@ -18,4 +18,7 @@ source("north_sea.R")
 source("norway.R")
 source("s_celtic.R")
 source("w_baltic.R")
-setwd("../poster")
+setwd(owd)
+
+rm(ages, B, BPR, C, cohortBiomass, Cp, dims, Fmort, M, mat, N, Ninit, owd, path,
+   plus, read, S, stdplot, wcatch, wstock, yrs)

@@ -133,6 +133,24 @@ WHAM\footnote{WHAM is available as an R package from github.com/timjmiller/wham.
 
 We fitted 2 configurations of the A4A framework to each stock data set. One treats the fisheries selectivity as separable from fully-selected fishing mortality, in that there are separate smooth function of age and year for fishing mortality. What type of smoothers? Cubic spline regression?. The second configuration treats fishing mortality as a tensor product smoother of age and year. 
 
+Our plan is to also run the models without the q blocks we used for some surveys. With regards to fit to historical time series which don't have surveys we're more concerned, because each model will have to make some assumptions about that period, being it recruitment or selectivity or F. Our preference is for removing those periods and avoid another layer of decisions.
+
+For North Sea cod and Icelandic herring there were no selectivity blocks needed?
+
+There was a variety of assumptions about recruitment across the stocks and fitted models.
+We assumed log-normal penaltiles on recruitment deviations, but the CV we assumed varied by stock. For US Atlantic herring, white hake, SNE-MA winter flounder, GB winter flounder, pollock, and NS cod we assumed CV= 0.3.
+
+we're using S/R geometric mean for most stocks, otherwise we can't predict the indices; (ii) NMFS and NEFS' surveys changed in 2009 and we've added a breakpoint in some cases. What are the others doing ?
+
+
+All A4A fits required survey data for all years of the model (why?) which resulted in shorter time series for models fit to US Atlantic herring, Georges Bank haddock and North Sea Atlantic cod. Also for observations at a particular age in the catch or individual survey was zero, it was replaced by a value of one have of the minimum value across all ages and years (why?).
+
+Retrospective pattterns were inspected and informed further modifications to the final models for a given stock.
+
+One model 
+
+Definitely we looked into diagnostics although we ended up using the rules of thumb I explained before. a4a can use several model structures and there's not really a vanilla model.
+
 \subsubsection*{SAM models}
 
 We fitted 2 configurations of SAM to each stock data set. The first configuration is based on the default SAM configuration, which has a relatively modest number of free parameters to ensure high probability of convergence. The default SAM configuration assumes uncorrelated log-normal observation likelihood, and AR(1) correlation structure for $F$-at-age vector increments. The last two age groups are assumed to have the same fishing mortality. Similarly, the last two age groups for each survey fleet are assumed to have equal catchabilities, and all observation variances are assumed equal within a fleet. If visual inspection of the standard residual plots showed clear systematic patterns we modified the first configuration slightly (either de-coupling of catchabilities or variance parameters, correlated observations for survey fleets) in order to remove or at least weaken the patterns.
@@ -140,13 +158,27 @@ The second configuration was identical to the first, except that the commercial 
 
 \subsubsection*{ASAP models}
 
-We fit two configurations of the ASAP model to each of the stock data sets. The first treated selectivity as constant across time for all fleets and surveys. The second model treated selectivity as constant within blocks of 10 years.
+We fit two configurations of the ASAP model to each of the stock data sets. The first treated selectivity as constant across time for all fleets and surveys. The second model treated selectivity as constant within blocks of 10 years. All ASAP fits assumed a penalty on recruitment deviations (CV = ?).
+
+In the ASAP runs I set up the converter from ICES format to ASAP format to use a robust approach for data weightings and selectivity functions that allowed all the models to converge and produce results. I ignored the model diagnostics that told me the default settings I used were not appropriate for any particular stock because I thought we were all using vanilla settings and did not want to do any fiddling. I am fine with the results for ASAP being reported this way, as long as the caveat is included that no model tuning was attempted for any stock for the ASAP runs. If the decision is made to tune each model to each stock, then I will need some time to do so for both sets of ASAP runs for all 13 stocks. Please advise whether this is needed and if so a deadline for when the runs need to be finalized.
 
 \subsubsection*{WHAM models}
 
 We fitted 4 configurations of the WHAM model to each stock data set. Two configurations are close to traditional statistical catch at age models with deterministic annual transitions in the cohorts. However, annual numbers recruit to the population are treated as independent lognormal random effects. The other two configurations are full state-space models that treat the annual cohort transitions as stochastic. The difference between the two types of each class of models is how the age composition observations are treated. In models 1 and 3 we assumed multinomial distributions with a default effective sample size. For models 2 and 4 we assumed a simple logit normal distribution similar to \citet{milleretal16} except that we treated any unobserved age classes as missing. We fit these models to determine whether there were generalities in model performance (AIC) or retrospective patterns across the stocks. The WHAM model with the lowest AIC was used for comparison with other model frameworks.
 
-The only differences in model configuration between stocks was in configuring selectivity for the age composition observations for the abundance indices and the catch. For many of the stocks, the range of ages used to comprise the aggregate index varied among indices. This led to some difficulties in applying a default logistic function of age, so we often estimated age-specific parameters. The general approach was to initially estimate all age-specific parameters freely to see which ages exhibited peak selectivity. Then selectivity parameters at these ages were fixed at one for final model results. The initial models cannot be used for final results because typically there is confounding of fully selected catchability with other model parameters (e.g., catchability) when all selectivity parameters are free.
+%In working toward the final model fits for each stock, the objective was to get the models to provde invertible hessians and standard error estimates for all parameters. Initial models assumed logistic selectivity on all fleets and surveys, but convergence was an issue for some stocks due to lack of observations at some ages in the age composition for certain catches or surveys, In other cases, logistic parameters were not estimable because the slope was too steep. 
+
+The only differences in model configuration between stocks was in configuring selectivity for the age composition observations for the abundance indices and the catch. For many of the stocks, the range of ages used to comprise the aggregate index varied among indices. This led to some difficulties in applying a default logistic function of age, so we often estimated age-specific parameters. The general approach was to initially estimate all age-specific parameters freely to see which ages exhibited peak selectivity. Then selectivity parameters at these ages were fixed at one for final model results. The initial models cannot be used for final results because typically there is confounding of fully selected catchability with other model parameters (e.g., catchability) when all selectivity parameters are free. The final selectivity configurations were the same for a given stock across all four of the fitted WHAM models.
+
+We also made a cursory inspection of annual fishing mortality and SSB estimates for any unrealistic large abrupt changes from one year to the next because annual fishing mortality rates are not constrained in any way. For one of models fits for the US Atlantic herring stock, this resulted in two phases of estimation with fishing mortality being held fixed in the first phase so that a local minimum was avoided during the optimization. 
+
+%For those surveys or fleets we assumed age-specific selectivity parameters and we set age-specific parameters to zero for ages without any any positive observations. I let all other age-specific parameters be free initially to figure out where the highest selectivity occurred. Then for the final fit I fixed those to 1 estimated all the other age-specific parameters. Note, that I fit 4 alternative models for each stock with different age comp distributions or state-space vs. SCAA, but I wanted the selectivity assumptions to be the same for all the WHAM models so the above exercise had be done for all 4 models at the same time which in many cases led to some iteration to figure out which selectivity assumptions would work for all 4 models.
+
+%That said, I also just checked to see if there was any wacky large abrupt changes in the F and SSB time series. WHAM (and ASAP) estimates the annual Fs as fixed effects so large changes from 1 year to the next are allowed. This happened for one of the models initial fits to US herring where F in the last year spiked and got the optimization into a local minimum.  For that model, I just fit it in 2 phases with Fs fixed in the first phase and then I estimated all parameters freely in the second phase.
+
+%I would propose if Ernesto wants to keep the results as he has done, we could all do the same sorts of things if we are so inclined. If not, then the comparison of the A4A results to the other model frameworks in the paper will be informed by the things that have been done there to get the model to perform well. I would like others to please express their opinions on this.
+
+%I think the objective of this paper is to compare the different model frameworks with respect to Mohn's rho and index prediction for trends across the stocks and, propose possible reasons for why they do or do not occur. The possible reasons will also be informed by the comparisons of models within frameworks too because more sources of variation are controlled for.
 
 
 

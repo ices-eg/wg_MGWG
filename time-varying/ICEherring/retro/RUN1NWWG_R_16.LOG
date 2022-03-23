@@ -1,0 +1,11 @@
+Log File Opened: 21 NOV 2017     16:55
+
+OPEN INPUT FILE: 
+RUN1NWWG_R_16.DAT                                                                                                               
+INPUT FILE READ COMPLETED
+PLUSG_SOLVE CATCH INFEASABLE F & N RESET
+Levenberg-Marquardt Algorithm Completed     9 Iterations
+RSS Calculated =    0.131461E+02
+--- VPA/ADAPT Model Execution Completed OK ---
+
+Log File Closed at: 16:55

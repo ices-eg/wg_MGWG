@@ -4,7 +4,7 @@ source("stocks.R")
 
 ## 2  Load packages and functions
 
-library(arni)    # eps, eps2pdf, eps2png, install_github("arnima-github/arni")
+library(arni)    # eps, eps2pdf, eps2png, install_github("arni-magnusson/arni")
 source("../functions/applyF0.1.R")
 source("../functions/applyFmax.R")
 source("../functions/slide.R")

@@ -17,6 +17,7 @@ Comparison of approaches to estimate time-varying selectivity
   * Claudio Castillo-Jordan, UW
   * Rick Methot, NWFSC
   * Daniel Howell, IMR
+  * Mark Muander, IATTC
 
 ### Background
 
@@ -39,9 +40,16 @@ Selectivity options are model-dependent:
     * age-specific with time blocks
     * exponential logistic with 2D AR
   * WHAM
-    * age-specific (time-invariant)
-    * age-specific with time blocks
-    * 2D AR process on selectivity parameters in assessment
+    * logistic time-invariant
+    * logistic IID (RE on sel pars, no correlation)
+    * logistic AR1 (correlation across ages/parameters)
+    * logistic AR1_y (correlation across years)
+    * logistic 2D AR1 (correlation across ages/pars and years)
+    * age-specific time-invariant
+    * age-specific IID (RE on sel pars, no correlation)
+    * age-specific AR1 (correlation across ages/parameters)
+    * age-specific AR1_y (correlation across years)
+    * age-specific 2D AR1 (correlation across ages/pars and years)    
   * SAM
     * age-specific (time-invariant)
     * 2D RW on F(a,y)
@@ -63,9 +71,29 @@ This project will leverage work from the state-space project. We will use the sa
   * Icelandic herring (ICEherring)
   * US Atlantic Herring (USAtlHerring)
 
-Phase 1: fit each model to each stock with 1) time-constant and 2) time-varying selectivity. For stocks in which time-varying selectivity makes a big difference (need to define), run models with selectivity time blocks.
+##### Phase 1
 
-Phase 2: fit models with time blocks on selectivity:
+Fit each model to each stock with 1) time-constant (no blocks) and 2) time-varying selectivity. For which stocks does time-varying selectivity make a big difference (need to define)? Does time-varying selectivity seem to approximate time blocks (with constant selectivity in each block)? 
+
+Stock | SS | WHAM | Comments
+------| ---- | --- | ---
+North Sea cod (Nscod) ||X|
+Gulf of Maine Cod (GOMcod) |||
+Georges Bank Haddock (GBhaddock) |||
+Gulf of Maine Haddock (GOMhaddock) |||
+US Pollock |||
+Southern New England-Mid-Atlantic yellowtail (SNEMAYT) ||X|
+Cape Cod-Gulf of Maine yellowtail (CCGOMYT) |||
+Georges Bank winter flounder |||
+Southern New England-Mid-Atlantic winter flounder (SNEMAwinter) |||
+American Plaice |||
+White Hake |||
+Icelandic herring (ICEherring) |||
+US Atlantic Herring (USAtlHerring) |||
+
+##### Phase 2
+
+Fit models with time blocks on selectivity:
 
 1. Time blocks used in production assessment (if done)
 2. Time blocks based on management changes (ask experts)
@@ -80,6 +108,12 @@ Define performance metrics
 Output to save for each model run:
 
   * same as in state-space project
+    * Mohn's rho: Rec, SSB, Fbar (7 peels)
+    * Survey residuals: log(observed) - log(predicted), project 3 years w/o survey observations but w/ catch
+    * SSB (95% CI)
+    * Recruitment (95% CI)
+    * Fbar (95% CI)
+    * Predicted Catch (95% CI)
   * matrix of selectivity (age x time)
 
 Future work
@@ -121,6 +155,6 @@ We will have a Skype call 3rd Wed each month to discuss progress and timeline:
 
 Date | To discuss
 -------- | --------
-Nov 20 7am PST / 10am EST / 4pm Eu | Phase 1 results, how to handle blocks
+Dec 18 7am PST / 10am EST / 4pm Eu | Phase 1 results, how to handle blocks
 Jan 15 7am PST / 10am EST / 4pm Eu | Phase 2 results (blocks), outline paper
 
