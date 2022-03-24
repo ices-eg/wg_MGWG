@@ -7,7 +7,7 @@ Dear stock assessment experts,
 
 The ICES Methods Working Group will be meeting 14-18 November 2022 in Lowestoft, England, at the historic CEFAS laboratory and you are invited to attend!  
 
-As the Chairs of the WG, our goal is to bring together the best stock assessment modellers from all continents, to share experiences, and have fun together. In consultation with ICES HQ, the Terms of Reference have been modified from the previous cycle to be more focused on the application of stock assessment models to address specific questions. The full Terms of Reference are [here](2022-lowestoft/MGWG_TORs.pdf), but briefly are:  
+As the Chairs of the WG, our goal is to bring together the best stock assessment modellers from all continents, to share experiences, and have fun together. In consultation with ICES HQ, the Terms of Reference have been modified from the previous cycle to be more focused on the application of stock assessment models to address specific questions. The full Terms of Reference are [here](2022-lowestoft/MGWG_ToRs.pdf), but briefly are:  
 
 *	Share new techniques for use in stock assessment
 *	Evaluate details of stock assessment models
