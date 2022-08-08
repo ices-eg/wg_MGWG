@@ -1,0 +1,276 @@
+---
+title: "Results analysis"
+author: Vanessa Trijoulet
+output: bookdown::pdf_document2
+date: '2022-08-02'
+---
+
+```{r, echo=FALSE}
+path_res <- file.path(getwd())
+figs <- list.files(path_res, pattern=".pdf")
+```
+
+# Some general notes on the results
+
+To this date, I have only received the results for WHAM and SAM. These results are compared to each others and to the truth when available via calculation of relative errors ($RE=(est-true)/true$). The true parameters and trajectories (SSB, Rec, Fbar) are available on GitHub but I haven't seen any true reference point estimates so, for the reference points, I have only compared WHAM and SAM.
+
+All the current figures can be produced with the following script *`r paste0(gsub("C:/Users/vtri/Documents/DTU/GitHub/MGWG/", "", path_res), '/res_analysis.R')`*. The current figures are just suggestions on how we can present the results for analysis and the figures can be improved for later publication. I have kept the current cases terminology in the figures for now so it is understandable by everyone but we can change that for publication. I have not used ggplot because I am not familiar enough with it but I am happy to change the colors or format of the figures if you find them unclear.
+
+Some observations on the results that need particular attention:
+
+-   The hockey-stick stock-recruitment relationship (SRR) exists in SAM but was not run as part of the estimation models (EMs), maybe due to convergence problems. There is also a smooth hockey-stick SRR, which should be a bit easier to fit if necessary.
+
+-   For SAM, some Ricker (sr.code=2) iterations (10 of them) are actually Beverton-Holt (BH) results (sr.code=1). In addition, some iterations are also missing. For now, I have removed these 10 false Ricker results and assume the missing iterations were non-converged runs. For final publication, it will be better to re-run theses missing results and iterations.
+
+-   For SAM, I have assumed that, when the convergence code is NA, it means no convergence so these runs are not considered when outputs are summarized, except to count against non-converged runs.
+
+-   For SAM, part of the code could be made faster but it was currently difficult given the missing iterations.
+
+-   For WHAM, the mean recruitment values are missing in the "meanrec" results. It would be useful to have them to compare to the true value in the mean recruitment operating model (OM). 
+
+-   For WHAM, the SSB and recruitment trajectories are missing (only Fbar is provided) so I couldn't compared these to the truth and they are only compared for SAM.
+
+-   For WHAM, the steepness parameter is defined as logit for BH but log for Ricker, I actually think (and have assumed) they were logit in both cases but it would be nice to have Tim's confirmation on this.
+
+
+
+# Model selection via AIC
+
+```{r, echo=FALSE}
+tmp <- figs[grep("_AIC", figs)]
+name_model <- gsub("_AIC.pdf", "", tmp)
+```
+
+Figure \@ref(fig:ModelSelection) shows model selection for the `r length(name_model)` models. 
+For SAM, model selection is overall best for BH but mainly when the contrast in fishing mortality (F) is a roller coaster (rcc). The random walk (RW) model is favored when the recruitment deviation follow a random walk (rwdev). Overall the probability of choosing the best model via AIC is not larger than 50\% chance. 
+For WHAM, model selection is relatively good when the contrast in F is a rcc but decreases otherwise. Mean recruitment is favored when the contrast in F is low (lfc) and is correctly selected when the OM is mean recruitment, except when the recruitment deviation follow a RW.
+
+```{r ModelSelection, fig.cap=paste0("Model selection for ", paste(name_model, collapse=", "), " (from left to right). Note that unconverged runs (nonConv) for SAM include missing iterations."), echo=FALSE, fig.show = "hold", out.width = "50%", fig.align = "default"}
+knitr::include_graphics(tmp)
+```
+
+\clearpage
+
+# Comparison of reference point estimates
+
+```{r, echo=FALSE}
+tmp_bmsy <- figs[grep("Bmsy", figs)]
+tmp_fmsy <- figs[grep("Fmsy", figs)]
+tmp_msy <- figs[grep("MSY", figs)]
+```
+
+
+The following results compare the reference point estimates between the `r length(name_model)` models when the OM and EM are BH or Ricker (there are no MSY reference points in the mean recruitment EM for WHAM). When/if the true reference points become available it would be better to compare the estimated reference points to the true ones via relative errors or just by drawing a line on the plot representing the true reference point. To this date, only the MSY reference points are in common between the models and can therefore be compared.
+
+For each OM, only the reference point estimates of the best models (selected via AIC as in Figure \@ref(fig:ModelSelection)) are compared.
+
+Figures \@ref(fig:Bmsy)-\@ref(fig:MSY) compare log(Bmsy), Fmsy and log(MSY) between the `r length(name_model)` models, respectively. Some differences exist in the estimates of reference points between the `r length(name_model)` models. Without the true reference points, it is difficult to draw any conclusion, but, overall, there are more differences in the reference points between the assessment models than between the OMs. SAM presents more variability in reference point estimates, maybe in line with its relatively poor model selection performance.
+
+
+```{r Bmsy, fig.cap=paste0("Estimated log SSB at maximum sustainable yield (Bmsy) for the ", length(name_model), " models. The left figure show the results including outliers and the right figure show the results ignoring outliers to better see the differences between the models."), echo=FALSE, fig.show = "hold", out.width = "50%", fig.align = "default"}
+knitr::include_graphics(tmp_bmsy)
+```
+
+```{r Fmsy, fig.cap=paste0("Estimated fishing mortality at maximum sustainable yield (Fmsy) for the ", length(name_model), " models. The left figure show the results including outliers and the right figure show the results ignoring outliers to better see the differences between the models."), echo=FALSE, fig.show = "hold", out.width = "50%", fig.align = "default"}
+knitr::include_graphics(tmp_fmsy)
+```
+
+```{r MSY, fig.cap=paste0("Estimated log maximum sustainable yield (MSY) for the ", length(name_model), " models. The left figure show the results including outliers and the right figure show the results ignoring outliers to better see the differences between the models."), echo=FALSE, fig.show = "hold", out.width = "50%", fig.align = "default"}
+knitr::include_graphics(tmp_msy)
+```
+
+\clearpage
+
+# Comparison of model parameters (a, b, sigmaR, h, ssb0)
+
+```{r, echo=FALSE}
+tmp_a <- figs[grep("err_a", figs)]
+tmp_b <- figs[grep("err_b", figs)]
+tmp_sigmaR <- figs[grep("_sigmaR", figs)]
+tmp_h <- figs[grep("err_h", figs)]
+tmp_ssb0 <- figs[grep("_ssb0", figs)]
+```
+
+
+Comparing the model parameters only makes sense when the EMs and OMs have the same recruitment model so it is only possible for BH and Ricker. Note that for SAM, the unconverged runs are not taken into account.
+Please refer to the script to see how I have converted the estimated parameters to be comparable to the true parameters, and let me know if some corrections are needed.
+
+Figures \@ref(fig:aParam)-\@ref(fig:ssb0) show the relative errors in the model parameters a, b, recruitment standard deviation, steepness, and SSB0 respectively, when the EM is the same as the OM. 
+The bias in recruitment parameters (a and b) is low when F is a rcc for both models (Figures \@ref(fig:aParam)-\@ref(fig:bParam)). Overall, the parameters for SAM show a large variability and the bias is lower for WHAM. 
+The bias is less than 40\% for both models for the standard deviation in recruitment but increases when the deviation follows a RW (Figure \@ref(fig:sigmaR)). 
+The bias in the steepness is lowest when the F contrast is a rcc or is high (hfc), and lowest for SAM (Figure \@ref(fig:h)). 
+The bias in SSB0 is larger for SAM than for WHAM and is best when the F contrast is a rcc (Figure \@ref(fig:ssb0)). When the OM is Ricker, SSB0 is largely overestimated in SAM. 
+
+
+```{r aParam, fig.cap=paste0("Relative errors in stock-recruitment parameter a for the ", length(name_model), " models. The left figure show the results including outliers and reduced y-axis limits and the right figure show the results ignoring outliers."), echo=FALSE, fig.show = "hold", out.width = "50%", fig.align = "default"}
+knitr::include_graphics(tmp_a)
+```
+
+```{r bParam, fig.cap=paste0("Relative errors in stock-recruitment parameter b for the ", length(name_model), " models. The left figure show the results including outliers and reduced y-axis limits and the right figure show the results ignoring outliers."), echo=FALSE, fig.show = "hold", out.width = "50%", fig.align = "default"}
+knitr::include_graphics(tmp_b)
+```
+
+```{r sigmaR, fig.cap=paste0("Relative errors in recruitment standard deviation sigmaR for the ", length(name_model), " models. The left figure show the results including outliers and reduced y-axis limits and the right figure show the results ignoring outliers."), echo=FALSE, fig.show = "hold", out.width = "50%", fig.align = "default"}
+knitr::include_graphics(tmp_sigmaR)
+```
+
+```{r h, fig.cap=paste0("Relative errors in steepness h for the ", length(name_model), " models. The left figure show the results including outliers and reduced y-axis limits and the right figure show the results ignoring outliers."), echo=FALSE, fig.show = "hold", out.width = "50%", fig.align = "default"}
+knitr::include_graphics(tmp_h)
+```
+
+```{r ssb0, fig.cap=paste0("Relative errors in SSB0 for the ", length(name_model), " models. The left figure show the results including outliers and reduced y-axis limits and the right figure show the results ignoring outliers."), echo=FALSE, fig.show = "hold", out.width = "50%", fig.align = "default"}
+knitr::include_graphics(tmp_ssb0)
+```
+
+\clearpage
+
+
+# Comparison of model outputs (F, SSB, recruitment)
+
+Here, for each OM, only the estimates of the best models (selected via AIC as in Figure \@ref(fig:ModelSelection)) are used.
+
+## Relative errors across the times series
+
+### Average fishing mortality, Fbar
+
+```{r, echo=FALSE}
+tmp_fbar <- figs[grep("_fbar", figs)]
+tmp2_fbar <- tmp_fbar[grep("ylim", tmp_fbar)]
+tmp1_fbar <- tmp_fbar[-which(tmp_fbar %in% tmp2_fbar)]
+name_OM <- c("Beverton-Holt", "Ricker", "mean recruitment", "segmented regression")
+```
+
+
+Figures \@ref(fig:Fbar1)-\@ref(fig:Fbar4) show the relative errors in the time series of average F (Fbar) for the `r length(tmp)` models. All models have a unrealistically large positive bias in the F in the second year (year 43 in the OMs) for the rcc scenario. The true F in the rcc scenarios is very close to 0 in that year (9.999917e-13). While the models estimate a low F (e.g. median F over all rcc iterations in SAM 0.0011 with 95% quantile 0.0005-0.0019), relative error estimates become extremely large due to dividing the difference by a very low number.
+
+Omitting this year for the rest of the analysis (bottom panels in Figures), bias in Fbar is quite consistent over time except for the lfc scenarios. When biased, the rcc scenarios result overall in an overestimation of Fbar and the hfc in an underestimation.The bias in Fbar is lowest for WHAM when the F scenario is hfc. Variability in the Fbar error is larger for SAM than WHAM. The level of variance in recruitment does not seem to affect the bias in Fbar for WHAM but does for SAM. The rcc pattern seems to be better picked up by SAM than by WHAM.
+
+
+```{r Fbar1, fig.cap=paste0("Relative errors in Fbar for ", paste(name_model, collapse=", "), " (from left to right) when the OM is ", name_OM[1], ". The top figures show the results without adjusting the y-axis limits and the bottom figures show the results reducing the limits of the y-axis."), echo=FALSE, fig.show = "hold", out.width = "50%", fig.align = "default", out.extra="page=1"}
+knitr::include_graphics(tmp1_fbar)
+knitr::include_graphics(tmp2_fbar)
+```
+
+```{r Fbar2, fig.cap=paste0("Relative errors in Fbar for ", paste(name_model, collapse=", "), " (from left to right) when the OM is ", name_OM[2], ". The top figures show the results without adjusting the y-axis limits and the bottom figures show the results reducing the limits of the y-axis."), echo=FALSE, fig.show = "hold", out.width = "50%", fig.align = "default", out.extra="page=2"}
+knitr::include_graphics(tmp1_fbar)
+knitr::include_graphics(tmp2_fbar)
+```
+
+```{r Fbar3, fig.cap=paste0("Relative errors in Fbar for ", paste(name_model, collapse=", "), " (from left to right) when the OM is ", name_OM[3], ". The top figures show the results without adjusting the y-axis limits and the bottom figures show the results reducing the limits of the y-axis."), echo=FALSE, fig.show = "hold", out.width = "50%", fig.align = "default", out.extra="page=3"}
+knitr::include_graphics(tmp1_fbar)
+knitr::include_graphics(tmp2_fbar)
+```
+
+```{r Fbar4, fig.cap=paste0("Relative errors in Fbar for ", paste(name_model, collapse=", "), " (from left to right) when the OM is ", name_OM[4], ". The top figures show the results without adjusting the y-axis limits and the bottom figures show the results reducing the limits of the y-axis."), echo=FALSE, fig.show = "hold", out.width = "50%", fig.align = "default", out.extra="page=4"}
+knitr::include_graphics(tmp1_fbar)
+knitr::include_graphics(tmp2_fbar)
+```
+
+\clearpage
+
+### SSB
+
+```{r, echo=FALSE}
+tmp_ssb <- figs[grep("_ssb_", figs)]
+```
+
+
+Figures \@ref(fig:SSB1)-\@ref(fig:SSB4) show the relative errors in the time series of SSB for the SAM model (SSB not available for WHAM). 
+Similarly to Fbar, the level of bias in SSB for SAM is affected by the variance in recruitment for all OMs with the smallest variability in bias for the runs with sd=0.6 for recruitment. The largest bias in SSB is for the RW runs (lfc and hfc) for which SSB is highly overestimated. The bias is less variable and smaller for the rcc runs.
+
+
+```{r SSB1, fig.cap=paste0("Relative errors in SSB for ", paste(name_model[1]), " when the OM is ", name_OM[1], ". The left figure show the results without adjusting the y-axis limits and the right figure show the results reducing the limits of the y-axis."), echo=FALSE, fig.show = "hold", out.width = "50%", fig.align = "default", out.extra="page=1"}
+knitr::include_graphics(tmp_ssb)
+```
+
+
+```{r SSB2, fig.cap=paste0("Relative errors in SSB for ", paste(name_model[1]), " when the OM is ", name_OM[2], ". The left figure show the results without adjusting the y-axis limits and the right figure show the results reducing the limits of the y-axis."), echo=FALSE, fig.show = "hold", out.width = "50%", fig.align = "default", out.extra="page=2"}
+knitr::include_graphics(tmp_ssb)
+```
+
+
+```{r SSB3, fig.cap=paste0("Relative errors in SSB for ", paste(name_model[1]), " when the OM is ", name_OM[3], ". The left figure show the results without adjusting the y-axis limits and the right figure show the results reducing the limits of the y-axis."), echo=FALSE, fig.show = "hold", out.width = "50%", fig.align = "default", out.extra="page=3"}
+knitr::include_graphics(tmp_ssb)
+```
+
+
+```{r SSB4, fig.cap=paste0("Relative errors in SSB for ", paste(name_model[1]), " when the OM is ", name_OM[4], ". The left figure show the results without adjusting the y-axis limits and the right figure show the results reducing the limits of the y-axis."), echo=FALSE, fig.show = "hold", out.width = "50%", fig.align = "default", out.extra="page=4"}
+knitr::include_graphics(tmp_ssb)
+```
+
+\clearpage
+
+
+### Recruitment
+
+```{r, echo=FALSE}
+tmp_rec <- figs[grep("_rec_", figs)]
+```
+
+
+Figures \@ref(fig:rec1)-\@ref(fig:rec4) shows the relative errors in the time series of recruitment for the `r length(tmp)` models. 
+Similarly to SSB, the most biased and variable results are for the runs with RW on recruitment and lfc or hfc, where recruitment is highly overestimated no matter the OM.
+ 
+
+
+```{r rec1, fig.cap=paste0("Relative errors in recruitment for ", paste(name_model[1]), " when the OM is ", name_OM[1], ". The top figures show the results without adjusting the y-axis limits and the bottom figures show the results reducing the limits of the y-axis."), echo=FALSE, fig.show = "hold", out.width = "50%", fig.align = "default", out.extra="page=1"}
+knitr::include_graphics(tmp_rec)
+```
+
+
+```{r rec2, fig.cap=paste0("Relative errors in recruitment for ", paste(name_model[1]), " when the OM is ", name_OM[2], ". The top figures show the results without adjusting the y-axis limits and the bottom figures show the results reducing the limits of the y-axis."), echo=FALSE, fig.show = "hold", out.width = "50%", fig.align = "default", out.extra="page=2"}
+knitr::include_graphics(tmp_rec)
+```
+
+
+```{r rec3, fig.cap=paste0("Relative errors in recruitment for ", paste(name_model[1]), " when the OM is ", name_OM[3], ". The top figures show the results without adjusting the y-axis limits and the bottom figures show the results reducing the limits of the y-axis."), echo=FALSE, fig.show = "hold", out.width = "50%", fig.align = "default", out.extra="page=3"}
+knitr::include_graphics(tmp_rec)
+```
+
+
+```{r rec4, fig.cap=paste0("Relative errors in recruitment for ", paste(name_model[1]), " when the OM is ", name_OM[4], ". The top figures show the results without adjusting the y-axis limits and the bottom figures show the results reducing the limits of the y-axis."), echo=FALSE, fig.show = "hold", out.width = "50%", fig.align = "default", out.extra="page=4"}
+knitr::include_graphics(tmp_rec)
+```
+
+\clearpage
+
+
+## Median relative error in model outputs taken across years
+
+```{r, echo=FALSE}
+tmp_median_traj <- figs[grep("traj_median_", figs)]
+```
+
+In the next two sections, I have tried to summarize the time series outputs in a different way where it becomes easier to compare the bias in Fbar, SSB and recruitment. 
+
+Figure \@ref(fig:medianTraj) shows the median relative errors in model outputs taken across years for the `r length(tmp)` models, so that there are 300 iterations per scenario. 
+For SAM, similarly to what was observed above, the rcc scenarios show the smallest bias in all outputs with overestimation of Fbar and underestimation of SSB and recruitment. For the lfc and hfc scenarios, the bias is larger but reduces with the increase in recruitment variance.
+For WHAM, bias in Fbar is an overestimation for the rcc and lfc scenarios and is low for the hfc scenarios.
+
+```{r medianTraj, fig.cap=paste0("Median relative error in Fbar, SSB and recruitment across years for ", paste(name_model, collapse=", "), " (from left to right)."), echo=FALSE, fig.show = "hold", out.width = "50%", fig.align = "default"}
+knitr::include_graphics(tmp_median_traj)
+```
+
+\clearpage
+
+
+## Median across years of median relative errors in model outputs across iterations
+
+Table \@ref(tab:medianBias) summarizes the relative error in model output as a single value per scenario. This value should be close to the median of the boxplots in Figure \@ref(fig:medianTraj).
+
+
+
+```{r medianBias, echo=FALSE}
+
+load("rel_err_median_bias_table.RData")
+median_bias <- cbind(median_bias_sam, median_bias_wham[,c("bias_Fbar")])
+colnames(median_bias)[which(colnames(median_bias) %in% c("bias_Fbar", "bias_SSB", "bias_rec"))] <- c("Fbar SAM", "SSB SAM", "Rec SAM")
+colnames(median_bias)[length(colnames(median_bias))] <- "Fbar WHAM"
+knitr::kable(median_bias, digits = 2, format="latex", caption=paste0("Median across years of median relative error in model outputs across iterations for ", paste(name_model, collapse=", "), " for all the different scenarios."))
+
+```
+
+
+
+
+\clearpage
