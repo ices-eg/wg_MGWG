@@ -1,5 +1,10 @@
 # ICES Methods Working Group
 
+## CEFAS logistics information  
+
+Now available in 2022-lowestoft folder  
+
+
 ## Letter of invitation, Lowestoft 14-18 November 2022
 
 (to MGWG members, sent 23 March 2022)
