@@ -2,7 +2,9 @@
 
 ## CEFAS logistics information  
 
-Now available in 2022-lowestoft folder  
+Now available in 2022-lowestoft folder. If there are any queries, the Lab’s reception number is: +441502562244.  
+
+Regarding accommodation, the Hotel Victoria & the Best Western Hatfield are what most visitors prefer & the Hotel Victoria may still offer a preferential rate to Cefas visitors (just ask them). But otherwise some of the other little hotels/guest houses seem to be fine, it just depends on attendee preferences.  
 
 
 ## Letter of invitation, Lowestoft 14-18 November 2022
