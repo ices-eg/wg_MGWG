@@ -1,5 +1,13 @@
 # ICES Methods Working Group
 
+## Hold the date
+
+The 2023 MGWG meeting is tentatively scheduled for 13-17 November at Michigan State University, USA with Jim Bence as the local host. Check back here for more details as they become finalized.
+
+## Report from 2022 meeting
+
+Thanks to all who were able to participate in the 2022 MGWG meeting. The report from the meeting is available [here](20220lowestoft/2022_HAPISG_MGWG_interim.pdf).  
+
 ## CEFAS logistics information  
 
 Now available in 2022-lowestoft folder. If there are any queries, the Lab’s reception number is: +441502562244.  
