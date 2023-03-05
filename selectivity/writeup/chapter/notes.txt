@@ -1,0 +1,61 @@
+Kaflanir sem voru áætlaðir:
+
+North-western Atlantic stocks (US, Canada) – veit ekki hvað verður tekið fyrir,
+erum í erfiðleikum með að finna höfund(a)
+
+Greenland
+Iceland
+Arctic Ocean, Barents Sea and Norwegian Sea
+Faroe Islands
+Celtic Seas and Irish Sea
+North Sea, Skagerrak
+Baltic Sea, Kattegat
+
+Kv. Inga
+
+--------------------------------------------------------------------------------
+
+Weight
+
+Slow-growing: Norteast Arctic, Iceland, Greenland
+Intermediate: Western Baltic, Norway Coastal, Faroe Plateau
+Fast-growing: North Sea, Southern Celtic, Irish Sea
+
+Maturity
+
+Late-maturing:  NE Arctic, Iceland, Greenland, Norway
+Intermediate:
+Early-maturing: Faroe, North Sea, Celtic, Irish, Baltic
+
+Oddball: Western Baltic matures very early (age 2) but doesn't grow very fast
+
+--------------------------------------------------------------------------------
+
+Kattegat
+
+Teikna myndir A50sel og A50mat og W5
+
+Teikna veiði: tonn og miðgildi aldurs í afla, Fbar
+
+Teikna stofnstærð og nýliðun
+
+Leita að hitastigi: sumar, vetur eða meðalárshiti
+
+Skjal á OneDrive
+
+--------------------------------------------------------------------------------
+
+Flatarmál ICES svæða
+
+Reikna út þyngd eftir aldri á fínum skala: aldur 1.1, 1.2, 1.3, ..., 14.0
+
+Teikna þyngd við 50% kynþroska
+
+Teikna þyngd meðalgamals fisks í afla
+
+Tímatrendar, meðalþyngdin, sveiflur og langtímabreytingar: á síðustu áratugum
+verður þorskur kynþroska ungur og vex hraðar en áður fyrr
+
+SSB or Rec
+
+Útbúa heimildir
