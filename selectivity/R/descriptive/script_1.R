@@ -1,3 +1,6 @@
+## Before: stocks.R (.), tonnes.csv (data)
+## After: cbar_vs_mat.pdf, cbar_vs_w5.pdf, table.txt, w5_vs_mat.pdf (out)
+
 ## 1  Import stocks
 
 source("stocks.R")
@@ -81,17 +84,45 @@ head.2 <- c("Stock", "Catch (t)", "in Catch",    "Maturity",   "Age 5 (kg)")
 write.fwf(rbind(head.1, head.2, format(out.clean)), "out/table.txt",
           colnames=FALSE)
 
-## 7  Plot
+## 7  Plots
 
 out$Label <- c("Greenland", "Iceland", "NE Arctic", "Norway", "Faroe", "Celtic",
                "Irish", "North Sea", "Baltic", "Kattegat")
-filename <- "out/abar.eps"
+filename <- "out/cbar_vs_mat.eps"
 eps(filename, width=6, height=6)
 plot(NA, xlim=c(0,8), ylim=c(0,8), xlab="Age at 50% maturity",
      ylab="Average age in catch")
 title(main="Catch at age vs. Maturity")
 abline(a=0, b=1, lty=3, col="gray")
 text(Abar~A50mat, data=out, labels=Label, cex=0.8)
+dev.off()
+eps2pdf(filename)
+## eps2png(filename, dpi=600)
+file.remove(filename)
+
+out$Label <- c("Greenland", "Iceland", "NE Arctic", "Norway", "Faroe", "Celtic",
+               "Irish", "North Sea", "Baltic", "Kattegat")
+filename <- "out/w5_vs_mat.eps"
+eps(filename, width=6, height=6)
+plot(NA, xlim=c(0,8), ylim=c(0,8), xlab="Age at 50% maturity",
+     ylab="Weight at age 5")
+title(main="Weight vs. Maturity")
+abline(a=0, b=1, lty=3, col="gray")
+text(W5~A50mat, data=out, labels=Label, cex=0.8)
+dev.off()
+eps2pdf(filename)
+## eps2png(filename, dpi=600)
+file.remove(filename)
+
+out$Label <- c("Greenland", "Iceland", "NE Arctic", "Norway", "Faroe", "Celtic",
+               "Irish", "North Sea", "Baltic", "Kattegat")
+filename <- "out/cbar_vs_w5.eps"
+eps(filename, width=6, height=6)
+plot(NA, xlim=c(0,8), ylim=c(0,8), xlab="Weight at age 5",
+     ylab="Average age in catch")
+title(main="Catch at age vs. Weight")
+abline(a=0, b=1, lty=3, col="gray")
+text(Abar~W5, data=out, labels=Label, cex=0.8)
 dev.off()
 eps2pdf(filename)
 ## eps2png(filename, dpi=600)
