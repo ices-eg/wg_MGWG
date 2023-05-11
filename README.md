@@ -2,7 +2,7 @@
 
 ## New ToR for 2023-2024
 
-A new Term of Reference on fishery stock assessment model diagnostics has been added. See [here](2023-michigan/MGWG ToRs 2022-2024.pdf) for the full list of ToRs.
+A new Term of Reference on fishery stock assessment model diagnostics has been added. See ![here](2023-michigan/MGWG ToRs 2022-2024.pdf) for the full list of ToRs.
 
 ## Hold the date
 
