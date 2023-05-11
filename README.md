@@ -1,5 +1,9 @@
 # ICES Methods Working Group
 
+## New ToR for 2023-2024
+
+A new Term of Reference on fishery stock assessment model diagnostics has been added. See [here](2023-michigan/MGWG ToRs 2022-2024.pdf) for the full list of ToRs.
+
 ## Hold the date
 
 The 2023 MGWG meeting is tentatively scheduled for 13-17 November at Michigan State University, USA with Jim Bence as the local host. Check back here for more details as they become finalized.
