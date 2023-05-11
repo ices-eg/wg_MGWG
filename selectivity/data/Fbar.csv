@@ -1,17 +1,17 @@
-stock,start_age,end_age,Table,Source
-faroes,3,7,Table 4.6.4,ICES CM 2017/ACOM:08 
-iceland,5,10,p221,ICES CM 2017/ACOM:08 
-North Sea Cod,2,4,Table 4.8,ICES CM 2017/ACOM:21 
-NAFO 2J3KL,4,6,Table 22,Research Document 2018/018 
-NAFO 2J3KL,7,9,Table 22,Research Document 2018/018 
-NEArctic Cod,5,10,Table 3.15,ICES CM 2018/ACOM:06 
-Gulf of Maine,8,8,,2015_COD_GM_MOD_ASAP_M02.dat
-Gulf of Maine 2017,8,8,,GOM_COD_2017_UPDATE_MRAMP.dat
-Georges Bank,5,+,,SAW 55 
-Western Baltic,3,5,Table 2.3.26, ICES CM2018/ACOM:11
-Greenland,4,8,,http://www.ices.dk/sites/pub/Publication%20Reports/Advice/2018/2018/cod.21.1.pdf
-NAFO 3M,3,5,,https://www.nafo.int/Portals/0/PDFs/sc/2017/scr17-038.pdf?ver=2017-11-14-112707-930
-NAFO 3NO,4,6,also 6-9,https://www.nafo.int/Portals/0/PDFs/sc/2018/scr18-028.pdf
-Norway,4,7,,http://www.ices.dk/sites/pub/Publication%20Reports/Advice/2018/2018/cod.27.1-2coast.pdf
-Celtic,2,5,,http://www.ices.dk/sites/pub/Publication%20Reports/Advice/2018/2018/cod.27.7e-k.pdf
+stock,start_age,end_age,table,source
+faroe_plateau,3,7,Table 4.6.4,ICES CM 2017/ACOM:08
+iceland,5,10,p221,ICES CM 2017/ACOM:08
+north_sea,2,4,Table 4.8,ICES CM 2017/ACOM:21
+nafo_2j3kl,4,6,Table 22,Research Document 2018/018
+nafo_2j3kl,7,9,Table 22,Research Document 2018/018
+ne_arctic,5,10,Table 3.15,ICES CM 2018/ACOM:06
+gulf_of_main_2013,8,8,,2015_COD_GM_MOD_ASAP_M02.dat
+gulf_of_maine,8,8,,GOM_COD_2017_UPDATE_MRAMP.dat
+georges_bank,5,10,,SAW 55
+w_baltic,3,5,Table 2.3.26, ICES CM2018/ACOM:11
+greenland,4,8,,http://www.ices.dk/sites/pub/Publication%20Reports/Advice/2018/2018/cod.21.1.pdf
+nafo_3m,3,5,,https://www.nafo.int/Portals/0/PDFs/sc/2017/scr17-038.pdf?ver=2017-11-14-112707-930
+nafo_3no,4,6,also 6-9,https://www.nafo.int/Portals/0/PDFs/sc/2018/scr18-028.pdf
+norway,4,7,,http://www.ices.dk/sites/pub/Publication%20Reports/Advice/2018/2018/cod.27.1-2coast.pdf
+s_celtic,2,5,,http://www.ices.dk/sites/pub/Publication%20Reports/Advice/2018/2018/cod.27.7e-k.pdf
 irish_sea,2,4,Table 7.11,ICES CM 2018/ACOM:13
