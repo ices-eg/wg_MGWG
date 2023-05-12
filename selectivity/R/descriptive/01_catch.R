@@ -2,7 +2,7 @@ library(TAF)     # read.taf, taf.png
 library(gplots)  # rich.colors
 
 ## 1  Read data
-
+setwd('selectivity/R/descriptive')
 tonnes <- read.taf("../../data/tonnes.csv", row.names=1)
 not.na <- !apply(is.na(tonnes), 1, any)
 catch <- tonnes[not.na,] / 1e3
