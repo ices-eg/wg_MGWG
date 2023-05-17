@@ -1,5 +1,31 @@
 # ICES Methods Working Group
 
+## Letter of invitation, Michigan State University 13-17 November 2023
+
+(to MGWG members, sent 17 May 2023)
+
+The ICES Methods Working Group will be meeting 13-17 November 2023 at Michigan State University in East Lansing, Michigan, USA and you are invited to attend!  
+
+As the Chairs of the WG, our goal is to bring together the best stock assessment modelers from all continents, to share experiences, and have fun together. In consultation with ICES HQ, the Terms of Reference have been modified from the previous cycle to be more focused on the application of stock assessment models to address specific questions. The full Terms of Reference are [here](2023-michigan/MGWG_ToRs_2022-2024.pdf), but briefly are:
+
+*	Share new techniques for use in stock assessment
+*	Evaluate details of stock assessment models
+*	Validate new methods
+*	Identify need for ICES training courses
+*	Prioritize and address modeling questions supplied by ICES EGs
+*	Describe model diagnostics that should be used in stock assessments
+
+We will also have an opportunity to discuss the projects begun during the last cycle of the ICES MGWG. These projects can be found on the GitHub site of the ICES Methods Working Group (https://github.com/ices-eg/MGWG).  
+
+To register, please complete the following short survey
+https://icessurveys.typeform.com/to/yEs26Wzv
+to let us know you are attending the 2023 meeting. We will be following up with an email about logistics in East Lansing. The plan is for an in person meeting. We may be able to make part of the meeting virtual, but probably cannot make the entire meeting virtual unless the in person meeting is not possible.  
+
+Feel free to forward the invitation to those you think might be interested. 
+
+All the best,
+Chris and Anders
+
 ## New ToR for 2023-2024
 
 A new Term of Reference on fishery stock assessment model diagnostics has been added. See [here](2023-michigan/MGWG_ToRs_2022-2024.pdf) for the full list of ToRs.
