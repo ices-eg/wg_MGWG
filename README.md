@@ -1,5 +1,9 @@
 # ICES Methods Working Group
 
+## Travel information for 2023 meeting
+
+A hearty thanks to Jim Bence for providing [this](2023-michigan/ICES_MGWG_2023_travel_info.pdf) travel information for the 2023 meeting.
+
 ## Letter of invitation, Michigan State University 13-17 November 2023
 
 (to MGWG members, sent 17 May 2023)
