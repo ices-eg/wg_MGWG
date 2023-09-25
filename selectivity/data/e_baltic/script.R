@@ -70,5 +70,6 @@ len <- round(xtab2taf(len), 1)
 w <- round(w, 3)
 
 # Write TAF tables
+write.taf(w, "wcatch.csv")
 write.taf(w, "wstock.csv")
 write.taf(mat, "maturity.csv")
