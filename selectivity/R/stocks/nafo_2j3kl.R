@@ -7,12 +7,13 @@ path <- "../../data/nafo_2j3kl"
 dims(path)
 yrs <- 2006:2015
 ages <- as.character(2:14)
-plus <- FALSE
+plus <- TRUE
+minage <- ages[1]
 
 ## 1  Population
 
 N <- read("natage", path, plus)
-Ninit <- N$"2"[N$Year %in% yrs]
+Ninit <- N[[minage]][N$Year %in% yrs]
 Ninit <- mean(Ninit)
 
 M <- read("natmort", path, plus)
@@ -32,8 +33,11 @@ wstock <- wstock[wstock$Year %in% yrs,]
 wstock <- colMeans(wstock[ages])
 
 B <- cohortBiomass(Ninit, M, wcatch)
-## One recruit at age 3 => exp(M["2"]) at age 2
-BPR <- cohortBiomass(exp(M["2"]), M, wcatch)
+## Scale BPR to one recruit at age 3: BPR["3"] will always be wcatch["3"]
+BPR <- switch(minage,
+              "1" = cohortBiomass(exp(M[["1"]]+M[["2"]]), M, wcatch)
+              "2" = cohortBiomass(exp(M[["2"]]), M, wcatch)
+              "3" = cohortBiomass(1, M, wcatch))
 
 ## 3  Catch and selectivity
 
