@@ -33,8 +33,8 @@ wstock <- colMeans(wstock[ages])
 B <- cohortBiomass(Ninit, M, wcatch)
 ## Scale BPR to one recruit at age 3: BPR["3"] will always be wcatch["3"]
 BPR <- switch(minage,
-              "1" = cohortBiomass(exp(M[["1"]]+M[["2"]]), M, wcatch)
-              "2" = cohortBiomass(exp(M[["2"]]), M, wcatch)
+              "1" = cohortBiomass(exp(M[["1"]]+M[["2"]]), M, wcatch),
+              "2" = cohortBiomass(exp(M[["2"]]), M, wcatch),
               "3" = cohortBiomass(1, M, wcatch))
 
 ## 3  Catch and selectivity
