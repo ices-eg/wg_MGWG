@@ -1,5 +1,5 @@
 # Eastern Baltic cod
-# Calculate maturity and weight at age from length-based SS3 estimates
+# Calculate weight, maturity, and M at age from length-based SS3 estimates
 # 09 Mar 2019 WGBFAS created SS3 output files
 # 24 Sep 2023 Arni Magnusson created this script
 
@@ -64,12 +64,25 @@ mat <- matrix(NA_real_, nrow=nrow(logistic), ncol=14,
 for(i in seq_len(nrow(mat)))
   mat[i,] <- SSmaturity(len[i,], L50=logistic$L50[i], slope=logistic$slope[i])
 
+# Calculate M at age
+mpar <- results$MGparmAdj
+mpar <- mpar[mpar$Yr %in% 1946:2018,]
+rownames(mpar) <- mpar$Yr
+mpar <- mpar[grep("NatM", names(mpar), value=TRUE)]
+names(mpar) <- c("M1", "M2", "M6", "M16")
+natmort <- matrix(NA_real_, nrow=nrow(mpar), ncol=14,
+                  dimnames=list(rownames(mpar), 1:14))
+for(i in seq_len(nrow(natmort)))
+  natmort[i,] <- approx(c(1,2,6,16), unlist(mpar[i,]), xout=1:14)$y
+
 # Format data frames
-mat <- round(xtab2taf(mat), 3)
-len <- round(xtab2taf(len), 1)
 w <- round(w, 3)
+len <- round(xtab2taf(len), 1)
+mat <- round(xtab2taf(mat), 3)
+natmort <- round(xtab2taf(natmort), 3)
 
 # Write TAF tables
 write.taf(w, "wcatch.csv")
 write.taf(w, "wstock.csv")
 write.taf(mat, "maturity.csv")
+write.taf(natmort)
