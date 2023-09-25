@@ -12,7 +12,7 @@ dims <- function(path)
     cat(paste(yrs, collapse="-"), "  ", sep="")
     cat(paste(ages, collapse="-"), "\n", sep="")
   }
-  files <- dir(path, full.names=TRUE)
+  files <- dir(path, pattern="\\.csv$", full.names=TRUE)
   cat(path, "\n", sep="")
   for(i in 1:length(files))
     peek(files[i])
