@@ -59,10 +59,11 @@ logistic <- logistic[c("Yr", "Mat50%_Fem_GP_1", "Mat_slope_Fem_GP_1")]
 names(logistic) <- c("Year", "L50", "slope")
 rownames(logistic) <- NULL
 logistic <- logistic[logistic$Year<=2019,]
-mat <- matrix(NA_real_, nrow=nrow(logistic), ncol=14,
-              dimnames=list(logistic$Year, 1:14))
-for(i in seq_len(nrow(mat)))
-  mat[i,] <- SSmaturity(len[i,], L50=logistic$L50[i], slope=logistic$slope[i])
+maturity <- matrix(NA_real_, nrow=nrow(logistic), ncol=14,
+                   dimnames=list(logistic$Year, 1:14))
+for(i in seq_len(nrow(maturity)))
+  maturity[i,] <- SSmaturity(len[i,], L50=logistic$L50[i],
+                             slope=logistic$slope[i])
 
 # Calculate M at age
 mpar <- results$MGparmAdj
@@ -78,11 +79,11 @@ for(i in seq_len(nrow(natmort)))
 # Format data frames
 w <- round(w, 3)
 len <- round(xtab2taf(len), 1)
-mat <- round(xtab2taf(mat), 3)
+maturity <- round(xtab2taf(maturity), 3)
 natmort <- round(xtab2taf(natmort), 3)
 
 # Write TAF tables
 write.taf(w, "wcatch.csv")
 write.taf(w, "wstock.csv")
-write.taf(mat, "maturity.csv")
+write.taf(maturity)
 write.taf(natmort)
