@@ -57,14 +57,14 @@ mat <- colMeans(mat[ages], na.rm=TRUE)
 
 ## 5  Plot
 
-par(mfrow=c(3,2))
-stdplot(Cp, "Catch composition", "Proportion of catch")
-stdplot(wcatch, "Average catch weights", "Weight (kg)")
-stdplot(S, "Average selectivity", "Selectivity")
-stdplot(BPR, "Biomass per recruit, in the absence of fishing",
-        "Biomass per recruit (kg)")
-stdplot(mat, "Average maturity", "Proportion mature")
-stdplot(wstock, "Average stock weights", "Weight (kg)")
+## par(mfrow=c(3,2))
+## stdplot(Cp, "Catch composition", "Proportion of catch")
+## stdplot(wcatch, "Average catch weights", "Weight (kg)")
+## stdplot(S, "Average selectivity", "Selectivity")
+## stdplot(BPR, "Biomass per recruit, in the absence of fishing",
+##         "Biomass per recruit (kg)")
+## stdplot(mat, "Average maturity", "Proportion mature")
+## stdplot(wstock, "Average stock weights", "Weight (kg)")
 
 ## 6  Export
 
