@@ -14,9 +14,11 @@ source("greenland.R")
 source("gulf_of_maine.R")
 source("iceland.R")
 source("irish_sea.R")
+# source("kattegat.R")  # no fatage
 source("nafo_2j3kl.R")
 source("nafo_3m.R")
 source("nafo_3no.R")
+# source("nafo_3ps.R")  # no fatage
 source("ne_arctic.R")
 source("north_sea.R")
 source("norway.R")
