@@ -69,5 +69,5 @@ mat <- colMeans(mat[ages], na.rm=TRUE)
 ## 6  Export
 
 kattegat <-
-  list(N=NULL, Ninit=NULL, M=M, wcatch=wcatch, wstock=wstock,
-       B=NULL, BPR=BPR, C=C, Cp=Cp, Fmort=NULL, S=NULL, mat=mat)
+  list(M=M, wcatch=wcatch, wstock=wstock,
+       BPR=BPR, C=C, Cp=Cp, mat=mat)
