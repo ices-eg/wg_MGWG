@@ -1,7 +1,7 @@
 ## Run analysis, write model results
 
-## Before: stocks.RData (data)
-## After:
+## Before: stocks.RData, tonnes.csv (data)
+## After:  summary.csv (model)
 
 library(TAF)
 source("boot/software/A50.R")
@@ -13,7 +13,7 @@ mkdir("model")
 load("data/stocks.RData")
 tonnes <- read.taf("data/tonnes.csv")
 
-## 1  Prepare table
+## 1  Prepare summary table
 summary <- data.frame(id=names(tonnes)[-1])
 summary$Stock <- c("Eastern Baltic", "Faroe Plateau", "Georges Bank",
                    "Greenland inshore", "Gulf of Maine", "Iceland", "Irish Sea",
