@@ -4,7 +4,6 @@
 ## After:  abar_vs_a50mat.pdf (report)
 
 library(TAF)
-library(arni)  # eps, eps2pdf
 
 mkdir("report")
 
@@ -17,12 +16,10 @@ summary$Label <- c("E Baltic", "Faroe", "Georges", "Greenland", "Maine",
                    "NE Arctic", "North Sea", "Norway", "Celtic", "W Baltic")
 
 # 3  Plot Abar~A50mat
-filename <- "report/abar_vs_a50mat.eps"
-eps(filename, width=6, height=6)
+pdf("report/Abar_vs_A50mat.pdf", width=6, height=6)
+par(plt=c(0.15, 0.97, 0.15, 0.97))
 plot(NA, xlim=c(0,8), ylim=c(0,8), xlab="Age at 50% maturity",
      ylab="Average age in catches")
 abline(a=0, b=1, lty=3, lwd=2.5, col="gray")
 text(AbarCatch~A50mat, data=summary, labels=Label, cex=0.8)
 dev.off()
-eps2pdf(filename)
-file.remove(filename)
