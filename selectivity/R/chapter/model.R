@@ -13,7 +13,8 @@ mkdir("model")
 load("data/stocks.RData")
 tonnes <- read.taf("data/tonnes.csv")
 
-## 1  Prepare summary table
+## 1  Calculate summary table
+
 summary <- data.frame(id=names(tonnes)[-1])
 summary$Stock <- c("Eastern Baltic", "Faroe Plateau", "Georges Bank",
                    "Greenland inshore", "Gulf of Maine", "Iceland", "Irish Sea",
@@ -26,5 +27,77 @@ summary$AbarCatch <- sapply(summary$id, abar_catch)
 summary$A50mat <- sapply(summary$id, a50mat)
 summary$W5 <- sapply(summary$id, w5)
 
-## 2  Write table
+## 2  Examine stocks by biological characteristics
+
+by.weight <- data.frame(summary[order(summary$W5),], row.names=NULL)
+rnd(by.weight[c("id", "W5")], 2, 1)
+# Cod at age 5 are light (<3 kg) in colder waters and the Baltic
+# and heavy (>3 kg) in the North Sea and neighboring areas:
+#   id            W5
+#   e_baltic      0.6
+#   nafo_3no      1.2
+#   nafo_3ps      1.4
+#   greenland     1.6
+#   nafo_2j3kl    1.6
+#   ne_arctic     1.7
+#   nafo_3m       2.2
+#   iceland       2.5
+#   w_baltic      3.0
+#   norway        3.3
+#   faroe_plateau 3.3
+#   gulf_of_maine 3.6
+#   kattegat      3.7
+#   georges_bank  3.8
+#   north_sea     6.0
+#   irish_sea     7.9
+#   s_celtic      9.3
+
+by.maturity <- data.frame(summary[order(-summary$A50mat),], row.names=NULL)
+rnd(by.maturity[c("id", "A50mat")], 2, 1)
+# Cod mature later (> 3 years) in colder waters
+# and earlier (<3 years) in warmer waters
+#   id            A50mat
+#   ne_arctic     7.0
+#   iceland       6.4
+#   nafo_3no      5.5
+#   nafo_2j3kl    5.3
+#   norway        5.2
+#   nafo_3ps      5.2
+#   greenland     4.3
+#   nafo_3m       4.0
+#   faroe_plateau 2.7
+#   gulf_of_maine 2.5
+#   north_sea     2.5
+#   georges_bank  2.3
+#   s_celtic      2.2
+#   kattegat      2.1
+#   e_baltic      2.0
+#   irish_sea     1.7
+#   w_baltic      1.7
+
+by.abar <- data.frame(summary[order(-summary$AbarCatch),], row.names=NULL)
+rnd(by.abar[c("id", "AbarCatch")], 2, 1)
+# Cod are caught older (>4.5 years) in colder waters
+# and younger (<4.5 years) in warmer waters
+#   id            AbarCatch
+#   nafo_3ps      6.9
+#   nafo_2j3kl    6.7
+#   ne_arctic     6.7
+#   iceland       5.9
+#   norway        5.4
+#   greenland     5.1
+#   nafo_3m       4.6
+#   nafo_3no      4.6
+#   gulf_of_maine 4.2
+#   georges_bank  4.0
+#   e_baltic      3.9
+#   faroe_plateau 3.9
+#   w_baltic      2.9
+#   s_celtic      2.3
+#   north_sea     2.3
+#   irish_sea     2.0
+#   kattegat      1.6
+
+## 3  Write table
+
 write.taf(summary, dir="model")
