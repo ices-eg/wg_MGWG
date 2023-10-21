@@ -10,10 +10,10 @@ source("utilities.R")
 
 mkdir("model")
 
-load("data/stocks.RData")
+stocks <- readRDS("data/stocks.rds")
 tonnes <- read.taf("data/tonnes.csv")
 
-## 1  Calculate summary table
+# Calculate summary table
 
 summary <- data.frame(id=names(tonnes)[-1])
 summary$Stock <- c("Eastern Baltic", "Faroe Plateau", "Georges Bank",
@@ -21,13 +21,18 @@ summary$Stock <- c("Eastern Baltic", "Faroe Plateau", "Georges Bank",
                    "Kattegat", "NAFO 2J3KL", "NAFO 3M", "NAFO 3NO", "NAFO 3Ps",
                    "Northeast Arctic", "North Sea", "Norway coastal",
                    "Southern Celtic", "Western Baltic")
+summary$Label <- c("E Baltic", "Faroe", "Georges",
+                   "Greenland", "Maine", "Iceland", "Irish",
+                   "Kattegat", "2J3KL", "3M", "3NO", "3Ps",
+                   "NE Arctic", "North Sea", "Norway",
+                   "Celtic", "W Baltic")
 summary$Years <- sapply(summary$id, years)
 summary$Catch <- sapply(summary$id, catch)
-summary$AbarCatch <- sapply(summary$id, abar_catch)
-summary$A50mat <- sapply(summary$id, a50mat)
-summary$W5 <- sapply(summary$id, w5)
+summary$AbarCatch <- sapply(stocks, abar_catch)
+summary$A50mat <- sapply(stocks, a50mat)
+summary$W5 <- sapply(stocks, w5)
 
-## 2  Examine stocks by biological characteristics
+# Examine stocks by biological characteristics
 
 by.weight <- data.frame(summary[order(summary$W5),], row.names=NULL)
 rnd(by.weight[c("id", "W5")], 2, 1)
@@ -98,6 +103,5 @@ rnd(by.abar[c("id", "AbarCatch")], 2, 1)
 #   irish_sea     2.0
 #   kattegat      1.6
 
-## 3  Write table
-
+# Write table
 write.taf(summary, dir="model")

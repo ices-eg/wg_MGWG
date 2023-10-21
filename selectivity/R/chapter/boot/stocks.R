@@ -26,7 +26,6 @@ rm(ages, B, BPR, C, cohortBiomass, Cp, dims, Fmort, M, mat, minage, N, Ninit,
 
 # Construct list
 stocks <- list(e_baltic=e_baltic,
-               e_baltic=e_baltic,
                faroe_plateau=faroe_plateau,
                georges_bank=georges_bank,
                greenland=greenland,
