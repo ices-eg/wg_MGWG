@@ -7,15 +7,10 @@ library(TAF)
 
 mkdir("report")
 
-# 1  Read summary table
+# Read summary table
 summary <- read.taf("output/summary.csv")
 
-# 2  Prepare plot labels
-summary$Label <- c("E Baltic", "Faroe", "Georges", "Greenland", "Maine",
-                   "Iceland", "Irish", "Kattegat", "2J3KL", "3M", "3NO", "3Ps",
-                   "NE Arctic", "North Sea", "Norway", "Celtic", "W Baltic")
-
-# 3  Plot Abar~A50mat
+# Plot Abar~A50mat
 pdf("report/abar_vs_a50mat.pdf", width=6, height=6)
 par(plt=c(0.15, 0.97, 0.15, 0.97))
 plot(NA, xlim=c(0,8), ylim=c(0,8), xlab="Age at 50% maturity",
@@ -24,11 +19,10 @@ abline(a=0, b=1, lty=3, lwd=2.5, col="gray")
 text(AbarCatch~A50mat, data=summary, labels=Label, cex=0.8)
 dev.off()
 
-# 4  Plot W5~A50mat
+# Plot W5~A50mat
 pdf("report/w5_vs_a50mat.pdf", width=6, height=6)
 par(plt=c(0.15, 0.97, 0.15, 0.97))
 plot(NA, xlim=c(0,8), ylim=c(0,8), xlab="Age at 50% maturity",
      ylab="Average weight at age 5 (kg)")
-abline(a=0, b=1, lty=3, lwd=2.5, col="gray")
 text(W5~A50mat, data=summary, labels=Label, cex=0.8)
 dev.off()
