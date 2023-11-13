@@ -84,21 +84,21 @@ out$Label <- c('Eastern Baltic', "Faroe", "Georges", "Greenland", "Maine",
 #setwd('outChapter')
 out <-
     out %>%
-    mutate(Region = ifelse(Stock == 'Eastern Baltic', 'ns',
-                    ifelse(Stock == 'Irish Sea', 'ns',
-                    ifelse(Stock == 'North Sea','ns',
-                    ifelse(Stock == 'Norway coastal', 'ns',
-                    ifelse(Stock == 'Southern Celtic', 'ns',
-                    ifelse(Stock == 'Western Baltic', 'ns',
-                    ifelse(Stock == 'Newfoundland', 'nus',
-                    ifelse(Stock == 'Gulf of Maine', 'nus',
-                    ifelse(Stock == 'Georges Bank', 'nus',
-                    ifelse(Stock == 'Flemish Cap', 'nus',
-                    ifelse(Stock == 'Grand Bank', 'nus',
-                    ifelse(Stock == 'Northeast Arctic', 'igf',
-                    ifelse(Stock == 'Faroe Plateau', 'igf',
-                    ifelse(Stock == 'Greenland inshore' , 'igf',
-                           'igf')))))))))))))))
+    mutate(Region = ifelse(Stock == 'Eastern Baltic', 'NSA',
+                    ifelse(Stock == 'Irish Sea', 'NSA',
+                    ifelse(Stock == 'North Sea','NSA',
+                    ifelse(Stock == 'Norway coastal', 'NSA',
+                    ifelse(Stock == 'Southern Celtic', 'NSA',
+                    ifelse(Stock == 'Western Baltic', 'NSA',
+                    ifelse(Stock == 'Newfoundland', 'CUS',
+                    ifelse(Stock == 'Gulf of Maine', 'CUS',
+                    ifelse(Stock == 'Georges Bank', 'CUS',
+                    ifelse(Stock == 'Flemish Cap', 'CUS',
+                    ifelse(Stock == 'Grand Bank', 'CUS',
+                    ifelse(Stock == 'Northeast Arctic', 'FGI',
+                    ifelse(Stock == 'Faroe Plateau', 'FGI',
+                    ifelse(Stock == 'Greenland inshore' , 'FGI',
+                           'FGI')))))))))))))))
 
 pdf('selectivity/chapter_plots/Fig3.pdf', width=6, height=6)
 ggplot(data = out, aes(x = A50mat, y = A50sel)) +
