@@ -2,7 +2,7 @@
 
 # Read stocks
 # owd <- setwd("../../stocks")
-owd <- setwd("../../../../stocks")
+owd <- setwd("selectivity/R/stocks")
 source("e_baltic.R")
 source("faroe_plateau.R")
 source("georges_bank.R")

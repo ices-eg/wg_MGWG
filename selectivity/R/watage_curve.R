@@ -5,7 +5,7 @@ library(gridExtra)
 
 ##Faroe Plateau
 ##catch data
-wc<-read.csv("../data/Faroe_Plateau/wcatch.csv") #no information for age 1
+wc<-read.csv("../data/faroe_plateau/wcatch.csv") #no information for age 1
 
 wc2<-as.matrix(wc[,c(1,3:dim(wc)[2])])
 pdf("../weight_year_plots/Faroe_Plateau/watage_year_catchdata.pdf")
@@ -394,7 +394,7 @@ w10<-ggplot(wc, aes(Year, wc[,9])) + labs(y="Mean weight", title="Age 9") + geom
 w11<-ggplot(wc, aes(Year, wc[,10])) + labs(y="Mean weight", title="Age 10") + geom_point() + geom_smooth()
 w12<-ggplot(wc, aes(Year, wc[,11])) + labs(y="Mean weight", title="Age 11") + geom_point() + geom_smooth()
 w13<-ggplot(wc, aes(Year, wc[,12])) + labs(y="Mean weight", title="Age 12") + geom_point() + geom_smooth()
- 
+
 pdf("../weight_year_plots/NorthSea/wy_age_2_7_stockData.pdf")
 grid.arrange(w3,w4,w5,w6,w7,w8, nrow=3)
 dev.off()

@@ -67,7 +67,9 @@ mat <- colMeans(mat[ages], na.rm=TRUE)
 ## stdplot(wstock, "Average stock weights", "Weight (kg)")
 
 ## 6  Export
+SSB <- read("SSB", path, plus)
 
 kattegat <-
   list(M=M, wcatch=wcatch, wstock=wstock,
-       BPR=BPR, C=C, Cp=Cp, mat=mat)
+       BPR=BPR, C=C, Cp=Cp, mat=mat,
+       SSB = SSB)

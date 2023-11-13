@@ -74,7 +74,9 @@ names(mat) <- ages
 ## stdplot(wstock, "Average stock weights", "Weight (kg)")
 
 ## 6  Export
+SSB <- read("SSB", path, plus)
 
 north_sea <-
   list(N=N, Ninit=Ninit, M=M, wcatch=wcatch, wstock=wstock,
-       B=B, BPR=BPR, C=C, Cp=Cp, Fmort=Fmort, S=S, mat=mat)
+       B=B, BPR=BPR, C=C, Cp=Cp, Fmort=Fmort, S=S, mat=mat,
+       SSB = SSB)
