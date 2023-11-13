@@ -11,7 +11,7 @@ setwd("selectivity/R/stocks")
 source("e_baltic.R")
 source("faroe_plateau.R")
 source("georges_bank.R")
-##source("greenland.R") ## no ssb
+source("greenland.R")
 ##source("gulf_of_maine.R") ## no ssb
 source("iceland.R")
 source("irish_sea.R")
@@ -64,7 +64,7 @@ setwd("..")
 ## Weight
 wcatch <- data.frame(t(bind_rows(e_baltic$wcatch,
                                  faroe_plateau$wcatch, georges_bank$wcatch,
-                                 ##greenland$wcatch,
+                                 greenland$wcatch,
                                  ##gulf_of_maine$wcatch,
                                  iceland$wcatch,
                                  irish_sea$wcatch, nafo_2j3kl$wcatch,
@@ -74,11 +74,12 @@ wcatch <- data.frame(t(bind_rows(e_baltic$wcatch,
                                  norway$wcatch, s_celtic$wcatch,
                                  w_baltic$wcatch)))
 colnames(wcatch) <- c('Eastern Baltic' , 'Faroe Plateau' , 'Georges Bank',
-                      ##'West Greenland' , 'Gulf of Maine' ,
+                      'Greenland' , ##'Gulf of Maine' ,
                       'Iceland',
                       'Irish Sea' , 'Newfoundland' , 'Flemish Cap',
                       'Grand Bank' , 'NE Arctic' , 'North Sea',
                       'Norway' , 'Southern Celtic' , 'Western Baltic')
+
 wcatch <-
     wcatch %>%
     mutate(age = 1:15) %>%
@@ -98,8 +99,8 @@ wcatch <-
                     ifelse(Stock == 'Grand Bank', 'nus',
                     ifelse(Stock == 'NE Arctic', 'igf',
                     ifelse(Stock == 'Faroe Plateau', 'igf',
-                           'igf')))))))))))))
-                    ##ifelse(Stock == 'Greenland' , 'igf',
+                    ifelse(Stock == 'Greenland' , 'igf',
+                           'igf'))))))))))))))
 
 
 pdf(file = '../chapter_plots/Fig1a.pdf')
@@ -146,13 +147,13 @@ dev.off()
 ## maturity
 mat <- data.frame(t(bind_rows(e_baltic$mat, faroe_plateau$mat,
                               georges_bank$mat,
-                              ##greenland$mat, gulf_of_maine$mat,
+                              greenland$mat, ##gulf_of_maine$mat,
                               iceland$mat,
                               irish_sea$mat, nafo_2j3kl$mat, nafo_3m$mat,
                               nafo_3no$mat, ne_arctic$mat, north_sea$mat,
                               norway$mat, s_celtic$mat, w_baltic$mat)))
 colnames(mat) <- c('Eastern Baltic' , 'Faroe Plateau' , 'Georges Bank',
-                   ##'West Greenland' , 'Gulf of Maine' ,
+                   'Greenland' , ##'Gulf of Maine' ,
                    'Iceland',
                    'Irish Sea' , 'Newfoundland' , 'Flemish Cap',
                    'Grand Bank' , 'NE Arctic' , 'North Sea',
@@ -177,8 +178,8 @@ mat <-
                     ifelse(Stock == 'Grand Bank', 'nus',
                     ifelse(Stock == 'NE Arctic', 'igf',
                     ifelse(Stock == 'Faroe Plateau', 'igf',
-                           'igf')))))))))))))
-                    ##ifelse(Stock == 'Greenland' , 'igf',
+                    ifelse(Stock == 'Greenland' , 'igf',
+                           'igf'))))))))))))))
 
 
 pdf(file = '../chapter_plots/Fig2a.pdf')
@@ -226,8 +227,10 @@ dev.off()
 ## SSB
 
 SSB <-
-tibble(left_join(
-    left_join(
+    tibble(
+        left_join(
+            left_join(
+            left_join(
         left_join(
             left_join(
                 left_join(
@@ -241,6 +244,9 @@ tibble(left_join(
                                                       rename(eb = SSB),
                                                       faroe_plateau$SSB %>%
                                                       rename(fp = SSB)),
+                                            greenland$SSB %>%
+                                            rename(gl = SSB) %>%
+                                        filter(Year < 2021)),
                                             georges_bank$SSB %>%
                                             rename(gb = SSB)),
                                         iceland$SSB  %>%
@@ -257,21 +263,24 @@ tibble(left_join(
         s_celtic$SSB  %>% rename(sc = SSB)),
     w_baltic$SSB  %>% rename(wb = SSB)))
 
-
+tail(SSB) %>%
+    print(width = Inf)
 
 SSB %>%
-    summarize_all(mean)
+    summarize_all(mean) %>%
+    print(n = Inf)
+
 colMeans(SSB, na.rm = TRUE)
 (tibble(mean = round(colMeans(SSB, na.rm = TRUE))[-1])) %>%
      arrange(mean)
-##small is, sc, wb, nafo3no, gb, fp,
+##small is, sc, wb, nafo3no, gb, fp,gl
 ##larger eb, ic, nafo3m, nea, ns, no, nafo2j3kl
 round(colMeans(SSB, na.rm = TRUE))[-1]
     arrange(mean)
 
 colnames(SSB) <- c('Year',
-                   'Eastern Baltic', 'Faroe Plateau' , 'Georges Bank',
-                   'Iceland',
+                   'Eastern Baltic', 'Faroe Plateau' , 'Greenland',
+                   'Georges Bank', 'Iceland',
                    'Irish Sea' , 'Newfoundland' , 'Flemish Cap',
                    'Grand Bank' , 'NE Arctic' , 'North Sea',
                    'Norway' , 'Southern Celtic' , 'Western Baltic')
@@ -283,6 +292,7 @@ SSB2 <-
     mutate(region = ifelse(Stock == 'Southern Celtic', 's',
                     ifelse(Stock == 'Western Baltic', 's',
                     ifelse(Stock == 'Irish Sea', 's',
+                    ifelse(Stock == 'Greenland', 's',
                     ifelse(Stock == 'Georges Bank', 'm',
                     ifelse(Stock == 'Grand Bank', 'm',
                     ifelse(Stock == 'Faroe Plateau', 'm',
@@ -291,7 +301,7 @@ SSB2 <-
                     ifelse(Stock == 'Norway', 'l',
                     ifelse(Stock == 'Newfoundland', 'l',
                     ifelse(Stock == 'Flemish Cap', 'm',
-                    ifelse(Stock == 'NE Arctic', 'l', 'l')))))))))))))
+                    ifelse(Stock == 'NE Arctic', 'l', 'l'))))))))))))))
 
 
 
@@ -397,7 +407,7 @@ dev.off()
 
 
 ##recruitment
-rec <- tibble(
+rec <- tibble(full_join(
     full_join(
         full_join(
             full_join(
@@ -413,6 +423,7 @@ rec <- tibble(
     e_baltic$N      %>% select(Year, '3') %>% rename(eb = '3'),
     faroe_plateau$N %>% select(Year, '3') %>% rename(fp = '3')),##1000s
     georges_bank$N  %>% select(Year, '3') %>% rename(gb = '3')),##1000s
+    greenland$N  %>% select(Year, '3') %>% rename(gl = '3')),##1000s
     iceland$N %>% select(Year, '3') %>% rename(ic = '3')), ##in 1000s
     irish_sea$N  %>% select(Year, '3') %>% rename(is = '3')),##in 1000s
     nafo_2j3kl$N %>% select(Year, '3') %>% rename(nfl = '3')),#
@@ -427,7 +438,7 @@ rec <- tibble(
 
 colnames(rec) <- c('Year',
                    'Eastern Baltic' , 'Faroe Plateau' , 'Georges Bank',
-                   ##'Greenland' , 'Gulf of Maine' ,
+                   'Greenland' , ##'Gulf of Maine' ,
                    'Iceland',
                    'Irish Sea' , 'Newfoundland' , 'Flemish Cap',
                    'Grand Bank' , 'NE Arctic' , 'North Sea',
@@ -437,7 +448,7 @@ rec <-
     rec %>%
     pivot_longer(!Year, names_to = 'Stock', values_to = 'r3') %>%
     arrange(Stock, r3) %>%
-     mutate(region = ifelse(Stock == 'Southern Celtic', 's',
+    mutate(region = ifelse(Stock == 'Southern Celtic', 's',
                     ifelse(Stock == 'Western Baltic', 's',
                     ifelse(Stock == 'Irish Sea', 's',
                     ifelse(Stock == 'Georges Bank', 'm',
@@ -450,9 +461,7 @@ rec <-
                     ##ifelse(Stock == 'Gulf of Maine', 's',
                     ifelse(Stock == 'Flemish Cap', 'm',
                     ifelse(Stock == 'NE Arctic', 'l',
-                                'l')))))))))))))
-                    ##ifelse(Stock == 'Greenland' , 'm',
-
+                    ifelse(Stock == 'Greenland' , 's', 'l'))))))))))))))
 
 rec <-
     rec %>%
@@ -460,42 +469,42 @@ rec <-
     arrange(Stock, Year) %>%
     group_by(Stock) %>%
     mutate(rel3 = r3/first(r3))
-pdf(file = '../chapter_plots/Fig5v2a.pdf')
-rec %>%
-    filter(region == 's',
-    !is.na(r3)) %>%
-    ggplot() +
-    geom_line(aes(x = Year, y = rel3, linetype = Stock)) +
-    theme_bw() +
-    theme(panel.grid.minor = element_blank(),
-          panel.grid.major = element_blank()) +
-    ylab('Relative change Recruitment Age 3') +
-    xlab('Year')
-dev.off()
-pdf(file = '../chapter_plots/Fig5v2b.pdf')
-rec %>%
-    filter(region == 'm',
-    !is.na(r3)) %>%
-    ggplot() +
-    geom_line(aes(x = Year, y = rel3, linetype = Stock)) +
-    theme_bw() +
-    theme(panel.grid.minor = element_blank(),
-          panel.grid.major = element_blank()) +
-    ylab('Relative change Recruitment Age 3') +
-    xlab('Year')
-dev.off()
-pdf(file = '../chapter_plots/Fig5v2c.pdf')
-rec %>%
-    filter(region == 'l',
-    !is.na(r3)) %>%
-    ggplot() +
-    geom_line(aes(x = Year, y = rel3, linetype = Stock)) +
-    theme_bw() +
-    theme(panel.grid.minor = element_blank(),
-          panel.grid.major = element_blank()) +
-    ylab('Relative change Recruitment Age 3') +
-    xlab('Year')
-dev.off()
+## pdf(file = '../chapter_plots/Fig5v2a.pdf')
+## rec %>%
+##     filter(region == 's',
+##     !is.na(r3)) %>%
+##     ggplot() +
+##     geom_line(aes(x = Year, y = rel3, linetype = Stock)) +
+##     theme_bw() +
+##     theme(panel.grid.minor = element_blank(),
+##           panel.grid.major = element_blank()) +
+##     ylab('Relative change Recruitment Age 3') +
+##     xlab('Year')
+## dev.off()
+## pdf(file = '../chapter_plots/Fig5v2b.pdf')
+## rec %>%
+##     filter(region == 'm',
+##     !is.na(r3)) %>%
+##     ggplot() +
+##     geom_line(aes(x = Year, y = rel3, linetype = Stock)) +
+##     theme_bw() +
+##     theme(panel.grid.minor = element_blank(),
+##           panel.grid.major = element_blank()) +
+##     ylab('Relative change Recruitment Age 3') +
+##     xlab('Year')
+## dev.off()
+## pdf(file = '../chapter_plots/Fig5v2c.pdf')
+## rec %>%
+##     filter(region == 'l',
+##     !is.na(r3)) %>%
+##     ggplot() +
+##     geom_line(aes(x = Year, y = rel3, linetype = Stock)) +
+##     theme_bw() +
+##     theme(panel.grid.minor = element_blank(),
+##           panel.grid.major = element_blank()) +
+##     ylab('Relative change Recruitment Age 3') +
+##     xlab('Year')
+## dev.off()
 
 
 
@@ -516,8 +525,7 @@ rec %>%
     theme(panel.grid.minor = element_blank(),
           panel.grid.major = element_blank()) +
     scale_x_continuous(breaks= pretty_breaks()) +
-    ##scale_y_continuous(breaks= pretty_breaks()) +
-    ylab('Relative change Recruitment Age 3') +
+     ylab('Recruitment age 3 deviations from mean') +
     xlab('Year')
 dev.off()
 

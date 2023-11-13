@@ -13,8 +13,9 @@ tonnes$kattegat <- NULL
 tonnes$nafo_3ps <- NULL
 out <- data.frame(id=names(tonnes)[-1])
 out$Stock <- c("Eastern Baltic",
-               "Faroe Plateau", "Georges Bank", "Greenland inshore",
-               "Gulf of Maine", "Iceland", "Irish Sea", "Newfoundland",
+               "Faroe Plateau", "Georges Bank", "Greenland",
+               "Gulf of Maine",
+               "Iceland", "Irish Sea", "Newfoundland",
                "Flemish Cap",
                "Grand Bank", "Northeast Arctic", "North Sea",
                "Norway coastal", "Southern Celtic", "Western Baltic")
@@ -80,10 +81,9 @@ write.fwf(rbind(head.1, head.2, format(out.clean)),
 ## 7  Plot
 out <-
     out %>%
-    filter(id != 'gulf_of_maine',
-           id != 'greenland')
-out$Label <- c('Eastern Baltic', "Faroe", "Georges", ##"Greenland",
-               ##"Gulf of Maine",
+    filter(id != 'gulf_of_maine')
+out$Label <- c('Eastern Baltic', "Faroe", "Georges Bank",
+               "Greenland", ##"Gulf of Maine",
                "Iceland", "Irish",
                "Newfoundland", "Flemish Cap", "Grand Bank", "NE Arctic",
                "North Sea", "Norway",
