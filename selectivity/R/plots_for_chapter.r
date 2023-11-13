@@ -212,7 +212,7 @@ dev.off()
 ## SSB
 
 SSB <-
-left_join(
+tibble(left_join(
     left_join(
         left_join(
             left_join(
@@ -230,39 +230,125 @@ left_join(
                                     irish_sea$SSB  %>% rename(is = SSB)),
                                 nafo_2j3kl$SSB  %>% rename(nafo2j3kl = SSB)),
                             nafo_3m$SSB  %>% rename(nafo3m = SSB)),
-                        nafo_3no$SSB  %>% rename(nafo3na = SSB)),
+                        nafo_3no$SSB  %>% rename(nafo3no = SSB)),
                     ne_arctic$SSB  %>% rename(nea = SSB)),
                 north_sea$SSB  %>% rename(ns = SSB)),
             norway$SSB  %>% rename(no = SSB)),
         s_celtic$SSB  %>% rename(sc = SSB)),
-    w_baltic$SSB  %>% rename(wb = SSB))
+    w_baltic$SSB  %>% rename(wb = SSB)))
 
-SSB <- tibble(SSB)
 
-colnames(SSB) <- c('Year', 'Eastern Baltic' , 'Faroe Plateau' , 'Georges Bank',
+
+SSB %>%
+    summarize_all(mean)
+
+colMeans(SSB, na.rm = TRUE)
+
+(tibble(mean = round(colMeans(SSB, na.rm = TRUE))[-1])) %>%
+     arrange(mean)
+##small is, sc, wb, nafo3no, gb, fp,
+##larger eb, ic, nafo3m, nea, ns, no, nafo2j3kl
+round(colMeans(SSB, na.rm = TRUE))[-1]
+    arrange(mean)
+
+colnames(SSB) <- c('Year',
+                   'Eastern Baltic', 'Faroe Plateau' , 'Georges Bank',
                    'Iceland',
                    'Irish Sea' , 'Newfoundland' , 'Flemish Cap',
                    'Grand Bank' , 'NE Arctic' , 'North Sea',
                    'Norway' , 'Southern Celtic' , 'Western Baltic')
 
-SSB <-
+SSB2 <-
     SSB %>%
     pivot_longer(!Year, names_to = 'Stock', values_to = 'SSB') %>%
     arrange(Stock, Year) %>%
-    mutate(region = ifelse(Stock == 'Eastern Baltic', 'ns',
-                    ifelse(Stock == 'Irish Sea', 'ns',
-                    ifelse(Stock == 'North Sea','ns',
-                    ifelse(Stock == 'Norway', 'ns',
-                    ifelse(Stock == 'Southern Celtic', 'ns',
-                    ifelse(Stock == 'Western Baltic', 'ns',
-                    ifelse(Stock == 'Newfoundland', 'nus',
+    mutate(region = ifelse(Stock == 'Southern Celtic', 's',
+                    ifelse(Stock == 'Western Baltic', 's',
+                    ifelse(Stock == 'Irish Sea', 's',
+                    ifelse(Stock == 'Georges Bank', 'm',
+                    ifelse(Stock == 'Grand Bank', 'm',
+                    ifelse(Stock == 'Faroe Plateau', 'm',
+                    ifelse(Stock == 'Eastern Baltic', 'l',
+                    ifelse(Stock == 'North Sea','m',
+                    ifelse(Stock == 'Norway', 'l',
+                    ifelse(Stock == 'Newfoundland', 'l',
                     ##ifelse(Stock == 'Gulf of Maine', 'nus',
-                    ##ifelse(Stock == 'Georges Bank', 'nus',
-                    ifelse(Stock == 'Flemish Cap', 'nus',
-                    ifelse(Stock == 'Grand Bank', 'nus',
-                    ifelse(Stock == 'NE Arctic', 'igf',
-                    ifelse(Stock == 'Faroe Plateau', 'igf',
-                    ifelse(Stock == 'Greenland' , 'igf', 'igf')))))))))))))
+                    ifelse(Stock == 'Flemish Cap', 'm',
+                    ifelse(Stock == 'NE Arctic', 'l', 'l')))))))))))))
+
+
+
+## SSB <-
+##     SSB %>%
+##     pivot_longer(!Year, names_to = 'Stock', values_to = 'SSB') %>%
+##     arrange(Stock, Year) %>%
+##     mutate(region = ifelse(Stock == 'Eastern Baltic', 'ns',
+##                     ifelse(Stock == 'Irish Sea', 'ns',
+##                     ifelse(Stock == 'North Sea','ns',
+##                     ifelse(Stock == 'Norway', 'ns',
+##                     ifelse(Stock == 'Southern Celtic', 'ns',
+##                     ifelse(Stock == 'Western Baltic', 'ns',
+##                     ifelse(Stock == 'Newfoundland', 'nus',
+##                     ##ifelse(Stock == 'Gulf of Maine', 'nus',
+##                     ##ifelse(Stock == 'Georges Bank', 'nus',
+##                     ifelse(Stock == 'Flemish Cap', 'nus',
+##                     ifelse(Stock == 'Grand Bank', 'nus',
+##                     ifelse(Stock == 'NE Arctic', 'igf',
+##                     ifelse(Stock == 'Faroe Plateau', 'igf',
+##                     ifelse(Stock == 'Greenland' , 'igf', 'igf')))))))))))))
+
+
+pdf(file = '../chapter_plots/Fig4av2.pdf')
+SSB2 %>%
+    filter(region == 's',
+    !is.na(SSB)) %>%
+    ggplot() +
+    geom_line(aes(x = Year, y = SSB, linetype = Stock)) +
+    theme_bw() +
+    theme(panel.grid.minor = element_blank(),
+          panel.grid.major = element_blank()) +
+    ylab('SSB') +
+    xlab('Year')
+dev.off()
+
+pdf(file = '../chapter_plots/Fig4bv2.pdf')
+SSB2 %>%
+    filter(region == 'm',
+    !is.na(SSB)) %>%
+    ggplot() +
+    geom_line(aes(x = Year, y = SSB, linetype = Stock)) +
+    theme_bw() +
+    theme(panel.grid.minor = element_blank(),
+          panel.grid.major = element_blank()) +
+    ylab('SSB') +
+    xlab('Year')
+dev.off()
+
+pdf(file = '../chapter_plots/Fig4cv2.pdf')
+SSB2 %>%
+    filter(region == 'l',
+    !is.na(SSB)) %>%
+    ggplot() +
+    geom_line(aes(x = Year, y = SSB, linetype = Stock)) +
+    theme_bw() +
+    theme(panel.grid.minor = element_blank(),
+          panel.grid.major = element_blank()) +
+    ylab('SSB') +
+    xlab('Year')
+dev.off()
+
+pdf(file = '../chapter_plots/Fig4b.pdf')
+SSB %>%
+    filter(region == 'nus',
+    !is.na(SSB)) %>%
+    ggplot() +
+    geom_line(aes(x = Year, y = SSB, linetype = Stock)) +
+    theme_bw() +
+    theme(panel.grid.minor = element_blank(),
+          panel.grid.major = element_blank()) +
+    ylab('SSB') +
+    xlab('Year')
+dev.off()
 
 pdf(file = '../chapter_plots/Fig4a.pdf')
 SSB %>%
@@ -341,8 +427,9 @@ rec <- tibble(
     w_baltic$N %>% select(Year, '3') %>% rename(wb = '3')##1000
    ) )
 
-colnames(rec) <- c('Year', 'Eastern Baltic' , 'Faroe Plateau' , 'Georges Bank',
-                   'West Greenland' , 'Gulf of Maine' , 'Iceland',
+colnames(rec) <- c('Year',
+                   'Eastern Baltic' , 'Faroe Plateau' , 'Georges Bank',
+                   'Greenland' , 'Gulf of Maine' , 'Iceland',
                    'Irish Sea' , 'Newfoundland' , 'Flemish Cap',
                    'Grand Bank' , 'NE Arctic' , 'North Sea',
                    'Norway' , 'Southern Celtic' , 'Western Baltic')
@@ -351,20 +438,157 @@ rec <-
     rec %>%
     pivot_longer(!Year, names_to = 'Stock', values_to = 'r3') %>%
     arrange(Stock, r3) %>%
-    mutate(region = ifelse(Stock == 'Eastern Baltic', 'ns',
-                    ifelse(Stock == 'Irish Sea', 'ns',
-                    ifelse(Stock == 'North Sea','ns',
-                    ifelse(Stock == 'Norway', 'ns',
-                    ifelse(Stock == 'Southern Celtic', 'ns',
-                    ifelse(Stock == 'Western Baltic', 'ns',
-                    ifelse(Stock == 'Newfoundland', 'nus',
-                    ifelse(Stock == 'Gulf of Maine', 'nus',
-                    ifelse(Stock == 'Georges Bank', 'nus',
-                    ifelse(Stock == 'Flemish Cap', 'nus',
-                    ifelse(Stock == 'Grand Bank', 'nus',
-                    ifelse(Stock == 'NE Arctic', 'igf',
-                    ifelse(Stock == 'Faroe Plateau', 'igf',
-                    ifelse(Stock == 'Greenland' , 'igf', 'igf')))))))))))))))
+     mutate(region = ifelse(Stock == 'Southern Celtic', 's',
+                    ifelse(Stock == 'Western Baltic', 's',
+                    ifelse(Stock == 'Irish Sea', 's',
+                    ifelse(Stock == 'Georges Bank', 'm',
+                    ifelse(Stock == 'Grand Bank', 'm',
+                    ifelse(Stock == 'Faroe Plateau', 'm',
+                    ifelse(Stock == 'Eastern Baltic', 'l',
+                    ifelse(Stock == 'North Sea','m',
+                    ifelse(Stock == 'Norway', 'l',
+                    ifelse(Stock == 'Newfoundland', 'l',
+                    ifelse(Stock == 'Gulf of Maine', 's',
+                    ifelse(Stock == 'Flemish Cap', 'm',
+                    ifelse(Stock == 'NE Arctic', 'l',
+                    ifelse(Stock == 'Greenland' , 'm',
+                           'l')))))))))))))))
+
+rec <-
+    rec %>%
+    filter(!is.na(r3)) %>%
+    arrange(Stock, Year) %>%
+    group_by(Stock) %>%
+    mutate(rel3 = r3/first(r3))
+
+pdf(file = '../chapter_plots/Fig5v2a.pdf')
+rec %>%
+    filter(region == 's',
+    !is.na(r3)) %>%
+    ggplot() +
+    geom_line(aes(x = Year, y = rel3, linetype = Stock)) +
+    theme_bw() +
+    theme(panel.grid.minor = element_blank(),
+          panel.grid.major = element_blank()) +
+    ylab('Relative change Recruitment Age 3') +
+    xlab('Year')
+dev.off()
+pdf(file = '../chapter_plots/Fig5v2b.pdf')
+rec %>%
+    filter(region == 'm',
+    !is.na(r3)) %>%
+    ggplot() +
+    geom_line(aes(x = Year, y = rel3, linetype = Stock)) +
+    theme_bw() +
+    theme(panel.grid.minor = element_blank(),
+          panel.grid.major = element_blank()) +
+    ylab('Relative change Recruitment Age 3') +
+    xlab('Year')
+dev.off()
+pdf(file = '../chapter_plots/Fig5v2c.pdf')
+rec %>%
+    filter(region == 'l',
+    !is.na(r3)) %>%
+    ggplot() +
+    geom_line(aes(x = Year, y = rel3, linetype = Stock)) +
+    theme_bw() +
+    theme(panel.grid.minor = element_blank(),
+          panel.grid.major = element_blank()) +
+    ylab('Relative change Recruitment Age 3') +
+    xlab('Year')
+dev.off()
+
+
+
+rec <-
+    rec %>%
+    group_by(Stock) %>%
+    mutate(devR3 = r3 - mean(r3)) %>%
+    print(n = Inf)
+
+
+pdf(file = '../chapter_plots/Fig5v3a.pdf')
+rec %>%
+    filter(region == 's') %>%
+    ggplot() +
+    geom_bar(aes(x = Year, y = devR3), stat='identity') +
+    facet_wrap(.~Stock, ncol = 1) +
+    theme_bw() +
+    theme(panel.grid.minor = element_blank(),
+          panel.grid.major = element_blank()) +
+    ylab('Deviations from mean Recruitment Age 3') +
+    xlab('Year')
+dev.off()
+pdf(file = '../chapter_plots/Fig5v3b.pdf')
+rec %>%
+    filter(region == 'm') %>%
+    ggplot() +
+    geom_bar(aes(x = Year, y = devR3), stat='identity') +
+    facet_wrap(.~Stock, ncol = 1) +
+    theme_bw() +
+    theme(panel.grid.minor = element_blank(),
+          panel.grid.major = element_blank()) +
+    ylab('Deviations from mean Recruitment Age 3') +
+    xlab('Year')
+dev.off()
+pdf(file = '../chapter_plots/Fig5v3c.pdf')
+rec %>%
+    filter(region == 'l') %>%
+    ggplot() +
+    geom_bar(aes(x = Year, y = devR3), stat='identity') +
+    facet_wrap(.~Stock, ncol = 1) +
+    theme_bw() +
+    theme(panel.grid.minor = element_blank(),
+          panel.grid.major = element_blank()) +
+    ylab('Deviations from mean Recruitment Age 3') +
+    xlab('Year')
+dev.off()
+
+
+rec <-
+    rec %>%
+    group_by(Stock) %>%
+    mutate(devR3v2 = devR3/ mean(r3)) %>%
+    print(n = Inf)
+
+
+pdf(file = '../chapter_plots/Fig5v4a.pdf')
+rec %>%
+    filter(region == 's') %>%
+    ggplot() +
+    geom_bar(aes(x = Year, y = devR3v2), stat='identity') +
+    facet_wrap(.~Stock, ncol = 1) +
+    theme_bw() +
+    theme(panel.grid.minor = element_blank(),
+          panel.grid.major = element_blank()) +
+    ylab('Deviations from mean Recruitment Age 3') +
+    xlab('Year')
+dev.off()
+pdf(file = '../chapter_plots/Fig5v4b.pdf')
+rec %>%
+    filter(region == 'm') %>%
+    ggplot() +
+    geom_bar(aes(x = Year, y = devR3v2), stat='identity') +
+    facet_wrap(.~Stock, ncol = 1) +
+    theme_bw() +
+    theme(panel.grid.minor = element_blank(),
+          panel.grid.major = element_blank()) +
+    ylab('Deviations from mean Recruitment Age 3') +
+    xlab('Year')
+dev.off()
+pdf(file = '../chapter_plots/Fig5v4c.pdf')
+rec %>%
+    filter(region == 'l') %>%
+    ggplot() +
+    geom_bar(aes(x = Year, y = devR3v2), stat='identity') +
+    facet_wrap(.~Stock, ncol = 1) +
+    theme_bw() +
+    theme(panel.grid.minor = element_blank(),
+          panel.grid.major = element_blank()) +
+    ylab('Deviations from mean Recruitment Age 3') +
+    xlab('Year')
+dev.off()
+
 
 pdf(file = '../../chapter_plots/Fig5a.pdf')
 rec %>%

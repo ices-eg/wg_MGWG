@@ -77,7 +77,7 @@ write.fwf(rbind(head.1, head.2, format(out.clean)),
           colnames=FALSE)
 
 ## 7  Plot
-out$Label <- c('Eastern Baltic', "Faroe", "Georges", "Greenland", "Maine",
+out$Label <- c('Eastern Baltic', "Faroe", "Georges", "Greenland", "Gulf of Maine",
                "Iceland", "Irish",
                "Newfoundland", "Flemish Cap", "Grand Bank", "NE Arctic", "North Sea", "Norway",
                "Celtic", "Western Baltic")
@@ -102,7 +102,7 @@ out <-
 
 pdf('selectivity/chapter_plots/Fig3.pdf', width=6, height=6)
 ggplot(data = out, aes(x = A50mat, y = A50sel)) +
-    geom_point(aes(shape = Region)) +
+    geom_point() +
     geom_text(aes(label = Label), hjust=0, vjust = 1.5, cex = 3.5) +
     geom_abline(slope = 1, intercept = 0, linetype = 'dashed') +
     xlab("Age at 50% maturity") +
