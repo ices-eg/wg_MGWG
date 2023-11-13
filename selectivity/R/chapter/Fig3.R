@@ -14,7 +14,8 @@ tonnes$nafo_3ps <- NULL
 out <- data.frame(id=names(tonnes)[-1])
 out$Stock <- c("Eastern Baltic",
                "Faroe Plateau", "Georges Bank", "Greenland inshore",
-               "Gulf of Maine", "Iceland", "Irish Sea", "Newfoundland", "Flemish Cap",
+               "Gulf of Maine", "Iceland", "Irish Sea", "Newfoundland",
+               "Flemish Cap",
                "Grand Bank", "Northeast Arctic", "North Sea",
                "Norway coastal", "Southern Celtic", "Western Baltic")
 
@@ -77,28 +78,34 @@ write.fwf(rbind(head.1, head.2, format(out.clean)),
           colnames=FALSE)
 
 ## 7  Plot
-out$Label <- c('Eastern Baltic', "Faroe", "Georges", "Greenland", "Gulf of Maine",
-               "Iceland", "Irish",
-               "Newfoundland", "Flemish Cap", "Grand Bank", "NE Arctic", "North Sea", "Norway",
-               "Celtic", "Western Baltic")
-#setwd('outChapter')
 out <-
     out %>%
-    mutate(Region = ifelse(Stock == 'Eastern Baltic', 'NSA',
-                    ifelse(Stock == 'Irish Sea', 'NSA',
-                    ifelse(Stock == 'North Sea','NSA',
-                    ifelse(Stock == 'Norway coastal', 'NSA',
-                    ifelse(Stock == 'Southern Celtic', 'NSA',
-                    ifelse(Stock == 'Western Baltic', 'NSA',
-                    ifelse(Stock == 'Newfoundland', 'CUS',
-                    ifelse(Stock == 'Gulf of Maine', 'CUS',
-                    ifelse(Stock == 'Georges Bank', 'CUS',
-                    ifelse(Stock == 'Flemish Cap', 'CUS',
-                    ifelse(Stock == 'Grand Bank', 'CUS',
-                    ifelse(Stock == 'Northeast Arctic', 'FGI',
-                    ifelse(Stock == 'Faroe Plateau', 'FGI',
-                    ifelse(Stock == 'Greenland inshore' , 'FGI',
-                           'FGI')))))))))))))))
+    filter(id != 'gulf_of_maine',
+           id != 'greenland')
+out$Label <- c('Eastern Baltic', "Faroe", "Georges", ##"Greenland",
+               ##"Gulf of Maine",
+               "Iceland", "Irish",
+               "Newfoundland", "Flemish Cap", "Grand Bank", "NE Arctic",
+               "North Sea", "Norway",
+               "Celtic", "Western Baltic")
+#setwd('outChapter')
+## out <-
+##     out %>%
+##     mutate(Region = ifelse(Stock == 'Eastern Baltic', 'NSA',
+##                     ifelse(Stock == 'Irish Sea', 'NSA',
+##                     ifelse(Stock == 'North Sea','NSA',
+##                     ifelse(Stock == 'Norway coastal', 'NSA',
+##                     ifelse(Stock == 'Southern Celtic', 'NSA',
+##                     ifelse(Stock == 'Western Baltic', 'NSA',
+##                     ifelse(Stock == 'Newfoundland', 'CUS',
+##                     ##ifelse(Stock == 'Gulf of Maine', 'CUS',
+##                     ifelse(Stock == 'Georges Bank', 'CUS',
+##                     ifelse(Stock == 'Flemish Cap', 'CUS',
+##                     ifelse(Stock == 'Grand Bank', 'CUS',
+##                     ifelse(Stock == 'Northeast Arctic', 'FGI',
+##                     ifelse(Stock == 'Faroe Plateau', 'FGI',
+##                     ##ifelse(Stock == 'Greenland inshore' , 'FGI',
+##                            'FGI')))))))))))))))
 
 pdf('selectivity/chapter_plots/Fig3.pdf', width=6, height=6)
 ggplot(data = out, aes(x = A50mat, y = A50sel)) +
