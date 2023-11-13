@@ -1,0 +1,17 @@
+                            Age at 50%  Age at 50% Weight at 
+Stock             Catch (t) Selectivity Maturity   age 5 (kg)
+Eastern Baltic     51200    4.6         2.0        0.6       
+Faroe Plateau       7600    4.1         2.7        3.3       
+Georges Bank        5900    3.0         2.3        3.8       
+Greenland inshore  17100    4.3         4.3        1.6       
+Gulf of Maine       6400    3.6         2.5        3.6       
+Iceland           204000    5.4         6.4        2.5       
+Irish Sea            500    1.6         1.7        7.9       
+Newfoundland        3700    6.3         5.3        1.6       
+Flemish Cap         9300    4.6         4.0        2.2       
+Grand Bank           800    2.4         5.5        1.2       
+Northeast Arctic  758000    6.5         7.0        1.7       
+North Sea          33900    1.7         2.5        6.0       
+Norway coastal     44400    4.7         5.2        3.3       
+Southern Celtic     4200    1.6         2.2        9.3       
+Western Baltic     15100    2.4         1.7        3.0       
