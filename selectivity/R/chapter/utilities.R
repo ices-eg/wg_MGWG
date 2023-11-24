@@ -14,9 +14,8 @@ catch <- function(id, tab=tonnes)
 
 abar <- function(x) weighted.mean(as.numeric(names(x)), x)
 
-abar_catch <- function(id)
+abar_catch <- function(stock)
 {
-  stock <- get(id)
   if(!is.null(stock$C))
     abar(stock$C)
   else
@@ -25,14 +24,12 @@ abar_catch <- function(id)
 
 a50 <- function(x) A50(as.numeric(names(x)), x)
 
-a50mat <- function(id)
+a50mat <- function(stock)
 {
-  stock <- get(id)
   a50(stock$mat)
 }
 
-w5 <- function(id)
+w5 <- function(stock)
 {
-  stock <- get(id)
-  stock$wcatch[["5"]]
+  stock$wstock[["5"]]
 }
