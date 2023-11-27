@@ -65,7 +65,7 @@ w.baltic <- data.frame(Stock="W Baltic", w.baltic, w.baltic.refpt)
 e.baltic <- sumtab.2023$"cod.27.24-32"[columns]
 names(e.baltic) <- colnames
 e.baltic.refpt <- refpt.2023$"cod.27.24-32"[c("Blim", "Bpa")]
-e.baltic <- data.frame(Stock="E Baltic", w.baltic, e.baltic.refpt)
+e.baltic <- data.frame(Stock="E Baltic", e.baltic, e.baltic.refpt)
 
 # North Sea 2022
 north.sea <- sumtab.2022$"cod.27.47d20"[columns]

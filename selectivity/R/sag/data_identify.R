@@ -1,4 +1,4 @@
-## Preprocess data, identity when stocks were assessed
+## Preprocess data, identify when stocks were assessed
 
 ## Before: stocks_2020.csv, stocks_2021.csv, stocks_2022.csv,
 ##         stocks_2023.csv (boot/data/sag)
