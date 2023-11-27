@@ -22,17 +22,20 @@ norway <- read.taf("data/norway.csv")
 s.celtic <- read.taf("data/s_celtic.csv")
 w.baltic <- read.taf("data/w_baltic.csv")
 
-# Stock       Blim  Btarget  Bcurrent  Notes
-# E Baltic    109       122        77  Below Blim
-# Faroe        18        25        10  Below Blim
-# Greenland     4         6        22  Good
-# Iceland     125       265       368  Good
-# Irish        12        17        12  Below Blim
-# Kattegat      -         -      0.10  Below possible Blim
-# NE Arctic   220       460       902  Good
-# North Sea    70        98        54  Below Blim
-# Norway        -        60        34  Below Btarget
-# S Celtic      4         6         1  Below Blim
-# W Baltic     15        23         6  Below Blim
-
-Moratorium in Kattegat and perhaps elsewhere?
+# Stock       Blim  Bpa  Bcurrent   Notes           Reference
+# Greenland      4    6        22   Above Bpa       ICES 2022 21.1
+# NE Arctic    220  460       902   Above Bpa       ICES 2021 27.1-2
+# Iceland      125  160       368   Above Bpa       ICES 2023 27.5a
+# Faroe         18   25        10   Below Blim (+)  ICES 2022 27.5b1
+# Norway         -   60        34   Below Btarget   ICES 2020 27.1-2coast
+# North Sea     70   98        54   Below Blim      ICES 2022 27.47d20
+# Kattegat       -    -      0.10*  Below Bref (+)  ICES 2023 27.21
+# W Baltic      15   23         6   Below Blim      ICES 2022 27.22-24
+# E Baltic     109  122        77   Below Blim (+)  ICES 2023 27.24-32
+# Irish         12   17        12   Below Blim (+)  ICES 2023 27.7a
+# S Celtic       4    6         1   Below Blim (+)  ICES 2023 27.7e-k
+#
+# *: Spawning stock biomass for Kattegat is relative to the average of the stock
+#    size in the period from 1997 to 2023.
+#
+# +: Scientific advice is zero catch.
