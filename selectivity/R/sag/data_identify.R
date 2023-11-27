@@ -1,4 +1,4 @@
-## Preprocess data, write TAF data tables
+## Preprocess data, identity when stocks were assessed
 
 ## Before: stocks_2020.csv, stocks_2021.csv, stocks_2022.csv,
 ##         stocks_2023.csv (boot/data/sag)
@@ -39,7 +39,7 @@ assessments <- assessments[assessments$stock != "cod.27.6a",]   # W Scotland
 assessments <- assessments[assessments$stock != "cod.27.6b",]   # Rockall
 
 # Label remaining stocks
-assessments$label <- c("W Greenland", "NE Arctic", "Norway", "Kattegat",
+assessments$label <- c("Greenland", "NE Arctic", "Norway", "Kattegat",
                        "W Baltic", "E Baltic", "North Sea", "Iceland", "Faroe",
                        "Irish", "S Celtic")
 assessments <- assessments[c("stock", "label", "2020", "2021", "2022", "2023")]
