@@ -19,6 +19,9 @@ download("https://ices-library.figshare.com/ndownloader/files/35905118",
 message("2022 North Sea")
 download("https://ices-library.figshare.com/ndownloader/files/38140326",
          destfile="advice_north_sea.pdf")
+message("2022 W Baltic")
+download("https://ices-library.figshare.com/ndownloader/files/35457407",
+         destfile="advice_w_baltic.pdf")
 
 message("2023 E Baltic")
 download("https://ices-library.figshare.com/ndownloader/files/41007086",
@@ -35,6 +38,3 @@ download("https://ices-library.figshare.com/ndownloader/files/41385474",
 message("2023 S Celtic")
 download("https://ices-library.figshare.com/ndownloader/files/41412585",
          destfile="advice_s_celtic.pdf")
-message("2023 W Baltic")
-download("https://ices-library.figshare.com/ndownloader/files/41007074",
-         destfile="advice_w_baltic.pdf")

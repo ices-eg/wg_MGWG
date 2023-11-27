@@ -55,10 +55,12 @@ names(kattegat) <- colnames
 kattegat.refpt <- NULL
 kattegat <- data.frame(Stock="Kattegat", kattegat)
 
-# W Baltic 2023
-w.baltic <- sumtab.2023$"cod.27.22-24"[columns]
+# W Baltic 2022 (use 2022 when reference points were in absolute tonnes)
+w.baltic <- sumtab.2022$"cod.27.22-24"[columns]
 names(w.baltic) <- colnames
-w.baltic.refpt <- refpt.2023$"cod.27.22-24"[c("Blim", "MSYBtrigger")]
+w.baltic.refpt <- refpt.2022$"cod.27.22-24"[c("Blim", "Bpa", "MSYBtrigger",
+                                              "FMSY", "Fpa", "FLim")]
+names(w.baltic.refpt)[names(w.baltic.refpt) == "FLim"] <- "Flim"
 w.baltic <- data.frame(Stock="W Baltic", w.baltic, w.baltic.refpt)
 
 # E Baltic 2023
