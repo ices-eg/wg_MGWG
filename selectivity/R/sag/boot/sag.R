@@ -1,3 +1,5 @@
+# Download stock assessment results and reference points from SAG database
+
 library(TAF)
 library(icesSAG)
 
@@ -16,17 +18,43 @@ stocks.2023 <- stocks.2023[stocks.2023$SpeciesName=="Gadus morhua" &
                            stocks.2023$Purpose == "Advice",]
 
 # Download summary tables
+message("2020 summary tables")
 sumtab.2020 <- sapply(stocks.2020$AssessmentKey, getSummaryTable)
 names(sumtab.2020) <- stocks.2020$StockKeyLabel
+message("2021 summary tables")
 sumtab.2021 <- sapply(stocks.2021$AssessmentKey, getSummaryTable)
 names(sumtab.2021) <- stocks.2021$StockKeyLabel
+message("2022 summary tables")
 sumtab.2022 <- sapply(stocks.2022$AssessmentKey, getSummaryTable)
 names(sumtab.2022) <- stocks.2022$StockKeyLabel
+message("2023 summary tables")
 sumtab.2023 <- sapply(stocks.2023$AssessmentKey, getSummaryTable)
 names(sumtab.2023) <- stocks.2023$StockKeyLabel
 
-# Write tables
+# Download reference points
+message("2020 reference points")
+refpt.2020 <- sapply(stocks.2020$AssessmentKey, getFishStockReferencePoints)
+names(refpt.2020) <- stocks.2020$StockKeyLabel
+message("2021 reference points")
+refpt.2021 <- sapply(stocks.2021$AssessmentKey, getFishStockReferencePoints)
+names(refpt.2021) <- stocks.2021$StockKeyLabel
+message("2022 reference points")
+refpt.2022 <- sapply(stocks.2022$AssessmentKey, getFishStockReferencePoints)
+names(refpt.2022) <- stocks.2022$StockKeyLabel
+message("2023 reference points")
+refpt.2023 <- sapply(stocks.2023$AssessmentKey, getFishStockReferencePoints)
+names(refpt.2023) <- stocks.2023$StockKeyLabel
+
+# Write tables and lists
 write.taf(stocks.2020, quote=TRUE)
 write.taf(stocks.2021, quote=TRUE)
 write.taf(stocks.2022, quote=TRUE)
 write.taf(stocks.2023, quote=TRUE)
+saveRDS(sumtab.2020, "sumtab_2020.rds")
+saveRDS(sumtab.2021, "sumtab_2021.rds")
+saveRDS(sumtab.2022, "sumtab_2022.rds")
+saveRDS(sumtab.2023, "sumtab_2023.rds")
+saveRDS(refpt.2020, "refpt_2020.rds")
+saveRDS(refpt.2021, "refpt_2021.rds")
+saveRDS(refpt.2022, "refpt_2022.rds")
+saveRDS(refpt.2023, "refpt_2023.rds")
