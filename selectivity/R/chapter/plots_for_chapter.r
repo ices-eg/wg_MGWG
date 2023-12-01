@@ -1,13 +1,23 @@
 rm(list = ls())
 ## Overview plots: weight, biomass per recruit, selectivity, catch, maturity
-library(tidyverse)
-library(gplots)  # rich.colors
+library(tidyverse);library(gplots)  # rich.colors
+library(scales); library(gridExtra)
 source("selectivity/R/functions/stdline.R")
 
 ## 1  Import
+##sag stocks
+setwd("selectivity/R/sag/data")
+temp <- list.files(pattern="\\.csv$")
+temp <- setdiff(temp, "assessments.csv")
+temp <- setdiff(temp, "assessments_all.csv")
+sagstocks <- lapply(temp, read_csv)
 
-setwd("selectivity/R/stocks")
+temp <- str_remove(temp, "\\.csv$")
+temp <- sub("faroe", "faroe_plateau", temp)
+temp <- sub("irish", "irish_sea", temp)
+names(sagstocks) <- temp
 
+setwd("../../stocks")
 source("e_baltic.R")
 source("faroe_plateau.R")
 source("georges_bank.R")
@@ -16,9 +26,9 @@ source("greenland.R")
 source("iceland.R")
 source("irish_sea.R")
 # source("kattegat.R")  # no fatage
-source("nafo_2j3kl.R")
-source("nafo_3m.R")
-source("nafo_3no.R")
+source("nafo_2j3kl.R") ##newfoundland
+source("nafo_3m.R") ##flemish
+source("nafo_3no.R") ##grand bank
 # source("nafo_3ps.R")  # no fatage
 source("ne_arctic.R")
 source("north_sea.R")
@@ -27,39 +37,8 @@ source("s_celtic.R")
 source("w_baltic.R")
 
 
+
 setwd("..")
-
-## 2  Identify stocks that are actively fished
-
-## lwd <- 2
-## stocks <- c("E Baltic", "Faroe Plateau", "Georges Bank", "Greenl inshore",
-##             "Gulf of Maine", "Iceland", "Irish Sea", "NAFO 2J3KL", "NAFO 3M",
-##             "NAFO 3NO", "NE Arctic", "North Sea", "Norw coastal", "S Celtic",
-##             "W Baltic")
-## col <- rich.colors(length(stocks))
-
-## ## Fishing mortality
-## plot(NA, xlim=c(1,14), ylim=c(0,1.2), yaxs="i",
-##      xlab="Age", ylab="Fishing mortality", main="F in recent years")
-## stdline(e_baltic$Fmort,      lwd, col[1])
-## stdline(faroe_plateau$Fmort, lwd, col[2])
-## stdline(georges_bank$Fmort,  lwd, col[3])
-## stdline(greenland$Fmort,     lwd, col[4])
-## stdline(gulf_of_maine$Fmort, lwd, col[5])
-## stdline(iceland$Fmort,       lwd, col[6])
-## stdline(irish_sea$Fmort,     lwd, col[7])
-## stdline(nafo_2j3kl$Fmort,    lwd, col[8], lty=2)  # moratorium
-## stdline(nafo_3m$Fmort,       lwd, col[9])
-## stdline(nafo_3no$Fmort,      lwd, col[10], lty=2)  # moratorium
-## stdline(ne_arctic$Fmort,     lwd, col[11], from=4, to=14)
-## stdline(north_sea$Fmort,     lwd, col[12])
-## stdline(norway$Fmort,        lwd, col[13])
-## stdline(s_celtic$Fmort,      lwd, col[14])
-## stdline(w_baltic$Fmort,      lwd, col[15])
-## legend("topright", legend=stocks, bty="n", lty=1, lwd=lwd, col=col,
-##        inset=0.02, cex=0.8)
-## box()
-
 
 ## Weight
 wcatch <- data.frame(t(bind_rows(e_baltic$wcatch,
@@ -103,10 +82,39 @@ wcatch <-
                            'igf'))))))))))))))
 
 
-pdf(file = '../chapter_plots/Fig1a.pdf')
-wcatch %>%
-    filter(region == 'ns',
-    !is.na(wcatch)) %>%
+
+wcns <-
+    wcatch %>%
+    filter(region == 'ns') %>%
+    ggplot() +
+    geom_line(aes(x = age, y = wcatch, linetype = Stock)) +
+    theme_bw() +
+    theme(panel.grid.minor = element_blank(),
+          panel.grid.major = element_blank()) +
+    ylab('Mean weight (kg)') +
+    xlab('') +
+    scale_y_continuous(limits = c(0, 16), breaks = seq(0, 16, by = 2)) +
+    scale_x_continuous(breaks = seq(1, 15, by = 1)) +
+    theme(axis.text.x=element_blank(),
+          axis.ticks.x=element_blank())
+wcnus <-
+    wcatch %>%
+    filter(region == 'nus') %>%
+    ggplot() +
+    geom_line(aes(x = age, y = wcatch, linetype = Stock)) +
+    theme_bw() +
+    theme(panel.grid.minor = element_blank(),
+          panel.grid.major = element_blank()) +
+    ylab('Mean weight (kg)') +
+    xlab('') +
+    scale_y_continuous(limits = c(0, 16), breaks = seq(0, 16, by = 2)) +
+    scale_x_continuous(breaks = seq(1, 15, by = 1)) +
+    theme(axis.text.x=element_blank(),
+          axis.ticks.x=element_blank(),
+          legend.title=element_blank())
+wcigf <-
+    wcatch %>%
+    filter(region == 'igf') %>%
     ggplot() +
     geom_line(aes(x = age, y = wcatch, linetype = Stock)) +
     theme_bw() +
@@ -114,33 +122,12 @@ wcatch %>%
           panel.grid.major = element_blank()) +
     ylab('Mean weight (kg)') +
     xlab('Age') +
-    scale_x_continuous(breaks = seq(0, 10, by = 1))
-dev.off()
-pdf(file = '../chapter_plots/Fig1b.pdf')
-wcatch %>%
-    filter(region == 'nus',
-    !is.na(wcatch)) %>%
-    ggplot() +
-    geom_line(aes(x = age, y = wcatch, linetype = Stock)) +
-    theme_bw() +
-    theme(panel.grid.minor = element_blank(),
-          panel.grid.major = element_blank()) +
-    ylab('Mean weight (kg)') +
-    xlab('Age') +
-    scale_x_continuous(breaks = seq(0, 14, by = 1))
-dev.off()
-pdf(file = '../chapter_plots/Fig1c.pdf')
-wcatch %>%
-    filter(region == 'igf',
-    !is.na(wcatch)) %>%
-    ggplot() +
-    geom_line(aes(x = age, y = wcatch, linetype = Stock)) +
-    theme_bw() +
-    theme(panel.grid.minor = element_blank(),
-          panel.grid.major = element_blank()) +
-    ylab('Mean weight (kg)') +
-    xlab('Age') +
-    scale_x_continuous(breaks = seq(0, 15, by = 1))
+    scale_y_continuous(limits = c(0, 16), breaks = seq(0, 16, by = 2)) +
+    scale_x_continuous(breaks = seq(1, 15, by = 1)) +
+    theme(legend.title=element_blank())
+
+pdf(file = 'chapter_plots/Fig1.pdf')
+grid.arrange(wcns, wcnus, wcigf)
 dev.off()
 
 
@@ -181,37 +168,36 @@ mat <-
                     ifelse(Stock == 'Greenland' , 'igf',
                            'igf'))))))))))))))
 
-
-pdf(file = '../chapter_plots/Fig2a.pdf')
-mat %>%
-    filter(region == 'ns',
-    !is.na(mat)) %>%
+matns <-
+    mat %>%
+    filter(region == 'ns') %>%
     ggplot() +
     geom_line(aes(x = age, y = mat, linetype = Stock)) +
     theme_bw() +
     theme(panel.grid.minor = element_blank(),
           panel.grid.major = element_blank()) +
     ylab('Proportion mature') +
-    xlab('Age') +
-    scale_x_continuous(breaks = seq(0, 10, by = 1))
-dev.off()
-pdf(file = '../chapter_plots/Fig2b.pdf')
-mat %>%
-    filter(region == 'nus',
-    !is.na(mat)) %>%
+    xlab('') +
+    scale_x_continuous(breaks = seq(0, 15, by = 1)) +
+    theme(axis.text.x=element_blank(),
+          axis.ticks.x=element_blank())
+matnus <-
+    mat %>%
+    filter(region == 'nus') %>%
     ggplot() +
     geom_line(aes(x = age, y = mat, linetype = Stock)) +
     theme_bw() +
     theme(panel.grid.minor = element_blank(),
           panel.grid.major = element_blank()) +
     ylab('Proportion mature') +
-    xlab('Age') +
-    scale_x_continuous(breaks = seq(0, 14, by = 1))
-dev.off()
-pdf(file = '../chapter_plots/Fig2c.pdf')
-mat %>%
-    filter(region == 'igf',
-    !is.na(mat)) %>%
+    xlab('') +
+    scale_x_continuous(breaks = seq(0, 15, by = 1)) +
+    theme(axis.text.x=element_blank(),
+          axis.ticks.x=element_blank(),
+          legend.title=element_blank())
+matigf <-
+    mat %>%
+    filter(region == 'igf') %>%
     ggplot() +
     geom_line(aes(x = age, y = mat, linetype = Stock)) +
     theme_bw() +
@@ -220,11 +206,15 @@ mat %>%
     ylab('Proportion mature') +
     xlab('Age') +
     scale_x_continuous(breaks = seq(0, 15, by = 1))
+
+
+pdf(file = 'chapter_plots/Fig2.pdf')
+grid.arrange(matns, matnus, matigf)
 dev.off()
 
-
-
 ## SSB
+
+
 
 SSB <-
     tibble(
@@ -240,43 +230,26 @@ SSB <-
                                 left_join(
                                     left_join(
                                         left_join(
-                                            left_join(e_baltic$SSB %>%
+                                            left_join(sagstocks$e_baltic %>% select(Year, SSB) %>%
                                                       rename(eb = SSB),
-                                                      faroe_plateau$SSB %>%
+                                                      sagstocks$faroe_plateau %>% select(Year, SSB) %>%
                                                       rename(fp = SSB)),
-                                            greenland$SSB %>%
+                                            sagstocks$greenland %>% select(Year, SSB) %>%
                                             rename(gl = SSB) %>%
                                         filter(Year < 2021)),
                                             georges_bank$SSB %>%
                                             rename(gb = SSB)),
-                                        iceland$SSB  %>%
-                                        rename(ic = SSB)),
-                                    irish_sea$SSB  %>%
-                                    rename(is = SSB)),
-                                nafo_2j3kl$SSB  %>%
-                                rename(nafo2j3kl = SSB)),
-                            nafo_3m$SSB  %>% rename(nafo3m = SSB)),
-                        nafo_3no$SSB  %>% rename(nafo3no = SSB)),
-                    ne_arctic$SSB  %>% rename(nea = SSB)),
-                north_sea$SSB  %>% rename(ns = SSB)),
-            norway$SSB  %>% rename(no = SSB)),
-        s_celtic$SSB  %>% rename(sc = SSB)),
-    w_baltic$SSB  %>% rename(wb = SSB)))
+                                    sagstocks$iceland %>% select(Year, SSB) %>% rename(ic = SSB)),
+                                sagstocks$irish_sea %>% select(Year, SSB) %>% rename(is = SSB)),
+                            nafo_2j3kl$SSB  %>% rename(nafo2j3kl = SSB)),
+                        nafo_3m$SSB  %>% rename(nafo3m = SSB)),
+                    nafo_3no$SSB  %>% rename(nafo3no = SSB)),
+                sagstocks$ne_arctic %>% select(Year, SSB) %>% rename(nea = SSB)),
+            sagstocks$north_sea %>% select(Year, SSB) %>% rename(ns = SSB)),
+        sagstocks$norway %>% select(Year, SSB) %>% rename(no = SSB)),
+        sagstocks$s_celtic %>% select(Year, SSB) %>% rename(sc = SSB)),
+        sagstocks$w_baltic %>% select(Year, SSB) %>% rename(wb = SSB)))
 
-tail(SSB) %>%
-    print(width = Inf)
-
-SSB %>%
-    summarize_all(mean) %>%
-    print(n = Inf)
-
-colMeans(SSB, na.rm = TRUE)
-(tibble(mean = round(colMeans(SSB, na.rm = TRUE))[-1])) %>%
-     arrange(mean)
-##small is, sc, wb, nafo3no, gb, fp,gl
-##larger eb, ic, nafo3m, nea, ns, no, nafo2j3kl
-round(colMeans(SSB, na.rm = TRUE))[-1]
-    arrange(mean)
 
 colnames(SSB) <- c('Year',
                    'Eastern Baltic', 'Faroe Plateau' , 'Greenland',
@@ -297,36 +270,15 @@ SSB2 <-
                     ifelse(Stock == 'Grand Bank', 'm',
                     ifelse(Stock == 'Faroe Plateau', 'm',
                     ifelse(Stock == 'Eastern Baltic', 'l',
-                    ifelse(Stock == 'North Sea','m',
-                    ifelse(Stock == 'Norway', 'l',
+                    ifelse(Stock == 'North Sea','l',
+                    ifelse(Stock == 'Norway', 'm',
                     ifelse(Stock == 'Newfoundland', 'l',
                     ifelse(Stock == 'Flemish Cap', 'm',
                     ifelse(Stock == 'NE Arctic', 'l', 'l'))))))))))))))
 
 
-
-## SSB <-
-##     SSB %>%
-##     pivot_longer(!Year, names_to = 'Stock', values_to = 'SSB') %>%
-##     arrange(Stock, Year) %>%
-##     mutate(region = ifelse(Stock == 'Eastern Baltic', 'ns',
-##                     ifelse(Stock == 'Irish Sea', 'ns',
-##                     ifelse(Stock == 'North Sea','ns',
-##                     ifelse(Stock == 'Norway', 'ns',
-##                     ifelse(Stock == 'Southern Celtic', 'ns',
-##                     ifelse(Stock == 'Western Baltic', 'ns',
-##                     ifelse(Stock == 'Newfoundland', 'nus',
-##                     ##ifelse(Stock == 'Gulf of Maine', 'nus',
-##                     ##ifelse(Stock == 'Georges Bank', 'nus',
-##                     ifelse(Stock == 'Flemish Cap', 'nus',
-##                     ifelse(Stock == 'Grand Bank', 'nus',
-##                     ifelse(Stock == 'NE Arctic', 'igf',
-##                     ifelse(Stock == 'Faroe Plateau', 'igf',
-##                     ifelse(Stock == 'Greenland' , 'igf', 'igf')))))))))))))
-
-
-pdf(file = '../chapter_plots/Fig4a.pdf')
-SSB2 %>%
+ssbs <-
+    SSB2 %>%
     filter(region == 's',
     !is.na(SSB)) %>%
     ggplot() +
@@ -334,11 +286,14 @@ SSB2 %>%
     theme_bw() +
     theme(panel.grid.minor = element_blank(),
           panel.grid.major = element_blank()) +
+    scale_y_continuous(labels = scientific) +
+    lims(x = c(1946, 2023)) +
     ylab('SSB') +
-    xlab('Year')
-dev.off()
-pdf(file = '../chapter_plots/Fig4b.pdf')
-SSB2 %>%
+    xlab('')  +
+    theme(axis.text.x=element_blank(),
+        axis.ticks.x=element_blank())
+ssbm <-
+    SSB2 %>%
     filter(region == 'm',
     !is.na(SSB)) %>%
     ggplot() +
@@ -346,11 +301,15 @@ SSB2 %>%
     theme_bw() +
     theme(panel.grid.minor = element_blank(),
           panel.grid.major = element_blank()) +
+    scale_y_continuous(labels = scientific) +
+    lims(x = c(1946, 2023)) +
     ylab('SSB') +
-    xlab('Year')
-dev.off()
-pdf(file = '../chapter_plots/Fig4c.pdf')
-SSB2 %>%
+    xlab('')  +
+    theme(axis.text.x=element_blank(),
+          axis.ticks.x=element_blank(),
+          legend.title=element_blank())
+ssbl <-
+    SSB2 %>%
     filter(region == 'l',
     !is.na(SSB)) %>%
     ggplot() +
@@ -358,9 +317,90 @@ SSB2 %>%
     theme_bw() +
     theme(panel.grid.minor = element_blank(),
           panel.grid.major = element_blank()) +
+    lims(x = c(1946, 2023)) +
+#    scale_y_continuous(labels = scientific) +
     ylab('SSB') +
-    xlab('Year')
+    xlab('Year') +
+    theme(legend.title=element_blank()) +
+    scale_x_continuous(breaks = seq(1950, 2020, by = 10)) +
+    scale_y_continuous(breaks = seq(0, 2e6, by = 1e6))
+
+pdf(file = 'chapter_plots/Fig4.pdf')
+grid.arrange(ssbs, ssbm, ssbl)
 dev.off()
+
+
+SSB2 %>%
+    filter(region == 'l',
+           !is.na(SSB)) %>%
+    mutate(SSB = SSB/1e5) %>%
+    group_by(Stock) %>%
+    summarize(SSB = mean(SSB)) %>%
+    filter(SSB > 1)
+
+SSB2 %>%
+    filter(region == 'l',
+           !is.na(SSB)) %>%
+    mutate(SSB = SSB/5e5) %>%
+    group_by(Stock) %>%
+    summarize(SSB = mean(SSB)) %>%
+    filter(SSB < 1)
+
+
+SSB2 %>%
+    filter(region == 'm',
+           !is.na(SSB)) %>%
+    mutate(SSB = SSB/5e5) %>%
+    group_by(Stock) %>%
+    summarize(SSB = mean(SSB)) %>%
+    filter(SSB > 1)
+
+
+SSB2 %>%
+    filter(region == 'm',
+           !is.na(SSB)) %>%
+    mutate(SSB = SSB/2e5) %>%
+    group_by(Stock) %>%
+    summarize(SSB = mean(SSB)) %>%
+    filter(SSB < 1)
+
+
+SSB2 %>%
+    filter(region == 'm',
+           !is.na(SSB)) %>%
+    mutate(SSB = SSB/1e4) %>%
+    group_by(Stock) %>%
+    summarize(SSB = mean(SSB)) %>%
+    filter(SSB < 1)
+
+
+
+SSB2 %>%
+    filter(region == 's',
+           !is.na(SSB)) %>%
+    mutate(SSB = SSB/1e5) %>%
+    group_by(Stock) %>%
+    summarize(SSB = mean(SSB)) %>%
+    filter(SSB > 1)
+
+
+SSB2 %>%
+    filter(region == 's',
+           !is.na(SSB)) %>%
+    mutate(SSB = SSB/1e4) %>%
+    group_by(Stock) %>%
+    summarize(SSB = mean(SSB)) %>%
+    filter(SSB > 1)
+
+
+SSB2 %>%
+    filter(region == 's',
+           !is.na(SSB)) %>%
+    mutate(SSB = SSB/1e4) %>%
+    group_by(Stock) %>%
+    summarize(SSB = mean(SSB)) %>%
+    filter(SSB < 1)
+
 
 ## pdf(file = '../chapter_plots/Fig4a.pdf')
 ## SSB %>%
@@ -419,35 +459,44 @@ rec <- tibble(full_join(
                                     full_join(
                                         full_join(
                                             full_join(
-                                                        full_join(
-    e_baltic$N      %>% select(Year, '3') %>% rename(eb = '3'),
-    faroe_plateau$N %>% select(Year, '3') %>% rename(fp = '3')),##1000s
-    georges_bank$N  %>% select(Year, '3') %>% rename(gb = '3')),##1000s
-    greenland$N  %>% select(Year, '3') %>% rename(gl = '3')),##1000s
-    iceland$N %>% select(Year, '3') %>% rename(ic = '3')), ##in 1000s
-    irish_sea$N  %>% select(Year, '3') %>% rename(is = '3')),##in 1000s
-    nafo_2j3kl$N %>% select(Year, '3') %>% rename(nfl = '3')),#
-    nafo_3m$N %>% select(Year, '3') %>% rename(fc = '3')), ##1000s
-    nafo_3no$N %>% select(Year, '3') %>% rename(grb = '3')),##1000
-    ne_arctic$N %>% select(Year, '3') %>% rename(nea = '3')),##1000
-    north_sea$N %>% select(Year, '3') %>% rename(ns = '3')),##1000
-    norway$N %>% select(Year, '3') %>% rename(no = '3')),##1000
-    s_celtic$N %>% select(Year, '3') %>% rename(sc = '3')),##1000
-    w_baltic$N %>% select(Year, '3') %>% rename(wb = '3')##1000
-   ) )
+                                                full_join(
+ sagstocks$e_baltic %>% select(Year, Rec, RecAge) %>% rename(ebR = Rec, ebRA = RecAge),
+ sagstocks$faroe_plateau %>% select(Year, Rec, RecAge) %>%  rename(fpR = Rec, fpRA = RecAge)),
+ georges_bank$N  %>% select(Year, '1') %>% rename(gbR = '1') %>% mutate(gbRA = 1)),##1000s
+ sagstocks$greenland %>% select(Year, Rec, RecAge) %>%  rename(glR = Rec, glRA = RecAge)),
+ sagstocks$iceland   %>% select(Year, Rec, RecAge) %>%  rename(icR = Rec, icRA = RecAge)),
+ sagstocks$irish_sea %>% select(Year, Rec, RecAge) %>%  rename(isR = Rec, isRA = RecAge)),
+ nafo_2j3kl$N %>% select(Year, '2') %>% rename(nflR = '2') %>% mutate(nflRA = 2)),#
+ nafo_3m$N    %>% select(Year, '1') %>% rename(fcR = '1') %>% mutate(fcRA = 1) ), ##1000s
+ nafo_3no$N %>% select(Year, '3') %>% rename(grbR = '3') %>% mutate(grbRA = 3)),##1000
+ sagstocks$ne_arctic %>% select(Year, Rec, RecAge) %>%  rename(neaR = Rec, neaRA = RecAge)),
+ sagstocks$north_sea %>% select(Year, Rec, RecAge) %>%  rename(nsR = Rec, nsRA = RecAge)),
+ sagstocks$norway %>% select(Year, Rec, RecAge) %>%   rename(noR = Rec, noRA = RecAge)),
+ sagstocks$s_celtic %>% select(Year, Rec, RecAge) %>%  rename(scR = Rec, scRA = RecAge)),
+ sagstocks$w_baltic %>% select(Year, Rec, RecAge) %>%  rename(wbR = Rec, wbRA = RecAge)))
 
-colnames(rec) <- c('Year',
-                   'Eastern Baltic' , 'Faroe Plateau' , 'Georges Bank',
-                   'Greenland' , ##'Gulf of Maine' ,
-                   'Iceland',
-                   'Irish Sea' , 'Newfoundland' , 'Flemish Cap',
-                   'Grand Bank' , 'NE Arctic' , 'North Sea',
-                   'Norway' , 'Southern Celtic' , 'Western Baltic')
+tail(rec) %>%
+    print(width = Inf)
+
+recAge <-
+    rec %>%
+     select(Year, contains("RA"))
+rec <-
+    rec %>%
+    select(!contains("RA"))
+colnames(rec) <-    c('Year',
+                      'Eastern Baltic (age 0)', 'Faroe Plateau  (age 1)',
+                      'Georges Bank (age 1)',
+                      'Greenland (age 1)', ##'Gulf of Maine' ,
+                      'Iceland (age 3)',
+                      'Irish Sea (age 0)' , 'Newfoundland (age 2)', 'Flemish Cap (age 1)',
+                      'Grand Bank (age 3)', 'NE Arctic (age 3)', 'North Sea (age 1)',
+                      'Norway (age 2)', 'Southern Celtic (age 1)', 'Western Baltic (age 1)')
 
 rec <-
     rec %>%
-    pivot_longer(!Year, names_to = 'Stock', values_to = 'r3') %>%
-    arrange(Stock, r3) %>%
+    pivot_longer(!Year, names_to = 'Stock', values_to = 'R') %>%
+    arrange(Stock, R) %>%
     mutate(region = ifelse(Stock == 'Southern Celtic', 's',
                     ifelse(Stock == 'Western Baltic', 's',
                     ifelse(Stock == 'Irish Sea', 's',
@@ -461,14 +510,16 @@ rec <-
                     ##ifelse(Stock == 'Gulf of Maine', 's',
                     ifelse(Stock == 'Flemish Cap', 'm',
                     ifelse(Stock == 'NE Arctic', 'l',
-                    ifelse(Stock == 'Greenland' , 's', 'l'))))))))))))))
+                    ifelse(Stock == 'Greenland' , 's', 'l')))))))))))))) %>%
+        arrange(Stock, Year)
 
-rec <-
+#rec <-
     rec %>%
-    filter(!is.na(r3)) %>%
+    filter(!is.na(R)) %>%
     arrange(Stock, Year) %>%
     group_by(Stock) %>%
-    mutate(rel3 = r3/first(r3))
+    mutate(relR = R/first(R))
+
 ## pdf(file = '../chapter_plots/Fig5v2a.pdf')
 ## rec %>%
 ##     filter(region == 's',
@@ -508,24 +559,26 @@ rec <-
 
 
 
-rec <-
+recdev <-
     rec %>%
     group_by(Stock) %>%
-    mutate(devR3 = r3 - mean(r3)) %>%
+    mutate(devR = R - mean(R, na.rm = TRUE)) %>%
     print(n = Inf)
 
-library(scales)
 
-pdf(file = '../chapter_plots/Fig5.pdf')
-rec %>%
+
+pdf(file = 'chapter_plots/Fig5.pdf')
+recdev %>%
     ggplot() +
-    geom_bar(aes(x = Year, y = devR3), stat='identity') +
+    geom_hline(yintercept = 0, color = 'grey') +
+    geom_bar(aes(x = Year, y = devR), stat='identity') +
     theme_bw() +
-    facet_wrap(.~Stock, scales = 'free', ncol = 2) +
+    facet_wrap(.~Stock, scales = 'free_y', ncol = 2) +
     theme(panel.grid.minor = element_blank(),
           panel.grid.major = element_blank()) +
-    scale_x_continuous(breaks= pretty_breaks()) +
-     ylab('Recruitment age 3 deviations from mean') +
+    scale_y_continuous(labels = scientific) +
+    scale_x_continuous(breaks = seq(1950, 2020, by = 10)) +
+    ylab('Recruitment deviations from mean') +
     xlab('Year')
 dev.off()
 
