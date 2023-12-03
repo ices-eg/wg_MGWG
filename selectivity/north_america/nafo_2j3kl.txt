@@ -1,0 +1,39 @@
+Stock Assessment of Northern Cod (NAFO Divisions 2J3KL) in 2021
+Science Advisory Report 2022/041 (Sep 2022)
+
+https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/41078457.pdf
+
+Stock status from the last full assessment (DFO 2019) indicated that SSB was 48%
+of Blim and scientific advice stated that removals must be kept to the lowest
+possible level until the stock has cleared the critical zone.
+
+This report updates the estimated SSB 2021 / Blim = 52%.
+
+A rebuilding plan for Northern cod was released in 2020 (DFO 2020), with a
+Harvest Decision Rule (HDR) aimed at keeping fishing mortality low while the
+stock is in the critical zone (specifically 25-75% of the LRP).
+
+Stewardship inshore fisheries aim to monitor the stock. The stewardship TAC in
+2020 was 12350 tonnes.
+
+DFO announced in 2017 that Northern cod would be assessed annually for five
+years starting in 2018.
+
+Stomach contents indicate food limitation, as key forage species like capelin
+and shrimp have declined. Estimated M in 2020 is 0.51, while the average M over
+the last 10 years was 0.39.
+
+SSBcurrent in 2021 is 411,000 tonnes.
+
+Average SSB average from 1983-1989 is 790,000 tonnes: 411/790 = 52%.
+
+F for ages 5+ in 2020 was 0.02, similar to the average of the last 10 years.
+
+Average annual recruitment for the five most recent cohorts is 314 million,
+around a quarter of the historical recruitment level from the 1980s.
+
+Catches were 500 kt in 1960-1970 and then 200 kt in 1975-1990. Near zero catch
+since 1992.
+
+Stock       Blim  Bpa  Bcurrent   Notes           Reference
+NAFO 2J3KL   790    -       411   Below Blim      DFO 2022 2J3KL
