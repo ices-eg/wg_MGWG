@@ -17,4 +17,4 @@ Figure 1
 Catch was 100 kt in 1955-1975, 30 kt in 1980-1990, and zero from 1995 to today.
 
 Stock       Blim  Bpa  Bcurrent   Notes           Reference
-NAFO 3NO      60    -         7   Below Blim (+)  NAFO 2021 3M
+NAFO 3NO      60    -         7   Below Blim (+)  NAFO 2021 3NO
