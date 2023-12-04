@@ -1,0 +1,27 @@
+Stock       Blim  Bpa  Bcurrent   Notes           Reference
+Greenland      4    6        22   Above Bpa       ICES 2022 21.1
+NE Arctic    220  460       902   Above Bpa       ICES 2021 27.1-2
+Iceland      125  160       368   Above Bpa       ICES 2023 27.5a
+Faroe         18   25        10   Below Blim †    ICES 2022 27.5b1
+Norway         -   60        34   Below Btarget   ICES 2020 27.1-2coast
+North Sea     70   98        54   Below Blim      ICES 2022 27.47d20
+Kattegat       -    -      0.10*  Below Bref* †   ICES 2023 27.21
+W Baltic      15   23         6   Below Blim      ICES 2022 27.22-24
+E Baltic     109  122        77   Below Blim †    ICES 2023 27.24-32
+Irish         12   17        12   Below Blim †    ICES 2023 27.7a
+S Celtic       4    6         1   Below Blim †    ICES 2023 27.7e-k
+Northern     790    -       411   Below Blim      DFO 2022 2J3KL
+Flemish       15    -        28   Above Blim      NAFO 2023 3M
+Grand         60    -         7   Below Blim †    NAFO 2021 3NO
+Pierre        66    -        32   Below Blim      DFO 2022 3Ps
+Maine         20   40         2   Below Blim      NOAA 2021 Gulf of Maine
+Georges        -    -       2.7** Below Bref**    NOAA 2021 Georges Bank
+
+*: Spawning stock biomass for Kattegat is relative to the average of the stock
+   size in the period from 1997 to 2023. ICES considers the SSB of Kattegat cod
+   to be below possible biomass reference points.
+
+**: Spawning stock biomass proxy for Georges Bank is based on a 3-year smoothed
+    survey index.
+
+†: Scientific advice is zero catch.

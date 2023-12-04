@@ -1,0 +1,17 @@
+ICES 21.1         Greenland  West Greenland inshore cod
+ICES 27.1-2       NE Arctic  Northeast Arctic cod
+ICES 27.1-2coast  Norway     Norwegian coastal waters cod
+ICES 27.47d20     North Sea  North Sea, eastern English Channel, and Skagerrak cod
+ICES 27.5a        Iceland    Icelandic cod
+ICES 27.5b1       Faroe      Faroe Plateau cod
+ICES 27.7a        Irish      Irish Sea cod
+ICES 27.7e-k      Celtic     Western English Channel and southern Celtic Seas cod
+ICES 27.21        Kattegat   Kattegat cod
+ICES 27.22-24     W Baltic   Western Baltic Sea cod
+ICES 27.24-32     E Baltic   Eastern Baltic Sea cod
+NAFO 2J3KL        Northern   Northern cod
+NAFO 3M           Flemish    Flemish Cap cod
+NAFO 3NO          Grand      Southern Grand Bank cod
+NAFO 3Ps          Pierre     St Pierre Bank cod
+NOAA GB           Georges    Georges Bank cod
+NOAA GOM          Maine      Gulf of Maine cod
