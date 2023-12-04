@@ -1,0 +1,28 @@
+Stock Assessment of NAFO Subdivision 3Ps Cod
+
+CSAS Science Advisory Report 2022/022
+
+https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/41063715.pdf
+
+Integrated state-space model, incorporating landings, age comps, time-varying M
+(informed by condition factor), bottom trawl survey indices (3), and CPUE
+indices (2).
+
+SSB 2022 is 31.5, 48% of the LRP.
+
+Current stock is dominated by a single cohort from 2011, with very low
+recruitment since after that.
+
+M has increased from early 2000s and is estimated 0.34 in 2021.
+
+F has declined since 2000 and is estimated 0.03 in 2021.
+
+Catches were around 60 kt from 1960 to 1970 and around 40 kt from 1970 to 1990.
+A brief moratorium lasted only 3 years, from 1994 to 1996. In recent years, the
+annual catch has been below 10 kt.
+
+SSB 2022 is 31.5
+LRP 66
+
+Stock       Blim  Bpa  Bcurrent   Notes           Reference
+NAFO 3Ps      66    -        32   Below Blim      DFO 2022 3Ps

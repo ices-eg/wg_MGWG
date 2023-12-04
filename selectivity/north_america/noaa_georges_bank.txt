@@ -1,0 +1,61 @@
+https://apps-st.fisheries.noaa.gov/stocksmart/
+
+Georges Bank cod
+
+2013
+2015
+2017
+2019
+2021
+
+2021 report:
+
+Georges Bank Atlantic Cod 2021 Management Track Assessment Report (7 pp.)
+
+In the 2019 assessment the stock status could not be quantitatively determined
+due to a lack of reference points associated with the PlanBsmooth approach.
+Nevertheless, it was concluded that the stock status was overfished while
+overfishing status was unknown.
+
+The biomass index is the average survey kg/tow smoothed using a loess. The
+relative exploitation rate is catch/surveyindex.
+
+Table 1
+
+Year  Catch  Bindex  Fproxy
+2011   4400     3.1     0.7
+2012   2700     3.2     0.4
+2013   1800     3.0     0.3
+2014   2300     2.4     0.4
+2015   2300     2.9     0.4
+2016   2700     4.3     0.3
+2017   1800     5.1     0.2
+2018   1200     4.5     0.1
+2019   1300     3.8     0.2
+2020   1100     2.7     0.2
+
+Catches have decreased to less than half, stock size has remained somewhat
+stable, Fproxy has decreased to less than half.
+
+Although the 2021 and 2019 assessments concluded that Overfishing=unknown and
+Overfished=yes, NOAA has taken the approach since 2015 that Overfishing=yes and
+Overfished=yes.
+
+The PlanBsmooth approach estimates the rate of change in the recent 3 years of
+the smooth survey biomass to be (4.5->3.8->2.7) = 0.6. This multiplier is
+applied to the average of the recent 3 years of catch (1193 t) to produce the
+catch advice for 2022 of 729 t.
+
+Special comments
+
+There is not an accepted analytical model.
+
+Figure 1: Biomass index shows a long-term decline from 1990 to 2020. There was a
+temporary increase in 2016-2018, linked to the 2013 cohort.
+
+--------------------------------------------------------------------------------
+
+Conclusion
+
+Stock       Blim  Bpa  Bcurrent   Notes           Reference
+Georges        -    -       2.7*  Below Bref      NOAA 2021 Georges Bank

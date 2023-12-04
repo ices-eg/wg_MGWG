@@ -1,0 +1,47 @@
+https://www.nafo.int/Science/Science-Advice/Stock-advice
+
+Cod in Division 3M
+
+Recommendation for 2024
+
+Catches up to 3/4 Flim are projected to result in a very low probability (<10%)
+of the stock going below Blim and of fishing mortality exceeding Flim in 2024.
+
+All fishing scenarios with fishing mortality less than 2/3 Flim are projected to
+promote growth in SSB.
+
+SC therefore advices that exploitation should not exceed 2/3 Flim in 2024.
+
+Stock status
+
+SSB declined rapidly since 2017 but has remained stable during the last 3 years
+and is estimated to be above Blim.
+
+Since 2013, recruitment has varied at intermediate levels, much lower than those
+observed in 2011-2012.
+
+F has remained below Flim since the fishery reopened in 2010. F has decreased
+since 2019 and in 2022 is below Flim with a high probability.
+
+Figure 1
+
+Catch was 30 kt in 1963-1995, zero catches in 1999-2008, then 10 kt 2010-2019,
+and again very low in 2020-2022.
+
+SSB/Blim has been > 1 since 2008. In recent years, SSB/Blim has declined from 5
+to 2.
+
+F/Flim has been < 1 since 2000.
+
+Recruitment was nearly zero from 1993 to 2004 but has been better since then.
+
+Reference points
+
+Blim = SSB2007 = 14755 t
+Flim = F30%SPR = 0.157
+
+SSB 2023 = 27709
+SSB 2024 = 30747
+
+Stock       Blim  Bpa  Bcurrent   Notes           Reference
+NAFO 3M       15    -        28   Above Blim      NAFO 2023 3M

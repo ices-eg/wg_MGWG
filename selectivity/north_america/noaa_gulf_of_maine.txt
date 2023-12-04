@@ -1,0 +1,28 @@
+https://apps-st.fisheries.noaa.gov/stocksmart/
+
+Gulf of Maine cod
+
+The 2021 assessment is an operational assessment of the NEFSC 2013 benchmark
+assessment. This stock was most recently assessed in 2019. This assessment
+updates catch data, survey indices, and stock projections have been updated
+through 2024.
+
+There are two models brought forward from the NEFSC 2013 benchmark assessment:
+the M=0.2 model (natural mortality is 0.2) and the M-ramp model (natural
+mortality increases from 0.2 to 0.4).
+
+Status of the stock
+
+Based on the 2021 assessment, the stock status of the Gulf of Maine cod is
+Overfished=yes and Overfishing=yes for the M=0.2 model, and Overfished=yes and
+Overfishing=no for the M-ramp model.
+
+SSB in 2019 was estimated to 1969 t (M=0.2) and 3223 t (M-ramp) which is 5% of
+the target biomass (SSBMSY proxy 39912 and 60010 t).
+
+Fishing mortality for the fully selected ages (FFull) was estimated to be 0.249
+(M=0.2) and 0.172 (M-ramp) which is 144% and 98% of the FMSY proxy (F40% 0.173
+and 0.175).
+
+Stock       Blim  Bpa  Bcurrent   Notes           Reference
+GOM M=0.2      -   40         2   Below BMSY      NOAA 2021 Gulf of Maine
