@@ -16,7 +16,12 @@ temp <- str_remove(temp, "\\.csv$")
 temp <- sub("faroe", "faroe_plateau", temp)
 temp <- sub("irish", "irish_sea", temp)
 names(sagstocks) <- temp
-
+temp
+##need ssb and landings for
+##georges bank ssb mt landings mt
+##nafo_2j3kl ssb tonnes landings tonnes
+##nafo_3m ssb tonnes landings tonnes
+##nafo_3no SSB and landings tonnes
 setwd("../../stocks")
 source("e_baltic.R")
 source("faroe_plateau.R")
@@ -35,6 +40,8 @@ source("north_sea.R")
 source("norway.R")
 source("s_celtic.R")
 source("w_baltic.R")
+
+
 
 
 
@@ -583,120 +590,105 @@ recdev %>%
 dev.off()
 
 
-## pdf(file = '../chapter_plots/Fig5v3a.pdf')
-## rec %>%
-##     filter(region == 's') %>%
-##     ggplot() +
-##     geom_bar(aes(x = Year, y = devR3), stat='identity') +
-##     facet_wrap(.~Stock, ncol = 1) +
-##     theme_bw() +
-##     theme(panel.grid.minor = element_blank(),
-##           panel.grid.major = element_blank()) +
-##     ylab('Deviations from mean Recruitment Age 3') +
-##     xlab('Year')
-## dev.off()
-## pdf(file = '../chapter_plots/Fig5v3b.pdf')
-## rec %>%
-##     filter(region == 'm') %>%
-##     ggplot() +
-##     geom_bar(aes(x = Year, y = devR3), stat='identity') +
-##     facet_wrap(.~Stock, ncol = 1) +
-##     theme_bw() +
-##     theme(panel.grid.minor = element_blank(),
-##           panel.grid.major = element_blank()) +
-##     ylab('Deviations from mean Recruitment Age 3') +
-##     xlab('Year')
-## dev.off()
-## pdf(file = '../chapter_plots/Fig5v3c.pdf')
-## rec %>%
-##     filter(region == 'l') %>%
-##     ggplot() +
-##     geom_bar(aes(x = Year, y = devR3), stat='identity') +
-##     facet_wrap(.~Stock, ncol = 1) +
-##     theme_bw() +
-##     theme(panel.grid.minor = element_blank(),
-##           panel.grid.major = element_blank()) +
-##     ylab('Deviations from mean Recruitment Age 3') +
-##     xlab('Year')
-## dev.off()
+##landings
+sagstocks
+
+gbland  <- read_csv('../../../data/georges_bank/landings.csv')
+nflland <- read_csv('../../../data/nafo_2j3kl/landings.csv')
+flland  <- read_csv('../../../data/nafo_3m/landings.csv')
+grbland <- read_csv('../../../data/nafo_3no/landings.csv')
+grlland <- read_csv('../../../data/greenland/landings.csv')
+##georges bank ssb and landings mt
+##nafo_2j3kl nfl ssb and landings tonnes
+##nafo_3m flemish ssb tonnes landings tonnes
+##nafo_3no grand bank SSB and landings tonnes
 
 
-## rec <-
-##     rec %>%
-##     group_by(Stock) %>%
-##     mutate(devR3v2 = devR3/ mean(r3)) %>%
-##     print(n = Inf)
-## pdf(file = '../chapter_plots/Fig5v4a.pdf')
-## rec %>%
-##     filter(region == 's') %>%
-##     ggplot() +
-##     geom_bar(aes(x = Year, y = devR3v2), stat='identity') +
-##     facet_wrap(.~Stock, ncol = 1) +
-##     theme_bw() +
-##     theme(panel.grid.minor = element_blank(),
-##           panel.grid.major = element_blank()) +
-##     ylab('Deviations from mean Recruitment Age 3') +
-##     xlab('Year')
-## dev.off()
-## pdf(file = '../chapter_plots/Fig5v4b.pdf')
-## rec %>%
-##     filter(region == 'm') %>%
-##     ggplot() +
-##     geom_bar(aes(x = Year, y = devR3v2), stat='identity') +
-##     facet_wrap(.~Stock, ncol = 1) +
-##     theme_bw() +
-##     theme(panel.grid.minor = element_blank(),
-##           panel.grid.major = element_blank()) +
-##     ylab('Deviations from mean Recruitment Age 3') +
-##     xlab('Year')
-## dev.off()
-## pdf(file = '../chapter_plots/Fig5v4c.pdf')
-## rec %>%
-##     filter(region == 'l') %>%
-##     ggplot() +
-##     geom_bar(aes(x = Year, y = devR3v2), stat='identity') +
-##     facet_wrap(.~Stock, ncol = 1) +
-##     theme_bw() +
-##     theme(panel.grid.minor = element_blank(),
-##           panel.grid.major = element_blank()) +
-##     ylab('Deviations from mean Recruitment Age 3') +
-##     xlab('Year')
-## dev.off()
+
+##recruitment
+land <- tibble(full_join(
+    full_join(
+        full_join(
+            full_join(
+                full_join(
+                    full_join(
+                        full_join(
+                            full_join(
+                                full_join(
+                                    full_join(
+                                        full_join(
+                                            full_join(
+                                                full_join(
+ sagstocks$e_baltic %>% select(Year, Landings) %>% rename(ebL = Landings), ##tonnes
+ sagstocks$faroe_plateau %>% select(Year, Landings) %>%  rename(fpL = Landings)), ##tonnes
+ gbland  %>%  select(Year, Landings) %>% mutate(Landings=Landings * 1000) %>% rename(gbL = Landings)), ##now tonnes
+ grlland  %>%  rename(glL = Landings)), ##tonnes
+ sagstocks$iceland   %>% select(Year, Landings) %>% mutate(Landings = Landings * 1000) %>% ##now tonnes
+ rename(icL = Landings)),
+ sagstocks$irish_sea %>% select(Year, Landings) %>%  rename(isL = Landings)), ##??
+ nflland %>% rename(nflL = Landings)),  ##tonnes
+ flland %>% rename(fcL = Landings)),  ##tonnes
+ grbland %>% rename(grbL = Landings)),  ##tonnes
+ sagstocks$ne_arctic %>% select(Year, Landings) %>%  rename(neaL = Landings)),
+ sagstocks$north_sea %>% select(Year, Landings) %>%  rename(nsL = Landings)), ##tonnes
+ sagstocks$norway %>% select(Year, Landings) %>%   rename(noL = Landings)), ##tonnes
+ sagstocks$s_celtic %>% select(Year, Landings) %>%  rename(scL = Landings)), ##tonnes
+ sagstocks$w_baltic %>% select(Year, Landings) %>%  rename(wbL = Landings))) ##tonnes
+
+tail(land, 13) %>%
+    print(width = Inf)
 
 
-## pdf(file = '../../chapter_plots/Fig5a.pdf')
-## rec %>%
-##     filter(region == 'ns',
-##     !is.na(r3)) %>%
-##     ggplot() +
-##     geom_line(aes(x = Year, y = r3, linetype = Stock)) +
-##     theme_bw() +
-##     theme(panel.grid.minor = element_blank(),
-##           panel.grid.major = element_blank()) +
-##     ylab('Recruitment Age 3 (1000s)') +
-##     xlab('Year')
-## dev.off()
-## pdf(file = '../../chapter_plots/Fig5b.pdf')
-## rec %>%
-##     filter(region == 'nus',
-##     !is.na(r3)) %>%
-##     ggplot() +
-##     geom_line(aes(x = Year, y = r3, linetype = Stock)) +
-##     theme_bw() +
-##     theme(panel.grid.minor = element_blank(),
-##           panel.grid.major = element_blank()) +
-##     ylab('Recruitment Age 3 (1000s)') +
-##     xlab('Year')
-## dev.off()
-## pdf(file = '../../chapter_plots/Fig5c.pdf')
-## rec %>%
-##     filter(region == 'igf',
-##     !is.na(r3)) %>%
-##     ggplot() +
-##     geom_line(aes(x = Year, y = r3, linetype = Stock)) +
-##     theme_bw() +
-##     theme(panel.grid.minor = element_blank(),
-##           panel.grid.major = element_blank()) +
-##     ylab('Recruitment Age 3 (1000s)') +
-##     xlab('Year')
-## dev.off()
+colnames(land) <-    c('Year',
+                      'Eastern Baltic', 'Faroe Plateau',
+                      'Georges Bank',
+                      'Greenland', ##'Gulf of Maine' ,
+                      'Iceland',
+                      'Irish Sea' , 'Newfoundland', 'Flemish Cap',
+                      'Grand Bank', 'NE Arctic', 'North Sea',
+                      'Norway', 'Southern Celtic', 'Western Baltic')
+
+land <-
+land %>%
+    pivot_longer(!Year, names_to = 'Stock', values_to = 'Landings') %>%
+    arrange(Stock, Landings)
+
+
+landdev <-
+    land %>%
+    group_by(Stock) %>%
+    mutate(devL = Landings - mean(Landings, na.rm = TRUE)) %>%
+    print(n = Inf)
+
+
+pdf(file = '../../../chapter_plots/Fig6.pdf')
+landdev %>%
+    ggplot() +
+    geom_hline(yintercept = 0, color = 'grey') +
+    geom_bar(aes(x = Year, y = Landings), stat='identity') +
+    theme_bw() +
+    facet_wrap(.~Stock, scales = 'free_y', ncol = 2) +
+    theme(panel.grid.minor = element_blank(),
+          panel.grid.major = element_blank()) +
+    scale_y_continuous(labels = scientific) +
+    scale_x_continuous(breaks = seq(1950, 2020, by = 10)) +
+    ylab('Landings (tonnes)') +
+    xlab('Year')
+dev.off()
+
+
+#pdf(file = 'chapter_plots/Fig5.pdf')
+landdev %>%
+    ggplot() +
+    geom_hline(yintercept = 0, color = 'grey') +
+    geom_bar(aes(x = Year, y = devL), stat='identity') +
+    theme_bw() +
+    facet_wrap(.~Stock, scales = 'free_y', ncol = 2) +
+    theme(panel.grid.minor = element_blank(),
+          panel.grid.major = element_blank()) +
+    scale_y_continuous(labels = scientific) +
+    scale_x_continuous(breaks = seq(1950, 2020, by = 10)) +
+    ylab('Landings deviations from mean') +
+    xlab('Year')
+
+
