@@ -22,6 +22,7 @@ Georges        -    -       2.7** Below Bref**    NOAA 2021 Georges Bank
    to be below possible biomass reference points.
 
 **: Spawning stock biomass proxy for Georges Bank is based on a 3-year smoothed
-    survey index.
+    survey index. NOAA considers the stock status of Georges Bank cod to be
+    overfished.
 
 †: Scientific advice is zero catch.
