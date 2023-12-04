@@ -12,8 +12,7 @@ mkdir("data")
 cp("boot/data/stocks/stocks.rds", "data")
 cp("boot/data/tonnes.csv", "data")
 
-# Convert txt -> csv
-stock.names <- read.fwf("boot/data/stock_names.txt", c(17, 11, 100),
-                        col.names=c("Code", "Label", "Name"))
-stock.names <- data.frame(lapply(stock.names, trimws))
+# Simplify column names
+stock.names <- read.taf("boot/data/stock_names.csv")
+names(stock.names) <- c("Code", "Label", "Name")
 write.taf(stock.names, dir="data", quote=TRUE)
