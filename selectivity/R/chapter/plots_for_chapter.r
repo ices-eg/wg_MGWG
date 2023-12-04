@@ -3,10 +3,10 @@ rm(list = ls())
 library(tidyverse);library(gplots)  # rich.colors
 library(scales); library(gridExtra)
 source("selectivity/R/functions/stdline.R")
-
+getwd()
 ## 1  Import
 ##sag stocks
-setwd("selectivity/R/sag/data")
+setwd("selectivity/R/ices_sag/data")
 temp <- list.files(pattern="\\.csv$")
 temp <- setdiff(temp, "assessments.csv")
 temp <- setdiff(temp, "assessments_all.csv")
@@ -692,3 +692,98 @@ landdev %>%
     xlab('Year')
 
 
+
+##fbar for 2j
+ebf <- read_csv('../data/e_baltic/fbar.csv')      %>% rename(eb = F4_6)
+fpf <- read_csv('../data/faroe_plateau/fbar.csv') %>% rename(fp = F3_7)
+gbf <- read_csv('../data/georges_bank/fbar.csv')  %>% rename(gb = F5_8)
+glf <- read_csv('../data/greenland/fbar.csv')     %>% rename(gl = F4_8)
+icf <- read_csv('../data/iceland/fbar.csv')       %>% rename(ic = F5_10)
+isf <- read_csv('../data/irish_sea/fbar.csv')     %>% rename(is = F2_4)
+fcf <- read_csv('../data/nafo_3m/fbar.csv')       %>% rename(fc = F3_5)
+grf1 <- read_csv('../data/nafo_3no/fbar.csv')     %>% rename(gr1 = F4_6) %>% select(-F6_9)
+grf2 <- read_csv('../data/nafo_3no/fbar.csv')     %>% rename(gr1 = F6_9) %>% select(-F4_6)
+neaf <- read_csv('../data/ne_arctic/fbar.csv')   %>% rename(nea = F5_10)
+nsf <- read_csv('../data/north_sea/fbar.csv')    %>% rename(ns = F2_4)
+nof <- read_csv('../data/norway/fbar.csv')       %>% rename(no = F4_7)
+scf <- read_csv('../data/s_celtic/fbar.csv')     %>% rename(sc = F2_5)
+wbf <- read_csv('../data/w_baltic/fbar.csv')     %>% rename(wb = F3_5)
+
+fbar <-
+    left_join(
+    left_join(
+    left_join(
+        left_join(
+            left_join(
+                left_join(
+                    left_join(
+                        left_join(
+                            left_join(
+                                left_join(
+                                    left_join(
+                                        left_join(ebf, fpf), gbf), glf), icf), isf), fcf), grf1), neaf), nsf),
+        nof), scf), wbf)
+
+
+colnames(fbar) <-    c('Year',
+                       'Eastern Baltic (F4-6)',
+                       'Faroe Plateau  (F3-7)',
+                      'Georges Bank (F5-8)',
+                      'Greenland (F4-8)', ##'Gulf of Maine' ,
+                      'Iceland (F5-10)',
+                      'Irish Sea (F2-4)' , #'Newfoundland (age 2)',
+                      'Flemish Cap (F3-5)',
+                      'Grand Bank (F4-6)', 'NE Arctic (F5-10)', 'North Sea (F2-4)',
+                      'Norway (F4-7)', 'Southern Celtic (F2-5)', 'Western Baltic (F3-5)')
+
+getwd()
+
+pdf(file = '../../chapter_plots/Fig7.pdf')
+fbar %>%
+    pivot_longer(!Year, names_to = 'Stock', values_to = 'fbar') %>%
+    ggplot(aes(y = fbar, x = Year)) +
+    geom_line() +
+    facet_wrap(.~Stock, ncol = 2) +
+    theme_bw() +
+    theme(panel.grid.minor = element_blank(),
+              panel.grid.major = element_blank()) +
+    scale_x_continuous(breaks = seq(1950, 2020, by = 10)) +
+    ylab('Fbar') +
+    xlab('Year')
+dev.off()
+
+
+
+## ebfba <- read_csv('../data/e_baltic/fbar.csv')      %>% mutate(fbarage = 'F4-6') %>% select(Year, fbarage)
+## fpfba <- read_csv('../data/faroe_plateau/fbar.csv') %>% mutate(fbarage = 'F3-7') %>% select(Year, fbarage)
+## gbfba <- read_csv('../data/georges_bank/fbar.csv')  %>% mutate(fbarage = 'F5-8') %>% select(Year, fbarage)
+## glfba <- read_csv('../data/greenland/fbar.csv')     %>% mutate(fbarage = 'F4-8') %>% select(Year, fbarage)
+## icfba <- read_csv('../data/iceland/fbar.csv')       %>% mutate(fbarage = 'F5-10') %>% select(Year, fbarage)
+## isfba <- read_csv('../data/irish_sea/fbar.csv')     %>% mutate(fbarage = 'F5-10') %>% select(Year, fbarage)
+## fcfba <- read_csv('../data/nafo_3m/fbar.csv')       %>% mutate(fbarage = 'F3-5') %>% select(Year, fbarage)
+## grf1ba <- read_csv('../data/nafo_3no/fbar.csv')     %>% mutate(fbarage = 'F4-6') %>%
+##     select(-F6_9) %>% select(Year, fbarage)
+## grf2ba <- read_csv('../data/nafo_3no/fbar.csv')    %>% mutate(fbarage = 'F6-9') %>%
+##     select(-F4_6) %>% select(Year, fbarage)
+## neafba <- read_csv('../data/ne_arctic/fbar.csv')   %>% mutate(fbarage = 'F5-10') %>% select(Year, fbarage)
+## nsfba <- read_csv('../data/north_sea/fbar.csv')    %>% mutate(fbarage = 'F2-4') %>% select(Year, fbarage)
+## nofba <- read_csv('../data/norway/fbar.csv')       %>% mutate(fbarage = 'F4-7') %>% select(Year, fbarage)
+## scfba <- read_csv('../data/s_celtic/fbar.csv')     %>% mutate(fbarage = 'F2-5') %>% select(Year, fbarage)
+## wbfba <- read_csv('../data/w_baltic/fbar.csv')     %>% mutate(fbarage = 'F3-5') %>% select(Year, fbarage)
+
+## fbarage <-
+##     bind_rows(
+##     bind_rows(
+##     bind_rows(
+##         bind_rows(
+##             bind_rows(
+##                 bind_rows(
+##                     bind_rows(
+##                         bind_rows(
+##                             bind_rows(
+##                                 bind_rows(
+##                                     bind_rows(
+##                                         bind_rows(ebfba, fpfba), gbfba), glfba), icfba), isfba), fcfba), grf1ba),
+##                 neafba), nsfba),
+##         nofba), scfba), wbfba)
+## fbarage
