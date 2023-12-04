@@ -11,7 +11,7 @@ ICES 27.22-24     W Baltic   Western Baltic Sea cod
 ICES 27.24-32     E Baltic   Eastern Baltic Sea cod
 NAFO 2J3KL        Northern   Northern cod
 NAFO 3M           Flemish    Flemish Cap cod
-NAFO 3NO          Grand      Southern Grand Bank cod
+NAFO 3NO          Grand      Grand Bank cod
 NAFO 3Ps          Pierre     St Pierre Bank cod
 NOAA GB           Georges    Georges Bank cod
 NOAA GOM          Maine      Gulf of Maine cod
