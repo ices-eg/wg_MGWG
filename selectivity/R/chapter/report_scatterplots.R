@@ -21,7 +21,6 @@ nudge <- function(x, n, dx=0, dy=0.25)
   x[n,] <- x[n,] + c(dx, dy)
   x
 }
-p1 <- nudge(p1, "Celtic", -0.35, 0.2)
 p1 <- nudge(p1, "E Baltic", -0.25, -0.25)
 p1 <- nudge(p1, "Faroe", 0.1, -0.25)
 p1 <- nudge(p1, "Flemish", -0.2)
@@ -37,6 +36,7 @@ p1 <- nudge(p1, "North Sea", 0.5, -0.25)
 p1 <- nudge(p1, "Northern", 0, -0.25)
 p1 <- nudge(p1, "Norway")
 p1 <- nudge(p1, "Pierre")
+p1 <- nudge(p1, "S Celtic", -0.35, 0.2)
 p1 <- nudge(p1, "W Baltic")
 
 nudge <- function(x, n, dx=0, dy=0.28)
@@ -44,7 +44,6 @@ nudge <- function(x, n, dx=0, dy=0.28)
   x[n,] <- x[n,] + c(dx, dy)
   x
 }
-p2 <- nudge(p2, "Celtic")
 p2 <- nudge(p2, "E Baltic")
 p2 <- nudge(p2, "Faroe", 0.43, 0)
 p2 <- nudge(p2, "Flemish")
@@ -60,6 +59,7 @@ p2 <- nudge(p2, "North Sea")
 p2 <- nudge(p2, "Northern", -0.5, -0.2)
 p2 <- nudge(p2, "Norway")
 p2 <- nudge(p2, "Pierre")
+p2 <- nudge(p2, "S Celtic")
 p2 <- nudge(p2, "W Baltic", -0.1, -0.28)
 
 pdf("report/Fig3.pdf", width=6, height=12)

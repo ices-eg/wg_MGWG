@@ -26,7 +26,7 @@ summary$Label <- c("E Baltic", "Faroe", "Georges",
                    "Greenland", "Maine", "Iceland", "Irish",
                    "Kattegat", "Northern", "Flemish", "Grand",
                    "Pierre", "NE Arctic", "North Sea",
-                   "Norway", "Celtic", "W Baltic")
+                   "Norway", "S Celtic", "W Baltic")
 stopifnot(summary$Label %in% stock.names$Label)  # confirm standard stock names
 summary$Years <- sapply(summary$id, years)
 summary$Catch <- sapply(summary$id, catch)
