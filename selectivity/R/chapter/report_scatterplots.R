@@ -62,21 +62,21 @@ p2 <- nudge(p2, "Norway")
 p2 <- nudge(p2, "Pierre")
 p2 <- nudge(p2, "W Baltic", -0.1, -0.28)
 
-# Plot Abar~A50mat
-pdf("report/abar_vs_a50mat.pdf", width=6, height=6)
-par(plt=c(0.15, 0.97, 0.15, 0.97))
+pdf("report/Fig3.pdf", width=6, height=12)
+# Abar~A50mat
+par(mfrow=c(2,1))
+par(plt=c(0.15, 0.97, 0.20, 0.97))
 plot(NA, xlim=c(0,8), ylim=c(0,8), xlab="Age at 50% maturity",
      ylab="Average age in catches")
+text(0.2, 7.8, "(a)")
 abline(a=0, b=1, lty=3, lwd=2.5, col="gray")
 points(AbarCatch~A50mat, data=summary, pch=16)
 text(y~x, data=p1, labels=rownames(p1), cex=0.8)
-dev.off()
-
-# Plot W5~A50mat
-pdf("report/w5_vs_a50mat.pdf", width=6, height=6)
-par(plt=c(0.15, 0.97, 0.15, 0.97))
+# W5~A50mat
+par(plt=c(0.15, 0.97, 0.20, 0.97))
 plot(NA, xlim=c(0,8), ylim=c(0,10), xlab="Age at 50% maturity",
      ylab="Average weight at age 5 (kg)")
+text(0.2, 9.7, "(b)")
 points(W5~A50mat, data=summary, pch=16)
 text(y~x, data=p2, labels=rownames(p2), cex=0.8)
 dev.off()
