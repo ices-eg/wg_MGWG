@@ -1,6 +1,6 @@
 ## Run analysis, write model results
 
-## Before: stocks.RData, tonnes.csv (data)
+## Before: stock_names.csv, stocks.RData, tonnes.csv (data)
 ## After:  summary.csv (model)
 
 library(TAF)
@@ -10,6 +10,7 @@ source("utilities.R")
 
 mkdir("model")
 
+stock.names <- read.taf("data/stock_names.csv")
 stocks <- readRDS("data/stocks.rds")
 tonnes <- read.taf("data/tonnes.csv")
 
@@ -26,6 +27,7 @@ summary$Label <- c("E Baltic", "Faroe", "Georges",
                    "Kattegat", "Northern", "Flemish", "Grand",
                    "Pierre", "NE Arctic", "North Sea",
                    "Norway", "Celtic", "W Baltic")
+stopifnot(summary$Label %in% stock.names$Label)  # confirm standard stock names
 summary$Years <- sapply(summary$id, years)
 summary$Catch <- sapply(summary$id, catch)
 summary$AbarCatch <- sapply(stocks, abar_catch)
