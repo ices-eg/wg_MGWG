@@ -18,14 +18,14 @@ tonnes <- read.taf("data/tonnes.csv")
 summary <- data.frame(id=names(tonnes)[-1])
 summary$Stock <- c("Eastern Baltic", "Faroe Plateau", "Georges Bank",
                    "Greenland inshore", "Gulf of Maine", "Iceland", "Irish Sea",
-                   "Kattegat", "NAFO 2J3KL", "NAFO 3M", "NAFO 3NO", "NAFO 3Ps",
-                   "Northeast Arctic", "North Sea", "Norway coastal",
-                   "Southern Celtic", "Western Baltic")
+                   "Kattegat", "Northern", "Flemish Cap", "Grand Bank",
+                   "St Pierre", "Northeast Arctic", "North Sea",
+                   "Norway coastal", "Southern Celtic", "Western Baltic")
 summary$Label <- c("E Baltic", "Faroe", "Georges",
                    "Greenland", "Maine", "Iceland", "Irish",
-                   "Kattegat", "2J3KL", "3M", "3NO", "3Ps",
-                   "NE Arctic", "North Sea", "Norway",
-                   "Celtic", "W Baltic")
+                   "Kattegat", "Northern", "Flemish", "Grand",
+                   "Pierre", "NE Arctic", "North Sea",
+                   "Norway", "Celtic", "W Baltic")
 summary$Years <- sapply(summary$id, years)
 summary$Catch <- sapply(summary$id, catch)
 summary$AbarCatch <- sapply(stocks, abar_catch)
