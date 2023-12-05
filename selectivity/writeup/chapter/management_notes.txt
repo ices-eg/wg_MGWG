@@ -1,0 +1,46 @@
+Management
+
+Atlantic cod fisheries are managed by ministries, departments, commissions, and
+councils that represent the coastal countries and states involved in the
+fisheries. General management objectives include the conservation of fish stocks
+and protecting the marine environment, while optimizing the long-term economic
+and social benefits of the fisheries. A key instrument in fisheries management
+is the restriction of the amount of fishing that takes place within each year,
+usually by limiting the total allowable catch in tonnes or sometimes by limiting
+the number of fishing days in the year.
+
+Limit reference points have been defined that indicate the minimum spawning
+stock size to ensure sustainable levels of recruitment for a given stock.
+Precautionary reference points are sometimes also defined, slightly above the
+limit reference points, to take into account the imperfect information and
+statistical uncertainty about the estimated current stock size. Target reference
+points may also be defined, although they often refer to an optimal constant
+fishing pressure, rather than the stock size that is subject to natural
+fluctuations.
+
+In general, the scientific advice is to apply an optimal fishing pressure, but
+to reduce the fishing pressure when the stock is below a precautionary reference
+point, and to reduce fishing to a minimum if the stock falls below the limit
+reference point. A common definition of an overfished stock is when the spawning
+stock biomass is below the limit or precautionary reference point.
+
+Three out of the 17 cod stocks compared in this chapter are in a healthy state,
+above the precautionary reference points, all found in the Northeast Atlantic.
+They are the Northeast Arctic cod, the Icelandic cod, and the Western Greenland
+inshore cod (Table 3). The other 14 are all below the reference point defining
+them as overfished and the scientific advice is either zero catch or rebuilding
+the stock with reduced fishing pressure.
+
+The Eastern Baltic cod is a special case where the scientific advice has a
+special emphasis on the degradation of ecosystem status, resulting from
+cumulative anthropogenic pressures and climate change. The recommendation is
+habitat restoration efforts, with a focus on reducing eutrophication to improve
+bottom oxygen content. Low growth, poor condition, and high natural mortality of
+Eastern Baltic cod is linked to poor oxygen status, reduced availability of fish
+prey, and high levels of parasite infections (ICES 2023).
+
+A positive sign of a stock recovery comes from the Northern cod stock, where
+after a moratorium of three decades the spawning stock size is currently
+estimated around 400 thousand tonnes (DFO 2022). A severely overfished cod stock
+can take decades to rebuild and can also be affected by major restructuring of
+marine food webs and fisheries (Frank et al. 2011).
