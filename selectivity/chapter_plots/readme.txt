@@ -1,0 +1,1 @@
+Figure 6 Greenland, 3M, and 3NO are all reported as 'catches'
