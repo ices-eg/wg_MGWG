@@ -16,6 +16,7 @@ temp <- str_remove(temp, "\\.csv$")
 temp <- sub("faroe", "faroe_plateau", temp)
 temp <- sub("irish", "irish_sea", temp)
 names(sagstocks) <- temp
+
 temp
 ##need ssb and landings for
 ##georges bank ssb mt landings mt
@@ -336,6 +337,18 @@ pdf(file = 'chapter_plots/Fig4.pdf')
 grid.arrange(ssbs, ssbm, ssbl)
 dev.off()
 
+SSB2 %>%
+    group_by(Stock) %>%
+    filter(!is.na(SSB)) %>%
+    mutate(maxSSB = max(SSB)) %>%
+    mutate(prSSB = SSB/maxSSB) %>%
+    summarize(min = min(prSSB)) %>%
+    arrange(min)
+
+SSB2 %>%
+    ggplot(aes(x = Year, y = SSB))+
+    geom_line() +
+    facet_wrap(.~Stock, scales = 'free')
 
 SSB2 %>%
     filter(region == 'l',
@@ -520,6 +533,15 @@ rec <-
                     ifelse(Stock == 'Greenland' , 's', 'l')))))))))))))) %>%
         arrange(Stock, Year)
 
+
+rec %>%
+    group_by(Stock) %>%
+    filter(!is.na(R)) %>%
+    mutate(maxR = max(R)) %>%
+    mutate(prR = R/maxR) %>%
+    summarize(min = min(prR)) %>%
+    arrange(min)
+
 #rec <-
     rec %>%
     filter(!is.na(R)) %>%
@@ -605,7 +627,7 @@ grlland <- read_csv('../../../data/greenland/landings.csv')
 
 
 
-##recruitment
+##landings
 land <- tibble(full_join(
     full_join(
         full_join(
@@ -702,7 +724,7 @@ icf <- read_csv('../data/iceland/fbar.csv')       %>% rename(ic = F5_10)
 isf <- read_csv('../data/irish_sea/fbar.csv')     %>% rename(is = F2_4)
 fcf <- read_csv('../data/nafo_3m/fbar.csv')       %>% rename(fc = F3_5)
 grf1 <- read_csv('../data/nafo_3no/fbar.csv')     %>% rename(gr1 = F4_6) %>% select(-F6_9)
-grf2 <- read_csv('../data/nafo_3no/fbar.csv')     %>% rename(gr1 = F6_9) %>% select(-F4_6)
+#grf2 <- read_csv('../data/nafo_3no/fbar.csv')     %>% rename(gr1 = F6_9) %>% select(-F4_6)
 neaf <- read_csv('../data/ne_arctic/fbar.csv')   %>% rename(nea = F5_10)
 nsf <- read_csv('../data/north_sea/fbar.csv')    %>% rename(ns = F2_4)
 nof <- read_csv('../data/norway/fbar.csv')       %>% rename(no = F4_7)
