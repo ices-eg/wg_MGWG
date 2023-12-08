@@ -17,7 +17,6 @@ temp <- sub("faroe", "faroe_plateau", temp)
 temp <- sub("irish", "irish_sea", temp)
 names(sagstocks) <- temp
 
-temp
 ##need ssb and landings for
 ##georges bank ssb mt landings mt
 ##nafo_2j3kl ssb tonnes landings tonnes
@@ -210,13 +209,14 @@ matigf <-
     geom_line(aes(x = age, y = mat, linetype = Stock)) +
     theme_bw() +
     theme(panel.grid.minor = element_blank(),
-          panel.grid.major = element_blank()) +
+          panel.grid.major = element_blank(),
+          legend.title=element_blank()) +
     ylab('Proportion mature') +
     xlab('Age') +
     scale_x_continuous(breaks = seq(0, 15, by = 1))
 
-
-pdf(file = 'chapter_plots/Fig2.pdf')
+getwd()
+pdf(file = '../chapter_plots/Fig2.pdf')
 grid.arrange(matns, matnus, matigf)
 dev.off()
 
