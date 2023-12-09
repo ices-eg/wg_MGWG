@@ -5,7 +5,7 @@ source("../functions/stdplot.R")
 
 path <- "../../data/gulf_of_maine"
 dims(path)
-yrs <- 2007:2016
+yrs <- 2002:2011
 ages <- as.character(1:8)
 plus <- FALSE
 minage <- ages[1]
@@ -67,7 +67,9 @@ mat <- colMeans(mat[ages])
 ## stdplot(wstock, "Average stock weights", "Weight (kg)")
 
 ## 6  Export
+SSB <- read("SSB", path, plus)
 
 gulf_of_maine <-
   list(N=N, Ninit=Ninit, M=M, wcatch=wcatch, wstock=wstock,
-       B=B, BPR=BPR, C=C, Cp=Cp, Fmort=Fmort, S=S, mat=mat)
+       B=B, BPR=BPR, C=C, Cp=Cp, Fmort=Fmort, S=S, mat=mat,
+       SSB = SSB)

@@ -3,9 +3,9 @@ source("../functions/dims.R")
 source("../functions/read.R")
 source("../functions/stdplot.R")
 
-path <- "../../data/gulf_of_maine_2013"
+path <- "../../data/gulf_of_maine_2017"
 dims(path)
-yrs <- 2002:2011
+yrs <- 2007:2016
 ages <- as.character(1:8)
 plus <- FALSE
 minage <- ages[1]
@@ -68,6 +68,6 @@ mat <- colMeans(mat[ages])
 
 ## 6  Export
 
-gulf_of_maine_2013 <-
+gulf_of_maine_2017 <-
   list(N=N, Ninit=Ninit, M=M, wcatch=wcatch, wstock=wstock,
        B=B, BPR=BPR, C=C, Cp=Cp, Fmort=Fmort, S=S, mat=mat)
