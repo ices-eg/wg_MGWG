@@ -2,17 +2,17 @@ rm(list = ls())
 ## Overview plots: weight, biomass per recruit, selectivity, catch, maturity
 library(tidyverse);library(gplots)  # rich.colors
 library(scales); library(gridExtra)
-source("selectivity/R/functions/stdline.R")
-getwd()
+source("../functions/stdline.R")
+
 ## 1  Import
 ##sag stocks
-setwd("selectivity/R/ices_sag/data")
-temp <- list.files(pattern="\\.csv$")
-temp <- setdiff(temp, "assessments.csv")
-temp <- setdiff(temp, "assessments_all.csv")
+
+temp <- list.files("../ices_sag/data", pattern="\\.csv$", full=TRUE)
+temp <- temp[basename(temp) != "assessments.csv"]
+temp <- temp[basename(temp) != "assessments_all.csv"]
 sagstocks <- lapply(temp, read_csv)
 
-temp <- str_remove(temp, "\\.csv$")
+temp <- basename(str_remove(temp, "\\.csv$"))
 temp <- sub("faroe", "faroe_plateau", temp)
 temp <- sub("irish", "irish_sea", temp)
 names(sagstocks) <- temp
@@ -22,12 +22,12 @@ names(sagstocks) <- temp
 ##nafo_2j3kl ssb tonnes landings tonnes
 ##nafo_3m ssb tonnes landings tonnes
 ##nafo_3no SSB and landings tonnes
-setwd("../../stocks")
+owd <- setwd("../stocks")
 source("e_baltic.R")
 source("faroe_plateau.R")
 source("georges_bank.R")
 source("greenland.R")
-##source("gulf_of_maine.R") ## no ssb
+source("gulf_of_maine.R") ## no ssb
 source("iceland.R")
 source("irish_sea.R")
 # source("kattegat.R")  # no fatage
@@ -40,18 +40,18 @@ source("north_sea.R")
 source("norway.R")
 source("s_celtic.R")
 source("w_baltic.R")
+setwd(owd)
 
 
 
 
 
-setwd("..")
 
 ## Weight
 wcatch <- data.frame(t(bind_rows(e_baltic$wcatch,
                                  faroe_plateau$wcatch, georges_bank$wcatch,
                                  greenland$wcatch,
-                                 ##gulf_of_maine$wcatch,
+                                 gulf_of_maine$wcatch,
                                  iceland$wcatch,
                                  irish_sea$wcatch, nafo_2j3kl$wcatch,
                                  nafo_3m$wcatch,
@@ -60,9 +60,9 @@ wcatch <- data.frame(t(bind_rows(e_baltic$wcatch,
                                  norway$wcatch, s_celtic$wcatch,
                                  w_baltic$wcatch)))
 colnames(wcatch) <- c('Eastern Baltic' , 'Faroe Plateau' , 'Georges Bank',
-                      'Greenland' , ##'Gulf of Maine' ,
+                      'Greenland' , 'Gulf of Maine' ,
                       'Iceland',
-                      'Irish Sea' , 'Newfoundland' , 'Flemish Cap',
+                      'Irish Sea' , 'Northern' , 'Flemish Cap',
                       'Grand Bank' , 'NE Arctic' , 'North Sea',
                       'Norway' , 'Southern Celtic' , 'Western Baltic')
 
@@ -78,15 +78,15 @@ wcatch <-
                     ifelse(Stock == 'Norway', 'ns',
                     ifelse(Stock == 'Southern Celtic', 'ns',
                     ifelse(Stock == 'Western Baltic', 'ns',
-                    ifelse(Stock == 'Newfoundland', 'nus',
-                    ##ifelse(Stock == 'Gulf of Maine', 'nus',
+                    ifelse(Stock == 'Northern', 'nus',
+                    ifelse(Stock == 'Gulf of Maine', 'nus',
                     ifelse(Stock == 'Georges Bank', 'nus',
                     ifelse(Stock == 'Flemish Cap', 'nus',
                     ifelse(Stock == 'Grand Bank', 'nus',
                     ifelse(Stock == 'NE Arctic', 'igf',
                     ifelse(Stock == 'Faroe Plateau', 'igf',
                     ifelse(Stock == 'Greenland' , 'igf',
-                           'igf'))))))))))))))
+                           'igf')))))))))))))))
 
 
 
@@ -133,7 +133,7 @@ wcigf <-
     scale_x_continuous(breaks = seq(1, 15, by = 1)) +
     theme(legend.title=element_blank())
 
-pdf(file = 'chapter_plots/Fig1.pdf')
+pdf(file = '../../chapter_plots/Fig1.pdf')
 grid.arrange(wcns, wcnus, wcigf)
 dev.off()
 
@@ -141,15 +141,15 @@ dev.off()
 ## maturity
 mat <- data.frame(t(bind_rows(e_baltic$mat, faroe_plateau$mat,
                               georges_bank$mat,
-                              greenland$mat, ##gulf_of_maine$mat,
+                              greenland$mat, gulf_of_maine$mat,
                               iceland$mat,
                               irish_sea$mat, nafo_2j3kl$mat, nafo_3m$mat,
                               nafo_3no$mat, ne_arctic$mat, north_sea$mat,
                               norway$mat, s_celtic$mat, w_baltic$mat)))
 colnames(mat) <- c('Eastern Baltic' , 'Faroe Plateau' , 'Georges Bank',
-                   'Greenland' , ##'Gulf of Maine' ,
+                   'Greenland' , 'Gulf of Maine' ,
                    'Iceland',
-                   'Irish Sea' , 'Newfoundland' , 'Flemish Cap',
+                   'Irish Sea' , 'Northern' , 'Flemish Cap',
                    'Grand Bank' , 'NE Arctic' , 'North Sea',
                    'Norway' , 'Southern Celtic' , 'Western Baltic')
 
@@ -165,15 +165,15 @@ mat <-
                     ifelse(Stock == 'Norway', 'ns',
                     ifelse(Stock == 'Southern Celtic', 'ns',
                     ifelse(Stock == 'Western Baltic', 'ns',
-                    ifelse(Stock == 'Newfoundland', 'nus',
-                    ##ifelse(Stock == 'Gulf of Maine', 'nus',
+                    ifelse(Stock == 'Northern', 'nus',
+                    ifelse(Stock == 'Gulf of Maine', 'nus',
                     ifelse(Stock == 'Georges Bank', 'nus',
                     ifelse(Stock == 'Flemish Cap', 'nus',
                     ifelse(Stock == 'Grand Bank', 'nus',
                     ifelse(Stock == 'NE Arctic', 'igf',
                     ifelse(Stock == 'Faroe Plateau', 'igf',
                     ifelse(Stock == 'Greenland' , 'igf',
-                           'igf'))))))))))))))
+                           'igf')))))))))))))))
 
 matns <-
     mat %>%
@@ -216,7 +216,7 @@ matigf <-
     scale_x_continuous(breaks = seq(0, 15, by = 1))
 
 getwd()
-pdf(file = '../chapter_plots/Fig2.pdf')
+pdf(file = '../../chapter_plots/Fig2.pdf')
 grid.arrange(matns, matnus, matigf)
 dev.off()
 
@@ -227,6 +227,7 @@ dev.off()
 SSB <-
     tibble(
         left_join(
+            left_join(
             left_join(
             left_join(
         left_join(
@@ -247,6 +248,8 @@ SSB <-
                                         filter(Year < 2021)),
                                             georges_bank$SSB %>%
                                             rename(gb = SSB)),
+                                            gulf_of_maine$SSB %>%
+                                            rename(gm=SSB)),
                                     sagstocks$iceland %>% select(Year, SSB) %>% rename(ic = SSB)),
                                 sagstocks$irish_sea %>% select(Year, SSB) %>% rename(is = SSB)),
                             nafo_2j3kl$SSB  %>% rename(nafo2j3kl = SSB)),
@@ -261,8 +264,8 @@ SSB <-
 
 colnames(SSB) <- c('Year',
                    'Eastern Baltic', 'Faroe Plateau' , 'Greenland',
-                   'Georges Bank', 'Iceland',
-                   'Irish Sea' , 'Newfoundland' , 'Flemish Cap',
+                   'Georges Bank', 'Gulf of Maine', 'Iceland',
+                   'Irish Sea' , 'Northern' , 'Flemish Cap',
                    'Grand Bank' , 'NE Arctic' , 'North Sea',
                    'Norway' , 'Southern Celtic' , 'Western Baltic')
 
@@ -275,14 +278,15 @@ SSB2 <-
                     ifelse(Stock == 'Irish Sea', 's',
                     ifelse(Stock == 'Greenland', 's',
                     ifelse(Stock == 'Georges Bank', 'm',
+                    ifelse(Stock == 'Gulf of Maine', 's',
                     ifelse(Stock == 'Grand Bank', 'm',
                     ifelse(Stock == 'Faroe Plateau', 'm',
                     ifelse(Stock == 'Eastern Baltic', 'l',
                     ifelse(Stock == 'North Sea','l',
                     ifelse(Stock == 'Norway', 'm',
-                    ifelse(Stock == 'Newfoundland', 'l',
+                    ifelse(Stock == 'Northern', 'l',
                     ifelse(Stock == 'Flemish Cap', 'm',
-                    ifelse(Stock == 'NE Arctic', 'l', 'l'))))))))))))))
+                    ifelse(Stock == 'NE Arctic', 'l', 'l')))))))))))))))
 
 
 ssbs <-
@@ -333,7 +337,7 @@ ssbl <-
     scale_x_continuous(breaks = seq(1950, 2020, by = 10)) +
     scale_y_continuous(breaks = seq(0, 2e6, by = 1e6))
 
-pdf(file = 'chapter_plots/Fig4.pdf')
+pdf(file = '../../chapter_plots/Fig4.pdf')
 grid.arrange(ssbs, ssbm, ssbl)
 dev.off()
 
@@ -480,9 +484,11 @@ rec <- tibble(full_join(
                                         full_join(
                                             full_join(
                                                 full_join(
+                                                full_join(
  sagstocks$e_baltic %>% select(Year, Rec, RecAge) %>% rename(ebR = Rec, ebRA = RecAge),
  sagstocks$faroe_plateau %>% select(Year, Rec, RecAge) %>%  rename(fpR = Rec, fpRA = RecAge)),
  georges_bank$N  %>% select(Year, '1') %>% rename(gbR = '1') %>% mutate(gbRA = 1)),##1000s
+ gulf_of_maine$N %>% select(Year, '1') %>% rename(gmR = '1') %>% mutate(gmRA = 1)),##1000s
  sagstocks$greenland %>% select(Year, Rec, RecAge) %>%  rename(glR = Rec, glRA = RecAge)),
  sagstocks$iceland   %>% select(Year, Rec, RecAge) %>%  rename(icR = Rec, icRA = RecAge)),
  sagstocks$irish_sea %>% select(Year, Rec, RecAge) %>%  rename(isR = Rec, isRA = RecAge)),
@@ -506,10 +512,10 @@ rec <-
     select(!contains("RA"))
 colnames(rec) <-    c('Year',
                       'Eastern Baltic (age 0)', 'Faroe Plateau  (age 1)',
-                      'Georges Bank (age 1)',
-                      'Greenland (age 1)', ##'Gulf of Maine' ,
+                      'Georges Bank (age 1)', 'Gulf of Maine (age 1)',
+                      'Greenland (age 1)',
                       'Iceland (age 3)',
-                      'Irish Sea (age 0)' , 'Newfoundland (age 2)', 'Flemish Cap (age 1)',
+                      'Irish Sea (age 0)' , 'Northern (age 2)', 'Flemish Cap (age 1)',
                       'Grand Bank (age 3)', 'NE Arctic (age 3)', 'North Sea (age 1)',
                       'Norway (age 2)', 'Southern Celtic (age 1)', 'Western Baltic (age 1)')
 
@@ -522,15 +528,16 @@ rec <-
                     ifelse(Stock == 'Irish Sea', 's',
                     ifelse(Stock == 'Georges Bank', 'm',
                     ifelse(Stock == 'Grand Bank', 'm',
+                    ifelse(Stock == 'Gulf of Maine', 'm',
                     ifelse(Stock == 'Faroe Plateau', 'm',
                     ifelse(Stock == 'Eastern Baltic', 'l',
                     ifelse(Stock == 'North Sea','m',
                     ifelse(Stock == 'Norway', 'l',
-                    ifelse(Stock == 'Newfoundland', 'l',
-                    ##ifelse(Stock == 'Gulf of Maine', 's',
+                    ifelse(Stock == 'Northern', 'l',
+                    ifelse(Stock == 'Gulf of Maine', 's',
                     ifelse(Stock == 'Flemish Cap', 'm',
                     ifelse(Stock == 'NE Arctic', 'l',
-                    ifelse(Stock == 'Greenland' , 's', 'l')))))))))))))) %>%
+                    ifelse(Stock == 'Greenland' , 's', 'l')))))))))))))))) %>%
         arrange(Stock, Year)
 
 
@@ -596,7 +603,7 @@ recdev <-
 
 
 
-pdf(file = 'chapter_plots/Fig5.pdf')
+pdf(file = '../../chapter_plots/Fig5.pdf')
 recdev %>%
     ggplot() +
     geom_hline(yintercept = 0, color = 'grey') +
@@ -615,11 +622,12 @@ dev.off()
 ##landings
 sagstocks
 
-gbland  <- read_csv('../../../data/georges_bank/landings.csv')
-nflland <- read_csv('../../../data/nafo_2j3kl/landings.csv')
-flland  <- read_csv('../../../data/nafo_3m/landings.csv')
-grbland <- read_csv('../../../data/nafo_3no/landings.csv')
-grlland <- read_csv('../../../data/greenland/landings.csv')
+gbland  <- read_csv('../../data/georges_bank/landings.csv')
+gmland  <- read.csv('../../data/gulf_of_maine/landings.csv')
+nflland <- read_csv('../../data/nafo_2j3kl/landings.csv')
+flland  <- read_csv('../../data/nafo_3m/landings.csv')
+grbland <- read_csv('../../data/nafo_3no/landings.csv')
+grlland <- read_csv('../../data/greenland/landings.csv')
 ##georges bank ssb and landings mt
 ##nafo_2j3kl nfl ssb and landings tonnes
 ##nafo_3m flemish ssb tonnes landings tonnes
@@ -641,12 +649,13 @@ land <- tibble(full_join(
                                         full_join(
                                             full_join(
                                                 full_join(
+                                                full_join(
  sagstocks$e_baltic %>% select(Year, Landings) %>% rename(ebL = Landings), ##tonnes
  sagstocks$faroe_plateau %>% select(Year, Landings) %>%  rename(fpL = Landings)), ##tonnes
- gbland  %>%  select(Year, Landings) %>% mutate(Landings=Landings * 1000) %>% rename(gbL = Landings)), ##now tonnes
+ gbland  %>%  select(Year, Landings) %>% rename(gbL = Landings)), ##tonnes
  grlland  %>%  rename(glL = Landings)), ##tonnes
- sagstocks$iceland   %>% select(Year, Landings) %>% mutate(Landings = Landings * 1000) %>% ##now tonnes
- rename(icL = Landings)),
+ gmland  %>%  select(Year, Landings) %>% rename(gmL = Landings)), ##tonnes
+ sagstocks$iceland   %>% select(Year, Landings) %>% rename(icL = Landings)), ##tonnes
  sagstocks$irish_sea %>% select(Year, Landings) %>%  rename(isL = Landings)), ##??
  nflland %>% rename(nflL = Landings)),  ##tonnes
  flland %>% rename(fcL = Landings)),  ##tonnes
@@ -662,14 +671,13 @@ tail(land, 13) %>%
 
 
 colnames(land) <-    c('Year',
-                      'Eastern Baltic', 'Faroe Plateau',
-                      'Georges Bank',
-                      'Greenland', ##'Gulf of Maine' ,
-                      'Iceland',
-                      'Irish Sea' , 'Newfoundland', 'Flemish Cap',
-                      'Grand Bank', 'NE Arctic', 'North Sea',
-                      'Norway', 'Southern Celtic', 'Western Baltic')
-
+                       'Eastern Baltic', 'Faroe Plateau',
+                       'Georges Bank',
+                       'Greenland', 'Gulf of Maine',
+                       'Iceland',
+                       'Irish Sea' , 'Northern', 'Flemish Cap',
+                       'Grand Bank', 'NE Arctic', 'North Sea',
+                       'Norway', 'Southern Celtic', 'Western Baltic')
 land <-
 land %>%
     pivot_longer(!Year, names_to = 'Stock', values_to = 'Landings') %>%
@@ -683,7 +691,7 @@ landdev <-
     print(n = Inf)
 
 
-pdf(file = '../../../chapter_plots/Fig6.pdf')
+pdf(file = '../../chapter_plots/Fig6.pdf')
 landdev %>%
     ggplot() +
     geom_hline(yintercept = 0, color = 'grey') +
@@ -716,22 +724,25 @@ landdev %>%
 
 
 ##fbar for 2j
-ebf <- read_csv('../data/e_baltic/fbar.csv')      %>% rename(eb = F4_6)
-fpf <- read_csv('../data/faroe_plateau/fbar.csv') %>% rename(fp = F3_7)
-gbf <- read_csv('../data/georges_bank/fbar.csv')  %>% rename(gb = F5_8)
-glf <- read_csv('../data/greenland/fbar.csv')     %>% rename(gl = F4_8)
-icf <- read_csv('../data/iceland/fbar.csv')       %>% rename(ic = F5_10)
-isf <- read_csv('../data/irish_sea/fbar.csv')     %>% rename(is = F2_4)
-fcf <- read_csv('../data/nafo_3m/fbar.csv')       %>% rename(fc = F3_5)
-grf1 <- read_csv('../data/nafo_3no/fbar.csv')     %>% rename(gr1 = F4_6) %>% select(-F6_9)
-#grf2 <- read_csv('../data/nafo_3no/fbar.csv')     %>% rename(gr1 = F6_9) %>% select(-F4_6)
-neaf <- read_csv('../data/ne_arctic/fbar.csv')   %>% rename(nea = F5_10)
-nsf <- read_csv('../data/north_sea/fbar.csv')    %>% rename(ns = F2_4)
-nof <- read_csv('../data/norway/fbar.csv')       %>% rename(no = F4_7)
-scf <- read_csv('../data/s_celtic/fbar.csv')     %>% rename(sc = F2_5)
-wbf <- read_csv('../data/w_baltic/fbar.csv')     %>% rename(wb = F3_5)
-
+ebf <- read_csv('../../data/e_baltic/fbar.csv')      %>% rename(eb = F4_6)
+fpf <- read_csv('../../data/faroe_plateau/fbar.csv') %>% rename(fp = F3_7)
+gbf <- read_csv('../../data/georges_bank/fbar.csv')  %>% rename(gb = F5_8)
+glf <- read_csv('../../data/greenland/fbar.csv')     %>% rename(gl = F4_8)
+gmf <- read_csv('../../data/gulf_of_maine/fbar.csv') %>% rename(gm = F7_9)
+icf <- read_csv('../../data/iceland/fbar.csv')       %>% rename(ic = F5_10)
+isf <- read_csv('../../data/irish_sea/fbar.csv')     %>% rename(is = F2_4)
+fcf <- read_csv('../../data/nafo_3m/fbar.csv')       %>% rename(fc = F3_5)
+grf1 <- read_csv('../../data/nafo_3no/fbar.csv')     %>% rename(gr1 = F4_6) %>% select(-F6_9)
+#grf2 <- read_csv('../../data/nafo_3no/fbar.csv')     %>% rename(gr1 = F6_9) %>% select(-F4_6)
+neaf <- read_csv('../../data/ne_arctic/fbar.csv')   %>% rename(nea = F5_10)
+nflf <- read_csv('../../data/nafo_2j3kl/fbar.csv')  %>% rename(nfl = F7_9)
+nsf <- read_csv('../../data/north_sea/fbar.csv')    %>% rename(ns = F2_4)
+nof <- read_csv('../../data/norway/fbar.csv')       %>% rename(no = F4_7)
+scf <- read_csv('../../data/s_celtic/fbar.csv')     %>% rename(sc = F2_5)
+wbf <- read_csv('../../data/w_baltic/fbar.csv')     %>% rename(wb = F3_5)
 fbar <-
+    left_join(
+    left_join(
     left_join(
     left_join(
     left_join(
@@ -743,7 +754,7 @@ fbar <-
                             left_join(
                                 left_join(
                                     left_join(
-                                        left_join(ebf, fpf), gbf), glf), icf), isf), fcf), grf1), neaf), nsf),
+                            left_join(ebf, fpf), gbf), glf), gmf), icf), isf), fcf), grf1), neaf), nflf), nsf),
         nof), scf), wbf)
 
 
@@ -751,11 +762,11 @@ colnames(fbar) <-    c('Year',
                        'Eastern Baltic (F4-6)',
                        'Faroe Plateau  (F3-7)',
                       'Georges Bank (F5-8)',
-                      'Greenland (F4-8)', ##'Gulf of Maine' ,
+                      'Greenland (F4-8)', 'Gulf of Maine (F7-9)' ,
                       'Iceland (F5-10)',
-                      'Irish Sea (F2-4)' , #'Newfoundland (age 2)',
+                      'Irish Sea (F2-4)' ,
                       'Flemish Cap (F3-5)',
-                      'Grand Bank (F4-6)', 'NE Arctic (F5-10)', 'North Sea (F2-4)',
+                      'Grand Bank (F4-6)', 'NE Arctic (F5-10)',  'Northern (F7-9)', 'North Sea (F2-4)',
                       'Norway (F4-7)', 'Southern Celtic (F2-5)', 'Western Baltic (F3-5)')
 
 getwd()
