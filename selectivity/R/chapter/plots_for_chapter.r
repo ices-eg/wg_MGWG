@@ -63,7 +63,7 @@ colnames(wcatch) <- c('Eastern Baltic' , 'Faroe Plateau' , 'Georges Bank',
                       'Greenland' , 'Gulf of Maine' ,
                       'Iceland',
                       'Irish Sea' , 'Northern' , 'Flemish Cap',
-                      'Grand Bank' , 'NE Arctic' , 'North Sea',
+                      'Grand Bank' , 'Northeast Arctic' , 'North Sea',
                       'Norway' , 'Southern Celtic' , 'Western Baltic')
 
 wcatch <-
@@ -83,7 +83,7 @@ wcatch <-
                     ifelse(Stock == 'Georges Bank', 'nus',
                     ifelse(Stock == 'Flemish Cap', 'nus',
                     ifelse(Stock == 'Grand Bank', 'nus',
-                    ifelse(Stock == 'NE Arctic', 'igf',
+                    ifelse(Stock == 'Northeast Arctic', 'igf',
                     ifelse(Stock == 'Faroe Plateau', 'igf',
                     ifelse(Stock == 'Greenland' , 'igf',
                            'igf')))))))))))))))
@@ -150,7 +150,7 @@ colnames(mat) <- c('Eastern Baltic' , 'Faroe Plateau' , 'Georges Bank',
                    'Greenland' , 'Gulf of Maine' ,
                    'Iceland',
                    'Irish Sea' , 'Northern' , 'Flemish Cap',
-                   'Grand Bank' , 'NE Arctic' , 'North Sea',
+                   'Grand Bank' , 'Northeast Arctic' , 'North Sea',
                    'Norway' , 'Southern Celtic' , 'Western Baltic')
 
 mat <-
@@ -170,7 +170,7 @@ mat <-
                     ifelse(Stock == 'Georges Bank', 'nus',
                     ifelse(Stock == 'Flemish Cap', 'nus',
                     ifelse(Stock == 'Grand Bank', 'nus',
-                    ifelse(Stock == 'NE Arctic', 'igf',
+                    ifelse(Stock == 'Northeast Arctic', 'igf',
                     ifelse(Stock == 'Faroe Plateau', 'igf',
                     ifelse(Stock == 'Greenland' , 'igf',
                            'igf')))))))))))))))
@@ -266,7 +266,7 @@ colnames(SSB) <- c('Year',
                    'Eastern Baltic', 'Faroe Plateau' , 'Greenland',
                    'Georges Bank', 'Gulf of Maine', 'Iceland',
                    'Irish Sea' , 'Northern' , 'Flemish Cap',
-                   'Grand Bank' , 'NE Arctic' , 'North Sea',
+                   'Grand Bank' , 'Northeast Arctic' , 'North Sea',
                    'Norway' , 'Southern Celtic' , 'Western Baltic')
 
 SSB2 <-
@@ -286,7 +286,7 @@ SSB2 <-
                     ifelse(Stock == 'Norway', 'm',
                     ifelse(Stock == 'Northern', 'l',
                     ifelse(Stock == 'Flemish Cap', 'm',
-                    ifelse(Stock == 'NE Arctic', 'l', 'l')))))))))))))))
+                    ifelse(Stock == 'Northeast Arctic', 'l', 'l')))))))))))))))
 
 
 ssbs <-
@@ -516,7 +516,7 @@ colnames(rec) <-    c('Year',
                       'Greenland (age 1)',
                       'Iceland (age 3)',
                       'Irish Sea (age 0)' , 'Northern (age 2)', 'Flemish Cap (age 1)',
-                      'Grand Bank (age 3)', 'NE Arctic (age 3)', 'North Sea (age 1)',
+                      'Grand Bank (age 3)', 'Northeast Arctic (age 3)', 'North Sea (age 1)',
                       'Norway (age 2)', 'Southern Celtic (age 1)', 'Western Baltic (age 1)')
 
 rec <-
@@ -536,7 +536,7 @@ rec <-
                     ifelse(Stock == 'Northern', 'l',
                     ifelse(Stock == 'Gulf of Maine', 's',
                     ifelse(Stock == 'Flemish Cap', 'm',
-                    ifelse(Stock == 'NE Arctic', 'l',
+                    ifelse(Stock == 'Northeast Arctic', 'l',
                     ifelse(Stock == 'Greenland' , 's', 'l')))))))))))))))) %>%
         arrange(Stock, Year)
 
@@ -676,7 +676,7 @@ colnames(land) <-    c('Year',
                        'Greenland', 'Gulf of Maine',
                        'Iceland',
                        'Irish Sea' , 'Northern', 'Flemish Cap',
-                       'Grand Bank', 'NE Arctic', 'North Sea',
+                       'Grand Bank', 'Northeast Arctic', 'North Sea',
                        'Norway', 'Southern Celtic', 'Western Baltic')
 land <-
 land %>%
@@ -766,7 +766,7 @@ colnames(fbar) <-    c('Year',
                       'Iceland (F5-10)',
                       'Irish Sea (F2-4)' ,
                       'Flemish Cap (F3-5)',
-                      'Grand Bank (F4-6)', 'NE Arctic (F5-10)',  'Northern (F7-9)', 'North Sea (F2-4)',
+                      'Grand Bank (F4-6)', 'Northeast Arctic (F5-10)',  'Northern (F7-9)', 'North Sea (F2-4)',
                       'Norway (F4-7)', 'Southern Celtic (F2-5)', 'Western Baltic (F3-5)')
 
 getwd()
