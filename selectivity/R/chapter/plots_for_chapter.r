@@ -300,7 +300,7 @@ ssbs <-
           panel.grid.major = element_blank()) +
     scale_y_continuous(labels = scientific) +
     lims(x = c(1946, 2023)) +
-    ylab('SSB') +
+    ylab('SSB (tonnes)') +
     xlab('')  +
     theme(axis.text.x=element_blank(),
         axis.ticks.x=element_blank())
@@ -315,7 +315,7 @@ ssbm <-
           panel.grid.major = element_blank()) +
     scale_y_continuous(labels = scientific) +
     lims(x = c(1946, 2023)) +
-    ylab('SSB') +
+    ylab('SSB (tonnes)') +
     xlab('')  +
     theme(axis.text.x=element_blank(),
           axis.ticks.x=element_blank(),
@@ -331,7 +331,7 @@ ssbl <-
           panel.grid.major = element_blank()) +
     lims(x = c(1946, 2023)) +
 #    scale_y_continuous(labels = scientific) +
-    ylab('SSB') +
+    ylab('SSB (tonnes)') +
     xlab('Year') +
     theme(legend.title=element_blank()) +
     scale_x_continuous(breaks = seq(1950, 2020, by = 10)) +
