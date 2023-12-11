@@ -68,7 +68,7 @@ pdf("report/Fig3.pdf", width=6, height=12)
 par(mfrow=c(2,1))
 par(plt=c(0.15, 0.97, 0.20, 0.97))
 plot(NA, xlim=c(0,8), ylim=c(0,8), xlab="Age at 50% maturity",
-     ylab="Average age in catches")
+     ylab="Average age in catches", las=1)
 text(0.2, 7.8, "(a)")
 abline(a=0, b=1, lty=3, lwd=2.5, col="gray")
 points(AbarCatch~A50mat, data=summary, pch=16)
@@ -76,7 +76,7 @@ text(y~x, data=p1, labels=rownames(p1), cex=0.8)
 # W5~A50mat
 par(plt=c(0.15, 0.97, 0.20, 0.97))
 plot(NA, xlim=c(0,8), ylim=c(0,10), xlab="Age at 50% maturity",
-     ylab="Average weight at age 5 (kg)")
+     ylab="Average weight at age 5 (kg)", las=1)
 text(0.2, 9.7, "(b)")
 points(W5~A50mat, data=summary, pch=16)
 text(y~x, data=p2, labels=rownames(p2), cex=0.8)
