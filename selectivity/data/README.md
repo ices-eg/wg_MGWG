@@ -133,7 +133,7 @@ natmort  | yr-1 | p6    | Prior over natural mortality, M: median=0.218
 wcatch   | kg   | 3     | Weight-at-age in catch
 wstock   | kg   | 6     | Weight-at-age in stock
 
-## NAFO 3NO (Southern Grand Bank)
+## NAFO 3NO (Grand Bank)
 
 Rideout et al. 2018. An assessment of the cod stock in NAFO Divisions 3NO.
 [NAFO SCR Doc 18/028](https://www.nafo.int/Portals/0/PDFs/sc/2018/scr18-028.pdf).
@@ -149,6 +149,27 @@ wcatch   | kg   | 5     | Catch weight at age
 wstock   | kg   | 23    | Beginning of year weights at age from commercial catches
 
 ## NAFO 3Ps (St Pierre Bank)
+
+DFO. 2022. Stock assessment of NAFO Subdivision 3Ps cod. [CSAS Sci Adv Rep
+2022/022](https://waves-vagues.dfo-mpo.gc.ca/library-bibliotheque/41063715.pdf).
+
+Augmented with tables provided directly by the assessment author in a file
+`forArni3Pscod.xlsx` containing the following worksheets: weight_at_age,
+maturity_at_age, landings, catch_at_age, recruits, ssb, aveF, Nmatrix, Fmatrix.
+
+csv      | unit  | sheet | info
+-------- | ----- | ----- | -------------------------
+catage   | 000s  |     4 | Catch numbers-at-age
+fatage   | yr-1  |     9 | Fishing mortality
+fbar     | yr-1  |     7 | Average fishing mortality
+landings | 000 t |     3 | Landings
+maturity | prop  |     2 | Proportion mature-at-age
+natage   | 1e6   |     8 | Stock number-at-age
+SSB      | 000 t |     6 | Spawning stock biomass
+wcatch   | kg    |     1 | Weights at age
+wstock   | kg    |     1 | Weights at age
+
+## NAFO 3Ps (St Pierre Bank) 2017
 
 Rideout et al. 2017. Assessing the status of the cod (Gadus morhua) stock in NAFO Subdivision 3Ps in 2016.
 [CSAS Res Doc 2017/063](http://waves-vagues.dfo-mpo.gc.ca/Library/40644777.pdf).
