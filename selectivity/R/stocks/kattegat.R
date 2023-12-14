@@ -73,3 +73,6 @@ kattegat <-
   list(M=M, wcatch=wcatch, wstock=wstock,
        BPR=BPR, C=C, Cp=Cp, mat=mat,
        SSB = SSB)
+
+rm(ages, BPR, C, cohortBiomass, Cp, dims, M, mat, minage, path, plus, read, SSB,
+   stdplot, wcatch, wstock, yrs)

@@ -22,8 +22,7 @@ source("norway.R")
 source("s_celtic.R")
 source("w_baltic.R")
 setwd(owd)
-rm(ages, B, BPR, C, cohortBiomass, Cp, dims, Fmort, M, mat, minage, N, Ninit,
-   owd, path, plus, read, S, stdplot, wcatch, wstock, yrs)
+rm(owd)
 
 # Construct list
 stocks <- list(e_baltic=e_baltic,

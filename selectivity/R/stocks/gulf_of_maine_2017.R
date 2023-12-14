@@ -71,3 +71,6 @@ mat <- colMeans(mat[ages])
 gulf_of_maine_2017 <-
   list(N=N, Ninit=Ninit, M=M, wcatch=wcatch, wstock=wstock,
        B=B, BPR=BPR, C=C, Cp=Cp, Fmort=Fmort, S=S, mat=mat)
+
+rm(ages, B, BPR, C, cohortBiomass, Cp, dims, Fmort, M, mat, minage, N, Ninit,
+   path, plus, read, S, stdplot, wcatch, wstock, yrs)
