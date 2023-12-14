@@ -3,7 +3,7 @@ source("../functions/dims.R")
 source("../functions/read.R")
 source("../functions/stdplot.R")
 
-path <- "../../data/nafo_3ps"
+path <- "../../data/nafo_3ps_2017"
 dims(path)
 yrs <- 2004:2013
 ages <- as.character(3:14)
@@ -65,7 +65,7 @@ mat <- colMeans(mat[ages])
 
 ## 6  Export
 
-nafo_3ps <-
+nafo_3ps_2017 <-
   list(wcatch=wcatch, wstock=wstock,
        C=C, Cp=Cp, mat=mat)
 
